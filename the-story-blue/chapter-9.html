@@ -143,6 +143,58 @@
     }
     .video-ref-box a:hover { border-bottom: 1px solid var(--blue); }
 
+    /* --- Custom Video Player Styles --- */
+    .custom-video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(26,20,16,0.15);
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .custom-video-wrapper video {
+      width: 100%;
+      display: block;
+    }
+    .video-play-btn {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: rgba(200, 168, 75, 0.9); /* สีทอง */
+      border: 2px solid var(--gold-light);
+      border-radius: 50%;
+      color: var(--ink);
+      font-size: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      padding-left: 6px; /* ขยับไอคอน Play ให้ดูตรงกลาง */
+    }
+    .video-play-btn:hover {
+      background: var(--gold-light);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(200, 168, 75, 0.6);
+    }
+    .video-play-btn.playing {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .custom-video-wrapper:hover .video-play-btn.playing {
+      opacity: 1;
+      pointer-events: auto;
+      background: rgba(3, 70, 148, 0.8); /* เปลี่ยนเป็นสีน้ำเงินเวลา Pause */
+      border-color: var(--blue-light);
+      color: var(--white);
+      padding-left: 0; /* รีเซ็ต padding สำหรับไอคอน Pause */
+    }
+
     .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
     .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
     .chapter-end__text {
@@ -202,7 +254,6 @@
 </head>
 <body>
 
-  <!-- Language Toggle Button -->
   <!-- ==================== NAVIGATION ==================== -->
   <nav class="navbar">
     <div class="nav-container">
@@ -221,7 +272,8 @@
         <li><a href="../icons.html">i-Cons</a></li>
         <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
         <li><a href="../about.html">About Us</a></li>
-        <li><a href="#" class="lang-toggle" id="langToggle">EN</a></li>
+        <!-- แก้ไข: เพิ่ม ID ที่ถูกต้อง และ event onclick เพื่อให้เรียกฟังก์ชันทำงานได้ทันที -->
+        <li><a href="#" class="lang-toggle" id="langToggleBtn" onclick="event.preventDefault(); toggleChapterLanguage();">EN</a></li>
       </ul>
     </div>
   </nav>
@@ -233,7 +285,7 @@
     <div class="hero__content">
       <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:80px;">
       <p class="hero__kicker">Chelsea TH FANs · Karn La Khrang Nan News</p>
-      <h1 class="hero__title" data-lang-th="กาลครั้งนั้นKarn La Khrang Nan News!" data-lang-en="Once Upon a TimeKarn La Khrang Nan News!">กาลครั้งนั้น<br><em>Karn La Khrang Nan News!</em></h1>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Karn La Khrang Nan News!</em>" data-lang-en="Once Upon a Time<br><em>Karn La Khrang Nan News!</em>">กาลครั้งนั้น<br><em>Karn La Khrang Nan News!</em></h1>
       <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
       <div class="hero__rule"></div>
     </div>
@@ -261,11 +313,11 @@
 
       <p data-lang-th="และแล้วยักษ์ใหญ่อีกทีมอย่าง บาร์เซโลน่า ที่มีทั้ง ฟิโก้, ริวัลโด้ และคนอื่นๆ ก็รอเราอยู่ในรอบก่อนรองชนะเลิศ เลกแรกนั้นเหนือจินตนาการ เมื่อทีมสิงห์บลูส์ออกนำไปก่อนถึงสามประตูตั้งแต่ก่อนจบครึ่งแรก ซึ่งเป็นสิ่งที่ไม่เคยเกิดขึ้นมาก่อนที่สแตมฟอร์ด บริดจ์ อนิจจา ห้าจากหกประตูถัดมาในเกมนี้ตกเป็นของทีมจากกาตาลัน ส่งผลให้พวกเขาเป็นฝ่ายเข้ารอบไปได้ แต่ความบาดหมางและการขับเคี่ยวได้ถือกำเนิดขึ้นแล้ว 'ผมจะไม่มีวันลืมบรรยากาศ และความสุขของทุกคนในสนาม' ทอเร อังเดร โฟล ผู้ทำสองประตูในนัดแรกกล่าว 'ในที่สุดเชลซีก็สามารถต่อกรและเอาชนะทีมที่ดีกว่าในยุโรปได้'" data-lang-en="Another, Barcelona, with Figo, Rivaldo et al, awaited in the quarter-finals. An extraordinary first leg, in which the Blues raced into a three-goal lead before half-time, was unlike anything Stamford Bridge had witnessed before. Alas, five of the next six goals in the tie were scored by the Catalans to send them through, but a rivalry had been born. ‘I will never forget the atmosphere, and how happy everyone was in the stadium,’ said two-goal Tore Andre Flo after the first leg. ‘Finally Chelsea could play and beat the better teams in Europe.’">และแล้วยักษ์ใหญ่อีกทีมอย่าง บาร์เซโลน่า ที่มีทั้ง ฟิโก้, ริวัลโด้ และคนอื่นๆ ก็รอเราอยู่ในรอบก่อนรองชนะเลิศ เลกแรกนั้นเหนือจินตนาการ เมื่อทีมสิงห์บลูส์ออกนำไปก่อนถึงสามประตูตั้งแต่ก่อนจบครึ่งแรก ซึ่งเป็นสิ่งที่ไม่เคยเกิดขึ้นมาก่อนที่สแตมฟอร์ด บริดจ์ อนิจจา ห้าจากหกประตูถัดมาในเกมนี้ตกเป็นของทีมจากกาตาลัน ส่งผลให้พวกเขาเป็นฝ่ายเข้ารอบไปได้ แต่ความบาดหมางและการขับเคี่ยวได้ถือกำเนิดขึ้นแล้ว 'ผมจะไม่มีวันลืมบรรยากาศ และความสุขของทุกคนในสนาม' ทอเร อังเดร โฟล ผู้ทำสองประตูในนัดแรกกล่าว 'ในที่สุดเชลซีก็สามารถต่อกรและเอาชนะทีมที่ดีกว่าในยุโรปได้'</p>
 
-      <!-- Video 1 -->
+      <!-- Video 1 : แก้ไขแท็ก data-lang ให้ครอบคลุมแท็ก a เพื่อให้ลิงก์ไม่พังตอนกดสลับภาษา -->
       <div class="video-ref-box">
-        <p data-lang-th="🎥 URL YouTube: https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000" data-lang-en="🎥 Video URL: https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000" target="_blank">https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000</a></p>
-        <p data-lang-th="🎬 ชื่อ Video: Champions League Years 1999/2000 - A debut in the competition" data-lang-en="🎬 Video Name: Champions League Years 1999/2000 - A debut in the competition">🎬 <strong>ชื่อ Video:</strong> Champions League Years 1999/2000 - A debut in the competition</p>
-        <p data-lang-th="🙏 ขอขอบคุณ: Chelsea FC" data-lang-en="🙏 Credit: Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
+        <p data-lang-th="🎥 <strong>URL YouTube:</strong> <a href='https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000' target='_blank'>https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000</a>" data-lang-en="🎥 <strong>Video URL:</strong> <a href='https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000' target='_blank'>https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000</a>">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000" target="_blank">https://www.chelseafc.com/en/video/history-champions-league-years-1999-2000</a></p>
+        <p data-lang-th="🎬 <strong>ชื่อ Video:</strong> Champions League Years 1999/2000 - A debut in the competition" data-lang-en="🎬 <strong>Video Name:</strong> Champions League Years 1999/2000 - A debut in the competition">🎬 <strong>ชื่อ Video:</strong> Champions League Years 1999/2000 - A debut in the competition</p>
+        <p data-lang-th="🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC" data-lang-en="🙏 <strong>Credit:</strong> Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
       </div>
 
       <p data-lang-th="เวลาผ่านไปสามปี ก่อนที่แชมเปียนส์ลีกจะหวนกลับมายังเดอะบริดจ์อีกครั้ง แต่ครั้งนี้ การหลั่งไหลเข้ามาของสตาร์ดังหลังจากที่อับราโมวิชเข้ามาเทคโอเวอร์ ทำให้ความคาดหวังสูงขึ้นเป็นเงาตามตัว หลังจากผ่านรอบแบ่งกลุ่มและรอบ 16 ทีมมาได้อย่างปลอดภัย ไฮไลต์ของแคมเปญยุโรปปี 2003/04 ก็มาถึงที่ไฮบิวรี่ เมื่อประตูท้ายเกมของ เวย์น บริดจ์ ยุติสถิติอันยาวนานที่เราไม่เคยบุกไปชนะอาร์เซนอลได้เลย และช่วยให้เราผ่านเข้าสู่รอบสี่ทีมสุดท้ายด้วยการเขี่ยคู่ปรับร่วมลอนดอนตกรอบ 'มันคือจุดเริ่มต้นที่เชลซีเริ่มจะเหนือกว่าอาร์เซนอล' บริดจ์กล่าวรำลึกในหลายปีต่อมา" data-lang-en="It was three years before Champions League football returned to the Bridge, but this time the influx of stars that had joined following Abramovich’s arrival meant expectations were higher. After safely navigating the group stage and round of 16, the 2003/04 European campaign’s highlight came at Highbury, where a late Wayne Bridge goal ended a long run without beating Arsenal and secured our place in the last four at the expense of our London rivals. ‘It was when Chelsea began to dominate Arsenal,’ reflected Bridge years later.">เวลาผ่านไปสามปี ก่อนที่แชมเปียนส์ลีกจะหวนกลับมายังเดอะบริดจ์อีกครั้ง แต่ครั้งนี้ การหลั่งไหลเข้ามาของสตาร์ดังหลังจากที่อับราโมวิชเข้ามาเทคโอเวอร์ ทำให้ความคาดหวังสูงขึ้นเป็นเงาตามตัว หลังจากผ่านรอบแบ่งกลุ่มและรอบ 16 ทีมมาได้อย่างปลอดภัย ไฮไลต์ของแคมเปญยุโรปปี 2003/04 ก็มาถึงที่ไฮบิวรี่ เมื่อประตูท้ายเกมของ เวย์น บริดจ์ ยุติสถิติอันยาวนานที่เราไม่เคยบุกไปชนะอาร์เซนอลได้เลย และช่วยให้เราผ่านเข้าสู่รอบสี่ทีมสุดท้ายด้วยการเขี่ยคู่ปรับร่วมลอนดอนตกรอบ 'มันคือจุดเริ่มต้นที่เชลซีเริ่มจะเหนือกว่าอาร์เซนอล' บริดจ์กล่าวรำลึกในหลายปีต่อมา</p>
@@ -290,9 +342,9 @@
 
       <!-- Video 2 -->
       <div class="video-ref-box">
-        <p data-lang-th="🎥 URL YouTube: https://www.chelseafc.com/en/video/history-the-drogba-years" data-lang-en="🎥 Video URL: https://www.chelseafc.com/en/video/history-the-drogba-years">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/history-the-drogba-years" target="_blank">https://www.chelseafc.com/en/video/history-the-drogba-years</a></p>
-        <p data-lang-th="🎬 ชื่อ Video: Drogba - The Chelsea Years" data-lang-en="🎬 Video Name: Drogba - The Chelsea Years">🎬 <strong>ชื่อ Video:</strong> Drogba - The Chelsea Years</p>
-        <p data-lang-th="🙏 ขอขอบคุณ: Chelsea FC" data-lang-en="🙏 Credit: Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
+        <p data-lang-th="🎥 <strong>URL YouTube:</strong> <a href='https://www.chelseafc.com/en/video/history-the-drogba-years' target='_blank'>https://www.chelseafc.com/en/video/history-the-drogba-years</a>" data-lang-en="🎥 <strong>Video URL:</strong> <a href='https://www.chelseafc.com/en/video/history-the-drogba-years' target='_blank'>https://www.chelseafc.com/en/video/history-the-drogba-years</a>">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/history-the-drogba-years" target="_blank">https://www.chelseafc.com/en/video/history-the-drogba-years</a></p>
+        <p data-lang-th="🎬 <strong>ชื่อ Video:</strong> Drogba - The Chelsea Years" data-lang-en="🎬 <strong>Video Name:</strong> Drogba - The Chelsea Years">🎬 <strong>ชื่อ Video:</strong> Drogba - The Chelsea Years</p>
+        <p data-lang-th="🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC" data-lang-en="🙏 <strong>Credit:</strong> Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
       </div>
 
       <p data-lang-th="หลังจากเอาชนะเบนฟิก้าทั้งเหย้าและเยือนในรอบก่อนรองชนะเลิศ ด่านต่อไปคือบาร์เซโลน่า พวกเขาอีกแล้ว! แต่บางทีพระเจ้าแห่งฟุตบอลอาจจะอยู่ข้างเราในครั้งนี้ ในเลกแรกที่สแตมฟอร์ด บริดจ์ ทีมเยือนพลาดโอกาสทำประตูมากมาย ในขณะที่ดร็อกบาคว้าหนึ่งในโอกาสน้อยนิดที่เรามี เลกที่สองอาจเรียกได้ว่าเป็นเกมที่ไม่ธรรมดาที่สุดในประวัติศาสตร์ของเรา เสียไปสองประตูและเหลือผู้เล่นน้อยกว่าหนึ่งคนเมื่อเจอกับทีมที่หลายคนยกย่องว่ายิ่งใหญ่ที่สุดตลอดกาล แต่ด้วยวิธีการบางอย่าง ทีมสิงห์บลูส์ก็ผ่านเข้ารอบไปได้ ในช่วงทดเวลาบาดเจ็บครึ่งแรก รามิเรส ชิพบอลสุดสวยให้เราขึ้นนำด้วยกฎประตูทีมเยือน และการเล่นเกมรับแบบถวายหัวก็ช่วยยันบาร์ซ่าไว้ได้ในครึ่งหลัง เช็กเซฟแล้วเซฟเล่า ลิโอเนล เมสซี่ ยิงจุดโทษชนคาน และเมื่อเวลาใกล้จะหมด เฟร์นานโด ตอร์เรส ก็หลุดเดี่ยวไปทำประตู เชลซีปีนข้ามภูเขาลูกใหญ่ไปได้แล้ว แต่ยังมีอีกหนึ่งยอดเขาที่ยากลำบากรออยู่: บาเยิร์น มิวนิค ในสนามของพวกเขาเอง" data-lang-en="After beating Benfica home and away in the quarters, it was Barcelona next. Them again! But perhaps the footballing gods were on our side this time. In the first leg at Stamford Bridge, the visitors missed a host of chances while Drogba took one of the few that came our way. The second leg was arguably the most extraordinary game in our history. Two goals and a man down to the team many called the greatest of all time, somehow the Blues advanced. On the stroke of half-time, Ramires put us ahead on away goals with a sublime chip, and a heroic rearguard action kept Barca at bay after the interval. Cech made save after save, Lionel Messi hit the bar with a penalty, and then with time almost up, Fernando Torres broke clear to score. Chelsea had climbed a mountain and some, but there was one more tough peak to scale: Bayern Munich in their own stadium.">หลังจากเอาชนะเบนฟิก้าทั้งเหย้าและเยือนในรอบก่อนรองชนะเลิศ ด่านต่อไปคือบาร์เซโลน่า พวกเขาอีกแล้ว! แต่บางทีพระเจ้าแห่งฟุตบอลอาจจะอยู่ข้างเราในครั้งนี้ ในเลกแรกที่สแตมฟอร์ด บริดจ์ ทีมเยือนพลาดโอกาสทำประตูมากมาย ในขณะที่ดร็อกบาคว้าหนึ่งในโอกาสน้อยนิดที่เรามี เลกที่สองอาจเรียกได้ว่าเป็นเกมที่ไม่ธรรมดาที่สุดในประวัติศาสตร์ของเรา เสียไปสองประตูและเหลือผู้เล่นน้อยกว่าหนึ่งคนเมื่อเจอกับทีมที่หลายคนยกย่องว่ายิ่งใหญ่ที่สุดตลอดกาล แต่ด้วยวิธีการบางอย่าง ทีมสิงห์บลูส์ก็ผ่านเข้ารอบไปได้ ในช่วงทดเวลาบาดเจ็บครึ่งแรก รามิเรส ชิพบอลสุดสวยให้เราขึ้นนำด้วยกฎประตูทีมเยือน และการเล่นเกมรับแบบถวายหัวก็ช่วยยันบาร์ซ่าไว้ได้ในครึ่งหลัง เช็กเซฟแล้วเซฟเล่า ลิโอเนล เมสซี่ ยิงจุดโทษชนคาน และเมื่อเวลาใกล้จะหมด เฟร์นานโด ตอร์เรส ก็หลุดเดี่ยวไปทำประตู เชลซีปีนข้ามภูเขาลูกใหญ่ไปได้แล้ว แต่ยังมีอีกหนึ่งยอดเขาที่ยากลำบากรออยู่: บาเยิร์น มิวนิค ในสนามของพวกเขาเอง</p>
@@ -301,9 +353,9 @@
 
       <!-- Video 3 -->
       <div class="video-ref-box">
-        <p data-lang-th="🎥 URL YouTube: https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion" data-lang-en="🎥 Video URL: https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion" target="_blank">https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion</a></p>
-        <p data-lang-th="🎬 ชื่อ Video: Munich 2012 in slow motion" data-lang-en="🎬 Video Name: Munich 2012 in slow motion">🎬 <strong>ชื่อ Video:</strong> Munich 2012 in slow motion</p>
-        <p data-lang-th="🙏 ขอขอบคุณ: Chelsea FC" data-lang-en="🙏 Credit: Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
+        <p data-lang-th="🎥 <strong>URL YouTube:</strong> <a href='https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion' target='_blank'>https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion</a>" data-lang-en="🎥 <strong>Video URL:</strong> <a href='https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion' target='_blank'>https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion</a>">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion" target="_blank">https://www.chelseafc.com/en/video/history-munich-2012-in-slow-motion</a></p>
+        <p data-lang-th="🎬 <strong>ชื่อ Video:</strong> Munich 2012 in slow motion" data-lang-en="🎬 <strong>Video Name:</strong> Munich 2012 in slow motion">🎬 <strong>ชื่อ Video:</strong> Munich 2012 in slow motion</p>
+        <p data-lang-th="🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC" data-lang-en="🙏 <strong>Credit:</strong> Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
       </div>
 
       <blockquote class="pull-quote">
@@ -331,9 +383,9 @@
 
       <!-- Video 4 -->
       <div class="video-ref-box">
-        <p data-lang-th="🎥 URL YouTube: https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy" data-lang-en="🎥 Video URL: https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy" target="_blank">https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy</a></p>
-        <p data-lang-th="🎬 ชื่อ Video: REWIND | Chelsea 4-4 Ajax | Champions League 2019/20" data-lang-en="🎬 Video Name: REWIND | Chelsea 4-4 Ajax | Champions League 2019/20">🎬 <strong>ชื่อ Video:</strong> REWIND | Chelsea 4-4 Ajax | Champions League 2019/20</p>
-        <p data-lang-th="🙏 ขอขอบคุณ: Chelsea FC" data-lang-en="🙏 Credit: Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
+        <p data-lang-th="🎥 <strong>URL YouTube:</strong> <a href='https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy' target='_blank'>https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy</a>" data-lang-en="🎥 <strong>Video URL:</strong> <a href='https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy' target='_blank'>https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy</a>">🎥 <strong>URL YouTube:</strong> <a href="https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy" target="_blank">https://www.chelseafc.com/en/video/chelsea-4-4-ajax---uefa-champions-league--h--ljdgzxate6ztgsbq68f_gchq2fvfy</a></p>
+        <p data-lang-th="🎬 <strong>ชื่อ Video:</strong> REWIND | Chelsea 4-4 Ajax | Champions League 2019/20" data-lang-en="🎬 <strong>Video Name:</strong> REWIND | Chelsea 4-4 Ajax | Champions League 2019/20">🎬 <strong>ชื่อ Video:</strong> REWIND | Chelsea 4-4 Ajax | Champions League 2019/20</p>
+        <p data-lang-th="🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC" data-lang-en="🙏 <strong>Credit:</strong> Chelsea FC">🙏 <strong>ขอขอบคุณ:</strong> Chelsea FC</p>
       </div>
 
       <p data-lang-th="แล้วโอกาสสำหรับฤดูกาล 2020/21 ซึ่งเป็นแชมเปียนส์ลีกในช่วงกลางการแพร่ระบาดล่ะ? แลมพาร์ดนำทีมดาวรุ่งโฮมโกรนที่ผสมผสานกับการซื้อตัวครั้งใหญ่ในช่วงซัมเมอร์ และแข้งเก๋าตัวหลักอีกไม่กี่คน ผ่านรอบแบ่งกลุ่มมาได้อย่างน่าประทับใจ ชัยชนะเหนือเซบีย่า 4-0 ที่โอลิวิเยร์ ชิรูด์ เหมาคนเดียวทุกประตูนั้นโดดเด่นเป็นพิเศษ เมื่อเข้าสู่รอบน็อกเอาต์ โธมัส ทูเคิล ผู้ซึ่งพ่ายแพ้ในนัดชิงชนะเลิศกับเปแอสเชเมื่อฤดูกาลก่อน ได้เข้ามารับหน้าที่คุมทีม และโมเมนตัมที่สร้างขึ้นจากเกมรับอันแข็งแกร่งก็เริ่มก่อตัวขึ้น แอตเลติโก มาดริด คู่ต่อสู้ที่น่าเกรงขามของทุกคนในรายการนี้มาอย่างยาวนาน ถูกเอาชนะทั้งสองเลก ชิรูด์ทำประตูได้อีกครั้งด้วยลูกตีลังกายิงสุดสวยในเลกแรก และฮาคิม ซิเย็ค กับเอเมอร์สัน ก็ทำประตูจากการสวนกลับที่เดอะบริดจ์ในเกมนัดที่สอง ประตูที่สองนั้นได้รับการต้อนรับอย่างยินดีปรีดาจากเพื่อนร่วมทีมที่ไม่ได้ลงสนามซึ่งอยู่บนอัฒจันทร์ รวมถึงติอาโก้ ซิลวา ที่ได้รับบาดเจ็บ ซึ่งเป็นอีกคนที่พ่ายแพ้ในนัดชิงชนะเลิศเมื่อปีก่อน" data-lang-en="So what were the chances for 2020/21, the mid-pandemic Champions League? Lampard led a side of young homegrowns mixed with big summer purchases, plus a few important old hands, through the group stage convincingly. A 4-0 win against Sevilla with all the goals by Olivier Giroud stood out especially. By the knockout rounds Thomas Tuchel, a losing finalist with PSG the previous season, was the coach in charge and momentum, founded on a strong defence, was beginning to build. Atletico Madrid, for so long formidable opponents for anyone in this competition, were beaten in both legs. Giroud scored again with an outstanding overhead kick in the first leg, and Hakim Ziyech and Emerson netted breakaway goals at the Bridge in the return match, the second one greeted gleefully by non-playing team-mates in the stands, including injured Thiago Silva, who was another defeated finalist the year before.">แล้วโอกาสสำหรับฤดูกาล 2020/21 ซึ่งเป็นแชมเปียนส์ลีกในช่วงกลางการแพร่ระบาดล่ะ? แลมพาร์ดนำทีมดาวรุ่งโฮมโกรนที่ผสมผสานกับการซื้อตัวครั้งใหญ่ในช่วงซัมเมอร์ และแข้งเก๋าตัวหลักอีกไม่กี่คน ผ่านรอบแบ่งกลุ่มมาได้อย่างน่าประทับใจ ชัยชนะเหนือเซบีย่า 4-0 ที่โอลิวิเยร์ ชิรูด์ เหมาคนเดียวทุกประตูนั้นโดดเด่นเป็นพิเศษ เมื่อเข้าสู่รอบน็อกเอาต์ โธมัส ทูเคิล ผู้ซึ่งพ่ายแพ้ในนัดชิงชนะเลิศกับเปแอสเชเมื่อฤดูกาลก่อน ได้เข้ามารับหน้าที่คุมทีม และโมเมนตัมที่สร้างขึ้นจากเกมรับอันแข็งแกร่งก็เริ่มก่อตัวขึ้น แอตเลติโก มาดริด คู่ต่อสู้ที่น่าเกรงขามของทุกคนในรายการนี้มาอย่างยาวนาน ถูกเอาชนะทั้งสองเลก ชิรูด์ทำประตูได้อีกครั้งด้วยลูกตีลังกายิงสุดสวยในเลกแรก และฮาคิม ซิเย็ค กับเอเมอร์สัน ก็ทำประตูจากการสวนกลับที่เดอะบริดจ์ในเกมนัดที่สอง ประตูที่สองนั้นได้รับการต้อนรับอย่างยินดีปรีดาจากเพื่อนร่วมทีมที่ไม่ได้ลงสนามซึ่งอยู่บนอัฒจันทร์ รวมถึงติอาโก้ ซิลวา ที่ได้รับบาดเจ็บ ซึ่งเป็นอีกคนที่พ่ายแพ้ในนัดชิงชนะเลิศเมื่อปีก่อน</p>
@@ -354,19 +406,18 @@
 
       <p class="drop-cap" data-lang-th="ดังนั้น จึงต้องเดินทางไปยังริมฝั่งแม่น้ำดูโรในโปรตุเกสสำหรับการเข้าชิงแชมเปียนส์ลีกครั้งที่สามของเรา และเป็นครั้งที่สองที่ต้องเจอกับทีมจากอังกฤษด้วยกัน ทีมของทูเคิลเคยเอาชนะแมนฯ ซิตี้ของเป๊ป กวาร์ดิโอล่า มาแล้วสองครั้งในการแข่งขันในประเทศในช่วงไม่กี่สัปดาห์ก่อนหน้านั้น และเช่นเดียวกับในเกมเหล่านั้น แชมป์พรีเมียร์ลีกถูกหยุดยั้งไม่ให้เค้นฟอร์มเก่งออกมาได้ด้วยการจัดระบบที่ชาญฉลาดและฟอร์มการเล่นอันยอดเยี่ยมของเชลซี เมื่อฮาแวร์ตซ์รับบอลจังหวะผ่านบอลอันยอดเยี่ยมของเมาท์ แตะหลบผู้รักษาประตูและแปบอลเข้าตาข่ายในช่วงท้ายครึ่งแรก การขึ้นนำนั้นก็เป็นสิ่งที่เชลซีคู่ควร การเล่นเกมรับที่โดดเด่นทั่วทั้งสนาม โดยมี เอ็นโกโล่ ก็องเต้ ในแดนกลางได้รับรางวัลแมนออฟเดอะแมตช์ ช่วยรักษาสกอร์ไว้ได้ เซซาร์ อัซปิลิกวยต้า ผู้ซึ่งย้ายมาร่วมทีมในช่วงซัมเมอร์หลังจากชัยชนะในแชมเปียนส์ลีกครั้งแรกของเรา ชูถ้วยรางวัลอย่างสง่างาม และไม่มีใครสามารถพูดได้ว่าชัยชนะครั้งนี้ไม่คู่ควร" data-lang-en="So it was to the banks of the River Douro in Portugal for our third Champions League final, and second against another English side. Tuchel’s team had beaten Pep Guardiola’s Man City twice in domestic competition in the preceding weeks, and as in those games, the Premier League champions were prevented from finding their top gears by a cleverly set-up and high-performing Chelsea side. When Havertz took an excellent Mount pass beyond the keeper and slotted it into the net in the closing minutes of the first half, the lead was no more than Chelsea deserved. Outstanding defending all across the pitch, with N’Golo Kante in midfield named man of the match, kept it intact. Cesar Azpilicueta, who had joined the summer after our first Champions League victory, raised the trophy in true style, and no one could say victory was not warranted.">ดังนั้น จึงต้องเดินทางไปยังริมฝั่งแม่น้ำดูโรในโปรตุเกสสำหรับการเข้าชิงแชมเปียนส์ลีกครั้งที่สามของเรา และเป็นครั้งที่สองที่ต้องเจอกับทีมจากอังกฤษด้วยกัน ทีมของทูเคิลเคยเอาชนะแมนฯ ซิตี้ของเป๊ป กวาร์ดิโอล่า มาแล้วสองครั้งในการแข่งขันในประเทศในช่วงไม่กี่สัปดาห์ก่อนหน้านั้น และเช่นเดียวกับในเกมเหล่านั้น แชมป์พรีเมียร์ลีกถูกหยุดยั้งไม่ให้เค้นฟอร์มเก่งออกมาได้ด้วยการจัดระบบที่ชาญฉลาดและฟอร์มการเล่นอันยอดเยี่ยมของเชลซี เมื่อฮาแวร์ตซ์รับบอลจังหวะผ่านบอลอันยอดเยี่ยมของเมาท์ แตะหลบผู้รักษาประตูและแปบอลเข้าตาข่ายในช่วงท้ายครึ่งแรก การขึ้นนำนั้นก็เป็นสิ่งที่เชลซีคู่ควร การเล่นเกมรับที่โดดเด่นทั่วทั้งสนาม โดยมี เอ็นโกโล่ ก็องเต้ ในแดนกลางได้รับรางวัลแมนออฟเดอะแมตช์ ช่วยรักษาสกอร์ไว้ได้ เซซาร์ อัซปิลิกวยต้า ผู้ซึ่งย้ายมาร่วมทีมในช่วงซัมเมอร์หลังจากชัยชนะในแชมเปียนส์ลีกครั้งแรกของเรา ชูถ้วยรางวัลอย่างสง่างาม และไม่มีใครสามารถพูดได้ว่าชัยชนะครั้งนี้ไม่คู่ควร</p>
 
-      <!-- Video 5 (แทนที่ Image 6 เดิม) -->
-      <figure class="img-block img-block--wide">
-        <video width="100%" controls style="max-width: 100%; border-radius: 2px; box-shadow: 0 4px 24px rgba(26,20,16,0.15); background-color: #000;">
-          <!-- ใช้ WebM หรือ MP4 เป็นหลักสำหรับการแสดงผลบนเว็บ -->
-          <source src="../assets/videos/Chelsea celebrate with the Champions League trophy!.mp4" type="video/mp4">
-          
-          <!-- แหล่งข้อมูลสำรองสำหรับไฟล์ MKV เดิม -->
-          <source src="../assets/videos/Chelsea celebrate with the Champions League trophy!.mkv" type="video/webm">
-          
-          ขออภัย เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ (Your browser does not support the video tag.)
-        </video>
-        <figcaption data-lang-th="เชลซีฉลองพร้อมถ้วยแชมเปียนส์ลีก!" data-lang-en="Chelsea celebrate with the Champions League trophy!">เชลซีฉลองพร้อมถ้วยแชมเปียนส์ลีก!</figcaption>
-      </figure>
+      <!-- Video 5 : แปลงเป็น Custom Video Player ซ่อน Control เดิม และสร้างปุ่ม Play/Pause สีทอง -->
+		<figure class="img-block img-block--wide">
+		  <iframe 
+			style="width: 100%; aspect-ratio: 16/9; border-radius: 2px; box-shadow: 0 4px 24px rgba(26,20,16,0.15);" 
+			src="https://www.youtube.com/embed/Nv7SDUDqlUQ" 
+			title="Chelsea celebrate with the Champions League trophy!" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+			allowfullscreen>
+		  </iframe>
+		  <figcaption data-lang-th="เชลซีฉลองพร้อมถ้วยแชมเปียนส์ลีก!" data-lang-en="Chelsea celebrate with the Champions League trophy!">เชลซีฉลองพร้อมถ้วยแชมเปียนส์ลีก!</figcaption>
+		</figure>
 
       <p data-lang-th="มันต้องใช้เวลานานกว่าความทะเยอทะยานเดิมที่จะคว้าแชมป์การแข่งขันที่ยิ่งใหญ่ที่สุดของยุโรปมากกว่าหนึ่งครั้ง แต่สถานะของเชลซีในฐานะสโมสรระดับโลกได้รับการรับประกันแล้ว" data-lang-en="It had taken longer than the original ambition to win Europe’s biggest competition on more than one occasion, but Chelsea’s status as a world club was now assured.">มันต้องใช้เวลานานกว่าความทะเยอทะยานเดิมที่จะคว้าแชมป์การแข่งขันที่ยิ่งใหญ่ที่สุดของยุโรปมากกว่าหนึ่งครั้ง แต่สถานะของเชลซีในฐานะสโมสรระดับโลกได้รับการรับประกันแล้ว</p>
 
@@ -413,8 +464,6 @@
     </div>
   </div>
 
-  
-
   <!-- ==================== SCRIPTS ==================== -->
   <script src="../assets/js/main.js"></script>
   <script>
@@ -434,6 +483,7 @@
         if (chapterLang === 'th') {
           btn.textContent = '🇬🇧 Read in English';
           btn.style.background = 'var(--blue)';
+          btn.style.color = '#fff';
         } else {
           btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
           btn.style.background = '#c8a84b';
@@ -447,6 +497,37 @@
         } else {
           el.innerHTML = el.getAttribute('data-lang-en');
         }
+      });
+    }
+
+    // ============================================
+    // CUSTOM VIDEO PLAYER
+    // ============================================
+    const video = document.getElementById('chelseaVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const videoWrapper = document.getElementById('videoWrapper');
+
+    if(video && playPauseBtn && videoWrapper) {
+      function togglePlayPause() {
+        if (video.paused) {
+          video.play();
+          playPauseBtn.innerHTML = '❚❚'; 
+          playPauseBtn.classList.add('playing');
+        } else {
+          video.pause();
+          playPauseBtn.innerHTML = '▶';
+          playPauseBtn.classList.remove('playing');
+        }
+      }
+
+      // กดที่ปุ่มหรือกดที่ตัววิดีโอก็เล่น/หยุดได้
+      playPauseBtn.addEventListener('click', togglePlayPause);
+      video.addEventListener('click', togglePlayPause);
+
+      // เมื่อวิดีโอเล่นจบ ให้กลับมาแสดงปุ่ม Play
+      video.addEventListener('ended', () => {
+        playPauseBtn.innerHTML = '▶';
+        playPauseBtn.classList.remove('playing');
       });
     }
 
