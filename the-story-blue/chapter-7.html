@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 7 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg'); /* คุณสามารถเปลี่ยน URL รูปภาพให้ตรงกับบทนี้ได้ */
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .chapter-heading h2 {
+      font-family: 'Sarabun', sans-serif; font-weight: 400;
+      font-size: clamp(1.2rem,2vw,1.5rem); color: var(--ink-soft); margin-top: 10px;
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .article__inner p em { color: var(--ink); font-style: italic; }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; top: 72px; right: 18px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { top: 68px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: top right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../men-team.html">ทีมชาย</a></li>
+        <li><a href="../women-team.html">ทีมหญิง</a></li>
+        <li><a href="../trophy.html">ถ้วยรางวัล</a></li>
+        <li><a href="../icons.html">i-Cons</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" class="hero__logo" alt="Chelsea TH FANs Logo">
+      <p class="hero__kicker">Chelsea TH FANs · Kann Krung Nan News</p>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Kann Krung Nan News!</em>" data-lang-en="Once Upon a Time<br><em>Kann Krung Nan News!</em>">กาลครั้งนั้น<br><em>Kann Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- ===================== ARTICLE ===================== -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๗" data-lang-en="CHAPTER 7">บทที่ ๗</div>
+        <h1 data-lang-th="ที่เดียวที่ควรอยู่ ในทุกวันเสาร์เว้นเสาร์" data-lang-en="The Only Place to be, Every Other Saturday">ที่เดียวที่ควรอยู่ ในทุกวันเสาร์เว้นเสาร์</h1>
+        <h2 data-lang-th="โลกใบใหม่ของวงการฟุตบอล" data-lang-en="A New World for Football">โลกใบใหม่ของวงการฟุตบอล</h2>
+      </div>
+
+      <!-- SECTION 1 -->
+      <p class="drop-cap" data-lang-th="ในช่วงต้นทศวรรษ 1990 ฟุตบอลเกิดการเปลี่ยนแปลงครั้งใหญ่ก่อนจะพัฒนามาเป็นประสบการณ์การแข่งขันกีฬาในยุคสมัยใหม่ที่เรารู้จักกันในปัจจุบัน การก่อตั้งพรีเมียร์ลีกขึ้นมาเป็นลีกสูงสุดแห่งใหม่ของอังกฤษ และการเปิดตัวยูฟ่าแชมเปียนส์ลีกทั่วทั้งยุโรป ได้นำมาซึ่งจำนวนทีมที่มากขึ้น แมตช์การแข่งขันที่มากขึ้น และรายได้มหาศาลที่พลิกโฉมวงการ" data-lang-en="In the early 1990s, football changed seismically before evolving into the modern sporting experience we recognize today. The formation of the Premier League as England’s new top flight and the launch of the Champions League across Europe brought more teams, more games, and game-changing revenue.">ในช่วงต้นทศวรรษ 1990 ฟุตบอลเกิดการเปลี่ยนแปลงครั้งใหญ่ก่อนจะพัฒนามาเป็นประสบการณ์การแข่งขันกีฬาในยุคสมัยใหม่ที่เรารู้จักกันในปัจจุบัน การก่อตั้งพรีเมียร์ลีกขึ้นมาเป็นลีกสูงสุดแห่งใหม่ของอังกฤษ และการเปิดตัวยูฟ่าแชมเปียนส์ลีกทั่วทั้งยุโรป ได้นำมาซึ่งจำนวนทีมที่มากขึ้น แมตช์การแข่งขันที่มากขึ้น และรายได้มหาศาลที่พลิกโฉมวงการ</p>
+      
+      <p data-lang-th="วงการฟุตบอลอังกฤษได้เห็นการรื้อถอนอัฒจันทร์ยืนแบบเก่าและอัฒจันทร์ยุควิกตอเรีย เพื่อหลีกทางให้กับที่นั่งแบบเก้าอี้ล้วน ปัญหาฮูลิแกนที่เคยเรื้อรังในทศวรรษก่อนเริ่มลดน้อยลง และจำนวนผู้เข้าชมในสนาม—รวมถึงความสนใจในการถ่ายทอดสดทางทีวี—ก็เพิ่มสูงขึ้น ฟุตบอลกลับมาได้รับความนิยมอีกครั้ง ทว่าเชลซี แม้จะตั้งอยู่ในทำเลทองย่านลอนดอนตะวันตก กลับยังขาดประกายความโดดเด่น สไตล์การเล่นของเรายังคงเรียบง่าย ดาวเตะชื่อดังมีเพียงหยิบมือ และถ้วยรางวัลยังคงห่างไกล แต่ความทะเยอทะยานที่เคยลุกโชนตลอดหน้าประวัติศาสตร์ของเรายังคงอยู่ และเรามุ่งมั่นที่จะไม่ถูกทิ้งไว้ข้างหลัง" data-lang-en="The English game witnessed the demolition of old standing terraces and Victorian grandstands, making way for all-seated replacements. The hooligan problem of previous decades began to diminish, and crowd numbers—along with TV interest—were on the rise. Football was becoming fashionable again, yet Chelsea, despite our prime west London location, was missing a spark. Our style of play was basic, stars were few, and silverware remained elusive. But the ambition that had blazed through our history remained, and we were determined not to be left behind.">วงการฟุตบอลอังกฤษได้เห็นการรื้อถอนอัฒจันทร์ยืนแบบเก่าและอัฒจันทร์ยุควิกตอเรีย เพื่อหลีกทางให้กับที่นั่งแบบเก้าอี้ล้วน ปัญหาฮูลิแกนที่เคยเรื้อรังในทศวรรษก่อนเริ่มลดน้อยลง และจำนวนผู้เข้าชมในสนาม—รวมถึงความสนใจในการถ่ายทอดสดทางทีวี—ก็เพิ่มสูงขึ้น ฟุตบอลกลับมาได้รับความนิยมอีกครั้ง ทว่าเชลซี แม้จะตั้งอยู่ในทำเลทองย่านลอนดอนตะวันตก กลับยังขาดประกายความโดดเด่น สไตล์การเล่นของเรายังคงเรียบง่าย ดาวเตะชื่อดังมีเพียงหยิบมือ และถ้วยรางวัลยังคงห่างไกล แต่ความทะเยอทะยานที่เคยลุกโชนตลอดหน้าประวัติศาสตร์ของเรายังคงอยู่ และเรามุ่งมั่นที่จะไม่ถูกทิ้งไว้ข้างหลัง</p>
+
+      <!-- SECTION 2 -->
+      <h2 data-lang-th="การปฏิวัติของฮ็อดเดิ้ล (1993-1996)" data-lang-en="The Hoddle Revolution (1993-1996)">การปฏิวัติของฮ็อดเดิ้ล (1993-1996)</h2>
+      
+      <p class="drop-cap" data-lang-th="ประกายไฟนั้นถูกจุดขึ้นในปี 1993 ด้วยการแต่งตั้ง เกล็น ฮ็อดเดิ้ล เข้ามาเป็นผู้เล่น-ผู้จัดการทีม อดีตสตาร์กองกลางทีมชาติอังกฤษผู้นี้ได้นำสไตล์การผ่านบอลที่สวยงามและวิธีการทำทีมแบบองค์รวม—ซึ่งเขาซึมซับมาจากโมนาโกและอาร์แซน เวนเกอร์—มายกระดับมาตรฐานของสโมสร แม้จะมีความยากลำบากในสนามในช่วงแรกขณะที่ผู้เล่นกำลังปรับตัว แต่การทะลุเข้าชิงชนะเลิศเอฟเอคัพในปี 1994 ก็เป็นสัญญาณของการจุดเปลี่ยน เราได้กลับไปแข่งขันในฟุตบอลยุโรป และความกระหายในความสำเร็จก็ถูกปลุกให้ตื่นขึ้นอีกครั้ง" data-lang-en="The spark came in 1993 with the appointment of Glenn Hoddle as player-manager. A former England midfield star, Hoddle’s passing style and holistic approach—gleaned from Monaco and Arsene Wenger—raised standards. While there were struggles on the pitch as players adapted, the 1994 FA Cup run to the final signaled a turning point. We were back in Europe, and the appetite for success had been whetted.">ประกายไฟนั้นถูกจุดขึ้นในปี 1993 ด้วยการแต่งตั้ง เกล็น ฮ็อดเดิ้ล เข้ามาเป็นผู้เล่น-ผู้จัดการทีม อดีตสตาร์กองกลางทีมชาติอังกฤษผู้นี้ได้นำสไตล์การผ่านบอลที่สวยงามและวิธีการทำทีมแบบองค์รวม—ซึ่งเขาซึมซับมาจากโมนาโกและอาร์แซน เวนเกอร์—มายกระดับมาตรฐานของสโมสร แม้จะมีความยากลำบากในสนามในช่วงแรกขณะที่ผู้เล่นกำลังปรับตัว แต่การทะลุเข้าชิงชนะเลิศเอฟเอคัพในปี 1994 ก็เป็นสัญญาณของการจุดเปลี่ยน เราได้กลับไปแข่งขันในฟุตบอลยุโรป และความกระหายในความสำเร็จก็ถูกปลุกให้ตื่นขึ้นอีกครั้ง</p>
+
+      <!-- SECTION 3 -->
+      <h2 data-lang-th="แถลงการณ์แห่งความมุ่งมั่น: ข้อตกลงแมริออท" data-lang-en="Statements of Intent: The Marriott Accord">แถลงการณ์แห่งความมุ่งมั่น: ข้อตกลงแมริออท</h2>
+
+      <p class="drop-cap" data-lang-th="แมทธิว ฮาร์ดิ้ง แฟนบอลตัวยงและนักธุรกิจ กลายมาเป็นบุคคลสำคัญ เขาให้สโมสรกู้ยืมเงินหลายล้านปอนด์เพื่อริเริ่มการปรับปรุงสนามสแตมฟอร์ดบริดจ์ที่ค้างคามานานและรับประกันการซื้อตัวผู้เล่น ในการประชุมเดือนพฤษภาคมปี 1995 ซึ่งเป็นที่รู้จักกันในชื่อ 'ข้อตกลงแมริออท' (Marriott Accord) ฮาร์ดิ้ง, เคน เบตส์ ประธานสโมสร และฮ็อดเดิ้ล ได้ให้คำมั่นร่วมกันที่จะผลักดันเชลซีขึ้นสู่ระดับอีลีท" data-lang-en="Matthew Harding, a lifelong fan and businessman, became a pivotal figure, lending the club millions to kickstart the long-overdue redevelopment of Stamford Bridge and underwrite player purchases. In a May 1995 meeting known as the 'Marriott Accord,' Harding, chairman Ken Bates, and Hoddle committed to pushing Chelsea into the elite.">แมทธิว ฮาร์ดิ้ง แฟนบอลตัวยงและนักธุรกิจ กลายมาเป็นบุคคลสำคัญ เขาให้สโมสรกู้ยืมเงินหลายล้านปอนด์เพื่อริเริ่มการปรับปรุงสนามสแตมฟอร์ดบริดจ์ที่ค้างคามานานและรับประกันการซื้อตัวผู้เล่น ในการประชุมเดือนพฤษภาคมปี 1995 ซึ่งเป็นที่รู้จักกันในชื่อ 'ข้อตกลงแมริออท' (Marriott Accord) ฮาร์ดิ้ง, เคน เบตส์ ประธานสโมสร และฮ็อดเดิ้ล ได้ให้คำมั่นร่วมกันที่จะผลักดันเชลซีขึ้นสู่ระดับอีลีท</p>
+
+      <p data-lang-th="ความทะเยอทะยานนั้นเห็นผลทันตา เราคว้าตัว รุด กุลลิท มาร่วมทีมแบบไม่มีค่าตัว—นั่นคือดีลประกาศศักดาที่พาดหัวข่าวหน้าหลังของสื่อกีฬาทุกฉบับในยุโรป นอกจากเขาแล้ว มาร์ค ฮิวจ์ส กองหน้าผู้เป็นที่เคารพ และ แดน เปเตรสคู นักเตะสารพัดประโยชน์ก็ตบเท้าเข้ามาด้วย ชื่อเสียงและความยิ่งใหญ่ของสโมสรได้รับการฟื้นฟูขึ้นมาในทันที" data-lang-en="The ambition was immediate. We captured Ruud Gullit on a free transfer—a statement signing that put Chelsea on every back page in Europe. Alongside him arrived revered striker Mark Hughes and the versatile Dan Petrescu. The club’s prestige was suddenly restored.">ความทะเยอทะยานนั้นเห็นผลทันตา เราคว้าตัว รุด กุลลิท มาร่วมทีมแบบไม่มีค่าตัว—นั่นคือดีลประกาศศักดาที่พาดหัวข่าวหน้าหลังของสื่อกีฬาทุกฉบับในยุโรป นอกจากเขาแล้ว มาร์ค ฮิวจ์ส กองหน้าผู้เป็นที่เคารพ และ แดน เปเตรสคู นักเตะสารพัดประโยชน์ก็ตบเท้าเข้ามาด้วย ชื่อเสียงและความยิ่งใหญ่ของสโมสรได้รับการฟื้นฟูขึ้นมาในทันที</p>
+
+      <!-- SECTION 4 -->
+      <h2 data-lang-th="โศกนาฏกรรมของ แมทธิว ฮาร์ดิ้ง" data-lang-en="The Tragedy of Matthew Harding">โศกนาฏกรรมของ แมทธิว ฮาร์ดิ้ง</h2>
+
+      <p class="drop-cap" data-lang-th="เมื่อฮ็อดเดิ้ลอำลาทีมไปรับงานคุมทีมชาติอังกฤษในปี 1996 กุลลิทก็ก้าวขึ้นมาทำหน้าที่ผู้เล่น-ผู้จัดการทีมแทน และประสบความสำเร็จในการดึงตัวสตาร์ดังอย่าง จานลูก้า วิอัลลี่, โรแบร์โต้ ดิ มัตเตโอ และ จานฟรังโก้ โซล่า เข้ามาเสริมทัพ ทว่าโศกนาฏกรรมกลับมาเยือนในวันที่ 22 ตุลาคม 1996 ขณะเดินทางกลับจากการแข่งขันลีกคัพที่โบลตัน เฮลิคอปเตอร์ตกได้คร่าชีวิตแมทธิว ฮาร์ดิ้ง และผู้ร่วมเดินทางอีก 4 คน สโมสรตกอยู่ในอาการช็อก แต่ทีมก็ร่วมกันแสดงความไว้อาลัยขั้นสูงสุดด้วยการเดินหน้าต่อไปอย่างเข้มแข็ง" data-lang-en="When Hoddle left for the England job in 1996, Gullit stepped in as player-manager, successfully recruiting stars like Gianluca Vialli, Roberto Di Matteo, and Gianfranco Zola. However, tragedy struck on 22 October 1996. While returning from a League Cup match at Bolton, a helicopter crash claimed the lives of Matthew Harding and four others. The club was in a state of shock, but the team paid the ultimate tribute by pushing forward with resilience.">เมื่อฮ็อดเดิ้ลอำลาทีมไปรับงานคุมทีมชาติอังกฤษในปี 1996 กุลลิทก็ก้าวขึ้นมาทำหน้าที่ผู้เล่น-ผู้จัดการทีมแทน และประสบความสำเร็จในการดึงตัวสตาร์ดังอย่าง จานลูก้า วิอัลลี่, โรแบร์โต้ ดิ มัตเตโอ และ จานฟรังโก้ โซล่า เข้ามาเสริมทัพ ทว่าโศกนาฏกรรมกลับมาเยือนในวันที่ 22 ตุลาคม 1996 ขณะเดินทางกลับจากการแข่งขันลีกคัพที่โบลตัน เฮลิคอปเตอร์ตกได้คร่าชีวิตแมทธิว ฮาร์ดิ้ง และผู้ร่วมเดินทางอีก 4 คน สโมสรตกอยู่ในอาการช็อก แต่ทีมก็ร่วมกันแสดงความไว้อาลัยขั้นสูงสุดด้วยการเดินหน้าต่อไปอย่างเข้มแข็ง</p>
+
+      <!-- SECTION 5 -->
+      <h2 data-lang-th="1997: การสิ้นสุดการรอคอยอันยาวนาน" data-lang-en="1997: Ending the Long Wait">1997: การสิ้นสุดการรอคอยอันยาวนาน</h2>
+
+      <p class="drop-cap" data-lang-th="ในฤดูกาล 1996/97 เชลซีเริ่มต้นเส้นทางเอฟเอคัพอันน่าจดจำ หลังจากพลิกสถานการณ์กลับมาชนะลิเวอร์พูลในรอบสี่ได้อย่างดราม่า และเอาชนะวิมเบิลดันในรอบรองชนะเลิศได้อย่างเหนือชั้น เราก็ได้เข้าไปดวลกับมิดเดิลสโบรห์ที่เวมบลีย์" data-lang-en="In the 1996/97 season, Chelsea embarked on a memorable FA Cup run. After a dramatic turnaround against Liverpool in the fourth round and a masterful semi-final win against Wimbledon, we faced Middlesbrough at Wembley.">ในฤดูกาล 1996/97 เชลซีเริ่มต้นเส้นทางเอฟเอคัพอันน่าจดจำ หลังจากพลิกสถานการณ์กลับมาชนะลิเวอร์พูลในรอบสี่ได้อย่างดราม่า และเอาชนะวิมเบิลดันในรอบรองชนะเลิศได้อย่างเหนือชั้น เราก็ได้เข้าไปดวลกับมิดเดิลสโบรห์ที่เวมบลีย์</p>
+
+      <p data-lang-th="การรอคอยสิ้นสุดลงแล้ว เพียงไม่ถึงหนึ่งนาทีของการแข่งขันนัดชิงชนะเลิศ โรแบร์โต้ ดิ มัตเตโอ ตะบันลูกยิงไกลเช็ดคานเข้าไปอย่างสุดสวย และประตูช่วงท้ายเกมจาก เอ็ดดี้ นิวตัน ก็ตอกย้ำชัยชนะ 2-0 หลังจากผ่านความเจ็บปวดมา 26 ปีเต็ม ถ้วยเอฟเอคัพก็กลับมาเป็นของเรา" data-lang-en="The wait was over. Less than a minute into the final, Roberto Di Matteo launched a dipping shot that cannoned in off the crossbar. A late goal from Eddie Newton sealed a 2-0 victory. After 26 painful years, the FA Cup was ours.">การรอคอยสิ้นสุดลงแล้ว เพียงไม่ถึงหนึ่งนาทีของการแข่งขันนัดชิงชนะเลิศ โรแบร์โต้ ดิ มัตเตโอ ตะบันลูกยิงไกลเช็ดคานเข้าไปอย่างสุดสวย และประตูช่วงท้ายเกมจาก เอ็ดดี้ นิวตัน ก็ตอกย้ำชัยชนะ 2-0 หลังจากผ่านความเจ็บปวดมา 26 ปีเต็ม ถ้วยเอฟเอคัพก็กลับมาเป็นของเรา</p>
+
+      <!-- SECTION 6 -->
+      <h2 data-lang-th="เชลซี วิลเลจ และความรุ่งโรจน์ระดับทวีป" data-lang-en="Chelsea Village and Continental Glory">เชลซี วิลเลจ และความรุ่งโรจน์ระดับทวีป</h2>
+
+      <p class="drop-cap" data-lang-th="หลังจากความสำเร็จในปี 1997 อัฒจันทร์ฝั่ง Shed End ใหม่และอัฒจันทร์ Matthew Harding Stand (ซึ่งตั้งชื่อเพื่อเป็นเกียรติแก่ผู้อุปถัมภ์ผู้ล่วงลับ) ก็เปิดใช้งาน ทำให้การสร้างสนามแบบปิดมิดชิดสมบูรณ์แบบ วิสัยทัศน์ของเบตส์เกี่ยวกับ 'เชลซี วิลเลจ' (Chelsea Village) — พื้นที่ที่จะสร้างรายได้ตลอดทั้งปีผ่านโรงแรม บาร์ และสถานบันเทิง — เริ่มเป็นรูปเป็นร่างขึ้น" data-lang-en="Following the 1997 success, the new Shed End and the Matthew Harding Stand (named in honor of the late benefactor) opened, completing a new, closed-in stadium. Bates’ vision of 'Chelsea Village'—a site generating revenue year-round through hotels, bars, and leisure facilities—began to take shape.">หลังจากความสำเร็จในปี 1997 อัฒจันทร์ฝั่ง Shed End ใหม่และอัฒจันทร์ Matthew Harding Stand (ซึ่งตั้งชื่อเพื่อเป็นเกียรติแก่ผู้อุปถัมภ์ผู้ล่วงลับ) ก็เปิดใช้งาน ทำให้การสร้างสนามแบบปิดมิดชิดสมบูรณ์แบบ วิสัยทัศน์ของเบตส์เกี่ยวกับ 'เชลซี วิลเลจ' (Chelsea Village) — พื้นที่ที่จะสร้างรายได้ตลอดทั้งปีผ่านโรงแรม บาร์ และสถานบันเทิง — เริ่มเป็นรูปเป็นร่างขึ้น</p>
+
+      <p data-lang-th="โมเมนตัมพุ่งทะยานต่อไป ในปี 1998 ภายใต้ผู้จัดการทีมคนใหม่ จานลูก้า วิอัลลี่ เราคว้าแชมป์ลีกคัพด้วยการชนะมิดเดิลสโบรห์ และตามด้วยแชมป์คัพวินเนอร์สคัพเมื่อเผชิญหน้ากับสตุ๊ตการ์ท จานฟรังโก้ โซล่า ที่ถูกเปลี่ยนตัวลงมาเป็นสำรอง ทำประตูชัยหลังจากอยู่ในสนามเพียง 20 วินาที ตอกย้ำสถานะการเป็นตำนานของเชลซีอย่างแท้จริง" data-lang-en="The momentum continued. In 1998, under new manager Gianluca Vialli, we captured the League Cup against Middlesbrough and then the Cup Winners’ Cup against Stuttgart. Gianfranco Zola, coming off the bench, scored a decisive goal just 20 seconds into his appearance, cementing his status as a Chelsea legend.">โมเมนตัมพุ่งทะยานต่อไป ในปี 1998 ภายใต้ผู้จัดการทีมคนใหม่ จานลูก้า วิอัลลี่ เราคว้าแชมป์ลีกคัพด้วยการชนะมิดเดิลสโบรห์ และตามด้วยแชมป์คัพวินเนอร์สคัพเมื่อเผชิญหน้ากับสตุ๊ตการ์ท จานฟรังโก้ โซล่า ที่ถูกเปลี่ยนตัวลงมาเป็นสำรอง ทำประตูชัยหลังจากอยู่ในสนามเพียง 20 วินาที ตอกย้ำสถานะการเป็นตำนานของเชลซีอย่างแท้จริง</p>
+
+      <!-- SECTION 7 -->
+      <h2 data-lang-th="ก้าวสู่สหัสวรรษใหม่: แชมเปียนส์ลีกและทางแยกทางการเงิน" data-lang-en="Into the Millennium: Champions League and Financial Crossroads">ก้าวสู่สหัสวรรษใหม่: แชมเปียนส์ลีกและทางแยกทางการเงิน</h2>
+
+      <p class="drop-cap" data-lang-th="เมื่อก้าวเข้าสู่สหัสวรรษใหม่ เชลซีก็ก้าวขึ้นไปขับเคี่ยวในระดับสูงสุดของยุโรป เราผ่านเข้าไปเล่นแชมเปียนส์ลีกเป็นครั้งแรกในฤดูกาล 1999/2000 โดยทะลุเข้าถึงรอบก่อนรองชนะเลิศ และยังสามารถคว้าแชมป์เอฟเอคัพได้อีกครั้งด้วยการเอาชนะแอสตันวิลล่า" data-lang-en="By the turn of the millennium, Chelsea was competing at Europe's top table. We qualified for the Champions League for the first time in 1999/2000, reaching the quarter-finals and winning the FA Cup again against Aston Villa.">เมื่อก้าวเข้าสู่สหัสวรรษใหม่ เชลซีก็ก้าวขึ้นไปขับเคี่ยวในระดับสูงสุดของยุโรป เราผ่านเข้าไปเล่นแชมเปียนส์ลีกเป็นครั้งแรกในฤดูกาล 1999/2000 โดยทะลุเข้าถึงรอบก่อนรองชนะเลิศ และยังสามารถคว้าแชมป์เอฟเอคัพได้อีกครั้งด้วยการเอาชนะแอสตันวิลล่า</p>
+
+      <p data-lang-th="อย่างไรก็ตาม เบื้องหลังสโมสรกำลังเกิดรอยร้าวที่ขยายวงกว้างขึ้น วิอัลลี่ถูกแทนที่โดย เคลาดิโอ รานิเอรี่ และสโมสรต้องเผชิญกับหนี้สินที่พอกพูนขึ้นเรื่อยๆ จากโครงการพัฒนาวิลเลจ เมื่อถึงฤดูกาล 2002/03 ความกดดันทางการเงินนั้นมหาศาลมาก การผ่านเข้าไปเล่นแชมเปียนส์ลีกจึงกลายเป็นความจำเป็นอย่างหลีกเลี่ยงไม่ได้เพื่อความอยู่รอดทางการเงิน" data-lang-en="However, behind the scenes, cracks were widening. Vialli was replaced by Claudio Ranieri, and the club faced mounting debt from the Village development. By the 2002/03 season, the financial pressure was immense. Qualification for the Champions League became a financial necessity.">อย่างไรก็ตาม เบื้องหลังสโมสรกำลังเกิดรอยร้าวที่ขยายวงกว้างขึ้น วิอัลลี่ถูกแทนที่โดย เคลาดิโอ รานิเอรี่ และสโมสรต้องเผชิญกับหนี้สินที่พอกพูนขึ้นเรื่อยๆ จากโครงการพัฒนาวิลเลจ เมื่อถึงฤดูกาล 2002/03 ความกดดันทางการเงินนั้นมหาศาลมาก การผ่านเข้าไปเล่นแชมเปียนส์ลีกจึงกลายเป็นความจำเป็นอย่างหลีกเลี่ยงไม่ได้เพื่อความอยู่รอดทางการเงิน</p>
+
+      <p data-lang-th="ในวันสุดท้ายของฤดูกาล ในแมตช์ชี้ชะตาแบบผู้ชนะกินรวบที่ต้องเจอกับลิเวอร์พูล ณ สแตมฟอร์ดบริดจ์ เชลซีสามารถคว้าชัยชนะไปได้ 2-1 ประตูสำคัญจาก เยสเปอร์ กรุนชาร์ และลูกโหม่งของ มาร์กแซล เดอไซญี่ การันตีอันดับสี่และรายได้ก้อนโตจากฟุตบอลยุโรปที่ประเมินค่าไม่ได้ ณ วินาทีนั้น แทบไม่มีใครล่วงรู้เลยถึงขอบเขตที่แท้จริงของการเปลี่ยนแปลงที่กำลังจะมาถึง — การเปลี่ยนแปลงครั้งประวัติศาสตร์ที่จะติดปีกความทะเยอทะยานของสโมสรและส่งแรงสั่นสะเทือนไปทั่วทั้งวงการฟุตบอลระดับโลก" data-lang-en="On the final day of the season, in a winner-takes-all clash against Liverpool at Stamford Bridge, Chelsea secured a 2-1 victory. Jesper Gronkjaer’s decisive goal and Marcel Desailly’s header secured fourth place and the vital European revenue. At that moment, few knew the true extent of the changes ahead—a seismic shift that would supercharge the club’s ambition and send shockwaves around the global game.">ในวันสุดท้ายของฤดูกาล ในแมตช์ชี้ชะตาแบบผู้ชนะกินรวบที่ต้องเจอกับลิเวอร์พูล ณ สแตมฟอร์ดบริดจ์ เชลซีสามารถคว้าชัยชนะไปได้ 2-1 ประตูสำคัญจาก เยสเปอร์ กรุนชาร์ และลูกโหม่งของ มาร์กแซล เดอไซญี่ การันตีอันดับสี่และรายได้ก้อนโตจากฟุตบอลยุโรปที่ประเมินค่าไม่ได้ ณ วินาทีนั้น แทบไม่มีใครล่วงรู้เลยถึงขอบเขตที่แท้จริงของการเปลี่ยนแปลงที่กำลังจะมาถึง — การเปลี่ยนแปลงครั้งประวัติศาสตร์ที่จะติดปีกความทะเยอทะยานของสโมสรและส่งแรงสั่นสะเทือนไปทั่วทั้งวงการฟุตบอลระดับโลก</p>
+
+      <!-- Chapter End -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๗ —" data-lang-en="— End of Chapter 7 —">— จบบทที่ ๗ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-6.html" class="chapter-nav__back" data-lang-th="← บทที่ ๖" data-lang-en="← Chapter 6">← บทที่ ๖</a>
+          <a href="chapter-8.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๘ →" data-lang-en="Read Chapter 8 →">อ่านบทที่ ๘ →</a>
+        </div>
+      </div>
+
+    </div><!-- /.article__inner -->
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:60px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== FLOATING CLOCK ===================== -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // CHAPTER LANGUAGE TOGGLE (TH / EN)
+    // ============================================
+    let chapterLang = 'th';
+
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        if (chapterLang === 'th') {
+          el.innerHTML = el.getAttribute('data-lang-th');
+        } else {
+          el.innerHTML = el.getAttribute('data-lang-en');
+        }
+      });
+    }
+
+    // ============================================
+    // FLOATING CLOCK
+    // ============================================
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    updateFloatingClocks();
+    setInterval(updateFloatingClocks, 1000);
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+    });
+  </script>
+</body>
+</html>

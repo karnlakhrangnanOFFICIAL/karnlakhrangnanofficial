@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 8 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .pull-quote {
+      border-left: 4px solid var(--gold); padding: 24px 32px; margin: 0 0 48px;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem,2vw,1.2rem); color: var(--ink-soft); line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 14px; font-family: 'Sarabun', sans-serif; font-style: normal;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .article__inner p em { color: var(--ink); font-style: italic; }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+    .img-block { margin: 40px -20px; text-align: center; }
+    .img-block img {
+      width: 100%; max-width: 100%; height: auto; display: block; object-fit: cover;
+      border-radius: 2px; box-shadow: 0 4px 24px rgba(26,20,16,0.15);
+    }
+    .img-block figcaption {
+      margin-top: 12px; font-size: 12.5px; color: var(--ink-muted); letter-spacing: 0.04em;
+      font-style: italic; line-height: 1.5; padding: 0 20px;
+    }
+    .img-block--wide { margin: 48px calc(-1 * clamp(20px,5vw,40px)); }
+    .article__inner blockquote {
+      margin: 36px 0; padding: 24px 28px; background: rgba(3,70,148,0.04);
+      border-left: 3px solid var(--blue); color: var(--ink); font-style: italic;
+    }
+
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; top: 72px; right: 18px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { top: 68px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: top right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../men-team.html">ทีมชาย</a></li>
+        <li><a href="../women-team.html">ทีมหญิง</a></li>
+        <li><a href="../trophy.html">ถ้วยรางวัล</a></li>
+        <li><a href="../icons.html">i-Cons</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" class="hero__logo" alt="Chelsea TH FANs Logo">
+      <p class="hero__kicker">Chelsea TH FANs · Kann Krung Nan News</p>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Kann Krung Nan News!</em>" data-lang-en="Once Upon a Time<br><em>Kann Krung Nan News!</em>">กาลครั้งนั้น<br><em>Kann Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- ===================== ARTICLE ===================== -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๘" data-lang-en="CHAPTER 8">บทที่ ๘</div>
+        <h1 data-lang-th="การยึดครองของโรมันและช่วงเวลาแห่งการเปลี่ยนแปลง" data-lang-en="The Roman Conquest and Time of Change">การยึดครองของโรมันและช่วงเวลาแห่งการเปลี่ยนแปลง</h1>
+      </div>
+
+      <!-- Opening Quote -->
+      <blockquote class="pull-quote">
+        <p data-lang-th="'เราเล่นฟุตบอลได้ดีมากทั้งเกมรุกและเกมรับ เรายิงประตูได้มากมาย เราชนะและเก็บคลีนชีตได้ มันเป็นฤดูกาลที่สนุกมาก เรามีความสมดุลและได้รับรางวัลตอบแทนด้วยการคว้าแชมป์ลีกและดับเบิ้ลแชมป์'" data-lang-en="'We played really good football, attacking and defensive, we scored a lot of goals, we were winning games and we kept clean sheets. It was a really enjoyable season. We were well balanced and we were rewarded for it winning the title and then Double.'">'เราเล่นฟุตบอลได้ดีมากทั้งเกมรุกและเกมรับ เรายิงประตูได้มากมาย เราชนะและเก็บคลีนชีตได้ มันเป็นฤดูกาลที่สนุกมาก เรามีความสมดุลและได้รับรางวัลตอบแทนด้วยการคว้าแชมป์ลีกและดับเบิ้ลแชมป์'</p>
+        <cite data-lang-th="— Petr Cech" data-lang-en="— Petr Cech">— Petr Cech</cite>
+      </blockquote>
+
+      <!-- SECTION 1 -->
+      <p class="drop-cap" data-lang-th="1 กรกฎาคม 2003 - วันที่เส้นทางประวัติศาสตร์ของเชลซีเปลี่ยนไปตลอดกาล! ในวันสำคัญนั้น นักธุรกิจชาวรัสเซีย โรมัน อับราโมวิช ได้ซื้อสโมสรจาก เคน เบตส์ ประธานสโมสรที่ดำรงตำแหน่งมายาวนาน และยุคใหม่ก็ได้เริ่มต้นขึ้นอย่างแท้จริง" data-lang-en="1 July 2003 - the date on which the course of Chelsea’s history changed forever! It was on that momentous day that Russian businessman Roman Abramovich bought the club from long-standing chairman Ken Bates, and a new era had truly become.">1 กรกฎาคม 2003 - วันที่เส้นทางประวัติศาสตร์ของเชลซีเปลี่ยนไปตลอดกาล! ในวันสำคัญนั้น นักธุรกิจชาวรัสเซีย โรมัน อับราโมวิช ได้ซื้อสโมสรจาก เคน เบตส์ ประธานสโมสรที่ดำรงตำแหน่งมายาวนาน และยุคใหม่ก็ได้เริ่มต้นขึ้นอย่างแท้จริง</p>
+      
+      <p data-lang-th="ด้วยความทะเยอทะยานและวิสัยทัศน์ที่มุ่งสู่ความยิ่งใหญ่เช่นเดียวกับตอนก่อตั้งสโมสรเมื่อเกือบ 100 ปีก่อน เจ้าของคนใหม่รีบจัดการล้างหนี้สินทั้งหมด และในฤดูร้อนนั้นเขาได้ทุ่มเงินซื้อนักเตะมากที่สุดในประวัติศาสตร์ฟุตบอลอังกฤษในเวลานั้น นักเตะใหม่รวมถึงดาวเตะมากพรสวรรค์จากทีมอื่นในพรีเมียร์ลีก เช่น ดาเมียน ดัฟฟ์ และ โจ โคล พร้อมกับการกวาดต้อนสตาร์ดังจากต่างแดน การคว้าตัว เอร์นัน เครสโป, โคล้ด มาเกเลเล่ และ อาเดรียน มูตู ดึงดูดความสนใจจากวงการฟุตบอลทั่วโลกได้อย่างแน่นอน!" data-lang-en="With the same burning ambition and vision for the big time that characterised Chelsea at our birth nearly 100 years earlier, the new owner quickly set about clearing all debt, and that summer he made - at that point - the biggest outlay on players in British football history. The new signings included serious talents from elsewhere in the Premier League, like Damien Duff and Joe Cole, and a blitz of big-name stars from abroad. The acquisitions of Hernan Crespo, Claude Makelele and Adrian Mutu certainly caught the football world’s attention!">ด้วยความทะเยอทะยานและวิสัยทัศน์ที่มุ่งสู่ความยิ่งใหญ่เช่นเดียวกับตอนก่อตั้งสโมสรเมื่อเกือบ 100 ปีก่อน เจ้าของคนใหม่รีบจัดการล้างหนี้สินทั้งหมด และในฤดูร้อนนั้นเขาได้ทุ่มเงินซื้อนักเตะมากที่สุดในประวัติศาสตร์ฟุตบอลอังกฤษในเวลานั้น นักเตะใหม่รวมถึงดาวเตะมากพรสวรรค์จากทีมอื่นในพรีเมียร์ลีก เช่น ดาเมียน ดัฟฟ์ และ โจ โคล พร้อมกับการกวาดต้อนสตาร์ดังจากต่างแดน การคว้าตัว เอร์นัน เครสโป, โคล้ด มาเกเลเล่ และ อาเดรียน มูตู ดึงดูดความสนใจจากวงการฟุตบอลทั่วโลกได้อย่างแน่นอน!</p>
+
+      <p data-lang-th="เพื่อเป็นเกียรติแก่เจ้าของใหม่ เพลงพื้นบ้านรัสเซีย Kalinka ถูกเปิดก่อนเกมการแข่งขันที่สแตมฟอร์ดบริดจ์ โดยมีแฟนบอลเจ้าถิ่นปรบมืออย่างกระตือรือร้นและเพลงค่อยๆ ดังขึ้นสู่จุดสูงสุด แม้จะขึ้นนำเป็นจ่าฝูงในตารางคะแนนช่วงปลายฤดูใบไม้ร่วง แต่ทัพสิงห์บลูส์ของ เคลาดิโอ รานิเอรี่ ต้องพอใจกับตำแหน่งรองแชมป์ในฤดูกาลแรกภายใต้เจ้าของใหม่ โดยเป็นรองเพียงอาร์เซนอลที่ไม่แพ้ใคร ซึ่งนั่นยังคงเป็นอันดับในลีกที่สูงที่สุดนับตั้งแต่เราคว้าแชมป์ดิวิชั่นหนึ่งเมื่อเกือบครึ่งศตวรรษก่อนหน้า" data-lang-en="In an ode to the new owner, the Russian folk song Kalinka was played before games at Stamford Bridge, with the home crowd clapping enthusiastically and the song building to a rousing crescendo. Despite briefly topping the table in late autumn, Claudio Ranieri’s Blues had to settle for second place in that first season under the new ownership, behind unbeaten Arsenal. It was still our highest league finish since we won the First Division almost half-a-century earlier.">เพื่อเป็นเกียรติแก่เจ้าของใหม่ เพลงพื้นบ้านรัสเซีย Kalinka ถูกเปิดก่อนเกมการแข่งขันที่สแตมฟอร์ดบริดจ์ โดยมีแฟนบอลเจ้าถิ่นปรบมืออย่างกระตือรือร้นและเพลงค่อยๆ ดังขึ้นสู่จุดสูงสุด แม้จะขึ้นนำเป็นจ่าฝูงในตารางคะแนนช่วงปลายฤดูใบไม้ร่วง แต่ทัพสิงห์บลูส์ของ เคลาดิโอ รานิเอรี่ ต้องพอใจกับตำแหน่งรองแชมป์ในฤดูกาลแรกภายใต้เจ้าของใหม่ โดยเป็นรองเพียงอาร์เซนอลที่ไม่แพ้ใคร ซึ่งนั่นยังคงเป็นอันดับในลีกที่สูงที่สุดนับตั้งแต่เราคว้าแชมป์ดิวิชั่นหนึ่งเมื่อเกือบครึ่งศตวรรษก่อนหน้า</p>
+
+      <p data-lang-th="แคมเปญแชมเปียนส์ลีกครั้งที่สองของเราทะลุไปถึงรอบรองชนะเลิศก่อนจะพ่ายแพ้แบบน่าหงุดหงิดทั้งสองเลกให้กับโมนาโก แต่ก่อนหน้านั้นเราบุกไปชนะที่ไฮบิวรี่ได้อย่างดราม่าในรอบแปดทีม ประตูชัยช่วงท้ายเกมของ เวย์น บริดจ์ ที่ Clock End ยุติสถิติไม่ชนะอาร์เซนอลมาอย่างยาวนาน และเป็นจุดสูงสุดของฤดูกาล มันเป็นหนึ่งในค่ำคืนการเล่นเป็นทีมเยือนที่ยอดเยี่ยมที่สุดตลอดกาลของเชลซี และเป็นโอกาสที่เปี่ยมด้วยอารมณ์สำหรับผู้จัดการทีมรานิเอรี่ ซึ่งเวลาของเขากำลังจะสิ้นสุดลง" data-lang-en="Our second-ever Champions League campaign ran all the way to the semi-finals and a frustrating two-legged loss to Monaco, but not before we dramatically won at Highbury in the last eight. Wayne Bridge’s late winner at the Clock End ended a long, long run without victory against Arsenal and provided a season high point. It was one off the all-time great Chelsea away nights and an emotional occasion for manager Ranieri, whose tenure was soon to end.">แคมเปญแชมเปียนส์ลีกครั้งที่สองของเราทะลุไปถึงรอบรองชนะเลิศก่อนจะพ่ายแพ้แบบน่าหงุดหงิดทั้งสองเลกให้กับโมนาโก แต่ก่อนหน้านั้นเราบุกไปชนะที่ไฮบิวรี่ได้อย่างดราม่าในรอบแปดทีม ประตูชัยช่วงท้ายเกมของ เวย์น บริดจ์ ที่ Clock End ยุติสถิติไม่ชนะอาร์เซนอลมาอย่างยาวนาน และเป็นจุดสูงสุดของฤดูกาล มันเป็นหนึ่งในค่ำคืนการเล่นเป็นทีมเยือนที่ยอดเยี่ยมที่สุดตลอดกาลของเชลซี และเป็นโอกาสที่เปี่ยมด้วยอารมณ์สำหรับผู้จัดการทีมรานิเอรี่ ซึ่งเวลาของเขากำลังจะสิ้นสุดลง</p>
+
+      <!-- SECTION 2 -->
+      <h2 data-lang-th="ผู้ชนะต่อเนื่อง" data-lang-en="Serial winners">ผู้ชนะต่อเนื่อง</h2>
+      
+      <p class="drop-cap" data-lang-th="การแต่งตั้ง โชเซ่ มูรินโญ่ เป็นผู้จัดการทีมในปี 2004 คือตัวเร่งที่จำเป็นในการยกระดับทีมสิงห์บลูส์ให้ก้าวขึ้นไปเป็นทีมที่ดีที่สุดของอังกฤษ อย่างที่ 'The Special One' ได้ทำนายไว้ มูรินโญ่ที่เพิ่งคว้าแชมป์แชมเปียนส์ลีกกับปอร์โต้ นำความคิดแบบผู้ชนะมาสู่ลอนดอน พร้อมกับบุคลิกที่ทำให้สื่ออังกฤษให้ความสนใจ เมื่อเขาพูด มันสร้างพาดหัวข่าวหน้าหนึ่ง แต่ผลการแข่งขันก็สนับสนุนความดราม่านั้นเสมอ" data-lang-en="The appointment of Jose Mourinho as manager in 2004 was the catalyst needed to elevate the Blues to England’s very best, just as the self-styled ‘Special One’ had predicted. Mourinho, fresh from lifting the Champions League trophy with Porto, brought his winners’ mentality to London, plus a persona that intrigued the English media. When he spoke it made splash headlines but the results backed up the drama.">การแต่งตั้ง โชเซ่ มูรินโญ่ เป็นผู้จัดการทีมในปี 2004 คือตัวเร่งที่จำเป็นในการยกระดับทีมสิงห์บลูส์ให้ก้าวขึ้นไปเป็นทีมที่ดีที่สุดของอังกฤษ อย่างที่ 'The Special One' ได้ทำนายไว้ มูรินโญ่ที่เพิ่งคว้าแชมป์แชมเปียนส์ลีกกับปอร์โต้ นำความคิดแบบผู้ชนะมาสู่ลอนดอน พร้อมกับบุคลิกที่ทำให้สื่ออังกฤษให้ความสนใจ เมื่อเขาพูด มันสร้างพาดหัวข่าวหน้าหนึ่ง แต่ผลการแข่งขันก็สนับสนุนความดราม่านั้นเสมอ</p>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="'ผมรักฟุตบอลมาตั้งแต่จำความได้ ดังนั้นผมจึงเข้าใจวิวัฒนาการของฟุตบอลและความต้องการของฟุตบอลสมัยใหม่' มูรินโญ่กล่าวในงานเปิดตัวเมื่อเดือนมิถุนายน 2004 'เรามีผู้เล่นระดับท็อป และขอโทษด้วยถ้าผมดูเย่อหยิ่ง เรามีผู้จัดการทีมระดับท็อป ผมเป็นแชมป์ยุโรป และผมคิดว่าผมคือคนพิเศษ'" data-lang-en="‘I have loved football since I can remember so I understand the evolution of football and the modern needs of football,’ stated Mourinho at his unveiling in June 2004. ‘We have top players and, sorry if I’m arrogant, we have a top manager. I’m a European champion and I think I’m a special one.’">'ผมรักฟุตบอลมาตั้งแต่จำความได้ ดังนั้นผมจึงเข้าใจวิวัฒนาการของฟุตบอลและความต้องการของฟุตบอลสมัยใหม่' มูรินโญ่กล่าวในงานเปิดตัวเมื่อเดือนมิถุนายน 2004 'เรามีผู้เล่นระดับท็อป และขอโทษด้วยถ้าผมดูเย่อหยิ่ง เรามีผู้จัดการทีมระดับท็อป ผมเป็นแชมป์ยุโรป และผมคิดว่าผมคือคนพิเศษ'</p>
+      </blockquote>
+
+      <p data-lang-th="ด้วยระบบ 4-3-3 ที่มีแผงรับที่แทบจะไร้เทียมทาน แดนกลางที่ยืดหยุ่น และปีกที่รวดเร็ว เราคว้าแชมป์ลีกเป็นครั้งแรกในรอบ 50 ปี โดยถล่มคู่แข่งแบบขาดลอยในระหว่างทาง สถิติที่ตั้งไว้ - ชนะมากที่สุด, ชนะในบ้านมากที่สุด, ชนะนอกบ้านมากที่สุด, เสียประตูน้อยที่สุด (15 ประตู ซึ่งยังคงเป็นสถิติอยู่) และคะแนนมากที่สุด - บอกเล่าเรื่องราวของมันเอง เช่นเดียวกับสถิติของเช็กที่ 1,025 นาทีโดยไม่เสียประตูระหว่างเดือนธันวาคมถึงมีนาคม" data-lang-en="Deploying a 4-3-3 formation with an almost unbeatable defence, versatile midfield and flying wingers, we won the league championship for the first time in 50 years, quite simply blowing our competitors out of the water in the process. The records set - most wins, most home wins, most away wins, fewest goals conceded (15, which still stands) and most points - tell their own story, as does Cech’s 1025 minutes without conceding between December and March.">ด้วยระบบ 4-3-3 ที่มีแผงรับที่แทบจะไร้เทียมทาน แดนกลางที่ยืดหยุ่น และปีกที่รวดเร็ว เราคว้าแชมป์ลีกเป็นครั้งแรกในรอบ 50 ปี โดยถล่มคู่แข่งแบบขาดลอยในระหว่างทาง สถิติที่ตั้งไว้ - ชนะมากที่สุด, ชนะในบ้านมากที่สุด, ชนะนอกบ้านมากที่สุด, เสียประตูน้อยที่สุด (15 ประตู ซึ่งยังคงเป็นสถิติอยู่) และคะแนนมากที่สุด - บอกเล่าเรื่องราวของมันเอง เช่นเดียวกับสถิติของเช็กที่ 1,025 นาทีโดยไม่เสียประตูระหว่างเดือนธันวาคมถึงมีนาคม</p>
+
+      <p data-lang-th="หัวใจหลักของทีมนั้นคือกลุ่มผู้เล่นที่มีมาก่อนยุคอับราโมวิชซึ่งฝีเท้าขึ้นไปสู่ระดับใหม่: จอห์น เทอร์รี่ กัปตันทีมคนใหม่ที่เติบโตจากอะคาเดมี, แฟรงค์ แลมพาร์ด เครื่องจักรทำประตูในแดนกลาง, ไอเดอร์ กุ๊ดยอห์นเซ่น และ วิลเลียม กัลลาส พวกเขามาพร้อมกับนักเตะนำเข้าชั้นนำมากมาย เช่น ปีเตอร์ เช็ก, ริคาร์โด้ คาร์วัลโญ่, อาร์เยน ร็อบเบน และ ดิดิเยร์ ดร็อกบา แท้จริงแล้ว แกนหลักอย่าง เช็ก-เทอร์รี่-แลมพาร์ด-ดร็อกบา ได้พิสูจน์ให้เห็นว่าเป็นกาวใจของทีมตลอดทศวรรษที่ดีที่สุด" data-lang-en="Central to that team were a core of pre-Abramovich players whose games reached new levels: Academy graduate and newly-appointed captain John Terry, midfield goalscoring machine Frank Lampard, Eidur Gudjohnsen and William Gallas. They were accompanied by a host of elite imports, such as Petr Cech, Ricardo Carvalho, Arjen Robben and Didier Drogba. Indeed, the Cech-Terry-Lampard-Drogba spine would prove the team’s glue for the best part of a decade.">หัวใจหลักของทีมนั้นคือกลุ่มผู้เล่นที่มีมาก่อนยุคอับราโมวิชซึ่งฝีเท้าขึ้นไปสู่ระดับใหม่: จอห์น เทอร์รี่ กัปตันทีมคนใหม่ที่เติบโตจากอะคาเดมี, แฟรงค์ แลมพาร์ด เครื่องจักรทำประตูในแดนกลาง, ไอเดอร์ กุ๊ดยอห์นเซ่น และ วิลเลียม กัลลาส พวกเขามาพร้อมกับนักเตะนำเข้าชั้นนำมากมาย เช่น ปีเตอร์ เช็ก, ริคาร์โด้ คาร์วัลโญ่, อาร์เยน ร็อบเบน และ ดิดิเยร์ ดร็อกบา แท้จริงแล้ว แกนหลักอย่าง เช็ก-เทอร์รี่-แลมพาร์ด-ดร็อกบา ได้พิสูจน์ให้เห็นว่าเป็นกาวใจของทีมตลอดทศวรรษที่ดีที่สุด</p>
+
+      <p data-lang-th="บ่ายวันคว้าแชมป์ที่แฟนบอลเชลซีหลายรุ่นคิดว่าพวกเขาอาจไม่มีวันได้เห็น ได้เกิดขึ้นในการไปเยือนโบลตัน ที่ซึ่งการทำสองประตูในครึ่งหลังของแลมพาร์ดทำให้แฟนสิงห์บลูส์ทั้งในสนาม บนอัฒจันทร์ และที่ดูทางโทรทัศน์ต้องหลั่งน้ำตา มันไม่ใช่ถ้วยรางวัลแรกของฤดูกาล สิ่งนั้นมาถึงเมื่อสองเดือนก่อน ในนัดชิงชนะเลิศลีกคัพที่คาร์ดิฟฟ์ การทำเข้าประตูตัวเองช่วงท้ายเกมของ สตีเวน เจอร์ราร์ด ทำให้เราตีเสมอกับลิเวอร์พูลและต้องต่อเวลาพิเศษ ซึ่งประตูจาก ดร็อกบา และ มาเตย่า เคซมัน ทำให้เราคว้าชัยไปได้" data-lang-en="The title-clinching afternoon generations of Chelsea supporters thought they might never see came away to Bolton, where Lampard’s second-half brace had Blues on the pitch, in the stands and watching on television in tears. It was not the first silverware of the season. That had come two months earlier, in the League Cup final in Cardiff. A late Steven Gerrard own-goal drew us level with Liverpool and took the contest to extra-time, during which goals from Drogba and Mateja Kezman got us over the line.">บ่ายวันคว้าแชมป์ที่แฟนบอลเชลซีหลายรุ่นคิดว่าพวกเขาอาจไม่มีวันได้เห็น ได้เกิดขึ้นในการไปเยือนโบลตัน ที่ซึ่งการทำสองประตูในครึ่งหลังของแลมพาร์ดทำให้แฟนสิงห์บลูส์ทั้งในสนาม บนอัฒจันทร์ และที่ดูทางโทรทัศน์ต้องหลั่งน้ำตา มันไม่ใช่ถ้วยรางวัลแรกของฤดูกาล สิ่งนั้นมาถึงเมื่อสองเดือนก่อน ในนัดชิงชนะเลิศลีกคัพที่คาร์ดิฟฟ์ การทำเข้าประตูตัวเองช่วงท้ายเกมของ สตีเวน เจอร์ราร์ด ทำให้เราตีเสมอกับลิเวอร์พูลและต้องต่อเวลาพิเศษ ซึ่งประตูจาก ดร็อกบา และ มาเตย่า เคซมัน ทำให้เราคว้าชัยไปได้</p>
+
+      <!-- SECTION 3 -->
+      <h2 data-lang-th="มุ่งสู่มอสโก" data-lang-en="Making it to Moscow">มุ่งสู่มอสโก</h2>
+
+      <p class="drop-cap" data-lang-th="ในเดือนกันยายน 2007 โลกฟุตบอลต้องตกตะลึงเมื่อได้ทราบว่า มูรินโญ่ ลาออกจากตำแหน่งที่เชลซีหลังจากเริ่มต้นฤดูกาลได้ไม่ค่อยดี และมีความไม่ลงรอยกันเรื่องนโยบายซื้อขายนักเตะ อัฟราม แกรนท์ ซึ่งเพิ่งได้รับแต่งตั้งให้เป็นผู้อำนวยการฟุตบอลของสโมสร ก้าวเข้ามารับตำแหน่งร้อน โดยมี สตีฟ คลาร์ก ตำนานเชลซี ซึ่งเคยเป็นส่วนหนึ่งของทีมงานมูรินโญ่ คอยเป็นผู้ช่วย" data-lang-en="In September 2007, the football world was shocked to learn Mourinho had left his post at Chelsea after an indifferent start to the season and disagreements over transfer policy. Avram Grant, recently appointed the club’s director of football, stepped into the hotseat, ably assisted by former Chelsea great Steve Clarke, who had also been part of Mourinho’s backroom team.">ในเดือนกันยายน 2007 โลกฟุตบอลต้องตกตะลึงเมื่อได้ทราบว่า มูรินโญ่ ลาออกจากตำแหน่งที่เชลซีหลังจากเริ่มต้นฤดูกาลได้ไม่ค่อยดี และมีความไม่ลงรอยกันเรื่องนโยบายซื้อขายนักเตะ อัฟราม แกรนท์ ซึ่งเพิ่งได้รับแต่งตั้งให้เป็นผู้อำนวยการฟุตบอลของสโมสร ก้าวเข้ามารับตำแหน่งร้อน โดยมี สตีฟ คลาร์ก ตำนานเชลซี ซึ่งเคยเป็นส่วนหนึ่งของทีมงานมูรินโญ่ คอยเป็นผู้ช่วย</p>
+
+      <p data-lang-th="ทีมสิงห์บลูส์ยังคงเป็นทีมที่แข็งแกร่ง และใครจะไปรู้ หากมีโชคและฟอร์มที่ดีขึ้นอีกนิด ก็อาจคว้าแชมป์รายการหลักทั้งสี่รายการได้เลย เราขับเคี่ยวแย่งแชมป์ลีกจนถึงวันสุดท้าย และนัดชิงแชมเปียนส์ลีกไปจนถึงการดวลจุดโทษ ทั้งสองครั้ง แมนฯ ยูไนเต็ด เฉือนเราไปได้ โดยเฉพาะอย่างยิ่งที่มอสโกที่เราพลาดจุดโทษของจอห์น เทอร์รี่ เพียงระยะเสาประตูจากการคว้าชัยชนะอันยิ่งใหญ่ที่สุด การแข่งขันระหว่างสองทีมจากอังกฤษจบลงด้วยสกอร์ 1-1 โดยแลมพาร์ดตีเสมอจากประตูเบิกร่องของ คริสเตียโน โรนัลโด" data-lang-en="The Blues remained a formidable force and who knows, with better luck and the odd improved performance, could even have won all four major trophies. We took the league title race down to the last day, and the Champions League final to a penalty shoot-out. On both occasions Man United pipped us, most agonisingly in Moscow where during a penalty shoot-out we were a John Terry slip and post’s width away from the greatest glory. An engrossing all-English tie had finished 1-1, Lampard cancelling out Cristiano Ronaldo’s opener.">ทีมสิงห์บลูส์ยังคงเป็นทีมที่แข็งแกร่ง และใครจะไปรู้ หากมีโชคและฟอร์มที่ดีขึ้นอีกนิด ก็อาจคว้าแชมป์รายการหลักทั้งสี่รายการได้เลย เราขับเคี่ยวแย่งแชมป์ลีกจนถึงวันสุดท้าย และนัดชิงแชมเปียนส์ลีกไปจนถึงการดวลจุดโทษ ทั้งสองครั้ง แมนฯ ยูไนเต็ด เฉือนเราไปได้ โดยเฉพาะอย่างยิ่งที่มอสโกที่เราพลาดจุดโทษของจอห์น เทอร์รี่ เพียงระยะเสาประตูจากการคว้าชัยชนะอันยิ่งใหญ่ที่สุด การแข่งขันระหว่างสองทีมจากอังกฤษจบลงด้วยสกอร์ 1-1 โดยแลมพาร์ดตีเสมอจากประตูเบิกร่องของ คริสเตียโน โรนัลโด</p>
+
+      <p data-lang-th="ก่อนหน้านั้นในฤดูกาล เราแพ้ท็อตแน่มในนัดชิงลีกคัพในช่วงต่อเวลาพิเศษ และแพ้บาร์นสลีย์ทีมจากลีกล่างอย่างเซอร์ไพรส์ในรอบแปดทีมสุดท้ายเอฟเอคัพ เมื่อดูเหมือนว่าเส้นทางจะเปิดกว้างสำหรับเราแล้ว ฤดูกาลที่มีความหวังจบลงโดยไม่มีถ้วยรางวัลใดๆ แกรนท์แยกทางกับทีม โค้ชดีกรีแชมป์โลกชาวบราซิล หลุยส์ เฟลิเป้ สโคลารี่ เข้ามาแทน ทีมที่เน้นเกมรุกของเขาตอบสนองความต้องการฟุตบอลที่มีสไตล์ในช่วงแรก แต่พอถึงกลางฤดูหนาว ฟอร์มการเล่นและผลการแข่งขันก็ตกลงอย่างเห็นได้ชัด และเขาถูกปลดจากตำแหน่งเมื่อเหลือเวลาอีกสามเดือนในฤดูกาล" data-lang-en="Earlier in the season we lost the League Cup final to Tottenham, also after extra-time, and were surprisingly beaten by second-tier Barnsley in the last eight of the FA Cup when it looked like the competition draw had opened for us. A season that promised much ended without silverware. Grant departed. In came Brazilian World Cup-winning coach Luiz Felipe Scolari. His attacking side initially met the demands for more stylish football, but by midwinter performances and results had significantly dropped off, and he was relieved of his duties with three months of the season remaining.">ก่อนหน้านั้นในฤดูกาล เราแพ้ท็อตแน่มในนัดชิงลีกคัพในช่วงต่อเวลาพิเศษ และแพ้บาร์นสลีย์ทีมจากลีกล่างอย่างเซอร์ไพรส์ในรอบแปดทีมสุดท้ายเอฟเอคัพ เมื่อดูเหมือนว่าเส้นทางจะเปิดกว้างสำหรับเราแล้ว ฤดูกาลที่มีความหวังจบลงโดยไม่มีถ้วยรางวัลใดๆ แกรนท์แยกทางกับทีม โค้ชดีกรีแชมป์โลกชาวบราซิล หลุยส์ เฟลิเป้ สโคลารี่ เข้ามาแทน ทีมที่เน้นเกมรุกของเขาตอบสนองความต้องการฟุตบอลที่มีสไตล์ในช่วงแรก แต่พอถึงกลางฤดูหนาว ฟอร์มการเล่นและผลการแข่งขันก็ตกลงอย่างเห็นได้ชัด และเขาถูกปลดจากตำแหน่งเมื่อเหลือเวลาอีกสามเดือนในฤดูกาล</p>
+
+      <p data-lang-th="ผู้จัดการทีมชาติรัสเซีย กุส ฮิดดิ้งค์ ก้าวเข้ามาขัดตาทัพและทำให้สถานการณ์นิ่งขึ้นทันที หลังจากประคองทีมจบอันดับสามในลีกได้อย่างปลอดภัย เราคว้าแชมป์เอฟเอคัพด้วยประตูของดร็อกบาและแลมพาร์ด เอาชนะเอฟเวอร์ตันที่อันตรายไปได้ สิ่งที่ยังขาดอยู่คือแชมเปียนส์ลีก การตกรอบรองชนะเลิศอย่างน่าปวดใจครั้งที่สี่ คราวนี้ด้วยน้ำมือของบาร์เซโลน่า หมายความว่ายังมีเป้าหมายอีกมากมายให้สโมสรซึ่งขณะนี้เป็นหนึ่งในทีมเต็งของทัวร์นาเมนต์อยู่เสมอต้องทำให้สำเร็จ" data-lang-en="The manager of the Russian national team, Dutchman Guus Hiddink stepped in on an interim basis and immediately steadied the ship. After safely negotiating a third-place finish in the league, we won the FA Cup with Drogba and Lampard goals getting the better of a dangerous Everton side. What was still missing was the Champions League. A fourth agonising semi-final exit, this time to Barcelona, meant there was still more left to achieve for a club that was now consistently one of the tournament favourites.">ผู้จัดการทีมชาติรัสเซีย กุส ฮิดดิ้งค์ ก้าวเข้ามาขัดตาทัพและทำให้สถานการณ์นิ่งขึ้นทันที หลังจากประคองทีมจบอันดับสามในลีกได้อย่างปลอดภัย เราคว้าแชมป์เอฟเอคัพด้วยประตูของดร็อกบาและแลมพาร์ด เอาชนะเอฟเวอร์ตันที่อันตรายไปได้ สิ่งที่ยังขาดอยู่คือแชมเปียนส์ลีก การตกรอบรองชนะเลิศอย่างน่าปวดใจครั้งที่สี่ คราวนี้ด้วยน้ำมือของบาร์เซโลน่า หมายความว่ายังมีเป้าหมายอีกมากมายให้สโมสรซึ่งขณะนี้เป็นหนึ่งในทีมเต็งของทัวร์นาเมนต์อยู่เสมอต้องทำให้สำเร็จ</p>
+
+      <!-- SECTION 4 -->
+      <h2 data-lang-th="รางวัลใหญ่" data-lang-en="The big prizes">รางวัลใหญ่</h2>
+
+      <p class="drop-cap" data-lang-th="การทวงแชมป์พรีเมียร์ลีกกลับมาหลังจากพลาดไปสามฤดูกาลก็เป็นความสำคัญอันดับต้นๆ คาร์โล อันเชลอตติ ผู้ชนะในอิตาลี ได้รับการแต่งตั้งเป็นหัวหน้าโค้ชถาวรคนใหม่ในฤดูร้อนปี 2009 ฤดูกาลแรกของเขานั้นแทบจะสมบูรณ์แบบ หลังจากทิ้งระบบการเล่นแบบเพชร อันเชลอตติที่มีประสบการณ์ได้กลับมาใช้ระบบ 4-3-3 ซึ่งเป็นผลดีกับทีมมาตลอดในยุคของอับราโมวิช เมื่อดร็อกบากลับมาท็อปฟอร์มในแดนหน้า และแลมพาร์ดมีฤดูกาลที่ทำประตูได้มากที่สุดในอาชีพ ประตูก็ไหลมาเทมา นิโกลาส์ อเนลก้า, ฟลอร็องต์ มาลูด้า และ ซาโลมง กาลู ก็โดดเด่นในเกมรุกเช่นกัน" data-lang-en="Regaining the Premier League title after three unsuccessful seasons was also a priority. Carlo Ancelotti, a serial winner in Italy, was appointed as the new permanent head coach in the summer of 2009. His debut season could scarcely have gone better. After ditching a diamond formation, the experienced Ancelotti reverted to the 4-3-3 shape that had served the team so well for so much of the Abramovich era. With Drogba back to his very best up front and Lampard enjoying the most prolific campaign of his career, the goals flowed. Nicolas Anelka, Florent Malouda and Salomon Kalou also shone in attack.">การทวงแชมป์พรีเมียร์ลีกกลับมาหลังจากพลาดไปสามฤดูกาลก็เป็นความสำคัญอันดับต้นๆ คาร์โล อันเชลอตติ ผู้ชนะในอิตาลี ได้รับการแต่งตั้งเป็นหัวหน้าโค้ชถาวรคนใหม่ในฤดูร้อนปี 2009 ฤดูกาลแรกของเขานั้นแทบจะสมบูรณ์แบบ หลังจากทิ้งระบบการเล่นแบบเพชร อันเชลอตติที่มีประสบการณ์ได้กลับมาใช้ระบบ 4-3-3 ซึ่งเป็นผลดีกับทีมมาตลอดในยุคของอับราโมวิช เมื่อดร็อกบากลับมาท็อปฟอร์มในแดนหน้า และแลมพาร์ดมีฤดูกาลที่ทำประตูได้มากที่สุดในอาชีพ ประตูก็ไหลมาเทมา นิโกลาส์ อเนลก้า, ฟลอร็องต์ มาลูด้า และ ซาโลมง กาลู ก็โดดเด่นในเกมรุกเช่นกัน</p>
+
+      <p data-lang-th="ลิเวอร์พูล อาร์เซนอล และที่สำคัญที่สุดคือ แมนฯ ยูไนเต็ด ถูกเอาชนะทั้งเหย้าและเยือน ชัยชนะที่โอลด์แทรฟฟอร์ดในช่วงต้นเดือนเมษายนส่งเราขึ้นจ่าฝูง และเราไม่เคยมองกลับหลังอีกเลย ท่ามกลางกระสุนประตูที่หลั่งไหล รวมแล้วเราทำได้เจ็ดประตูหรือมากกว่าถึงสี่ครั้งในฤดูกาลนั้น แปดประตูที่ยิงใส่วีแกนในบ่ายวันสุดท้ายที่น่าทึ่งซึ่งคว้าแชมป์ ทำให้เราสร้างสถิติยิงไปถึง 103 ประตู ดร็อกบายิงไป 29 ประตูในลีก และแลมพาร์ด 22 ประตู" data-lang-en="Liverpool, Arsenal and, most crucially, Man United were beaten home and away. An early April win at Old Trafford sent us top and we never looked back amid a barrage of goals. In total, we scored seven or more on four occasions that season. The eight netted against Wigan on an astonishing, title-clinching final afternoon took us to a record 103 goals. Drogba finished with 29 in the league, and Lampard 22.">ลิเวอร์พูล อาร์เซนอล และที่สำคัญที่สุดคือ แมนฯ ยูไนเต็ด ถูกเอาชนะทั้งเหย้าและเยือน ชัยชนะที่โอลด์แทรฟฟอร์ดในช่วงต้นเดือนเมษายนส่งเราขึ้นจ่าฝูง และเราไม่เคยมองกลับหลังอีกเลย ท่ามกลางกระสุนประตูที่หลั่งไหล รวมแล้วเราทำได้เจ็ดประตูหรือมากกว่าถึงสี่ครั้งในฤดูกาลนั้น แปดประตูที่ยิงใส่วีแกนในบ่ายวันสุดท้ายที่น่าทึ่งซึ่งคว้าแชมป์ ทำให้เราสร้างสถิติยิงไปถึง 103 ประตู ดร็อกบายิงไป 29 ประตูในลีก และแลมพาร์ด 22 ประตู</p>
+
+      <!-- SECTION 5 -->
+      <h2 data-lang-th="โชเซ่ที่เชลซี ภาค 2" data-lang-en="Jose at Chelsea #2">โชเซ่ที่เชลซี ภาค 2</h2>
+
+      <p class="drop-cap" data-lang-th="ในเดือนต่อมา มูรินโญ่กลับมาอย่างน่าทึ่งพร้อมเป้าหมายไล่ล่าเกียรติยศสูงสุดอีกครั้ง หลังจากช่วงเวลาที่ผลงานในพรีเมียร์ลีกต่ำกว่ามาตรฐาน เราเข้าใกล้การลุ้นแชมป์มาก โดยเอาชนะผู้ท้าชิงอย่าง แมนฯ ซิตี้ และ ลิเวอร์พูล ทั้งไปและกลับ แต่ปัญหาการทำประตูในบางครั้งก็ทำให้เราพลาดอันดับหนึ่งไป ในแชมเปียนส์ลีก แอตเลติโก มาดริด ยุติเส้นทางของเราในรอบรองชนะเลิศ แต่ก่อนหน้านั้น ประตูชัยท้ายเกมของ เดมบ้า บา ที่พบกับเปแอสเชในรอบก่อนรองฯ ได้ปลุกความทรงจำของค่ำคืนยุโรปที่ยิ่งใหญ่ที่สุดบางคืนของเรากลับมา" data-lang-en="The following month, Mourinho returned in stunning fashion with the target top-flight honours once more after a period of Premier League underachievement. We went very close in the title race, beating nearest challengers Man City and Liverpool home and away, but an occasional struggle to score goals eventually cost us top spot. In the Champions League, Atletico Madrid ended our challenge at the semi-final stage, but not before Demba Ba’s late winner against PSG in the quarters evoked memories of some of our greatest European nights.">ในเดือนต่อมา มูรินโญ่กลับมาอย่างน่าทึ่งพร้อมเป้าหมายไล่ล่าเกียรติยศสูงสุดอีกครั้ง หลังจากช่วงเวลาที่ผลงานในพรีเมียร์ลีกต่ำกว่ามาตรฐาน เราเข้าใกล้การลุ้นแชมป์มาก โดยเอาชนะผู้ท้าชิงอย่าง แมนฯ ซิตี้ และ ลิเวอร์พูล ทั้งไปและกลับ แต่ปัญหาการทำประตูในบางครั้งก็ทำให้เราพลาดอันดับหนึ่งไป ในแชมเปียนส์ลีก แอตเลติโก มาดริด ยุติเส้นทางของเราในรอบรองชนะเลิศ แต่ก่อนหน้านั้น ประตูชัยท้ายเกมของ เดมบ้า บา ที่พบกับเปแอสเชในรอบก่อนรองฯ ได้ปลุกความทรงจำของค่ำคืนยุโรปที่ยิ่งใหญ่ที่สุดบางคืนของเรากลับมา</p>
+
+      <p data-lang-th="ในช่วงปิดฤดูกาลที่ยุ่งเหยิง เรากล่าวคำอำลาแลมพาร์ด ซึ่งจบสถิติด้วยการยิง 211 ประตูให้เชลซี ดร็อกบา ขุมกำลังหลักอีกคนจากทีมที่ดีที่สุดของเรา ผู้จากไปหลังฝากผลงานสุดมหัศจรรย์ที่มิวนิค ได้เซ็นสัญญากลับมาอีกครั้งก่อนฤดูกาล 2014/15 เพื่อเพิ่มความเก๋าให้กับทีมสิงห์บลูส์ชุดใหม่ที่มี ธิโบต์ กูร์กตัวส์, เชส ฟาเบรกาส และ ดิเอโก้ คอสต้า ลูกทีมของมูรินโญ่คว้าแชมป์มาครองได้อย่างง่ายดาย โดยได้รับแรงบันดาลใจจากความมหัศจรรย์ของ เอเด็น อาซาร์ ซึ่งกลายเป็นสตาร์เบอร์หนึ่งของเชลซีนับตั้งแต่ย้ายมาในปี 2012, ความสร้างสรรค์ของ ฟาเบรกาส, การทำประตูของ ดิเอโก้ คอสต้า และแนวรับที่แข็งแกร่งดั่งหินผาที่มีเทอร์รี่เป็นหัวใจสำคัญ" data-lang-en="In a busy close season we bid farewell to Lampard, who finished on 211 Chelsea goals. Drogba, another mainstay of our greatest teams, who had left after his magical Munich exploits, re-signed ahead of the 2014/15 season to add nous to a new-look Blues side containing the likes of Thibaut Courtois, Cesc Fabregas and Diego Costa. Mourinho’s men romped to the title, inspired by the magic of Eden Hazard, now Chelsea’s biggest star having joined in 2012, the creativity of Fabregas, the goalscoring of Diego Costa and a rock-solid backline with Terry still at its heart.">ในช่วงปิดฤดูกาลที่ยุ่งเหยิง เรากล่าวคำอำลาแลมพาร์ด ซึ่งจบสถิติด้วยการยิง 211 ประตูให้เชลซี ดร็อกบา ขุมกำลังหลักอีกคนจากทีมที่ดีที่สุดของเรา ผู้จากไปหลังฝากผลงานสุดมหัศจรรย์ที่มิวนิค ได้เซ็นสัญญากลับมาอีกครั้งก่อนฤดูกาล 2014/15 เพื่อเพิ่มความเก๋าให้กับทีมสิงห์บลูส์ชุดใหม่ที่มี ธิโบต์ กูร์กตัวส์, เชส ฟาเบรกาส และ ดิเอโก้ คอสต้า ลูกทีมของมูรินโญ่คว้าแชมป์มาครองได้อย่างง่ายดาย โดยได้รับแรงบันดาลใจจากความมหัศจรรย์ของ เอเด็น อาซาร์ ซึ่งกลายเป็นสตาร์เบอร์หนึ่งของเชลซีนับตั้งแต่ย้ายมาในปี 2012, ความสร้างสรรค์ของ ฟาเบรกาส, การทำประตูของ ดิเอโก้ คอสต้า และแนวรับที่แข็งแกร่งดั่งหินผาที่มีเทอร์รี่เป็นหัวใจสำคัญ</p>
+
+      <!-- SECTION 6 -->
+      <h2 data-lang-th="แชมป์พรีเมียร์ลีกสมัยที่ 5" data-lang-en="Premier League title no.5">แชมป์พรีเมียร์ลีกสมัยที่ 5</h2>
+
+      <p class="drop-cap" data-lang-th="การเริ่มต้นที่มีแนวโน้มดีภายใต้ คอนเต้ จบลงอย่างกะทันหันด้วยความพ่ายแพ้ติดต่อกันให้กับลิเวอร์พูลและอาร์เซนอลอย่างยับเยิน ในช่วงท้ายเกมที่เอมิเรตส์ คอนเต้เปลี่ยนมาใช้ระบบ 3-4-3 ที่เขาซ้อมไว้ในช่วงปรีซีซั่นและกลางสัปดาห์ที่ไม่มีการแข่งขันยุโรป มันกลายเป็นการตัดสินใจระดับมาสเตอร์พีซ" data-lang-en="A promising start under Conte was abruptly ended by consecutive defeats to first Liverpool and then, more emphatically, Arsenal. Late in that game at the Emirates, Conte switched to a 3-4-3 formation he had worked on in pre-season and Europe-free midweeks. It proved a masterstroke.">การเริ่มต้นที่มีแนวโน้มดีภายใต้ คอนเต้ จบลงอย่างกะทันหันด้วยความพ่ายแพ้ติดต่อกันให้กับลิเวอร์พูลและอาร์เซนอลอย่างยับเยิน ในช่วงท้ายเกมที่เอมิเรตส์ คอนเต้เปลี่ยนมาใช้ระบบ 3-4-3 ที่เขาซ้อมไว้ในช่วงปรีซีซั่นและกลางสัปดาห์ที่ไม่มีการแข่งขันยุโรป มันกลายเป็นการตัดสินใจระดับมาสเตอร์พีซ</p>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="'เรามีปัญหาใหญ่หลายอย่างที่ต้องแก้ และการหาทางออกที่เหมาะสมอย่างรวดเร็วนั้นไม่ใช่เรื่องง่าย' คอนเต้กล่าวถึงการปรับแท็กติกชี้ขาดนั้น 'มันเป็นเรื่องยากมากในตอนนั้นที่จะคิดถึงการไปถึงจุดสิ้นสุดของฤดูกาลด้วยการฉลองแชมป์'" data-lang-en="‘We had a lot of big problems to solve and finding the right solution quickly was not easy,’ Conte said of the decisive tactical adjustment. ‘It was very difficult then to think about arriving at the end of the season celebrating the title.’">'เรามีปัญหาใหญ่หลายอย่างที่ต้องแก้ และการหาทางออกที่เหมาะสมอย่างรวดเร็วนั้นไม่ใช่เรื่องง่าย' คอนเต้กล่าวถึงการปรับแท็กติกชี้ขาดนั้น 'มันเป็นเรื่องยากมากในตอนนั้นที่จะคิดถึงการไปถึงจุดสิ้นสุดของฤดูกาลด้วยการฉลองแชมป์'</p>
+      </blockquote>
+
+      <p data-lang-th="ชัยชนะ 2-0 ที่ฮัลล์ในอีกหนึ่งสัปดาห์ต่อมาเป็นจุดเริ่มต้นของสถิติสโมสรด้วยการชนะ 13 นัดติดต่อกันในพรีเมียร์ลีก สถิติชนะรวดส่งให้เราขึ้นเป็นจ่าฝูงและคว้าแชมป์พรีเมียร์ลีกสมัยที่ห้าในที่สุด อาจกล่าวได้ว่าเป็นสิ่งที่เราคาดหวังน้อยที่สุด รายชื่อผู้เล่นแทบไม่เปลี่ยนแปลงเลย วิคเตอร์ โมเซส และ มาร์กอส อลอนโซ่ เสนอวินัยในเกมรับและภัยคุกคามในเกมรุกที่สม่ำเสมอจากตำแหน่งวิงแบ็ก ดาวิด ลุยซ์ พบที่ทางของตัวเองในใจกลางแผงหลังสามคน โดยมี อัซปิลิกวยต้า และ เคฮิลล์ ที่เชื่อถือได้ขนาบข้าง และกูร์กตัวส์แข็งแกร่งในฐานะผู้รักษาประตู" data-lang-en="A 2-0 success at Hull a week later was the first of 13 consecutive Premier League victories, a club record. The winning streak propelled us to the top of the table and eventually our fifth Premier League title. It was arguably our least expected. The line-up did not change much. Victor Moses and Marcos Alonso offered defensive discipline and a consistent attacking threat from wing-back. David Luiz found himself right at home in the heart of a back three, with the dependable Azpilicueta and Cahill either side of him and Courtois solid in goal.">ชัยชนะ 2-0 ที่ฮัลล์ในอีกหนึ่งสัปดาห์ต่อมาเป็นจุดเริ่มต้นของสถิติสโมสรด้วยการชนะ 13 นัดติดต่อกันในพรีเมียร์ลีก สถิติชนะรวดส่งให้เราขึ้นเป็นจ่าฝูงและคว้าแชมป์พรีเมียร์ลีกสมัยที่ห้าในที่สุด อาจกล่าวได้ว่าเป็นสิ่งที่เราคาดหวังน้อยที่สุด รายชื่อผู้เล่นแทบไม่เปลี่ยนแปลงเลย วิคเตอร์ โมเซส และ มาร์กอส อลอนโซ่ เสนอวินัยในเกมรับและภัยคุกคามในเกมรุกที่สม่ำเสมอจากตำแหน่งวิงแบ็ก ดาวิด ลุยซ์ พบที่ทางของตัวเองในใจกลางแผงหลังสามคน โดยมี อัซปิลิกวยต้า และ เคฮิลล์ ที่เชื่อถือได้ขนาบข้าง และกูร์กตัวส์แข็งแกร่งในฐานะผู้รักษาประตู</p>
+
+      <!-- SECTION 7 -->
+      <h2 data-lang-th="ช่วงเวลาแห่งการเปลี่ยนแปลง" data-lang-en="Time of change">ช่วงเวลาแห่งการเปลี่ยนแปลง</h2>
+
+      <p class="drop-cap" data-lang-th="ไม่กี่วันหลังจากที่เรากลับมาจากการคว้าแชมป์ฟีฟ่า คลับ เวิลด์ คัพ ในอาบูดาบี กองทัพรัสเซียได้บุกโจมตียูเครนประเทศเพื่อนบ้าน และโรมัน อับราโมวิช ประกาศว่าถึงเวลาที่เขาจะต้องขายสโมสรเชลซีแล้ว ในช่วงปลายเดือนพฤษภาคม 2022 กลุ่มทุนที่นำโดย ทอดด์ โบห์ลี่ และเคลียร์เลค แคปิตอล ก็เข้าซื้อกิจการสโมสรสำเร็จ" data-lang-en="A few days after our return from winning the FIFA Club World Cup in Abu Dhabi, Russian military forces invaded their neighbouring country of Ukraine and Roman Abramovich announced the time had come for him to sell Chelsea. At the end of May 2022, a consortium led by Todd Boehly and Clearlake Capital completed the acquisition of the club.">ไม่กี่วันหลังจากที่เรากลับมาจากการคว้าแชมป์ฟีฟ่า คลับ เวิลด์ คัพ ในอาบูดาบี กองทัพรัสเซียได้บุกโจมตียูเครนประเทศเพื่อนบ้าน และโรมัน อับราโมวิช ประกาศว่าถึงเวลาที่เขาจะต้องขายสโมสรเชลซีแล้ว ในช่วงปลายเดือนพฤษภาคม 2022 กลุ่มทุนที่นำโดย ทอดด์ โบห์ลี่ และเคลียร์เลค แคปิตอล ก็เข้าซื้อกิจการสโมสรสำเร็จ</p>
+
+      <p data-lang-th="ยุคใหม่เริ่มต้นขึ้นด้วยการลงทุนมหาศาลกับทีม ราฮีม สเตอร์ลิ่ง สตาร์ทีมชาติอังกฤษถูกคว้าตัวมาตั้งแต่ช่วงต้น ในขณะที่นักเตะอายุน้อยที่มีศักยภาพสูงก็ถูกเซ็นสัญญาเข้ามาเช่นกัน รวมถึง เอ็นโซ่ เฟร์นานเดซ ที่เพิ่งคว้าแชมป์โลก และ มิไคโล มูดริค ดาวรุ่งของยูเครน ในช่วงกลางฤดูกาล แกรห์ม พ็อตเตอร์ เข้ามาแทนที่ โธมัส ทูเคิล ในตำแหน่งหัวหน้าโค้ชไม่นานหลังจากเริ่มต้นฤดูกาล 2022/23 แต่ก่อนจบฤดูกาล ทีมสิงห์บลูส์ก็หล่นไปอยู่กลางตาราง และ แฟรงค์ แลมพาร์ด ก็กลับมาในฐานะผู้จัดการทีมขัดตาทัพ" data-lang-en="A new era began with significant investment in the squad. England star Raheem Sterling was an early acquisition while younger players of great potential were also signed, including recent World Cup-winner Enzo Fernandez and Ukraine’s rising star Mykhailo Mudryk in mid-season. Graham Potter replaced Thomas Tuchel as head coach shortly after the start of the 2022/23 season but before the end of it and with the Blues in mid-table, Frank Lampard returned in a caretaker role.">ยุคใหม่เริ่มต้นขึ้นด้วยการลงทุนมหาศาลกับทีม ราฮีม สเตอร์ลิ่ง สตาร์ทีมชาติอังกฤษถูกคว้าตัวมาตั้งแต่ช่วงต้น ในขณะที่นักเตะอายุน้อยที่มีศักยภาพสูงก็ถูกเซ็นสัญญาเข้ามาเช่นกัน รวมถึง เอ็นโซ่ เฟร์นานเดซ ที่เพิ่งคว้าแชมป์โลก และ มิไคโล มูดริค ดาวรุ่งของยูเครน ในช่วงกลางฤดูกาล แกรห์ม พ็อตเตอร์ เข้ามาแทนที่ โธมัส ทูเคิล ในตำแหน่งหัวหน้าโค้ชไม่นานหลังจากเริ่มต้นฤดูกาล 2022/23 แต่ก่อนจบฤดูกาล ทีมสิงห์บลูส์ก็หล่นไปอยู่กลางตาราง และ แฟรงค์ แลมพาร์ด ก็กลับมาในฐานะผู้จัดการทีมขัดตาทัพ</p>
+
+      <p data-lang-th="การสรรหานักเตะเยาวชนที่กำลังเติบโตยังคงดำเนินต่อไปในฤดูร้อนปี 2023 โดยเฉพาะอย่างยิ่ง โคล พาลเมอร์ ซึ่งได้รับการโหวตให้เป็นผู้เล่นแห่งปีเมื่อสิ้นสุดฤดูกาลแรกของเขา หลังจากทำได้ 25 ประตู กองกลาง มอยเซส ไกเซโด้ และกองหน้า คริสโตเฟอร์ เอ็นคุนคู คือการเซ็นสัญญาที่พาดหัวข่าวอื่นๆ ในขณะที่ เมาริซิโอ โปเช็ตติโน่ ผู้มากประสบการณ์ได้รับมอบหมายให้คุมทีม คอเนอร์ กัลลาเกอร์ เด็กปั้นของสโมสร ลงเล่นมากที่สุดในฤดูกาล 2023/24 โดยส่วนใหญ่สวมปลอกแขนกัปตันทีมเมื่อ รีซ เจมส์ กัปตันทีมตัวจริงบาดเจ็บ นัดชิงชนะเลิศลีกคัพกับลิเวอร์พูลจบลงด้วยความพ่ายแพ้ในช่วงต่อเวลาพิเศษ ขณะที่อันดับในลีกที่จบที่หก ก็เพียงพอที่จะพาสโมสรกลับไปแข่งขันในยุโรปด้วยการประเดิมสนามในยูฟ่า คอนเฟอเรนซ์ ลีก เป็นครั้งแรก" data-lang-en="The recruitment of youthful players on the rise continued in the summer of 2023, not least Cole Palmer who would go on to be voted Player of the Year at the end of his debut season after scoring 25 goals. Midfielder Moises Caicedo and forward Christopher Nkunku were other headline-grabbing signings while the experienced Mauricio Pochettino was put in charge of the team. It was a homegrown, Conor Gallagher, who played most games in 2023/24, a lot of them wearing the captain’s armband with club skipper Reece James injured. A League Cup final against Liverpool was lost in extra time while the final league position, sixth, was enough to send the club back into European competition with a first entry to the UEFA Conference League.">การสรรหานักเตะเยาวชนที่กำลังเติบโตยังคงดำเนินต่อไปในฤดูร้อนปี 2023 โดยเฉพาะอย่างยิ่ง โคล พาลเมอร์ ซึ่งได้รับการโหวตให้เป็นผู้เล่นแห่งปีเมื่อสิ้นสุดฤดูกาลแรกของเขา หลังจากทำได้ 25 ประตู กองกลาง มอยเซส ไกเซโด้ และกองหน้า คริสโตเฟอร์ เอ็นคุนคู คือการเซ็นสัญญาที่พาดหัวข่าวอื่นๆ ในขณะที่ เมาริซิโอ โปเช็ตติโน่ ผู้มากประสบการณ์ได้รับมอบหมายให้คุมทีม คอเนอร์ กัลลาเกอร์ เด็กปั้นของสโมสร ลงเล่นมากที่สุดในฤดูกาล 2023/24 โดยส่วนใหญ่สวมปลอกแขนกัปตันทีมเมื่อ รีซ เจมส์ กัปตันทีมตัวจริงบาดเจ็บ นัดชิงชนะเลิศลีกคัพกับลิเวอร์พูลจบลงด้วยความพ่ายแพ้ในช่วงต่อเวลาพิเศษ ขณะที่อันดับในลีกที่จบที่หก ก็เพียงพอที่จะพาสโมสรกลับไปแข่งขันในยุโรปด้วยการประเดิมสนามในยูฟ่า คอนเฟอเรนซ์ ลีก เป็นครั้งแรก</p>
+
+      <p data-lang-th="หลังจบแคมเปญ โปเช็ตติโน่หลีกทางให้กับ เอ็นโซ่ มาเรสก้า จากเลสเตอร์ที่เพิ่งเลื่อนชั้นขึ้นมา เรายังบอกลา ติอาโก้ ซิลวา ในวัย 39 ปี ซึ่งกลายเป็นผู้เล่นเอาต์ฟิลด์และคนทำประตูที่อายุมากที่สุดในประวัติศาสตร์ของเรา สิ่งที่ตามมาคือฤดูกาลที่เชลซีกลับคืนสู่เส้นทางแห่งการคว้าถ้วยรางวัล ครึ่งแรกที่แข็งแกร่งของแคมเปญลีกพาทีมสิงห์บลูส์เข้าใกล้จ่าฝูงอย่างลิเวอร์พูล แต่แม้ฟอร์มจะตกลงไปบ้างในช่วงต้นปี 2025 ทีมก็รวมพลังกันคว้าอันดับสี่และสิทธิ์ไปเล่นแชมเปียนส์ลีกด้วยชัยชนะในเกมสุดท้ายของฤดูกาล" data-lang-en="Following the end of the campaign, Pochettino made way for Enzo Maresca from freshly promoted Leicester. We also said goodbye to Thiago Silva who aged 39 had become our oldest-ever outfield player and goal scorer. What followed was a season in which Chelsea returned to trophy-winning ways. A strong first half to the league campaign took the Blues close to leaders Liverpool but although there was a dip in form in the early part of 2025, the team rallied to claim fourth-place and Champions League qualification with a win in the final game of the season.">หลังจบแคมเปญ โปเช็ตติโน่หลีกทางให้กับ เอ็นโซ่ มาเรสก้า จากเลสเตอร์ที่เพิ่งเลื่อนชั้นขึ้นมา เรายังบอกลา ติอาโก้ ซิลวา ในวัย 39 ปี ซึ่งกลายเป็นผู้เล่นเอาต์ฟิลด์และคนทำประตูที่อายุมากที่สุดในประวัติศาสตร์ของเรา สิ่งที่ตามมาคือฤดูกาลที่เชลซีกลับคืนสู่เส้นทางแห่งการคว้าถ้วยรางวัล ครึ่งแรกที่แข็งแกร่งของแคมเปญลีกพาทีมสิงห์บลูส์เข้าใกล้จ่าฝูงอย่างลิเวอร์พูล แต่แม้ฟอร์มจะตกลงไปบ้างในช่วงต้นปี 2025 ทีมก็รวมพลังกันคว้าอันดับสี่และสิทธิ์ไปเล่นแชมเปียนส์ลีกด้วยชัยชนะในเกมสุดท้ายของฤดูกาล</p>
+
+      <p data-lang-th="และด้วยการเข้าร่วมการแข่งขันยูฟ่า คอนเฟอเรนซ์ ลีก เป็นครั้งแรก ก็เป็นจุดเริ่มต้นของการคว้าถ้วยรางวัลแรกภายใต้เจ้าของใหม่ ทีมครองความได้เปรียบตลอดการแข่งขันและพลิกกลับมาจากตามหลังหนึ่งประตูเพื่อเอาชนะเรอัล เบติส 4-1 ในรอบชิงชนะเลิศที่โปแลนด์ เอ็นโซ่ เฟร์นานเดส, นิโกลาส์ แจ็คสัน, เจดอน ซานโช่ และผู้เล่นยอดเยี่ยมแห่งฤดูกาล มอยเซส ไกเซโด้ เป็นคนทำประตู และมีสองแอสซิสต์สำคัญจาก โคล พาลเมอร์ ซึ่งเวลาในการทำประตูของเขาจะมาถึงในช่วงซัมเมอร์นี้" data-lang-en="It was with our first-ever entry into the UEFA Conference League that the first silverware under the new ownership was won. The team was dominant throughout the competition and came back from a goal down to beat Real Betis 4-1 in the final in Poland. Enzo Fernandes, Nicolas Jackson, Jadon Sancho and player of the season Moises Caicedo scored. There were two important assists from Cole Palmer, whose time in front of goal would come later in the summer.">และด้วยการเข้าร่วมการแข่งขันยูฟ่า คอนเฟอเรนซ์ ลีก เป็นครั้งแรก ก็เป็นจุดเริ่มต้นของการคว้าถ้วยรางวัลแรกภายใต้เจ้าของใหม่ ทีมครองความได้เปรียบตลอดการแข่งขันและพลิกกลับมาจากตามหลังหนึ่งประตูเพื่อเอาชนะเรอัล เบติส 4-1 ในรอบชิงชนะเลิศที่โปแลนด์ เอ็นโซ่ เฟร์นานเดส, นิโกลาส์ แจ็คสัน, เจดอน ซานโช่ และผู้เล่นยอดเยี่ยมแห่งฤดูกาล มอยเซส ไกเซโด้ เป็นคนทำประตู และมีสองแอสซิสต์สำคัญจาก โคล พาลเมอร์ ซึ่งเวลาในการทำประตูของเขาจะมาถึงในช่วงซัมเมอร์นี้</p>
+
+      <!-- Image 7 -->
+      <figure class="img-block img-block--wide">
+        <img src="https://img.chelseafc.com/image/upload/f_auto,w_1400,q_90/The%205th%20Stand%20app%20editorial/GettyImages-2217552582_1.jpg" alt="Enzo and Moi lift the Conference League trophy" onerror="this.src='../assets/images/placeholder-team.svg'">
+        <figcaption data-lang-th="เอ็นโซ่ และ มอยเซส ชูถ้วยแชมป์คอนเฟอเรนซ์ลีก" data-lang-en="Enzo and Moi lift the Conference League trophy">เอ็นโซ่ และ มอยเซส ชูถ้วยแชมป์คอนเฟอเรนซ์ลีก</figcaption>
+      </figure>
+
+      <p data-lang-th="สืบเนื่องจากชัยชนะในแชมเปียนส์ลีกปี 2021 ของเรา เราได้รับสิทธิ์เข้าร่วมฟีฟ่า คลับ เวิลด์ คัพ รูปแบบใหม่ 32 ทีมในสหรัฐอเมริกา ลูกทีมของมาเรสก้าผ่านรอบแบ่งกลุ่มและรอบน็อกเอาต์เข้าไปพบกับแชมป์ยุโรปทีมใหม่อย่าง ปารีส แซงต์-แชร์กแมง ในรอบชิงชนะเลิศ ฟอร์มการเล่นของเราในชัยชนะ 3-0 นั้นยอดเยี่ยมมาก พาลเมอร์ยิงสองประตู และประตูที่สามมาจากนักเตะใหม่อย่าง เจา เปโดร เชลซีเป็นแชมป์โลก อีกครั้ง!" data-lang-en="Due to our victory in the 2021 Champions League, we had been granted a place in the new-format 32-team FIFA Club World Cup in the United States. Maresca's men progressed through the group stage and knockout rounds to play new European champions Paris St-Germain in the final. Our performance in winning 3-0 was superb. Palmer scored twice and the third goal came from new signing Joao Pedro. Chelsea were world champions. Again!">สืบเนื่องจากชัยชนะในแชมเปียนส์ลีกปี 2021 ของเรา เราได้รับสิทธิ์เข้าร่วมฟีฟ่า คลับ เวิลด์ คัพ รูปแบบใหม่ 32 ทีมในสหรัฐอเมริกา ลูกทีมของมาเรสก้าผ่านรอบแบ่งกลุ่มและรอบน็อกเอาต์เข้าไปพบกับแชมป์ยุโรปทีมใหม่อย่าง ปารีส แซงต์-แชร์กแมง ในรอบชิงชนะเลิศ ฟอร์มการเล่นของเราในชัยชนะ 3-0 นั้นยอดเยี่ยมมาก พาลเมอร์ยิงสองประตู และประตูที่สามมาจากนักเตะใหม่อย่าง เจา เปโดร เชลซีเป็นแชมป์โลก อีกครั้ง!</p>
+
+      <!-- Chapter End -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๘ —" data-lang-en="— End of Chapter 8 —">— จบบทที่ ๘ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-7.html" class="chapter-nav__back" data-lang-th="← บทที่ ๗" data-lang-en="← Chapter 7">← บทที่ ๗</a>
+          <a href="chapter-9.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๙ →" data-lang-en="Read Chapter 9 →">อ่านบทที่ ๙ →</a>
+        </div>
+      </div>
+
+    </div><!-- /.article__inner -->
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:60px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== FLOATING CLOCK ===================== -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // CHAPTER LANGUAGE TOGGLE (TH / EN)
+    // ============================================
+    let chapterLang = 'th';
+
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        if (chapterLang === 'th') {
+          el.innerHTML = el.getAttribute('data-lang-th');
+        } else {
+          el.innerHTML = el.getAttribute('data-lang-en');
+        }
+      });
+    }
+
+    // ============================================
+    // FLOATING CLOCK
+    // ============================================
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    updateFloatingClocks();
+    setInterval(updateFloatingClocks, 1000);
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+    });
+  </script>
+</body>
+</html>

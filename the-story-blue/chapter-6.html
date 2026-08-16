@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 6 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .pull-quote {
+      border-left: 4px solid var(--gold); padding: 24px 32px; margin: 0 0 48px;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem,2vw,1.2rem); color: var(--ink-soft); line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 14px; font-family: 'Sarabun', sans-serif; font-style: normal;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .article__inner p em { color: var(--ink); font-style: italic; }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; top: 72px; right: 18px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { top: 68px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: top right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../men-team.html">ทีมชาย</a></li>
+        <li><a href="../women-team.html">ทีมหญิง</a></li>
+        <li><a href="../trophy.html">ถ้วยรางวัล</a></li>
+        <li><a href="../icons.html">i-Cons</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" class="hero__logo" alt="Chelsea TH FANs Logo">
+      <p class="hero__kicker">Chelsea TH FANs · Kann Krung Nan News</p>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Kann Krung Nan News!</em>" data-lang-en="Once Upon a Time<br><em>Kann Krung Nan News!</em>">กาลครั้งนั้น<br><em>Kann Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- ===================== ARTICLE ===================== -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๖" data-lang-en="CHAPTER 6">บทที่ ๖</div>
+        <h1 data-lang-th="ไม้กวาดด้ามใหม่และความรุ่งโรจน์ครั้งใหม่" data-lang-en="A new broom and a new boom">ไม้กวาดด้ามใหม่และความรุ่งโรจน์ครั้งใหม่</h1>
+      </div>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="'มันจบลงแล้ว เจ็ดสิบเจ็ดปีหลังจากที่ เอช.เอ. เมียร์ส ก่อตั้งเชลซี หลานชายของเขากลับโยนมันทิ้งไป – ราชวงศ์เมียร์สจบสิ้นลงแล้ว และยุคสมัยของผมกำลังจะเริ่มต้นขึ้น ผมตั้งใจแน่วแน่ว่ามันจะต้องแตกต่างออกไป หรือไม่ผมก็จะยอมตายในความพยายามครั้งนี้'" data-lang-en="'It was done. Seventy-seven years after H.A. Mears had founded Chelsea his grandsons had thrown it away – the Mears dynasty was over and my era was about to begin. I resolved it would be different or I would die in the attempt.'">'มันจบลงแล้ว เจ็ดสิบเจ็ดปีหลังจากที่ เอช.เอ. เมียร์ส ก่อตั้งเชลซี หลานชายของเขากลับโยนมันทิ้งไป – ราชวงศ์เมียร์สจบสิ้นลงแล้ว และยุคสมัยของผมกำลังจะเริ่มต้นขึ้น ผมตั้งใจแน่วแน่ว่ามันจะต้องแตกต่างออกไป หรือไม่ผมก็จะยอมตายในความพยายามครั้งนี้'</p>
+        <cite data-lang-th="— เคน เบตส์" data-lang-en="— Ken Bates">— เคน เบตส์</cite>
+      </blockquote>
+
+      <!-- SECTION 1 -->
+      <h2 data-lang-th="วิกฤตการณ์ปี 1982" data-lang-en="The Crisis of 1982">วิกฤตการณ์ปี 1982</h2>
+      
+      <p class="drop-cap" data-lang-th="'วันนี้เรามีเช็คสองใบ – ใบหนึ่งสำหรับค่าเหนื่อยนักเตะ อีกใบเป็นส่วนแบ่งรายได้ของเอฟเอจากการแข่งขันเอฟเอคัพ – เราจะสั่งจ่ายเด้งใบไหนดี?' คำถามนี้เปรียบเสมือน 'Catch-22' สำหรับสโมสรฟุตบอลที่เต็มไปด้วยหนี้สินและกำลังย่ำแย่ มันมาจากนายธนาคารของเชลซีที่ถามอดีตประธานบริหารของเราในช่วงปลายเดือนมีนาคมปี 1982 การระงับเช็คของเอฟเอจะถือเป็นการปิดฉากเรื่องราวของเชลซีอย่างถาวร ดังนั้นนักเตะจึงไม่ได้รับค่าเหนื่อยเพื่อซื้อเวลาไปอีกนิด แต่ความพยายามอันสิ้นหวังของตระกูลเมียร์สในการรักษาอำนาจควบคุมสโมสรที่บรรพบุรุษของพวกเขาก่อตั้งขึ้นกำลังมาถึงทางตัน" data-lang-en="'We have two cheques in today – one for the players’ wages, the other for the FA’s share of proceeds from an FA Cup tie – which one shall we bounce?' The question, effectively ‘catch 22’ for such an indebted and beleaguered football club, came from Chelsea’s bankers to our then chief executive at the end of March 1982. Stopping the FA’s cheque would have dropped the final curtain on the Chelsea story, so the players went unpaid to buy a little more time. But the Mears family’s desperate efforts to keep control of the club founded by their forebears were reaching a cul-de-sac.">'วันนี้เรามีเช็คสองใบ – ใบหนึ่งสำหรับค่าเหนื่อยนักเตะ อีกใบเป็นส่วนแบ่งรายได้ของเอฟเอจากการแข่งขันเอฟเอคัพ – เราจะสั่งจ่ายเด้งใบไหนดี?' คำถามนี้เปรียบเสมือน 'Catch-22' สำหรับสโมสรฟุตบอลที่เต็มไปด้วยหนี้สินและกำลังย่ำแย่ มันมาจากนายธนาคารของเชลซีที่ถามอดีตประธานบริหารของเราในช่วงปลายเดือนมีนาคมปี 1982 การระงับเช็คของเอฟเอจะถือเป็นการปิดฉากเรื่องราวของเชลซีอย่างถาวร ดังนั้นนักเตะจึงไม่ได้รับค่าเหนื่อยเพื่อซื้อเวลาไปอีกนิด แต่ความพยายามอันสิ้นหวังของตระกูลเมียร์สในการรักษาอำนาจควบคุมสโมสรที่บรรพบุรุษของพวกเขาก่อตั้งขึ้นกำลังมาถึงทางตัน</p>
+
+      <p data-lang-th="เมื่อข้อตกลงลุล่วงในวันที่ 2 เมษายน เคน เบตส์ ได้ซื้อสโมสรฟุตบอลแห่งนี้ด้วยราคาเพียง 1 ปอนด์ อย่างไรก็ตาม เขาไม่ได้เป็นเจ้าของทรัพย์สินหลักของสโมสร กรรมสิทธิ์ที่ดินของสนามสแตมฟอร์ดบริดจ์ถูกแยกออกจากสโมสรไปอยู่ในบริษัทแยกต่างหากชื่อ SB Properties เชลซีกลับกลายเป็นเพียงผู้เช่าในสนามของตัวเองอีกครั้ง ซึ่งการแยกส่วนนี้จะกลายเป็นเงามืดที่คอยบดบัง ขัดขวาง และคุกคามเราไปอีกหลายปี" data-lang-en="When the deal was done on 2 April, Ken Bates bought the football club for only £1. However, he did not acquire its major asset. The freehold of the Stamford Bridge stadium site had been separated from the club into a separate company, SB Properties. Chelsea were once again tenants in our own ground, a separation that would come to overshadow, hinder, and threaten us for years to come.">เมื่อข้อตกลงลุล่วงในวันที่ 2 เมษายน เคน เบตส์ ได้ซื้อสโมสรฟุตบอลแห่งนี้ด้วยราคาเพียง 1 ปอนด์ อย่างไรก็ตาม เขาไม่ได้เป็นเจ้าของทรัพย์สินหลักของสโมสร กรรมสิทธิ์ที่ดินของสนามสแตมฟอร์ดบริดจ์ถูกแยกออกจากสโมสรไปอยู่ในบริษัทแยกต่างหากชื่อ SB Properties เชลซีกลับกลายเป็นเพียงผู้เช่าในสนามของตัวเองอีกครั้ง ซึ่งการแยกส่วนนี้จะกลายเป็นเงามืดที่คอยบดบัง ขัดขวาง และคุกคามเราไปอีกหลายปี</p>
+
+      <p data-lang-th="เบตส์ลงมือพลิกฟื้นธุรกิจ: มีการปลดพนักงาน ปล่อยตัวนักเตะ และขึ้นราคาตั๋ว แต่ในฤดูกาลแรกเต็มตัวภายใต้การบริหารของเขา (1982/83) เชลซีต้องเผชิญกับฤดูกาลที่เลวร้ายที่สุดในประวัติศาสตร์ โดยรอดพ้นจากหายนะการตกชั้นไปสู่ลีกระดับสามอย่างหวุดหวิด" data-lang-en="Bates set about turning the business around: jobs were cut, players released, and ticket prices raised. But in the first full season under his control (1982/83), Chelsea suffered the worst season in our history, narrowly avoiding the disaster of relegation to the third tier.">เบตส์ลงมือพลิกฟื้นธุรกิจ: มีการปลดพนักงาน ปล่อยตัวนักเตะ และขึ้นราคาตั๋ว แต่ในฤดูกาลแรกเต็มตัวภายใต้การบริหารของเขา (1982/83) เชลซีต้องเผชิญกับฤดูกาลที่เลวร้ายที่สุดในประวัติศาสตร์ โดยรอดพ้นจากหายนะการตกชั้นไปสู่ลีกระดับสามอย่างหวุดหวิด</p>
+
+      <!-- SECTION 2 -->
+      <h2 data-lang-th="โฉมใหม่ทัพสิงห์บลูส์ของนีล" data-lang-en="Neal’s New-Look Blues">โฉมใหม่ทัพสิงห์บลูส์ของนีล</h2>
+
+      <p class="drop-cap" data-lang-th="สิ่งสำคัญคือเบตส์ยังคงไว้วางใจผู้จัดการทีมผู้ชาญฉลาดที่เขารับช่วงต่อมา – จอห์น นีล หลังจากรอดพ้นการตกชั้นมาได้อย่างหวุดหวิด การยกเครื่องครั้งใหญ่ก็เริ่มต้นขึ้น นักเตะหลายคนถูกปล่อยตัวออกไป ในขณะที่เบตส์มอบเงินทุนให้นีลและเอียน แม็คนีล ผู้ช่วยของเขา เพื่อดำเนินการเซ็นสัญญาคว้านักเตะอย่างชาญฉลาด" data-lang-en="Crucially, Bates stuck by the wise manager he had inherited – John Neal. With relegation narrowly avoided, a major overhaul began. Many players were shipped out while Bates provided funds for Neal and his assistant Ian McNeill to conduct an astute signing spree.">สิ่งสำคัญคือเบตส์ยังคงไว้วางใจผู้จัดการทีมผู้ชาญฉลาดที่เขารับช่วงต่อมา – จอห์น นีล หลังจากรอดพ้นการตกชั้นมาได้อย่างหวุดหวิด การยกเครื่องครั้งใหญ่ก็เริ่มต้นขึ้น นักเตะหลายคนถูกปล่อยตัวออกไป ในขณะที่เบตส์มอบเงินทุนให้นีลและเอียน แม็คนีล ผู้ช่วยของเขา เพื่อดำเนินการเซ็นสัญญาคว้านักเตะอย่างชาญฉลาด</p>
+
+      <p data-lang-th="เคอร์รี่ ดิ๊กซัน, แพท เนวิน, ไนเจล แสป็คแมน, โจ แม็คลาฟลิน และผู้รักษาประตู เอ็ดดี้ นีดซ์วีซกี้ ตบเท้าเข้ามาร่วมทีม พวกเขาเข้ามาผสมผสานกับขุมกำลังเดิมอย่าง โคลิน เพตส์, จอห์น บัมสเตด, เดวิด สปีดี้ และ โจอี้ โจนส์ ส่วนผสมใหม่นี้พลิกโฉมทีมได้แทบจะในชั่วข้ามคืน กลายเป็นทีมเต็งลุ้นเลื่อนชั้นอย่างแท้จริง" data-lang-en="In came Kerry Dixon, Pat Nevin, Nigel Spackman, Joe McLaughlin, and goalkeeper Eddie Niedzwiecki. These were added to existing talents like Colin Pates, John Bumstead, David Speedie, and Joey Jones. This new mix was transformed almost overnight, becoming genuine promotion chasers.">เคอร์รี่ ดิ๊กซัน, แพท เนวิน, ไนเจล แสป็คแมน, โจ แม็คลาฟลิน และผู้รักษาประตู เอ็ดดี้ นีดซ์วีซกี้ ตบเท้าเข้ามาร่วมทีม พวกเขาเข้ามาผสมผสานกับขุมกำลังเดิมอย่าง โคลิน เพตส์, จอห์น บัมสเตด, เดวิด สปีดี้ และ โจอี้ โจนส์ ส่วนผสมใหม่นี้พลิกโฉมทีมได้แทบจะในชั่วข้ามคืน กลายเป็นทีมเต็งลุ้นเลื่อนชั้นอย่างแท้จริง</p>
+
+      <!-- SECTION 3 -->
+      <h2 data-lang-th="การเลื่อนชั้นปี 1983/84" data-lang-en="The 1983/84 Promotion">การเลื่อนชั้นปี 1983/84</h2>
+
+      <p class="drop-cap" data-lang-th="ทีมประเดิมสนามนัดแรกของฤดูกาล 1983/84 ด้วยชัยชนะ 5-0 โดยดิ๊กซันทำสองประตู เมื่อฤดูกาลดำเนินไป โมเมนตัมของทีมก็หยุดไม่อยู่ ลีดส์ คู่ปรับเก่าถูกถล่มไป 5-0 เพื่อการันตีการเลื่อนชั้น และดิ๊กซัน โกลเด้นบอยคนใหม่ของสแตมฟอร์ดบริดจ์ เป็นผู้ทำประตูเดียวในเกมนัดสุดท้ายที่กริมสบี้ คว้าแชมป์ดิวิชั่นสองมาครองได้สำเร็จ 'เชลซีกลับมาแล้ว!' คือเสียงตะโกนดังกึกก้องจากบนอัฒจันทร์" data-lang-en="The team won its first game of the 1983/84 season 5-0, with Dixon netting twice. As the season progressed, the momentum was unstoppable. Old enemies Leeds were beaten 5-0 to win promotion, and Stamford Bridge’s new golden boy, Dixon, scored the only goal in the final game at Grimsby to secure the Division Two title. ‘Chelsea are back!’ was the terrace cry.">ทีมประเดิมสนามนัดแรกของฤดูกาล 1983/84 ด้วยชัยชนะ 5-0 โดยดิ๊กซันทำสองประตู เมื่อฤดูกาลดำเนินไป โมเมนตัมของทีมก็หยุดไม่อยู่ ลีดส์ คู่ปรับเก่าถูกถล่มไป 5-0 เพื่อการันตีการเลื่อนชั้น และดิ๊กซัน โกลเด้นบอยคนใหม่ของสแตมฟอร์ดบริดจ์ เป็นผู้ทำประตูเดียวในเกมนัดสุดท้ายที่กริมสบี้ คว้าแชมป์ดิวิชั่นสองมาครองได้สำเร็จ 'เชลซีกลับมาแล้ว!' คือเสียงตะโกนดังกึกก้องจากบนอัฒจันทร์</p>
+
+      <!-- SECTION 4 -->
+      <h2 data-lang-th="พอล คาโนวิลล์: ผู้บุกเบิก" data-lang-en="Paul Canoville: A Pioneer">พอล คาโนวิลล์: ผู้บุกเบิก</h2>
+
+      <p class="drop-cap" data-lang-th="ในช่วงยุคนี้ พอล คาโนวิลล์ ได้กลายมาเป็นผู้บุกเบิกคนสำคัญของสโมสร เขาเซ็นสัญญามาร่วมทีมตั้งแต่วัยรุ่น และกลายเป็นนักเตะผิวดำคนแรกที่ได้ลงเล่นให้กับทีมชุดใหญ่ของเชลซี การประเดิมสนามของเขาที่คริสตัล พาเลซ ในปี 1982 ต้องด่างพร้อยจากการเหยียดเชื้อชาติอย่างรุนแรงจากแฟนบอลส่วนใหญ่ แม้พฤติกรรมดังกล่าวจะยังคงดำเนินต่อไป แต่ความอดทนอดกลั้นและผลงานสำคัญในสนามของเขา—รวมถึงประตูที่ช่วยให้เราขึ้นนำในเกมบอลถ้วยสุดเร้าใจกับเชฟฟิลด์ เว้นส์เดย์—ก็ค่อยๆ เอาชนะใจและได้รับการสนับสนุนจากแฟนบอลฝั่ง Shed End คาโนวิลล์คือผู้เบิกทางที่ความเข้มแข็งของเขาได้ปูทางไปสู่สโมสรที่มีความหลากหลายอย่างในปัจจุบัน" data-lang-en="During this era, Paul Canoville became a vital pioneer for the club. Signed as a teenager, he became the first black player to make a first-team debut for Chelsea. His debut at Crystal Palace in 1982 was marred by appalling racist abuse from a significant portion of the crowd. Despite the persistence of such behaviour, his resilience and his crucial contributions on the pitch—including the goal that put us ahead in a spectacular cup tie against Sheffield Wednesday—gradually earned him the support of the Shed End. Canoville was a trailblazer whose resilience paved the way for the diverse club of today.">ในช่วงยุคนี้ พอล คาโนวิลล์ ได้กลายมาเป็นผู้บุกเบิกคนสำคัญของสโมสร เขาเซ็นสัญญามาร่วมทีมตั้งแต่วัยรุ่น และกลายเป็นนักเตะผิวดำคนแรกที่ได้ลงเล่นให้กับทีมชุดใหญ่ของเชลซี การประเดิมสนามของเขาที่คริสตัล พาเลซ ในปี 1982 ต้องด่างพร้อยจากการเหยียดเชื้อชาติอย่างรุนแรงจากแฟนบอลส่วนใหญ่ แม้พฤติกรรมดังกล่าวจะยังคงดำเนินต่อไป แต่ความอดทนอดกลั้นและผลงานสำคัญในสนามของเขา—รวมถึงประตูที่ช่วยให้เราขึ้นนำในเกมบอลถ้วยสุดเร้าใจกับเชฟฟิลด์ เว้นส์เดย์—ก็ค่อยๆ เอาชนะใจและได้รับการสนับสนุนจากแฟนบอลฝั่ง Shed End คาโนวิลล์คือผู้เบิกทางที่ความเข้มแข็งของเขาได้ปูทางไปสู่สโมสรที่มีความหลากหลายอย่างในปัจจุบัน</p>
+
+      <!-- SECTION 5 -->
+      <h2 data-lang-th="อุปสรรคและการสร้างทีมใหม่" data-lang-en="Struggles and Rebuilding">อุปสรรคและการสร้างทีมใหม่</h2>
+
+      <p class="drop-cap" data-lang-th="การกลับคืนสู่ลีกสูงสุดของเชลซีในช่วงแรกประสบความสำเร็จเป็นอย่างดี รวมถึงการจบอันดับที่หกในปี 1985 และ 1986 อย่างไรก็ตาม การสูญเสียผู้เล่นคนสำคัญอย่างนีดซ์วีซกี้จากอาการบาดเจ็บ และขวัญกำลังใจในห้องแต่งตัวที่แตกร้าว นำไปสู่ความตกต่ำ หลังจากจอห์น นีล อำลาทีมไป จอห์น ฮอลลินส์ ก็เข้ามากุมบังเหียน ซึ่งท้ายที่สุดก็นำไปสู่การตกชั้นในปี 1988 ภายใต้การคุมทีมของ บ็อบบี้ แคมป์เบลล์ ผู้สืบทอดตำแหน่งของเขา" data-lang-en="Chelsea’s return to the top flight saw initial success, including a sixth-place finish in 1985 and 1986. However, the loss of key players like Niedzwiecki to injury and a fracturing of dressing room morale led to a decline. After the departure of John Neal, John Hollins took the helm, eventually leading to relegation in 1988 under his successor, Bobby Campbell.">การกลับคืนสู่ลีกสูงสุดของเชลซีในช่วงแรกประสบความสำเร็จเป็นอย่างดี รวมถึงการจบอันดับที่หกในปี 1985 และ 1986 อย่างไรก็ตาม การสูญเสียผู้เล่นคนสำคัญอย่างนีดซ์วีซกี้จากอาการบาดเจ็บ และขวัญกำลังใจในห้องแต่งตัวที่แตกร้าว นำไปสู่ความตกต่ำ หลังจากจอห์น นีล อำลาทีมไป จอห์น ฮอลลินส์ ก็เข้ามากุมบังเหียน ซึ่งท้ายที่สุดก็นำไปสู่การตกชั้นในปี 1988 ภายใต้การคุมทีมของ บ็อบบี้ แคมป์เบลล์ ผู้สืบทอดตำแหน่งของเขา</p>
+
+      <p data-lang-th="อย่างไรก็ตาม เชลซีชุดนี้ได้แสดงให้เห็นถึงความยืดหยุ่น โดยสามารถกลับคืนสู่ลีกสูงสุดได้อย่างรวดเร็วในฐานะแชมป์ดิวิชั่นสองด้วยสถิติ 99 คะแนน พวกเขาจบอันดับที่ห้าในดิวิชั่นหนึ่งในฤดูกาลต่อมา ซึ่งเป็นจุดสูงสุดที่ไม่ได้เห็นมานานถึง 20 ปี" data-lang-en="However, this Chelsea showed resilience, cruising back to the top division as Division Two champions with a record 99 points. They finished fifth in Division One the following season—a peak not seen for 20 years.">อย่างไรก็ตาม เชลซีชุดนี้ได้แสดงให้เห็นถึงความยืดหยุ่น โดยสามารถกลับคืนสู่ลีกสูงสุดได้อย่างรวดเร็วในฐานะแชมป์ดิวิชั่นสองด้วยสถิติ 99 คะแนน พวกเขาจบอันดับที่ห้าในดิวิชั่นหนึ่งในฤดูกาลต่อมา ซึ่งเป็นจุดสูงสุดที่ไม่ได้เห็นมานานถึง 20 ปี</p>
+
+      <!-- SECTION 6 -->
+      <h2 data-lang-th="สงครามเพื่อสแตมฟอร์ดบริดจ์" data-lang-en="The Battle of the Bridge">สงครามเพื่อสแตมฟอร์ดบริดจ์</h2>
+
+      <p class="drop-cap" data-lang-th="ในขณะที่ทีมกำลังต่อสู้อยู่ในสนาม 'สงครามเพื่อสแตมฟอร์ดบริดจ์' ก็กำลังถูกต่อสู้ในชั้นศาล กลุ่มนักพัฒนาอสังหาริมทรัพย์ที่เป็นเจ้าของ SB Properties มีแผนที่จะย้ายสโมสรออกจากสแตมฟอร์ดบริดจ์เพื่อใช้ประโยชน์จากมูลค่าที่ดิน เคน เบตส์ เข้าร่วมการต่อสู้ทางกฎหมายที่กินเวลานานนับทศวรรษ เพื่อชะลอการย้ายและใช้กลยุทธ์ต่างๆ นานาเพื่อรักษาสโมสรให้อยู่รอด" data-lang-en="While the team fought on the pitch, a 'Battle of the Bridge' was being fought in court. The developers who owned SB Properties had plans to move the club out of Stamford Bridge to exploit the land value. Ken Bates engaged in a decade-long legal fight, delaying moves and diversifying tactics to keep the club alive.">ในขณะที่ทีมกำลังต่อสู้อยู่ในสนาม 'สงครามเพื่อสแตมฟอร์ดบริดจ์' ก็กำลังถูกต่อสู้ในชั้นศาล กลุ่มนักพัฒนาอสังหาริมทรัพย์ที่เป็นเจ้าของ SB Properties มีแผนที่จะย้ายสโมสรออกจากสแตมฟอร์ดบริดจ์เพื่อใช้ประโยชน์จากมูลค่าที่ดิน เคน เบตส์ เข้าร่วมการต่อสู้ทางกฎหมายที่กินเวลานานนับทศวรรษ เพื่อชะลอการย้ายและใช้กลยุทธ์ต่างๆ นานาเพื่อรักษาสโมสรให้อยู่รอด</p>
+
+      <p data-lang-th="ในที่สุดกลุ่มผู้พัฒนาก็ล้มละลายในปี 1992 และเราก็สามารถรักษากรรมสิทธิ์ที่ดินไว้ได้อย่างถาวร เพื่อป้องกันภัยคุกคามในอนาคต จึงได้มีการก่อตั้งโครงการ Chelsea Pitch Owners (CPO) ขึ้นมา เพื่อให้มั่นใจว่าที่ดินของสนามจะยังคงอยู่ภายใต้การควบคุมของผู้ที่รักและห่วงใยสโมสรแห่งนี้มากที่สุด" data-lang-en="The developers eventually went bust in 1992, and the freehold was finally secured. To guard against future threats, the Chelsea Pitch Owners (CPO) scheme was established, ensuring that the stadium land would remain under the control of those who cared about the club most.">ในที่สุดกลุ่มผู้พัฒนาก็ล้มละลายในปี 1992 และเราก็สามารถรักษากรรมสิทธิ์ที่ดินไว้ได้อย่างถาวร เพื่อป้องกันภัยคุกคามในอนาคต จึงได้มีการก่อตั้งโครงการ Chelsea Pitch Owners (CPO) ขึ้นมา เพื่อให้มั่นใจว่าที่ดินของสนามจะยังคงอยู่ภายใต้การควบคุมของผู้ที่รักและห่วงใยสโมสรแห่งนี้มากที่สุด</p>
+
+      <p data-lang-th="เมื่อหลุดพ้นจากพันธนาการเหล่านั้น ยักษ์หลับก็พร้อมแล้วสำหรับการเปลี่ยนแปลง แม้จะต้องเผชิญกับฤดูกาลที่ยากลำบากและการเปลี่ยนแปลงผู้จัดการทีมอยู่บ้าง แต่ยุคแห่งความไม่สม่ำเสมอก็กำลังจะค่อยๆ เลือนหายไป ตัวเร่งปฏิกิริยาแห่งการปฏิวัติที่ไม่น่าจะเกิดขึ้นได้กำลังเดินทางมา เพื่อมอบสัญญาแห่งบทใหม่สำหรับสโมสรที่ในที่สุดก็พร้อมจะผงาดขึ้นอีกครั้ง" data-lang-en="With those shackles off, the sleeping giant was ripe for change. Despite some difficult seasons and managerial shifts, the era of inconsistency was beginning to fade. The unlikely catalyst for revolution was on its way, promising a new chapter for a club finally ready to rise.">เมื่อหลุดพ้นจากพันธนาการเหล่านั้น ยักษ์หลับก็พร้อมแล้วสำหรับการเปลี่ยนแปลง แม้จะต้องเผชิญกับฤดูกาลที่ยากลำบากและการเปลี่ยนแปลงผู้จัดการทีมอยู่บ้าง แต่ยุคแห่งความไม่สม่ำเสมอก็กำลังจะค่อยๆ เลือนหายไป ตัวเร่งปฏิกิริยาแห่งการปฏิวัติที่ไม่น่าจะเกิดขึ้นได้กำลังเดินทางมา เพื่อมอบสัญญาแห่งบทใหม่สำหรับสโมสรที่ในที่สุดก็พร้อมจะผงาดขึ้นอีกครั้ง</p>
+
+      <!-- Chapter End -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๖ —" data-lang-en="— End of Chapter 6 —">— จบบทที่ ๖ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-5.html" class="chapter-nav__back" data-lang-th="← บทที่ ๕" data-lang-en="← Chapter 5">← บทที่ ๕</a>
+          <a href="chapter-7.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๗ →" data-lang-en="Read Chapter 7 →">อ่านบทที่ ๗ →</a>
+        </div>
+      </div>
+
+    </div><!-- /.article__inner -->
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:60px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== FLOATING CLOCK ===================== -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // CHAPTER LANGUAGE TOGGLE (TH / EN)
+    // ============================================
+    let chapterLang = 'th';
+
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        if (chapterLang === 'th') {
+          el.innerHTML = el.getAttribute('data-lang-th');
+        } else {
+          el.innerHTML = el.getAttribute('data-lang-en');
+        }
+      });
+    }
+
+    // ============================================
+    // FLOATING CLOCK
+    // ============================================
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    updateFloatingClocks();
+    setInterval(updateFloatingClocks, 1000);
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+๐“ฆKarn-La-Khrang-Nan-Official-main
+ โ”ฃ ๐“.continue
+ โ” โ”— ๐“prompts
+ โ” โ” โ”— ๐“new-prompt.md
+ โ”ฃ ๐“.vscode
+ โ” โ”— ๐“settings.json
+ โ”ฃ ๐“assets
+ โ” โ”ฃ ๐“css
+ โ” โ” โ”— ๐“style.css
+ โ” โ”ฃ ๐“images
+ โ” โ” โ”ฃ ๐“flags
+ โ” โ” โ” โ”ฃ ๐“abw.svg
+ โ” โ” โ” โ”ฃ ๐“ae.svg
+ โ” โ” โ” โ”ฃ ๐“afg.svg
+ โ” โ” โ” โ”ฃ ๐“ago.svg
+ โ” โ” โ” โ”ฃ ๐“aia.svg
+ โ” โ” โ” โ”ฃ ๐“ala.svg
+ โ” โ” โ” โ”ฃ ๐“alb.svg
+ โ” โ” โ” โ”ฃ ๐“and.svg
+ โ” โ” โ” โ”ฃ ๐“arg.svg
+ โ” โ” โ” โ”ฃ ๐“arm.svg
+ โ” โ” โ” โ”ฃ ๐“asm.svg
+ โ” โ” โ” โ”ฃ ๐“ata.svg
+ โ” โ” โ” โ”ฃ ๐“atf.svg
+ โ” โ” โ” โ”ฃ ๐“atg.svg
+ โ” โ” โ” โ”ฃ ๐“aus.svg
+ โ” โ” โ” โ”ฃ ๐“aut.svg
+ โ” โ” โ” โ”ฃ ๐“aze.svg
+ โ” โ” โ” โ”ฃ ๐“bdi.svg
+ โ” โ” โ” โ”ฃ ๐“bel.svg
+ โ” โ” โ” โ”ฃ ๐“ben.svg
+ โ” โ” โ” โ”ฃ ๐“bes.svg
+ โ” โ” โ” โ”ฃ ๐“bfa.svg
+ โ” โ” โ” โ”ฃ ๐“bgd.svg
+ โ” โ” โ” โ”ฃ ๐“bgr.svg
+ โ” โ” โ” โ”ฃ ๐“bhr.svg
+ โ” โ” โ” โ”ฃ ๐“bhs.svg
+ โ” โ” โ” โ”ฃ ๐“bih.svg
+ โ” โ” โ” โ”ฃ ๐“blm.svg
+ โ” โ” โ” โ”ฃ ๐“blr.svg
+ โ” โ” โ” โ”ฃ ๐“blz.svg
+ โ” โ” โ” โ”ฃ ๐“bmu.svg
+ โ” โ” โ” โ”ฃ ๐“bol.svg
+ โ” โ” โ” โ”ฃ ๐“bra.svg
+ โ” โ” โ” โ”ฃ ๐“brb.svg
+ โ” โ” โ” โ”ฃ ๐“brn.svg
+ โ” โ” โ” โ”ฃ ๐“btn.svg
+ โ” โ” โ” โ”ฃ ๐“bvt.svg
+ โ” โ” โ” โ”ฃ ๐“bwa.svg
+ โ” โ” โ” โ”ฃ ๐“caf.svg
+ โ” โ” โ” โ”ฃ ๐“can.svg
+ โ” โ” โ” โ”ฃ ๐“cck.svg
+ โ” โ” โ” โ”ฃ ๐“ch.svg
+ โ” โ” โ” โ”ฃ ๐“chl.svg
+ โ” โ” โ” โ”ฃ ๐“chn.svg
+ โ” โ” โ” โ”ฃ ๐“civ.svg
+ โ” โ” โ” โ”ฃ ๐“cmr.svg
+ โ” โ” โ” โ”ฃ ๐“cod.svg
+ โ” โ” โ” โ”ฃ ๐“cog.svg
+ โ” โ” โ” โ”ฃ ๐“cok.svg
+ โ” โ” โ” โ”ฃ ๐“col.svg
+ โ” โ” โ” โ”ฃ ๐“com.svg
+ โ” โ” โ” โ”ฃ ๐“cpv.svg
+ โ” โ” โ” โ”ฃ ๐“cri.svg
+ โ” โ” โ” โ”ฃ ๐“cub.svg
+ โ” โ” โ” โ”ฃ ๐“cuw.svg
+ โ” โ” โ” โ”ฃ ๐“cxr.svg
+ โ” โ” โ” โ”ฃ ๐“cym.svg
+ โ” โ” โ” โ”ฃ ๐“cyp.svg
+ โ” โ” โ” โ”ฃ ๐“cze.svg
+ โ” โ” โ” โ”ฃ ๐“dji.svg
+ โ” โ” โ” โ”ฃ ๐“dma.svg
+ โ” โ” โ” โ”ฃ ๐“dnk.svg
+ โ” โ” โ” โ”ฃ ๐“dom.svg
+ โ” โ” โ” โ”ฃ ๐“dza.svg
+ โ” โ” โ” โ”ฃ ๐“ecu.svg
+ โ” โ” โ” โ”ฃ ๐“egy.svg
+ โ” โ” โ” โ”ฃ ๐“eh.svg
+ โ” โ” โ” โ”ฃ ๐“eng.svg
+ โ” โ” โ” โ”ฃ ๐“eri.svg
+ โ” โ” โ” โ”ฃ ๐“esp.svg
+ โ” โ” โ” โ”ฃ ๐“est.svg
+ โ” โ” โ” โ”ฃ ๐“eth.svg
+ โ” โ” โ” โ”ฃ ๐“fin.svg
+ โ” โ” โ” โ”ฃ ๐“fji.svg
+ โ” โ” โ” โ”ฃ ๐“flk.svg
+ โ” โ” โ” โ”ฃ ๐“fra.svg
+ โ” โ” โ” โ”ฃ ๐“fro.svg
+ โ” โ” โ” โ”ฃ ๐“fsm.svg
+ โ” โ” โ” โ”ฃ ๐“gab.svg
+ โ” โ” โ” โ”ฃ ๐“gb-nir.svg
+ โ” โ” โ” โ”ฃ ๐“gb.svg
+ โ” โ” โ” โ”ฃ ๐“geo.svg
+ โ” โ” โ” โ”ฃ ๐“ger.svg
+ โ” โ” โ” โ”ฃ ๐“ggy.svg
+ โ” โ” โ” โ”ฃ ๐“gha.svg
+ โ” โ” โ” โ”ฃ ๐“gib.svg
+ โ” โ” โ” โ”ฃ ๐“gin.svg
+ โ” โ” โ” โ”ฃ ๐“glp.svg
+ โ” โ” โ” โ”ฃ ๐“gmb.svg
+ โ” โ” โ” โ”ฃ ๐“gnb.svg
+ โ” โ” โ” โ”ฃ ๐“gnq.svg
+ โ” โ” โ” โ”ฃ ๐“grc.svg
+ โ” โ” โ” โ”ฃ ๐“grd.svg
+ โ” โ” โ” โ”ฃ ๐“grl.svg
+ โ” โ” โ” โ”ฃ ๐“gtm.svg
+ โ” โ” โ” โ”ฃ ๐“guf.svg
+ โ” โ” โ” โ”ฃ ๐“gum.svg
+ โ” โ” โ” โ”ฃ ๐“guy.svg
+ โ” โ” โ” โ”ฃ ๐“hkg.svg
+ โ” โ” โ” โ”ฃ ๐“hmd.svg
+ โ” โ” โ” โ”ฃ ๐“hnd.svg
+ โ” โ” โ” โ”ฃ ๐“hrv.svg
+ โ” โ” โ” โ”ฃ ๐“hti.svg
+ โ” โ” โ” โ”ฃ ๐“hun.svg
+ โ” โ” โ” โ”ฃ ๐“idn.svg
+ โ” โ” โ” โ”ฃ ๐“imn.svg
+ โ” โ” โ” โ”ฃ ๐“ind.svg
+ โ” โ” โ” โ”ฃ ๐“iot.svg
+ โ” โ” โ” โ”ฃ ๐“irl.svg
+ โ” โ” โ” โ”ฃ ๐“irn.svg
+ โ” โ” โ” โ”ฃ ๐“irq.svg
+ โ” โ” โ” โ”ฃ ๐“isl.svg
+ โ” โ” โ” โ”ฃ ๐“isr.svg
+ โ” โ” โ” โ”ฃ ๐“ita.svg
+ โ” โ” โ” โ”ฃ ๐“jam.svg
+ โ” โ” โ” โ”ฃ ๐“jey.svg
+ โ” โ” โ” โ”ฃ ๐“jor.svg
+ โ” โ” โ” โ”ฃ ๐“jpn.svg
+ โ” โ” โ” โ”ฃ ๐“kaz.svg
+ โ” โ” โ” โ”ฃ ๐“ken.svg
+ โ” โ” โ” โ”ฃ ๐“kgz.svg
+ โ” โ” โ” โ”ฃ ๐“khm.svg
+ โ” โ” โ” โ”ฃ ๐“kir.svg
+ โ” โ” โ” โ”ฃ ๐“kna.svg
+ โ” โ” โ” โ”ฃ ๐“kor.svg
+ โ” โ” โ” โ”ฃ ๐“kwt.svg
+ โ” โ” โ” โ”ฃ ๐“lao.svg
+ โ” โ” โ” โ”ฃ ๐“lbn.svg
+ โ” โ” โ” โ”ฃ ๐“lbr.svg
+ โ” โ” โ” โ”ฃ ๐“lby.svg
+ โ” โ” โ” โ”ฃ ๐“lca.svg
+ โ” โ” โ” โ”ฃ ๐“lie.svg
+ โ” โ” โ” โ”ฃ ๐“lka.svg
+ โ” โ” โ” โ”ฃ ๐“lso.svg
+ โ” โ” โ” โ”ฃ ๐“ltu.svg
+ โ” โ” โ” โ”ฃ ๐“lux.svg
+ โ” โ” โ” โ”ฃ ๐“lva.svg
+ โ” โ” โ” โ”ฃ ๐“mac.svg
+ โ” โ” โ” โ”ฃ ๐“maf.svg
+ โ” โ” โ” โ”ฃ ๐“mar.svg
+ โ” โ” โ” โ”ฃ ๐“mco.svg
+ โ” โ” โ” โ”ฃ ๐“mda.svg
+ โ” โ” โ” โ”ฃ ๐“mdg.svg
+ โ” โ” โ” โ”ฃ ๐“mdv.svg
+ โ” โ” โ” โ”ฃ ๐“mex.svg
+ โ” โ” โ” โ”ฃ ๐“mhl.svg
+ โ” โ” โ” โ”ฃ ๐“mkd.svg
+ โ” โ” โ” โ”ฃ ๐“mli.svg
+ โ” โ” โ” โ”ฃ ๐“mlt.svg
+ โ” โ” โ” โ”ฃ ๐“mmr.svg
+ โ” โ” โ” โ”ฃ ๐“mne.svg
+ โ” โ” โ” โ”ฃ ๐“mng.svg
+ โ” โ” โ” โ”ฃ ๐“mnp.svg
+ โ” โ” โ” โ”ฃ ๐“moz.svg
+ โ” โ” โ” โ”ฃ ๐“mrt.svg
+ โ” โ” โ” โ”ฃ ๐“msr.svg
+ โ” โ” โ” โ”ฃ ๐“mtq.svg
+ โ” โ” โ” โ”ฃ ๐“mus.svg
+ โ” โ” โ” โ”ฃ ๐“mwi.svg
+ โ” โ” โ” โ”ฃ ๐“mys.svg
+ โ” โ” โ” โ”ฃ ๐“myt.svg
+ โ” โ” โ” โ”ฃ ๐“nam.svg
+ โ” โ” โ” โ”ฃ ๐“ncl.svg
+ โ” โ” โ” โ”ฃ ๐“ned.svg
+ โ” โ” โ” โ”ฃ ๐“ner.svg
+ โ” โ” โ” โ”ฃ ๐“nfk.svg
+ โ” โ” โ” โ”ฃ ๐“nga.svg
+ โ” โ” โ” โ”ฃ ๐“nic.svg
+ โ” โ” โ” โ”ฃ ๐“niu.svg
+ โ” โ” โ” โ”ฃ ๐“nor.svg
+ โ” โ” โ” โ”ฃ ๐“npl.svg
+ โ” โ” โ” โ”ฃ ๐“nru.svg
+ โ” โ” โ” โ”ฃ ๐“nzl.svg
+ โ” โ” โ” โ”ฃ ๐“omn.svg
+ โ” โ” โ” โ”ฃ ๐“pak.svg
+ โ” โ” โ” โ”ฃ ๐“pan.svg
+ โ” โ” โ” โ”ฃ ๐“pcn.svg
+ โ” โ” โ” โ”ฃ ๐“per.svg
+ โ” โ” โ” โ”ฃ ๐“phl.svg
+ โ” โ” โ” โ”ฃ ๐“plw.svg
+ โ” โ” โ” โ”ฃ ๐“png.svg
+ โ” โ” โ” โ”ฃ ๐“pol.svg
+ โ” โ” โ” โ”ฃ ๐“por.svg
+ โ” โ” โ” โ”ฃ ๐“pri.svg
+ โ” โ” โ” โ”ฃ ๐“prk.svg
+ โ” โ” โ” โ”ฃ ๐“pry.svg
+ โ” โ” โ” โ”ฃ ๐“pse.svg
+ โ” โ” โ” โ”ฃ ๐“pyf.svg
+ โ” โ” โ” โ”ฃ ๐“qat.svg
+ โ” โ” โ” โ”ฃ ๐“rename_flags.bat
+ โ” โ” โ” โ”ฃ ๐“reu.svg
+ โ” โ” โ” โ”ฃ ๐“rou.svg
+ โ” โ” โ” โ”ฃ ๐“rus.svg
+ โ” โ” โ” โ”ฃ ๐“rwa.svg
+ โ” โ” โ” โ”ฃ ๐“sau.svg
+ โ” โ” โ” โ”ฃ ๐“sco.svg
+ โ” โ” โ” โ”ฃ ๐“sdn.svg
+ โ” โ” โ” โ”ฃ ๐“se.svg
+ โ” โ” โ” โ”ฃ ๐“sen.svg
+ โ” โ” โ” โ”ฃ ๐“sgp.svg
+ โ” โ” โ” โ”ฃ ๐“sgs.svg
+ โ” โ” โ” โ”ฃ ๐“shn.svg
+ โ” โ” โ” โ”ฃ ๐“sjm.svg
+ โ” โ” โ” โ”ฃ ๐“slb.svg
+ โ” โ” โ” โ”ฃ ๐“sle.svg
+ โ” โ” โ” โ”ฃ ๐“slv.svg
+ โ” โ” โ” โ”ฃ ๐“smr.svg
+ โ” โ” โ” โ”ฃ ๐“som.svg
+ โ” โ” โ” โ”ฃ ๐“spm.svg
+ โ” โ” โ” โ”ฃ ๐“srb.svg
+ โ” โ” โ” โ”ฃ ๐“ssd.svg
+ โ” โ” โ” โ”ฃ ๐“stp.svg
+ โ” โ” โ” โ”ฃ ๐“sur.svg
+ โ” โ” โ” โ”ฃ ๐“svk.svg
+ โ” โ” โ” โ”ฃ ๐“svn.svg
+ โ” โ” โ” โ”ฃ ๐“swz.svg
+ โ” โ” โ” โ”ฃ ๐“sxm.svg
+ โ” โ” โ” โ”ฃ ๐“sy.svg
+ โ” โ” โ” โ”ฃ ๐“syc.svg
+ โ” โ” โ” โ”ฃ ๐“tc.svg
+ โ” โ” โ” โ”ฃ ๐“tcd.svg
+ โ” โ” โ” โ”ฃ ๐“tg.svg
+ โ” โ” โ” โ”ฃ ๐“th.svg
+ โ” โ” โ” โ”ฃ ๐“tj.svg
+ โ” โ” โ” โ”ฃ ๐“tk.svg
+ โ” โ” โ” โ”ฃ ๐“tl.svg
+ โ” โ” โ” โ”ฃ ๐“tm.svg
+ โ” โ” โ” โ”ฃ ๐“tn.svg
+ โ” โ” โ” โ”ฃ ๐“to.svg
+ โ” โ” โ” โ”ฃ ๐“tr.svg
+ โ” โ” โ” โ”ฃ ๐“tt.svg
+ โ” โ” โ” โ”ฃ ๐“tv.svg
+ โ” โ” โ” โ”ฃ ๐“tw.svg
+ โ” โ” โ” โ”ฃ ๐“tz.svg
+ โ” โ” โ” โ”ฃ ๐“ua.svg
+ โ” โ” โ” โ”ฃ ๐“ug.svg
+ โ” โ” โ” โ”ฃ ๐“um.svg
+ โ” โ” โ” โ”ฃ ๐“us.svg
+ โ” โ” โ” โ”ฃ ๐“uy.svg
+ โ” โ” โ” โ”ฃ ๐“uz.svg
+ โ” โ” โ” โ”ฃ ๐“vat.svg
+ โ” โ” โ” โ”ฃ ๐“vct.svg
+ โ” โ” โ” โ”ฃ ๐“ve.svg
+ โ” โ” โ” โ”ฃ ๐“vg.svg
+ โ” โ” โ” โ”ฃ ๐“vi.svg
+ โ” โ” โ” โ”ฃ ๐“vn.svg
+ โ” โ” โ” โ”ฃ ๐“vu.svg
+ โ” โ” โ” โ”ฃ ๐“wf.svg
+ โ” โ” โ” โ”ฃ ๐“wls.svg
+ โ” โ” โ” โ”ฃ ๐“wsm.svg
+ โ” โ” โ” โ”ฃ ๐“xk.svg
+ โ” โ” โ” โ”ฃ ๐“ye.svg
+ โ” โ” โ” โ”ฃ ๐“zaf.svg
+ โ” โ” โ” โ”ฃ ๐“zm.svg
+ โ” โ” โ” โ”— ๐“zw.svg
+ โ” โ” โ”ฃ ๐“icons
+ โ” โ” โ” โ”— ๐“john-terry.png
+ โ” โ” โ”ฃ ๐“players
+ โ” โ” โ” โ”ฃ ๐“john-terry
+ โ” โ” โ” โ” โ”ฃ ๐“profile.png
+ โ” โ” โ” โ” โ”— ๐“README.md
+ โ” โ” โ” โ”ฃ ๐“cole-palmer.jpg
+ โ” โ” โ” โ”ฃ ๐“enzo-fernandez.jpg
+ โ” โ” โ” โ”ฃ ๐“Estรชvรฃo.jpg
+ โ” โ” โ” โ”ฃ ๐“James.jpg
+ โ” โ” โ” โ”ฃ ๐“joao-pedro.jpg
+ โ” โ” โ” โ”— ๐“moises-caicedo.jpg
+ โ” โ” โ”ฃ ๐“promote
+ โ” โ” โ” โ”— ๐“fixtures-premier-peague-2026-27.jpg
+ โ” โ” โ”ฃ ๐“story
+ โ” โ” โ” โ”ฃ ๐“chapter-X.jpg
+ โ” โ” โ” โ”— ๐“placeholder-trophy.svg
+ โ” โ” โ”ฃ ๐“karnlakhrangnan-logo.png
+ โ” โ” โ”ฃ ๐“kanlakhrangnan-logo.svg
+ โ” โ” โ”ฃ ๐“kanlakhrangnan-logo1.svg
+ โ” โ” โ”— ๐“placeholder-team.svg
+ โ” โ”— ๐“js
+ โ” โ” โ”ฃ ๐“main.js
+ โ” โ” โ”— ๐“team.js
+ โ”ฃ ๐“data
+ โ” โ”ฃ ๐“combined-fixtures.json
+ โ” โ”ฃ ๐“combined-results.json
+ โ” โ”ฃ ๐“fixtures-men.json
+ โ” โ”ฃ ๐“icons.json
+ โ” โ”ฃ ๐“players-men.json
+ โ” โ”ฃ ๐“players-women.json
+ โ” โ”ฃ ๐“results-men.json
+ โ” โ”ฃ ๐“story-blue.json
+ โ” โ”ฃ ๐“tables-men.json
+ โ” โ”ฃ ๐“tables-women.json
+ โ” โ”— ๐“trophy.json
+ โ”ฃ ๐“databases
+ โ” โ”ฃ ๐“admin
+ โ” โ” โ”ฃ ๐“fixtures-men.xlsx
+ โ” โ” โ”ฃ ๐“fixtures-women.xlsx
+ โ” โ” โ”ฃ ๐“icons.xlsx
+ โ” โ” โ”ฃ ๐“players-men.xlsx
+ โ” โ” โ”ฃ ๐“players-women.xlsx
+ โ” โ” โ”ฃ ๐“results-men.xlsx
+ โ” โ” โ”ฃ ๐“results-women.xlsx
+ โ” โ” โ”ฃ ๐“story-blue.xlsx
+ โ” โ” โ”ฃ ๐“tables-men.xlsx
+ โ” โ” โ”ฃ ๐“tables-women.xlsx
+ โ” โ” โ”— ๐“trophy.xlsx
+ โ” โ”ฃ ๐“data
+ โ” โ” โ”ฃ ๐“combined-fixtures.json
+ โ” โ” โ”ฃ ๐“combined-results.json
+ โ” โ” โ”ฃ ๐“fixtures-men.json
+ โ” โ” โ”ฃ ๐“fixtures-women.json
+ โ” โ” โ”ฃ ๐“icons.json
+ โ” โ” โ”ฃ ๐“players-men.json
+ โ” โ” โ”ฃ ๐“players-women.json
+ โ” โ” โ”ฃ ๐“results-men.json
+ โ” โ” โ”ฃ ๐“results-women.json
+ โ” โ” โ”ฃ ๐“story-blue.json
+ โ” โ” โ”ฃ ๐“tables-men.json
+ โ” โ” โ”ฃ ๐“tables-women.json
+ โ” โ” โ”— ๐“trophy.json
+ โ” โ”ฃ ๐“lang
+ โ” โ” โ”ฃ ๐“en.json
+ โ” โ” โ”— ๐“th.json
+ โ” โ”— ๐“logo
+ โ” โ” โ”ฃ ๐“competitions
+ โ” โ” โ” โ”ฃ ๐“men
+ โ” โ” โ” โ” โ”ฃ ๐“england_efl-cup.svg
+ โ” โ” โ” โ” โ”ฃ ๐“england_emirates-fa-cup.svg
+ โ” โ” โ” โ” โ”ฃ ๐“england_english-premier-league.svg
+ โ” โ” โ” โ” โ”ฃ ๐“england_fa-community-shield.svg
+ โ” โ” โ” โ” โ”ฃ ๐“tournaments_uefa-champions-league.svg
+ โ” โ” โ” โ” โ”ฃ ๐“tournaments_uefa-conference-league.svg
+ โ” โ” โ” โ” โ”— ๐“tournaments_uefa-europa-league.svg
+ โ” โ” โ” โ”— ๐“women
+ โ” โ” โ” โ” โ”ฃ ๐“women_community-shield-logo.png
+ โ” โ” โ” โ” โ”ฃ ๐“women_fa_cup.png
+ โ” โ” โ” โ” โ”ฃ ๐“women_league_cup.png
+ โ” โ” โ” โ” โ”ฃ ๐“women_super_league.png
+ โ” โ” โ” โ” โ”— ๐“women_uwcl_champions_league_logo.svg
+ โ” โ” โ”ฃ ๐“teams
+ โ” โ” โ” โ”ฃ ๐“a-league-women-all-stars.png
+ โ” โ” โ” โ”ฃ ๐“australia_western-sydney-wanderers.svg
+ โ” โ” โ” โ”ฃ ๐“england_arsenal.svg
+ โ” โ” โ” โ”ฃ ๐“england_aston-villa.svg
+ โ” โ” โ” โ”ฃ ๐“england_birmingham.svg
+ โ” โ” โ” โ”ฃ ๐“england_bournemouth.svg
+ โ” โ” โ” โ”ฃ ๐“england_brentford.svg
+ โ” โ” โ” โ”ฃ ๐“england_brighton.svg
+ โ” โ” โ” โ”ฃ ๐“england_charlton.svg
+ โ” โ” โ” โ”ฃ ๐“england_chelsea.svg
+ โ” โ” โ” โ”ฃ ๐“england_coventry-city.svg
+ โ” โ” โ” โ”ฃ ๐“england_crystal-palace.svg
+ โ” โ” โ” โ”ฃ ๐“england_everton.svg
+ โ” โ” โ” โ”ฃ ๐“england_fulham.svg
+ โ” โ” โ” โ”ฃ ๐“england_hull-city.svg
+ โ” โ” โ” โ”ฃ ๐“england_ipswich.svg
+ โ” โ” โ” โ”ฃ ๐“england_leeds-united.svg
+ โ” โ” โ” โ”ฃ ๐“england_liverpool.svg
+ โ” โ” โ” โ”ฃ ๐“england_manchester-city.svg
+ โ” โ” โ” โ”ฃ ๐“england_manchester-united.svg
+ โ” โ” โ” โ”ฃ ๐“england_newcastle.svg
+ โ” โ” โ” โ”ฃ ๐“england_nottingham-forest.svg
+ โ” โ” โ” โ”ฃ ๐“england_sunderland.svg
+ โ” โ” โ” โ”ฃ ๐“england_tottenham--2006-2013.svg
+ โ” โ” โ” โ”ฃ ๐“england_west-ham.svg
+ โ” โ” โ” โ”ฃ ๐“italy_juventus--white.svg
+ โ” โ” โ” โ”ฃ ๐“italy_milan.svg
+ โ” โ” โ” โ”ฃ ๐“London_City_Lionesses.svg
+ โ” โ” โ” โ”ฃ ๐“malaysia_johor-darul-tazim.svg
+ โ” โ” โ” โ”— ๐“new-zealand_auckland-fc.svg
+ โ” โ” โ”— ๐“tv
+ โ” โ” โ” โ”ฃ ๐“.gitkeep
+ โ” โ” โ” โ”ฃ ๐“bg.svg
+ โ” โ” โ” โ”ฃ ๐“cfc.svg
+ โ” โ” โ” โ”ฃ ๐“monomax.png
+ โ” โ” โ” โ”— ๐“monomax.svg
+ โ”ฃ ๐“icon
+ โ” โ”ฃ ๐“alan-hudson-eng.html
+ โ” โ”ฃ ๐“ashley-cole-eng.html
+ โ” โ”ฃ ๐“bobby-tambling-eng.html
+ โ” โ”ฃ ๐“branislav-ivanovic-srb.html
+ โ” โ”ฃ ๐“carlo-cudicini-ita.html
+ โ” โ”ฃ ๐“cesar-azpilicueta-esp.html
+ โ” โ”ฃ ๐“charlie-cooke-sco.html
+ โ” โ”ฃ ๐“claude-makelele-fra.html
+ โ” โ”ฃ ๐“dennis-wise-eng.html
+ โ” โ”ฃ ๐“didier-drogba-civ.html
+ โ” โ”ฃ ๐“eden-hazard-bel.html
+ โ” โ”ฃ ๐“eidur-gudjohnsen-isl.html
+ โ” โ”ฃ ๐“frank-lampard-eng.html
+ โ” โ”ฃ ๐“gary-cahill-eng.html
+ โ” โ”ฃ ๐“gianfranco-zola-ita.html
+ โ” โ”ฃ ๐“gianluca-vialli-ita.html
+ โ” โ”ฃ ๐“jimmy-floyd-hasselbaink-ned.html
+ โ” โ”ฃ ๐“jimmy-greaves-eng.html
+ โ” โ”ฃ ๐“john-hollins-eng.html
+ โ” โ”ฃ ๐“john-obi-mikel-nga.html
+ โ” โ”ฃ ๐“john-terry-eng.html
+ โ” โ”ฃ ๐“john-terry.html
+ โ” โ”ฃ ๐“kerry-dixon-eng.html
+ โ” โ”ฃ ๐“marcel-desailly-fra.html
+ โ” โ”ฃ ๐“mark-hughes-wal.html
+ โ” โ”ฃ ๐“michael-ballack-ger.html
+ โ” โ”ฃ ๐“michael-essien-gha.html
+ โ” โ”ฃ ๐“ngolo-kante-fra.html
+ โ” โ”ฃ ๐“pat-nevin-sco.html
+ โ” โ”ฃ ๐“peter-bonetti-eng.html
+ โ” โ”ฃ ๐“peter-osgood-eng.html
+ โ” โ”ฃ ๐“petr-cech-cze.html
+ โ” โ”ฃ ๐“ramires-bra.html
+ โ” โ”ฃ ๐“ray-wilkins-eng.html
+ โ” โ”ฃ ๐“ricardo-carvalho-por.html
+ โ” โ”ฃ ๐“roberto-di-matteo-ita.html
+ โ” โ”ฃ ๐“ron-harris-eng.html
+ โ” โ”ฃ ๐“roy-bentley-eng.html
+ โ” โ”ฃ ๐“ruud-gullit-ned.html
+ โ” โ”ฃ ๐“steve-clarke-sco.html
+ โ” โ”ฃ ๐“tore-andre-flo-nor.html
+ โ” โ”ฃ ๐“willian-bra.html
+ โ” โ”— ๐“_TEMPLATE.html
+ โ”ฃ ๐“lang
+ โ” โ”ฃ ๐“en.json
+ โ” โ”— ๐“th.json
+ โ”ฃ ๐“the-story-blue
+ โ” โ”ฃ ๐“chapter-1.html
+ โ” โ”ฃ ๐“chapter-2.html
+ โ” โ”ฃ ๐“chapter-3.html
+ โ” โ”ฃ ๐“chapter-4.html
+ โ” โ”ฃ ๐“chapter-5.html
+ โ” โ”ฃ ๐“chapter-6.html
+ โ” โ”ฃ ๐“chapter-7.html
+ โ” โ”ฃ ๐“chapter-8.html
+ โ” โ”— ๐“chapter-9.html
+ โ”ฃ ๐“trophy
+ โ” โ”ฃ ๐“trophy-id01-m-1.html
+ โ” โ”ฃ ๐“trophy-id02-m-2.html
+ โ” โ”ฃ ๐“trophy-id03-m-3.html
+ โ” โ”ฃ ๐“trophy-id04-m-4.html
+ โ” โ”ฃ ๐“trophy-id05-m-5.html
+ โ” โ”ฃ ๐“trophy-id06-m-6.html
+ โ” โ”ฃ ๐“trophy-id07-m-7.html
+ โ” โ”ฃ ๐“trophy-id08-m-8.html
+ โ” โ”ฃ ๐“trophy-id09-m-9.html
+ โ” โ”ฃ ๐“trophy-id10-m-10.html
+ โ” โ”ฃ ๐“trophy-id11-m-11.html
+ โ” โ”ฃ ๐“trophy-id12-m-12.html
+ โ” โ”ฃ ๐“trophy-id13-m-13.html
+ โ” โ”ฃ ๐“trophy-id14-w-1.html
+ โ” โ”ฃ ๐“trophy-id15-w-2.html
+ โ” โ”ฃ ๐“trophy-id16-w-3.html
+ โ” โ”ฃ ๐“trophy-id17-m-14.html
+ โ” โ”ฃ ๐“trophy-id18-m-15.html
+ โ” โ”ฃ ๐“trophy-id19-m-16.html
+ โ” โ”ฃ ๐“trophy-id20-m-17.html
+ โ” โ”ฃ ๐“trophy-id21-m-18.html
+ โ” โ”ฃ ๐“trophy-id22-m-19.html
+ โ” โ”ฃ ๐“trophy-id23-m-20.html
+ โ” โ”ฃ ๐“trophy-id24-m-21.html
+ โ” โ”ฃ ๐“trophy-id25-m-22.html
+ โ” โ”ฃ ๐“trophy-id26-m-23.html
+ โ” โ”ฃ ๐“trophy-id27-m-24.html
+ โ” โ”ฃ ๐“trophy-id28-m-25.html
+ โ” โ”ฃ ๐“trophy-id29-m-26.html
+ โ” โ”ฃ ๐“trophy-id30-m-27.html
+ โ” โ”ฃ ๐“trophy-id31-m-28.html
+ โ” โ”ฃ ๐“trophy-id32-w-4.html
+ โ” โ”ฃ ๐“trophy-id33-w-5.html
+ โ” โ”ฃ ๐“trophy-id34-m-29.html
+ โ” โ”ฃ ๐“trophy-id35-m-30.html
+ โ” โ”ฃ ๐“trophy-id36-w-6.html
+ โ” โ”ฃ ๐“trophy-id37-m-31.html
+ โ” โ”ฃ ๐“trophy-id38-w-7.html
+ โ” โ”ฃ ๐“trophy-id39-w-8.html
+ โ” โ”ฃ ๐“trophy-id40-m-32.html
+ โ” โ”ฃ ๐“trophy-id41-m-33.html
+ โ” โ”ฃ ๐“trophy-id42-w-9.html
+ โ” โ”ฃ ๐“trophy-id43-w-10.html
+ โ” โ”ฃ ๐“trophy-id44-w-11.html
+ โ” โ”ฃ ๐“trophy-id45-m-34.html
+ โ” โ”ฃ ๐“trophy-id46-m-35.html
+ โ” โ”ฃ ๐“trophy-id47-w-12.html
+ โ” โ”ฃ ๐“trophy-id48-w-13.html
+ โ” โ”ฃ ๐“trophy-id49-m-36.html
+ โ” โ”ฃ ๐“trophy-id50-w-14.html
+ โ” โ”ฃ ๐“trophy-id51-w-15.html
+ โ” โ”ฃ ๐“trophy-id52-w-16.html
+ โ” โ”ฃ ๐“trophy-id53-w-17.html
+ โ” โ”ฃ ๐“trophy-id54-w-18.html
+ โ” โ”ฃ ๐“trophy-id55-w-19.html
+ โ” โ”ฃ ๐“trophy-id56-m-37.html
+ โ” โ”ฃ ๐“trophy-id57-m-38.html
+ โ” โ”— ๐“trophy-id58-w-20.html
+ โ”ฃ ๐“about.html
+ โ”ฃ ๐“icons.html
+ โ”ฃ ๐“index.html
+ โ”ฃ ๐“match-detail.html
+ โ”ฃ ๐“men-team.html
+ โ”ฃ ๐“the-story-blue.html
+ โ”ฃ ๐“trophy.html
+ โ”ฃ ๐“women-team.html
+ โ”— ๐“๐“ฆKARNLAKHRANGNAN-Official.txt
+
+ update:29/07/2026

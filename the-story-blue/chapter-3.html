@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 3 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="icon" href="../assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: fixed; top: 0; width: 100%; height: 70px; background: var(--blue);
+      display: flex; align-items: center; justify-content: center; z-index: 10000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      width: 100%; max-width: 1200px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--gold); font-weight: 700; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* Hero */
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Article */
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .pull-quote {
+      border-left: 4px solid var(--gold); padding: 24px 32px; margin: 0 0 48px;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem,2vw,1.2rem); color: var(--ink-soft); line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 14px; font-family: 'Sarabun', sans-serif; font-style: normal;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+    
+    /* Image Block */
+    .img-block { margin: 48px 0; text-align: center; }
+    .img-block img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .img-block figcaption { font-size: 14px; color: var(--ink-muted); margin-top: 12px; font-style: italic; }
+
+    /* Chapter Navigation */
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Footer (Fixed to dark theme as requested) */
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 60px 20px 40px;
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+    }
+    .footer-content {
+      max-width: var(--col-max);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .footer-logo img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    .footer-logo span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+    .footer p {
+      font-size: 0.9rem;
+      color: rgba(245, 242, 236, 0.7);
+    }
+    .footer p strong {
+      color: var(--gold);
+    }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; bottom: 30px; right: 20px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { bottom: 20px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: bottom right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" class="hero__logo" alt="Chelsea TH FANs Logo">
+      <p class="hero__kicker">Chelsea TH FANs · Kann Krung Nan News</p>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Kann Krung Nan News!</em>" data-lang-en="Once Upon a Time<br><em>Kann Krung Nan News!</em>">กาลครั้งนั้น<br><em>Kann Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- Article -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๓" data-lang-en="CHAPTER 3">บทที่ ๓</div>
+        <h1 data-lang-th="หว่านเมล็ดพันธุ์แห่งความสำเร็จ" data-lang-en="Sowing the seeds of success">หว่านเมล็ดพันธุ์แห่งความสำเร็จ</h1>
+      </div>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="'ช่วงเวลาแห่งความทรงจำ ซึ่งเป็นสิ่งที่หลายคนรอคอยมาตลอด 50 ปี ในที่สุดก็มาถึงเมื่อเข็มยาวของนาฬิกาชี้บอกเวลาห้าโมงเย็นขาดอีกห้านาที ณ วินาทีนั้น ข่าวจากคาร์ดิฟฟ์ก็แจ้งมาว่าพอร์ทสมัธพลาดท่า เชลซีคือแชมป์เปี้ยน และแฟนบอล 50,000 คนที่ใช้เวลาส่วนใหญ่ของบ่ายวันนั้นคอยให้คำแนะนำอย่างเปิดเผย – บางครั้งก็ประชดประชัน บ่อยครั้งก็มีไหวพริบ – แก่ฮีโร่ของพวกเขา ก็ลุกขึ้นโห่ร้องยินดีเมื่อประวัติศาสตร์ถูกจารึกขึ้น เอาล่ะ เชลซีทำได้อย่างไร? ส่วนใหญ่เป็นเพราะสปิริตของทีม ความฟิต และการเล่นแบบไดเรกต์ ซึ่งแตกต่างจากเชลซีชุดเก่าที่เล่นแบบเนิบนาบในยุคของเหล่า Pensioners'" data-lang-en="‘The moment to remember, the one that had been awaited by many for 50 years, came at last as the minute hand on the clock showed five minutes to five. At that precise point news came from Cardiff that Portsmouth had failed. Chelsea were champions. And the so, 50,000 that had spent most of the afternoon giving advice freely – sometimes cynically, often wittily – to their heroes, stood to cheer as history was made. Well, how have Chelsea done it? Mostly by team spirit, fitness, and direct play, unlike the old dreamy Chelsea in the days of the Pensioners.’">‘The moment to remember, the one that had been awaited by many for 50 years, came at last as the minute hand on the clock showed five minutes to five. At that precise point news came from Cardiff that Portsmouth had failed. Chelsea were champions. And the so, 50,000 that had spent most of the afternoon giving advice freely – sometimes cynically, often wittily – to their heroes, stood to cheer as history was made. Well, how have Chelsea done it? Mostly by team spirit, fitness, and direct play, unlike the old dreamy Chelsea in the days of the Pensioners.’</p>
+        <cite data-lang-th="— The Sunday Times (24 เมษายน 1955)" data-lang-en="— The Sunday Times (24 April 1955)">— The Sunday Times (24 เมษายน 1955)</cite>
+      </blockquote>
+
+      <p class="drop-cap" data-lang-th="วันเสาร์ที่ 23 เมษายน 1955 คือจุดสูงสุดของความหวังและความคาดหวังที่ถูกเลื่อนออกไปตลอดห้าทศวรรษ ในที่สุด เชลซี ซึ่งเป็นสโมสรที่มีผู้สนับสนุนมากที่สุดในประเทศอีกครั้ง ก็ได้ตำแหน่งแชมป์ลีกมาครอบครองเพื่อเป็นมงกุฎคู่ควรกับสถานะนั้น เอริค 'แรบบิท' พาร์สันส์ ยิงสองประตูใส่เชฟฟิลด์ เว้นส์เดย์ ที่สแตมฟอร์ดบริดจ์ และจุดโทษของ ปีเตอร์ ซิลเล็ตต์ ทำให้ทีมนำ 3-0 พร้อมกับฝูงชนที่หลั่งไหลลงสู่สนามจากทุกทิศทุกทาง การรอคอยสิ้นสุดลงในที่สุด และมุกตลกตามโรงละครเพลงก็ถูกขว้างกลับไปหาพวกที่คอยสบประมาทชาวลอนดอน" data-lang-en="Saturday 23 April 1955 was the climax to five decades of hope and expectation postponed. Finally Chelsea, again the best supported club in the land, had the league title to crown such status. Eric ‘Rabbit’ Parsons had knocked two past Sheffield Wednesday at Stamford Bridge and a Peter Sillett penalty made it 3-0, with the crowd flowing onto the field from all directions. The wait was finally over and the music hall jokes were flung back at the Londoners’ detractors.">วันเสาร์ที่ 23 เมษายน 1955 คือจุดสูงสุดของความหวังและความคาดหวังที่ถูกเลื่อนออกไปตลอดห้าทศวรรษ ในที่สุด เชลซี ซึ่งเป็นสโมสรที่มีผู้สนับสนุนมากที่สุดในประเทศอีกครั้ง ก็ได้ตำแหน่งแชมป์ลีกมาครอบครองเพื่อเป็นมงกุฎคู่ควรกับสถานะนั้น เอริค 'แรบบิท' พาร์สันส์ ยิงสองประตูใส่เชฟฟิลด์ เว้นส์เดย์ ที่สแตมฟอร์ดบริดจ์ และจุดโทษของ ปีเตอร์ ซิลเล็ตต์ ทำให้ทีมนำ 3-0 พร้อมกับฝูงชนที่หลั่งไหลลงสู่สนามจากทุกทิศทุกทาง การรอคอยสิ้นสุดลงในที่สุด และมุกตลกตามโรงละครเพลงก็ถูกขว้างกลับไปหาพวกที่คอยสบประมาทชาวลอนดอน</p>
+
+      <p data-lang-th="'จากแฟนบอลที่น้ำตาคลอเบ้า เหน็ดเหนื่อยกับหลายปีที่รอคอยช่วงเวลานี้ ไปจนถึงแฟนเชลซีที่อายุน้อยที่สุด ต่างส่งเสียงเรียกหานักเตะและชายผู้อยู่เบื้องหลังนักเตะเหล่านั้น' อัลเบิร์ต ซีเวลล์ ผู้บันทึกประวัติศาสตร์ผู้ยิ่งใหญ่ของทีมสิงห์บลูส์ ได้เขียนถึงช่วงเวลานี้" data-lang-en="‘From the tear-dimmed supporters worn with the years of waiting for this moment to the youngest Chelsea follower came the call for the players and the man behind the players,’ the Blues’ great chronicler Albert Sewell wrote of the moment.">'จากแฟนบอลที่น้ำตาคลอเบ้า เหน็ดเหนื่อยกับหลายปีที่รอคอยช่วงเวลานี้ ไปจนถึงแฟนเชลซีที่อายุน้อยที่สุด ต่างส่งเสียงเรียกหานักเตะและชายผู้อยู่เบื้องหลังนักเตะเหล่านั้น' อัลเบิร์ต ซีเวลล์ ผู้บันทึกประวัติศาสตร์ผู้ยิ่งใหญ่ของทีมสิงห์บลูส์ ได้เขียนถึงช่วงเวลานี้</p>
+
+      <p data-lang-th="เมื่อมองไม่เห็นพื้นสนามภายใต้ฝูงชนที่ปลาบปลื้ม ไมโครโฟนจึงถูกติดตั้งอย่างเร่งด่วนบนอัฒจันทร์ชั้นบนของฝั่งตะวันออก โจ เมียร์ส ประธานสโมสร เป็นคนแรกที่กล่าวขอบคุณผู้ที่มาร่วมงานสำหรับการสนับสนุนอย่างไม่ย่อท้อ ก่อนจะส่งมอบไมค์ให้กับ เท็ด เดรก ที่กำลังตื้นตันใจ โดยมีลูกทีมขนาบข้าง 'นี่คือช่วงเวลาที่มีความสุขที่สุดในชีวิตของผม' ผู้จัดการทีมกล่าว 'ผมขอแสดงความยินดีกับเด็กๆ ทุกคน และทีมงานทุกคนของผม – ทั้งในสำนักงาน ทีมฝึกซ้อม และนักเตะ ตลอดระยะเวลาที่ผ่านมา พวกเขาต่างเป็นหนึ่งเดียวกันและทุกคนคือเชลซี!'" data-lang-en="With the pitch invisible beneath the jubilant mass, a microphone was hastily rigged up on the upper tier of the East Stand. Chair Joe Mears was first to thank those present for their unerring support, before handing over to an emotional Ted Drake, flanked by his team. ‘This is the happiest moment of my life,’ the manager said. ‘I congratulate all the boys and every one of my staff – office, training and playing. Right throughout they are one and all CHELSEA!’">เมื่อมองไม่เห็นพื้นสนามภายใต้ฝูงชนที่ปลาบปลื้ม ไมโครโฟนจึงถูกติดตั้งอย่างเร่งด่วนบนอัฒจันทร์ชั้นบนของฝั่งตะวันออก โจ เมียร์ส ประธานสโมสร เป็นคนแรกที่กล่าวขอบคุณผู้ที่มาร่วมงานสำหรับการสนับสนุนอย่างไม่ย่อท้อ ก่อนจะส่งมอบไมค์ให้กับ เท็ด เดรก ที่กำลังตื้นตันใจ โดยมีลูกทีมขนาบข้าง 'นี่คือช่วงเวลาที่มีความสุขที่สุดในชีวิตของผม' ผู้จัดการทีมกล่าว 'ผมขอแสดงความยินดีกับเด็กๆ ทุกคน และทีมงานทุกคนของผม – ทั้งในสำนักงาน ทีมฝึกซ้อม และนักเตะ ตลอดระยะเวลาที่ผ่านมา พวกเขาต่างเป็นหนึ่งเดียวกันและทุกคนคือเชลซี!'</p>
+
+      <figure class="img-block">
+        <img src="https://img.chelseafc.com/image/upload/f_auto,w_1400,q_90/editorial/historical/new-history-section/Ted_Drake_1955.jpg" alt="Ted Drake 1955">
+        <figcaption data-lang-th="ผู้จัดการทีม เท็ด เดรก กล่าวปราศรัยกับฝูงชนที่กำลังเฉลิมฉลองแชมป์" data-lang-en="Manager Ted Drake addresses the title-celebrating crowd">ผู้จัดการทีม เท็ด เดรก กล่าวปราศรัยกับฝูงชนที่กำลังเฉลิมฉลองแชมป์</figcaption>
+      </figure>
+
+      <p data-lang-th="บรรดานักเตะภายใต้การนำของกัปตันทีมและผู้ทำประตูสูงสุด รอย เบนท์ลีย์ ได้รับข้อเสนอเป็น 'โบนัส' คว้าแชมป์จำนวน 20 ปอนด์ หรือชุดสูทสั่งตัด (หลายคนเลือกอย่างหลัง) แต่ความรุ่งโรจน์นั้นประเมินค่าไม่ได้ และพวกเขารู้ดีว่าใครคือผู้รับผิดชอบที่ส่งมอบมันมาให้" data-lang-en="The players, captained by top scorer Roy Bentley, were offered a championship-winning ‘bonus’ of £20 or a tailored suit (many chose the latter) but the glory was inestimable, and they knew who was responsible for delivering it.">บรรดานักเตะภายใต้การนำของกัปตันทีมและผู้ทำประตูสูงสุด รอย เบนท์ลีย์ ได้รับข้อเสนอเป็น 'โบนัส' คว้าแชมป์จำนวน 20 ปอนด์ หรือชุดสูทสั่งตัด (หลายคนเลือกอย่างหลัง) แต่ความรุ่งโรจน์นั้นประเมินค่าไม่ได้ และพวกเขารู้ดีว่าใครคือผู้รับผิดชอบที่ส่งมอบมันมาให้</p>
+
+      <p data-lang-th="ในเดือนมิถุนายน 1952 อดีตกองหน้าอาร์เซนอลและทีมชาติอังกฤษได้นั่งอยู่ในสำนักงานใหม่ของเขาที่สแตมฟอร์ดบริดจ์ และคาดการณ์ว่าจะใช้เวลาสามปีในการเปลี่ยนเชลซีที่น่ารักแต่ผลงานต่ำกว่ามาตรฐาน ให้กลายเป็นแชมป์เปี้ยนแห่งเกาะอังกฤษ ในช่วงต้นฤดูกาล 1954/55 เช่นเดียวกับ 'The Special One' ในอีกครึ่งศตวรรษต่อมา เขาได้คาดการณ์ไว้ล่วงหน้าว่าฤดูกาลนี้แหละคือปีทองของเรา" data-lang-en="In June 1952, the former Arsenal and England striker had sat in his new office at Stamford Bridge and predicted it would take three years to turn lovable, underperforming Chelsea into champions of England. At the beginning of the 1954/55 campaign, like a certain ‘Special One’ half a century later, he had even predicted this was the season.">ในเดือนมิถุนายน 1952 อดีตกองหน้าอาร์เซนอลและทีมชาติอังกฤษได้นั่งอยู่ในสำนักงานใหม่ของเขาที่สแตมฟอร์ดบริดจ์ และคาดการณ์ว่าจะใช้เวลาสามปีในการเปลี่ยนเชลซีที่น่ารักแต่ผลงานต่ำกว่ามาตรฐาน ให้กลายเป็นแชมป์เปี้ยนแห่งเกาะอังกฤษ ในช่วงต้นฤดูกาล 1954/55 เช่นเดียวกับ 'The Special One' ในอีกครึ่งศตวรรษต่อมา เขาได้คาดการณ์ไว้ล่วงหน้าว่าฤดูกาลนี้แหละคือปีทองของเรา</p>
+
+      <h2 data-lang-th="เดรก ก้าวสู่สแตมฟอร์ดบริดจ์" data-lang-en="Drake lands at Stamford Bridge">เดรก ก้าวสู่สแตมฟอร์ดบริดจ์</h2>
+      
+      <p data-lang-th="เมื่อเขามาถึง พร้อมกับผลงานสดๆ ร้อนๆ ในการพาทีมเร้ดดิ้งคว้ารองแชมป์ในลีกระดับสาม ว่ากันว่าเดรก 'เข้าถึงเกมการจัดการเหมือนที่เขาเข้าถึงเกมฟุตบอล – แข็งแกร่ง ดุดัน ขวานผ่าซากเล็กน้อย และเหนือสิ่งอื่นใด คือเปี่ยมด้วยความกระตือรือร้นที่พุ่งทะยาน'" data-lang-en="When he arrived, fresh from steering Reading to runners-up in the third tier, it was said Drake ’approaches the game of management as he did the game of football – strong, virile, a little bluntly and above all, with soaring enthusiasm.’">เมื่อเขามาถึง พร้อมกับผลงานสดๆ ร้อนๆ ในการพาทีมเร้ดดิ้งคว้ารองแชมป์ในลีกระดับสาม ว่ากันว่าเดรก 'เข้าถึงเกมการจัดการเหมือนที่เขาเข้าถึงเกมฟุตบอล – แข็งแกร่ง ดุดัน ขวานผ่าซากเล็กน้อย และเหนือสิ่งอื่นใด คือเปี่ยมด้วยความกระตือรือร้นที่พุ่งทะยาน'</p>
+      
+      <p data-lang-th="ตัวผู้จัดการทีมเอง – ผู้มีผิวสีทองแดง พร้อมทรงผมหวีเรียบแสกกลางสุดทันสมัย – ตั้งข้อสังเกตว่า 'ไม่มีความแตกต่างในเรื่องระดับชั้นมากนักตลอดทีมส่วนใหญ่ในดิวิชั่นหนึ่ง ทีมที่ประสบความสำเร็จคือทีมที่ทำงานหนักในเกม และต่อสู้ ยืนหยัดต่อไปเมื่อต้องการความพยายามเพิ่มขึ้นอีกนิด สปิริตอันสูงส่งของสโมสรเท่านั้นที่จะสร้างพลังระเบิดนี้ขึ้นมาได้'" data-lang-en="The manager himself – bronze-skinned, with fashionably slicked-back, centre-parted hair – noted there was ‘not much difference in class throughout most of the First Division teams. The teams which win success are the teams which work hard at the game, and fight on and hold on when the little extra effort is needed. Only high club spirit produces this burst.">ตัวผู้จัดการทีมเอง – ผู้มีผิวสีทองแดง พร้อมทรงผมหวีเรียบแสกกลางสุดทันสมัย – ตั้งข้อสังเกตว่า 'ไม่มีความแตกต่างในเรื่องระดับชั้นมากนักตลอดทีมส่วนใหญ่ในดิวิชั่นหนึ่ง ทีมที่ประสบความสำเร็จคือทีมที่ทำงานหนักในเกม และต่อสู้ ยืนหยัดต่อไปเมื่อต้องการความพยายามเพิ่มขึ้นอีกนิด สปิริตอันสูงส่งของสโมสรเท่านั้นที่จะสร้างพลังระเบิดนี้ขึ้นมาได้'</p>
+      
+      <p data-lang-th="'อย่าหลอกตัวเองเลย สิ่งที่ผมต้องการส่วนตัวที่นี่คือผลการแข่งขัน นั่นคือมาตรวัดเดียวที่ผู้จัดการทีมทุกคนจะถูกตัดสิน ไม่ว่าจะที่ไหนก็ตาม'" data-lang-en="‘Let’s not kid ourselves. What I personally want here are results. That is the only yardstick by which any manager is judged, anywhere.’">'อย่าหลอกตัวเองเลย สิ่งที่ผมต้องการส่วนตัวที่นี่คือผลการแข่งขัน นั่นคือมาตรวัดเดียวที่ผู้จัดการทีมทุกคนจะถูกตัดสิน ไม่ว่าจะที่ไหนก็ตาม'</p>
+      
+      <p data-lang-th="เขายอมรับว่าเขามี 'กระดูกสันหลังของทีมที่ใช้การได้จริงๆ' แต่พวกเขาก็รอดพ้นการตกชั้นมาได้อย่างหวุดหวิดถึงสองครั้ง (ครั้งหนึ่งรอดมาได้ด้วยค่าเฉลี่ยประตูที่มากกว่าเพียงเล็กน้อยเท่านั้น)" data-lang-en="He accepted he had ‘the backbone of a really useful side’ but they had narrowly avoided relegation twice (once by a minuscule amount on goal average).">เขายอมรับว่าเขามี 'กระดูกสันหลังของทีมที่ใช้การได้จริงๆ' แต่พวกเขาก็รอดพ้นการตกชั้นมาได้อย่างหวุดหวิดถึงสองครั้ง (ครั้งหนึ่งรอดมาได้ด้วยค่าเฉลี่ยประตูที่มากกว่าเพียงเล็กน้อยเท่านั้น)</p>
+      
+      <p data-lang-th="หลังจากประเมินขุมกำลังที่เขารับช่วงต่อมา และชื่นชอบเบนท์ลีย์และกองหลัง จอห์นนี่ แฮร์ริส เป็นพิเศษ เดรกก็ได้เหวี่ยงแหค้นหาผู้เล่นที่มีสภาพจิตใจที่เหมาะสมพอๆ กับพรสวรรค์ เขาโดนวิจารณ์เรื่องการดึงตัวนักเตะจากดิวิชั่นสาม เช่น สแตน วิลเลมส์ กองหลังจอมแกร่งจากไบรท์ตัน และ จอห์นนี่ แม็คนิคอล กองหน้าตัวใน และยังเอาชนะคู่แข่งครึ่งโหลเพื่อคว้าตัว แฟรงค์ บลันสโตน ปีกวัย 18 ปีจากครูว์ – ซึ่งเดรกถึงกับบุกไปขัดจังหวะการประชุมคณะกรรมการบริหารของครูว์ด้วยตัวเอง เพื่อยื่น 'ข้อเสนอที่พวกเขาไม่อาจปฏิเสธได้' เขาเซ็นสัญญา ปีเตอร์ ซิลเล็ตต์ ส่วนหนึ่งเป็นเพราะเขาเคยเล่นร่วมกับพ่อของซิลเล็ตต์ที่เซาแธมป์ตัน และยกย่องให้กองหลังรายนี้เป็นหนึ่งในการเสริมทัพที่สำคัญที่สุดของเขาเสมอ" data-lang-en="Having assessed the catch he inherited, and especially liking Bentley and defender Johnny Harris, Drake cast his net wide for players with the right mentality as well as talent. He earned criticism for recruiting talent from Division Three, such as Brighton’s rugged defender Stan Willemse and inside-forward Johnny McNichol, and saw off half-a-dozen rivals to sign 18-year-old winger Frank Blunstone from Crewe – whose boardroom meeting Drake interrupted in person to deliver ‘an offer they couldn’t refuse’. He signed Peter Sillett in part because he had played with his father at Southampton, and always rated the defender among his most important acquisitions.">หลังจากประเมินขุมกำลังที่เขารับช่วงต่อมา และชื่นชอบเบนท์ลีย์และกองหลัง จอห์นนี่ แฮร์ริส เป็นพิเศษ เดรกก็ได้เหวี่ยงแหค้นหาผู้เล่นที่มีสภาพจิตใจที่เหมาะสมพอๆ กับพรสวรรค์ เขาโดนวิจารณ์เรื่องการดึงตัวนักเตะจากดิวิชั่นสาม เช่น สแตน วิลเลมส์ กองหลังจอมแกร่งจากไบรท์ตัน และ จอห์นนี่ แม็คนิคอล กองหน้าตัวใน และยังเอาชนะคู่แข่งครึ่งโหลเพื่อคว้าตัว แฟรงค์ บลันสโตน ปีกวัย 18 ปีจากครูว์ – ซึ่งเดรกถึงกับบุกไปขัดจังหวะการประชุมคณะกรรมการบริหารของครูว์ด้วยตัวเอง เพื่อยื่น 'ข้อเสนอที่พวกเขาไม่อาจปฏิเสธได้' เขาเซ็นสัญญา ปีเตอร์ ซิลเล็ตต์ ส่วนหนึ่งเป็นเพราะเขาเคยเล่นร่วมกับพ่อของซิลเล็ตต์ที่เซาแธมป์ตัน และยกย่องให้กองหลังรายนี้เป็นหนึ่งในการเสริมทัพที่สำคัญที่สุดของเขาเสมอ</p>
+
+      <figure class="img-block">
+        <img src="https://img.chelseafc.com/image/upload/f_auto,w_1400,q_90/editorial/historical/new-history-section/peter_sillett.jpg" alt="Peter Sillett">
+        <figcaption data-lang-th="ปีเตอร์ ซิลเล็ตต์ (ในภาพปี 1959) มีส่วนสำคัญอย่างยิ่งในการคว้าแชมป์ลีกครั้งแรกของเชลซี" data-lang-en="Peter Sillett, shown here in 1959, played a crucial part in Chelsea's first title win">ปีเตอร์ ซิลเล็ตต์ (ในภาพปี 1959) มีส่วนสำคัญอย่างยิ่งในการคว้าแชมป์ลีกครั้งแรกของเชลซี</figcaption>
+      </figure>
+
+      <p data-lang-th="บอสคนใหม่ยังคงเก็บ สจ๊วร์ต เดวิดสัน ผู้ช่วยผู้จัดการทีมผู้มากประสบการณ์ของคนก่อนไว้ (อดีตนักเตะทีมชาติสกอตแลนด์ แต่ตลกร้ายที่ตอนนี้เขาถึงวัยเกษียณแล้ว) ตลอดจนเอสเธอร์ เลขานุการส่วนตัวผู้แข็งแกร่ง ซึ่งเป็นที่รู้จักของทุกคนตั้งแต่ร่วมงานกับเชลซีในปี 1940 ในฐานะนางเม็ตคาล์ฟ นอกเหนือจากนั้น ทุกอย่างต้องเปลี่ยนแปลง รวมไปถึงภาพลักษณ์ต่อสาธารณะของสโมสร" data-lang-en="The new boss retained his predecessor’s experienced assistant manager Stewart Davidson (a former Scottish international but, ironically, now of pensionable age) as well as redoubtable personal secretary Esther, known to all since joining Chelsea in 1940 as Mrs Metcalfe. Other than that, everything had to change, including the club’s public image.">บอสคนใหม่ยังคงเก็บ สจ๊วร์ต เดวิดสัน ผู้ช่วยผู้จัดการทีมผู้มากประสบการณ์ของคนก่อนไว้ (อดีตนักเตะทีมชาติสกอตแลนด์ แต่ตลกร้ายที่ตอนนี้เขาถึงวัยเกษียณแล้ว) ตลอดจนเอสเธอร์ เลขานุการส่วนตัวผู้แข็งแกร่ง ซึ่งเป็นที่รู้จักของทุกคนตั้งแต่ร่วมงานกับเชลซีในปี 1940 ในฐานะนางเม็ตคาล์ฟ นอกเหนือจากนั้น ทุกอย่างต้องเปลี่ยนแปลง รวมไปถึงภาพลักษณ์ต่อสาธารณะของสโมสร</p>
+
+      <p data-lang-th="เดรกเริ่มต้นด้วยการเรียกร้องความเป็นอันหนึ่งอันเดียวกันและการสนับสนุนอย่างเข้าข้างทีมตัวเองมากขึ้นจากฝูงชนในสแตมฟอร์ดบริดจ์ ซึ่งมีชื่อเสียงว่าเป็นพวกที่ใจกว้างและชิลที่สุดในวงการฟุตบอล" data-lang-en="Drake started by urging more partisanship from the Stamford Bridge crowd, renowned as the most cosmopolitan and laid-back in football.">เดรกเริ่มต้นด้วยการเรียกร้องความเป็นอันหนึ่งอันเดียวกันและการสนับสนุนอย่างเข้าข้างทีมตัวเองมากขึ้นจากฝูงชนในสแตมฟอร์ดบริดจ์ ซึ่งมีชื่อเสียงว่าเป็นพวกที่ใจกว้างและชิลที่สุดในวงการฟุตบอล</p>
+
+      <p data-lang-th="เดรกต้องการให้แฟนบอลมีความเป็นผู้ดีน้อยลงและแสดงความดุดันต่อผู้มาเยือนมากขึ้น จากบรรดาผู้สนับสนุนที่ 'กินอยู่หลับนอน' เป็นเชลซี ในช่วงไม่กี่เดือนแรกของการคุมทีม สแตน วิลเลมส์ กองหลังจอมโหด ยังคงถูกแฟนบอลทีมตัวเองโห่ใส่เพราะเข้าสกัดรุนแรงใส่ปีกของวูล์ฟส์ที่กลับลงสนามมาพร้อมกับผ้าพันแผล" data-lang-en="Drake wanted less of a soft touch and more hostility towards visitors from supporters who ‘lived and breathed’ Chelsea. Still in the first few months of his tenure rugged defender Stan Willemse was booed by his own fans for going in too hard on a Wolves winger who had returned to the field with a bandage.">เดรกต้องการให้แฟนบอลมีความเป็นผู้ดีน้อยลงและแสดงความดุดันต่อผู้มาเยือนมากขึ้น จากบรรดาผู้สนับสนุนที่ 'กินอยู่หลับนอน' เป็นเชลซี ในช่วงไม่กี่เดือนแรกของการคุมทีม สแตน วิลเลมส์ กองหลังจอมโหด ยังคงถูกแฟนบอลทีมตัวเองโห่ใส่เพราะเข้าสกัดรุนแรงใส่ปีกของวูล์ฟส์ที่กลับลงสนามมาพร้อมกับผ้าพันแผล</p>
+
+      <p data-lang-th="เขาคงจะสะดุ้งกับทุกมุกตลก: 'แฟนบอลคุยกับเพื่อนที่กำลังพักฟื้น: "ช่วงนี้ได้ดูเชลซีบ้างไหม?" เพื่อน: "ไม่อ่ะ – พวกเขาไม่ได้มาดูใจฉันตอนที่ฉันป่วยหนักเลย"' และเขาคงเกลียดภาพข่าวรายปีของเจ้าของร้านกาแฟย่านชอล์กฟาร์มที่เป็นแฟนเชลซี ซึ่งติดป้ายประกาศแจกอาหารฟรีเมื่อเชลซีคว้าแชมป์บอลถ้วย หรือการนำเพลงตลกล้อเลียนในยุค 1930 ของนอร์แมน ลอง ที่ชื่อ 'On The Day That Chelsea Went And Won The Cup' (ในวันที่เชลซีไปคว้าถ้วยแชมป์มาได้) มาเปิด ซึ่งบรรยายถึงเหตุการณ์เหลือเชื่ออื่นๆ ที่จะเกิดขึ้นตามมา เสียงหัวเราะเยาะเย้ยเหล่านี้จะต้องหยุดลง" data-lang-en="He must have winced at every joke: ‘Football fan to convalescing friend: “Seen Chelsea lately?” Friend: “No – they didn’t come to see me when I was bad”.’ And he must have hated the annual newspaper photo of the Chelsea-supporting Chalk Farm cafe owner putting up his plaque offering free meals when Chelsea won the cup, or another airing for Norman Long’s 1930s comical ditty ‘On The Day That Chelsea Went And Won The Cup’, describing a host of other, equally implausible events unfolding. The laughter had to stop.">เขาคงจะสะดุ้งกับทุกมุกตลก: 'แฟนบอลคุยกับเพื่อนที่กำลังพักฟื้น: "ช่วงนี้ได้ดูเชลซีบ้างไหม?" เพื่อน: "ไม่อ่ะ – พวกเขาไม่ได้มาดูใจฉันตอนที่ฉันป่วยหนักเลย"' และเขาคงเกลียดภาพข่าวรายปีของเจ้าของร้านกาแฟย่านชอล์กฟาร์มที่เป็นแฟนเชลซี ซึ่งติดป้ายประกาศแจกอาหารฟรีเมื่อเชลซีคว้าแชมป์บอลถ้วย หรือการนำเพลงตลกล้อเลียนในยุค 1930 ของนอร์แมน ลอง ที่ชื่อ 'On The Day That Chelsea Went And Won The Cup' (ในวันที่เชลซีไปคว้าถ้วยแชมป์มาได้) มาเปิด ซึ่งบรรยายถึงเหตุการณ์เหลือเชื่ออื่นๆ ที่จะเกิดขึ้นตามมา เสียงหัวเราะเยาะเย้ยเหล่านี้จะต้องหยุดลง</p>
+
+      <p data-lang-th="'จำชายชราผู้รับบำนาญ (Pensioner) ผู้หยิ่งทะนงสวมหมวกทรงกลมใบเล็ก ซึ่งมักจะนั่งอย่างสงบบนหน้าปกโปรแกรมการแข่งขันของเชลซีได้ไหม?' หนังสือพิมพ์เดลี่มิร์เรอร์เขียนเมื่อเดือนสิงหาคม 1952 'จงตีกลองไว้อาลัยให้กับทหารเฒ่าผู้ภาคภูมิใจ เป็นครั้งสุดท้ายที่เขาได้ต่อสู้ในสมรภูมิสแตมฟอร์ดบริดจ์ เขาได้สูญเสียตำแหน่งในแนวรบไปแล้ว'" data-lang-en="‘Remember the proud old pensioner with the little round peaked cap, who used to sit placidly in the middle of the Chelsea programme cover?,’ wrote the Daily Mirror in August 1952. ‘Muffle the drums for the proud old soldier. For the last time, he has fought the battle of Stamford Bridge. He has lost his place in the line."> 'จำชายชราผู้รับบำนาญ (Pensioner) ผู้หยิ่งทะนงสวมหมวกทรงกลมใบเล็ก ซึ่งมักจะนั่งอย่างสงบบนหน้าปกโปรแกรมการแข่งขันของเชลซีได้ไหม?' หนังสือพิมพ์เดลี่มิร์เรอร์เขียนเมื่อเดือนสิงหาคม 1952 'จงตีกลองไว้อาลัยให้กับทหารเฒ่าผู้ภาคภูมิใจ เป็นครั้งสุดท้ายที่เขาได้ต่อสู้ในสมรภูมิสแตมฟอร์ดบริดจ์ เขาได้สูญเสียตำแหน่งในแนวรบไปแล้ว'</p>
+      
+      <p data-lang-th="'สิ่งที่จะเข้ามาอุดช่องโหว่ชั่วคราวคือตราสัญลักษณ์บนเสื้อเบลเซอร์ของสโมสร ซึ่งเป็นโล่ที่มีตัวอักษรสีเงิน "CFC" พันกันบนพื้นสีน้ำเงินสดใส ในไม่ช้า สโมสรก็จะมีตราแผ่นดิน (coat of arms) แบบใหม่ล่าสุดมาแทนที่โล่นี้'" data-lang-en="‘Filling the gap, temporarily, will be the club’s blazer emblem, the shield bearing the silver, entwined letters “CFC” on a bright blue ground. In time, the club will have a brand new coat of arms to take the place of the shield.’">'สิ่งที่จะเข้ามาอุดช่องโหว่ชั่วคราวคือตราสัญลักษณ์บนเสื้อเบลเซอร์ของสโมสร ซึ่งเป็นโล่ที่มีตัวอักษรสีเงิน "CFC" พันกันบนพื้นสีน้ำเงินสดใส ในไม่ช้า สโมสรก็จะมีตราแผ่นดิน (coat of arms) แบบใหม่ล่าสุดมาแทนที่โล่นี้'</p>
+
+      <p data-lang-th="เดรกได้ตัดสินใจอย่างรวบรัดที่จะปลดระวางชายชราเพอร์ซี่ 'ผมไม่คิดว่าเราจะสลัดป้ายชื่อ "Pensioners" ทิ้งได้หรอก' เขายอมรับ 'แต่เราไม่ชอบความหมายแฝงของมันและเราต้องการจะสลัดมันทิ้ง มุกเก่าๆ ที่ว่า "ใช่ และพวกเขาก็เล่นเหมือนคนรับบำนาญ" มันเริ่มจะเชยไปหน่อยแล้ว' ตั้งแต่นั้นเป็นต้นมา เพื่อสร้างความหงุดหงิดให้กับเหล่านักเล่นมุกตลกทุกหนแห่ง เชลซีจะเป็นที่รู้จักในนาม The Blues (ทีมสิงห์บลูส์)" data-lang-en="Drake had summarily decided to put Percy out to pasture. ‘I don’t suppose we will ever lose the tag “Pensioners”,’ he admitted, ‘but we don’t like its implications and we want to lose it. The old gag “Yes, and they play like Pensioners” wears a bit thin.’ From then on, frustrating comedians everywhere, Chelsea would be known as The Blues.">เดรกได้ตัดสินใจอย่างรวบรัดที่จะปลดระวางชายชราเพอร์ซี่ 'ผมไม่คิดว่าเราจะสลัดป้ายชื่อ "Pensioners" ทิ้งได้หรอก' เขายอมรับ 'แต่เราไม่ชอบความหมายแฝงของมันและเราต้องการจะสลัดมันทิ้ง มุกเก่าๆ ที่ว่า "ใช่ และพวกเขาก็เล่นเหมือนคนรับบำนาญ" มันเริ่มจะเชยไปหน่อยแล้ว' ตั้งแต่นั้นเป็นต้นมา เพื่อสร้างความหงุดหงิดให้กับเหล่านักเล่นมุกตลกทุกหนแห่ง เชลซีจะเป็นที่รู้จักในนาม The Blues (ทีมสิงห์บลูส์)</p>
+
+      <p data-lang-th="กระนั้น บรรดานักวิจารณ์ก็ยังคงปรามาสว่า เสือดาวคงเปลี่ยนลายได้เร็วกว่าที่ 'เชลซีทีมเก่าที่รัก' จะกลายมาเป็นผู้ชนะได้ ทว่าความจริงก็คือ รากฐานความสำเร็จของเดรกในปี 1955 นั้น แท้จริงแล้วมาจากความวุ่นวายและการผลัดใบครั้งใหญ่ที่สโมสรเมื่อสองทศวรรษก่อนหน้านั้น" data-lang-en="Still, crowed the critics, leopards would change spots quicker than ‘dear old Chelsea’ could become winners. Yet the truth is the roots of Drake’s success in 1955 really lay in huge upheaval and renewal at the club two decades earlier.">กระนั้น บรรดานักวิจารณ์ก็ยังคงปรามาสว่า เสือดาวคงเปลี่ยนลายได้เร็วกว่าที่ 'เชลซีทีมเก่าที่รัก' จะกลายมาเป็นผู้ชนะได้ ทว่าความจริงก็คือ รากฐานความสำเร็จของเดรกในปี 1955 นั้น แท้จริงแล้วมาจากความวุ่นวายและการผลัดใบครั้งใหญ่ที่สโมสรเมื่อสองทศวรรษก่อนหน้านั้น</p>
+
+      <h2 data-lang-th="ถึงยุคของสายเลือดใหม่" data-lang-en="Youth will have its day">ถึงยุคของสายเลือดใหม่</h2>
+      
+      <p data-lang-th="ในปี 1935/36 การเสียชีวิตอย่างกะทันหันอย่างต่อเนื่องของบุคคลสำคัญที่สแตมฟอร์ดบริดจ์ได้สร้างความสั่นสะเทือนให้กับสโมสร เบิร์ต พาลเมอร์ เลขานุการสโมสรตั้งแต่ปี 1907, เจ.ที. เมียร์ส และ คลอด เคอร์บี้ (ประธานสโมสรเพียงคนเดียวของคลับ) ผู้เป็นผู้อำนวยการก่อตั้ง และ ชาร์ลส์ แพรตต์ ซีเนียร์ เสาหลักของคณะกรรมการบริหารอีกคน (ซึ่งรับช่วงต่อจากเคอร์บี้เพียงช่วงสั้นๆ) ต่างเสียชีวิตในเวลาไล่เลี่ยกันภายในห้าเดือน สโมสรยังมีหนี้สินอีก 12,000 ปอนด์" data-lang-en="In 1935/36, a succession of sudden deaths of key figures at Stamford Bridge had rocked the club. Secretary since 1907, Bert Palmer, founding directors JT Mears and Claude Kirby (the club’s only chair), and another board mainstay, Charles Pratt senior (briefly successor to Kirby) all died within five months of each other. The club was also £12,000 in debt.">ในปี 1935/36 การเสียชีวิตอย่างกะทันหันอย่างต่อเนื่องของบุคคลสำคัญที่สแตมฟอร์ดบริดจ์ได้สร้างความสั่นสะเทือนให้กับสโมสร เบิร์ต พาลเมอร์ เลขานุการสโมสรตั้งแต่ปี 1907, เจ.ที. เมียร์ส และ คลอด เคอร์บี้ (ประธานสโมสรเพียงคนเดียวของคลับ) ผู้เป็นผู้อำนวยการก่อตั้ง และ ชาร์ลส์ แพรตต์ ซีเนียร์ เสาหลักของคณะกรรมการบริหารอีกคน (ซึ่งรับช่วงต่อจากเคอร์บี้เพียงช่วงสั้นๆ) ต่างเสียชีวิตในเวลาไล่เลี่ยกันภายในห้าเดือน สโมสรยังมีหนี้สินอีก 12,000 ปอนด์</p>
+      
+      <p data-lang-th="ในช่วงไม่กี่ปีต่อมา คณะกรรมการบริหารที่เปี่ยมด้วยประสบการณ์และคอนเนกชันมากมายเหล่านั้น ได้ถูกสืบทอดโดยคนรุ่นใหม่ที่มุ่งมั่นจะปลุกเหล่า Pensioners ให้ตื่นจากการหลับไหลอันแสนสุข" data-lang-en="Over the next few years that immensely experienced and well-connected board was succeeded by new brooms determined to sweep the Pensioners out of their blissful slumber.">ในช่วงไม่กี่ปีต่อมา คณะกรรมการบริหารที่เปี่ยมด้วยประสบการณ์และคอนเนกชันมากมายเหล่านั้น ได้ถูกสืบทอดโดยคนรุ่นใหม่ที่มุ่งมั่นจะปลุกเหล่า Pensioners ให้ตื่นจากการหลับไหลอันแสนสุข</p>
+      
+      <p data-lang-th="กลุ่มผู้ตัดสินใจรุ่นต่อไป ได้แก่ โจ เมียร์ส, เลสลี่ พี่ชายของเขา, แจ็ค บัดด์ ลูกศิษย์ของคลอด เคอร์บี้ ซึ่งเป็นนักโปโลน้ำโอลิมปิกเจ้าของความสูง 6 ฟุต 8 นิ้ว, 'บิล' แพรตต์ พ่อค้าของเก่า และ เฮนรี่ 'แจ็ค' โบเยอร์ ผู้ประกอบการขนส่ง โปรโมเตอร์จัดงานบันเทิง และเจ้าของโรงละครแกรนวิลล์ที่อยู่ใกล้เคียง ซึ่งมีศักดิ์เป็นลูกพี่ลูกน้องของตระกูลเมียร์สด้วย ทุกคนอยู่ในวัยสามสิบกว่าๆ" data-lang-en="The next-gen decision-makers were Joe Mears, his brother Leslie, Claude Kirby’s protégé, Jack Budd, a 6ft 8in-tall water polo Olympian, antique dealer ‘Bill’ Pratt, and Henry ‘Jack’ Boyer, haulier, entertainment promoter and proprietor of the nearby Granville Theatre, who was also the Mears’s cousin. All were in their thirties.">กลุ่มผู้ตัดสินใจรุ่นต่อไป ได้แก่ โจ เมียร์ส, เลสลี่ พี่ชายของเขา, แจ็ค บัดด์ ลูกศิษย์ของคลอด เคอร์บี้ ซึ่งเป็นนักโปโลน้ำโอลิมปิกเจ้าของความสูง 6 ฟุต 8 นิ้ว, 'บิล' แพรตต์ พ่อค้าของเก่า และ เฮนรี่ 'แจ็ค' โบเยอร์ ผู้ประกอบการขนส่ง โปรโมเตอร์จัดงานบันเทิง และเจ้าของโรงละครแกรนวิลล์ที่อยู่ใกล้เคียง ซึ่งมีศักดิ์เป็นลูกพี่ลูกน้องของตระกูลเมียร์สด้วย ทุกคนอยู่ในวัยสามสิบกว่าๆ</p>
+
+      <p data-lang-th="สมาชิกอาวุโสเพียงคนเดียวของคณะกรรมการ คือ พันเอก ชาร์ลส์ คริสป์ ผู้ซึ่งเปิดคฤหาสน์ซัสเซกซ์อันกว้างใหญ่ของเขาที่ลูอิสให้เป็นสถานที่จัดปาร์ตี้ฤดูร้อนเพื่อให้นักเตะได้ปลดปล่อยความเครียด จะถูกสืบทอดตำแหน่งประธานสโมสรในปี 1940 โดย โจ เมียร์ส ซึ่งต่อมากลายเป็นบุคคลสำคัญผู้ทรงอิทธิพลที่เชลซีและในวงการฟุตบอลในวงกว้าง" data-lang-en="The only elder member of the directorship, Colonel Charles Crisp, who made his vast Sussex estate at Lewes available for summer parties where the players let their hair down, would be followed as chair in 1940 by Joe Mears, who became a towering figure at Chelsea and the wider world of football.">สมาชิกอาวุโสเพียงคนเดียวของคณะกรรมการ คือ พันเอก ชาร์ลส์ คริสป์ ผู้ซึ่งเปิดคฤหาสน์ซัสเซกซ์อันกว้างใหญ่ของเขาที่ลูอิสให้เป็นสถานที่จัดปาร์ตี้ฤดูร้อนเพื่อให้นักเตะได้ปลดปล่อยความเครียด จะถูกสืบทอดตำแหน่งประธานสโมสรในปี 1940 โดย โจ เมียร์ส ซึ่งต่อมากลายเป็นบุคคลสำคัญผู้ทรงอิทธิพลที่เชลซีและในวงการฟุตบอลในวงกว้าง</p>
+
+      <figure class="img-block">
+        <img src="https://img.chelseafc.com/image/upload/f_auto,w_1400,q_90/editorial/historical/new-history-section/Joe_Mears_FA_Cup_draw.jpg" alt="Joe Mears FA Cup Draw">
+        <figcaption data-lang-th="โจ เมียร์ส ประธานสโมสรเชลซี (ขวา) กำลังดำเนินการจับสลากเอฟเอคัพ" data-lang-en="Chelsea chairman Joe Mears on the right, conducting an FA Cup draw">โจ เมียร์ส ประธานสโมสรเชลซี (ขวา) กำลังดำเนินการจับสลากเอฟเอคัพ</figcaption>
+      </figure>
+
+      <p data-lang-th="เลสลี่ ไนท์ตัน ผู้สืบทอดตำแหน่งเลขานุการ-ผู้จัดการทีมต่อจาก เดวิด คาลเดอร์เฮด ในปี 1933 ดูเหมือนจะเป็นผู้นำที่ดีสำหรับการปฏิวัติที่กำลังจะมาถึง เขามองหาพรสวรรค์จากแดนไกล และประสบความสำเร็จอย่างมากข้ามทะเลไอริช เมื่อ โจ แบมบริค ศูนย์หน้าตัวเป้า โชว์ฟอร์มฮิตเปรี้ยงปร้างเคียงข้างการเซ็นสัญญาสุดคลาสสิกที่เรียกเสียงฮือฮาอย่าง โจ เพย์น 'เจ้าของสถิติสิบประตู'" data-lang-en="David Calderhead’s successor as secretary-manager in 1933, Leslie Knighton, seemed a good conductor for the coming revolution. He looked far afield for talent, and was particularly successful across the Irish Sea with centre-forward Joe Bambrick a hit alongside the more classic novelty signing of ‘Ten-goal’ Joe Payne.">เลสลี่ ไนท์ตัน ผู้สืบทอดตำแหน่งเลขานุการ-ผู้จัดการทีมต่อจาก เดวิด คาลเดอร์เฮด ในปี 1933 ดูเหมือนจะเป็นผู้นำที่ดีสำหรับการปฏิวัติที่กำลังจะมาถึง เขามองหาพรสวรรค์จากแดนไกล และประสบความสำเร็จอย่างมากข้ามทะเลไอริช เมื่อ โจ แบมบริค ศูนย์หน้าตัวเป้า โชว์ฟอร์มฮิตเปรี้ยงปร้างเคียงข้างการเซ็นสัญญาสุดคลาสสิกที่เรียกเสียงฮือฮาอย่าง โจ เพย์น 'เจ้าของสถิติสิบประตู'</p>
+      
+      <p data-lang-th="ไนท์ตันยังคว้านักเตะผิวดำคนแรกของเชลซี นั่นคือ เฟร็ด แฮนลีย์ กองหน้าดาวรุ่งในปี 1938 โดยประกาศว่า 'บางสโมสรมีการกีดกันทางสีผิว แต่เชลซีเป็นทีมที่มีใจกว้างเสมอ ตราบใดที่มีพรสวรรค์และคาดหวังได้ว่านักเตะจะประพฤติตัวอย่างมีเหตุผล เชลซีจะต่อต้านอคติทุกรูปแบบ'" data-lang-en="Knighton also recruited Chelsea’s first ever black player, teenage forward Fred Hanley, in 1938 proclaiming ‘Some clubs have a colour-bar. But Chelsea have always been broad-minded. Provided the talent is there, so long as the player can be expected to behave reasonably, Chelsea will stand against any form of bias.’">ไนท์ตันยังคว้านักเตะผิวดำคนแรกของเชลซี นั่นคือ เฟร็ด แฮนลีย์ กองหน้าดาวรุ่งในปี 1938 โดยประกาศว่า 'บางสโมสรมีการกีดกันทางสีผิว แต่เชลซีเป็นทีมที่มีใจกว้างเสมอ ตราบใดที่มีพรสวรรค์และคาดหวังได้ว่านักเตะจะประพฤติตัวอย่างมีเหตุผล เชลซีจะต่อต้านอคติทุกรูปแบบ'</p>
+      
+      <p data-lang-th="การจบอันดับที่ 8 ของเหล่า Pensioners ในฤดูกาล 1935/36 เทียบเท่ากับผลงานที่ดีที่สุดอันดับสองในประวัติศาสตร์ของสโมสรจากลอนดอนทีมนี้ และฟุตบอลสไตล์บุกตะลุยดุดันก็ดึงดูดผู้ชมจนสร้างสถิติใหม่ของฟุตบอลลีกที่ 82,905 คนในเกมที่เสมออาร์เซนอล 1-1 ในเดือนกันยายนฤดูกาลนั้น เมื่อถึงเวลาที่ไนท์ตันอำลาทีมไป คลังของสโมสรก็มีเงินเพิ่มขึ้นถึง 30,000 ปอนด์" data-lang-en="The Pensioners’ eighth-place finish in 1935/36 matched the second-best in the Londoners’ history, and the aggressive, attacking football attracted a remarkable new Football League record attendance of 82,905 for the 1-1 draw with Arsenal on September that season. By the time Knighton left, the coffers had been enriched by £30,000.">การจบอันดับที่ 8 ของเหล่า Pensioners ในฤดูกาล 1935/36 เทียบเท่ากับผลงานที่ดีที่สุดอันดับสองในประวัติศาสตร์ของสโมสรจากลอนดอนทีมนี้ และฟุตบอลสไตล์บุกตะลุยดุดันก็ดึงดูดผู้ชมจนสร้างสถิติใหม่ของฟุตบอลลีกที่ 82,905 คนในเกมที่เสมออาร์เซนอล 1-1 ในเดือนกันยายนฤดูกาลนั้น เมื่อถึงเวลาที่ไนท์ตันอำลาทีมไป คลังของสโมสรก็มีเงินเพิ่มขึ้นถึง 30,000 ปอนด์</p>
+      
+      <p data-lang-th="กระนั้น 'ทีมลึกลับ' แห่งลอนดอนก็ยังคงยากที่จะหยั่งถึง 'วันหนึ่งพวกเขาจะเล่นเหมือนคนที่มีแรงบันดาลใจ และคู่แข่งที่แข็งแกร่งที่สุดก็ต้องพังพาบต่อหน้าพวกเขา' ไนท์ตันเขียนในภายหลัง 'วันรุ่งขึ้นพวกเขาอาจจะโชว์ฟอร์มเหมือนทีมระดับหมู่บ้าน มีการจ่ายบอลพลาด เตะทิ้งเตะขว้าง หรือแม้แต่ทำเข้าประตูตัวเอง'" data-lang-en="Still London’s ‘mystery team’ proved unfathomable. ‘One day they would play like men inspired, and the strongest opposition would go crashing down before them,’ Knighton later wrote. ‘The next day they would perform like a village side, with missed passes, wild kicks, perhaps scoring through their own goal.’">กระนั้น 'ทีมลึกลับ' แห่งลอนดอนก็ยังคงยากที่จะหยั่งถึง 'วันหนึ่งพวกเขาจะเล่นเหมือนคนที่มีแรงบันดาลใจ และคู่แข่งที่แข็งแกร่งที่สุดก็ต้องพังพาบต่อหน้าพวกเขา' ไนท์ตันเขียนในภายหลัง 'วันรุ่งขึ้นพวกเขาอาจจะโชว์ฟอร์มเหมือนทีมระดับหมู่บ้าน มีการจ่ายบอลพลาด เตะทิ้งเตะขว้าง หรือแม้แต่ทำเข้าประตูตัวเอง'</p>
+      
+      <p data-lang-th="ในฐานะตัวแทนของเขาในปี 1939 คณะกรรมการได้หันไปหาอดีตกองหน้าตัวในชาวสกอตแลนด์ผู้มีการศึกษาระดับมหาวิทยาลัย นามว่า วิลลี่ เบอร์เรลล์ และการปฏิวัติก็เริ่มต้นขึ้นอย่างแท้จริง แนวคิดอันยิ่งใหญ่ของเบอร์เรลล์คือโครงการที่จะยุติวังวนของค่าตัวนักเตะ นั่นคือ โครงการเยาวชนเชลซี (Chelsea Juniors) เขาออกแบบมันให้เป็นการศึกษาด้านฟุตบอลแบบองค์รวม เพื่อสร้างนักคิดควบคู่ไปกับนักเตะ แต่สงครามโลกครั้งที่สองก็ทำลายแผนการอันมองการณ์ไกลนี้จนล่มไม่เป็นท่า" data-lang-en="As his replacement in 1939, the board turned to a University-educated Scottish former inside-forward, Willie Birrell, and the revolution really began. Birrell’s big idea was a scheme that would end the roundabout of transfer fees: Chelsea Juniors. He designed it as a holistic football education, producing thinkers as well as players, but World War Two scuppered these far-sighted plans.">ในฐานะตัวแทนของเขาในปี 1939 คณะกรรมการได้หันไปหาอดีตกองหน้าตัวในชาวสกอตแลนด์ผู้มีการศึกษาระดับมหาวิทยาลัย นามว่า วิลลี่ เบอร์เรลล์ และการปฏิวัติก็เริ่มต้นขึ้นอย่างแท้จริง แนวคิดอันยิ่งใหญ่ของเบอร์เรลล์คือโครงการที่จะยุติวังวนของค่าตัวนักเตะ นั่นคือ โครงการเยาวชนเชลซี (Chelsea Juniors) เขาออกแบบมันให้เป็นการศึกษาด้านฟุตบอลแบบองค์รวม เพื่อสร้างนักคิดควบคู่ไปกับนักเตะ แต่สงครามโลกครั้งที่สองก็ทำลายแผนการอันมองการณ์ไกลนี้จนล่มไม่เป็นท่า</p>
+      
+      <p data-lang-th="แม้ว่าทีมเยาวชนเชลซีรุ่นบุกเบิก ซึ่งมี รอน กรีนวูด ว่าที่ผู้จัดการทีมชาติอังกฤษร่วมอยู่ด้วย จะได้ลงเล่นเกมกระชับมิตรกับคิวพีอาร์ในปี 1940 แต่โครงการนี้ก็เริ่มต้นอย่างจริงจังในปี 1947 เบอร์เรลล์ต้องรับมือกับฟุตบอลระดับภูมิภาคที่ถูกขัดจังหวะจนกว่าสงครามจะยุติ และนำเหล่า Pensioners เข้าสู่รอบชิงชนะเลิศฟุตบอลลีกเซาธ์คัพที่เวมบลีย์ติดต่อกันต่อหน้าฝูงชนจำนวนมหาศาล (เชลซียังคงครองแชมป์รายการนี้หลังจากเอาชนะมิลวอลล์ 2-0 ในปี 1945)" data-lang-en="Although a pioneering Chelsea Juniors team featuring future England manager Ron Greenwood played a friendly against QPR in 1940, the project began in earnest in 1947. Birrell had to deal with disrupted, regionalised football until war was over, and took the Pensioners to successive Football League South Cup finals at Wembley in front of huge crowds (Chelsea remain holders after a 2-0 victory over Millwall in 1945).">แม้ว่าทีมเยาวชนเชลซีรุ่นบุกเบิก ซึ่งมี รอน กรีนวูด ว่าที่ผู้จัดการทีมชาติอังกฤษร่วมอยู่ด้วย จะได้ลงเล่นเกมกระชับมิตรกับคิวพีอาร์ในปี 1940 แต่โครงการนี้ก็เริ่มต้นอย่างจริงจังในปี 1947 เบอร์เรลล์ต้องรับมือกับฟุตบอลระดับภูมิภาคที่ถูกขัดจังหวะจนกว่าสงครามจะยุติ และนำเหล่า Pensioners เข้าสู่รอบชิงชนะเลิศฟุตบอลลีกเซาธ์คัพที่เวมบลีย์ติดต่อกันต่อหน้าฝูงชนจำนวนมหาศาล (เชลซียังคงครองแชมป์รายการนี้หลังจากเอาชนะมิลวอลล์ 2-0 ในปี 1945)</p>
+      
+      <p data-lang-th="ทว่าการเชื่อมโยงกับสโมสรเยาวชนในฮาร์โรว์โร้ด อย่าง ทิวดอร์ โรส (Tudor Rose) ต่างหากที่เป็นมรดกตกทอดอันน่าทึ่งที่เขาทิ้งไว้ให้กับสโมสร นักเตะรุ่นพี่ของเชลซีลงมาทำงานร่วมกับบรรดาดาวรุ่งที่ใฝ่ฝันที่เดอะบริดจ์สัปดาห์ละสามคืน และผู้ที่เก่งที่สุดจะถูกเซ็นสัญญาไปฝึกสอนในทีมทิวดอร์ โรส ที่สนามกีฬาสปอร์ตกราวด์ เวลช์ฮาร์พ ในเฮนดอน พรสวรรค์คนแรกที่ก้าวขึ้นสู่ทีมชุดใหญ่จากแหล่งเพาะพันธุ์นี้คือ บ็อบบี้ สมิธ กองหน้าจากยอร์กเชียร์ ซึ่งประเดิมสนามในวันที่ 4 กันยายน 1950 ด้วยวัย 17 ปี และจะลงเล่นสี่นัดในทีมชุดคว้าแชมป์ปี 1954/55 ซึ่งมีอดีตเยาวชนอีกคนอย่าง ปีเตอร์ บราบรู๊ค ปีกขวาลงเล่นด้วย เมื่อถึงปลายทศวรรษ 1950 สายพานการผลิตนี้ก็กลายเป็นสิ่งที่ไม่อาจหยุดยั้งได้" data-lang-en="It is the link forged with a Harrow Road youth club, Tudor Rose, however, that is his remarkable legacy to the club. Senior Chelsea players worked with aspiring youngsters at the Bridge three nights a week, and the best of were signed up to be coached in Tudor Rose teams at the Welsh Harp sports ground in Hendon. The first talent to make it into the first team from this source was Yorkshire striker Bobby Smith, who made his bow on 4 September 1950 aged 17 and would figure four times in the 1954/55 title-winning side, for whom another Junior, winger Peter Brabrook, also played. By the late 1950s this production line would become unstoppable.">ทว่าการเชื่อมโยงกับสโมสรเยาวชนในฮาร์โรว์โร้ด อย่าง ทิวดอร์ โรส (Tudor Rose) ต่างหากที่เป็นมรดกตกทอดอันน่าทึ่งที่เขาทิ้งไว้ให้กับสโมสร นักเตะรุ่นพี่ของเชลซีลงมาทำงานร่วมกับบรรดาดาวรุ่งที่ใฝ่ฝันที่เดอะบริดจ์สัปดาห์ละสามคืน และผู้ที่เก่งที่สุดจะถูกเซ็นสัญญาไปฝึกสอนในทีมทิวดอร์ โรส ที่สนามกีฬาสปอร์ตกราวด์ เวลช์ฮาร์พ ในเฮนดอน พรสวรรค์คนแรกที่ก้าวขึ้นสู่ทีมชุดใหญ่จากแหล่งเพาะพันธุ์นี้คือ บ็อบบี้ สมิธ กองหน้าจากยอร์กเชียร์ ซึ่งประเดิมสนามในวันที่ 4 กันยายน 1950 ด้วยวัย 17 ปี และจะลงเล่นสี่นัดในทีมชุดคว้าแชมป์ปี 1954/55 ซึ่งมีอดีตเยาวชนอีกคนอย่าง ปีเตอร์ บราบรู๊ค ปีกขวาลงเล่นด้วย เมื่อถึงปลายทศวรรษ 1950 สายพานการผลิตนี้ก็กลายเป็นสิ่งที่ไม่อาจหยุดยั้งได้</p>
+
+      <figure class="img-block">
+        <img src="https://img.chelseafc.com/image/upload/f_auto,w_1400,q_90/editorial/news/2020/06/bobby_Smith.jpg" alt="Bobby Smith 1952">
+        <figcaption data-lang-th="บ็อบบี้ สมิธ สตาร์คนแรกที่แจ้งเกิดจากระบบเยาวชนเชลซี ท่ามกลางแฟนบอลเต็มความจุที่สแตมฟอร์ดบริดจ์ในปี 1952" data-lang-en="The first star to emerge from the Chelsea youth system, Bobby Smith, at a packed Stamford Bridge in 1952">บ็อบบี้ สมิธ สตาร์คนแรกที่แจ้งเกิดจากระบบเยาวชนเชลซี ท่ามกลางแฟนบอลเต็มความจุที่สแตมฟอร์ดบริดจ์ในปี 1952</figcaption>
+      </figure>
+
+      <p data-lang-th="ในช่วงเวลาเดียวกันนั้น เพื่อให้สอดคล้องกับการมุ่งเน้นไปที่เยาวชน หกปีก่อนที่ชายชรา Pensioner จะจากไป การ์ตูนช่องบนปกโปรแกรมการแข่งขันของเชลซียุคหลังสงครามฉบับแรกในเดือนสิงหาคม 1946 ได้เปิดตัวเพื่อนตัวน้อยของเพอร์ซี่ นามว่า 'บิลลี่ บลู' (Billy Blue) 'บิลลี่ บลู คือสัญลักษณ์ของนักกีฬาที่ดีทุกคนและแฟนฟุตบอลผู้ภักดี' 'เพอร์ซี่' กล่าวแนะนำตัว 'เขาเป็นตัวแทนของกองทัพอันยิ่งใหญ่ – เหล่าผู้ชม เขาเป็นตัวแทนของคุณ!' จุดมุ่งหมายคือการนำพาทุกคนมารวมกันเพื่อบรรลุความสำเร็จที่รอคอยมานาน" data-lang-en="Around the same time, in keeping with the focus on youth, six years before the Pensioner’s passing, the cartoon strip fronting the first postwar Chelsea matchday programme of August 1946 introduced a young pal for Percy, ‘Billy Blue’. ‘Billy Blue is the symbol of all good sportsmen and loyal soccer fans,’ ‘Percy’ said by way of introduction. ‘He represents that great army – the spectators. He represents YOU!’ The aim was to bring everyone together to achieve the longed-for success.">ในช่วงเวลาเดียวกันนั้น เพื่อให้สอดคล้องกับการมุ่งเน้นไปที่เยาวชน หกปีก่อนที่ชายชรา Pensioner จะจากไป การ์ตูนช่องบนปกโปรแกรมการแข่งขันของเชลซียุคหลังสงครามฉบับแรกในเดือนสิงหาคม 1946 ได้เปิดตัวเพื่อนตัวน้อยของเพอร์ซี่ นามว่า 'บิลลี่ บลู' (Billy Blue) 'บิลลี่ บลู คือสัญลักษณ์ของนักกีฬาที่ดีทุกคนและแฟนฟุตบอลผู้ภักดี' 'เพอร์ซี่' กล่าวแนะนำตัว 'เขาเป็นตัวแทนของกองทัพอันยิ่งใหญ่ – เหล่าผู้ชม เขาเป็นตัวแทนของคุณ!' จุดมุ่งหมายคือการนำพาทุกคนมารวมกันเพื่อบรรลุความสำเร็จที่รอคอยมานาน</p>
+      
+      <p data-lang-th="แม้ว่าเบอร์เรลล์จะไม่สามารถทำให้นักเตะรุ่นพี่ผสมผสานกันลงตัวได้ – ทีมของเขาไม่เคยจบอันดับสูงกว่าที่ 13 เลย แม้จะเซ็นสัญญานักเตะชั้นยอดอย่าง ทอมมี่ ลอว์ตัน ด้วยค่าตัวที่เขาเคยรับปากว่าจะผลักไสให้กลายเป็นแค่อดีต – แต่เชลซีก็กลับมาเป็นสถานที่ที่ 'อิน' ที่สุดในการชมฟุตบอลอีกครั้ง" data-lang-en="Even though Birrell could not make the senior players gel – his teams never finished higher than 13th, despite signing brilliant players such as Tommy Lawton for fees he had pledged to consign to history – Chelsea was the ‘in’ place to watch football again.">แม้ว่าเบอร์เรลล์จะไม่สามารถทำให้นักเตะรุ่นพี่ผสมผสานกันลงตัวได้ – ทีมของเขาไม่เคยจบอันดับสูงกว่าที่ 13 เลย แม้จะเซ็นสัญญานักเตะชั้นยอดอย่าง ทอมมี่ ลอว์ตัน ด้วยค่าตัวที่เขาเคยรับปากว่าจะผลักไสให้กลายเป็นแค่อดีต – แต่เชลซีก็กลับมาเป็นสถานที่ที่ 'อิน' ที่สุดในการชมฟุตบอลอีกครั้ง</p>
+      
+      <p data-lang-th="แม้ว่าจำนวนผู้ชมอย่างเป็นทางการในวันนั้นจะไม่ทำลายสถิติสโมสร แต่ในเดือนพฤศจิกายน 1945 มีผู้คนราว 100,000 คนหลั่งไหลมาชมเกมกระชับมิตรกับ ไดนาโม มอสโก ทีมจากรัสเซีย หลังจากความยากลำบากและการเสียสละในช่วงสงคราม ผู้คนในชาติกระหายที่จะได้รับความบันเทิง และในตัวนักฟุตบอลผู้เปี่ยมเสน่ห์จากพันธมิตรโซเวียตในช่วงสงครามของเรา พวกเขาก็พบสิ่งที่พวกเขากำลังมองหา" data-lang-en="Although the official attendance on the day did not break the club record, in November 1945 around 100,000 turned up to watch a friendly match against the Russian side Dynamo Moscow. After the deprivation and sacrifice of the war years the nation was desperate to be entertained, and in the glamorous footballers of our wartime Soviet allies, they found what they were looking for.">แม้ว่าจำนวนผู้ชมอย่างเป็นทางการในวันนั้นจะไม่ทำลายสถิติสโมสร แต่ในเดือนพฤศจิกายน 1945 มีผู้คนราว 100,000 คนหลั่งไหลมาชมเกมกระชับมิตรกับ ไดนาโม มอสโก ทีมจากรัสเซีย หลังจากความยากลำบากและการเสียสละในช่วงสงคราม ผู้คนในชาติกระหายที่จะได้รับความบันเทิง และในตัวนักฟุตบอลผู้เปี่ยมเสน่ห์จากพันธมิตรโซเวียตในช่วงสงครามของเรา พวกเขาก็พบสิ่งที่พวกเขากำลังมองหา</p>
+      
+      <p data-lang-th="ผู้คนจำนวน 74,496 คนยอมจ่ายเงินเพื่อเข้าชม โดยบางคนยอมจ่ายให้พวกตั๋วผีสูงถึง 5 ปอนด์ ซึ่งเป็นค่าแรงเฉลี่ยต่อสัปดาห์ในขณะนั้น สำหรับตั๋วราคา 10 ชิลลิง (50 เพนซ์) ส่วนคนที่เหลือของฝูงชนหาทางเข้ามาตามช่องว่างของรั้วรอบสนาม และหลีกเลี่ยงไม่ได้ที่คนนับพันจะทะลักข้ามแนวกั้นและเคลื่อนลงสู่ลู่วิ่งสุนัขเกรย์ฮาวด์" data-lang-en="A total of 74,496 people paid to get in, some of them paying touts up to £5, the average weekly wage at the time, for a 10s (50p) ticket. The remainder of the crowd found their way in through gaps in the ground perimeter and inevitably thousands burst over the barriers and moved across the greyhound track.">ผู้คนจำนวน 74,496 คนยอมจ่ายเงินเพื่อเข้าชม โดยบางคนยอมจ่ายให้พวกตั๋วผีสูงถึง 5 ปอนด์ ซึ่งเป็นค่าแรงเฉลี่ยต่อสัปดาห์ในขณะนั้น สำหรับตั๋วราคา 10 ชิลลิง (50 เพนซ์) ส่วนคนที่เหลือของฝูงชนหาทางเข้ามาตามช่องว่างของรั้วรอบสนาม และหลีกเลี่ยงไม่ได้ที่คนนับพันจะทะลักข้ามแนวกั้นและเคลื่อนลงสู่ลู่วิ่งสุนัขเกรย์ฮาวด์</p>
+      
+      <p data-lang-th="โรงละครแกรนวิลล์ของผู้อำนวยการ แจ็ค โบเยอร์ ลงโฆษณาในโปรแกรมการแข่งขันของเชลซี และคอนเนกชันในวงการบันเทิงของเขาก็ทำให้หนังสือพิมพ์ The Stage กระตือรือร้นที่จะรายงานข่าวเกี่ยวกับกลุ่มดาราวาไรตี้กลุ่มล่าสุดที่ถูกพบเห็นร่วมกับเขาบนอัฒจันทร์ฝั่งตะวันออก ซึ่งบ่อยครั้งมากันถึงแปดคนในคราวเดียว" data-lang-en="Director Jack Boyer’s Granville Theatre advertised in Chelsea match programmes, and his showbiz connections led The Stage eagerly to report the latest constellation of Variety stars spotted in his company in the East Stand, often eight a time.">โรงละครแกรนวิลล์ของผู้อำนวยการ แจ็ค โบเยอร์ ลงโฆษณาในโปรแกรมการแข่งขันของเชลซี และคอนเนกชันในวงการบันเทิงของเขาก็ทำให้หนังสือพิมพ์ The Stage กระตือรือร้นที่จะรายงานข่าวเกี่ยวกับกลุ่มดาราวาไรตี้กลุ่มล่าสุดที่ถูกพบเห็นร่วมกับเขาบนอัฒจันทร์ฝั่งตะวันออก ซึ่งบ่อยครั้งมากันถึงแปดคนในคราวเดียว</p>
+      
+      <p data-lang-th="ในเดือนสิงหาคม 1948 มีรายงานว่า '[นักร้อง] บัด ฟลานาแกน พา [นักแต่งเพลงชื่อดังชาวอเมริกัน] โฮกี้ คาร์ไมเคิล มาดูการแข่งขันฟุตบอลนัดแรกของเขาที่เชลซีเมื่อวันเสาร์ ซึ่งทีมเจ้าบ้านเอาชนะมิดเดิลสโบรห์ได้ แจ็ค โบเยอร์ ผู้อำนวยการของเชลซี สนุกสนานกับการอธิบายพื้นฐานของเกมให้กับคุณคาร์ไมเคิลฟัง'" data-lang-en="In August 1948, it reported, ‘[Singer] Bud Flanagan took [famous US songwriter] Hoagy Carmichael to see his first football match at Chelsea on Saturday, when the home team beat Middlesbrough. Jack Boyer, the Chelsea director, enjoyed explaining the rudiments of the game to Mr Carmichael.’">ในเดือนสิงหาคม 1948 มีรายงานว่า '[นักร้อง] บัด ฟลานาแกน พา [นักแต่งเพลงชื่อดังชาวอเมริกัน] โฮกี้ คาร์ไมเคิล มาดูการแข่งขันฟุตบอลนัดแรกของเขาที่เชลซีเมื่อวันเสาร์ ซึ่งทีมเจ้าบ้านเอาชนะมิดเดิลสโบรห์ได้ แจ็ค โบเยอร์ ผู้อำนวยการของเชลซี สนุกสนานกับการอธิบายพื้นฐานของเกมให้กับคุณคาร์ไมเคิลฟัง'</p>
+      
+      <p data-lang-th="เมื่อถึงตอนนั้น ริชาร์ด แอทเทนเบอเรอห์ นักแสดงหนุ่ม ได้รับอนุญาตให้ร่วมซ้อมกับทีมของเบอร์เรลล์ เพื่อเตรียมรับบท 'พิงกี้' ในภาพยนตร์แก๊งสเตอร์เรื่อง 'Brighton Rock' และเขาก็ลากเพื่อนนักแสดงมาร่วมชมการแข่งขันตลอดหลายทศวรรษหลังจากนั้น หลังจากการเสียชีวิตของ เอ วี อเล็กซานเดอร์ ส.ส. พรรคแรงงานในปี 1965 ผู้สร้างภาพยนตร์ชื่อดังผู้นี้ก็ก้าวขึ้นมารับตำแหน่งรองประธานสโมสรฟุตบอลเชลซีแทน และได้เป็นคณะกรรมการบริหารในอีกสี่ปีต่อมา" data-lang-en="By then, young actor Richard Attenborough had been allowed to train with Birrell’s squad in preparation for his role as ‘Pinky’ in the gangster film ‘Brighton Rock’, and dragged his Thespian pals along to games over the ensuing decades. After the death of Labour MP A V Alexander in 1965, the famous filmmaker succeeded him as vice-president of Chelsea Football Club, and became a director four years later.">เมื่อถึงตอนนั้น ริชาร์ด แอทเทนเบอเรอห์ นักแสดงหนุ่ม ได้รับอนุญาตให้ร่วมซ้อมกับทีมของเบอร์เรลล์ เพื่อเตรียมรับบท 'พิงกี้' ในภาพยนตร์แก๊งสเตอร์เรื่อง 'Brighton Rock' และเขาก็ลากเพื่อนนักแสดงมาร่วมชมการแข่งขันตลอดหลายทศวรรษหลังจากนั้น หลังจากการเสียชีวิตของ เอ วี อเล็กซานเดอร์ ส.ส. พรรคแรงงานในปี 1965 ผู้สร้างภาพยนตร์ชื่อดังผู้นี้ก็ก้าวขึ้นมารับตำแหน่งรองประธานสโมสรฟุตบอลเชลซีแทน และได้เป็นคณะกรรมการบริหารในอีกสี่ปีต่อมา</p>
+      
+      <p data-lang-th="'ผมคิดว่าผมเคยพา แฟรงก์ ซินาตรา ไปครั้งหนึ่ง [ที่เดอะบริดจ์]' เขาเล่าให้ฟังในภายหลัง 'ผมพา ลอเรนซ์ โอลิเวียร์, ราล์ฟ ริชาร์ดสัน, จอห์นนี่ มิลส์, เคนนี่ มอร์, แจ็ค ฮอว์กินส์, เอวา การ์ดเนอร์ – เธอเป็นเพื่อนซี้ของภรรยาผม – ไปด้วยแน่นอน ผมคิดว่าผมเคยพา "ดูค" [จอห์น เวย์น] ไปครั้งหนึ่งด้วย แต่มีอยู่ครั้งหนึ่ง สตีฟ แม็คควีน อยากเจอนักเตะ ตอนนั้นสตีฟเปรียบเสมือนเทพเจ้า ดังนั้นสิ่งเดียวที่คุณต้องทำคือบอกไปว่า "สตีฟ แม็คควีน อยากเจอนักเตะ"'" data-lang-en="‘I think I took Frank Sinatra once [to the Bridge],’ he later recalled. ‘I certainly took Laurence Olivier, Ralph Richardson, Johnny Mills, Kenny More, Jack Hawkins, Ava Gardner – she was a great pal of my wife. I think I took “Duke” [John Wayne] one time. On one occasion, though, Steve McQueen wanted to meet the players. At that time Steve was a god. So all you’ve got to do is say is, “Steve McQueen would like to meet the players”.’">‘I think I took Frank Sinatra once [to the Bridge],’ he later recalled. ‘I certainly took Laurence Olivier, Ralph Richardson, Johnny Mills, Kenny More, Jack Hawkins, Ava Gardner – she was a great pal of my wife. I think I took “Duke” [John Wayne] one time. On one occasion, though, Steve McQueen wanted to meet the players. At that time Steve was a god. So all you’ve got to do is say is, “Steve McQueen would like to meet the players”.’</p>
+      
+      <p data-lang-th="วิดีโอด้านล่าง ซึ่งจัดทำขึ้นในปี 2014 บอกเล่าเรื่องราวความผูกพันอันยาวนานของท่านลอร์ดแอทเทนเบอเรอห์กับสโมสร..." data-lang-en="The video below, made in 2014, tells the story of Lord Attenborough's long association with the club..."><em>The video below, made in 2014, tells the story of Lord Attenborough's long association with the club...</em></p>
+
+      <p data-lang-th="สำหรับเบอร์เรลล์ การเกือบตกชั้นในปี 1950 และ 1951 ทำให้เขาตัดสินใจเกษียณอายุเมื่อหมดสัญญา แม้ว่าเดรกจะเข้ามากุมบังเหียนแล้ว แต่เรือเชลซีก็ต้องใช้เวลาสักพักในการเปลี่ยนทิศทาง โดยจบที่อันดับ 19 ก่อนจะทะยานขึ้นสู่อันดับ 8 ในฤดูกาล 1953/54" data-lang-en="For Birrell, relegation near misses in 1950 and 1951 prompted retirement when his contract expired. Even with Drake at the helm, the Chelsea ship took some turning, finishing 19th before rising to eighth in 1953/54.">สำหรับเบอร์เรลล์ การเกือบตกชั้นในปี 1950 และ 1951 ทำให้เขาตัดสินใจเกษียณอายุเมื่อหมดสัญญา แม้ว่าเดรกจะเข้ามากุมบังเหียนแล้ว แต่เรือเชลซีก็ต้องใช้เวลาสักพักในการเปลี่ยนทิศทาง โดยจบที่อันดับ 19 ก่อนจะทะยานขึ้นสู่อันดับ 8 ในฤดูกาล 1953/54</p>
+
+      <h2 data-lang-th="ในที่สุดก็เป็นแชมป์!" data-lang-en="Champions at last!">ในที่สุดก็เป็นแชมป์!</h2>
+      
+      <p data-lang-th="เมื่อถึงฤดูกาลถัดมา มีคนบอกเดรกว่าในที่สุดเขาก็สร้างทีมที่สามารถคว้าแชมป์บอลถ้วยได้แล้ว ไม่หรอก เขาตอบ: ต้องเป็นแชมป์ลีกต่างหาก" data-lang-en="By the following season Drake was told he had finally built a team capable of winning a cup. No, he replied: the championship.">เมื่อถึงฤดูกาลถัดมา มีคนบอกเดรกว่าในที่สุดเขาก็สร้างทีมที่สามารถคว้าแชมป์บอลถ้วยได้แล้ว ไม่หรอก เขาตอบ: ต้องเป็นแชมป์ลีกต่างหาก</p>
+      
+      <p data-lang-th="เช่นเดียวกับการแข่งขันกรีฑา 10 หลาสุดท้ายคือช่วงที่ยากที่สุด และต้องอาศัยการมาถึงของผู้ประสบความสำเร็จที่เอาจริงเอาจัง ผู้มีความมุ่งมั่นอย่างดื้อรั้น เพื่อกระตุ้นให้นักเตะหลุดพ้นจากการยอมรับว่าการเป็นแค่กลุ่มตามนั้นก็โอเคแล้ว ทีมสิงห์บลูส์ – ไม่ใช่ตาเฒ่า Pensioners อีกต่อไป – ไร้ความปรานีตามที่เขาเรียกร้อง โดยเก็บได้ 24 แต้มจาก 32 แต้มสุดท้ายที่มีให้เก็บ เพื่อการันตีตำแหน่งแชมป์" data-lang-en="Like any athletics race, the final 10 yards are the hardest, and it took the arrival of a no-nonsense achiever with a dogged determination to jolt the players out of accepting it was okay to be in the trailing pack. The Blues – no Pensioners, these – were as relentless as he demanded, collecting 24 points from the last 32 available to seal the title.">เช่นเดียวกับการแข่งขันกรีฑา 10 หลาสุดท้ายคือช่วงที่ยากที่สุด และต้องอาศัยการมาถึงของผู้ประสบความสำเร็จที่เอาจริงเอาจัง ผู้มีความมุ่งมั่นอย่างดื้อรั้น เพื่อกระตุ้นให้นักเตะหลุดพ้นจากการยอมรับว่าการเป็นแค่กลุ่มตามนั้นก็โอเคแล้ว ทีมสิงห์บลูส์ – ไม่ใช่ตาเฒ่า Pensioners อีกต่อไป – ไร้ความปรานีตามที่เขาเรียกร้อง โดยเก็บได้ 24 แต้มจาก 32 แต้มสุดท้ายที่มีให้เก็บ เพื่อการันตีตำแหน่งแชมป์</p>
+      
+      <p data-lang-th="การเฉลิมฉลองบนสนามในเดือนเมษายน 1955 นั้นเป็นจุดสูงสุดของการเตรียมการกว่า 20 ปี มากกว่าจะเป็นแค่การวางแผนระยะสั้น อย่างที่มักเกิดขึ้นในวงการฟุตบอล แต่สโมสรกลับไม่สามารถต่อยอดจากความสำเร็จนั้นได้" data-lang-en="Those celebrations on the pitch in April 1955 were the culmination of 20 years of preparation rather than planning, as is often the case in football, but the club was not able to build on that success.">การเฉลิมฉลองบนสนามในเดือนเมษายน 1955 นั้นเป็นจุดสูงสุดของการเตรียมการกว่า 20 ปี มากกว่าจะเป็นแค่การวางแผนระยะสั้น อย่างที่มักเกิดขึ้นในวงการฟุตบอล แต่สโมสรกลับไม่สามารถต่อยอดจากความสำเร็จนั้นได้</p>
+      
+      <p data-lang-th="มรดกของเบอร์เรลล์ นั่นคือโครงการเยาวชนเชลซี (Chelsea Juniors) ยังคงผลิตดาวรุ่งฝีเท้าเยี่ยมออกมาอย่างต่อเนื่อง รวมถึง จิมมี่ กรีฟส์ ผู้ไร้เทียมทาน พวกเขาถูกขนานนามว่า 'Drake's Ducklings' และชายผู้เป็นเจ้าของชื่อเล่นนี้ก็ได้รับสัญญา 10 ปีในเดือนพฤศจิกายน 1957 เขาจะอยู่ได้เพียงครึ่งเดียวของสัญญา แท็คติกฟุตบอลเปลี่ยนไปแล้วและนั่นก็ไม่ใช่จุดแข็งของเขา เมื่อถึงเดือนกันยายน 1962 ภัยของการตกชั้นก็มาเยือน และยุคสมัยของเดรกก็ถูกปิดฉากลงอย่างกะทันหัน เช่นเดียวกับการเมือง แม้แต่อาชีพค้าแข้งที่ยิ่งใหญ่ที่สุดก็มักจะจบลงด้วยความล้มเหลวเสมอ" data-lang-en="Birrell’s legacy, the Chelsea Juniors scheme, continued to deliver a succession of splendid talent, including the peerless Jimmy Greaves. They were dubbed ‘Drake’s Ducklings’ and their namesake was given a 10-year contract in November 1957. He would see out half of it; football tactics had changed and that was not his strong suit. By September 1962 relegation threatened and the Drake era was abruptly brought to a close. Like politics, even the greatest football careers always end in failure.">มรดกของเบอร์เรลล์ นั่นคือโครงการเยาวชนเชลซี (Chelsea Juniors) ยังคงผลิตดาวรุ่งฝีเท้าเยี่ยมออกมาอย่างต่อเนื่อง รวมถึง จิมมี่ กรีฟส์ ผู้ไร้เทียมทาน พวกเขาถูกขนานนามว่า 'Drake's Ducklings' และชายผู้เป็นเจ้าของชื่อเล่นนี้ก็ได้รับสัญญา 10 ปีในเดือนพฤศจิกายน 1957 เขาจะอยู่ได้เพียงครึ่งเดียวของสัญญา แท็คติกฟุตบอลเปลี่ยนไปแล้วและนั่นก็ไม่ใช่จุดแข็งของเขา เมื่อถึงเดือนกันยายน 1962 ภัยของการตกชั้นก็มาเยือน และยุคสมัยของเดรกก็ถูกปิดฉากลงอย่างกะทันหัน เช่นเดียวกับการเมือง แม้แต่อาชีพค้าแข้งที่ยิ่งใหญ่ที่สุดก็มักจะจบลงด้วยความล้มเหลวเสมอ</p>
+      
+      <p data-lang-th="มีเชิงอรรถสุดท้ายเกี่ยวกับการผลัดใบและวิสัยทัศน์ที่มองไปข้างหน้าในช่วงเวลานี้ เป็นเรื่องน่าหงุดหงิดที่แม้ จอห์น แบทเทอร์สบี้ เลขานุการสโมสร จะมีส่วนร่วมอย่างแข็งขันในการช่วยก่อตั้งการแข่งขัน ยูโรเปี้ยนคัพ ฤดูกาลแรก 1955/56 (ปัจจุบันคือ แชมเปียนส์ลีก) แต่คณะกรรมการบริหารของสิงห์บลูส์กลับถูกฟุตบอลลีกกดดันอย่างหนักให้ปฏิเสธคำเชิญ ด้วยข้ออ้างจอมปลอมเรื่องความกังวลว่า 'โปรแกรมจะหนาแน่นเกินไป' ประวัติศาสตร์ของเราอาจจะเปลี่ยนไปมากแค่ไหน หากพวกเขาได้ก้าวกระโดดครั้งยิ่งใหญ่สู่อนาคตในวันนั้น" data-lang-en="There is one final footnote to this period of regeneration and forward-thinking. Infuriatingly, despite club secretary John Battersby’s enthusiastic presence helping set up the inaugural 1955/56 European Cup (now Champions League), the Blues’ board were strong-armed into rejecting the invitation by the Football League over spurious ‘fixture congestion’ concerns. How differently our history might have turned out had they taken that great leap into the future.">มีเชิงอรรถสุดท้ายเกี่ยวกับการผลัดใบและวิสัยทัศน์ที่มองไปข้างหน้าในช่วงเวลานี้ เป็นเรื่องน่าหงุดหงิดที่แม้ จอห์น แบทเทอร์สบี้ เลขานุการสโมสร จะมีส่วนร่วมอย่างแข็งขันในการช่วยก่อตั้งการแข่งขัน ยูโรเปี้ยนคัพ ฤดูกาลแรก 1955/56 (ปัจจุบันคือ แชมเปียนส์ลีก) แต่คณะกรรมการบริหารของสิงห์บลูส์กลับถูกฟุตบอลลีกกดดันอย่างหนักให้ปฏิเสธคำเชิญ ด้วยข้ออ้างจอมปลอมเรื่องความกังวลว่า 'โปรแกรมจะหนาแน่นเกินไป' ประวัติศาสตร์ของเราอาจจะเปลี่ยนไปมากแค่ไหน หากพวกเขาได้ก้าวกระโดดครั้งยิ่งใหญ่สู่อนาคตในวันนั้น</p>
+
+      <!-- Chapter End Navigation -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๓ —" data-lang-en="— End of Chapter 3 —">— จบบทที่ ๓ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-2.html" class="chapter-nav__back" data-lang-th="← บทที่ ๒" data-lang-en="← Chapter 2">← บทที่ ๒</a>
+          <a href="chapter-4.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๔ →" data-lang-en="Read Chapter 4 →">อ่านบทที่ ๔ →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Clock -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle Language
+    let chapterLang = 'th';
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        el.innerHTML = chapterLang === 'th' ? el.getAttribute('data-lang-th') : el.getAttribute('data-lang-en');
+      });
+    }
+
+    // Floating Clocks
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+      updateFloatingClocks();
+      setInterval(updateFloatingClocks, 1000);
+    });
+  </script>
+</body>
+</html>

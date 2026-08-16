@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+bun.lock
+
+# Build & Dist
+dist/
+
+# Environment & IDE
+.vscode/
+.idea/
+.continue/
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*

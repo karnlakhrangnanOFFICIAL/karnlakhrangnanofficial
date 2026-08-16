@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Detail · KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== MAIN ==================== -->
+  <main class="main-container">
+    <div id="matchContent" class="loading" style="max-width: 860px; margin: 0 auto;">
+      <div class="spinner"></div>
+      <p data-i18n="common.loading">กำลังโหลด...</p>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ---------- HELPERS (not in main.js) ----------
+    let playerImageMap = {};
+    let playerIdMap = {};
+    let playerTeamMap = {};
+
+    function normalizeName(str) {
+      if (!str) return '';
+      return str.toLowerCase()
+        .replace(/-/g, ' ')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9 ]/g, '')
+        .trim();
+    }
+
+    function getPlayerImage(playerName) {
+      if (!playerName) return 'assets/images/placeholder-player.svg';
+      const norm = normalizeName(playerName);
+
+      if (playerImageMap[norm]) return playerImageMap[norm];
+
+      for (const [k, imgUrl] of Object.entries(playerImageMap)) {
+        if (norm.includes(k) || k.includes(norm)) {
+          return imgUrl;
+        }
+      }
+
+      if (norm.includes('satpaev')) return 'assets/images/players/men/dastan-satpaev.webp';
+      if (norm.includes('essugo')) return 'assets/images/players/men/dario-essugo.webp';
+      if (norm.includes('gittens')) return 'assets/images/players/men/jamie-bynoe-gittens.webp';
+      if (norm.includes('rogers')) return 'assets/images/players/men/morgan-rogers.webp';
+      if (norm.includes('palmer')) return 'assets/images/players/men/cole-palmer.webp';
+      if (norm.includes('caicedo')) return 'assets/images/players/men/moises-caicedo.webp';
+      if (norm.includes('james')) return 'assets/images/players/men/james.webp';
+      if (norm.includes('estevao')) return 'assets/images/players/men/estevao.webp';
+      if (norm.includes('pedro')) return 'assets/images/players/men/joao-pedro.webp';
+      if (norm.includes('enzo') || norm.includes('fernandez')) return 'assets/images/players/men/enzo-fernandez.webp';
+
+      const slug = norm.replace(/\s+/g, '-');
+      return `assets/images/players/men/${slug}.webp`;
+    }
+
+    function getPlayerIdByName(playerName) {
+      if (!playerName) return '';
+      const norm = normalizeName(playerName);
+      if (playerIdMap[norm]) return playerIdMap[norm];
+      for (const [k, idVal] of Object.entries(playerIdMap)) {
+        if (norm === k) {
+          return idVal;
+        }
+      }
+      return encodeURIComponent(playerName);
+    }
+
+    function getPlayerTeamByName(playerName, defaultTeam) {
+      if (!playerName) return defaultTeam || 'men';
+      const norm = normalizeName(playerName);
+      if (playerTeamMap[norm]) return playerTeamMap[norm];
+      for (const [k, teamVal] of Object.entries(playerTeamMap)) {
+        if (norm.includes(k) || k.includes(norm)) {
+          return teamVal;
+        }
+      }
+      return defaultTeam || 'men';
+    }
+
+    function formatDate(dateString, lang) {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return dateString;
+      if (lang === 'th') {
+        const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+        const thaiYear = date.getFullYear() + 543;
+        return `${date.getDate()} ${thaiMonths[date.getMonth()]} ${thaiYear}`;
+      }
+      return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function formatCompetitionName(name) {
+      if (!name) return '';
+      return name.replace(/-/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    // ---------- LOAD & RENDER ----------
+    async function loadMatchDetail() {
+      const container = document.getElementById('matchContent');
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const matchId = params.get('id');
+        if (!matchId) {
+          container.innerHTML = '<div class="not-found"><p>⚠️ ไม่พบรหัสการแข่งขัน</p></div>';
+          return;
+        }
+
+        try {
+          let playersMen = [];
+          if (typeof fetchPlayersFromSheet === 'function') {
+            try { playersMen = await fetchPlayersFromSheet(true) || []; } catch(e) {}
+          }
+          if (!playersMen || playersMen.length === 0) {
+            const resPMen = await fetch('data/players-men.json');
+            if (resPMen.ok) playersMen = await resPMen.json();
+          }
+          
+          if (playersMen && playersMen.length > 0) {
+            playersMen.forEach(p => {
+              if (p.name) {
+                const n = normalizeName(p.name);
+                if (p.image) playerImageMap[n] = p.image;
+                if (p.id) playerIdMap[n] = p.id;
+                playerTeamMap[n] = 'men';
+                const parts = n.split(' ');
+                if (parts.length > 1) {
+                  const last = parts[parts.length - 1];
+                  if (last.length > 2) {
+                    if (!playerImageMap[last] && p.image) playerImageMap[last] = p.image;
+                    if (!playerIdMap[last] && p.id) playerIdMap[last] = p.id;
+                    if (!playerTeamMap[last]) playerTeamMap[last] = 'men';
+                  }
+                }
+              }
+            });
+          }
+        } catch(e) { console.warn('Error loading men players', e); }
+
+        try {
+          let playersWomen = [];
+          if (typeof fetchPlayersFromSheet === 'function') {
+            try { playersWomen = await fetchPlayersFromSheet(false) || []; } catch(e) {}
+          }
+          if (!playersWomen || playersWomen.length === 0) {
+            const resPWomen = await fetch('data/players-women.json');
+            if (resPWomen.ok) playersWomen = await resPWomen.json();
+          }
+
+          if (playersWomen && playersWomen.length > 0) {
+            playersWomen.forEach(p => {
+              if (p.name) {
+                const n = normalizeName(p.name);
+                if (p.image) playerImageMap[n] = p.image;
+                if (p.id) playerIdMap[n] = p.id;
+                playerTeamMap[n] = 'women';
+                const parts = n.split(' ');
+                if (parts.length > 1) {
+                  const last = parts[parts.length - 1];
+                  if (last.length > 2) {
+                    if (!playerImageMap[last] && p.image) playerImageMap[last] = p.image;
+                    if (!playerIdMap[last] && p.id) playerIdMap[last] = p.id;
+                    if (!playerTeamMap[last]) playerTeamMap[last] = 'women';
+                  }
+                }
+              }
+            });
+          }
+        } catch(e) { console.warn('Error loading women players', e); }
+
+        let allMatches = [];
+        try {
+          const resMen = await fetch('data/fixtures-men.json');
+          if (resMen.ok) {
+            const dataMen = await resMen.json();
+            for (const comp in dataMen) {
+              if (Array.isArray(dataMen[comp])) {
+                dataMen[comp].forEach(m => allMatches.push({ ...m, competition_name: comp, team_type: 'men' }));
+              }
+            }
+          }
+        } catch(e) {}
+
+        try {
+          const resWomen = await fetch('data/fixtures-women.json');
+          if (resWomen.ok) {
+            const dataWomen = await resWomen.json();
+            for (const comp in dataWomen) {
+              if (Array.isArray(dataWomen[comp])) {
+                dataWomen[comp].forEach(m => allMatches.push({ ...m, competition_name: comp, team_type: 'women' }));
+              }
+            }
+          }
+        } catch(e) {}
+
+        const match = allMatches.find(m => String(m.id) === String(matchId));
+        if (!match) {
+          container.innerHTML = '<div class="not-found"><p>⚠️ ไม่พบข้อมูลการแข่งขันนี้</p></div>';
+          return;
+        }
+
+        renderMatchDetail(match, container);
+      } catch (error) {
+        container.innerHTML = '<div class="not-found"><p>⚠️ ไม่สามารถโหลดข้อมูลได้</p></div>';
+      }
+    }
+
+    let currentMatch = null;
+
+    function renderMatchDetail(match, container) {
+      currentMatch = match;
+      const lang = window.currentLang || 'th';
+      const compName = formatCompetitionName(match.competition_name || match.competition);
+      const rawTime = match.time_uk || match.time_th || match.time;
+      const displayTime = (!rawTime || rawTime === '00:00' || rawTime === 'TBC') ? 'TBC' : rawTime.substring(0,5);
+
+      // Channels / Logo TV
+      const channelsHtml = (match.channels && match.channels.length > 0)
+        ? `<div class="channels-list detail-channels">${match.channels.map(ch => 
+            `<span class="channel-badge" title="${ch.name}">
+              ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" title="${ch.name}" class="channel-logo" onerror="this.style.display='none'">` : `<span class="channel-name">${ch.name}</span>`}
+            </span>`
+          ).join('')}</div>`
+        : '';
+
+      // Video Section
+      const videoHtml = match.video
+        ? `<div class="video-card">
+            <h3 class="section-subtitle">🎥 ไฮไลท์การแข่งขัน</h3>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/${match.video.id}" title="${match.video.title || 'Match Highlights'}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            ${match.video.desc_th ? `<p class="video-caption" data-lang-th="${match.video.desc_th || ''}" data-lang-en="${match.video.desc_en || ''}">${match.video.desc_th}</p>` : ''}
+          </div>`
+        : '';
+
+      // Score
+      const scoreHtml = (match.status === 'completed' || match.status === 'live')
+        ? `<div class="score-box">
+             <div class="score-numbers">
+               <span class="score-home">${match.home_score !== null ? match.home_score : 0}</span>
+               <span class="score-dash">-</span>
+               <span class="score-away">${match.away_score !== null ? match.away_score : 0}</span>
+             </div>
+             <span class="match-status-badge ${match.status === 'live' ? 'live' : ''}">${match.status === 'live' ? '<span class="live-dot"></span> ' + (match.time_live || 'LIVE') : 'FULL TIME'}</span>
+           </div>`
+        : `<div class="vs-box">
+             <span class="vs-text">VS</span>
+           </div>`;
+
+      // Goals Section
+      let goalsHtml = '';
+      if ((match.status === 'completed' || match.status === 'live') && (match.goals || match.events)) {
+        const safeGoals = match.goals || [];
+        const homeGoals = safeGoals.filter(g => g.team === 'home');
+        const awayGoals = safeGoals.filter(g => g.team === 'away');
+
+        const isHomeChelsea = match.home_team && match.home_team.toLowerCase().includes('chelsea');
+        const isAwayChelsea = match.away_team && match.away_team.toLowerCase().includes('chelsea');
+        const teamType = match.team_type || 'men';
+
+const renderGoalItem = (g, isChelsea) => {
+          let playerName = g.player;
+          let isOwnGoal = playerName.includes('(OG)');
+          let isPenalty = playerName.includes('(Pen)');
+          
+          if (match.events) {
+             const ev = match.events.find(e => e.type === 'goal' && (e.player === playerName || e.player === playerName.replace(/ \(OG\)$/, '')) && e.minute === g.minute);
+             if (ev) {
+                if (ev.detail === 'Penalty') isPenalty = true;
+                if (ev.detail === 'Own Goal') isOwnGoal = true;
+             }
+          }
+
+          let cleanName = playerName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+
+          const imgUrl = getPlayerImage(cleanName);
+          const pId = getPlayerIdByName(cleanName);
+          const pTeam = getPlayerTeamByName(cleanName, teamType);
+
+          let suffix = '';
+          if (isPenalty) suffix = ' (Pen)';
+          if (isOwnGoal) suffix = ' (OG)';
+
+          if (isOwnGoal) {
+            return `<li><span class="goal-icon"><img src="${imgUrl}" alt="${cleanName}" class="goal-player-img" loading="lazy" onerror="this.src='assets/images/placeholder-player.svg'"></span> <strong>${cleanName}${suffix}</strong> <span class="goal-time">${g.minute}'</span></li>`;
+          }
+
+          if (isChelsea) {
+            return `<li><a href="player-profile.html?id=${pId}&team=${pTeam}" class="scorer-link"><span class="goal-icon"><img src="${imgUrl}" alt="${cleanName}" class="goal-player-img" loading="lazy" onerror="this.src='assets/images/placeholder-player.svg'"></span> <strong>${cleanName}${suffix}</strong></a> <span class="goal-time">${g.minute}'</span></li>`;
+          } else {
+            return `<li><span class="goal-icon"><img src="${imgUrl}" alt="${cleanName}" class="goal-player-img" loading="lazy" onerror="this.src='assets/images/placeholder-player.svg'"></span> <strong>${cleanName}${suffix}</strong> <span class="goal-time">${g.minute}'</span></li>`;
+          }
+        };
+
+        const homeGoalsList = homeGoals.length > 0
+          ? homeGoals.map(g => renderGoalItem(g, isHomeChelsea)).join('')
+          : '<li class="no-goals">-</li>';
+
+        const awayGoalsList = awayGoals.length > 0
+          ? awayGoals.map(g => renderGoalItem(g, isAwayChelsea)).join('')
+          : '<li class="no-goals">-</li>';
+
+        goalsHtml = `
+          <div class="goals-card">
+            <h3 class="section-subtitle" data-i18n="match.goals">⚽ ผู้ทำประตู</h3>
+            <div class="goals-grid">
+              <div class="goals-col home-col">
+                <div class="col-team-name">${renderTeamNameHTML(match.home_team)}</div>
+                <ul class="goals-list">${homeGoalsList}</ul>
+              </div>
+              <div class="goals-col away-col">
+                <div class="col-team-name">${renderTeamNameHTML(match.away_team)}</div>
+                <ul class="goals-list">${awayGoalsList}</ul>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+
+      
+      // Events Section
+      let eventsHtml = '';
+      if (match.events && match.events.length > 0) {
+        const sortedEvents = [...match.events].sort((a, b) => {
+          const parseMin = m => {
+            if (typeof m === 'number') return m;
+            if (typeof m === 'string') {
+              const parts = m.split('+');
+              return parseInt(parts[0]) + (parts[1] ? parseInt(parts[1]) / 100 : 0);
+            }
+            return 0;
+          };
+          return parseMin(a.minute) - parseMin(b.minute);
+        });
+
+        const getEventIcon = (type) => {
+          switch(type) {
+            case 'goal': return '⚽';
+            case 'yellow_card': return '🟨';
+            case 'red_card': return '🟥';
+            case 'substitution': return '🔄';
+            case 'penalty_awarded': return '🎯';
+            case 'penalty_missed': return '❌';
+            case 'first_half': return '⏱️';
+            case 'second_half': return '⏱️';
+            default: return '🔹';
+          }
+        };
+
+        const getEventTitle = (type) => {
+          if (type === 'goal') return 'Goal';
+          if (type === 'yellow_card') return 'Yellow Card';
+          if (type === 'red_card') return 'Red Card';
+          if (type === 'substitution') return 'Substitution';
+          if (type === 'penalty_awarded') return 'Penalty Awarded';
+          if (type === 'first_half') return 'First Half';
+          if (type === 'second_half') return 'Second Half';
+          return type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ');
+        };
+
+        const getEventDesc = (e) => {
+          if (e.type === 'goal') return e.detail ? (e.detail === 'Penalty' ? 'สังหารจุดโทษเข้าประตู' : `ทำประตู (${e.detail})`) : 'ทำประตู';
+          if (e.type === 'yellow_card') return 'ได้รับใบเหลืองจากการทำฟาวล์รุนแรง';
+          if (e.type === 'red_card') return 'ได้รับใบแดง';
+          if (e.type === 'substitution') return 'เปลี่ยนตัวผู้เล่น';
+          if (e.type === 'penalty_awarded') return 'เรียกจุดโทษให้ทีมได้สำเร็จ';
+          if (e.type === 'first_half') return 'เริ่มการแข่งขันครึ่งแรก';
+          if (e.type === 'second_half') return 'เริ่มการแข่งขันครึ่งหลัง';
+          return e.detail || '';
+        };
+
+const renderEventItem = (e) => {
+          const icon = getEventIcon(e.type);
+          const title = getEventTitle(e.type);
+          const time = e.minute + "'";
+          const teamLogo = e.team === 'home' ? match.home_logo : (e.team === 'away' ? match.away_logo : '');
+          const teamName = e.team === 'home' ? match.home_team : (e.team === 'away' ? match.away_team : '-');
+          
+          const isHomeChelsea = match.home_team && match.home_team.toLowerCase().includes('chelsea');
+          const isAwayChelsea = match.away_team && match.away_team.toLowerCase().includes('chelsea');
+          const isChelseaTeam = (e.team === 'home' && isHomeChelsea) || (e.team === 'away' && isAwayChelsea);
+          const teamType = match.team_type || 'men';
+          
+          const getPlayerLink = (pName) => {
+             if (!pName) return '-';
+             if (!isChelseaTeam) return pName;
+             const pId = getPlayerIdByName(pName);
+             const pTeam = getPlayerTeamByName(pName, teamType);
+             if (pId) {
+                return `<a href="player-profile.html?id=${pId}&team=${pTeam}" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">${pName}</a>`;
+             }
+             return pName;
+          };
+
+          let playerHtml = getPlayerLink(e.player);
+          if (e.type === 'substitution') {
+             let playerOutHtml = getPlayerLink(e.player_out);
+             playerHtml = `${playerHtml} (In)<br><span style="color:var(--text-muted);font-size:0.85em;">${playerOutHtml} (Out)</span>`;
+          }
+          
+          return `
+            <tr class="event-row" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 1rem 0.5rem; width: 60px; text-align: center; font-weight: bold; font-size: 1.1rem;">${time}</td>
+              <td style="padding: 1rem 0.5rem; width: 150px;">
+                ${teamLogo ? `<div style="display: flex; align-items: center; gap: 8px;">
+                  <img src="${teamLogo}" alt="${teamName}" style="width: 24px; height: 24px; object-fit: contain;">
+                  <span style="font-size: 0.9rem;">${teamName}</span>
+                </div>` : '-'}
+              </td>
+              <td style="padding: 1rem 0.5rem; font-weight: 500;">${playerHtml}</td>
+              <td style="padding: 1rem 0.5rem; width: 140px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 1.2rem;">${icon}</span>
+                  <strong>${title}</strong>
+                </div>
+              </td>
+              <td style="padding: 1rem 0.5rem; color: var(--text-muted); font-size: 0.9em; max-width: 200px;">${getEventDesc(e)}</td>
+            </tr>
+          `;
+        };
+
+        eventsHtml = `
+          <div class="events-card" style="margin-top: 2rem; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 1.5rem;">
+            <h3 class="section-subtitle" style="text-align: center; margin-bottom: 1.5rem;">⏱️ สรุปเหตุการณ์สำคัญ (Key Events)</h3>
+            <div style="overflow-x: auto;">
+              <table class="events-table" style="width: 100%; border-collapse: collapse; min-width: 700px; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); color: var(--text-muted); font-size: 0.9rem;">
+                    <th style="padding: 0.75rem 0.5rem; text-align: center;">นาที</th>
+                    <th style="padding: 0.75rem 0.5rem;">ทีม</th>
+                    <th style="padding: 0.75rem 0.5rem;">ผู้เล่น</th>
+                    <th style="padding: 0.75rem 0.5rem;">เหตุการณ์</th>
+                    <th style="padding: 0.75rem 0.5rem;">รายละเอียด</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${sortedEvents.map(e => renderEventItem(e)).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+
+let commentaryHtml = '';
+      if (match.commentary && match.commentary.length > 0) {
+        let sectionsHtml = '';
+        match.commentary.forEach(section => {
+           let rows = section.events.map(ev => {
+              return `
+                <div style="display: flex; gap: 1rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
+                   <div style="min-width: 40px; font-weight: bold; color: var(--primary-color);">${ev.minute}</div>
+                   <div style="color: var(--text-color);">${ev.text}</div>
+                </div>
+              `;
+           }).join('');
+           sectionsHtml += `
+             <div style="margin-bottom: 2rem;">
+               <h4 style="color: var(--ink); margin-bottom: 1rem; font-size: 1.1rem; border-left: 3px solid var(--primary-color); padding-left: 0.5rem;">${section.section}</h4>
+               <div>${rows}</div>
+             </div>
+           `;
+        });
+        
+        commentaryHtml = `
+          <div class="commentary-card" style="margin-top: 2rem; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 1.5rem;">
+            <h3 class="section-subtitle" style="text-align: center; margin-bottom: 1.5rem;">⏱️ ลำดับเหตุการณ์ทั้งหมดแบบละเอียด (Full Match Commentary)</h3>
+            <div style="font-family: 'Inter', sans-serif;">
+              ${sectionsHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      const isWomenMatch = match.team_type === 'women' || (match.competition_name && match.competition_name.toLowerCase().includes('wsl')) || (match.home_team && match.home_team.toLowerCase().includes('women')) || (match.away_team && match.away_team.toLowerCase().includes('women'));
+      const backHref = isWomenMatch ? 'women-team.html' : 'men-team.html';
+      const backText = lang === 'th' ? (isWomenMatch ? '← กลับหน้าทีมหญิง' : '← กลับหน้าทีมชาย') : (isWomenMatch ? '← Back to Women\'s Team' : '← Back to Men\'s Team');
+
+      const menNav = document.querySelector('.nav-links a[href="men-team.html"]');
+      const womenNav = document.querySelector('.nav-links a[href="women-team.html"]');
+      if (menNav && womenNav) {
+        if (isWomenMatch) {
+          womenNav.classList.add('active');
+          menNav.classList.remove('active');
+        } else {
+          menNav.classList.add('active');
+          womenNav.classList.remove('active');
+        }
+      }
+
+      container.innerHTML = `
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <a href="${backHref}" class="back-link">${backText}</a>
+        </div>
+        
+        <!-- Header Meta -->
+        <div class="match-header-meta">
+          ${compName ? `<span class="comp-badge">${compName}</span>` : ''}
+          <div class="match-info-container">
+            <span class="match-info-pill">📅 ${formatDate(match.date, window.currentLang || 'th')}</span>
+            <span class="match-info-pill">🕒 ${displayTime}</span>
+            <span class="match-info-pill">🏟️ ${match.venue}</span>
+          </div>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="match-scoreboard">
+          <div class="team-block home">
+            <img src="${match.home_logo}" alt="${match.home_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+            <div class="team-divider"></div>
+            <div class="team-name">${renderTeamNameHTML(match.home_team)}</div>
+          </div>
+
+          <div class="match-center-block">
+            ${channelsHtml}
+            ${scoreHtml}
+          </div>
+
+          <div class="team-block away">
+            <img src="${match.away_logo}" alt="${match.away_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+            <div class="team-divider"></div>
+            <div class="team-name">${renderTeamNameHTML(match.away_team)}</div>
+          </div>
+        </div>
+
+        <!-- Goals -->
+        ${goalsHtml}
+        <!-- Events -->
+        ${eventsHtml}
+        <!-- Commentary -->
+        ${commentaryHtml}
+
+        <!-- Video -->
+        ${videoHtml}
+      `;
+
+      if (typeof updateUIText === 'function') updateUIText();
+    }
+
+    // Start
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMatchDetail();
+      window.addEventListener('languageChanged', () => {
+        if (currentMatch) {
+          const container = document.getElementById('matchContent');
+          if (container) renderMatchDetail(currentMatch, container);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

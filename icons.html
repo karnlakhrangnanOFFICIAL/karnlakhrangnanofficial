@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>i-Cons · KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+      align-items: center;
+    }
+
+    .filter-bar .filter-label {
+      font-weight: 700;
+      color: var(--blue-dark);
+      font-size: 0.9rem;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border: 2px solid var(--blue-light);
+      background: white;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .filter-btn .count {
+      background: rgba(0,0,0,0.1);
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-left: 6px;
+      font-size: 0.75rem;
+    }
+
+    .filter-btn.active .count {
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* Icons Grid */
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* Icon Card */
+    .icon-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px 25px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.04);
+      text-decoration: none;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,20,137,0.15);
+      border-color: var(--gold);
+    }
+
+    .icon-card .card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--gold);
+      color: var(--blue-dark);
+      font-weight: 800;
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Player Image */
+    .icon-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--blue-light);
+      margin-bottom: 18px;
+      box-shadow: 0 6px 20px rgba(0,51,160,0.2);
+      transition: 0.3s;
+    }
+
+    .icon-card:hover .icon-avatar {
+      border-color: var(--gold);
+      box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+    }
+
+    .icon-avatar-fallback {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 18px;
+      border: 4px solid var(--blue-light);
+    }
+
+    .icon-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .icon-period {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .icon-position {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .icon-flag {
+      height: 18px;
+      width: auto;
+      margin-top: 10px;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .icon-stats {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .icon-stats span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .icon-stats strong {
+      color: var(--blue-dark);
+      font-size: 1rem;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+
+    .empty-state .empty-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .icons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .icons-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .icon-card {
+        padding: 20px 12px 18px;
+      }
+      .icon-avatar,
+      .icon-avatar-fallback {
+        width: 80px;
+        height: 80px;
+      }
+      .icon-name {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" class="active" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-i18n="icons.title">i-Cons</h1>
+      <p class="season" data-i18n="icons.subtitle">ตำนานตลอดกาลของ Chelsea FC</p>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container">
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-label" data-i18n="icons.filter_label">🔍 ตัวกรอง:</span>
+      <button class="filter-btn active" data-filter="all"><span data-i18n="icons.filter_all">ทั้งหมด</span> <span class="count" id="countAll">0</span></button>
+      <button class="filter-btn" data-filter="defender" data-i18n="icons.filter_defender">🛡️ กองหลัง</button>
+      <button class="filter-btn" data-filter="midfielder" data-i18n="icons.filter_midfielder">🎯 กองกลาง</button>
+      <button class="filter-btn" data-filter="forward" data-i18n="icons.filter_forward">⚽ กองหน้า</button>
+      <button class="filter-btn" data-filter="goalkeeper" data-i18n="icons.filter_goalkeeper">🧤 ผู้รักษาประตู</button>
+    </div>
+
+    <!-- ICONS GRID -->
+    <div class="icons-grid" id="iconsGrid">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p data-i18n="icons.loading">กำลังโหลดตำนาน...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    let allIcons = [];
+    let currentFilter = 'all';
+
+    async function loadIcons() {
+      const grid = document.getElementById('iconsGrid');
+      try {
+        const response = await fetch('data/icons.json');
+        if (!response.ok) throw new Error('HTTP error ' + response.status);
+        const ct = response.headers.get('content-type');
+        if (ct && !ct.includes('json') && !ct.includes('javascript')) throw new Error('Not JSON');
+        allIcons = await response.json();
+        filterIcons(currentFilter);
+        updateCounts();
+      } catch (error) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <span class="empty-icon">⚠️</span>
+            <p data-i18n="icons.error">ไม่สามารถโหลดข้อมูลตำนานได้</p>
+          </div>`;
+      }
+    }
+
+    function displayIcons(icons) {
+      const grid = document.getElementById('iconsGrid');
+      const isTh = (window.currentLang || 'th') === 'th';
+      
+      if (!icons || icons.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <span class="empty-icon">🤷</span>
+            <p data-i18n="icons.empty">ไม่พบตำนานตามตัวกรองนี้</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = icons.map(icon => {
+        const initials = icon.name.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+        const positionLower = (icon.position || '').toLowerCase();
+        
+        let posText = icon.position;
+        if (positionLower.includes('defender')) posText = isTh ? 'กองหลัง' : 'Defender';
+        else if (positionLower.includes('midfielder')) posText = isTh ? 'กองกลาง' : 'Midfielder';
+        else if (positionLower.includes('forward') || positionLower.includes('striker') || positionLower.includes('winger')) posText = isTh ? 'กองหน้า' : 'Forward';
+        else if (positionLower.includes('goalkeeper') || positionLower.includes('keeper')) posText = isTh ? 'ผู้รักษาประตู' : 'Goalkeeper';
+
+        const appsLabel = isTh ? 'นัด' : 'apps';
+        const goalsLabel = isTh ? 'ประตู' : 'goals';
+
+        return `
+          <a href="${icon.link}" class="icon-card">
+            <img src="${icon.image}" 
+                 alt="${icon.name}" 
+                 class="icon-avatar" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                 loading="lazy">
+            <div class="icon-avatar-fallback" style="display: none;">${initials}</div>
+            <h3 class="icon-name">${icon.name}</h3>
+            <div class="icon-period">${icon.period}</div>
+            <div class="icon-position">${posText}</div>
+            <div class="icon-stats">
+              <span>👕 <strong>${icon.appearances.toLocaleString()}</strong> ${appsLabel}</span>
+              <span>⚽ <strong>${icon.goals}</strong> ${goalsLabel}</span>
+            </div>
+            ${window.getFlagSpriteHTML ? window.getFlagSpriteHTML(icon.nationality, 'icon-flag', 20, 15) : `<img src="assets/images/flags/${icon.nationality}.svg" alt="${icon.nationality}" class="icon-flag" loading="lazy">`}
+          </a>
+        `;
+      }).join('');
+    }
+
+    function updateCounts() {
+      const el = document.getElementById('countAll');
+      if (el) el.textContent = allIcons.length;
+    }
+
+    function filterIcons(filter) {
+      currentFilter = filter;
+      
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === filter) btn.classList.add('active');
+      });
+
+      if (filter === 'all') {
+        displayIcons(allIcons);
+        return;
+      }
+
+      const filtered = allIcons.filter(icon => {
+        const pos = (icon.position || '').toLowerCase();
+        return pos.includes(filter);
+      });
+
+      displayIcons(filtered);
+    }
+
+    function initFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const filter = this.dataset.filter;
+          filterIcons(filter);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadIcons();
+      initFilters();
+      window.addEventListener('languageChanged', () => {
+        filterIcons(currentFilter);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+======================================================
+  KARN LA KHRANG NAN - TEAM & LOGO REFERENCE GUIDE
+======================================================
+
+1. Men's Team (เธ—เธตเธกเธเธฒเธข)
+------------------------------------------------------
+1.1 เธ—เธตเธกเธซเธฅเธฑเธ:
+- เธ—เธตเธก: Chelsea (KANLAKHRANGNAN)
+- เธเธฒเธเนเธฅเนเธเน: databases/logo/teams/england_chelsea.svg
+
+1.2 เธฃเธฒเธขเธเธฒเธฃเนเธเนเธเธเธฑเธ (Competitions):
+- Premier League: databases/logo/competitions/men/england_english-premier-league.svg
+- FA Cup: databases/logo/competitions/men/england_emirates-fa-cup.svg
+- EFL Cup (Carabao Cup): databases/logo/competitions/men/england_efl-cup.svg
+- FA Community Shield: databases/logo/competitions/men/england_fa-community-shield.svg
+- UEFA Champions League: databases/logo/competitions/men/tournaments_uefa-champions-league.svg
+- UEFA Europa League: databases/logo/competitions/men/tournaments_uefa-europa-league.svg
+- UEFA Conference League: databases/logo/competitions/men/tournaments_uefa-conference-league.svg
+
+1.3 เธ—เธตเธกเธเธนเนเนเธเนเธ (Opponent Clubs):
+- Arsenal: databases/logo/teams/england_arsenal.svg
+- Aston Villa: databases/logo/teams/england_aston-villa.svg
+- Bournemouth: databases/logo/teams/england_bournemouth.svg
+- Brentford: databases/logo/teams/england_brentford.svg
+- Brighton: databases/logo/teams/england_brighton.svg
+- Crystal Palace: databases/logo/teams/england_crystal-palace.svg
+- Everton: databases/logo/teams/england_everton.svg
+- Fulham: databases/logo/teams/england_fulham.svg
+- Ipswich: databases/logo/teams/england_ipswich.svg
+- Liverpool: databases/logo/teams/england_liverpool.svg
+- Luton: databases/logo/teams/england_luton.svg
+- Manchester City: databases/logo/teams/england_manchester-city.svg
+- Manchester United: databases/logo/teams/england_manchester-united.svg
+- Newcastle: databases/logo/teams/england_newcastle.svg
+- Nottingham Forest: databases/logo/teams/england_nottingham-forest.svg
+- Tottenham: databases/logo/teams/england_tottenham--2006-2013.svg
+- West Ham: databases/logo/teams/england_west-ham.svg
+- Juventus: databases/logo/teams/italy_juventus--white.svg
+- AC Milan: databases/logo/teams/italy_milan.svg
+- Real Sociedad: databases/logo/teams/spain_real-sociedad.svg
+- Auckland FC: databases/logo/teams/new-zealand_auckland-fc.svg
+- Western Sydney Wanderers: databases/logo/teams/australia_western-sydney-wanderers.svg
+- Johor Darul Ta'zim: databases/logo/teams/malaysia_johor-darul-tazim.svg
+
+1.4 เธฃเธนเธเธ เธฒเธเธเธฑเธเน€เธ•เธฐ (Player Images):
+- เธเธฒเธเนเธเธฅเน€เธ”เธญเธฃเนเธซเธฅเธฑเธ: assets/images/players/men/
+- เธ•เธฑเธงเธญเธขเนเธฒเธเธเธฒเธฃเนเธเนเธเธฒเธ: assets/images/players/men/cole-palmer.webp
+- เธ•เธฑเธงเธญเธขเนเธฒเธเธเธฒเธฃเนเธเนเธเธฒเธ: assets/images/players/men/enzo-fernandez.webp
+
+
+2. Women's Team (เธ—เธตเธกเธซเธเธดเธ)
+------------------------------------------------------
+2.1 เธ—เธตเธกเธซเธฅเธฑเธ:
+- เธ—เธตเธก: Chelsea (KANLAKHRANGNAN)
+- เธเธฒเธเนเธฅเนเธเน: databases/logo/teams/england_chelsea.svg
+
+2.2 เธฃเธฒเธขเธเธฒเธฃเนเธเนเธเธเธฑเธ (Competitions):
+- Women's Super League (WSL): databases/logo/competitions/women/women_super_league.svg
+- UEFA Women's Champions League (UWCL): databases/logo/competitions/women/women_uwcl_champions_league_logo.svg
+- Pre-season / Friendly: databases/logo/competitions/women/friendly.png
+
+2.3 เธ—เธตเธกเธเธนเนเนเธเนเธ (Opponent Clubs):
+- A-League Women All-Stars: databases/logo/teams/a-league-women-all-stars.svg
+- London City Lionesses: databases/logo/teams/London_City_Lionesses.svg
+- Birmingham City: databases/logo/teams/england_birmingham.svg
+- Charlton Athletic: databases/logo/teams/england_charlton.svg
+- Coventry City: databases/logo/teams/england_coventry-city.svg
+- Hull City: databases/logo/teams/england_hull-city.svg
+- Leeds United: databases/logo/teams/england_leeds-united.svg
+- Sunderland: databases/logo/teams/england_sunderland.svg
+(เธซเธกเธฒเธขเน€เธซเธ•เธธ: เธ—เธตเธกเธฃเธฐเธ”เธฑเธเธ—เนเธญเธเธญเธทเนเธเน เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธฅเนเธเนเธฃเนเธงเธกเธเธฑเธเธ—เธตเธกเธเธฒเธขเนเธเธซเธกเธงเธ” 1.3 เนเธ”เนเน€เธฅเธข เน€เธเนเธ Arsenal, Man City, Man Utd เธฏเธฅเธฏ)
+
+2.4 เธฃเธนเธเธ เธฒเธเธเธฑเธเน€เธ•เธฐ (Player Images):
+- เธเธฒเธเนเธเธฅเน€เธ”เธญเธฃเนเธซเธฅเธฑเธ: assets/images/players/women/
+- เธ•เธฑเธงเธญเธขเนเธฒเธเธเธฒเธฃเนเธเนเธเธฒเธ: assets/images/players/women/aggie-beever-jones.png
+- เธ•เธฑเธงเธญเธขเนเธฒเธเธเธฒเธฃเนเธเนเธเธฒเธ: assets/images/players/women/erin-cuthbert.png
+
+
+3. เธเนเธญเธเธ—เธฒเธเธเธฒเธฃเธฃเธฑเธเธเธก (Broadcast / TV Logos)
+------------------------------------------------------
+เนเธเนเธชเธณเธซเธฃเธฑเธเนเธชเนเนเธเธเนเธญเธกเธนเธฅ "channels" เนเธเนเธเธฅเน fixtures เน€เธเธทเนเธญเนเธชเธ”เธเนเธฅเนเธเนเธ—เธตเธงเธต/เธชเธ•เธฃเธตเธกเธกเธดเนเธ
+- เธเธฒเธเนเธเธฅเน€เธ”เธญเธฃเนเธซเธฅเธฑเธ: databases/logo/tv/
+- BG SPORTS: databases/logo/tv/bg.svg
+- CFC+: databases/logo/tv/cfc.svg
+- BBC: databases/logo/tv/bbc.png
+- MONOMAX: databases/logo/tv/monomax.svg  (เธซเธฃเธทเธญ .png)
+- Sky Sports: databases/logo/tv/sky_sports.png  (เธซเธฃเธทเธญ .webp)
+
+
+4. เธญเธทเนเธเน (Others - เธเนเธญเธกเธนเธฅเธชเธณเธเธฑเธเน€เธเธตเนเธขเธงเธเธฑเธเน€เธงเนเธเนเธเธ•เน)
+------------------------------------------------------
+4.1 เนเธเธฅเนเธซเธเนเธฒเธเธญเธซเธฅเธฑเธ (HTML Pages):
+- เธซเธเนเธฒเนเธฃเธ (Home/Matches): index.html
+- เธ—เธตเธกเธเธฒเธข (Men's Team): men-team.html
+- เธ—เธตเธกเธซเธเธดเธ (Women's Team): women-team.html
+- เธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”เธเธฒเธฃเนเธเนเธเธเธฑเธ (Match Detail): match-detail.html
+- เนเธเธฃเนเธเธฅเนเธเธฑเธเน€เธ•เธฐ (Player Profile): player-profile.html
+- เธชเธฃเนเธฒเธเธเธฃเธฒเธเธดเธเธเนเธญเธเนเธเนเธ (Pre-Match Graphic): pre-match-graphic.html
+- เธชเธฃเนเธฒเธเธเธฃเธฒเธเธดเธเธซเธฅเธฑเธเนเธเนเธ (Post-Match Graphic): post-match-graphic.html
+- เธ—เธณเน€เธเธตเธขเธเนเธเธกเธเน (Trophy/Honours): trophy.html
+- เธ•เธณเธเธฒเธเธชเนเธกเธชเธฃ (Icons): icons.html
+- เน€เธเธตเนเธขเธงเธเธฑเธเธชเนเธกเธชเธฃ (About): about.html
+- The Story Blue: the-story-blue.html
+
+4.2 เนเธเธฅเนเธเธฒเธเธเนเธญเธกเธนเธฅ (Data JSON):
+- เนเธเธฅเน€เธ”เธญเธฃเนเธซเธฅเธฑเธเธ—เธตเนเน€เธเนเธเธเนเธญเธกเธนเธฅ: data/
+- เนเธเธฃเนเธเธฃเธกเนเธฅเธฐเธเธฅเธเธฒเธฃเนเธเนเธเธเธฑเธเธ—เธตเธกเธเธฒเธข: data/fixtures-men.json
+- เนเธเธฃเนเธเธฃเธกเนเธฅเธฐเธเธฅเธเธฒเธฃเนเธเนเธเธเธฑเธเธ—เธตเธกเธซเธเธดเธ: data/fixtures-women.json
+- เธฃเธฒเธขเธเธทเนเธญเธเธฑเธเน€เธ•เธฐเธ—เธตเธกเธเธฒเธข: data/players-men.json
+- เธฃเธฒเธขเธเธทเนเธญเธเธฑเธเน€เธ•เธฐเธ—เธตเธกเธซเธเธดเธ: data/players-women.json
+
+4.3 เนเธฅเนเธเนเธซเธฅเธฑเธเธเธญเธเน€เธงเนเธเนเธเธ•เน (Site Logo):
+- เธเธฒเธ: assets/images/karnlakhrangnan-logo.png
+
+4.4 เธเธฒเธฃเธเธฑเธ”เธเธฒเธฃเธฃเธฐเธเธ (Build System):
+- เนเธเธฅเน CSS เธซเธฅเธฑเธ: assets/css/style.css
+- เธซเธฒเธเธกเธตเธเธฒเธฃเน€เธเธฅเธตเนเธขเธเนเธเธฅเธเนเธเนเนเธ CSS เธซเธฃเธทเธญ JS เธญเธขเนเธฒเธฅเธทเธกเนเธเนเธเธณเธชเธฑเนเธ `npm run build` เนเธ Command / Terminal เน€เธเธทเนเธญเธกเธดเธเธดเธเธฒเธข (Minify) เนเธเนเธ”เนเธซเนเน€เธฅเนเธเธฅเธเนเธฅเธฐเธญเธฑเธเน€เธ”เธ•เน€เธงเนเธเนเธเธ•เน
+======================================================

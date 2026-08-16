@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <g transform="translate(10, 10)">
+    <!-- Starball / Trophy icon representation -->
+    <circle cx="50" cy="50" r="45" fill="#001489"/>
+    <path fill="#FFFFFF" d="M50 15 l8 25 h26 l-21 15 l8 25 l-21 -15 l-21 15 l8 -25 l-21 -15 h26 z" opacity="0.9"/>
+  </g>
+  <g transform="translate(120, 25)">
+    <text x="0" y="28" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="22" fill="#001489" letter-spacing="1">UEFA WOMEN'S</text>
+    <text x="0" y="54" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="20" fill="#001489" letter-spacing="1">CHAMPIONS LEAGUE</text>
+  </g>
+</svg>

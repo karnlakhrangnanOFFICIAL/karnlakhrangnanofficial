@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Match Graphic Generator</title>
+    <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { background: #0a0a0f; color: #fff; padding: 20px; font-family: 'Inter', sans-serif; }
+        .controls { max-width: 600px; margin: 0 auto 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        select, button { padding: 10px; background: #1e1e24; border: 1px solid #333; color: white; border-radius: 8px; font-size: 14px; }
+        select { flex: 1; }
+        button { background: var(--accent-light, #0052cc); cursor: pointer; font-weight: bold; }
+        button:hover { filter: brightness(1.2); }
+        
+        .graphic-container {
+            width: 1080px;
+            height: 1080px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #050505 0%, #11111a 50%, #001133 100%);
+            position: relative;
+            transform-origin: top left;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        /* Scaled wrapper for preview on small screens */
+        .preview-wrapper {
+            max-width: 100%;
+            overflow: auto;
+        }
+
+        .ft-label { font-size: 40px; font-weight: 800; letter-spacing: 10px; color: #aaa; margin-bottom: 20px; text-transform: uppercase; }
+        
+        .score-board {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+        
+        .team-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+        
+        .team-logo { width: 220px; height: 220px; object-fit: contain; drop-shadow(0 10px 20px rgba(0,0,0,0.5)); margin-bottom: 20px; }
+        .team-name { font-size: 32px; font-weight: 700; text-align: center; line-height: 1.2; }
+        
+        .score { font-size: 160px; font-weight: 900; line-height: 1; margin: 0 20px; }
+        
+        .goals-container {
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
+            font-size: 26px;
+            color: #ccc;
+        }
+        
+        .goals-home, .goals-away {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .goals-home { align-items: flex-end; text-align: right; }
+        .goals-away { align-items: flex-start; text-align: left; }
+        
+        .brand-footer {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            opacity: 0.7;
+        }
+        .brand-footer img { width: 60px; }
+        .brand-footer span { font-size: 24px; font-weight: 700; letter-spacing: 2px; }
+
+    </style>
+    <!-- Include html2canvas for downloading -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="controls">
+        <select id="matchSelect">
+            <option value="">Select a completed match...</option>
+        </select>
+        <button onclick="downloadGraphic()">Download Graphic</button>
+    </div>
+
+    <div class="preview-wrapper" id="previewWrapper">
+        <div class="graphic-container" id="graphic">
+            <div class="ft-label">Full Time</div>
+            
+            <div class="score-board">
+                <div class="team-block">
+                    <img src="" id="homeLogo" class="team-logo" style="display:none;">
+                    <div class="team-name" id="homeName">Home Team</div>
+                </div>
+                
+                <div class="score" id="matchScore">0 - 0</div>
+                
+                <div class="team-block">
+                    <img src="" id="awayLogo" class="team-logo" style="display:none;">
+                    <div class="team-name" id="awayName">Away Team</div>
+                </div>
+            </div>
+            
+            <div class="goals-container">
+                <div class="goals-home" id="homeGoals"></div>
+                <div class="goals-away" id="awayGoals"></div>
+            </div>
+            
+            <div class="brand-footer">
+                <img src="assets/images/karnlakhrangnan-logo.png" alt="Logo">
+                <span>KARN LA KHRANG NAN</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allMatches = [];
+
+        async function init() {
+            try {
+                // Fetch matches
+                const [menRes, womenRes] = await Promise.all([
+                    fetch('data/fixtures-men.json'),
+                    fetch('data/fixtures-women.json')
+                ]);
+                const menData = await menRes.json();
+                const womenData = await womenRes.json();
+                
+                // Extract all completed matches
+                const extractMatches = (data, team) => {
+                    let matches = [];
+                    for (const comp in data) {
+                        matches = matches.concat(data[comp].filter(m => m.status === 'completed' || m.home_score !== null).map(m => ({...m, teamType: team})));
+                    }
+                    return matches;
+                };
+                
+                allMatches = [
+                    ...extractMatches(menData, 'Men'),
+                    ...extractMatches(womenData, 'Women')
+                ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                const select = document.getElementById('matchSelect');
+                allMatches.forEach((m, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.textContent = `[${m.teamType}] ${m.date} | ${m.home_team} ${m.home_score}-${m.away_score} ${m.away_team}`;
+                    select.appendChild(opt);
+                });
+
+                select.addEventListener('change', (e) => {
+                    if(e.target.value !== "") renderGraphic(allMatches[e.target.value]);
+                });
+
+                // Scale graphic for view
+                scaleGraphic();
+                window.addEventListener('resize', scaleGraphic);
+
+            } catch (err) {
+                console.error('Error loading matches:', err);
+            }
+        }
+
+        function scaleGraphic() {
+            const wrapper = document.getElementById('previewWrapper');
+            const graphic = document.getElementById('graphic');
+            const scale = Math.min(wrapper.clientWidth / 1080, 1);
+            graphic.style.transform = `scale(${scale})`;
+            wrapper.style.height = `${1080 * scale}px`;
+        }
+
+        function renderGraphic(match) {
+            document.getElementById('homeName').textContent = match.home_team;
+            document.getElementById('awayName').textContent = match.away_team;
+            
+            const homeLogo = document.getElementById('homeLogo');
+            homeLogo.src = match.home_logo || 'assets/images/placeholder-team.svg';
+            homeLogo.style.display = 'block';
+            
+            const awayLogo = document.getElementById('awayLogo');
+            awayLogo.src = match.away_logo || 'assets/images/placeholder-team.svg';
+            awayLogo.style.display = 'block';
+            
+            document.getElementById('matchScore').textContent = `${match.home_score} - ${match.away_score}`;
+            
+            // Goals
+            const homeGoalsEl = document.getElementById('homeGoals');
+            const awayGoalsEl = document.getElementById('awayGoals');
+            homeGoalsEl.innerHTML = '';
+            awayGoalsEl.innerHTML = '';
+            
+            if(match.goals && match.goals.length > 0) {
+                match.goals.forEach(g => {
+                    const el = document.createElement('div');
+                    const text = `${g.player} ${g.minute}'`;
+                    el.textContent = text;
+                    if(g.team === 'home') homeGoalsEl.appendChild(el);
+                    else awayGoalsEl.appendChild(el);
+                });
+            }
+        }
+
+        function downloadGraphic() {
+            const graphic = document.getElementById('graphic');
+            const originalTransform = graphic.style.transform;
+            graphic.style.transform = 'scale(1)'; // Reset scale for capture
+            
+            html2canvas(graphic, {
+                scale: 1, // 1080x1080
+                backgroundColor: '#11111a',
+                useCORS: true
+            }).then(canvas => {
+                graphic.style.transform = originalTransform; // Restore scale
+                const link = document.createElement('a');
+                link.download = `FT-Result-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

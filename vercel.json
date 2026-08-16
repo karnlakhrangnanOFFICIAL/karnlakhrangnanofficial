@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "buildCommand": "npm run build",
+  "rewrites": [
+    {
+      "source": "/api/sheets/:spreadsheetId*",
+      "destination": "/api/sheets?spreadsheetId=:spreadsheetId*"
+    },
+    {
+      "source": "/api/sheets",
+      "destination": "/api/sheets"
+    }
+  ]
+}

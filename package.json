@@ -1,0 +1,16 @@
+{
+  "name": "karn-la-khrang-nan-official",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "node scripts/combine-data.js && node scripts/build.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.16.0",
+    "cheerio": "^1.2.0",
+    "express": "^4.21.2",
+    "google-translate-api-x": "^10.7.3"
+  }
+}

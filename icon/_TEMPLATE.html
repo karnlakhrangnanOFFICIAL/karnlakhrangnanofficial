@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PLAYER_NAME}} ยท {{PLAYER_SUBTITLE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* ---------- pageโ€‘specific ---------- */
+    body {
+      background: #f0f2f5;
+      padding: 2rem 1rem;
+    }
+
+    .icon-container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      overflow: hidden;
+      padding: 2.5rem 2.8rem;
+    }
+
+    .hero-icon {
+      text-align: center;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid #eef0f4;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-icon h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #034694, #0a4b8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-icon .subhead {
+      font-size: 1.1rem;
+      color: #5b677b;
+      font-weight: 500;
+      margin-top: 0.4rem;
+    }
+
+    .hero-icon .subhead span {
+      background: #eef3fc;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #034694;
+      margin: 0 0.3rem;
+    }
+
+    .profile-card {
+      background: #f8faff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #e6edf6;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1.8rem 3rem;
+    }
+
+    .profile-avatar-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(3,70,148,0.25);
+      border: 3px solid #034694;
+    }
+
+    .profile-avatar-fallback {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #034694, #1a5ca6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 8px 20px rgba(3,70,148,0.25);
+      letter-spacing: 1px;
+    }
+
+    .profile-info {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.6rem 1.5rem;
+    }
+
+    .profile-item .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6f7d95;
+      font-weight: 600;
+    }
+
+    .profile-item .value {
+      font-weight: 600;
+      color: #0f1a2e;
+      font-size: 1rem;
+    }
+
+    /* content */
+    .content {
+      font-size: 1rem;
+      color: #1f2a3f;
+    }
+
+    .content h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-top: 2.8rem;
+      margin-bottom: 1rem;
+      color: #0b2a4a;
+      border-left: 6px solid #034694;
+      padding-left: 1rem;
+    }
+
+    .content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      color: #1d3b5c;
+    }
+
+    .content p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    .banner-quote {
+      background: #f0f6fe;
+      border-radius: 20px;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0;
+      border-left: 8px solid #034694;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #122b44;
+      font-weight: 500;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.8rem 0 1rem 0;
+      border-radius: 16px;
+      border: 1px solid #e6edf6;
+    }
+
+    .career-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      min-width: 340px;
+    }
+
+    .career-table th {
+      background: #f0f5fd;
+      text-align: left;
+      padding: 0.8rem 1.2rem;
+      font-weight: 600;
+      color: #0b2a4a;
+      border-bottom: 2px solid #d6e0ed;
+    }
+
+    .career-table td {
+      padding: 0.7rem 1.2rem;
+      border-bottom: 1px solid #e6edf6;
+    }
+
+    .footer-note {
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      border-top: 2px solid #eef0f4;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #5f6f87;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: #034694;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .icon-container { padding: 1.5rem 1.2rem; border-radius: 24px; }
+      .hero-icon h1 { font-size: 2.2rem; }
+      .profile-card { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem 1.2rem; }
+      .profile-info { grid-template-columns: 1fr 1fr; width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 1rem 0.5rem; }
+      .icon-container { padding: 1rem 0.8rem; }
+      .profile-info { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION (เน€เธซเธกเธทเธญเธเธ—เธธเธเธซเธเนเธฒ) ========== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../databases/logo/teams/england_chelsea.svg" alt="Chelsea">
+        <span>KANLAKHRANGNAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">เธซเธเนเธฒเนเธฃเธ</a></li>
+        <li><a href="../men-team.html">เธ—เธตเธกเธเธฒเธข</a></li>
+        <li><a href="../women-team.html">เธ—เธตเธกเธซเธเธดเธ</a></li>
+        <li><a href="../trophy.html">เธ–เนเธงเธขเธฃเธฒเธเธงเธฑเธฅ</a></li>
+        <li><a href="../icons.html" class="active">i-Cons</a></li>
+        <li><a href="../the-story-blue.html">The Story Blue</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="icon-container">
+
+    <!-- เธเธธเนเธกเธเธฅเธฑเธ -->
+    <a href="../icons.html" class="btn-back">โ เธเธฅเธฑเธเธซเธเนเธฒเธเธฅเธฑเธเธ•เธณเธเธฒเธ</a>
+
+    <!-- HEADER -->
+    <header class="hero-icon">
+      <h1>{{PLAYER_NAME}}</h1>
+      <div class="subhead">
+        {{PLAYER_TAGS}}
+      </div>
+    </header>
+
+    <!-- PROFILE CARD -->
+    <section class="profile-card">
+      <!-- เน€เธเธฅเธตเนเธขเธเน€เธเธเธฒเธฐ src เธเธฑเธ alt -->
+      <img src="{{PLAYER_IMAGE}}" alt="{{PLAYER_NAME}}" class="profile-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="profile-avatar-fallback" style="display: none;">{{PLAYER_INITIALS}}</div>
+
+      <div class="profile-info">
+        <div class="profile-item">
+          <span class="label">Name</span>
+          <span class="value">{{PLAYER_FULLNAME}}</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Birthday</span>
+          <span class="value">{{PLAYER_BIRTHDAY}} <small>ยท {{PLAYER_AGE}}</small></span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Born in</span>
+          <span class="value">{{PLAYER_BIRTHPLACE}}</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Country</span>
+          <span class="value">{{PLAYER_COUNTRY}}</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Height / Weight</span>
+          <span class="value">{{PLAYER_HEIGHT_WEIGHT}}</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Position(s)</span>
+          <span class="value">{{PLAYER_POSITION}}</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Foot</span>
+          <span class="value">{{PLAYER_FOOT}}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIOGRAPHY -->
+    <div class="content">
+      {{PLAYER_BIOGRAPHY}}
+    </div>
+
+    <!-- CAREER TABLE -->
+    <div style="margin-top: 2.8rem; border-top: 2px solid #eef0f4; padding-top: 2rem;">
+      <h2 style="font-size: 1.8rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.2rem; color: #0b2a4a; border-left: 6px solid #034694; padding-left: 1rem;">เธเธฃเธฐเธงเธฑเธ•เธดเธเธฒเธฃเธเนเธฒเนเธเนเธ</h2>
+      {{CAREER_TABLE}}
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-note">
+      <strong>{{PLAYER_MOTTO}}</strong> &nbsp;โ€”&nbsp; {{PLAYER_NAME}} โ€ข {{PLAYER_LIFETIME}}
+    </div>
+
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

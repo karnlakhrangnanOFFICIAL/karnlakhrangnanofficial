@@ -1,0 +1,1011 @@
+[
+  {
+    "id": "m6",
+    "date": "2026-08-15",
+    "time": "20:00",
+    "competition": "friendly",
+    "competition_logo": null,
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Real Sociedad",
+    "away_logo": "databases/logo/teams/spain_real-sociedad.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "chelseafc.com",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      }
+    ],
+    "status": "completed",
+    "home_score": 3,
+    "away_score": 1,
+    "goals": [
+      {
+        "team": "home",
+        "player": "Morgan Rogers",
+        "minute": 11
+      },
+      {
+        "team": "away",
+        "player": "Jon Aramburu",
+        "minute": 45
+      },
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 47
+      },
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 77
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "minute": 11
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Jon Aramburu",
+        "minute": 45
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 47
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 77
+      }
+    ],
+    "competition_name": "friendly",
+    "team_type": "M"
+  },
+  {
+    "id": "w2",
+    "date": "2026-08-12",
+    "time": "16:45",
+    "time_th": "16:45",
+    "time_uk": "10:45",
+    "competition": "Friendly",
+    "competition_logo": "databases/logo/competitions/women/friendly.png",
+    "home_team": "A-League Women All-Stars",
+    "home_logo": "databases/logo/teams/a-league-women-all-stars.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Allianz Stadium",
+    "ha": "A",
+    "status": "completed",
+    "home_score": 0,
+    "away_score": 3,
+    "goals": [
+      {
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "minute": 9
+      },
+      {
+        "team": "away",
+        "player": "Sjoeke Nusken",
+        "minute": 12
+      },
+      {
+        "team": "away",
+        "player": "Lexi Potter",
+        "minute": 70
+      }
+    ],
+    "events": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      }
+    ],
+    "competition_name": "Friendly",
+    "team_type": "W"
+  },
+  {
+    "id": "m5",
+    "date": "2026-08-09",
+    "time": "19:00",
+    "competition": "friendly",
+    "competition_logo": null,
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Johor Darul Ta'zim",
+    "away_logo": "databases/logo/teams/malaysia_johor-darul-tazim.svg",
+    "venue": "Sultan Ibrahim Stadium",
+    "channels": [
+      {
+        "platform": "chelseafc.com",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      },
+      {
+        "platform": "YouTube",
+        "name": "BG SPORTS",
+        "logo": "databases/logo/tv/bg.svg"
+      }
+    ],
+    "status": "completed",
+    "home_score": 3,
+    "away_score": 3,
+    "goals": [
+      {
+        "team": "away",
+        "player": "Arif Aiman",
+        "minute": 14
+      },
+      {
+        "team": "home",
+        "player": "Liam Delap",
+        "minute": 42
+      },
+      {
+        "team": "home",
+        "player": "Liam Delap",
+        "minute": 62
+      },
+      {
+        "team": "away",
+        "player": "ร“scar Arribas",
+        "minute": 65
+      },
+      {
+        "team": "away",
+        "player": "Bรฉrgson",
+        "minute": 86
+      },
+      {
+        "team": "home",
+        "player": "Cristian Glauder (OG)",
+        "minute": 89
+      }
+    ],
+    "events": [
+      {
+        "type": "first_half",
+        "team": null,
+        "player": null,
+        "minute": 1
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Arif Aiman",
+        "minute": 14
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Reggie Watson",
+        "player_out": "Aaron Anselmino",
+        "minute": 29
+      },
+      {
+        "type": "penalty_awarded",
+        "team": "home",
+        "player": "Liam Delap",
+        "minute": 41
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Liam Delap",
+        "minute": 42,
+        "detail": "Penalty"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Eddy Israfilov",
+        "minute": 44
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Liam Delap",
+        "minute": 45
+      },
+      {
+        "type": "second_half",
+        "team": null,
+        "player": null,
+        "minute": 46
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Gabriel Sลonina",
+        "player_out": "Teddy Sharman-Lowe",
+        "minute": 46
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Jonathan Silva",
+        "minute": 52
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Estรชvรฃo",
+        "minute": 54
+      },
+      {
+        "type": "penalty_awarded",
+        "team": "home",
+        "player": "Jamie Gittens",
+        "minute": 60
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Liam Delap",
+        "minute": 62,
+        "detail": "Penalty"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Stoichkov",
+        "player_out": "Shahab Zahedi",
+        "minute": 63
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "ร“scar Arribas",
+        "minute": 65,
+        "detail": "Free Kick"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Nicolas Jackson",
+        "minute": 66
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Cristian Glauder",
+        "minute": 68
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Geovany Quenda",
+        "minute": 75
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Bรฉrgson",
+        "player_out": "Marcos Guilherme",
+        "minute": 78
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Nenรช",
+        "player_out": "Ignacio Mรฉndez",
+        "minute": 78
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Carlos Akapo",
+        "player_out": "Eddy Israfilov",
+        "minute": 82
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Bรฉrgson",
+        "minute": 86
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Mykhailo Mudryk",
+        "player_out": "Jamie Gittens",
+        "minute": 87
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Dastan Setpaev",
+        "player_out": "Nicolas Jackson",
+        "minute": 87
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Cristian Glauder (OG)",
+        "minute": 89,
+        "detail": "Own Goal"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "La'Vere Corbin-Ong",
+        "player_out": "Jonathan Silva",
+        "minute": 89
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Reggie Watson",
+        "minute": 92
+      }
+    ],
+    "time_live": "FT",
+    "commentary": [
+      {
+        "section": "เธเธฃเธถเนเธเนเธฃเธ (First Half)",
+        "events": [
+          {
+            "minute": "1'",
+            "text": "เน€เธฃเธดเนเธกเน€เธเธกเธเธฃเธถเนเธเนเธฃเธ (First Half begins)"
+          },
+          {
+            "minute": "2'",
+            "text": "Nicolas Jackson (Chelsea) เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน"
+          },
+          {
+            "minute": "8'",
+            "text": "เธเธนเนเธฃเธฑเธเธฉเธฒเธเธฃเธฐเธ•เธนเน€เธเธเธฅเธนเธเธขเธดเธเธเธญเธ Liam Delap (Chelsea) / Liam Delap เนเธ”เนเธเธฒเธงเธฅเนเธเธฒเธ Kevin Medina"
+          },
+          {
+            "minute": "9'",
+            "text": "Liam Delap (Chelsea) เนเธ”เนเธเธฒเธงเธฅเนเธเธฒเธ Eddy Israfilov"
+          },
+          {
+            "minute": "10'",
+            "text": "เน€เธเธฅเธเธตเนเธ”เนเน€เธ•เธฐเธกเธธเธก เน€เธชเธตเธขเนเธ”เธข Cristian Glauder"
+          },
+          {
+            "minute": "11'",
+            "text": "Estรชvรฃo (Chelsea) เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน / Jamie Gittens เนเธ”เนเธเธฒเธงเธฅเนเธเธฒเธ ร“scar Arribas"
+          },
+          {
+            "minute": "13'",
+            "text": "เธเธนเนเธฃเธฑเธเธฉเธฒเธเธฃเธฐเธ•เธนเน€เธเธเธฅเธนเธเธขเธดเธเธเธญเธ Nicolas Jackson (Chelsea) / Estรชvรฃo เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน / Shahab Zahedi (JDT) เนเธ”เนเธเธฒเธงเธฅเนเธเธฒเธ Tosin Adarabioyo"
+          },
+          {
+            "minute": "14'",
+            "text": "โฝ GOAL! Arif Aiman เธขเธดเธเนเธซเน Johor Darul Ta'zim เธเธถเนเธเธเธณ 1-0"
+          },
+          {
+            "minute": "18'",
+            "text": "Kevin Medina (JDT) เนเธ”เนเธเธฒเธงเธฅเนเธเธฒเธ Liam Delap"
+          },
+          {
+            "minute": "19'",
+            "text": "Shahab Zahedi (JDT) เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน"
+          },
+          {
+            "minute": "20'",
+            "text": "ร“scar Arribas (JDT) เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน"
+          },
+          {
+            "minute": "21'",
+            "text": "เน€เธเธฅเธเธตเนเธ”เนเน€เธ•เธฐเธกเธธเธก เน€เธชเธตเธขเนเธ”เธข Jonathan Silva"
+          },
+          {
+            "minute": "23'",
+            "text": "เธเธฑเธเธ”เธทเนเธกเธเนเธณ (Drinks break) / Cristian Glauder (JDT) เนเธ”เนเธเธฒเธงเธฅเน"
+          },
+          {
+            "minute": "26'",
+            "text": "เน€เธเธกเธซเธขเธธเธ”เธเธฑเนเธงเธเธฃเธฒเธงเน€เธเธทเนเธญเธเธเธฒเธ Aaron Anselmino (Chelsea) เธเธฒเธ”เน€เธเนเธ / Arif Aiman (JDT) เนเธ”เนเธเธฒเธงเธฅเน"
+          },
+          {
+            "minute": "29'",
+            "text": "Nacho Mรฉndez (JDT) เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน / ๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (Chelsea): Reggie Watson เนเธ—เธ Aaron Anselmino"
+          },
+          {
+            "minute": "30'-32'",
+            "text": "เธเธฒเธฃเธเธฒเธงเธฅเนเธ•เนเธญเน€เธเธทเนเธญเธเธเธฒเธเธ—เธฑเนเธเธชเธญเธเธ—เธตเธก (Jonathan Silva, Eddy Israfilov, Nicolas Jackson)"
+          },
+          {
+            "minute": "33'",
+            "text": "ร“scar Arribas (JDT) เธเธฅเธฒเธ”เนเธญเธเธฒเธชเธ—เธณเธเธฃเธฐเธ•เธน"
+          },
+          {
+            "minute": "34'",
+            "text": "เน€เธเธกเธซเธขเธธเธ”เธเธฑเนเธงเธเธฃเธฒเธงเน€เธเธทเนเธญเธเธเธฒเธ Dรกrio Essugo (Chelsea) เธเธฒเธ”เน€เธเนเธ"
+          },
+          {
+            "minute": "36'",
+            "text": "Geovany Quenda (Chelsea) เนเธ”เนเธเธฒเธงเธฅเนเธเธฒเธ Jonathan Silva"
+          },
+          {
+            "minute": "40'",
+            "text": "Shahab Zahedi (JDT) เธฅเนเธณเธซเธเนเธฒ"
+          },
+          {
+            "minute": "41'",
+            "text": "โ ๏ธ เน€เธเธฅเธเธตเนเธ”เนเธเธธเธ”เนเธ—เธฉ Kevin Medina เธ—เธณเธเธฒเธงเธฅเน Liam Delap เนเธเธเธฃเธญเธเน€เธเธ•เนเธ—เธฉ"
+          },
+          {
+            "minute": "42'",
+            "text": "โฝ GOAL! Liam Delap เธชเธฑเธเธซเธฒเธฃเธเธธเธ”เนเธ—เธฉเน€เธเนเธฒ เน€เธเธฅเธเธตเธ•เธตเน€เธชเธกเธญ 1-1"
+          },
+          {
+            "minute": "44'",
+            "text": "๐จ เนเธเน€เธซเธฅเธทเธญเธ: Eddy Israfilov (JDT)"
+          },
+          {
+            "minute": "45'",
+            "text": "๐จ เนเธเน€เธซเธฅเธทเธญเธ: Liam Delap (Chelsea)"
+          },
+          {
+            "minute": "46'",
+            "text": "เธ—เธ”เน€เธงเธฅเธฒเธเธฒเธ”เน€เธเนเธ 3 เธเธฒเธ—เธต / Tosin Adarabioyo (Chelsea) เนเธซเธกเนเธเธเธฅเธฒเธ”เน€เธเนเธฒ"
+          },
+          {
+            "minute": "47'",
+            "text": "Reggie Watson เนเธฅเธฐ Tosin Adarabioyo (Chelsea) เนเธซเธกเนเธเธเธฅเธฒเธ”เน€เธเนเธฒ"
+          },
+          {
+            "minute": "48'",
+            "text": "Liam Delap (Chelsea) เธขเธดเธเธเธฅเธฒเธ”เน€เธเนเธฒ"
+          },
+          {
+            "minute": "HT",
+            "text": "เธเธเธเธฃเธถเนเธเนเธฃเธ: Johor Darul Ta'zim 1 - 1 Chelsea"
+          }
+        ]
+      },
+      {
+        "section": "เธเธฃเธถเนเธเธซเธฅเธฑเธ (Second Half)",
+        "events": [
+          {
+            "minute": "46'",
+            "text": "๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (Chelsea): Gabriel Slonina เนเธ—เธ Teddy Sharman-Lowe / เน€เธฃเธดเนเธกเน€เธเธกเธเธฃเธถเนเธเธซเธฅเธฑเธ"
+          },
+          {
+            "minute": "47'",
+            "text": "เธฅเธนเธเธขเธดเธเธเธญเธ Nicolas Jackson (Chelsea) เธ–เธนเธเธเธฅเนเธญเธ"
+          },
+          {
+            "minute": "49'",
+            "text": "เธเธนเนเธฃเธฑเธเธฉเธฒเธเธฃเธฐเธ•เธนเน€เธเธเธฅเธนเธเธขเธดเธเธเธญเธ Shahab Zahedi (JDT)"
+          },
+          {
+            "minute": "50'-52'",
+            "text": "เธเธฒเธงเธฅเนเธ•เนเธญเน€เธเธทเนเธญเธ เนเธฅเธฐ ๐จ เนเธเน€เธซเธฅเธทเธญเธ: Jonathan Silva (JDT)"
+          },
+          {
+            "minute": "54'",
+            "text": "๐จ เนเธเน€เธซเธฅเธทเธญเธ: Estรชvรฃo (Chelsea)"
+          },
+          {
+            "minute": "57'-59'",
+            "text": "เธเธฒเธงเธฅเนเธ•เนเธญเน€เธเธทเนเธญเธ เนเธฅเธฐ Liam Delap (Chelsea) เธขเธดเธเธเธฅเธฒเธ”เน€เธเนเธฒ"
+          },
+          {
+            "minute": "60'",
+            "text": "โ ๏ธ เน€เธเธฅเธเธตเนเธ”เนเธเธธเธ”เนเธ—เธฉ ร“scar Arribas เธ—เธณเธเธฒเธงเธฅเน Jamie Gittens"
+          },
+          {
+            "minute": "62'",
+            "text": "โฝ GOAL! Liam Delap เธชเธฑเธเธซเธฒเธฃเธเธธเธ”เนเธ—เธฉเน€เธเนเธฒ เน€เธเธฅเธเธตเธเธถเนเธเธเธณ 2-1"
+          },
+          {
+            "minute": "63'",
+            "text": "๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (JDT): Stoichkov เนเธ—เธ Shahab Zahedi"
+          },
+          {
+            "minute": "65'",
+            "text": "โฝ GOAL! ร“scar Arribas เธเธฑเนเธเธเธฃเธตเธเธดเธเธชเธธเธ”เธชเธงเธข JDT เธ•เธตเน€เธชเธกเธญ 2-2"
+          },
+          {
+            "minute": "66'",
+            "text": "๐จ เนเธเน€เธซเธฅเธทเธญเธ: Nicolas Jackson (Chelsea)"
+          },
+          {
+            "minute": "67'-68'",
+            "text": "เธเธฒเธฃเธเธธเธเธเธญเธ JDT เธ–เธนเธเธเธฅเนเธญเธ เนเธฅเธฐ ๐จ เนเธเน€เธซเธฅเธทเธญเธ: Cristian Glauder (JDT)"
+          },
+          {
+            "minute": "70'",
+            "text": "เธฅเธนเธเธขเธดเธเธเธญเธ Dรกrio Essugo (Chelsea) เธ–เธนเธเธเธฅเนเธญเธ / เน€เธเธฅเธเธตเนเธ”เนเน€เธ•เธฐเธกเธธเธก 2 เธเธฃเธฑเนเธเธ•เธดเธ”"
+          },
+          {
+            "minute": "73'",
+            "text": "เธเธนเนเธฃเธฑเธเธฉเธฒเธเธฃเธฐเธ•เธนเน€เธเธเธฅเธนเธเธขเธดเธเธเธญเธ Jamie Gittens (Chelsea)"
+          },
+          {
+            "minute": "75'",
+            "text": "เธเธฑเธเธ”เธทเนเธกเธเนเธณ (Drinks break) / ๐จ เนเธเน€เธซเธฅเธทเธญเธ: Geovany Quenda (Chelsea)"
+          },
+          {
+            "minute": "78'",
+            "text": "๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (JDT): Bรฉrgson เนเธ—เธ Marcos Guilherme เนเธฅเธฐ Nenรช เนเธ—เธ Ignacio Mรฉndez"
+          },
+          {
+            "minute": "79'",
+            "text": "Stoichkov (JDT) เธฅเนเธณเธซเธเนเธฒ"
+          },
+          {
+            "minute": "82'",
+            "text": "๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (JDT): Carlos Akapo เนเธ—เธ Eddy Israfilov"
+          },
+          {
+            "minute": "84'",
+            "text": "เน€เธเธกเธซเธขเธธเธ”เธเธฑเนเธงเธเธฃเธฒเธงเน€เธเธทเนเธญเธเธเธฒเธ Nicolas Jackson (Chelsea) เธเธฒเธ”เน€เธเนเธ"
+          },
+          {
+            "minute": "86'",
+            "text": "โฝ GOAL! Bรฉrgson เธขเธดเธเนเธเธฅเธเธฒเธเธเธญเธเธเธฃเธญเธเน€เธเธ•เนเธ—เธฉ JDT เธเธฅเธดเธเธเธณ 3-2"
+          },
+          {
+            "minute": "87'",
+            "text": "๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (Chelsea): Dastan Setpaev เนเธ—เธ Nicolas Jackson เนเธฅเธฐ Mykhailo Mudryk เนเธ—เธ Jamie Gittens"
+          },
+          {
+            "minute": "89'",
+            "text": "โฝ GOAL (Own Goal)! Cristian Glauder (JDT) เธ—เธณเน€เธเนเธฒเธเธฃเธฐเธ•เธนเธ•เธฑเธงเน€เธญเธ เน€เธเธฅเธเธตเธ•เธตเน€เธชเธกเธญ 3-3"
+          },
+          {
+            "minute": "89'",
+            "text": "๐” เน€เธเธฅเธตเนเธขเธเธ•เธฑเธง (JDT): La'Vere Corbin-Ong เนเธ—เธ Jonathan Silva"
+          },
+          {
+            "minute": "91'",
+            "text": "เธเธนเนเธฃเธฑเธเธฉเธฒเธเธฃเธฐเธ•เธนเน€เธเธเธฅเธนเธเธขเธดเธเธเธญเธ Arif Aiman (JDT)"
+          },
+          {
+            "minute": "92'",
+            "text": "เธ—เธ”เน€เธงเธฅเธฒเธเธฒเธ”เน€เธเนเธ 4 เธเธฒเธ—เธต / ๐จ เนเธเน€เธซเธฅเธทเธญเธ: Reggie Watson (Chelsea)"
+          },
+          {
+            "minute": "FT",
+            "text": "เธเธเธเธฒเธฃเนเธเนเธเธเธฑเธ: Johor Darul Ta'zim 3 - 3 Chelsea"
+          }
+        ]
+      }
+    ],
+    "competition_name": "friendly",
+    "team_type": "M"
+  },
+  {
+    "id": "m4",
+    "date": "2026-08-08",
+    "time": "19:00",
+    "competition": "friendly",
+    "competition_logo": null,
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "AC Milan",
+    "away_logo": "databases/logo/teams/italy_milan.svg",
+    "venue": "Gelora Bung Karno Stadium",
+    "channels": [
+      {
+        "platform": "chelseafc.com",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      },
+      {
+        "platform": "YouTube",
+        "name": "BG SPORTS",
+        "logo": "databases/logo/tv/bg.svg"
+      }
+    ],
+    "status": "completed",
+    "home_score": 3,
+    "away_score": 0,
+    "goals": [
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": "45+2"
+      },
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 46
+      },
+      {
+        "team": "home",
+        "player": "Moisรฉs Caicedo",
+        "minute": 50
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "player": "Joรฃo Pedro",
+        "minute": "45+2",
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Joรฃo Pedro",
+        "minute": 46,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Moisรฉs Caicedo",
+        "minute": 50,
+        "team": "home"
+      }
+    ],
+    "competition_name": "friendly",
+    "team_type": "M"
+  },
+  {
+    "id": "w1",
+    "date": "2026-08-08",
+    "time": "11:00",
+    "competition": "Friendly",
+    "competition_logo": "databases/logo/competitions/women/friendly.png",
+    "home_team": "Auckland FC Women",
+    "home_logo": "databases/logo/teams/new-zealand_auckland-fc.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Eden Park",
+    "ha": "A",
+    "home_score": 0,
+    "away_score": 7,
+    "status": "completed",
+    "goals": [
+      {
+        "team": "away",
+        "player": "Aggie Beever-Jones",
+        "minute": 11
+      },
+      {
+        "team": "away",
+        "player": "Aggie Beever-Jones",
+        "minute": 13
+      },
+      {
+        "team": "away",
+        "player": "Aggie Beever-Jones",
+        "minute": 22
+      },
+      {
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "minute": 26
+      },
+      {
+        "team": "away",
+        "player": "Giulia Dragoni",
+        "minute": 56
+      },
+      {
+        "team": "away",
+        "player": "Maika Hamano",
+        "minute": 65
+      },
+      {
+        "team": "away",
+        "player": "Mayra Ramรญrez",
+        "minute": 87
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "player": "Aggie Beever-Jones",
+        "minute": 11,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Aggie Beever-Jones",
+        "minute": 13,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Aggie Beever-Jones",
+        "minute": 22,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Sandy Baltimore",
+        "minute": 26,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Giulia Dragoni",
+        "minute": 56,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Maika Hamano",
+        "minute": 65,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Mayra Ramรญrez",
+        "minute": 87,
+        "team": "away"
+      }
+    ],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      }
+    ],
+    "competition_name": "Friendly",
+    "team_type": "W"
+  },
+  {
+    "id": "m3",
+    "date": "2026-08-05",
+    "time": "18:30",
+    "competition": "friendly",
+    "competition_logo": null,
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Juventus",
+    "away_logo": "databases/logo/teams/italy_juventus--white.svg",
+    "venue": "Kai Tak Sports Park",
+    "home_score": 0,
+    "away_score": 1,
+    "status": "completed",
+    "goals": [
+      {
+        "team": "away",
+        "player": "Zhegrova",
+        "minute": 68
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "player": "Zhegrova",
+        "minute": 68,
+        "team": "away"
+      }
+    ],
+    "channels": [
+      {
+        "platform": "chelseafc.com",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      },
+      {
+        "platform": "YouTube",
+        "name": "BG SPORTS",
+        "logo": "databases/logo/tv/bg.svg"
+      }
+    ],
+    "competition_name": "friendly",
+    "team_type": "M"
+  },
+  {
+    "id": "m2",
+    "date": "2026-08-01",
+    "time": "16:45",
+    "competition": "friendly",
+    "competition_logo": null,
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Tottenham Hotspur",
+    "away_logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
+    "venue": "Accor Stadium",
+    "home_score": 1,
+    "away_score": 2,
+    "status": "completed",
+    "goals": [
+      {
+        "team": "away",
+        "player": "Tonali",
+        "minute": 17
+      },
+      {
+        "team": "home",
+        "player": "Estรชvรฃo",
+        "minute": 21
+      },
+      {
+        "team": "away",
+        "player": "Richarlison",
+        "minute": "90+2"
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "player": "Tonali",
+        "minute": 17,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Estรชvรฃo",
+        "minute": 21,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Richarlison",
+        "minute": "90+2",
+        "team": "away"
+      }
+    ],
+    "channels": [
+      {
+        "platform": "chelseafc.com",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      },
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "competition_name": "friendly",
+    "team_type": "M"
+  },
+  {
+    "id": "m1",
+    "date": "2026-07-28",
+    "time": "16:45",
+    "competition": "friendly",
+    "competition_logo": null,
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Western Sydney Wanderers",
+    "away_logo": "databases/logo/teams/australia_western-sydney-wanderers.svg",
+    "venue": "Accor Stadium",
+    "home_score": 6,
+    "away_score": 4,
+    "status": "completed",
+    "goals": [
+      {
+        "team": "home",
+        "player": "Satpaev",
+        "minute": 6
+      },
+      {
+        "team": "away",
+        "player": "Pantazopoulos",
+        "minute": 14
+      },
+      {
+        "team": "away",
+        "player": "Hammond",
+        "minute": 32
+      },
+      {
+        "team": "home",
+        "player": "Dรกrio Essugo",
+        "minute": 38
+      },
+      {
+        "team": "away",
+        "player": "Scicluna",
+        "minute": 62
+      },
+      {
+        "team": "home",
+        "player": "Gittens",
+        "minute": 66
+      },
+      {
+        "team": "away",
+        "player": "Lual",
+        "minute": 78
+      },
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 80
+      },
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 85
+      },
+      {
+        "team": "home",
+        "player": "Joรฃo Pedro",
+        "minute": 89
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "player": "Satpaev",
+        "minute": 6,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Pantazopoulos",
+        "minute": 14,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Hammond",
+        "minute": 32,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Dรกrio Essugo",
+        "minute": 38,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Scicluna",
+        "minute": 62,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Gittens",
+        "minute": 66,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Lual",
+        "minute": 78,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Joรฃo Pedro",
+        "minute": 80,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Joรฃo Pedro",
+        "minute": 85,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Joรฃo Pedro",
+        "minute": 89,
+        "team": "home"
+      }
+    ],
+    "channels": [
+      {
+        "platform": "chelseafc.com",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.svg"
+      },
+      {
+        "platform": "YouTube",
+        "name": "BG SPORTS",
+        "logo": "databases/logo/tv/bg.svg"
+      }
+    ],
+    "competition_name": "friendly",
+    "team_type": "M"
+  }
+]

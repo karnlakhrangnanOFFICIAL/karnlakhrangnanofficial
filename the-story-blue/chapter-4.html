@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 4 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="icon" href="../assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: fixed; top: 0; width: 100%; height: 70px; background: var(--blue);
+      display: flex; align-items: center; justify-content: center; z-index: 10000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      width: 100%; max-width: 1200px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--gold); font-weight: 700; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* Hero */
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Article */
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .pull-quote {
+      border-left: 4px solid var(--gold); padding: 24px 32px; margin: 0 0 48px;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem,2vw,1.2rem); color: var(--ink-soft); line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 14px; font-family: 'Sarabun', sans-serif; font-style: normal;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+
+    /* Chapter Navigation */
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Footer (Fixed to dark theme as requested) */
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 60px 20px 40px;
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+    }
+    .footer-content {
+      max-width: var(--col-max);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .footer-logo img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    .footer-logo span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+    .footer p {
+      font-size: 0.9rem;
+      color: rgba(245, 242, 236, 0.7);
+    }
+    .footer p strong {
+      color: var(--gold);
+    }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; bottom: 30px; right: 20px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { bottom: 20px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: bottom right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" class="hero__logo" alt="Chelsea TH FANs Logo">
+      <p class="hero__kicker">Chelsea TH FANs · Kann Krung Nan News</p>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Kann Krung Nan News!</em>" data-lang-en="Once Upon a Time<br><em>Kann Krung Nan News!</em>">กาลครั้งนั้น<br><em>Kann Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- Article -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๔" data-lang-en="CHAPTER 4">บทที่ ๔</div>
+        <h1 data-lang-th="ลอนดอนยุคสวิงกิ้ง – เชลซีและเหล่าราชาแห่งคิงส์โร้ด" data-lang-en="Swinging London – Chelsea and the Kings of the King's Road">ลอนดอนยุคสวิงกิ้ง – เชลซีและเหล่าราชาแห่งคิงส์โร้ด</h1>
+      </div>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="'ชาร์ลี คุก เตะบอลอ้อมรอน ยีตส์ ไปฝั่งหนึ่ง แล้ววิ่งออกนอกสนาม อ้อมลู่วิ่ง อ้อมธงเตะมุมอีกฝั่ง แล้วไปเก็บบอล ผมคิดเลยว่า "ให้ตายเถอะ จะดีแค่ไหนนะถ้าได้มาเล่นกับคนพวกนี้!"'" data-lang-en="‘Charlie Cooke hit the ball round one side of Ron Yeats and ran off the pitch, round the track, round the other side of the corner flag, and got the ball. And I thought, "Bloomin' hell, wouldn't it be lovely to come and play with this mob!"'">‘Charlie Cooke hit the ball round one side of Ron Yeats and ran off the pitch, round the track, round the other side of the corner flag, and got the ball. And I thought, "Bloomin' hell, wouldn't it be lovely to come and play with this mob!"'</p>
+        <cite data-lang-th="— เดวิด เว็บบ์, ก่อนเซ็นสัญญากับเชลซีในปี 1968" data-lang-en="— David Webb, prior to signing for Chelsea in 1968.">— เดวิด เว็บบ์, ก่อนเซ็นสัญญากับเชลซีในปี 1968</cite>
+      </blockquote>
+
+      <h2 data-lang-th="บทนำ: เชลซีในยุคที่ลอนดอนกำลัง 'สวิงกิ้ง'" data-lang-en="Intro: Chelsea in 'Swinging' London">บทนำ: เชลซีในยุคที่ลอนดอนกำลัง 'สวิงกิ้ง'</h2>
+      <p class="drop-cap" data-lang-th="เชลซีที่เคยร่วงหล่นจากจุดสูงสุด จากการคว้าแชมป์ลีกไปสู่การตกชั้นภายใน 7 ฤดูกาล ไม่เพียงแต่กลับมายิ่งใหญ่อีกครั้งเมื่อยุคซิกซ์ตี้ส์ (60s) มาถึง แต่สโมสรยังสะท้อนถึงทุกสิ่งที่เป็น 'สวิงกิ้ง' ในทศวรรษนั้นด้วย เช่นเดียวกับการระเบิดขึ้นของดนตรี ศิลปะ แฟชั่น วิทยาศาสตร์ และการเคลื่อนไหวทางการเมืองรูปแบบใหม่ที่กวาดล้างไปทั่วโลก การฟื้นคืนชีพของทีมสิงห์บลูส์นั้นหยั่งรากลึกอยู่ที่พลังของคนหนุ่มสาว" data-lang-en="The Chelsea that fell from grace, that dipped from winning the league to relegation in seven seasons, did not just become great again as the whirlwind Sixties arrived, the club epitomised everything that was 'swinging' about the decade. Like the explosion of new music, art, fashion, science and political movements that swept the world, the Blues' revival was rooted in youth.">เชลซีที่เคยร่วงหล่นจากจุดสูงสุด จากการคว้าแชมป์ลีกไปสู่การตกชั้นภายใน 7 ฤดูกาล ไม่เพียงแต่กลับมายิ่งใหญ่อีกครั้งเมื่อยุคซิกซ์ตี้ส์ (60s) มาถึง แต่สโมสรยังสะท้อนถึงทุกสิ่งที่เป็น 'สวิงกิ้ง' ในทศวรรษนั้นด้วย เช่นเดียวกับการระเบิดขึ้นของดนตรี ศิลปะ แฟชั่น วิทยาศาสตร์ และการเคลื่อนไหวทางการเมืองรูปแบบใหม่ที่กวาดล้างไปทั่วโลก การฟื้นคืนชีพของทีมสิงห์บลูส์นั้นหยั่งรากลึกอยู่ที่พลังของคนหนุ่มสาว</p>
+      
+      <p data-lang-th="ด้วยทำเลที่ตั้งติดกับถนนคิงส์โร้ด (King's Road) ซึ่งเป็นหนึ่งในศูนย์กลางของ 'Swinging London' สโมสรกลับมาเบ่งบานอีกครั้งพร้อมกับผู้จัดการทีมหนุ่มที่เข้ามากุมบังเหียน นั่นคือ ทอมมี่ โดเคอร์ตี้ ในงานคุมทีมเต็มตัวครั้งแรกหลังจากที่เคยเป็นผู้เล่น-โค้ชให้เชลซีช่วงสั้นๆ ทีมเติบโตแข็งแกร่งขึ้นอีกครั้งด้วยผู้เล่นดาวรุ่งในทีม ซึ่งหลายคนเป็นผลผลิตรุ่นแรกๆ จากระบบเยาวชนอันบุกเบิกที่ถูกพัฒนาขึ้นภายใต้ผู้จัดการทีมสองคนก่อนหน้านี้" data-lang-en="Adjacent to the King's Road, one of the epicentres of 'Swinging London', the club blossomed once more with a young manager at the helm, Tommy Docherty in his first job in charge having briefly been a player/coach at Chelsea. It grew strong again with fledgling players in the side, many the early fruits of the pioneering youth system developed under the previous two managers.">ด้วยทำเลที่ตั้งติดกับถนนคิงส์โร้ด (King's Road) ซึ่งเป็นหนึ่งในศูนย์กลางของ 'Swinging London' สโมสรกลับมาเบ่งบานอีกครั้งพร้อมกับผู้จัดการทีมหนุ่มที่เข้ามากุมบังเหียน นั่นคือ ทอมมี่ โดเคอร์ตี้ ในงานคุมทีมเต็มตัวครั้งแรกหลังจากที่เคยเป็นผู้เล่น-โค้ชให้เชลซีช่วงสั้นๆ ทีมเติบโตแข็งแกร่งขึ้นอีกครั้งด้วยผู้เล่นดาวรุ่งในทีม ซึ่งหลายคนเป็นผลผลิตรุ่นแรกๆ จากระบบเยาวชนอันบุกเบิกที่ถูกพัฒนาขึ้นภายใต้ผู้จัดการทีมสองคนก่อนหน้านี้</p>
+
+      <h2 data-lang-th="รากฐานจากเยาวชน: 'Drake's Ducklings' และการก่อร่างของทีม" data-lang-en="Youth Foundation: 'Drake's Ducklings' and the Team's Formation">รากฐานจากเยาวชน: "Drake's Ducklings" และการก่อร่างของทีม</h2>
+      <p data-lang-th="ความจริงที่ว่าทีมเยาวชนของเชลซีสามารถปั้นนักเตะระดับแนวหน้าออกมาได้นั้น ได้รับการพิสูจน์อย่างไร้ข้อกังขาแล้วในยุคที่เท็ด เดรก เป็นผู้จัดการทีม โดยมี บ็อบบี้ สมิธ เป็นคนแรกที่ทะลุขึ้นมาสู่ทีมชุดใหญ่ในปี 1953 ทีมชุดเปี่ยมประสบการณ์ที่คว้าแชมป์ลีกในปี '55 ได้เปลี่ยนผ่านไปสู่กลุ่มนักเตะที่อายุน้อยกว่าแต่มีความสม่ำเสมอน้อยกว่า ซึ่งถูกขนานนามว่า 'Drake's Ducklings' (ลูกเป็ดของเดรก) – ฉายานี้เป็นการล้อไปกับ 'Busby Babes' ของแมนเชสเตอร์ ยูไนเต็ด ในยุคเดียวกัน" data-lang-en="That the Chelsea Juniors could produce players of the very highest calibre had been proved beyond all doubt in Ted Drake's time as manager, with Bobby Smith the first to break through in 1953. The experienced side that had captured the league championship in '55 morphed into a younger but less consistent group dubbed 'Drake's Ducklings' – the nickname a nod to Manchester United's 'Busby Babes' of the same time.">ความจริงที่ว่าทีมเยาวชนของเชลซีสามารถปั้นนักเตะระดับแนวหน้าออกมาได้นั้น ได้รับการพิสูจน์อย่างไร้ข้อกังขาแล้วในยุคที่เท็ด เดรก เป็นผู้จัดการทีม โดยมี บ็อบบี้ สมิธ เป็นคนแรกที่ทะลุขึ้นมาสู่ทีมชุดใหญ่ในปี 1953 ทีมชุดเปี่ยมประสบการณ์ที่คว้าแชมป์ลีกในปี '55 ได้เปลี่ยนผ่านไปสู่กลุ่มนักเตะที่อายุน้อยกว่าแต่มีความสม่ำเสมอน้อยกว่า ซึ่งถูกขนานนามว่า 'Drake's Ducklings' (ลูกเป็ดของเดรก) – ฉายานี้เป็นการล้อไปกับ 'Busby Babes' ของแมนเชสเตอร์ ยูไนเต็ด ในยุคเดียวกัน</p>
+
+      <h2 data-lang-th="Jimmy Greaves: สุดยอดนักทำประตูของวงการฟุตบอลอังกฤษ" data-lang-en="Jimmy Greaves: English Football's Ultimate Goalscorer">Jimmy Greaves: สุดยอดนักทำประตูของวงการฟุตบอลอังกฤษ</h2>
+      <p data-lang-th="แม้จะไม่ได้ประสบความสำเร็จสูงสุด แต่ทีมเวอร์ชันของเดรกก็ได้ให้กำเนิดพรสวรรค์อันโดดเด่นที่ในสายตาของหลายคนยังคงเป็นเพชฌฆาตจบสกอร์ที่ยอดเยี่ยมที่สุดเท่าที่ฟุตบอลอังกฤษเคยมีมา: จิมมี่ กรีฟส์ ในฤดูกาลเต็มตัวฤดูกาลแรกของเขากับทีมเยาวชนเชลซี กรีฟส์ทำสถิติยิงไปถึง 114 ประตู จึงไม่แปลกใจเลยที่มีความสนใจในตัวเขาอย่างมากเมื่อเขาประเดิมสนามให้ทีมชุดใหญ่ที่เจอกับสเปอร์สในวัย 17 ปีในเกมนัดเปิดฤดูกาล 1957/58 แน่นอนว่าเขายิงประตูได้ และเขาจะเพิ่มยอดรวมนั้นเป็น 132 ประตูจากเพียง 169 เกมตลอดสี่ฤดูกาลกับเชลซี การเลี้ยงบอลที่พริ้วไหวและการทำประตูที่เฉียบขาดด้วยเท้าทั้งสองข้างคือจุดขายสำคัญของเขา" data-lang-en="Though not high achievers, Drake's version produced an exceptional talent who remains to many eyes the greatest finisher English football has ever seen: Jimmy Greaves. In his first full season with the Chelsea Juniors, Greaves scored a record 114 goals so no wonder there was already great interest in him when he made his senior debut at Tottenham aged 17 in the first game of 1957/58. He scored, of course, and he would take that total to 132 in just 169 games over his four Chelsea seasons, his drifting dribbling and dead-eyed goalscoring with either foot the star attractions.">แม้จะไม่ได้ประสบความสำเร็จสูงสุด แต่ทีมเวอร์ชันของเดรกก็ได้ให้กำเนิดพรสวรรค์อันโดดเด่นที่ในสายตาของหลายคนยังคงเป็นเพชฌฆาตจบสกอร์ที่ยอดเยี่ยมที่สุดเท่าที่ฟุตบอลอังกฤษเคยมีมา: จิมมี่ กรีฟส์ ในฤดูกาลเต็มตัวฤดูกาลแรกของเขากับทีมเยาวชนเชลซี กรีฟส์ทำสถิติยิงไปถึง 114 ประตู จึงไม่แปลกใจเลยที่มีความสนใจในตัวเขาอย่างมากเมื่อเขาประเดิมสนามให้ทีมชุดใหญ่ที่เจอกับสเปอร์สในวัย 17 ปีในเกมนัดเปิดฤดูกาล 1957/58 แน่นอนว่าเขายิงประตูได้ และเขาจะเพิ่มยอดรวมนั้นเป็น 132 ประตูจากเพียง 169 เกมตลอดสี่ฤดูกาลกับเชลซี การเลี้ยงบอลที่พริ้วไหวและการทำประตูที่เฉียบขาดด้วยเท้าทั้งสองข้างคือจุดขายสำคัญของเขา</p>
+
+      <h2 data-lang-th="ก้าวแรกสู่เวทียุโรปและการสูญเสีย Greaves" data-lang-en="First Steps into Europe and the Loss of Greaves">ก้าวแรกสู่เวทียุโรปและการสูญเสีย Greaves</h2>
+      <p data-lang-th="ในขณะที่กรีฟส์แจ้งเกิด ฟุตบอลในยุคเจ็ตก็ค่อยๆ เปลี่ยนแปลงไปในทางอื่น การมาถึงของสปอตไลท์ได้เนรมิตสนามกีฬาใหม่รวมถึงสแตมฟอร์ดบริดจ์ให้กลายเป็นโรงละคร นำพายุคสมัยของเกมกลางคืนที่ฝูงชนในความมืดกลายเป็นกลุ่มก้อนที่ส่งเสียงดังและมีจุดมุ่งหมายเดียวกัน การตอบรับอย่างหนึ่งคือการเกิดขึ้นของลีกคัพในช่วงกลางสัปดาห์ในปี 1960 แต่ถึงตอนนั้น การแข่งขันรูปแบบใหม่ข้ามทวีปยุโรปก็ดึงดูดความสนใจไปหมดแล้ว" data-lang-en="As Greaves emerged, jet-age football was gradually transforming in other ways. The advent of floodlights reimagined stadiums including Stamford Bridge as theatres, ushering in night matches where the darkened crowd became a noisy, purposeful, horde. One response was the arrival of the midweek League Cup in 1960, but by then new trans-European competitions were capturing the imagination.">ในขณะที่กรีฟส์แจ้งเกิด ฟุตบอลในยุคเจ็ตก็ค่อยๆ เปลี่ยนแปลงไปในทางอื่น การมาถึงของสปอตไลท์ได้เนรมิตสนามกีฬาใหม่รวมถึงสแตมฟอร์ดบริดจ์ให้กลายเป็นโรงละคร นำพายุคสมัยของเกมกลางคืนที่ฝูงชนในความมืดกลายเป็นกลุ่มก้อนที่ส่งเสียงดังและมีจุดมุ่งหมายเดียวกัน การตอบรับอย่างหนึ่งคือการเกิดขึ้นของลีกคัพในช่วงกลางสัปดาห์ในปี 1960 แต่ถึงตอนนั้น การแข่งขันรูปแบบใหม่ข้ามทวีปยุโรปก็ดึงดูดความสนใจไปหมดแล้ว</p>
+      
+      <p data-lang-th="แม้จะมีบทบาทสำคัญในการก่อตั้ง แต่เชลซีกลับถูกฟุตบอลลีกปฏิเสธไม่ให้เข้าร่วมการแข่งขันยูโรเปี้ยนคัพครั้งแรกในปี 1955 การประเดิมสนามในระดับทวีปของเชลซีจึงเกิดขึ้นในวันที่ 30 กันยายน 1958 ในรายการ Inter-Cities Fairs Cup นัดเยือนทีมรวมดาราโคเปนเฮเกน อย่างทีม Frem ในปี 1958 แน่นอนว่ากรีฟส์มีชื่อทำประตูในชัยชนะ 3-1 แต่ทีมสิงห์บลูส์ก็ต้องตกรอบด้วยน้ำมือของเบลเกรดในรอบก่อนรองชนะเลิศของการแข่งขันที่จะกลายมาเป็น ยูฟ่าคัพ/ยูโรป้าลีก ในเวลาต่อมา" data-lang-en="Denied entry to the inaugural European Cup by the Football League in 1955, despite playing a big part in its creation, Chelsea's continental debut came on 30 September 1958 in the Inter-Cities Fairs Cup away to a Copenhagen select XI, Frem, in 1958. Naturally Greaves was on the scoresheet in a 3-1 victory, but the Blues bowed out against Belgrade in the quarter-finals of the competition that would become the UEFA Cup/Europa League.">แม้จะมีบทบาทสำคัญในการก่อตั้ง แต่เชลซีกลับถูกฟุตบอลลีกปฏิเสธไม่ให้เข้าร่วมการแข่งขันยูโรเปี้ยนคัพครั้งแรกในปี 1955 การประเดิมสนามในระดับทวีปของเชลซีจึงเกิดขึ้นในวันที่ 30 กันยายน 1958 ในรายการ Inter-Cities Fairs Cup นัดเยือนทีมรวมดาราโคเปนเฮเกน อย่างทีม Frem ในปี 1958 แน่นอนว่ากรีฟส์มีชื่อทำประตูในชัยชนะ 3-1 แต่ทีมสิงห์บลูส์ก็ต้องตกรอบด้วยน้ำมือของเบลเกรดในรอบก่อนรองชนะเลิศของการแข่งขันที่จะกลายมาเป็น ยูฟ่าคัพ/ยูโรป้าลีก ในเวลาต่อมา</p>
+      
+      <p data-lang-th="อย่างไรก็ตาม ประตูของกรีฟส์และเพื่อนนักเตะลูกหม้ออย่าง รอน ทินดอลล์ เป็นสิ่งที่พยุงทีมที่กำลังจมดิ่งลงด้วยน้ำหนักของการเสียประตูเอาไว้ หลังจากทำไป 13 แฮตทริก รวมถึงการยิง 5 ประตูสามครั้งและ 4 ประตูอีกสามครั้ง กรีฟส์ก็ถูกขายให้กับเอซี มิลาน และเชลซีก็หล่นจากลีกสูงสุดของอังกฤษในฤดูกาลถัดมา มันไม่ใช่เรื่องน่าประหลาดใจเลยเมื่อยอดดาวยิงไม่ได้ปิดบังความไม่พอใจของเขาที่มีต่อเพดานค่าเหนื่อยของฟุตบอลอังกฤษ – ซึ่งตลกร้ายที่มันถูกยกเลิกไปในอีกไม่กี่เดือนต่อมา – แต่นั่นก็ถือเป็นความเสียหายครั้งใหญ่ต่อทีมของเดรก" data-lang-en="The goals of Greaves and fellow homegrown Ron Tindall were keeping afloat a team sinking under the weight of goals conceded, however. After 13 hat-tricks, including three five-goal and three four-goal hauls, Greaves was sold to AC Milan, and Chelsea departed the top division in England too the following season. It was no surprise as the marksman had made no secret of his dislike of English football's salary cap – which ironically ended just months later – but a huge blow to Drake's squad.">อย่างไรก็ตาม ประตูของกรีฟส์และเพื่อนนักเตะลูกหม้ออย่าง รอน ทินดอลล์ เป็นสิ่งที่พยุงทีมที่กำลังจมดิ่งลงด้วยน้ำหนักของการเสียประตูเอาไว้ หลังจากทำไป 13 แฮตทริก รวมถึงการยิง 5 ประตูสามครั้งและ 4 ประตูอีกสามครั้ง กรีฟส์ก็ถูกขายให้กับเอซี มิลาน และเชลซีก็หล่นจากลีกสูงสุดของอังกฤษในฤดูกาลถัดมา มันไม่ใช่เรื่องน่าประหลาดใจเลยเมื่อยอดดาวยิงไม่ได้ปิดบังความไม่พอใจของเขาที่มีต่อเพดานค่าเหนื่อยของฟุตบอลอังกฤษ – ซึ่งตลกร้ายที่มันถูกยกเลิกไปในอีกไม่กี่เดือนต่อมา – แต่นั่นก็ถือเป็นความเสียหายครั้งใหญ่ต่อทีมของเดรก</p>
+
+      <h2 data-lang-th="การมาถึงของ Tommy Docherty และ 'Little Diamonds'" data-lang-en="The Arrival of Tommy Docherty and the 'Little Diamonds'">การมาถึงของ Tommy Docherty และ "Little Diamonds"</h2>
+      <p data-lang-th="โชคดีที่ความสิ้นหวังถูกหลีกเลี่ยงไปได้ ยังมีดาวรุ่งอีกมากมายจากทีมเยาวชนเชลซี ซึ่งคว้าแชมป์เอฟเอ ยูธคัพ สองฤดูกาลติดต่อกันในปี 1960 และ 1961 เดรกไม่ใช่ผู้ที่จะได้รับประโยชน์จากสิ่งนี้ โดเคอร์ตี้ ผู้สืบทอดตำแหน่งของเขา เต็มใจอย่างยิ่งที่จะสร้างทีมของเขาบนรากฐานของคนหนุ่มเหล่านี้" data-lang-en="Thankfully, desperation was averted. There were plenty more young stars to come from the Chelsea Juniors, who won the FA Youth Cup two seasons running in 1960 and 1961. Drake would not be the beneficiary. Docherty, his successor, was all too happy to build his side on this youthful foundation.">โชคดีที่ความสิ้นหวังถูกหลีกเลี่ยงไปได้ ยังมีดาวรุ่งอีกมากมายจากทีมเยาวชนเชลซี ซึ่งคว้าแชมป์เอฟเอ ยูธคัพ สองฤดูกาลติดต่อกันในปี 1960 และ 1961 เดรกไม่ใช่ผู้ที่จะได้รับประโยชน์จากสิ่งนี้ โดเคอร์ตี้ ผู้สืบทอดตำแหน่งของเขา เต็มใจอย่างยิ่งที่จะสร้างทีมของเขาบนรากฐานของคนหนุ่มเหล่านี้</p>
+      
+      <p data-lang-th="กองหน้าอย่าง บ็อบบี้ แทมบลิง และ แบร์รี่ บริดเจส, ผู้รักษาประตู ปีเตอร์ โบเนตติ, กองกลาง เทอร์รี่ เวนาเบิลส์, ปีก เบิร์ต เมอร์เรย์, กองหลัง เคน เชลลิโต้ และ อัลลัน แฮร์ริส – รวมกับผู้เล่นจอมเก๋าหยิบมือหนึ่งและนักเตะใหม่จากสกอตแลนด์ เอ็ดดี้ แม็คเครดี้ พวกเขาพาเชลซีกลับสู่ดิวิชั่นหนึ่งได้ตั้งแต่ครั้งแรกที่ลงแข่ง และเป็นรากฐานสำหรับฤดูกาลอันน่าตื่นเต้นที่จะตามมา" data-lang-en="Strikers Bobby Tambling and Barry Bridges, goalkeeper Peter Bonetti, midfielder Terry Venables, winger Bert Murray, defenders Ken Shellito and Allan Harris – with a handful of older heads plus new signing from Scotland Eddie McCreadie, they took Chelsea back into Division One at the first time of asking, and were the basis for the exciting seasons to come.">กองหน้าอย่าง บ็อบบี้ แทมบลิง และ แบร์รี่ บริดเจส, ผู้รักษาประตู ปีเตอร์ โบเนตติ, กองกลาง เทอร์รี่ เวนาเบิลส์, ปีก เบิร์ต เมอร์เรย์, กองหลัง เคน เชลลิโต้ และ อัลลัน แฮร์ริส – รวมกับผู้เล่นจอมเก๋าหยิบมือหนึ่งและนักเตะใหม่จากสกอตแลนด์ เอ็ดดี้ แม็คเครดี้ พวกเขาพาเชลซีกลับสู่ดิวิชั่นหนึ่งได้ตั้งแต่ครั้งแรกที่ลงแข่ง และเป็นรากฐานสำหรับฤดูกาลอันน่าตื่นเต้นที่จะตามมา</p>
+      
+      <p data-lang-th="'ลุยเลยเพชรเม็ดน้อยของฉัน!' โดเคอร์ตี้ – หรือ 'เดอะ ด็อก' (the Doc) – ถูกจับภาพขณะตะโกนให้กำลังใจอย่างโด่งดัง และอีกหนึ่งฉายาของทีมก็ถือกำเนิดขึ้น แข้งเยาวชนคนอื่นๆ อย่าง จอห์น ฮอลลินส์ และ รอน แฮร์ริส น้องชายของอัลลัน ก็กลายมาเป็นตัวหลักในไม่ช้า และทีมเชลซีชุดนี้ก็ถูกพูดถึงไปไกลกว่าแค่ในลอนดอน SW6" data-lang-en="'Come on my little diamonds!' Docherty – 'the Doc' – was famously filmed shouting encouragingly, and another team nickname was born. More Juniors, John Hollins and Allan Harris's brother Ron, soon became regulars too and this Chelsea team were being talked about far beyond London SW6.">'ลุยเลยเพชรเม็ดน้อยของฉัน!' โดเคอร์ตี้ – หรือ 'เดอะ ด็อก' (the Doc) – ถูกจับภาพขณะตะโกนให้กำลังใจอย่างโด่งดัง และอีกหนึ่งฉายาของทีมก็ถือกำเนิดขึ้น แข้งเยาวชนคนอื่นๆ อย่าง จอห์น ฮอลลินส์ และ รอน แฮร์ริส น้องชายของอัลลัน ก็กลายมาเป็นตัวหลักในไม่ช้า และทีมเชลซีชุดนี้ก็ถูกพูดถึงไปไกลกว่าแค่ในลอนดอน SW6</p>
+
+      <h2 data-lang-th="สไตล์การเล่นแบบ Docherty และอิทธิพลจากต่างแดน" data-lang-en="Docherty's Playing Style and Foreign Influences">สไตล์การเล่นแบบ Docherty และอิทธิพลจากต่างแดน</h2>
+      <p data-lang-th="ฟุตบอลเริ่มได้รับการถ่ายทอดสดทางโทรทัศน์อย่างที่ไม่เคยมีมาก่อน พร้อมกับการกำเนิดของรายการไฮไลท์อันเป็นสัญลักษณ์อย่าง Match of the Day และโดเคอร์ตี้ที่ยังหนุ่ม เฉียบแหลม และมีไหวพริบ ก็เข้ากันได้ดีกับการรายงานข่าวของสื่อ วัฒนธรรมย่อยของกลุ่มวัยรุ่น Mod กำลังอยู่ในยุคทอง ด้วยแฟชั่นการตัดเย็บที่เฉียบคมและสไตล์แบบยุโรปภาคพื้นทวีป และโดเคอร์ตี้เองก็เป็นพวกหัวสมัยใหม่ (Modernist) เขาเปิดตัวชุดแข่งเชลซีแบบใหม่สุดแหวกแนว โดยเปลี่ยนกางเกงสีขาวเป็นสีน้ำเงิน และถุงเท้าสีน้ำเงินเป็นสีขาว – เป็นชุดที่ดูมีสไตล์จนอยู่ยงคงกระพันมาจนถึงปัจจุบัน และทีมก็เล่นด้วยลีลาที่สง่างามไม่แพ้กัน" data-lang-en="Football was beginning to be televised like never before, with the birth of iconic highlights show Match of the Day, and the young, sharp, witty Docherty suited the media coverage. The Mod youth subculture was in its heyday, with its equally sharp tailoring and continental flair, and Docherty was a modernist too. He introduced a radical new Chelsea kit, with white shorts changed to blue and blue socks to white – an ensemble so stylish it endures, and the team played with equal panache.">ฟุตบอลเริ่มได้รับการถ่ายทอดสดทางโทรทัศน์อย่างที่ไม่เคยมีมาก่อน พร้อมกับการกำเนิดของรายการไฮไลท์อันเป็นสัญลักษณ์อย่าง Match of the Day และโดเคอร์ตี้ที่ยังหนุ่ม เฉียบแหลม และมีไหวพริบ ก็เข้ากันได้ดีกับการรายงานข่าวของสื่อ วัฒนธรรมย่อยของกลุ่มวัยรุ่น Mod กำลังอยู่ในยุคทอง ด้วยแฟชั่นการตัดเย็บที่เฉียบคมและสไตล์แบบยุโรปภาคพื้นทวีป และโดเคอร์ตี้เองก็เป็นพวกหัวสมัยใหม่ (Modernist) เขาเปิดตัวชุดแข่งเชลซีแบบใหม่สุดแหวกแนว โดยเปลี่ยนกางเกงสีขาวเป็นสีน้ำเงิน และถุงเท้าสีน้ำเงินเป็นสีขาว – เป็นชุดที่ดูมีสไตล์จนอยู่ยงคงกระพันมาจนถึงปัจจุบัน และทีมก็เล่นด้วยลีลาที่สง่างามไม่แพ้กัน</p>
+      
+      <p data-lang-th="มุมมองด้านฟุตบอลของ เดอะ ด็อก นั้นมองการณ์ไกล ไม่คับแคบ และได้รับอิทธิพลจากวิธีการเล่นในสเปนและอเมริกาใต้ เขาได้นำรูปแบบแบ็คจอมบุกที่วิ่งเติมเกมเร็ว (flying full-backs) เข้าสู่วงการฟุตบอลอังกฤษ โดยมีเชลลิโต้และแม็คเครดี้ที่ประสบความสำเร็จอย่างมากในบทบาทใหม่นี้ จนถึงขนาดที่เยอรมนีตะวันตกขอลงเตะเกมกระชับมิตรกับเชลซีเพื่อเตรียมความพร้อมก่อนเจอทีมอย่างบราซิลในฟุตบอลโลกปี 1966 การจ่ายบอลที่แม่นยำของโบเนตติช่วยให้เกิดการสวนกลับ และบรรดากองหน้าก็มีความเร็วและพลังงานที่พร้อมระเบิดฟอร์ม" data-lang-en="The Doc's football outlook was far-sighted, not parochial, and influenced by the way the game was played in Spain and South America. He introduced flying full-backs to the English game, with Shellito and McCreadie so successful in their innovative roles that West Germany asked to play friendlies against Chelsea in preparation for meeting the likes of Brazil in the 1966 World Cup. Bonetti's careful distribution sprung counter-attacks and the strikers had pace and energy to burn.">มุมมองด้านฟุตบอลของ เดอะ ด็อก นั้นมองการณ์ไกล ไม่คับแคบ และได้รับอิทธิพลจากวิธีการเล่นในสเปนและอเมริกาใต้ เขาได้นำรูปแบบแบ็คจอมบุกที่วิ่งเติมเกมเร็ว (flying full-backs) เข้าสู่วงการฟุตบอลอังกฤษ โดยมีเชลลิโต้และแม็คเครดี้ที่ประสบความสำเร็จอย่างมากในบทบาทใหม่นี้ จนถึงขนาดที่เยอรมนีตะวันตกขอลงเตะเกมกระชับมิตรกับเชลซีเพื่อเตรียมความพร้อมก่อนเจอทีมอย่างบราซิลในฟุตบอลโลกปี 1966 การจ่ายบอลที่แม่นยำของโบเนตติช่วยให้เกิดการสวนกลับ และบรรดากองหน้าก็มีความเร็วและพลังงานที่พร้อมระเบิดฟอร์ม</p>
+      
+      <p data-lang-th="ในเวลาต่อมา โโดเคอร์ตี้เคยรำพึงว่าเขาควรจะเรียกทีมวัยหนุ่มของเขาว่า 'ไดนาโมตัวน้อยของฉัน' (my little dynamos) ซึ่งเป็นการสรุปถึงจินตนาการอันคึกคักและการเคลื่อนที่ตลอดเวลาของทีมเขา ซึ่งดึงดูดผู้ชมจำนวนมหาศาลกลับมาอีกครั้ง ทีมสิงห์บลูส์จบอันดับที่ห้าในฤดูกาลแรกที่กลับคืนสู่ลีกสูงสุด และจากนั้นก็ขึ้นสู่อันดับที่สาม แม้ว่าเชลลิโต้จะโชคร้ายเจออาการบาดเจ็บเล่นงานอย่างหนักก็ตาม" data-lang-en="Docherty later mused that he should have called his young team 'my little dynamos' and it summarised the bustling imagination and perpetual motion of his side, who attracted huge crowds once again. The Blues finished fifth in our first season back in the top flight and then third, despite Shellito being cruelly struck by injury.">ในเวลาต่อมา โโดเคอร์ตี้เคยรำพึงว่าเขาควรจะเรียกทีมวัยหนุ่มของเขาว่า 'ไดนาโมตัวน้อยของฉัน' (my little dynamos) ซึ่งเป็นการสรุปถึงจินตนาการอันคึกคักและการเคลื่อนที่ตลอดเวลาของทีมเขา ซึ่งดึงดูดผู้ชมจำนวนมหาศาลกลับมาอีกครั้ง ทีมสิงห์บลูส์จบอันดับที่ห้าในฤดูกาลแรกที่กลับคืนสู่ลีกสูงสุด และจากนั้นก็ขึ้นสู่อันดับที่สาม แม้ว่าเชลลิโต้จะโชคร้ายเจออาการบาดเจ็บเล่นงานอย่างหนักก็ตาม</p>
+
+      <h2 data-lang-th="League Cup 1965: ถ้วยแรกของสโมสรและการกำเนิดของ Peter Osgood" data-lang-en="1965 League Cup: The Club's First Trophy and the Birth of Peter Osgood">League Cup 1965: ถ้วยแรกของสโมสรและการกำเนิดของ Peter Osgood</h2>
+      <p data-lang-th="ในช่วงปลายฤดูกาล 1964/65 นั้น ทีมมีลุ้นคว้าทริปเปิลแชมป์อย่างแท้จริง และในที่สุดก็คว้ามาได้หนึ่งถ้วย – ถ้วยรางวัลแรกจากรายการแบบน็อคเอาท์ของเรา – ในฐานะแชมป์ลีกคัพทีมแรกของลอนดอน ในระหว่างเส้นทางอันยอดเยี่ยมภายใต้แสงไฟสปอตไลท์ไปสู่การชูถ้วยรางวัลสามหูใบนี้ มีสองเหตุการณ์สำคัญที่น่าจดจำ เหตุการณ์แรกเกิดขึ้นในนัดชิงชนะเลิศกับเลสเตอร์ ซิตี้ ซึ่งแข่งขันแบบเหย้า-เยือนสองนัด ในเกมแรกที่สแตมฟอร์ดบริดจ์ ปัญหาบาดเจ็บทำให้แม็คเครดี้ผู้เป็นฟูลแบ็คต้องถูกดันขึ้นไปเล่นเป็นกองหน้าหมายเลข 9 จำเป็น และเขาก็ทำประตูสุดพิเศษ โดยเริ่มวิ่งลุยเดี่ยวจากจุดที่ไม่ไกลจากแดนรับที่เขาประจำการปกติ และยิงผ่าน กอร์ดอน แบงส์ เข้าไปเป็นประตูที่ท้ายที่สุดพิสูจน์แล้วว่าเป็นประตูชัยในผลรวมที่จบลงด้วยชัยชนะ 3-2" data-lang-en="Late on in that 1964/65 season, the team was genuinely in contention for a treble of trophies and eventually captured one – our first knockout competition silverware – as London's first League Cup-winners. During that brilliant floodlit campaign on the way to lifting the three-handled trophy, there were two moments especially to cherish. One came in the final against Leicester City, which was held over two legs. In the first match at Stamford Bridge, injuries meant full-back McCreadie was deployed as a stand-in no.9 and scored an extraordinary goal, beginning his solo run not far from where he would normally be defending, and slotting past Gordon Banks for what ultimately proved to be the winning goal in a tie that finished 3-2.">ในช่วงปลายฤดูกาล 1964/65 นั้น ทีมมีลุ้นคว้าทริปเปิลแชมป์อย่างแท้จริง และในที่สุดก็คว้ามาได้หนึ่งถ้วย – ถ้วยรางวัลแรกจากรายการแบบน็อคเอาท์ของเรา – ในฐานะแชมป์ลีกคัพทีมแรกของลอนดอน ในระหว่างเส้นทางอันยอดเยี่ยมภายใต้แสงไฟสปอตไลท์ไปสู่การชูถ้วยรางวัลสามหูใบนี้ มีสองเหตุการณ์สำคัญที่น่าจดจำ เหตุการณ์แรกเกิดขึ้นในนัดชิงชนะเลิศกับเลสเตอร์ ซิตี้ ซึ่งแข่งขันแบบเหย้า-เยือนสองนัด ในเกมแรกที่สแตมฟอร์ดบริดจ์ ปัญหาบาดเจ็บทำให้แม็คเครดี้ผู้เป็นฟูลแบ็คต้องถูกดันขึ้นไปเล่นเป็นกองหน้าหมายเลข 9 จำเป็น และเขาก็ทำประตูสุดพิเศษ โดยเริ่มวิ่งลุยเดี่ยวจากจุดที่ไม่ไกลจากแดนรับที่เขาประจำการปกติ และยิงผ่าน กอร์ดอน แบงส์ เข้าไปเป็นประตูที่ท้ายที่สุดพิสูจน์แล้วว่าเป็นประตูชัยในผลรวมที่จบลงด้วยชัยชนะ 3-2</p>
+
+      <p data-lang-th="อีกเหตุการณ์หนึ่งที่มีความสำคัญยิ่งกว่าเกิดขึ้นก่อนหน้านั้นในรายการลีกคัพ เมื่อสแตมฟอร์ดบริดจ์ได้รับการแนะนำให้รู้จักกับราชาองค์แรกของพวกเขา ในเกมนัดรีเพลย์ที่พบกับเวิร์คกิงตันช่วงกลางเดือนธันวาคม ปีเตอร์ ออสกู้ด ในวัย 17 ปี ได้รับโอกาสลงประเดิมสนามจากโดเคอร์ตี้ เขาไม่ทำให้ผิดหวัง กองหน้าดาวรุ่งทำคนเดียวสองประตูในเกมที่ชนะ 2-0 เป็นการส่งสัญญาณถึงการมาถึงสโมสรอาชีพที่ค่อนข้างช้าของเขา ลุงของเขาได้เขียนจดหมายถึงเชลซีเพื่อขอโอกาสทดสอบฝีเท้า เพื่อดึงออสกู้ดออกจากสนามฟุตบอลนอกลีกในพื้นที่วินด์เซอร์ที่เขาทำงานเป็นช่างก่ออิฐ โดเคอร์ตี้ซึ่งระมัดระวังว่าแมวมองทีมอื่นอาจจะกำลังจับตาดูอยู่ สั่งถอดเขาออกในช่วงพักครึ่งของการทดสอบฝีเท้านั้นและจับเซ็นสัญญาทันที" data-lang-en="An even more significant moment came earlier in the League Cup run, when Stamford Bridge was introduced to its first king. In a replay against Workington in mid-December, the 17-year-old Peter Osgood was handed his debut by Docherty. He did not disappoint. The young striker scored both the goals in a 2-0 win to herald his surprisingly late arrival at a professional club. His uncle had written to Chelsea asking for a trial to take Osgood away from the non-league pitches of the Windsor area where he was working as a bricklayer. Docherty, mindful other scouts might be watching, had him hauled off at half-time during that trial and signed.">อีกเหตุการณ์หนึ่งที่มีความสำคัญยิ่งกว่าเกิดขึ้นก่อนหน้านั้นในรายการลีกคัพ เมื่อสแตมฟอร์ดบริดจ์ได้รับการแนะนำให้รู้จักกับราชาองค์แรกของพวกเขา ในเกมนัดรีเพลย์ที่พบกับเวิร์คกิงตันช่วงกลางเดือนธันวาคม ปีเตอร์ ออสกู้ด ในวัย 17 ปี ได้รับโอกาสลงประเดิมสนามจากโดเคอร์ตี้ เขาไม่ทำให้ผิดหวัง กองหน้าดาวรุ่งทำคนเดียวสองประตูในเกมที่ชนะ 2-0 เป็นการส่งสัญญาณถึงการมาถึงสโมสรอาชีพที่ค่อนข้างช้าของเขา ลุงของเขาได้เขียนจดหมายถึงเชลซีเพื่อขอโอกาสทดสอบฝีเท้า เพื่อดึงออสกู้ดออกจากสนามฟุตบอลนอกลีกในพื้นที่วินด์เซอร์ที่เขาทำงานเป็นช่างก่ออิฐ โดเคอร์ตี้ซึ่งระมัดระวังว่าแมวมองทีมอื่นอาจจะกำลังจับตาดูอยู่ สั่งถอดเขาออกในช่วงพักครึ่งของการทดสอบฝีเท้านั้นและจับเซ็นสัญญาทันที</p>
+
+      <p data-lang-th="'ไปอยู่ที่ไหนมาตั้งนาน?' เทอร์รี่ เวนาเบิลส์ มิดฟิลด์จอมวางหมากของทีมจำได้ว่านี่คือปฏิกิริยาของบรรดาผู้เล่นเมื่อพวกเขาเห็นคนที่มีทักษะระดับออสซี่ปรากฏตัวขึ้นอย่างกะทันหัน ไม่ว่าเขาจะไปอยู่ที่ไหนมา แต่ตอนนี้เขาอยู่ที่เชลซีแล้ว และเขาจะเป็นดาวจรัสแสงที่เดอะบริดจ์ไปเกือบหนึ่งทศวรรษ" data-lang-en="'Where have you been all this time?' the team's midfield schemer Terry Venables remembers being the reaction from the players when they first saw someone of Ossie's skill suddenly emerge on the scene. Wherever he had been, he was at Chelsea now, and he would be the shining star at the Bridge for nearly a decade.">'ไปอยู่ที่ไหนมาตั้งนาน?' เทอร์รี่ เวนาเบิลส์ มิดฟิลด์จอมวางหมากของทีมจำได้ว่านี่คือปฏิกิริยาของบรรดาผู้เล่นเมื่อพวกเขาเห็นคนที่มีทักษะระดับออสซี่ปรากฏตัวขึ้นอย่างกะทันหัน ไม่ว่าเขาจะไปอยู่ที่ไหนมา แต่ตอนนี้เขาอยู่ที่เชลซีแล้ว และเขาจะเป็นดาวจรัสแสงที่เดอะบริดจ์ไปเกือบหนึ่งทศวรรษ</p>
+
+      <h2 data-lang-th="Peter Osgood: จากดาวรุ่งสู่ 'ราชาแห่ง Stamford Bridge'" data-lang-en="Peter Osgood: From Rising Star to the 'King of Stamford Bridge'">Peter Osgood: จากดาวรุ่งสู่ "ราชาแห่ง Stamford Bridge"</h2>
+      <p data-lang-th="ในช่วงต้นฤดูกาลถัดจากการประเดิมสนามของออสกู้ด (1965/66) โดเคอร์ตี้ที่หลงใหลในพรสวรรค์ใหม่นี้มาก ได้บอกกับเขาว่าเขาจะได้รับโอกาสลงเล่นเป็นตัวจริงต่อเนื่อง 10 เกม ไม่ว่าผลงานจะออกมาเป็นอย่างไรก็ตาม ความกดดันจึงหมดไป และมันก็เพียงพอที่จะทำให้เขายึดตำแหน่งในทีมได้อย่างถาวร ทุกอย่างกำลังไปได้สวยสำหรับออสซี่ แต่หนึ่งปีต่อมาเขากลับต้องเผชิญกับอุปสรรคครั้งใหญ่เมื่อขาหักในเกมลีกคัพกับแบล็คพูล เขาใช้เวลาเกือบปีในการฟื้นตัวกลับมา และในเวลาต่อมาเขาเองก็ยอมรับว่าเขาไม่เคยกลับมาเป็นผู้เล่นคนเดิมได้อีก น้ำหนักตัวที่เพิ่มขึ้นในช่วงที่พักรักษาตัวไม่สามารถลดลงได้ แต่ถ้าความเร็วที่จัดจ้านและพริ้วไหวลดลงไปบ้างหลังจากนั้น เขาก็ชดเชยมันด้วยความฉลาดเฉียบแหลม และยังมีพรสวรรค์เหลือเฟือเพียงพอที่ออสกู้ดจะได้สวมมงกุฎเป็นราชาแห่งสแตมฟอร์ดบริดจ์" data-lang-en="Early in the season following Osgood's debut, 1965/66, Docherty, so enamoured with this new talent, told him he would have a run of 10 games in the side regardless of how well he performed. The pressure was off and it was enough to cement his place in the team. All was going well for Ossie but there would be a significant set-back a year later when his leg was broken in a League Cup game against Blackpool. It took him almost a year to return and he later maintained he was never quite the same player again. Weight gained when out of action could not be shed but if the searing, gliding pace was a little diminished after that, he compensated with cleverness, and more than enough talent remained for Osgood to be crowned the King of Stamford Bridge.">ในช่วงต้นฤดูกาลถัดจากการประเดิมสนามของออสกู้ด (1965/66) โดเคอร์ตี้ที่หลงใหลในพรสวรรค์ใหม่นี้มาก ได้บอกกับเขาว่าเขาจะได้รับโอกาสลงเล่นเป็นตัวจริงต่อเนื่อง 10 เกม ไม่ว่าผลงานจะออกมาเป็นอย่างไรก็ตาม ความกดดันจึงหมดไป และมันก็เพียงพอที่จะทำให้เขายึดตำแหน่งในทีมได้อย่างถาวร ทุกอย่างกำลังไปได้สวยสำหรับออสซี่ แต่หนึ่งปีต่อมาเขากลับต้องเผชิญกับอุปสรรคครั้งใหญ่เมื่อขาหักในเกมลีกคัพกับแบล็คพูล เขาใช้เวลาเกือบปีในการฟื้นตัวกลับมา และในเวลาต่อมาเขาเองก็ยอมรับว่าเขาไม่เคยกลับมาเป็นผู้เล่นคนเดิมได้อีก น้ำหนักตัวที่เพิ่มขึ้นในช่วงที่พักรักษาตัวไม่สามารถลดลงได้ แต่ถ้าความเร็วที่จัดจ้านและพริ้วไหวลดลงไปบ้างหลังจากนั้น เขาก็ชดเชยมันด้วยความฉลาดเฉียบแหลม และยังมีพรสวรรค์เหลือเฟือเพียงพอที่ออสกู้ดจะได้สวมมงกุฎเป็นราชาแห่งสแตมฟอร์ดบริดจ์</p>
+      
+      <p data-lang-th="ตำแหน่งนั้นถูกมอบให้กับเขาผ่านบทเพลงเชียร์โดยแฟนบอลฝั่ง Shed End ที่สแตมฟอร์ดบริดจ์ แฟนบอลที่ส่งเสียงเชียร์ดังที่สุดของเชลซีในตอนนั้นกำลังรวมตัวกันอยู่บนอัฒจันทร์ฝั่งฟูแล่มโร้ด หลังคารูปทรงแปลกประหลาดที่ปกคลุมพื้นที่เพียงเล็กน้อยของอัฒจันทร์ฝั่งใต้ เดิมทีถูกสร้างขึ้นในช่วงทศวรรษ 1930 เพื่อเป็นที่กำบังให้กับบรรดานักรับแทงพนันในการแข่งขันแข่งสุนัขเกรย์ฮาวด์" data-lang-en="That title was bestowed on him in song by the Shed End at Stamford Bridge. Chelsea's most vocal fans were now congregating on the terrace at the Fulham Road end of the ground. A peculiar roof that covered just a small portion of the south end had originally been built in the 1930s to shelter bookmakers at greyhound race meetings.">ตำแหน่งนั้นถูกมอบให้กับเขาผ่านบทเพลงเชียร์โดยแฟนบอลฝั่ง Shed End ที่สแตมฟอร์ดบริดจ์ แฟนบอลที่ส่งเสียงเชียร์ดังที่สุดของเชลซีในตอนนั้นกำลังรวมตัวกันอยู่บนอัฒจันทร์ฝั่งฟูแล่มโร้ด หลังคารูปทรงแปลกประหลาดที่ปกคลุมพื้นที่เพียงเล็กน้อยของอัฒจันทร์ฝั่งใต้ เดิมทีถูกสร้างขึ้นในช่วงทศวรรษ 1930 เพื่อเป็นที่กำบังให้กับบรรดานักรับแทงพนันในการแข่งขันแข่งสุนัขเกรย์ฮาวด์</p>
+
+      <h2 data-lang-th="FA Cup: เส้นทางอันโชคร้ายของ Docherty" data-lang-en="FA Cup: Docherty's Unlucky Path">FA Cup: เส้นทางอันโชคร้ายของ Docherty</h2>
+      <p data-lang-th="เอฟเอคัพ – ซึ่งในยุคนั้นมีความสำคัญแทบจะเทียบเท่ากับตำแหน่งแชมป์ลีก – พิสูจน์ให้เห็นแล้วว่าเป็นการแข่งขันที่โดเคอร์ตี้โชคร้ายที่สุด แม้ว่าเขาจะพาเชลซีไปถึงนัดชิงชนะเลิศที่เวมบลีย์ในทัวร์นาเมนต์ระดับเมเจอร์เป็นครั้งแรกในประวัติศาสตร์ก็ตาม ตลอดสามปีซ้อน ตั้งแต่ปี 1965 ถึง 1967 ทีมสิงห์บลูส์ทะลุเข้าถึงรอบรองชนะเลิศ โดยทุกครั้งจัดขึ้นที่สนามวิลล่าพาร์ค สองครั้งแรกของรอบรองชนะเลิศจบลงด้วยความพ่ายแพ้ อย่างไรก็ตาม 'ความพยายามครั้งที่สามคือความโชคดี' เมื่อกลับมาที่วิลล่าพาร์คสำหรับรอบรองฯ ฤดูกาล 1966/67 เราสามารถเอาชนะลีดส์ ยูไนเต็ด ของ ดอน เรวี่ ได้สำเร็จ" data-lang-en="The FA Cup – almost as big a deal as the League title back then – proved Docherty's unluckiest competition, even though he led Chelsea to our first ever Wembley final in a major tournament. Three years running, from 1965 to 1967, the Blues made it as far as the semi-final stage, each time played at Villa Park. The first two of those semi-finals ended in defeat. It was third time lucky however when back at Villa for the 1966/67 semi, we overcame Don Revie's Leeds United.">เอฟเอคัพ – ซึ่งในยุคนั้นมีความสำคัญแทบจะเทียบเท่ากับตำแหน่งแชมป์ลีก – พิสูจน์ให้เห็นแล้วว่าเป็นการแข่งขันที่โดเคอร์ตี้โชคร้ายที่สุด แม้ว่าเขาจะพาเชลซีไปถึงนัดชิงชนะเลิศที่เวมบลีย์ในทัวร์นาเมนต์ระดับเมเจอร์เป็นครั้งแรกในประวัติศาสตร์ก็ตาม ตลอดสามปีซ้อน ตั้งแต่ปี 1965 ถึง 1967 ทีมสิงห์บลูส์ทะลุเข้าถึงรอบรองชนะเลิศ โดยทุกครั้งจัดขึ้นที่สนามวิลล่าพาร์ค สองครั้งแรกของรอบรองชนะเลิศจบลงด้วยความพ่ายแพ้ อย่างไรก็ตาม 'ความพยายามครั้งที่สามคือความโชคดี' เมื่อกลับมาที่วิลล่าพาร์คสำหรับรอบรองฯ ฤดูกาล 1966/67 เราสามารถเอาชนะลีดส์ ยูไนเต็ด ของ ดอน เรวี่ ได้สำเร็จ</p>
+
+      <p data-lang-th="เป็นครั้งแรกนับตั้งแต่ปี 1915 (ไม่นับรวมการเข้าชิง 2 ครั้งในรายการทดแทนช่วงสงครามโลก) ที่แฟนบอลสิงห์บลูส์ได้เฉลิมฉลองการเข้าสู่รอบชิงดำเอฟเอคัพ เพื่อเผชิญหน้ากับท็อตแน่มในเดือนพฤษภาคม ปี 1967 ความคาดหวังใน 'นัดชิงชนะเลิศฉบับค็อกนีย์ (Cockney cup final)' ครั้งแรกในประวัติศาสตร์ โดยมี รอน แฮร์ริส ของเชลซีเป็นกัปตันทีมที่อายุน้อยที่สุดในโอกาสนี้ ไม่สามารถหยุดยั้งผลงานที่ต่ำกว่ามาตรฐานอีกนัดของเชลซีได้ บ็อบบี้ แทมบลิง ยิงประตูปลอบใจในความพ่ายแพ้ 2-1 ซึ่งยิ่งยากที่จะทำใจยอมรับเมื่ออดีตสตาร์ของเราอย่าง จิมมี่ กรีฟส์ และ เทอร์รี่ เวนาเบิลส์ กลับมาลงเล่นให้กับฝ่ายตรงข้าม" data-lang-en="For the first time since 1915 (excluding two appearances in the wartime equivalent) jubilant Blues fans could celebrate reaching the FA Cup showpiece, against Tottenham in May 1967. The prospect of the first ever 'Cockney cup final', with the Blues' Ron Harris the occasion's youngest ever skipper, could not prevent another under-par Chelsea performance. Bobby Tambling scored our consolation in a 2-1 defeat made all the harder to take by our former stars, Jimmy Greaves and Terry Venables, playing for the opposition.">เป็นครั้งแรกนับตั้งแต่ปี 1915 (ไม่นับรวมการเข้าชิง 2 ครั้งในรายการทดแทนช่วงสงครามโลก) ที่แฟนบอลสิงห์บลูส์ได้เฉลิมฉลองการเข้าสู่รอบชิงดำเอฟเอคัพ เพื่อเผชิญหน้ากับท็อตแน่มในเดือนพฤษภาคม ปี 1967 ความคาดหวังใน 'นัดชิงชนะเลิศฉบับค็อกนีย์ (Cockney cup final)' ครั้งแรกในประวัติศาสตร์ โดยมี รอน แฮร์ริส ของเชลซีเป็นกัปตันทีมที่อายุน้อยที่สุดในโอกาสนี้ ไม่สามารถหยุดยั้งผลงานที่ต่ำกว่ามาตรฐานอีกนัดของเชลซีได้ บ็อบบี้ แทมบลิง ยิงประตูปลอบใจในความพ่ายแพ้ 2-1 ซึ่งยิ่งยากที่จะทำใจยอมรับเมื่ออดีตสตาร์ของเราอย่าง จิมมี่ กรีฟส์ และ เทอร์รี่ เวนาเบิลส์ กลับมาลงเล่นให้กับฝ่ายตรงข้าม</p>
+
+      <h2 data-lang-th="Fairs Cup 1965/66: การผจญภัยในเวทียุโรปและมนตร์เสน่ห์แห่ง Swinging London" data-lang-en="1965/66 Fairs Cup: European Adventure and the Magic of Swinging London">Fairs Cup 1965/66: การผจญภัยในเวทียุโรปและมนตร์เสน่ห์แห่ง Swinging London</h2>
+      <p data-lang-th="เราจะได้กลับไปสู่นัดชิงชนะเลิศเอฟเอคัพอีกครั้งในไม่ช้า แม้ว่าโดเคอร์ตี้จะไม่มีโอกาสคว้าแชมป์ในฐานะผู้จัดการทีมเชลซีอีกแล้วก็ตาม อีกหนึ่งความก้าวหน้าของเขาเกิดขึ้นในเวทียุโรปกับแคมเปญ Fairs Cup ฤดูกาล 1965/66 อันน่าตื่นตาตื่นใจ นี่คือความเย้ายวนใจอย่างแท้จริงในลอนดอนตะวันตก โดยเฉพาะอย่างยิ่งเมื่อทีมอย่าง โรม่า, เอซี มิลาน และ บาร์เซโลน่า มาเยือนเมืองหลวง สแตมฟอร์ดบริดจ์กำลัง 'สวิงกิ้ง' ไปพร้อมกับส่วนอื่นๆ ของลอนดอนในขณะนั้น วงเดอะบีเทิลส์ (The Beatles) ขวัญใจชาวเมอร์ซีย์ไซด์และโปสเตอร์บอยของยุคสมัย ได้ย้ายมายังเมืองหลวง และถนนอีดิธ โกรฟ (Edith Grove) ซึ่งอยู่หัวมุมถนนจากสนามของเรา ก็เป็นบ้านของวงโรลลิงสโตนส์ (Rolling Stones)" data-lang-en="We would be back in the FA Cup final soon enough, although Docherty would not have another chance to win it as Chelsea manager. His other breakthrough came in Europe and a sensational 1965/66 Fairs Cup campaign. This was true glamour in west London, especially when teams like Roma, AC Milan and Barcelona were in town. Stamford Bridge was swinging with the rest of London at the time. The Beatles, the darlings of Merseyside and poster boys of the whole era, had moved to the capital city and Edith Grove, just around the corner from our stadium, was home to the Rolling Stones.">เราจะได้กลับไปสู่นัดชิงชนะเลิศเอฟเอคัพอีกครั้งในไม่ช้า แม้ว่าโดเคอร์ตี้จะไม่มีโอกาสคว้าแชมป์ในฐานะผู้จัดการทีมเชลซีอีกแล้วก็ตาม อีกหนึ่งความก้าวหน้าของเขาเกิดขึ้นในเวทียุโรปกับแคมเปญ Fairs Cup ฤดูกาล 1965/66 อันน่าตื่นตาตื่นใจ นี่คือความเย้ายวนใจอย่างแท้จริงในลอนดอนตะวันตก โดยเฉพาะอย่างยิ่งเมื่อทีมอย่าง โรม่า, เอซี มิลาน และ บาร์เซโลน่า มาเยือนเมืองหลวง สแตมฟอร์ดบริดจ์กำลัง 'สวิงกิ้ง' ไปพร้อมกับส่วนอื่นๆ ของลอนดอนในขณะนั้น วงเดอะบีเทิลส์ (The Beatles) ขวัญใจชาวเมอร์ซีย์ไซด์และโปสเตอร์บอยของยุคสมัย ได้ย้ายมายังเมืองหลวง และถนนอีดิธ โกรฟ (Edith Grove) ซึ่งอยู่หัวมุมถนนจากสนามของเรา ก็เป็นบ้านของวงโรลลิงสโตนส์ (Rolling Stones)</p>
+
+      <p data-lang-th="ยอดนักดนตรีชาวบราซิลอย่าง จิลแบร์ตู จิล และ กาเอตานู เวโลซู ยังใช้เวลาส่วนหนึ่งในการลี้ภัยช่วงปลายยุคซิกซ์ตี้ส์ในลอนดอน ท่ามกลางฝูงชนจำนวนมหาศาลที่สนามของเรา เดอะบริดจ์คือสถานที่ที่ต้องมา ริชาร์ด แอทเทนเบอเรอห์ (Richard Attenborough) นักแสดง ผู้กำกับ และผู้อำนวยการสร้างเจ้าของรางวัลมากมาย ผู้ซึ่งเป็นแฟนบอลเชลซีมาตั้งแต่สมัยมาซ้อมกับทีมเพื่อเตรียมรับบทบาทในภาพยนตร์ยุค 1940s และยังเป็นผู้อำนวยการสโมสรเชลซี ได้แบ่งปันความรักที่เขามีต่อสแตมฟอร์ดบริดจ์ในวันแข่งขัน ด้วยการพาเหล่าดาราคนดังในวงการบันเทิงมากมายมาเป็นแขกรับเชิญ ตั้งแต่นักแสดงละครเวทีชาวอังกฤษอย่าง ลอเรนซ์ โอลิเวียร์ และ จอห์น มิลส์ ไปจนถึงซูเปอร์สตาร์แห่งฮอลลีวูดอย่าง จอห์น เวย์น, แฟรงก์ ซินาตรา และ สตีฟ แม็คควีน ซึ่งช่วยเพิ่มชื่อเสียงให้เชลซีในฐานะสโมสรที่เปี่ยมด้วยเสน่ห์และเย้ายวนใจที่สุดของลอนดอนอย่างมาก" data-lang-en="Brazil's foremost musicians, Gilberto Gil and Caetano Veloso, even whiled away part of their late-Sixties exile in London amid huge crowds at our stadium. The Bridge was the place to be. A Chelsea fan since training with the team in preparation for a film part in the 1940s, Richard Attenborough, the award-winning actor, director and producer, and also Chelsea FC director, was sharing in his love for Stamford Bridge on match days by bringing along a plethora of showbiz stars as guests. They ranged from English thespians such as Laurence Olivier and John Mills through to Hollywood's greatest stars like John Wayne, Frank Sinatra and Steve McQueen, adding considerably to Chelsea's reputation as London's glamour club.">ยอดนักดนตรีชาวบราซิลอย่าง จิลแบร์ตู จิล และ กาเอตานู เวโลซู ยังใช้เวลาส่วนหนึ่งในการลี้ภัยช่วงปลายยุคซิกซ์ตี้ส์ในลอนดอน ท่ามกลางฝูงชนจำนวนมหาศาลที่สนามของเรา เดอะบริดจ์คือสถานที่ที่ต้องมา ริชาร์ด แอทเทนเบอเรอห์ (Richard Attenborough) นักแสดง ผู้กำกับ และผู้อำนวยการสร้างเจ้าของรางวัลมากมาย ผู้ซึ่งเป็นแฟนบอลเชลซีมาตั้งแต่สมัยมาซ้อมกับทีมเพื่อเตรียมรับบทบาทในภาพยนตร์ยุค 1940s และยังเป็นผู้อำนวยการสโมสรเชลซี ได้แบ่งปันความรักที่เขามีต่อสแตมฟอร์ดบริดจ์ในวันแข่งขัน ด้วยการพาเหล่าดาราคนดังในวงการบันเทิงมากมายมาเป็นแขกรับเชิญ ตั้งแต่นักแสดงละครเวทีชาวอังกฤษอย่าง ลอเรนซ์ โอลิเวียร์ และ จอห์น มิลส์ ไปจนถึงซูเปอร์สตาร์แห่งฮอลลีวูดอย่าง จอห์น เวย์น, แฟรงก์ ซินาตรา และ สตีฟ แม็คควีน ซึ่งช่วยเพิ่มชื่อเสียงให้เชลซีในฐานะสโมสรที่เปี่ยมด้วยเสน่ห์และเย้ายวนใจที่สุดของลอนดอนอย่างมาก</p>
+
+      <p data-lang-th="ถ้วย Fairs Cup ฤดูกาล 1965/66 เป็นจุดศูนย์รวมความสนใจ ในช่วงค่ำของเดือนกันยายนต้นฤดูกาล เชลซีเปิดบ้านต้อนรับ อาแอส โรม่า และบันทึกชัยชนะอันยอดเยี่ยม 4-1 เกิดผลพวงตามมาเมื่อเราไปเยือนกรุงโรม โดยมีสิ่งของมากมายถูกขว้างปาใส่นักเตะทีมเยือน การเสมอ 0-0 ก็เพียงพอแล้วที่จะพาเราผ่านไปปราบ วีเนอร์ สปอร์ต คลับ จากออสเตรีย และจากนั้นก็เผชิญหน้ากับทีมจากเซเรียอาอีกครั้ง นั่นคือ เอซี มิลาน ออสกู้ดทำประตูสุดสวยในเกมนัดเหย้าที่เจอกับทัพดาราเจ้าของแชมป์ยูโรเปี้ยนคัพปี 1963 แต่ทั้งสองทีมไม่สามารถหาผู้ชนะได้จากสองนัดแรก รวมถึงนัดที่สาม ซึ่งเป็นเกมเพลย์ออฟที่จัดขึ้นที่ซาน ซิโร่ ในมิลาน ดังนั้น ในยุคที่ยังไม่มีการดวลจุดโทษ การตัดสินจึงใช้วิธีโยนเหรียญเสี่ยงทาย ซึ่งผลปรากฏว่าแฮร์ริสเลือก 'หัว' และรอยยิ้มก็ตกเป็นของเชลซี" data-lang-en="The Fairs Cup of 1965/66 provided a focal point. On a September evening early in the season, Chelsea hosted AS Roma and recorded a superb 4-1 win. There were repercussions when we played in Rome, with many missiles launched at the visiting players. A 0-0 draw was more than enough to take us on to beat Wiener Sport-Klub from Austria, and then face more Serie A opposition in AC Milan. Osgood scored a brilliant goal in the home leg against the stellar 1963 European Cup-winners but the two teams could not be separated over the two matches, nor a third one – a play-off in Milan's San Siro. So, in the era before penalty shoot-outs, the decider was a toss of a coin which resulted in Harris selecting 'heads' and Chelsea smiles.">ถ้วย Fairs Cup ฤดูกาล 1965/66 เป็นจุดศูนย์รวมความสนใจ ในช่วงค่ำของเดือนกันยายนต้นฤดูกาล เชลซีเปิดบ้านต้อนรับ อาแอส โรม่า และบันทึกชัยชนะอันยอดเยี่ยม 4-1 เกิดผลพวงตามมาเมื่อเราไปเยือนกรุงโรม โดยมีสิ่งของมากมายถูกขว้างปาใส่นักเตะทีมเยือน การเสมอ 0-0 ก็เพียงพอแล้วที่จะพาเราผ่านไปปราบ วีเนอร์ สปอร์ต คลับ จากออสเตรีย และจากนั้นก็เผชิญหน้ากับทีมจากเซเรียอาอีกครั้ง นั่นคือ เอซี มิลาน ออสกู้ดทำประตูสุดสวยในเกมนัดเหย้าที่เจอกับทัพดาราเจ้าของแชมป์ยูโรเปี้ยนคัพปี 1963 แต่ทั้งสองทีมไม่สามารถหาผู้ชนะได้จากสองนัดแรก รวมถึงนัดที่สาม ซึ่งเป็นเกมเพลย์ออฟที่จัดขึ้นที่ซาน ซิโร่ ในมิลาน ดังนั้น ในยุคที่ยังไม่มีการดวลจุดโทษ การตัดสินจึงใช้วิธีโยนเหรียญเสี่ยงทาย ซึ่งผลปรากฏว่าแฮร์ริสเลือก 'หัว' และรอยยิ้มก็ตกเป็นของเชลซี</p>
+
+      <p data-lang-th="มิวนิค 1860 สโมสรจากเยอรมันถูกปราบไปอย่างไม่ยากเย็นในรอบก่อนรองชนะเลิศ และสิงห์บลูส์ก็โคจรมาพบกับ บาร์เซโลน่า ที่อัดแน่นไปด้วยผู้เล่นระดับทีมชาติในรอบสี่ทีมสุดท้าย หลังจากบาร์ซ่าชนะ 2-0 ที่แคว้นกาตาลุญญา สิงห์บลูส์ก็กลับมาชนะเกมที่เดอะบริดจ์ 2-0 ต้องมีการเตะนัดที่สามอีกครั้ง แต่คราวนี้ไม่มีการโยนเหรียญเสี่ยงทายตามมาเมื่อบาร์เซโลน่าถล่มชนะเราไป 5-0" data-lang-en="German club Munich 1860 were comfortably overcome in the quarter-finals and the Blues met Barcelona, packed with internationals, in the last four. After Barca won 2-0 in Catalonia, the Blues won the rearranged game at the Bridge 2-0. Again, a third game was needed, but this time no coin toss would follow as Barcelona ran out 5-0 winners.">มิวนิค 1860 สโมสรจากเยอรมันถูกปราบไปอย่างไม่ยากเย็นในรอบก่อนรองชนะเลิศ และสิงห์บลูส์ก็โคจรมาพบกับ บาร์เซโลน่า ที่อัดแน่นไปด้วยผู้เล่นระดับทีมชาติในรอบสี่ทีมสุดท้าย หลังจากบาร์ซ่าชนะ 2-0 ที่แคว้นกาตาลุญญา สิงห์บลูส์ก็กลับมาชนะเกมที่เดอะบริดจ์ 2-0 ต้องมีการเตะนัดที่สามอีกครั้ง แต่คราวนี้ไม่มีการโยนเหรียญเสี่ยงทายตามมาเมื่อบาร์เซโลน่าถล่มชนะเราไป 5-0</p>
+
+      <h2 data-lang-th="รอยร้าวภายในทีมและจุดจบของยุค Docherty" data-lang-en="Team Fractures and the End of the Docherty Era">รอยร้าวภายในทีมและจุดจบของยุค Docherty</h2>
+      <p data-lang-th="มาถึงขั้นนี้ รอยร้าวเริ่มปรากฏให้เห็น และเดอะ ด็อก ก็เริ่มรื้อโครงสร้างเพชรเม็ดเดิม (Diamonds) ของเขา หนึ่งในชนวนเหตุของการปรับโครงสร้างคือความผิดหวังของผู้จัดการทีมต่อผลงานอันย่ำแย่ในรอบรองชนะเลิศกับเชฟฟิลด์ เว้นส์เดย์ในปี 1966 เมื่อฤดูกาล 1964/65 ใกล้จะสิ้นสุด เดอะ ด็อก ตัดสินใจเก็บตัวนักเตะของเขาไว้ในโรงแรมที่แบล็คพูล หลังจากแพ้อย่างหมดรูปที่แอนฟิลด์ โดเคอร์ตี้ที่กำลังโกรธจัดได้สั่งเคอร์ฟิวนักเตะของเขา เย็นวันหนึ่ง แป้งดาวดังที่ถูกกักบริเวณแอบหนีออกไปเที่ยวกลางคืน เดอะ ด็อก ฟิวส์ขาด ส่งพวกเขากลับลอนดอนและเรียกตัวผู้เล่นสำรองมาเสริมแทน" data-lang-en="By this stage, fractures were appearing and the Doc had begun dismantling his original Diamonds. One of the initiators for the shake-up was the manager's disappointment with their shoddy semi-final showing against Sheffield Wednesday in 1966. As the season drew to a close in 1964/65, the Doc decided to keep his players billeted in a Blackpool hotel. After a lacklustre defeat at Anfield, an angry Docherty placed a curfew on his squad. One evening, eight of his cooped-up stars sneaked off for a night out. The Doc snapped, sent them back to London and called for the reserves.">มาถึงขั้นนี้ รอยร้าวเริ่มปรากฏให้เห็น และเดอะ ด็อก ก็เริ่มรื้อโครงสร้างเพชรเม็ดเดิม (Diamonds) ของเขา หนึ่งในชนวนเหตุของการปรับโครงสร้างคือความผิดหวังของผู้จัดการทีมต่อผลงานอันย่ำแย่ในรอบรองชนะเลิศกับเชฟฟิลด์ เว้นส์เดย์ในปี 1966 เมื่อฤดูกาล 1964/65 ใกล้จะสิ้นสุด เดอะ ด็อก ตัดสินใจเก็บตัวนักเตะของเขาไว้ในโรงแรมที่แบล็คพูล หลังจากแพ้อย่างหมดรูปที่แอนฟิลด์ โดเคอร์ตี้ที่กำลังโกรธจัดได้สั่งเคอร์ฟิวนักเตะของเขา เย็นวันหนึ่ง แป้งดาวดังที่ถูกกักบริเวณแอบหนีออกไปเที่ยวกลางคืน เดอะ ด็อก ฟิวส์ขาด ส่งพวกเขากลับลอนดอนและเรียกตัวผู้เล่นสำรองมาเสริมแทน</p>
+      
+      <p data-lang-th="ความฝันในการคว้าแชมป์ลีกล่มสลายลง พร้อมกับหลายคนที่ตั้งคำถามถึงมาตรการทางวินัยอันเข้มงวดของผู้จัดการทีมหนุ่ม โดเคอร์ตี้รอดพ้นมาได้ต้องขอบคุณความสัมพันธ์ที่แน่นแฟ้นกับพันธมิตรคนสำคัญอย่าง โจ เมียร์ส ประธานสโมสร แต่หลังจากเมียร์สเสียชีวิตอย่างกะทันหันในเดือนมิถุนายน 1966 บิล แพรตต์ ผู้มาแทนที่ มักจะมองไม่ตรงกันกับผู้จัดการทีมที่เอาแน่เอานอนไม่ได้คนนี้ การบริหารจัดการดูเหมือนจะจมอยู่กับความขัดแย้ง มีข้อพิพาทเรื่องโบนัสและตั๋วระหว่างนักเตะกับสโมสรก่อนความพ่ายแพ้ในนัดชิงเอฟเอคัพปี 1967 และเมื่อพฤติกรรมที่ไม่เหมาะสมของโดเคอร์ตี้ระหว่างการทัวร์ปรีซีซั่นทำให้เขาโดนเอฟเอสั่งพักงาน 28 วัน มันจึงกลายเป็นฟางเส้นสุดท้ายสำหรับยุคสมัยของเขากับเชลซี" data-lang-en="The league-title dream had died with many questioning the strict disciplinary actions by the young manager. Docherty survived thanks to his strong relationship with key ally, chairman Joe Mears, but after he died suddenly in June 1966 his replacement, Bill Pratt rarely saw eye-to-eye with the unpredictable manager. The regime seemed mired in controversy. There were bonus and ticketing disputes between players and club before the 1967 FA Cup final defeat and when unacceptable behaviour from Docherty on a pre-season tour earned him a 28-day suspension by the FA, it was the final straw for his Chelsea reign.">ความฝันในการคว้าแชมป์ลีกล่มสลายลง พร้อมกับหลายคนที่ตั้งคำถามถึงมาตรการทางวินัยอันเข้มงวดของผู้จัดการทีมหนุ่ม โดเคอร์ตี้รอดพ้นมาได้ต้องขอบคุณความสัมพันธ์ที่แน่นแฟ้นกับพันธมิตรคนสำคัญอย่าง โจ เมียร์ส ประธานสโมสร แต่หลังจากเมียร์สเสียชีวิตอย่างกะทันหันในเดือนมิถุนายน 1966 บิล แพรตต์ ผู้มาแทนที่ มักจะมองไม่ตรงกันกับผู้จัดการทีมที่เอาแน่เอานอนไม่ได้คนนี้ การบริหารจัดการดูเหมือนจะจมอยู่กับความขัดแย้ง มีข้อพิพาทเรื่องโบนัสและตั๋วระหว่างนักเตะกับสโมสรก่อนความพ่ายแพ้ในนัดชิงเอฟเอคัพปี 1967 และเมื่อพฤติกรรมที่ไม่เหมาะสมของโดเคอร์ตี้ระหว่างการทัวร์ปรีซีซั่นทำให้เขาโดนเอฟเอสั่งพักงาน 28 วัน มันจึงกลายเป็นฟางเส้นสุดท้ายสำหรับยุคสมัยของเขากับเชลซี</p>
+
+      <h2 data-lang-th="ยุคของ Dave Sexton: จาก 'Cavalier' สู่ 'Roundhead'" data-lang-en="The Dave Sexton Era: From 'Cavalier' to 'Roundhead'">ยุคของ Dave Sexton: จาก "Cavalier" สู่ "Roundhead"</h2>
+      <p data-lang-th="ผู้ที่มาแทนที่โดเคอร์ตี้คือ เดฟ เซ็กซ์ตัน ลูกชายหัวดีของนักมวยอาชีพที่เคยคุมทีมชุดใหญ่ของสิงห์บลูส์มาก่อน บุคลิกที่ร่าเริงน้อยกว่าแต่เปี่ยมด้วยแท็คติกอันชาญฉลาดของเซ็กซ์ตัน ทำให้เขากลายเป็นตัวเลือกที่ได้รับความนิยมในหมู่ผู้เล่น และในไม่ช้า เขาจะเปลี่ยนเชลซีให้กลายเป็นทีมที่กวาดถ้วยรางวัลใหญ่ๆ ได้อีกครั้ง" data-lang-en="Docherty's replacement was Dave Sexton, the studious son of a prizefighter who had coached the Blues' first team. Sexton's less ebullient character but inspired tactics made him a popular choice among the players. Soon, he would turn Chelsea into major trophy winners once more.">ผู้ที่มาแทนที่โดเคอร์ตี้คือ เดฟ เซ็กซ์ตัน ลูกชายหัวดีของนักมวยอาชีพที่เคยคุมทีมชุดใหญ่ของสิงห์บลูส์มาก่อน บุคลิกที่ร่าเริงน้อยกว่าแต่เปี่ยมด้วยแท็คติกอันชาญฉลาดของเซ็กซ์ตัน ทำให้เขากลายเป็นตัวเลือกที่ได้รับความนิยมในหมู่ผู้เล่น และในไม่ช้า เขาจะเปลี่ยนเชลซีให้กลายเป็นทีมที่กวาดถ้วยรางวัลใหญ่ๆ ได้อีกครั้ง</p>
+      
+      <p data-lang-th="หากทีมของโดเคอร์ตี้เปรียบเสมือน 'คาวาเลียร์' (Cavalier - นักรบม้าที่หรูหรา) เซ็กซ์ตันก็นำสไตล์แบบ 'ราวด์เฮด' (Roundhead - ทหารที่มีวินัยและความแข็งแกร่ง) เข้ามามากขึ้น ความแข็งแกร่งดุจเหล็กกล้าถูกเพิ่มเข้ามาด้วยการเซ็นสัญญาคว้านักเตะสายปะทะอย่างกองหลัง เดวิด เว็บบ์ และ จอห์น เดมป์ซีย์ พร้อมกับการเข้ามาของกองหน้า อลัน เบอร์เชนอลล์ และ เอียน ฮัทชินสัน ไฮไลต์หนึ่งในช่วงฤดูกาลแรกๆ ของเซ็กซ์ตันคือการบุกไปถล่มแมนเชสเตอร์ ยูไนเต็ด แชมป์ยุโรปหมาดๆ 4-0 ถึงถิ่นโอลด์ แทรฟฟอร์ด ในเดือนสิงหาคม 1968" data-lang-en="If Docherty's teams were Cavalier, Sexton introduced more Roundheads. More steel was added with new signings such as combative defenders David Webb and John Dempsey, and in came strikers Alan Birchenall and Ian Hutchinson. A highlight of those early Sexton seasons was defeating newly crowned European champions Manchester United 4-0 at Old Trafford in August 1968.">หากทีมของโดเคอร์ตี้เปรียบเสมือน 'คาวาเลียร์' (Cavalier - นักรบม้าที่หรูหรา) เซ็กซ์ตันก็นำสไตล์แบบ 'ราวด์เฮด' (Roundhead - ทหารที่มีวินัยและความแข็งแกร่ง) เข้ามามากขึ้น ความแข็งแกร่งดุจเหล็กกล้าถูกเพิ่มเข้ามาด้วยการเซ็นสัญญาคว้านักเตะสายปะทะอย่างกองหลัง เดวิด เว็บบ์ และ จอห์น เดมป์ซีย์ พร้อมกับการเข้ามาของกองหน้า อลัน เบอร์เชนอลล์ และ เอียน ฮัทชินสัน ไฮไลต์หนึ่งในช่วงฤดูกาลแรกๆ ของเซ็กซ์ตันคือการบุกไปถล่มแมนเชสเตอร์ ยูไนเต็ด แชมป์ยุโรปหมาดๆ 4-0 ถึงถิ่นโอลด์ แทรฟฟอร์ด ในเดือนสิงหาคม 1968</p>
+
+      <p data-lang-th="วิธีการทำงานที่เน้นการใช้สมองมากขึ้นของเซ็กซ์ตัน เรียกร้องการทุ่มเทแรงกายแรงใจจากสมาชิกในทีมทุกคน ดาวดวงใหม่เจิดจรัสขึ้นและจะกลายมาเป็นส่วนหนึ่งในหน้าประวัติศาสตร์ของสโมสร ปีเตอร์ โบเนตติ โดดเด่นเป็นสง่าที่หน้าปากประตูด้วยการบัญชาการเขตโทษและความปราดเปรียวที่สมกับฉายา 'The Cat' (แมวปิศาจ) ของเขา แนวรับเบื้องหน้าที่มีนักเตะหน้าใหม่ของเซ็กซ์ตันอย่างเว็บบ์และเดมป์ซีย์ คอยเสริมความแข็งแกร่งให้กับ รอน 'ช็อปเปอร์' แฮร์ริส และ เอ็ดดี้ แม็คเครดี้ นั้นเหนียวแน่นไร้ความปรานี ในแดนกลางมีฮัดสันบัญชาเกม เคียงข้าง จอห์น ฮอลลินส์ ผู้มีปอดเหล็กกล้าวิ่งไม่มีหมด และ ชาร์ลี คุก จอมลากเลื้อยผู้มีเวทมนตร์" data-lang-en="Sexton's more cerebral approach demanded exertion from each team member. New stars emerged who would come to adorn the club's history. Peter Bonetti was outstanding in goal with his command of the penalty area and agility worthy of his 'The Cat' nickname. The defence in front with Sexton signings Webb and Dempsey augmenting Ron 'Chopper' Harris and Eddie McCreadie was uncompromising. With Hudson in the middle was the leather-lunged John Hollins and the magical dribbling of Charlie Cooke.">วิธีการทำงานที่เน้นการใช้สมองมากขึ้นของเซ็กซ์ตัน เรียกร้องการทุ่มเทแรงกายแรงใจจากสมาชิกในทีมทุกคน ดาวดวงใหม่เจิดจรัสขึ้นและจะกลายมาเป็นส่วนหนึ่งในหน้าประวัติศาสตร์ของสโมสร ปีเตอร์ โบเนตติ โดดเด่นเป็นสง่าที่หน้าปากประตูด้วยการบัญชาการเขตโทษและความปราดเปรียวที่สมกับฉายา 'The Cat' (แมวปิศาจ) ของเขา แนวรับเบื้องหน้าที่มีนักเตะหน้าใหม่ของเซ็กซ์ตันอย่างเว็บบ์และเดมป์ซีย์ คอยเสริมความแข็งแกร่งให้กับ รอน 'ช็อปเปอร์' แฮร์ริส และ เอ็ดดี้ แม็คเครดี้ นั้นเหนียวแน่นไร้ความปรานี ในแดนกลางมีฮัดสันบัญชาเกม เคียงข้าง จอห์น ฮอลลินส์ ผู้มีปอดเหล็กกล้าวิ่งไม่มีหมด และ ชาร์ลี คุก จอมลากเลื้อยผู้มีเวทมนตร์</p>
+
+      <h2 data-lang-th="FA Cup 1970: ศึกประวัติศาสตร์กับ Leeds United" data-lang-en="1970 FA Cup: Historic Battle with Leeds United">FA Cup 1970: ศึกประวัติศาสตร์กับ Leeds United</h2>
+      <p data-lang-th="ทุกสิ่งทุกอย่างพุ่งขึ้นสู่จุดสูงสุดในแคมเปญแห่งความรุ่งโรจน์เพียงครั้งเดียว เส้นทางเอฟเอคัพฤดูกาล 1969/70 ช่างพิเศษยิ่งนัก ผู้ที่รอคอยอยู่ในนัดชิงชนะเลิศที่เวมบลีย์คือ ลีดส์ คู่ปรับตลอดกาลซึ่งเป็นแชมป์เก่าพรีเมียร์ลีก นัดชิงชนะเลิศปี 1970 จะเป็นโชว์ประลองแข้งคลาสสิกระหว่างขั้ว 'เหนือ ปะทะ ใต้' เชลซีคือกลุ่มหนุ่มสวิงกิ้งแห่งคิงส์โร้ด ส่วนลีดส์คือสโมสรกุหลาบขาวที่ดุดันและเน้นความอึด แมตช์ระหว่างทั้งสองทีมมักจะมีแต่การเล่นตุกติกเข้าใส่กัน ต่างจากทีมอื่นตรงที่ทีมชุดขาวของดอน เรวี่ ไม่สามารถข่มขวัญชาวลอนดอนทีมนี้ได้เลย" data-lang-en="All came to a peak in one glorious campaign. The 1969/70 FA Cup run was special. Awaiting in the final at Wembley were arch-rivals Leeds, the defending league champions. The 1970 final would be a classic North versus South showpiece. Chelsea were the King's Road swingers; Leeds were the gritty White Rose club. Matches between the two had been pockmarked with foul-play. Unlike other teams, Don Revie's Whites were unable to intimidate the Londoners.">ทุกสิ่งทุกอย่างพุ่งขึ้นสู่จุดสูงสุดในแคมเปญแห่งความรุ่งโรจน์เพียงครั้งเดียว เส้นทางเอฟเอคัพฤดูกาล 1969/70 ช่างพิเศษยิ่งนัก ผู้ที่รอคอยอยู่ในนัดชิงชนะเลิศที่เวมบลีย์คือ ลีดส์ คู่ปรับตลอดกาลซึ่งเป็นแชมป์เก่าพรีเมียร์ลีก นัดชิงชนะเลิศปี 1970 จะเป็นโชว์ประลองแข้งคลาสสิกระหว่างขั้ว 'เหนือ ปะทะ ใต้' เชลซีคือกลุ่มหนุ่มสวิงกิ้งแห่งคิงส์โร้ด ส่วนลีดส์คือสโมสรกุหลาบขาวที่ดุดันและเน้นความอึด แมตช์ระหว่างทั้งสองทีมมักจะมีแต่การเล่นตุกติกเข้าใส่กัน ต่างจากทีมอื่นตรงที่ทีมชุดขาวของดอน เรวี่ ไม่สามารถข่มขวัญชาวลอนดอนทีมนี้ได้เลย</p>
+
+      <p data-lang-th="จากการตรวจสอบสภาพสนามที่เวมบลีย์ ทำให้เกมนัดรีเพลย์ต้องย้ายไปเตะภายใต้อัฒจันทร์สูงตระหง่านของโอลด์ แทรฟฟอร์ด แทนที่จะเป็นหอคอยคู่ การขยับเว็บบ์ (ซึ่งโดน เอ็ดดี้ เกรย์ ปีกตัวจี๊ดเล่นงานซะอ่วมในตำแหน่งแบ็คขวาที่เวมบลีย์) เข้ามาเล่นเป็นเซ็นเตอร์ฮาล์ฟ เปิดทางให้ 'ช็อปเปอร์' แฮร์ริส ถ่างออกไปเล่นด้านกว้างและจัดการตัวอันตรายของลีดส์เสียอยู่หมัด ผู้ชมการถ่ายทอดสดทางโทรทัศน์ทั่วสหราชอาณาจักร 28.49 ล้านคนยังคงเป็นสถิติสูงสุดตลอดกาลสำหรับการแข่งขันฟุตบอลสโมสร" data-lang-en="An inquest into the pitch meant the replayed match was staged under Old Trafford's tall stands rather than the twin towers. Moving Webb, handed a torrid time at right-back at Wembley by tricky winger Eddie Gray, into the centre of defence allowed 'Chopper' Harris to move wide and take care of the Leeds danger man. The live television audience across the UK of 28.49 million remains the largest ever for a club football match.">จากการตรวจสอบสภาพสนามที่เวมบลีย์ ทำให้เกมนัดรีเพลย์ต้องย้ายไปเตะภายใต้อัฒจันทร์สูงตระหง่านของโอลด์ แทรฟฟอร์ด แทนที่จะเป็นหอคอยคู่ การขยับเว็บบ์ (ซึ่งโดน เอ็ดดี้ เกรย์ ปีกตัวจี๊ดเล่นงานซะอ่วมในตำแหน่งแบ็คขวาที่เวมบลีย์) เข้ามาเล่นเป็นเซ็นเตอร์ฮาล์ฟ เปิดทางให้ 'ช็อปเปอร์' แฮร์ริส ถ่างออกไปเล่นด้านกว้างและจัดการตัวอันตรายของลีดส์เสียอยู่หมัด ผู้ชมการถ่ายทอดสดทางโทรทัศน์ทั่วสหราชอาณาจักร 28.49 ล้านคนยังคงเป็นสถิติสูงสุดตลอดกาลสำหรับการแข่งขันฟุตบอลสโมสร</p>
+
+      <p data-lang-th="'เดอะ แคท' ที่พันผ้าพันแผลก้าวออกมาอย่างกล้าหาญในครึ่งหลัง และฝืนเดินกระเผลกเพื่อป้องกันการโจมตีของทีมจากยอร์กเชียร์ และทันทีที่คู่แข่งดูเหมือนจะเริ่มอ่อนแรง เชลซีก็ตีเสมอได้ ออสกู้ดพุ่งโหม่งลูกเปิดของคุกกลายเป็นประตูสุดคลาสสิก ออสซี่รักษาสถิติการทำประตูทุกรอบในเส้นทางบอลถ้วยของเขาเอาไว้ได้ในนัดชิงชนะเลิศนี้เอง ในช่วงต่อเวลาพิเศษ ฮัทชินสัน ทุ่มไกลอันเป็นเครื่องหมายการค้าของเขาเข้าไปกลางกรอบเขตโทษ บอลถูกเสยต่อไปด้านหลัง และที่นั่นเอง เว็บบ์ก็ลบฝันร้ายจากเวมบลีย์ของเขาด้วยการโหม่งลูกข้ามเส้นประตูเข้าไป แฮร์ริสกลายเป็นกัปตันทีมเชลซีคนแรกที่ได้ชูถ้วยเอฟเอคัพ และทีมสิงห์บลูส์ของเซ็กซ์ตันก็มีของรางวัลเป็นเครื่องพิสูจน์ถึงคุณภาพและความยืดหยุ่นแข็งแกร่งของเรา" data-lang-en="A strapped-up 'Cat' bravely emerged for the second half and limped on to repel the Yorkshiremen's attacks and just as the opponents appear to tire, Chelsea equalised, Osgood diving to head in Cooke's floated delivery for an iconic goal. Ossie had taken his record of scoring in every round of the cup run into the final itself. In extra time, Hutchinson catapulted one of his famous long throw-ins into the heart of the goalmouth. The throw was flicked on to the back, where Webb gained redemption for his Wembley woes by bundling the ball over the line. Harris was the first Chelsea captain to be lifting the FA Cup and Sexton's Blues had something to show for our quality and resilience.">'เดอะ แคท' ที่พันผ้าพันแผลก้าวออกมาอย่างกล้าหาญในครึ่งหลัง และฝืนเดินกระเผลกเพื่อป้องกันการโจมตีของทีมจากยอร์กเชียร์ และทันทีที่คู่แข่งดูเหมือนจะเริ่มอ่อนแรง เชลซีก็ตีเสมอได้ ออสกู้ดพุ่งโหม่งลูกเปิดของคุกกลายเป็นประตูสุดคลาสสิก ออสซี่รักษาสถิติการทำประตูทุกรอบในเส้นทางบอลถ้วยของเขาเอาไว้ได้ในนัดชิงชนะเลิศนี้เอง ในช่วงต่อเวลาพิเศษ ฮัทชินสัน ทุ่มไกลอันเป็นเครื่องหมายการค้าของเขาเข้าไปกลางกรอบเขตโทษ บอลถูกเสยต่อไปด้านหลัง และที่นั่นเอง เว็บบ์ก็ลบฝันร้ายจากเวมบลีย์ของเขาด้วยการโหม่งลูกข้ามเส้นประตูเข้าไป แฮร์ริสกลายเป็นกัปตันทีมเชลซีคนแรกที่ได้ชูถ้วยเอฟเอคัพ และทีมสิงห์บลูส์ของเซ็กซ์ตันก็มีของรางวัลเป็นเครื่องพิสูจน์ถึงคุณภาพและความยืดหยุ่นแข็งแกร่งของเรา</p>
+
+      <h2 data-lang-th="European Cup Winners' Cup 1971: ถ้วยยุโรปใบแรกของสโมสร" data-lang-en="1971 European Cup Winners' Cup: The Club's First European Trophy">European Cup Winners' Cup 1971: ถ้วยยุโรปใบแรกของสโมสร</h2>
+      <p data-lang-th="ด้วยการคว้าแชมป์เอฟเอคัพครั้งแรกนี้ เชลซีได้สิทธิ์เข้าไปเล่นในศึก ยูโรเปี้ยน คัพ วินเนอร์ส คัพ และการแข่งขันรายการใหม่สำหรับเชลซีนี้ก็พิสูจน์ให้เห็นว่ามันเป็นหัวใจหลักของฤดูกาล 1970/71 แม้จะตามหลังอยู่ 2-0 จากเกมนัดเยือนที่พบกับคลับ บรูซ แต่เชลซีก็ตามตีเสมอได้จากออสกู้ดในนาทีที่ 80 และยิงเพิ่มได้อีกในช่วงต่อเวลาพิเศษ" data-lang-en="With that first ever FA Cup win, Chelsea earned entry into the European Cup Winners' Cup and this new competition for Chelsea would prove to be the centrepiece of the 1970/71 season. Trailing 2-0 from the away leg against Bruges, Chelsea pulled back with an equaliser from Osgood in the 80th minute and netted in extra-time too.">ด้วยการคว้าแชมป์เอฟเอคัพครั้งแรกนี้ เชลซีได้สิทธิ์เข้าไปเล่นในศึก ยูโรเปี้ยน คัพ วินเนอร์ส คัพ และการแข่งขันรายการใหม่สำหรับเชลซีนี้ก็พิสูจน์ให้เห็นว่ามันเป็นหัวใจหลักของฤดูกาล 1970/71 แม้จะตามหลังอยู่ 2-0 จากเกมนัดเยือนที่พบกับคลับ บรูซ แต่เชลซีก็ตามตีเสมอได้จากออสกู้ดในนาทีที่ 80 และยิงเพิ่มได้อีกในช่วงต่อเวลาพิเศษ</p>
+      
+      <p data-lang-th="เช่นเดียวกับนัดชิงเอฟเอคัพในปีก่อน คู่แข่งในรอบชิงชนะเลิศยุโรปของเราสวมชุดสีขาวล้วน ซึ่งคราวนี้เป็นชุดเก่งอันเลื่องชื่อของ เรอัล มาดริด และอีกครั้งที่จะต้องมีเกมนัดรีเพลย์เพื่อตัดสินชะตากรรมของถ้วยรางวัล สถานที่สำหรับทั้งสองเกมคือย่านท่าเรือปิเรอุส (Piraeus) ของกรุงเอเธนส์ในประเทศกรีซ หลังจากที่เว็บบ์ได้ล้างตาในเอฟเอคัพไปแล้ว คราวนี้ก็ถึงคิวของกองหลังเดมป์ซีย์สำหรับการไถ่บาปในนัดรีเพลย์ ปราการหลังตัวกลางผู้พึ่งพาได้เบิกสกอร์แรกด้วยลูกยิงที่เฉียบขาดพอๆ กับที่ไม่มีใครคาดคิด ออสกู้ดบวกเพิ่มเป็น 2-0 และแม้ว่าทีมจากสเปนจะตีไข่แตกได้หนึ่งประตู แต่การเซฟอันยอดเยี่ยมของโบเนตติก็ป้องกันโอกาสในการเสียประตูที่สองไปได้ ไม่กี่วันหลังจากที่แฟนๆ ได้ร่วมวิ่งรอบสนาม (lap of honour) ไปกับออสซี่และผองเพื่อนที่สนามไคเรสคาคิ (Karaiskaki Stadium) ถ้วยรางวัลอีกใบก็ถูกนำมาแห่ฉลองในลอนดอนโดยหนึ่งในทีมเชลซีที่เปี่ยมสไตล์และเป็นที่รักมากที่สุด คิงส์โร้ดไม่เคยมีความกร่างและเท่แบบนี้มาก่อน ไม่ว่าจะก่อนหน้านี้หรือหลังจากนั้นก็ตาม... สีฟ้า (น้ำเงิน) คือสีของเชลซีอย่างแท้จริง!" data-lang-en="Matching the previous year's FA Cup final, our European final opponents wore all-white, this time the famous kit of Real Madrid, and again it would take a replay to decide the destiny of the silverware. The venue for both games was the Piraeus port district of Athens in Greece. After Webb in the FA Cup, it was defender Dempsey's turn for replay redemption. The reliable centre-back opened the scoring with a strike as emphatic as it was unexpected. Osgood made it 2-0 and although the Spaniards pulled a goal back, an outstanding Bonetti save prevented any chance of another. Days after fans joined Ossie and co. in a lap of honour around the Karaiskaki Stadium, another trophy was being paraded in London by one of the most cherished and stylish Chelsea sides ever. The King's Road never had so much swagger, before or since. blue most definitely was the colour!">เช่นเดียวกับนัดชิงเอฟเอคัพในปีก่อน คู่แข่งในรอบชิงชนะเลิศยุโรปของเราสวมชุดสีขาวล้วน ซึ่งคราวนี้เป็นชุดเก่งอันเลื่องชื่อของ เรอัล มาดริด และอีกครั้งที่จะต้องมีเกมนัดรีเพลย์เพื่อตัดสินชะตากรรมของถ้วยรางวัล สถานที่สำหรับทั้งสองเกมคือย่านท่าเรือปิเรอุส (Piraeus) ของกรุงเอเธนส์ในประเทศกรีซ หลังจากที่เว็บบ์ได้ล้างตาในเอฟเอคัพไปแล้ว คราวนี้ก็ถึงคิวของกองหลังเดมป์ซีย์สำหรับการไถ่บาปในนัดรีเพลย์ ปราการหลังตัวกลางผู้พึ่งพาได้เบิกสกอร์แรกด้วยลูกยิงที่เฉียบขาดพอๆ กับที่ไม่มีใครคาดคิด ออสกู้ดบวกเพิ่มเป็น 2-0 และแม้ว่าทีมจากสเปนจะตีไข่แตกได้หนึ่งประตู แต่การเซฟอันยอดเยี่ยมของโบเนตติก็ป้องกันโอกาสในการเสียประตูที่สองไปได้ ไม่กี่วันหลังจากที่แฟนๆ ได้ร่วมวิ่งรอบสนาม (lap of honour) ไปกับออสซี่และผองเพื่อนที่สนามไคเรสคาคิ (Karaiskaki Stadium) ถ้วยรางวัลอีกใบก็ถูกนำมาแห่ฉลองในลอนดอนโดยหนึ่งในทีมเชลซีที่เปี่ยมสไตล์และเป็นที่รักมากที่สุด คิงส์โร้ดไม่เคยมีความกร่างและเท่แบบนี้มาก่อน ไม่ว่าจะก่อนหน้านี้หรือหลังจากนั้นก็ตาม... สีฟ้า (น้ำเงิน) คือสีของเชลซีอย่างแท้จริง!</p>
+
+      <!-- Chapter End Navigation -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๔ —" data-lang-en="— End of Chapter 4 —">— จบบทที่ ๔ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-3.html" class="chapter-nav__back" data-lang-th="← บทที่ ๓" data-lang-en="← Chapter 3">← บทที่ ๓</a>
+          <a href="chapter-5.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๕ →" data-lang-en="Read Chapter 5 →">อ่านบทที่ ๕ →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Clock -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle Language
+    let chapterLang = 'th';
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        el.innerHTML = chapterLang === 'th' ? el.getAttribute('data-lang-th') : el.getAttribute('data-lang-en');
+      });
+    }
+
+    // Floating Clocks
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+      updateFloatingClocks();
+      setInterval(updateFloatingClocks, 1000);
+    });
+  </script>
+</body>
+</html>
