@@ -5,7 +5,7 @@
     "position": "Goalkeeper",
     "number": 1,
     "nationality": "sui",
-    "image": null,
+    "image": "assets/images/players/women/livia-peng.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -16,7 +16,7 @@
     "position": "Goalkeeper",
     "number": 24,
     "nationality": "eng",
-    "image": null,
+    "image": "assets/images/players/women/hannah-hampton.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -27,7 +27,7 @@
     "position": "Goalkeeper",
     "number": 38,
     "nationality": "jam",
-    "image": null,
+    "image": "assets/images/players/women/becky-spencer.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -38,7 +38,7 @@
     "position": "Defender",
     "number": 2,
     "nationality": "aus",
-    "image": null,
+    "image": "assets/images/players/women/ellie-carpenter.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -49,7 +49,7 @@
     "position": "Defender",
     "number": 5,
     "nationality": "ned",
-    "image": null,
+    "image": "assets/images/players/women/veerle-buurman.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -60,7 +60,7 @@
     "position": "Defender",
     "number": 14,
     "nationality": "swe",
-    "image": null,
+    "image": "assets/images/players/women/nathalie-björn.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -71,7 +71,7 @@
     "position": "Defender",
     "number": 16,
     "nationality": "usa",
-    "image": null,
+    "image": "assets/images/players/women/naomi-girma.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -82,7 +82,7 @@
     "position": "Defender",
     "number": 21,
     "nationality": "eng",
-    "image": null,
+    "image": "assets/images/players/women/niamh-charles.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -93,7 +93,7 @@
     "position": "Defender",
     "number": 22,
     "nationality": "eng",
-    "image": null,
+    "image": "assets/images/players/women/lucy-bronze.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -104,7 +104,7 @@
     "position": "Defender",
     "number": 26,
     "nationality": "can",
-    "image": null,
+    "image": "assets/images/players/women/kadeisha-buchanan.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -148,7 +148,7 @@
     "position": "Midfielder",
     "number": 19,
     "nationality": "swe",
-    "image": null,
+    "image": "assets/images/players/women/johanna-rytting-kaneryd.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -192,7 +192,7 @@
     "position": "Forward",
     "number": 10,
     "nationality": "eng",
-    "image": null,
+    "image": "assets/images/players/women/lauren-james.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -203,7 +203,7 @@
     "position": "Forward",
     "number": 12,
     "nationality": "usa",
-    "image": null,
+    "image": "assets/images/players/women/alyssa-thompson.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -214,7 +214,7 @@
     "position": "Forward",
     "number": 17,
     "nationality": "fra",
-    "image": null,
+    "image": "assets/images/players/women/sandy-baltimore.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -225,7 +225,7 @@
     "position": "Forward",
     "number": 20,
     "nationality": "aus",
-    "image": null,
+    "image": "assets/images/players/women/sam-kerr.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
@@ -258,7 +258,7 @@
     "position": "Defender",
     "number": 15,
     "nationality": "Ireland",
-    "image": null,
+    "image": "assets/images/players/women/katie-mccabe.jpg",
     "appearances": null,
     "goals": null,
     "assists": null
