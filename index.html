@@ -15,7 +15,7 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
         <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
-        <span class="team-name">KARNLAKHRANgNAN</span>
+        <span class="team-name cal-team-name">KARNLAKHRANgNAN</span>
       </a>
 
       <div class="hamburger" id="hamburger">
@@ -30,6 +30,7 @@
         <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
         <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
         <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="https://www.chelseafc.com/en/news/latest-news-all" target="_blank" data-i18n="nav.news">News</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
       </ul>
     </div>
@@ -104,7 +105,24 @@
         </div>
         <button id="nextMonthBtn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color);">&gt;</button>
       </div>
-      <div id="calendarGrid" class="calendar-grid" style="display: grid; grid-template-columns: repeat(7, minmax(140px, 1fr)); gap: 0.5rem; min-width: 980px;">
+      
+      <!-- Calendar Legend -->
+      <div class="calendar-legend" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; font-size: 0.8rem; flex-wrap: wrap; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <span class="team-badge m" style="padding: 1px 4px; font-size: 0.6rem;">M</span> <span data-i18n="calendar.legend_men">Men's Team</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <span class="team-badge w" style="padding: 1px 4px; font-size: 0.6rem;">W</span> <span data-i18n="calendar.legend_women">Women's Team</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #00ff00; color: #ffffff; display: inline-block;"></span> <span data-i18n="calendar.legend_home">Home Match</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #ff0000; display: inline-block;"></span> <span data-i18n="calendar.legend_away">Away Match</span>
+        </div>
+      </div>
+
+      <div id="calendarGrid" class="calendar-grid">
         <!-- Calendar will be generated here -->
       </div>
     </div>
@@ -116,7 +134,7 @@
     <div class="footer-content">
       <div class="footer-logo">
         <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
-        <span class="team-name">KARN LA KHRANg NAN</span>
+        <span class="team-name cal-team-name">KARN LA KHRANg NAN</span>
       </div>
       <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
       <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
@@ -240,6 +258,97 @@
 
     }
 
+    
+    window.closeMobileMatchOverlay = function() {
+      const overlay = document.getElementById('mobileMatchOverlay');
+      if (overlay) {
+        overlay.style.opacity = '0';
+        const content = document.getElementById('mobileMatchOverlayContent');
+        if (content) content.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 300);
+      }
+    };
+
+    window.showMobileMatchOverlay = function(matches, dateStr) {
+      let overlay = document.getElementById('mobileMatchOverlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'mobileMatchOverlay';
+        overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9999; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;';
+        
+        const content = document.createElement('div');
+        content.id = 'mobileMatchOverlayContent';
+        content.style.cssText = 'background: var(--bg-color); border-radius: var(--radius-lg); width: 100%; max-width: 400px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border-color);';
+        
+        overlay.appendChild(content);
+        document.body.appendChild(overlay);
+        
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            window.closeMobileMatchOverlay();
+          }
+        });
+      }
+      
+      const content = document.getElementById('mobileMatchOverlayContent');
+      const lang = window.currentLang || 'th';
+      const formattedDate = formatDate(dateStr, lang);
+      
+      let htmlContent = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">${formattedDate}</h3>
+          <button onclick="window.closeMobileMatchOverlay()" style="background: none; border: none; font-size: 1.5rem; color: var(--text-color); cursor: pointer; line-height: 1; padding: 0 5px;">&times;</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+      `;
+      
+      htmlContent += matches.map((match) => {
+        const homeStr = match.home_team.toLowerCase();
+        const awayStr = match.away_team.toLowerCase();
+        const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+        const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+        const compName = formatCompetitionName(match.competition_name);
+        
+        return `
+          <a href="match-detail.html?id=${match.id}" class="card-link" style="text-decoration: none; display: block; opacity: 1; animation: none;">
+            <div class="card" style="padding: 12px; background: var(--card-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted);">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  ${match.competition_logo ? `<img src="${match.competition_logo}" style="height:14px; object-fit: contain;">` : ''}
+                  <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px;">${compName}</span>
+                </div>
+                <span>${(match.time_th || match.time || 'TBC').substring(0,5)}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <div style="display: flex; align-items: center; gap: 6px; flex: 1; justify-content: flex-end; text-align: right;">
+                  <span style="font-size: 0.85rem; font-weight: ${isChelseaHome ? 'bold' : 'normal'}; color: ${isChelseaHome ? 'var(--text-color)' : 'var(--text-muted)'};">${renderTeamNameHTML(match.home_team)}</span>
+                  <img src="${match.home_logo}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 24px; height: 24px; object-fit: contain;">
+                </div>
+                <div style="padding: 0 10px; font-weight: bold; font-size: 0.95rem; color: var(--primary-color); text-align: center; min-width: 50px;">
+                  ${match.status === 'completed' ? `${match.home_score} - ${match.away_score}` : 'VS'}
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; flex: 1; text-align: left;">
+                  <img src="${match.away_logo}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 24px; height: 24px; object-fit: contain;">
+                  <span style="font-size: 0.85rem; font-weight: ${isChelseaAway ? 'bold' : 'normal'}; color: ${isChelseaAway ? 'var(--text-color)' : 'var(--text-muted)'};">${renderTeamNameHTML(match.away_team)}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        `;
+      }).join('');
+      
+      htmlContent += `</div>`;
+      content.innerHTML = htmlContent;
+      
+      overlay.style.display = 'flex';
+      // Trigger reflow
+      void overlay.offsetWidth;
+      overlay.style.opacity = '1';
+      content.style.transform = 'translateY(0)';
+    };
+
     function renderCalendar() {
       if (!window.allMatchesGlobal) return;
       
@@ -259,6 +368,7 @@
       
       daysOfWeek.forEach(d => {
         const dEl = document.createElement('div');
+        dEl.className = 'cal-day-header';
         dEl.style.cssText = 'text-align: center; font-weight: bold; padding: 0.5rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius-sm);';
         dEl.textContent = d;
         grid.appendChild(dEl);
@@ -270,12 +380,14 @@
       // Pad empty slots
       for (let i = 0; i < firstDay; i++) {
         const emptyEl = document.createElement('div');
+        emptyEl.className = 'cal-empty-slot';
         emptyEl.style.cssText = 'background: rgba(0,0,0,0.02); border-radius: var(--radius-md); border: 1px solid var(--border-color);';
         grid.appendChild(emptyEl);
       }
       
       for (let day = 1; day <= daysInMonth; day++) {
         const dayEl = document.createElement('div');
+        dayEl.className = 'cal-day-cell';
         dayEl.style.cssText = 'min-height: 100px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;';
         
         
@@ -288,7 +400,11 @@
 
         const dayNumEl = document.createElement('div');
         dayNumEl.style.cssText = 'font-weight: bold; margin-bottom: 0.25rem; font-size: 30px; text-align: center; line-height: 25px; color: #ffc400;';
-        dayNumEl.textContent = day;
+        
+        const cellDate = new Date(year, month, day);
+        const weekdayStr = daysOfWeek[cellDate.getDay()];
+        dayNumEl.innerHTML = `<span class="cal-mobile-day" style="font-size: 1rem; vertical-align: middle;">${weekdayStr}</span> ${day}`;
+        
         if (isToday) {
           dayNumEl.style.color = '#ffd600';
           dayNumEl.style.borderStyle = 'solid';
@@ -305,11 +421,24 @@
         // Find matches for this day
         const dateStr = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const dayMatches = window.allMatchesGlobal.filter(m => m.date === dateStr);
+        if (dayMatches.length > 2) {
+          dayEl.classList.add('has-many-matches');
+        }
         
-        dayMatches.forEach(match => {
+        dayMatches.forEach((match, idx) => {
           const mEl = document.createElement('a');
+          mEl.classList.add('cal-match-item');
+          mEl.style.animationDelay = `${idx * 0.05}s`;
           mEl.href = `match-detail.html?id=${match.id}`;
           const teamBadgeClass = (match.team_type || 'M').toLowerCase();
+          
+          const locDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { time: (match.time_th || match.time || 'TBC').substring(0,5) };
+          const tTime = locDT.time === 'TBC' ? 'TBC' : locDT.time;
+          const tVenue = match.venue ? match.venue : 'TBA';
+          const lang = window.currentLang || 'th';
+          const timeLabel = lang === 'en' ? 'Time' : 'เวลา';
+          const venueLabel = lang === 'en' ? 'Venue' : 'สนาม';
+          mEl.title = `${timeLabel}: ${tTime} | ${venueLabel}: ${tVenue}`;
 
           if (match.status === 'completed') {
             mEl.className = 'card-link';
@@ -358,7 +487,7 @@
                 </div>
                 <div class="card-result" style="flex-direction: column; gap: 6px; margin-bottom: 0; align-items: center; justify-content: center; width: 100%;">
                   <img src="${chelseaLogo}" alt="${chelseaName}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 48px; height: 48px; object-fit: contain;">
-                  <span class="team-name" style="font-size: 0.95rem; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; ${textStyle}">${renderTeamNameHTML(chelseaName)}</span>
+                  <span class="team-name cal-team-name" style="font-size: 0.95rem; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; ${textStyle}">${renderTeamNameHTML(chelseaName)}</span>
                 </div>
               </div>
             `;
@@ -374,11 +503,13 @@
                scoreText = (match.time_th || match.time || 'TBC').substring(0,5);
             }
             
+            const isHomeUpcoming = match.home_team.toLowerCase().includes('chelsea') || match.home_team.toLowerCase() === 'kanlakhrangnan';
             mEl.innerHTML = `
               <div style="display: flex; align-items: center; gap: 4px; overflow: hidden;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background-color: ${isHomeUpcoming ? '#00ff00' : '#ff0000'}; display: inline-block; flex-shrink: 0;" title="${isHomeUpcoming ? 'Home' : 'Away'}"></span>
                 <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem; min-width: unset;">${match.team_type}</span>
                 <img src="${oppLogo}" alt="" onerror="this.style.display='none'" style="width: 16px; height: 16px; object-fit: contain;">
-                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${oppName}</span>
+                <span class="cal-team-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${oppName}</span>
               </div>
               <div style="font-weight: bold;">${scoreText}</div>
             `;
@@ -387,6 +518,25 @@
           dayEl.appendChild(mEl);
         });
         
+        
+        if (dayMatches.length > 2) {
+          const badge = document.createElement('div');
+          badge.className = 'mobile-match-counter';
+          const lang = window.currentLang || 'th';
+          badge.textContent = lang === 'en' ? dayMatches.length + ' Matches' : dayMatches.length + ' นัด';
+          dayEl.appendChild(badge);
+        }
+        
+        if (dayMatches.length > 0) {
+          dayEl.style.cursor = 'pointer';
+          dayEl.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+              // Prevent default so we don't accidentally navigate if clicking on a truncated link
+              e.preventDefault();
+              window.showMobileMatchOverlay(dayMatches, dateStr);
+            }
+          });
+        }
         grid.appendChild(dayEl);
       }
     }
@@ -399,7 +549,7 @@
         return;
       }
 
-      container.innerHTML = fixtures.map(match => {
+      container.innerHTML = fixtures.map((match, index) => {
         const lang = window.currentLang || 'th';
         const compLogo = match.competition_logo || '';
         const compName = formatCompetitionName(match.competition_name);
@@ -432,7 +582,7 @@
         }
 
         return `
-        <a href="match-detail.html?id=${match.id}" class="card-link">
+        <a href="match-detail.html?id=${match.id}" class="card-link" style="animation-delay: ${index * 0.05}s;">
           <div class="card">
             <div class="card-header">
               <div class="card-date"><span class="date-icon">📅</span><span>${formatDate(displayDate, window.currentLang||'th')}</span></div>
@@ -446,7 +596,7 @@
               <div class="team">
                 <img src="${match.home_logo}" alt="${match.home_team}" title="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
                 <div class="team-divider"></div>
-                <span class="team-name">${renderTeamNameHTML(match.home_team)}</span>
+                <span class="team-name cal-team-name">${renderTeamNameHTML(match.home_team)}</span>
               </div>
               <div class="fixture-info">
                 ${match.status === 'live' ? `<div style="display:flex; gap:10px; font-size:1.5rem; font-weight:bold;"><span style="color:var(--primary-color);">${match.home_score||0}</span><span>-</span><span style="color:var(--primary-color);">${match.away_score||0}</span></div>` : '<span class="fixture-vs">VS</span>'}
@@ -455,7 +605,7 @@
               <div class="team">
                 <img src="${match.away_logo}" alt="${match.away_team}" title="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
                 <div class="team-divider"></div>
-                <span class="team-name">${renderTeamNameHTML(match.away_team)}</span>
+                <span class="team-name cal-team-name">${renderTeamNameHTML(match.away_team)}</span>
               </div>
             </div>
             <div class="card-footer">
@@ -475,7 +625,7 @@
         return;
       }
 
-      container.innerHTML = results.map(match => {
+      container.innerHTML = results.map((match, index) => {
         const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date };
         const displayDate = localDT.date;
         const homeWin = match.home_score > match.away_score;
@@ -500,7 +650,7 @@
         }
 
         return `
-        <a href="match-detail.html?id=${match.id}" class="card-link">
+        <a href="match-detail.html?id=${match.id}" class="card-link" style="animation-delay: ${index * 0.05}s;">
           <div class="card">
             <div class="card-header">
               <div class="card-date"><span class="date-icon">📅</span><span>${formatDate(displayDate, window.currentLang||'th')}</span></div>
@@ -514,7 +664,7 @@
               <div class="team ${homeWin ? 'winner' : ''}">
                 <img src="${match.home_logo}" alt="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
                 <div class="team-divider"></div>
-                <span class="team-name">${renderTeamNameHTML(match.home_team)}</span>
+                <span class="team-name cal-team-name">${renderTeamNameHTML(match.home_team)}</span>
               </div>
               <div class="score-display">
                 <span class="score ${homeWin ? 'winner' : ''}">${match.home_score}</span>
@@ -524,7 +674,7 @@
               <div class="team ${awayWin ? 'winner' : ''}">
                 <img src="${match.away_logo}" alt="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
                 <div class="team-divider"></div>
-                <span class="team-name">${renderTeamNameHTML(match.away_team)}</span>
+                <span class="team-name cal-team-name">${renderTeamNameHTML(match.away_team)}</span>
               </div>
             </div>
             <div class="card-footer">

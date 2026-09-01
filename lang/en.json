@@ -7,6 +7,7 @@
     "icons": "i-Cons",
     "story": "The Story Blue",
     "about": "About Us",
+    "news": "News",
     "lang_toggle": "TH"
   },
   "home": {
@@ -148,5 +149,11 @@
     "loading": "Loading...",
     "disclaimer": "This is an unofficial fan website. Not affiliated with Chelsea FC.",
     "rights": "All Rights Reserved."
+  },
+  "calendar": {
+    "legend_men": "Men's Team",
+    "legend_women": "Women's Team",
+    "legend_home": "Home Match",
+    "legend_away": "Away Match"
   }
 }

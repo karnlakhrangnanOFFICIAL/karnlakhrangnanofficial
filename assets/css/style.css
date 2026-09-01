@@ -2644,3 +2644,65 @@ main:nth-of-type(1) > div#listViewWrapper:nth-of-type(2) > section#results:nth-o
   align-items: center;
   gap: 10px;
 }
+
+/* Responsive Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(140px, 1fr));
+  gap: 0.5rem;
+  min-width: 980px;
+}
+
+.cal-mobile-day {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #calendarViewWrapper {
+    overflow-x: hidden !important;
+  }
+  .calendar-grid {
+    grid-template-columns: 1fr;
+    min-width: 100%;
+  }
+  .cal-day-header, .cal-empty-slot {
+    display: none !important;
+  }
+  .cal-mobile-day {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .cal-day-cell {
+    min-height: auto !important;
+  }
+}
+
+/* Counter badge style */
+.mobile-match-counter {
+  display: none;
+  text-align: center;
+  font-size: 0.8rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .has-many-matches .cal-match-item {
+    display: none !important;
+  }
+  .has-many-matches .mobile-match-counter {
+    display: block !important;
+  }
+}
+
+/* Apply fade-in animation to all match items for smoother page loads */
+.card-link, .cal-match-item {
+  opacity: 0;
+  animation: fadeInCard 0.4s ease-out forwards;
+}

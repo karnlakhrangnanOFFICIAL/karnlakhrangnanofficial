@@ -7,6 +7,7 @@
     "icons": "i-Cons",
     "story": "The Story Blue",
     "about": "เกี่ยวกับเรา",
+    "news": "ข่าวสาร",
     "lang_toggle": "EN"
   },
   "home": {
@@ -148,5 +149,11 @@
     "loading": "กำลังโหลด...",
     "disclaimer": "เว็บไซต์นี้เป็นแฟนไซต์ที่ไม่เป็นทางการ ไม่มีความเกี่ยวข้องกับสโมสรฟุตบอลเชลซี",
     "rights": "สงวนลิขสิทธิ์"
+  },
+  "calendar": {
+    "legend_men": "ทีมชาย",
+    "legend_women": "ทีมหญิง",
+    "legend_home": "เหย้า",
+    "legend_away": "เยือน"
   }
 }
