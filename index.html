@@ -46,6 +46,59 @@
 
   <!-- ==================== MAIN CONTENT ==================== -->
   <main class="main-container">
+    
+    <!-- NEWS CAROUSEL SECTION -->
+    <div id="newsCarouselContainer" style="margin-bottom: 2rem;">
+      <h2 style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 1rem; color: var(--text-color);" data-i18n="nav.news">News</h2>
+      <div id="newsCarousel" style="display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none;">
+        <style>
+          #newsCarousel::-webkit-scrollbar { display: none; }
+          @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+          }
+          .skeleton-bg {
+            background: linear-gradient(90deg, var(--border-color) 25%, rgba(128,128,128,0.2) 50%, var(--border-color) 75%);
+            background-size: 400% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+          }
+        </style>
+        <!-- Skeleton Items -->
+        <div style="flex: 0 0 280px; scroll-snap-align: start; height: 260px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
+          <div class="skeleton-bg" style="height: 150px; width: 100%;"></div>
+          <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+            <div>
+              <div class="skeleton-bg" style="height: 16px; width: 90%; margin-bottom: 8px; border-radius: 4px;"></div>
+              <div class="skeleton-bg" style="height: 16px; width: 70%; margin-bottom: 8px; border-radius: 4px;"></div>
+              <div class="skeleton-bg" style="height: 16px; width: 40%; border-radius: 4px;"></div>
+            </div>
+            <div class="skeleton-bg" style="height: 12px; width: 30%; border-radius: 4px; margin-top: 12px;"></div>
+          </div>
+        </div>
+        <div style="flex: 0 0 280px; scroll-snap-align: start; height: 260px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
+          <div class="skeleton-bg" style="height: 150px; width: 100%;"></div>
+          <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+            <div>
+              <div class="skeleton-bg" style="height: 16px; width: 90%; margin-bottom: 8px; border-radius: 4px;"></div>
+              <div class="skeleton-bg" style="height: 16px; width: 70%; margin-bottom: 8px; border-radius: 4px;"></div>
+              <div class="skeleton-bg" style="height: 16px; width: 40%; border-radius: 4px;"></div>
+            </div>
+            <div class="skeleton-bg" style="height: 12px; width: 30%; border-radius: 4px; margin-top: 12px;"></div>
+          </div>
+        </div>
+        <div style="flex: 0 0 280px; scroll-snap-align: start; height: 260px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
+          <div class="skeleton-bg" style="height: 150px; width: 100%;"></div>
+          <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+            <div>
+              <div class="skeleton-bg" style="height: 16px; width: 90%; margin-bottom: 8px; border-radius: 4px;"></div>
+              <div class="skeleton-bg" style="height: 16px; width: 70%; margin-bottom: 8px; border-radius: 4px;"></div>
+              <div class="skeleton-bg" style="height: 16px; width: 40%; border-radius: 4px;"></div>
+            </div>
+            <div class="skeleton-bg" style="height: 12px; width: 30%; border-radius: 4px; margin-top: 12px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- VIEW TOGGLE -->
     <div class="view-controls" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
       <button id="btnListView" class="tab-btn active" data-i18n="home.list_view">List View</button>
@@ -686,8 +739,53 @@
     }
 
     // ---------- INIT ----------
+    
+    async function fetchChelseaNews() {
+      const carousel = document.getElementById('newsCarousel');
+      if (!carousel) return;
+      try {
+        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://talkchelsea.net/feed/');
+        if (!res.ok) throw new Error('Failed to fetch news');
+        const data = await res.json();
+        
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+          let html = '';
+          data.items.slice(0, 10).forEach((item, index) => {
+            const thumbnail = item.thumbnail || 'assets/images/placeholder-team.svg';
+            const pubDate = new Date(item.pubDate).toLocaleDateString(window.currentLang === 'th' ? 'th-TH' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+            
+            html += `
+              <a href="${item.link}" target="_blank" class="card-link" style="text-decoration: none; display: block; flex: 0 0 280px; scroll-snap-align: start; animation-delay: ${index * 0.05}s;">
+                <div class="card" style="height: 100%; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
+                  <div style="height: 150px; overflow: hidden; background: var(--blue-dark); position: relative;">
+                    <img src="${thumbnail}" alt="" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/images/placeholder-team.svg'">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px 12px 8px;">
+                      <span style="color: #fff; font-size: 0.7rem; background: var(--primary-color); padding: 2px 6px; border-radius: 4px; font-weight: bold;">NEWS</span>
+                    </div>
+                  </div>
+                  <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+                    <h3 style="font-size: 0.95rem; line-height: 1.4; margin-bottom: 8px; color: var(--text-color); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${item.title}</h3>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px;">
+                      <span>📅</span> <span>${pubDate}</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            `;
+          });
+          carousel.innerHTML = html;
+        } else {
+          carousel.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">No news available at the moment.</div>';
+        }
+      } catch (err) {
+        console.error('Error loading news:', err);
+        carousel.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">Failed to load news.</div>';
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadAllData();
+      fetchChelseaNews();
     });
   </script>
 </body>
