@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KARN LA KHRANg NAN Official Website · Chelsea FC 2026/27 Season">
+  <title>KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        <span class="team-name">KARNLAKHRANgNAN</span>
+      </a>
+
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-i18n="home.title">กาลครั้งนั้น Official</h1>
+      <p class="season" data-i18n="home.season_sub">By Chelsea Fans, For Chelsea Fans · SEASON 2026 / 27</p>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container">
+    <!-- VIEW TOGGLE -->
+    <div class="view-controls" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+      <button id="btnListView" class="tab-btn active" data-i18n="home.list_view">List View</button>
+      <button id="btnCalendarView" class="tab-btn" data-i18n="home.calendar_view">Calendar View</button>
+    </div>
+
+    <!-- LIST VIEW WRAPPER -->
+    <div id="listViewWrapper">
+
+
+    <!-- RESULTS SECTION -->
+    <section class="section" id="results">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="icon">📊</span>
+          <span data-i18n="home.results">ผลการแข่งขัน</span>
+          <span class="count-badge" id="resultsCount">0</span>
+        </h2>
+        <a href="men-team.html#results" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
+      </div>
+      <div class="cards-grid" id="resultsContainer">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p data-i18n="common.loading">กำลังโหลด...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIXTURES SECTION -->
+    <section class="section" id="fixtures">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="icon">📅</span>
+          <span data-i18n="home.fixtures">โปรแกรมแข่งขัน</span>
+          <span class="count-badge" id="fixturesCount">0</span>
+        </h2>
+        <a href="men-team.html" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
+      </div>
+      <div class="cards-grid" id="fixturesContainer">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p data-i18n="common.loading">กำลังโหลด...</p>
+        </div>
+      </div>
+    </section>
+
+
+    </div> <!-- END LIST VIEW WRAPPER -->
+
+    <!-- CALENDAR VIEW WRAPPER -->
+    <div id="calendarViewWrapper" style="display: none; width: 100%; overflow-x: auto;">
+      <div class="calendar-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; background: var(--card-bg); padding: 1rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+        <button id="prevMonthBtn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color);">&lt;</button>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <h3 id="currentMonthYear" style="margin: 0; font-family: var(--font-heading); font-size: 1.25rem;"></h3>
+          <button id="todayMonthBtn" style="background: var(--primary-color); border: none; color: white; padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer;" data-i18n="calendar.today">Today</button>
+        </div>
+        <button id="nextMonthBtn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color);">&gt;</button>
+      </div>
+      <div id="calendarGrid" class="calendar-grid" style="display: grid; grid-template-columns: repeat(7, minmax(140px, 1fr)); gap: 0.5rem; min-width: 980px;">
+        <!-- Calendar will be generated here -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+        <span class="team-name">KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // INDEX PAGE — FIXTURES & RESULTS
+    // ============================================
+
+    // ---------- FORMAT DATE (local) ----------
+    function formatDate(dateString, lang) {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return dateString;
+      if (lang === 'th') {
+        const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+        const thaiYear = date.getFullYear() + 543;
+        return `${date.getDate()} ${thaiMonths[date.getMonth()]} ${thaiYear}`;
+      }
+      return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function formatCompetitionName(name) {
+      if (!name) return '';
+      return name.replace(/-/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    // ---------- LOAD ALL DATA ----------
+    async function loadAllData() {
+      try {
+        let fixtures = [];
+        let results = [];
+        let allMatches = [];
+        
+        try {
+          const res = await fetch('data/fixtures.json');
+          if (res.ok) {
+             allMatches = await res.json();
+             fixtures = allMatches.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a, b) => getMatchTimestamp(a) - getMatchTimestamp(b));
+             results = allMatches.filter(m => m.status === 'completed').sort((a, b) => getMatchTimestamp(b) - getMatchTimestamp(a));
+          }
+        } catch(err) {
+          console.error('Error loading fixtures data:', err);
+        }
+
+        function getMatchTimestamp(match) {
+          let timeStr = match.time_th || match.time;
+          if (!timeStr || timeStr === 'TBC' || timeStr === '00:00') {
+            timeStr = '00:00';
+          }
+          const dtStr = `${match.date}T${timeStr.length === 5 ? timeStr + ':00' : timeStr}`;
+          const t = new Date(dtStr).getTime();
+          return isNaN(t) ? (new Date(match.date).getTime() || 0) : t;
+        }
+
+        window.allMatchesGlobal = allMatches;
+        initCalendarToggle();
+        
+        // fixtures and results arrays are already loaded and correctly filtered by the build script,
+        // but we can sort them again if needed. Let's just use the fetched ones directly.
+        
+        renderFixtures(fixtures.slice(0, 6));
+        renderResults(results.slice(0, 6));
+
+        const fcEl = document.getElementById('fixturesCount');
+        if (fcEl) fcEl.textContent = fixtures.length;
+        const rcEl = document.getElementById('resultsCount');
+        if (rcEl) rcEl.textContent = results.length;
+
+      } catch (error) {
+        console.error(error);
+        document.getElementById('fixturesContainer').innerHTML = '<div class="empty-state">⚠️ โหลดไม่สำเร็จ</div>';
+        document.getElementById('resultsContainer').innerHTML = '<div class="empty-state">⚠️ โหลดไม่สำเร็จ</div>';
+      }
+    }
+
+
+    // ---------- CALENDAR VIEW ----------
+    let currentCalDate = new Date(); // defaults to today
+
+    function initCalendarToggle() {
+      const btnList = document.getElementById('btnListView');
+      const btnCal = document.getElementById('btnCalendarView');
+      const listWrap = document.getElementById('listViewWrapper');
+      const calWrap = document.getElementById('calendarViewWrapper');
+
+      btnList.addEventListener('click', () => {
+        btnList.classList.add('active');
+        btnCal.classList.remove('active');
+        listWrap.style.display = 'block';
+        calWrap.style.display = 'none';
+      });
+
+      btnCal.addEventListener('click', () => {
+        btnCal.classList.add('active');
+        btnList.classList.remove('active');
+        listWrap.style.display = 'none';
+        calWrap.style.display = 'block';
+        renderCalendar();
+      });
+
+      document.getElementById('prevMonthBtn').addEventListener('click', () => {
+        currentCalDate.setMonth(currentCalDate.getMonth() - 1);
+        renderCalendar();
+      });
+      
+      document.getElementById('nextMonthBtn').addEventListener('click', () => {
+        currentCalDate.setMonth(currentCalDate.getMonth() + 1);
+        renderCalendar();
+      });
+      const todayBtn = document.getElementById('todayMonthBtn');
+      if (todayBtn) {
+        todayBtn.addEventListener('click', () => {
+          currentCalDate = new Date(); // Reset to today
+          renderCalendar();
+        });
+      }
+
+    }
+
+    function renderCalendar() {
+      if (!window.allMatchesGlobal) return;
+      
+      const grid = document.getElementById('calendarGrid');
+      grid.innerHTML = '';
+      
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+      
+      const monthNames = window.currentLang === 'th' 
+        ? ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
+        : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        
+      document.getElementById('currentMonthYear').textContent = `${monthNames[month]} ${year}`;
+      
+      const daysOfWeek = window.currentLang === 'th' ? ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'] : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      
+      daysOfWeek.forEach(d => {
+        const dEl = document.createElement('div');
+        dEl.style.cssText = 'text-align: center; font-weight: bold; padding: 0.5rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius-sm);';
+        dEl.textContent = d;
+        grid.appendChild(dEl);
+      });
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      // Pad empty slots
+      for (let i = 0; i < firstDay; i++) {
+        const emptyEl = document.createElement('div');
+        emptyEl.style.cssText = 'background: rgba(0,0,0,0.02); border-radius: var(--radius-md); border: 1px solid var(--border-color);';
+        grid.appendChild(emptyEl);
+      }
+      
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayEl = document.createElement('div');
+        dayEl.style.cssText = 'min-height: 100px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;';
+        
+        
+        const today = new Date();
+        const isToday = (today.getFullYear() === year && today.getMonth() === month && today.getDate() === day);
+        if (isToday) {
+          dayEl.style.border = '2px solid var(--primary-color)';
+          dayEl.style.backgroundColor = '#0d0dfc';
+        }
+
+        const dayNumEl = document.createElement('div');
+        dayNumEl.style.cssText = 'font-weight: bold; margin-bottom: 0.25rem; font-size: 30px; text-align: center; line-height: 25px; color: #ffc400;';
+        dayNumEl.textContent = day;
+        if (isToday) {
+          dayNumEl.style.color = '#ffd600';
+          dayNumEl.style.borderStyle = 'solid';
+          dayNumEl.style.borderRadius = '0px';
+          dayNumEl.style.borderWidth = '0px';
+          dayNumEl.style.borderColor = '#ff0000';
+          dayNumEl.style.textAlign = 'center';
+          dayNumEl.style.lineHeight = '25px';
+          dayNumEl.style.fontSize = '30px';
+          dayNumEl.style.display = 'block';
+}
+        dayEl.appendChild(dayNumEl);
+        
+        // Find matches for this day
+        const dateStr = `${year}-${String(month+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayMatches = window.allMatchesGlobal.filter(m => m.date === dateStr);
+        
+        dayMatches.forEach(match => {
+          const mEl = document.createElement('a');
+          mEl.href = `match-detail.html?id=${match.id}`;
+          const teamBadgeClass = (match.team_type || 'M').toLowerCase();
+
+          if (match.status === 'completed') {
+            mEl.className = 'card-link';
+            mEl.style.cssText = 'text-decoration: none; display: block; margin-bottom: 0.5rem;';
+            const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date };
+            const displayDate = localDT.date;
+            const compName = formatCompetitionName(match.competition_name);
+            const teamBadge = match.team_type || 'M';
+            
+            const homeStr = match.home_team.toLowerCase();
+            const awayStr = match.away_team.toLowerCase();
+            const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+            const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+            
+            let chelseaWin = false;
+            let chelseaLoss = false;
+            let chelseaLogo = match.home_logo;
+            let chelseaName = match.home_team;
+            
+            if (isChelseaHome) {
+              chelseaWin = match.home_score > match.away_score;
+              chelseaLoss = match.home_score < match.away_score;
+              chelseaLogo = match.home_logo;
+              chelseaName = match.home_team;
+            } else if (isChelseaAway) {
+              chelseaWin = match.away_score > match.home_score;
+              chelseaLoss = match.away_score < match.home_score;
+              chelseaLogo = match.away_logo;
+              chelseaName = match.away_team;
+            }
+
+            let textStyle = 'color: var(--text-color); font-weight: normal;';
+            if (chelseaWin) {
+              textStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+            } else if (chelseaLoss) {
+              textStyle = 'color: #888888; font-weight: normal;';
+            }
+            
+            mEl.innerHTML = `
+              <div class="card" style="margin: 0; padding: 0.5rem; display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; background: var(--card-bg); border-radius: 8px; height: 100%;">
+                <div class="card-header" style="padding-bottom: 0; border-bottom: none; margin-bottom: 0; padding-top: 0; width: 100%; display: flex; justify-content: center;">
+                  <div class="card-competition" style="font-size: 0.65rem; gap: 4px; justify-content: center; display: flex; align-items: center;">
+                    ${match.competition_logo ? `<img src="${match.competition_logo}" alt="" onerror="this.style.display='none'" style="height:16px; object-fit: contain;">` : ''}
+                    <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem;">${teamBadge}</span>
+                  </div>
+                </div>
+                <div class="card-result" style="flex-direction: column; gap: 6px; margin-bottom: 0; align-items: center; justify-content: center; width: 100%;">
+                  <img src="${chelseaLogo}" alt="${chelseaName}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 48px; height: 48px; object-fit: contain;">
+                  <span class="team-name" style="font-size: 0.95rem; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; ${textStyle}">${renderTeamNameHTML(chelseaName)}</span>
+                </div>
+              </div>
+            `;
+          } else {
+            mEl.style.cssText = 'display: flex; align-items: center; justify-content: space-between; gap: 0.25rem; font-size: 0.75rem; text-decoration: none; color: var(--text-color); background: var(--bg-color); border-radius: 4px; border: 1px solid var(--border-color); padding: 6px 4px;';
+            const oppLogo = match.home_team === 'Chelsea' || match.home_team === 'KANLAKHRANGNAN' || match.home_team === 'Chelsea Women' ? match.away_logo : match.home_logo;
+            const oppName = match.home_team === 'Chelsea' || match.home_team === 'KANLAKHRANGNAN' || match.home_team === 'Chelsea Women' ? match.away_team : match.home_team;
+            
+            let scoreText = '';
+            if (match.status === 'live') {
+               scoreText = `${match.home_score}-${match.away_score}`;
+            } else {
+               scoreText = (match.time_th || match.time || 'TBC').substring(0,5);
+            }
+            
+            mEl.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 4px; overflow: hidden;">
+                <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem; min-width: unset;">${match.team_type}</span>
+                <img src="${oppLogo}" alt="" onerror="this.style.display='none'" style="width: 16px; height: 16px; object-fit: contain;">
+                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${oppName}</span>
+              </div>
+              <div style="font-weight: bold;">${scoreText}</div>
+            `;
+          }
+          
+          dayEl.appendChild(mEl);
+        });
+        
+        grid.appendChild(dayEl);
+      }
+    }
+
+    // ---------- RENDER FIXTURES (CARDS) ----------
+    function renderFixtures(fixtures) {
+      const container = document.getElementById('fixturesContainer');
+      if (fixtures.length === 0) {
+        container.innerHTML = '<div class="empty-state"><span class="empty-icon">📅</span><p data-i18n="home.no_fixtures">ไม่มีโปรแกรมแข่งขัน</p></div>';
+        return;
+      }
+
+      container.innerHTML = fixtures.map(match => {
+        const lang = window.currentLang || 'th';
+        const compLogo = match.competition_logo || '';
+        const compName = formatCompetitionName(match.competition_name);
+        const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date, time: (match.time_uk || match.time_th || match.time || 'TBC').substring(0,5) };
+        const displayDate = localDT.date;
+        const displayTime = match.status === 'live' ? '<span style="color:#e53e3e; font-weight:bold;">' + (match.time_live || 'LIVE') + '</span>' : (localDT.time === 'TBC' ? 'TBC' : localDT.time);
+        const teamBadge = match.team_type || 'M';
+        const teamBadgeClass = teamBadge.toLowerCase();
+        const channelsIcons = (match.channels && match.channels.length > 0)
+          ? `<div class="channels-list">${match.channels.map(ch => 
+              `<span class="channel-badge" title="${ch.name}">
+                ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" title="${ch.name}" class="channel-logo" onerror="this.style.display='none'">` : `<span class="channel-name">${ch.name}</span>`}
+              </span>`
+            ).join('')}</div>`
+          : '';
+
+        const homeStr = match.home_team.toLowerCase();
+        const awayStr = match.away_team.toLowerCase();
+        const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+        const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+        
+        let homeNameStyle = 'color: #ffffff;';
+        let awayNameStyle = 'color: #ffffff;';
+        
+        if (isChelseaHome) {
+            homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+        }
+        if (isChelseaAway) {
+            awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+        }
+
+        return `
+        <a href="match-detail.html?id=${match.id}" class="card-link">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-date"><span class="date-icon">📅</span><span>${formatDate(displayDate, window.currentLang||'th')}</span></div>
+              <div class="card-competition">
+                ${compLogo ? `<img src="${compLogo}" alt="" onerror="this.style.display='none'" style="height:20px;">` : ''}
+                <span>${compName}</span>
+                <span class="team-badge ${teamBadgeClass}">${teamBadge}</span>
+              </div>
+            </div>
+            <div class="card-fixture">
+              <div class="team">
+                <img src="${match.home_logo}" alt="${match.home_team}" title="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                <div class="team-divider"></div>
+                <span class="team-name">${renderTeamNameHTML(match.home_team)}</span>
+              </div>
+              <div class="fixture-info">
+                ${match.status === 'live' ? `<div style="display:flex; gap:10px; font-size:1.5rem; font-weight:bold;"><span style="color:var(--primary-color);">${match.home_score||0}</span><span>-</span><span style="color:var(--primary-color);">${match.away_score||0}</span></div>` : '<span class="fixture-vs">VS</span>'}
+                <span class="fixture-time" ${match.status==='live' ? 'style="margin-top:5px;"' : ''}>${displayTime}</span>
+              </div>
+              <div class="team">
+                <img src="${match.away_logo}" alt="${match.away_team}" title="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                <div class="team-divider"></div>
+                <span class="team-name">${renderTeamNameHTML(match.away_team)}</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="venue-item"><span class="venue-icon">📍</span><span>${match.venue}</span></div>
+              ${channelsIcons}
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+    }
+
+    // ---------- RENDER RESULTS (CARDS) ----------
+    function renderResults(results) {
+      const container = document.getElementById('resultsContainer');
+      if (results.length === 0) {
+        container.innerHTML = '<div class="empty-state"><span class="empty-icon">📊</span><p data-i18n="home.no_results">ยังไม่มีผลการแข่งขัน</p></div>';
+        return;
+      }
+
+      container.innerHTML = results.map(match => {
+        const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date };
+        const displayDate = localDT.date;
+        const homeWin = match.home_score > match.away_score;
+        const awayWin = match.away_score > match.home_score;
+        const compName = formatCompetitionName(match.competition_name);
+        const teamBadge = match.team_type || 'M';
+        const teamBadgeClass = teamBadge.toLowerCase();
+        
+        const homeStr = match.home_team.toLowerCase();
+        const awayStr = match.away_team.toLowerCase();
+        const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+        const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+        
+        let homeNameStyle = 'color: #ffffff;';
+        let awayNameStyle = 'color: #ffffff;';
+        
+        if (isChelseaHome) {
+            homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+        }
+        if (isChelseaAway) {
+            awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+        }
+
+        return `
+        <a href="match-detail.html?id=${match.id}" class="card-link">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-date"><span class="date-icon">📅</span><span>${formatDate(displayDate, window.currentLang||'th')}</span></div>
+              <div class="card-competition">
+                ${match.competition_logo ? `<img src="${match.competition_logo}" alt="" onerror="this.style.display='none'" style="height:20px;">` : ''}
+                <span>${compName}</span>
+                <span class="team-badge ${teamBadgeClass}">${teamBadge}</span>
+              </div>
+            </div>
+            <div class="card-result">
+              <div class="team ${homeWin ? 'winner' : ''}">
+                <img src="${match.home_logo}" alt="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                <div class="team-divider"></div>
+                <span class="team-name">${renderTeamNameHTML(match.home_team)}</span>
+              </div>
+              <div class="score-display">
+                <span class="score ${homeWin ? 'winner' : ''}">${match.home_score}</span>
+                <span class="score-divider">-</span>
+                <span class="score ${awayWin ? 'winner' : ''}">${match.away_score}</span>
+              </div>
+              <div class="team ${awayWin ? 'winner' : ''}">
+                <img src="${match.away_logo}" alt="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                <div class="team-divider"></div>
+                <span class="team-name">${renderTeamNameHTML(match.away_team)}</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="venue-item"><span class="venue-icon">📍</span><span>${match.venue}</span></div>
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+    }
+
+    // ---------- INIT ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAllData();
+    });
+  </script>
+</body>
+</html>

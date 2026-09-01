@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Team - KANLAKHRANGNAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/svg+xml">
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KANLAKHRANGNAN Logo">
+        <span class="team-name">KARNLAKHRANgNAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" class="active" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== PLAYER HERO ==================== -->
+  <section class="player-hero">
+    <div class="player-hero-bg" id="playerHeroBg"></div>
+    <div class="player-hero-content">
+      <div class="player-image-wrapper">
+        <img src="assets/images/players/men/joao-pedro.jpg" alt="Player Image" id="playerImage" class="player-main-image" loading="lazy">
+      </div>
+      <div class="player-header-info">
+        <div class="player-hero-badge" id="playerTeamBadge">TEAM</div>
+        <h1 id="playerName">Loading...</h1>
+        <div class="player-meta">
+          <span class="player-number" id="playerNumber">#--</span>
+          <span class="player-position" id="playerPosition">--</span>
+          <span class="player-nationality" id="playerNationality">--</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container player-profile-main">
+    
+    <div style="margin-bottom: 1.25rem;">
+      <a href="women-team.html" id="playerBackLink" class="back-link">← กลับหน้าทีม</a>
+    </div>
+
+    <div class="profile-grid">
+      <!-- Left Column: Personal Details & Bio -->
+      <div class="profile-left">
+        <section class="profile-section">
+          <h2 data-lang-th="ข้อมูลส่วนตัว" data-lang-en="Personal Details">Personal Details</h2>
+          <ul class="personal-details-list">
+            <li><strong data-lang-th="วันเกิด:" data-lang-en="Date of Birth:">Date of Birth:</strong> <span id="playerDob">--</span> <span id="playerAge"></span></li>
+            <li><strong data-lang-th="ส่วนสูง:" data-lang-en="Height:">Height:</strong> <span id="playerHeight">--</span></li>
+            <li><strong data-lang-th="เท้าที่ถนัด:" data-lang-en="Preferred Foot:">Preferred Foot:</strong> <span id="playerFoot">--</span></li>
+            <li><strong data-lang-th="เข้าร่วมทีม:" data-lang-en="Joined:">Joined:</strong> <span id="playerJoined">--</span></li>
+            <li><strong data-lang-th="ย้ายมาจาก:" data-lang-en="Signed From:">Signed From:</strong> <span id="playerSignedFrom">--</span></li>
+            <li><strong data-lang-th="มูลค่าทางการตลาด:" data-lang-en="Market Value:">Market Value:</strong> <span id="playerMarketValue">--</span></li>
+          </ul>
+        </section>
+
+        <section class="profile-section" id="bioSection">
+          <h2 data-lang-th="ชีวประวัติ" data-lang-en="Biography">Biography</h2>
+          <div class="player-bio" id="playerBio">
+            <p>No biography available.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Season Stats -->
+      <div class="profile-right">
+        <section class="profile-section stats-section">
+          <h2 data-lang-th="สถิติฤดูกาลนี้ (รวมทุกรายการ)" data-lang-en="Season Stats (All Competitions)">Season Stats (All Competitions)</h2>
+          <div class="stats-grid" id="totalStatsGrid">
+            <div class="stat-box">
+              <span class="stat-value" id="statApps">0</span>
+              <span class="stat-label" data-lang-th="ลงเล่น" data-lang-en="Appearances">Appearances</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="statGoals">0</span>
+              <span class="stat-label" data-lang-th="ประตู" data-lang-en="Goals">Goals</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="statAssists">0</span>
+              <span class="stat-label" data-lang-th="แอสซิสต์" data-lang-en="Assists">Assists</span>
+            </div>
+            <div class="stat-box" id="statCleanSheetsBox" style="display: none;">
+              <span class="stat-value" id="statCleanSheets">0</span>
+              <span class="stat-label" data-lang-th="คลีนชีต" data-lang-en="Clean Sheets">Clean Sheets</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="statYellowCards" style="color: #ecc94b;">0</span>
+              <span class="stat-label" data-lang-th="ใบเหลือง" data-lang-en="Yellow Cards">Yellow</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="statRedCards" style="color: #f56565;">0</span>
+              <span class="stat-label" data-lang-th="ใบแดง" data-lang-en="Red Cards">Red</span>
+            </div>
+          </div>
+          
+          <h3 data-lang-th="แยกตามรายการแข่งขัน" data-lang-en="By Competition" style="margin-top: 25px; font-size: 1.2rem; color: var(--blue);">By Competition</h3>
+          <div class="table-responsive" style="margin-top: 15px;">
+            <table class="league-table" id="competitionStatsTable" style="font-size: 0.85rem;">
+              <thead>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        
+        <section class="profile-section social-section" id="socialSection" style="display: none;">
+          <h2 data-lang-th="โซเชียลมีเดีย" data-lang-en="Social Media">Social Media</h2>
+          <div class="social-links">
+            <a href="#" target="_blank" id="socialInstagram" class="social-link instagram" style="display: none;">Instagram</a>
+            <a href="#" target="_blank" id="socialTwitter" class="social-link twitter" style="display: none;">Twitter (X)</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </main>
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="kanlakhrangnan logo" style="height:40px;">
+        <span>KARN LA KHRANG NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANG NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/team.js"></script>
+</body>
+</html> 

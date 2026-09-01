@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================
+       BASE & VARIABLES
+       ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 1000px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    
+    /* =========================================
+       NAVIGATION
+       ========================================= */
+    .navbar {
+      position: fixed; top: 0; width: 100%; height: 70px; background: var(--blue);
+      display: flex; align-items: center; justify-content: center; z-index: 10000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      width: 100%; max-width: 1200px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* =========================================
+       HERO SECTION
+       ========================================= */
+    .hero {
+      position: relative; width: 100%; height: 60vh; min-height: 400px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.4) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.05); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.85) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 80px 20px 20px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo { width: clamp(80px, 10vw, 120px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5)); margin-bottom: 20px; animation: fadeDown 1s ease both; }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem, 5vw, 4.5rem);
+      color: var(--white); letter-spacing: -0.01em; animation: fadeDown 1s 0.2s ease both;
+    }
+    .hero__rule { width: 60px; height: 2px; background: var(--gold); margin: 24px auto 0; animation: fadeDown 1s 0.4s ease both; }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================
+       MAIN CONTENT & CHAPTER GRID
+       ========================================= */
+    .article { background: var(--paper); position: relative; padding-bottom: 80px; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner { max-width: var(--col-max); margin: 0 auto; padding: 60px 20px; }
+    
+    .section-header { text-align: center; margin-bottom: 50px; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--blue); letter-spacing: -0.01em; margin-bottom: 15px;
+    }
+    .section-header p { color: var(--ink-soft); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    .chapters-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
+    }
+    
+    .chapter-card {
+      display: block; padding: 32px 24px; background: var(--white);
+      border: 1px solid var(--rule); border-radius: 8px; text-decoration: none;
+      color: var(--ink); transition: all 0.3s ease;
+      border-left: 4px solid var(--blue);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      position: relative; overflow: hidden;
+    }
+    .chapter-card::after {
+      content: '→'; position: absolute; right: 24px; bottom: 32px;
+      font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold);
+      opacity: 0; transform: translateX(-10px); transition: all 0.3s ease;
+    }
+    .chapter-card:hover {
+      transform: translateY(-5px); box-shadow: 0 12px 24px rgba(3,70,148,0.1);
+      border-left-color: var(--gold);
+    }
+    .chapter-card:hover::after { opacity: 1; transform: translateX(0); }
+    
+    .chapter-num {
+      display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .chapter-title {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+      color: var(--blue); line-height: 1.3;
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .site-footer { background: var(--ink); color: var(--off-white); padding: 50px 20px; text-align: center; font-size: 14px; }
+    .site-footer__name { display: block; font-weight: 700; color: var(--gold); margin: 15px 0 5px; letter-spacing: 1px; }
+
+    /* =========================================
+       FLOATING ELEMENTS (Clock)
+       ========================================= */
+    .floating-clock {
+      position: fixed; bottom: 30px; right: 20px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider { width: 1px; height: 58px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45; }
+    .floating-clock__label { font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: .18em; margin-bottom: 3px; }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { bottom: 20px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: bottom right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <!-- Horizontal Typography Logo for Navbar -->
+      <a href="index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMTAwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjEwMCI+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIGxldHRlci1zcGFjaW5nPSIyIj5LQVJOIExBIEtIUkFOZyBOQU48L3RleHQ+PC9zdmc+" alt="KARN LA KHRANg NAN Logo" style="height:35px;">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" class="active" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <!-- Circular Logo for Hero -->
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" class="hero__logo" alt="KARN LA KHRANg NAN Logo">
+      <h1 class="hero__title">The Story Blue</h1>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- Main Content (Chapters Hub) -->
+  <main class="article">
+    <div class="article__inner">
+      <div class="section-header">
+        <h2 data-lang-th="ประวัติศาสตร์สโมสร" data-lang-en="Club History">ประวัติศาสตร์สโมสร</h2>
+        <p data-lang-th="กาลครั้งนั้น... ค้นพบเรื่องราวความเป็นมา ความรุ่งโรจน์ และตำนานของสโมสรฟุตบอลเชลซี ผ่านบันทึกแห่งสีน้ำเงิน" data-lang-en="Once upon a time... Discover the origins, glories, and legends of Chelsea Football Club through the blue chronicles.">กาลครั้งนั้น... ค้นพบเรื่องราวความเป็นมา ความรุ่งโรจน์ และตำนานของสโมสรฟุตบอลเชลซี ผ่านบันทึกแห่งสีน้ำเงิน</p>
+      </div>
+
+      <div class="chapters-grid">
+        <!-- Chapter 1 -->
+        <a href="the-story-blue/chapter-1.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๑" data-lang-en="CHAPTER 1">บทที่ ๑</span>
+          <h3 class="chapter-title" data-lang-th="จุดเริ่มต้น" data-lang-en="The Beginning">จุดเริ่มต้น</h3>
+        </a>
+
+        <!-- Chapter 2 -->
+        <a href="the-story-blue/chapter-2.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๒" data-lang-en="CHAPTER 2">บทที่ ๒</span>
+          <h3 class="chapter-title" data-lang-th="สแตมฟอร์ด บริดจ์: บ้านของเรา" data-lang-en="Stamford Bridge: Our Home">สแตมฟอร์ด บริดจ์: บ้านของเรา</h3>
+        </a>
+
+        <!-- Chapter 3 -->
+        <a href="the-story-blue/chapter-3.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๓" data-lang-en="CHAPTER 3">บทที่ ๓</span>
+          <h3 class="chapter-title" data-lang-th="หว่านเมล็ดพันธุ์แห่งความสำเร็จ" data-lang-en="Sowing the seeds of success">หว่านเมล็ดพันธุ์แห่งความสำเร็จ</h3>
+        </a>
+
+        <!-- Chapter 4 -->
+        <a href="the-story-blue/chapter-4.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๔" data-lang-en="CHAPTER 4">บทที่ ๔</span>
+          <h3 class="chapter-title" data-lang-th="ลอนดอนยุคสวิงกิ้ง" data-lang-en="Swinging London">ลอนดอนยุคสวิงกิ้ง</h3>
+        </a>
+
+        <!-- Chapter 5 -->
+        <a href="the-story-blue/chapter-5.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๕" data-lang-en="CHAPTER 5">บทที่ ๕</span>
+          <h3 class="chapter-title" data-lang-th="ขึ้นลงบนรถไฟเหาะแห่ง Fulham Road" data-lang-en="The Fulham Road Rollercoaster">ขึ้นลงบนรถไฟเหาะแห่ง Fulham Road</h3>
+        </a>
+
+        <!-- Chapter 6 -->
+        <a href="the-story-blue/chapter-6.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๖" data-lang-en="CHAPTER 6">บทที่ ๖</span>
+          <h3 class="chapter-title" data-lang-th="ไม้กวาดด้ามใหม่และความรุ่งโรจน์ครั้งใหม่" data-lang-en="A new broom and a new boom">ไม้กวาดด้ามใหม่และความรุ่งโรจน์ครั้งใหม่</h3>
+        </a>
+
+        <!-- Chapter 7 -->
+        <a href="the-story-blue/chapter-7.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๗" data-lang-en="CHAPTER 7">บทที่ ๗</span>
+          <h3 class="chapter-title" data-lang-th="ยุคแห่งการปฏิวัติ" data-lang-en="The Revolution Era">ยุคแห่งการปฏิวัติ</h3>
+        </a>
+
+        <!-- Chapter 8 -->
+        <a href="the-story-blue/chapter-8.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๘" data-lang-en="CHAPTER 8">บทที่ ๘</span>
+          <h3 class="chapter-title" data-lang-th="ราชาแห่งยุโรป" data-lang-en="Kings of Europe">ราชาแห่งยุโรป</h3>
+        </a>
+
+        <!-- Chapter 9 -->
+        <a href="the-story-blue/chapter-9.html" class="chapter-card">
+          <span class="chapter-num" data-lang-th="บทที่ ๙" data-lang-en="CHAPTER 9">บทที่ ๙</span>
+          <h3 class="chapter-title" data-lang-th="อนาคตสีน้ำเงิน" data-lang-en="The Blue Future">อนาคตสีน้ำเงิน</h3>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <!-- Circular Logo for Footer -->
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+    <span class="site-footer__name">KARN LA KHRANg NAN</span>
+    <p>The Story Blue Hub &nbsp;·&nbsp; ผู้เขียน: อิอิแอแอ</p>
+  </footer>
+
+  <!-- Floating Clock -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // CHAPTER LANGUAGE TOGGLE (TH / EN)
+    // ============================================
+    let chapterLang = 'th';
+
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        el.innerHTML = chapterLang === 'th' ? el.getAttribute('data-lang-th') : el.getAttribute('data-lang-en');
+      });
+    }
+
+    // ============================================
+    // FLOATING CLOCK
+    // ============================================
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date');
+      if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time');
+      if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date');
+      if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time');
+      if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+      updateFloatingClocks();
+      setInterval(updateFloatingClocks, 1000);
+    });
+  </script>
+</body>
+</html>

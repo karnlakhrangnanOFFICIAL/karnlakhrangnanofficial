@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Team - KANLAKHRANGNAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/svg+xml">
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KANLAKHRANGNAN Logo">
+        <span class="team-name">KARNLAKHRANgNAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" class="active" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-i18n="men.title">Chelsea</h1>
+      <p class="season" data-i18n="men.season">MEN'S TEAM · 2026/27</p>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container">
+
+    <!-- TAB NAVIGATION -->
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="results" data-i18n="tabs.results">📊 Results</button>
+      <button class="tab-btn" data-tab="fixtures" data-i18n="tabs.fixtures">📅 Fixtures</button>
+      <button class="tab-btn" data-tab="tables" data-i18n="tabs.tables">🏆 Tables</button>
+      <button class="tab-btn" data-tab="players" data-i18n="tabs.players">👕 Players</button>
+    </div>
+
+    <!-- RESULTS TAB -->
+    <section id="tab-results" class="tab-content active">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="tabs.results">📊 Results</h2>
+        <a href="men-team.html#results" class="view-all" data-i18n="men.all_results">All Results</a>
+      </div>
+      <div class="cards-grid" id="menResultsContainer">
+        <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>
+      </div>
+    </section>
+
+    <!-- FIXTURES TAB -->
+    <section id="tab-fixtures" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="tabs.fixtures">📅 Fixtures</h2>
+        <a href="men-team.html" class="view-all" data-i18n="men.all_fixtures">All Fixtures</a>
+      </div>
+      <div class="cards-grid" id="menFixturesContainer">
+        <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>
+      </div>
+    </section>
+
+    <!-- TABLES TAB -->
+    <section id="tab-tables" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="men.table_title">🏆 Premier League Table</h2>
+      </div>
+      <div class="table-container" id="menTableContainer">
+        <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>
+      </div>
+
+      <!-- RULES & LEGEND -->
+      <div class="table-rules-card" id="menTableRules">
+        <div class="table-rules-header">
+          <span data-lang-th="📌 Rules and legend" data-lang-en="📌 Rules and legend">📌 Rules and legend</span>
+        </div>
+
+        <div class="table-rules-grid">
+          <!-- European Qualification -->
+          <div class="table-rules-section">
+            <h3 class="table-rules-subtitle" data-lang-th="โควต้าฟุตบอลยุโรปของสโมสรอังกฤษ (พรีเมียร์ลีก) :" data-lang-en="European Qualification (Premier League):">โควต้าฟุตบอลยุโรปของสโมสรอังกฤษ (พรีเมียร์ลีก) :</h3>
+            <ul class="table-rules-list">
+              <li class="table-rules-item">
+                <span class="legend-dot ucl"></span>
+                <span data-lang-th="<strong>UEFA Champions League (UCL):</strong> อันดับ 1–4 ของพรีเมียร์ลีก ได้สิทธิ์ไปเล่นรอบลีกโดยอัตโนมัติ (อาจเพิ่มเป็น 5 ทีมหากทำคะแนนสัมประสิทธิ์ยุโรปได้สูงสุด 2 อันดับแรก)" data-lang-en="<strong>UEFA Champions League (UCL):</strong> Positions 1–4 qualify automatically for the league phase (may expand to 5 teams based on European performance coefficients)."><strong>UEFA Champions League (UCL):</strong> อันดับ 1–4 ของพรีเมียร์ลีก ได้สิทธิ์ไปเล่นรอบลีกโดยอัตโนมัติ (อาจเพิ่มเป็น 5 ทีมหากทำคะแนนสัมประสิทธิ์ยุโรปได้สูงสุด 2 อันดับแรก)</span>
+              </li>
+              <li class="table-rules-item">
+                <span class="legend-dot uel"></span>
+                <span data-lang-th="<strong>UEFA Europa League (UEL):</strong> อันดับ 5 ของพรีเมียร์ลีก และแชมป์ฟุตบอลถ้วย เอฟเอ คัพ (FA Cup)" data-lang-en="<strong>UEFA Europa League (UEL):</strong> Position 5 and FA Cup winners qualify for the league phase."><strong>UEFA Europa League (UEL):</strong> อันดับ 5 ของพรีเมียร์ลีก และแชมป์ฟุตบอลถ้วย เอฟเอ คัพ (FA Cup)</span>
+              </li>
+              <li class="table-rules-item">
+                <span class="legend-dot uecl"></span>
+                <span data-lang-th="<strong>UEFA Conference League (UECL):</strong> แชมป์ฟุตบอลถ้วย คาราบาว คัพ (EFL Cup) ได้สิทธิ์ไปเล่นรอบเพลย์ออฟ" data-lang-en="<strong>UEFA Conference League (UECL):</strong> Carabao Cup (EFL Cup) winners qualify for the play-off round."><strong>UEFA Conference League (UECL):</strong> แชมป์ฟุตบอลถ้วย คาราบาว คัพ (EFL Cup) ได้สิทธิ์ไปเล่นรอบเพลย์ออฟ</span>
+              </li>
+            </ul>
+            <div class="table-rules-note" data-lang-th="*หมายเหตุ: หากแชมป์ฟุตบอลถ้วย (FA Cup หรือ คาราบาว คัพ) จบอันดับ 1-5 ในลีกอยู่แล้ว สิทธิ์จะถูกส่งต่อให้ทีมอันดับ 6 และ 7 ในพรีเมียร์ลีกตามลำดับ" data-lang-en="*Note: If cup winners (FA Cup or Carabao Cup) finish in the top 5, European places pass down to 6th and 7th positions in the Premier League accordingly.">*หมายเหตุ: หากแชมป์ฟุตบอลถ้วย (FA Cup หรือ คาราบาว คัพ) จบอันดับ 1-5 ในลีกอยู่แล้ว สิทธิ์จะถูกส่งต่อให้ทีมอันดับ 6 และ 7 ในพรีเมียร์ลีกตามลำดับ</div>
+          </div>
+
+          <!-- Relegation & Tie Break -->
+          <div class="table-rules-section">
+            <h3 class="table-rules-subtitle">
+              <span class="legend-dot rel"></span>
+              <span data-lang-th="Relegation" data-lang-en="Relegation">Relegation</span>
+            </h3>
+            <p style="font-size: 0.82rem; color: var(--ink-muted); margin: 0;" data-lang-th="In the event that two (or more) teams have an equal number of points, the following rules break the tie:" data-lang-en="In the event that two (or more) teams have an equal number of points, the following rules break the tie:">In the event that two (or more) teams have an equal number of points, the following rules break the tie:</p>
+            <ol class="table-rules-ordered">
+              <li><strong data-lang-th="1. Goal difference" data-lang-en="1. Goal difference">Goal difference</strong></li>
+              <li><strong data-lang-th="2. Goals scored" data-lang-en="2. Goals scored">Goals scored</strong></li>
+              <li><strong data-lang-th="3. H2H" data-lang-en="3. H2H">H2H</strong></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Abbreviations / Table Legend -->
+        <div class="table-abbr-grid">
+          <span class="table-abbr-item"><strong>P:</strong> <span data-lang-th="Matches played" data-lang-en="Matches played">Matches played</span></span>
+          <span class="table-abbr-item"><strong>W:</strong> <span data-lang-th="Wins" data-lang-en="Wins">Wins</span></span>
+          <span class="table-abbr-item"><strong>D:</strong> <span data-lang-th="Draws" data-lang-en="Draws">Draws</span></span>
+          <span class="table-abbr-item"><strong>L:</strong> <span data-lang-th="Losses" data-lang-en="Losses">Losses</span></span>
+          <span class="table-abbr-item"><strong>DIFF:</strong> <span data-lang-th="Difference" data-lang-en="Difference">Difference</span></span>
+          <span class="table-abbr-item"><strong>GLS:</strong> <span data-lang-th="Goals" data-lang-en="Goals">Goals</span></span>
+          <span class="table-abbr-item"><strong>Pts:</strong> <span data-lang-th="Points" data-lang-en="Points">Points</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYERS TAB -->
+    <section id="tab-players" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="men.players_title">👕 Players</h2>
+      </div>
+      <div class="players-grid" id="menPlayersContainer">
+        <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="kanlakhrangnan logo" style="height:40px;">
+        <span>KARN LA KHRANG NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANG NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/team.js"></script>
+</body>
+</html> 

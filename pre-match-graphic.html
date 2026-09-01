@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Match Graphic Generator</title>
+    <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { background: #0a0a0f; color: #fff; padding: 20px; font-family: 'Inter', sans-serif; }
+        .controls { max-width: 600px; margin: 0 auto 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        select, button { padding: 10px; background: #1e1e24; border: 1px solid #333; color: white; border-radius: 8px; font-size: 14px; }
+        select { flex: 1; }
+        button { background: var(--accent-light, #0052cc); cursor: pointer; font-weight: bold; }
+        button:hover { filter: brightness(1.2); }
+        
+        .graphic-container {
+            width: 1080px;
+            height: 1080px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #020205 0%, #0d111a 50%, #001f4d 100%);
+            position: relative;
+            transform-origin: top left;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        /* Scaled wrapper for preview on small screens */
+        .preview-wrapper {
+            max-width: 100%;
+            overflow: auto;
+        }
+
+        .matchday-label { 
+            font-size: 60px; 
+            font-weight: 900; 
+            letter-spacing: 12px; 
+            color: #fff; 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+            text-shadow: 0 0 20px rgba(0, 82, 204, 0.8);
+        }
+        
+        .competition-label {
+            font-size: 28px;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 60px;
+        }
+        
+        .versus-board {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+        
+        .team-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 350px;
+        }
+        
+        .team-logo { width: 250px; height: 250px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); margin-bottom: 25px; }
+        .team-name { font-size: 36px; font-weight: 800; text-align: center; line-height: 1.2; }
+        
+        .vs-text { font-size: 80px; font-weight: 900; color: #444; font-style: italic; }
+        
+        .match-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px 80px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .detail-icon { color: var(--accent-light, #0052cc); font-size: 30px; }
+        
+        .brand-footer {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            opacity: 0.8;
+        }
+        .brand-footer img { width: 60px; }
+        .brand-footer span { font-size: 24px; font-weight: 700; letter-spacing: 2px; }
+
+    </style>
+    <!-- Include html2canvas for downloading -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="controls">
+        <select id="matchSelect">
+            <option value="">Select an upcoming match...</option>
+        </select>
+        <button onclick="downloadGraphic()">Download Graphic</button>
+    </div>
+
+    <div class="preview-wrapper" id="previewWrapper">
+        <div class="graphic-container" id="graphic">
+            <div class="matchday-label">Matchday</div>
+            <div class="competition-label" id="compName">Pre-Season Friendly</div>
+            
+            <div class="versus-board">
+                <div class="team-block">
+                    <img src="" id="homeLogo" class="team-logo" style="display:none;">
+                    <div class="team-name" id="homeName">Home Team</div>
+                </div>
+                
+                <div class="vs-text">VS</div>
+                
+                <div class="team-block">
+                    <img src="" id="awayLogo" class="team-logo" style="display:none;">
+                    <div class="team-name" id="awayName">Away Team</div>
+                </div>
+            </div>
+            
+            <div class="match-details">
+                <div class="detail-row">
+                    <span class="detail-icon">📅</span>
+                    <span id="matchDate">YYYY-MM-DD</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-icon">⏱️</span>
+                    <span id="matchTime">00:00</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-icon">🏟️</span>
+                    <span id="matchVenue">Stadium Name</span>
+                </div>
+                <div class="detail-row" id="matchChannelsRow" style="display: none;">
+                    <span class="detail-icon">📺</span>
+                    <span id="matchChannels" style="display: flex; gap: 15px; align-items: center;"></span>
+                </div>
+            </div>
+            
+            <div class="brand-footer">
+                <img src="assets/images/karnlakhrangnan-logo.png" alt="Logo">
+                <span>KARN LA KHRANG NAN</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allMatches = [];
+
+        async function init() {
+            try {
+                // Fetch matches
+                const res = await fetch('data/fixtures.json');
+                const data = await res.json();
+                
+                allMatches = data
+                    .filter(m => m.status === 'upcoming' || (m.home_score === null && m.away_score === null))
+                    .map(m => ({...m, teamType: m.team_type === 'M' ? 'Men' : 'Women'}))
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+
+        async function init() {
+            try {
+                // Fetch matches
+                const [menRes, womenRes] = await Promise.all([
+                    fetch('data/fixtures.json'),
+                    fetch('data/fixtures.json')
+                ]);
+                const menData = await menRes.json();
+                const womenData = await womenRes.json();
+                
+                // Extract all upcoming matches
+                const extractMatches = (data, team) => {
+                    let matches = [];
+                    for (const comp in data) {
+                        matches = matches.concat(data[comp]
+                            .filter(m => m.status === 'upcoming' || (m.home_score === null && m.away_score === null))
+                            .map(m => ({...m, teamType: team})));
+                    }
+                    return matches;
+                };
+                
+                allMatches = [
+                    ...extractMatches(menData, 'Men'),
+                    ...extractMatches(womenData, 'Women')
+                ].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                const select = document.getElementById('matchSelect');
+                allMatches.forEach((m, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.textContent = `[${m.teamType}] ${m.date} | ${m.home_team} vs ${m.away_team}`;
+                    select.appendChild(opt);
+                });
+
+                select.addEventListener('change', (e) => {
+                    if(e.target.value !== "") renderGraphic(allMatches[e.target.value]);
+                });
+
+                // Scale graphic for view
+                scaleGraphic();
+                window.addEventListener('resize', scaleGraphic);
+
+            } catch (err) {
+                console.error('Error loading matches:', err);
+            }
+        }
+
+        function scaleGraphic() {
+            const wrapper = document.getElementById('previewWrapper');
+            const graphic = document.getElementById('graphic');
+            const scale = Math.min(wrapper.clientWidth / 1080, 1);
+            graphic.style.transform = `scale(${scale})`;
+            wrapper.style.height = `${1080 * scale}px`;
+        }
+
+        // Helper to format date nicely
+        function formatDate(dateString) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function renderGraphic(match) {
+            document.getElementById('compName').textContent = match.competition || 'Friendly Match';
+            
+            document.getElementById('homeName').textContent = match.home_team;
+            document.getElementById('awayName').textContent = match.away_team;
+            
+            const homeLogo = document.getElementById('homeLogo');
+            homeLogo.src = match.home_logo || 'assets/images/placeholder-team.svg';
+            homeLogo.style.display = 'block';
+            
+            const awayLogo = document.getElementById('awayLogo');
+            awayLogo.src = match.away_logo || 'assets/images/placeholder-team.svg';
+            awayLogo.style.display = 'block';
+            
+            document.getElementById('matchDate').textContent = formatDate(match.date);
+            document.getElementById('matchTime').textContent = match.time ? `${match.time} น.` : 'TBD';
+            document.getElementById('matchVenue').textContent = match.venue || 'TBD';
+
+            const channelsRow = document.getElementById('matchChannelsRow');
+            const channelsContainer = document.getElementById('matchChannels');
+            channelsContainer.innerHTML = ''; // Clear previous
+
+            if (match.channels && match.channels.length > 0) {
+                match.channels.forEach(channel => {
+                    const img = document.createElement('img');
+                    img.src = channel.logo;
+                    img.alt = channel.name;
+                    img.style.height = '40px';
+                    img.style.objectFit = 'contain';
+                    img.style.filter = 'drop-shadow(0 2px 5px rgba(0,0,0,0.5))';
+                    channelsContainer.appendChild(img);
+                });
+                channelsRow.style.display = 'flex';
+            } else {
+                channelsRow.style.display = 'none';
+            }
+        }
+
+        function downloadGraphic() {
+            const graphic = document.getElementById('graphic');
+            const originalTransform = graphic.style.transform;
+            graphic.style.transform = 'scale(1)'; // Reset scale for capture
+            
+            html2canvas(graphic, {
+                scale: 1, // 1080x1080
+                backgroundColor: '#020205',
+                useCORS: true
+            }).then(canvas => {
+                graphic.style.transform = originalTransform; // Restore scale
+                const link = document.createElement('a');
+                link.download = `Matchday-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

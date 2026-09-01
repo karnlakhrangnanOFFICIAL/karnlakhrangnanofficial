@@ -1,0 +1,105 @@
+{
+  "competition": "FA Women's Super League",
+  "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+  "season": "2026/27",
+  "standings": [
+    {
+      "pos": 1,
+      "team": "Chelsea",
+      "logo": "databases/logo/teams/england_chelsea.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 2,
+      "team": "Manchester City",
+      "logo": "databases/logo/teams/england_manchester-city.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 3,
+      "team": "Arsenal",
+      "logo": "databases/logo/teams/england_arsenal.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 4,
+      "team": "Manchester United",
+      "logo": "databases/logo/teams/england_manchester-united.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 5,
+      "team": "Tottenham Hotspur",
+      "logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 6,
+      "team": "London City Lionesses",
+      "logo": "databases/logo/teams/London_City_Lionesses.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 7,
+      "team": "Brighton & Hove Albion",
+      "logo": "databases/logo/teams/england_brighton.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 8,
+      "team": "Everton",
+      "logo": "databases/logo/teams/england_everton.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 9,
+      "team": "Aston Villa",
+      "logo": "databases/logo/teams/england_aston-villa.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 10,
+      "team": "West Ham United",
+      "logo": "databases/logo/teams/england_west-ham.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 11,
+      "team": "Liverpool",
+      "logo": "databases/logo/teams/england_liverpool.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 12,
+      "team": "Birmingham City",
+      "logo": "databases/logo/teams/england_birmingham.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 13,
+      "team": "Crystal Palace",
+      "logo": "databases/logo/teams/england_crystal-palace.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    },
+    {
+      "pos": 14,
+      "team": "Charlton Athletic",
+      "logo": "databases/logo/teams/england_charlton.svg",
+      "p": 0, "w": 0, "d": 0, "l": 0,
+      "gf": 0, "ga": 0, "gd": 0, "pts": 0
+    }
+  ]
+}

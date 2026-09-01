@@ -1,0 +1,212 @@
+EN,TH,Global Football Associations,Alpha-2,Path: databases\logo\national\
+Afghanistan,อัฟกานิสถาน,Afghanistan Football Federation,AF,databases\logo\national\af.svg
+Albania,แอลเบเนีย,Albanian Football Association,AL,databases\logo\national\al.svg
+Algeria,แอลจีเรีย,Algerian Football Federation,DZ,databases\logo\national\dz.svg
+American Samoa,อเมริกันซามัว,Football Federation American Samoa,AS,databases\logo\national\as.svg
+Andorra,อันดอร์รา,Andorran Football Federation,AD,databases\logo\national\ad.svg
+Angola,แองโกลา,Angolan Football Federation,AO,databases\logo\national\ao.svg
+Anguilla,แองกวิลลา,Anguilla Football Association,AI,databases\logo\national\ai.svg
+Antigua and Barbuda,แอนติกาและบาร์บูดา,Antigua and Barbuda Football Association,AG,databases\logo\national\ag.svg
+Argentina,อาร์เจนตินา,Argentine Football Association,AR,databases\logo\national\ar.svg
+Armenia,อาร์มีเนีย,Football Federation of Armenia,AM,databases\logo\national\am.svg
+Aruba,อารูบา,Arubaanse Voetbal Bond,AW,databases\logo\national\aw.svg
+Australia,ออสเตรเลีย,Football Australia,AU,databases\logo\national\au.svg
+Austria,ออสเตรีย,Austrian Football Association,AT,databases\logo\national\at.svg
+Azerbaijan,อาเซอร์ไบจาน,Association of Football Federations of Azerbaijan,AZ,databases\logo\national\az.svg
+Bahamas,บาฮามาส,Bahamas Football Association,BS,databases\logo\national\bs.svg
+Bahrain,บาห์เรน,Bahrain Football Association,BH,databases\logo\national\bh.svg
+Bangladesh,บังกลาเทศ,Bangladesh Football Federation,BD,databases\logo\national\bd.svg
+Barbados,บาร์เบโดส,Barbados Football Association,BB,databases\logo\national\bb.svg
+Belarus,เบลารุส,Football Federation of Belarus,BY,databases\logo\national\by.svg
+Belgium,เบลเยียม,Royal Belgian Football Association,BE,databases\logo\national\be.svg
+Belize,เบลีซ,Football Federation of Belize,BZ,databases\logo\national\bz.svg
+Benin,เบนิน,Benin Football Federation,BJ,databases\logo\national\bj.svg
+Bermuda,เบอร์มิวดา,Bermuda Football Association,BM,databases\logo\national\bm.svg
+Bhutan,ภูฏาน,Bhutan Football Federation,BT,databases\logo\national\bt.svg
+Bolivia,โบลิเวีย,Bolivian Football Federation,BO,databases\logo\national\bo.svg
+Bosnia and Herzegovina,บอสเนียและเฮอร์เซโกวีนา,Football Association of Bosnia and Herzegovina,BA,databases\logo\national\ba.svg
+Botswana,บอตสวานา,Botswana Football Association,BW,databases\logo\national\bw.svg
+Brazil,บราซิล,Brazilian Football Confederation,BR,databases\logo\national\br.svg
+British Virgin Islands,หมู่เกาะบริติชเวอร์จิน,British Virgin Islands Football Association,VG,databases\logo\national\vg.svg
+Brunei,บรูไน,Football Association of Brunei Darussalam,BN,databases\logo\national\bn.svg
+Bulgaria,บัลแกเรีย,Bulgarian Football Union,BG,databases\logo\national\bg.svg
+Burkina Faso,บูร์กินาฟาโซ,Burkinabé Football Federation,BF,databases\logo\national\bf.svg
+Burundi,บุรุนดี,Burundi Football Federation,BI,databases\logo\national\bi.svg
+Cambodia,กัมพูชา,Football Federation of Cambodia,KH,databases\logo\national\kh.svg
+Cameroon,แคเมอรูน,Cameroonian Football Federation,CM,databases\logo\national\cm.svg
+Canada,แคนาดา,Canada Soccer,CA,databases\logo\national\ca.svg
+Cabo Verde,กาบูเวร์ดี,Cape Verdean Football Federation,CV,databases\logo\national\cv.svg
+Cayman Islands,หมู่เกาะเคย์แมน,Cayman Islands Football Association,KY,databases\logo\national\ky.svg
+Central African Republic,สาธารณรัฐแอฟริกากลาง,Central African Football Federation,CF,databases\logo\national\cf.svg
+Chad,ชาด,Chadian Football Federation,TD,databases\logo\national\td.svg
+Chile,ชิลี,Chilean Football Federation,CL,databases\logo\national\cl.svg
+China,จีน,Chinese Football Association,CN,databases\logo\national\cn.svg
+Chinese Taipei,จีนไทเป,Chinese Taipei Football Association,TW,databases\logo\national\tw.svg
+Colombia,โคลอมเบีย,Colombian Football Federation,CO,databases\logo\national\co.svg
+Comoros,คอโมโรส,Comoros Football Federation,KM,databases\logo\national\km.svg
+Congo,คองโก,Congolese Football Federation,CG,databases\logo\national\cg.svg
+DR Congo,สาธารณรัฐประชาธิปไตยคองโก,Congolese Association Football Federation,CD,databases\logo\national\cd.svg
+Cook Islands,หมู่เกาะคุก,Cook Islands Football Association,CK,databases\logo\national\ck.svg
+Costa Rica,คอสตาริกา,Costa Rican Football Federation,CR,databases\logo\national\cr.svg
+Ivory Coast,โกตดิวัวร์,Ivorian Football Federation,CI,databases\logo\national\ci.svg
+Croatia,โครเอเชีย,Croatian Football Federation,HR,databases\logo\national\hr.svg
+Cuba,คิวบา,Football Association of Cuba,CU,databases\logo\national\cu.svg
+Curaçao,กือราเซา,Curaçao Football Federation,CW,databases\logo\national\cw.svg
+Cyprus,ไซปรัส,Cyprus Football Association,CY,databases\logo\national\cy.svg
+Czechia,เช็กเกีย,Football Association of the Czech Republic,CZ,databases\logo\national\cz.svg
+Denmark,เดนมาร์ก,Danish Football Association,DK,databases\logo\national\dk.svg
+Djibouti,จิบูตี,Djiboutian Football Federation,DJ,databases\logo\national\dj.svg
+Dominica,ดอมินีกา,Dominica Football Association,DM,databases\logo\national\dm.svg
+Dominican Republic,สาธารณรัฐโดมินิกัน,Dominican Football Federation,DO,databases\logo\national\do.svg
+Ecuador,เอกวาดอร์,Ecuadorian Football Federation,EC,databases\logo\national\ec.svg
+Egypt,อียิปต์,Egyptian Football Association,EG,databases\logo\national\eg.svg
+El Salvador,เอลซัลวาดอร์,Salvadoran Football Federation,SV,databases\logo\national\sv.svg
+England,อังกฤษ,The Football Association,GB-ENG,databases\logo\national\gb-eng.svg
+Equatorial Guinea,อิเควทอเรียลกินี,Equatoguinean Football Federation,GQ,databases\logo\national\gq.svg
+Eritrea,เอริเทรีย,Eritrean National Football Federation,ER,databases\logo\national\er.svg
+Estonia,เอสโตเนีย,Estonian Football Association,EE,databases\logo\national\ee.svg
+Eswatini,เอสวาตินี,Eswatini Football Association,SZ,databases\logo\national\sz.svg
+Ethiopia,เอธิโอเปีย,Ethiopian Football Federation,ET,databases\logo\national\et.svg
+Faroe Islands,หมู่เกาะแฟโร,Faroe Islands Football Association,FO,databases\logo\national\fo.svg
+Fiji,ฟีจี,Fiji Football Association,FJ,databases\logo\national\fj.svg
+Finland,ฟินแลนด์,Football Association of Finland,FI,databases\logo\national\fi.svg
+France,ฝรั่งเศส,French Football Federation,FR,databases\logo\national\fr.svg
+Gabon,กาบอง,Gabonese Football Federation,GA,databases\logo\national\ga.svg
+Gambia,แกมเบีย,Gambia Football Federation,GM,databases\logo\national\gm.svg
+Georgia,จอร์เจีย,Georgian Football Federation,GE,databases\logo\national\ge.svg
+Germany,เยอรมนี,German Football Association,DE,databases\logo\national\de.svg
+Ghana,กานา,Ghana Football Association,GH,databases\logo\national\gh.svg
+Gibraltar,ยิบรอลตาร์,Gibraltar Football Association,GI,databases\logo\national\gi.svg
+Greece,กรีซ,Hellenic Football Federation,GR,databases\logo\national\gr.svg
+Grenada,กรีเนดา,Grenada Football Association,GD,databases\logo\national\gd.svg
+Guam,กวม,Guam Football Association,GU,databases\logo\national\gu.svg
+Guatemala,กัวเตมาลา,National Football Federation of Guatemala,GT,databases\logo\national\gt.svg
+Guinea,กินี,Guinean Football Federation,GN,databases\logo\national\gn.svg
+Guinea-Bissau,กินี-บิสเซา,Football Federation of Guinea-Bissau,GW,databases\logo\national\gw.svg
+Guyana,กายอานา,Guyana Football Federation,GY,databases\logo\national\gy.svg
+Haiti,เฮติ,Haitian Football Federation,HT,databases\logo\national\ht.svg
+Honduras,ฮอนดูรัส,National Autonomous Federation of Football of Honduras,HN,databases\logo\national\hn.svg
+Hong Kong,ฮ่องกง,"Football Association of Hong Kong, China",HK,databases\logo\national\hk.svg
+Hungary,ฮังการี,Hungarian Football Federation,HU,databases\logo\national\hu.svg
+Iceland,ไอซ์แลนด์,Football Association of Iceland,IS,databases\logo\national\is.svg
+India,อินเดีย,All India Football Federation,IN,databases\logo\national\in.svg
+Indonesia,อินโดนีเซีย,Football Association of Indonesia,ID,databases\logo\national\id.svg
+Iran,อิหร่าน,Football Federation Islamic Republic of Iran,IR,databases\logo\national\ir.svg
+Iraq,อิรัก,Iraq Football Association,IQ,databases\logo\national\iq.svg
+Israel,อิสราเอล,Israel Football Association,IL,databases\logo\national\il.svg
+Italy,อิตาลี,Italian Football Federation,IT,databases\logo\national\it.svg
+Jamaica,จาเมกา,Jamaica Football Federation,JM,databases\logo\national\jm.svg
+Japan,ญี่ปุ่น,Japan Football Association,JP,databases\logo\national\jp.svg
+Jordan,จอร์แดน,Jordan Football Association,JO,databases\logo\national\jo.svg
+Kazakhstan,คาซัคสถาน,Kazakhstan Football Federation,KZ,databases\logo\national\kz.svg
+Kenya,เคนยา,Football Kenya Federation,KE,databases\logo\national\ke.svg
+Kosovo,คอซอวอ,Football Federation of Kosovo,XK,databases\logo\national\xk.svg
+Kuwait,คูเวต,Kuwait Football Association,KW,databases\logo\national\kw.svg
+Kyrgyzstan,คีร์กีซสถาน,Football Federation of the Kyrgyz Republic,KG,databases\logo\national\kg.svg
+Laos,ลาว,Lao Football Federation,LA,databases\logo\national\la.svg
+Latvia,ลัตเวีย,Latvian Football Federation,LV,databases\logo\national\lv.svg
+Lebanon,เลบานอน,Lebanese Football Association,LB,databases\logo\national\lb.svg
+Lesotho,เลโซโท,Lesotho Football Association,LS,databases\logo\national\ls.svg
+Liberia,ไลบีเรีย,Liberia Football Association,LR,databases\logo\national\lr.svg
+Libya,ลิเบีย,Libyan Football Federation,LY,databases\logo\national\ly.svg
+Liechtenstein,ลีชเทินชไตน์,Liechtenstein Football Association,LI,databases\logo\national\li.svg
+Lithuania,ลิทัวเนีย,Lithuanian Football Federation,LT,databases\logo\national\lt.svg
+Luxembourg,ลักเซมเบิร์ก,Luxembourg Football Federation,LU,databases\logo\national\lu.svg
+Macau,มาเก๊า,Macau Football Association,MO,databases\logo\national\mo.svg
+Madagascar,มาดากัสการ์,Malagasy Football Federation,MG,databases\logo\national\mg.svg
+Malawi,มาลาวี,Football Association of Malawi,MW,databases\logo\national\mw.svg
+Malaysia,มาเลเซีย,Football Association of Malaysia,MY,databases\logo\national\my.svg
+Maldives,มัลดีฟส์,Football Association of Maldives,MV,databases\logo\national\mv.svg
+Mali,มาลี,Malian Football Federation,ML,databases\logo\national\ml.svg
+Malta,มอลตา,Malta Football Association,MT,databases\logo\national\mt.svg
+Mauritania,มอริเตเนีย,Football Federation of the Islamic Republic of Mauritania,MR,databases\logo\national\mr.svg
+Mauritius,มอริเชียส,Mauritius Football Association,MU,databases\logo\national\mu.svg
+Mexico,เม็กซิโก,Mexican Football Federation,MX,databases\logo\national\mx.svg
+Moldova,มอลโดวา,Moldovan Football Federation,MD,databases\logo\national\md.svg
+Mongolia,มองโกเลีย,Mongolian Football Federation,MN,databases\logo\national\mn.svg
+Montenegro,มอนเตเนโกร,Football Association of Montenegro,ME,databases\logo\national\me.svg
+Montserrat,มอนต์เซอร์รัต,Montserrat Football Association,MS,databases\logo\national\ms.svg
+Morocco,โมร็อกโก,Royal Moroccan Football Federation,MA,databases\logo\national\ma.svg
+Mozambique,โมซัมบิก,Mozambican Football Federation,MZ,databases\logo\national\mz.svg
+Myanmar,เมียนมา,Myanmar Football Federation,MM,databases\logo\national\mm.svg
+Namibia,นามิเบีย,Namibia Football Association,NA,databases\logo\national\na.svg
+Nepal,เนปาล,All Nepal Football Association,NP,databases\logo\national\np.svg
+Netherlands,เนเธอร์แลนด์,Royal Dutch Football Association,NL,databases\logo\national\nl.svg
+New Caledonia,นิวแคลิโดเนีย,New Caledonian Football Federation,NC,databases\logo\national\nc.svg
+New Zealand,นิวซีแลนด์,New Zealand Football,NZ,databases\logo\national\nz.svg
+Nicaragua,นิการากัว,Nicaraguan Football Federation,NI,databases\logo\national\ni.svg
+Niger,ไนเจอร์,Nigerien Football Federation,NE,databases\logo\national\ne.svg
+Nigeria,ไนจีเรีย,Nigeria Football Federation,NG,databases\logo\national\ng.svg
+North Korea,เกาหลีเหนือ,DPR Korea Football Association,KP,databases\logo\national\kp.svg
+North Macedonia,นอร์ทมาซิโดเนีย,Football Federation of North Macedonia,MK,databases\logo\national\mk.svg
+Northern Ireland,ไอร์แลนด์เหนือ,Irish Football Association,GB-NIR,databases\logo\national\gb-nir.svg
+Norway,นอร์เวย์,Norwegian Football Federation,NO,databases\logo\national\no.svg
+Oman,โอมาน,Oman Football Association,OM,databases\logo\national\om.svg
+Pakistan,ปากีสถาน,Pakistan Football Federation,PK,databases\logo\national\pk.svg
+Palestine,ปาเลสไตน์,Palestinian Football Association,PS,databases\logo\national\ps.svg
+Panama,ปานามา,Panamanian Football Federation,PA,databases\logo\national\pa.svg
+Papua New Guinea,ปาปัวนิวกินี,Papua New Guinea Football Association,PG,databases\logo\national\pg.svg
+Paraguay,ปารากวัย,Paraguayan Football Association,PY,databases\logo\national\py.svg
+Peru,เปรู,Peruvian Football Federation,PE,databases\logo\national\pe.svg
+Philippines,ฟิลิปปินส์,Philippine Football Federation,PH,databases\logo\national\ph.svg
+Poland,โปแลนด์,Polish Football Association,PL,databases\logo\national\pl.svg
+Portugal,โปรตุเกส,Portuguese Football Federation,PT,databases\logo\national\pt.svg
+Puerto Rico,ปวยร์โตรีโก,Puerto Rican Football Federation,PR,databases\logo\national\pr.svg
+Qatar,กาตาร์,Qatar Football Association,QA,databases\logo\national\qa.svg
+Republic of Ireland,สาธารณรัฐไอร์แลนด์,Football Association of Ireland,IE,databases\logo\national\ie.svg
+Romania,โรมาเนีย,Romanian Football Federation,RO,databases\logo\national\ro.svg
+Russia,รัสเซีย,Football Union of Russia,RU,databases\logo\national\ru.svg
+Rwanda,รวันดา,Rwanda Football Federation,RW,databases\logo\national\rw.svg
+Samoa,ซามัว,Football Federation Samoa,WS,databases\logo\national\ws.svg
+San Marino,ซานมารีโน,San Marino Football Federation,SM,databases\logo\national\sm.svg
+São Tomé and Príncipe,เซาตูเมและปรินซิปี,São Toméan Football Federation,ST,databases\logo\national\st.svg
+Saudi Arabia,ซาอุดีอาระเบีย,Saudi Arabian Football Federation,SA,databases\logo\national\sa.svg
+Scotland,สกอตแลนด์,Scottish Football Association,GB-SCT,databases\logo\national\gb-sct.svg
+Senegal,เซเนกัล,Senegalese Football Federation,SN,databases\logo\national\sn.svg
+Serbia,เซอร์เบีย,Football Association of Serbia,RS,databases\logo\national\rs.svg
+Seychelles,เซเชลส์,Seychelles Football Federation,SC,databases\logo\national\sc.svg
+Sierra Leone,เซียร์ราลีโอน,Sierra Leone Football Association,SL,databases\logo\national\sl.svg
+Singapore,สิงคโปร์,Football Association of Singapore,SG,databases\logo\national\sg.svg
+Slovakia,สโลวาเกีย,Slovak Football Association,SK,databases\logo\national\sk.svg
+Slovenia,สโลวีเนีย,Football Association of Slovenia,SI,databases\logo\national\si.svg
+Solomon Islands,หมู่เกาะโซโลมอน,Solomon Islands Football Federation,SB,databases\logo\national\sb.svg
+Somalia,โซมาเลีย,Somali Football Federation,SO,databases\logo\national\so.svg
+South Africa,แอฟริกาใต้,South African Football Association,ZA,databases\logo\national\za.svg
+South Korea,เกาหลีใต้,Korea Football Association,KR,databases\logo\national\kr.svg
+South Sudan,ซูดานใต้,South Sudan Football Association,SS,databases\logo\national\ss.svg
+Spain,สเปน,Royal Spanish Football Federation,ES,databases\logo\national\es.svg
+Sri Lanka,ศรีลังกา,Football Federation of Sri Lanka,LK,databases\logo\national\lk.svg
+Saint Kitts and Nevis,เซนต์คิตส์และเนวิส,St. Kitts and Nevis Football Association,KN,databases\logo\national\kn.svg
+Saint Lucia,เซนต์ลูเชีย,Saint Lucia Football Association,LC,databases\logo\national\lc.svg
+Saint Vincent and the Grenadines,เซนต์วินเซนต์และเกรนาดีนส์,Saint Vincent and the Grenadines Football Federation,VC,databases\logo\national\vc.svg
+Sudan,ซูดาน,Sudan Football Association,SD,databases\logo\national\sd.svg
+Suriname,ซูรินาม,Surinamese Football Association,SR,databases\logo\national\sr.svg
+Sweden,สวีเดน,Swedish Football Association,SE,databases\logo\national\se.svg
+Switzerland,สวิตเซอร์แลนด์,Swiss Football Association,CH,databases\logo\national\ch.svg
+Syria,ซีเรีย,Syrian Football Association,SY,databases\logo\national\sy.svg
+Tahiti,ตาฮีตี,Tahitian Football Federation,PF,databases\logo\national\pf.svg
+Tajikistan,ทาจิกิสถาน,Tajikistan Football Federation,TJ,databases\logo\national\tj.svg
+Tanzania,แทนซาเนีย,Tanzania Football Federation,TZ,databases\logo\national\tz.svg
+Thailand,ไทย,Football Association of Thailand,TH,databases\logo\national\th.svg
+Timor-Leste,ติมอร์-เลสเต,East Timor Football Federation,TL,databases\logo\national\tl.svg
+Togo,โตโก,Togolese Football Federation,TG,databases\logo\national\tg.svg
+Tonga,ตองกา,Tonga Football Association,TO,databases\logo\national\to.svg
+Trinidad and Tobago,ตรินิแดดและโตเบโก,Trinidad and Tobago Football Association,TT,databases\logo\national\tt.svg
+Tunisia,ตูนิเซีย,Tunisian Football Federation,TN,databases\logo\national\tn.svg
+Türkiye,ตุรกี,Turkish Football Federation,TR,databases\logo\national\tr.svg
+Turkmenistan,เติร์กเมนิสถาน,Football Federation of Turkmenistan,TM,databases\logo\national\tm.svg
+Turks and Caicos Islands,หมู่เกาะเติกส์และเคคอส,Turks and Caicos Islands Football Association,TC,databases\logo\national\tc.svg
+Uganda,ยูกันดา,Federation of Uganda Football Associations,UG,databases\logo\national\ug.svg
+Ukraine,ยูเครน,Ukrainian Association of Football,UA,databases\logo\national\ua.svg
+United Arab Emirates,สหรัฐอาหรับเอมิเรตส์,United Arab Emirates Football Association,AE,databases\logo\national\ae.svg
+United States,สหรัฐอเมริกา,United States Soccer Federation,US,databases\logo\national\us.svg
+Uruguay,อุรุกวัย,Uruguayan Football Association,UY,databases\logo\national\uy.svg
+US Virgin Islands,หมู่เกาะเวอร์จินของสหรัฐ,U.S. Virgin Islands Soccer Federation,VI,databases\logo\national\vi.svg
+Uzbekistan,อุซเบกิสถาน,Uzbekistan Football Association,UZ,databases\logo\national\uz.svg
+Vanuatu,วานูวาตู,Vanuatu Football Federation,VU,databases\logo\national\vu.svg
+Venezuela,เวเนซุเอลา,Venezuelan Football Federation,VE,databases\logo\national\ve.svg
+Vietnam,เวียดนาม,Vietnam Football Federation,VN,databases\logo\national\vn.svg
+Wales,เวลส์,Football Association of Wales,GB-WLS,databases\logo\national\gb-wls.svg
+Yemen,เยเมน,Yemen Football Association,YE,databases\logo\national\ye.svg
+Zambia,แซมเบีย,Football Association of Zambia,ZM,databases\logo\national\zm.svg
+Zimbabwe,ซิมบับเว,Zimbabwe Football Association,ZW,databases\logo\national\zw.svg

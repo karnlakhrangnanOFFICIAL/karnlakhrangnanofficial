@@ -1,0 +1,389 @@
+[
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Chelsea",
+    "ชื่อสโมสร (ภาษาไทย)": "เชลซี",
+    "ชื่อย่อ": "CHE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stamford Bridge",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_chelsea.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Arsenal",
+    "ชื่อสโมสร (ภาษาไทย)": "อาร์เซนอล",
+    "ชื่อย่อ": "ARS",
+    "ชื่อสนามเหย้า (Home Stadium)": "Emirates Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_arsenal.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Aston Villa",
+    "ชื่อสโมสร (ภาษาไทย)": "แอสตัน วิลลา",
+    "ชื่อย่อ": "AVL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Villa Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_aston-villa.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "AFC Bournemouth",
+    "ชื่อสโมสร (ภาษาไทย)": "เอเอฟซี บอร์นมัธ",
+    "ชื่อย่อ": "BOU",
+    "ชื่อสนามเหย้า (Home Stadium)": "Vitality Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_bournemouth.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Brentford",
+    "ชื่อสโมสร (ภาษาไทย)": "เบรนท์ฟอร์ด",
+    "ชื่อย่อ": "BRE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Gtech Community Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_brentford.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Brighton & Hove Albion",
+    "ชื่อสโมสร (ภาษาไทย)": "ไบรท์ตัน แอนด์ โฮฟ อัลเบียน",
+    "ชื่อย่อ": "BHA",
+    "ชื่อสนามเหย้า (Home Stadium)": "Amex Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_brighton.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Coventry City",
+    "ชื่อสโมสร (ภาษาไทย)": "โคเวนทรี ซิตี้",
+    "ชื่อย่อ": "COV",
+    "ชื่อสนามเหย้า (Home Stadium)": "Coventry Building Society Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_coventry-city.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Crystal Palace",
+    "ชื่อสโมสร (ภาษาไทย)": "คริสตัล พาเลซ",
+    "ชื่อย่อ": "CRY",
+    "ชื่อสนามเหย้า (Home Stadium)": "Selhurst Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_crystal-palace.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Everton",
+    "ชื่อสโมสร (ภาษาไทย)": "เอฟเวอร์ตัน",
+    "ชื่อย่อ": "EVE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Goodison Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_everton.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Fulham",
+    "ชื่อสโมสร (ภาษาไทย)": "ฟูแลม",
+    "ชื่อย่อ": "FUL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Craven Cottage",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_fulham.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Hull City",
+    "ชื่อสโมสร (ภาษาไทย)": "ฮัลล์ ซิตี้",
+    "ชื่อย่อ": "HUL",
+    "ชื่อสนามเหย้า (Home Stadium)": "MKM Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_hull-city.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Ipswich Town",
+    "ชื่อสโมสร (ภาษาไทย)": "อิปสวิช ทาวน์",
+    "ชื่อย่อ": "IPS",
+    "ชื่อสนามเหย้า (Home Stadium)": "Portman Road",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_ipswich.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Leeds United",
+    "ชื่อสโมสร (ภาษาไทย)": "ลีดส์ ยูไนเต็ด",
+    "ชื่อย่อ": "LEE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Elland Road",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_leeds-united.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Liverpool",
+    "ชื่อสโมสร (ภาษาไทย)": "ลิเวอร์พูล",
+    "ชื่อย่อ": "LIV",
+    "ชื่อสนามเหย้า (Home Stadium)": "Anfield",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_liverpool.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Manchester City",
+    "ชื่อสโมสร (ภาษาไทย)": "แมนเชสเตอร์ ซิตี้",
+    "ชื่อย่อ": "MCI",
+    "ชื่อสนามเหย้า (Home Stadium)": "Etihad Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_manchester-city.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Manchester United",
+    "ชื่อสโมสร (ภาษาไทย)": "แมนเชสเตอร์ ยูไนเต็ด",
+    "ชื่อย่อ": "MUN",
+    "ชื่อสนามเหย้า (Home Stadium)": "Old Trafford",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_manchester-united.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Newcastle United",
+    "ชื่อสโมสร (ภาษาไทย)": "นิวคาสเซิล ยูไนเต็ด",
+    "ชื่อย่อ": "NEW",
+    "ชื่อสนามเหย้า (Home Stadium)": "St. James' Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_newcastle.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Nottingham Forest",
+    "ชื่อสโมสร (ภาษาไทย)": "น็อตติงแฮม ฟอเรสต์",
+    "ชื่อย่อ": "NFO",
+    "ชื่อสนามเหย้า (Home Stadium)": "City Ground",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_nottingham-forest.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Sunderland",
+    "ชื่อสโมสร (ภาษาไทย)": "ซันเดอร์แลนด์",
+    "ชื่อย่อ": "SUN",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stadium of Light",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_sunderland.svg"
+  },
+  {
+    "ลีก": "Premier League",
+    "สโมสร": "Tottenham Hotspur",
+    "ชื่อสโมสร (ภาษาไทย)": "ท็อตแนม ฮ็อตสเปอร์",
+    "ชื่อย่อ": "TOT",
+    "ชื่อสนามเหย้า (Home Stadium)": "Tottenham Hotspur Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_tottenham--2006-2013.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Chelsea",
+    "ชื่อสโมสร (ภาษาไทย)": "เชลซี",
+    "ชื่อย่อ": "CHE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Kingsmeadow",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Stamford Bridge",
+    "logo": "databases/logo/teams/england_chelsea.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Chelsea Women",
+    "ชื่อสโมสร (ภาษาไทย)": "เชลซี ทีมหญิง",
+    "ชื่อย่อ": "CHE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Kingsmeadow",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Stamford Bridge",
+    "logo": ""
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Manchester City",
+    "ชื่อสโมสร (ภาษาไทย)": "แมนเชสเตอร์ ซิตี้",
+    "ชื่อย่อ": "MCI",
+    "ชื่อสนามเหย้า (Home Stadium)": "Joie Stadium (Academy Stadium)",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Etihad Stadium",
+    "logo": "databases/logo/teams/england_manchester-city.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Arsenal",
+    "ชื่อสโมสร (ภาษาไทย)": "อาร์เซนอล",
+    "ชื่อย่อ": "ARS",
+    "ชื่อสนามเหย้า (Home Stadium)": "Emirates Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Meadow Park",
+    "logo": "databases/logo/teams/england_arsenal.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Manchester United",
+    "ชื่อสโมสร (ภาษาไทย)": "แมนเชสเตอร์ ยูไนเต็ด",
+    "ชื่อย่อ": "MUN",
+    "ชื่อสนามเหย้า (Home Stadium)": "Leigh Sports Village",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Old Trafford",
+    "logo": "databases/logo/teams/england_manchester-united.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Tottenham Hotspur",
+    "ชื่อสโมสร (ภาษาไทย)": "ท็อตแนม ฮ็อตสเปอร์",
+    "ชื่อย่อ": "TOT",
+    "ชื่อสนามเหย้า (Home Stadium)": "Brisbane Road",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Tottenham Hotspur Stadium",
+    "logo": "databases/logo/teams/england_tottenham--2006-2013.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "London City Lionesses",
+    "ชื่อสโมสร (ภาษาไทย)": "ลอนดอน ซิตี้ ไลออเนสส์",
+    "ชื่อย่อ": "LCL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Hayes Lane",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Princes Park",
+    "logo": "databases/logo/teams/London_City_Lionesses.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Brighton & Hove Albion",
+    "ชื่อสโมสร (ภาษาไทย)": "ไบรท์ตัน แอนด์ โฮฟ อัลเบียน",
+    "ชื่อย่อ": "BHA",
+    "ชื่อสนามเหย้า (Home Stadium)": "Broadfield Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Amex Stadium",
+    "logo": "databases/logo/teams/england_brighton.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Everton",
+    "ชื่อสโมสร (ภาษาไทย)": "เอฟเวอร์ตัน",
+    "ชื่อย่อ": "EVE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Walton Hall Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Goodison Park",
+    "logo": "databases/logo/teams/england_everton.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Aston Villa",
+    "ชื่อสโมสร (ภาษาไทย)": "แอสตัน วิลลา",
+    "ชื่อย่อ": "AVL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Bescot Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Villa Park",
+    "logo": "databases/logo/teams/england_aston-villa.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "West Ham United",
+    "ชื่อสโมสร (ภาษาไทย)": "เวสต์แฮม ยูไนเต็ด",
+    "ชื่อย่อ": "WHU",
+    "ชื่อสนามเหย้า (Home Stadium)": "Chigwell Construction Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "London Stadium",
+    "logo": "databases/logo/teams/england_west-ham.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Liverpool",
+    "ชื่อสโมสร (ภาษาไทย)": "ลิเวอร์พูล",
+    "ชื่อย่อ": "LIV",
+    "ชื่อสนามเหย้า (Home Stadium)": "St Helens Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Anfield",
+    "logo": "databases/logo/teams/england_liverpool.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Birmingham City",
+    "ชื่อสโมสร (ภาษาไทย)": "เบอร์มิงแฮม ซิตี้",
+    "ชื่อย่อ": "BIR",
+    "ชื่อสนามเหย้า (Home Stadium)": "St Andrew's",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_birmingham.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Crystal Palace",
+    "ชื่อสโมสร (ภาษาไทย)": "คริสตัล พาเลซ",
+    "ชื่อย่อ": "CRY",
+    "ชื่อสนามเหย้า (Home Stadium)": "VBS Community Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Selhurst Park",
+    "logo": "databases/logo/teams/england_crystal-palace.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Charlton Athletic",
+    "ชื่อสโมสร (ภาษาไทย)": "ชาร์ลตัน แอธเลติก",
+    "ชื่อย่อ": "CHA",
+    "ชื่อสนามเหย้า (Home Stadium)": "The Valley",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_charlton.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "Juventus",
+    "ชื่อสโมสร (ภาษาไทย)": "ยูเวนตุส",
+    "ชื่อย่อ": "JUV",
+    "ชื่อสนามเหย้า (Home Stadium)": "Allianz Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/italy_juventus--white.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "AC Milan",
+    "ชื่อสโมสร (ภาษาไทย)": "เอซี มิลาน",
+    "ชื่อย่อ": "ACM",
+    "ชื่อสนามเหย้า (Home Stadium)": "San Siro",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/italy_milan.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "Western Sydney Wanderers",
+    "ชื่อสโมสร (ภาษาไทย)": "เวสเทิร์น ซิดนีย์ วันเดอเรอร์ส",
+    "ชื่อย่อ": "WSW",
+    "ชื่อสนามเหย้า (Home Stadium)": "CommBank Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/australia_western-sydney-wanderers.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "Johor Darul Ta'zim",
+    "ชื่อสโมสร (ภาษาไทย)": "ยะโฮร์ ดารุล ตักซิม",
+    "ชื่อย่อ": "JDT",
+    "ชื่อสนามเหย้า (Home Stadium)": "Sultan Ibrahim Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/malaysia_johor-darul-tazim.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "Auckland FC",
+    "ชื่อสโมสร (ภาษาไทย)": "โอ๊คแลนด์ เอฟซี",
+    "ชื่อย่อ": "AKL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Go Media Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/new-zealand_auckland-fc.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "Auckland FC Women",
+    "ชื่อสโมสร (ภาษาไทย)": "โอ๊คแลนด์ เอฟซี (หญิง)",
+    "ชื่อย่อ": "AKL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Go Media Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/new-zealand_auckland-fc.svg"
+  },
+  {
+    "ลีก": "Friendly / Others",
+    "สโมสร": "A-League Women All-Stars",
+    "ชื่อสโมสร (ภาษาไทย)": "เอ-ลีก วีเมน ออลสตาร์ส",
+    "ชื่อย่อ": "AUS",
+    "ชื่อสนามเหย้า (Home Stadium)": "-",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/a-league-women-all-stars.svg"
+  },
+  {
+    "ลีก": "Carabao Cup",
+    "สโมสร": "Luton Town",
+    "ชื่อสโมสร (ภาษาไทย)": "ลูตัน ทาวน์",
+    "ชื่อย่อ": "LUT",
+    "ชื่อสนามเหย้า (Home Stadium)": "Kenilworth Road",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_luton.svg"
+  }
+]

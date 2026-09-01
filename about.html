@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Us - KARN LA KHRANg NAN Official | Unofficial Chelsea Fan Site">
+  <title>About Us · KARN LA KHRANg NAN Official</title>
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --ink: #001489;
+      --ink-faint: rgba(0, 20, 137, 0.1);
+      --accent: #d4af37;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ::selection { background: var(--accent); color: var(--white); }
+
+    /* Layout Shell */
+    .app-shell {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+      flex: 1;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      background: var(--ink);
+      color: var(--white);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1.5px solid var(--ink);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .nav-logo img { width: 40px; height: auto; }
+    
+    .nav-logo span {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+    }
+
+    .nav-links { list-style: none; }
+    .nav-links li { margin-bottom: 0.5rem; }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+    }
+
+    .lang-toggle {
+      margin-top: 1.5rem;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* Top Bar Mobile */
+    .mobile-header {
+      display: none;
+      background: var(--ink);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-header .nav-logo { margin-bottom: 0; }
+    .hamburger {
+      display: flex; flex-direction: column; gap: 5px; cursor: pointer;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: white; transition: 0.3s;
+    }
+
+    /* Main Content */
+    main {
+      padding: 4rem;
+      overflow-y: auto;
+      background: linear-gradient(135deg, #f8f7f4 0%, #efede8 100%);
+    }
+
+    .meta-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .about-text h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .about-text h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ink-faint);
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      color: rgba(0, 20, 137, 0.85);
+      margin-bottom: 1.5rem;
+      max-width: 65ch;
+      line-height: 1.7;
+    }
+
+    .highlight-box {
+      border: 1.5px solid var(--ink);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      background: var(--white);
+      position: relative;
+    }
+
+    .highlight-box::before {
+      content: 'NOTE';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: var(--accent);
+      color: var(--ink);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      font-weight: 700;
+    }
+
+    .disclaimer-box {
+      background: #fff0f0;
+      border: 1px dashed #dc2626;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      color: #7f1d1d;
+      border-radius: 4px;
+    }
+
+    .sources-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .sources-list li {
+      padding: 1rem;
+      background: var(--white);
+      border: 1px solid var(--ink-faint);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .source-icon { font-size: 1.2rem; }
+
+    .sidebar-panel {
+      position: sticky;
+      top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: var(--ink);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .contact-card h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .email-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      word-break: break-all;
+      display: inline-block;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .email-link:hover {
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    .footer-note {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--ink-faint);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(0, 20, 137, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .site-app-footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid var(--accent);
+    }
+
+    @media (max-width: 1024px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .sidebar.active {
+        display: flex; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+        z-index: 9999; height: calc(100vh - 60px);
+      }
+      .mobile-header { display: flex; position: sticky; top: 0; z-index: 10000; height: 60px; }
+      main { padding: 2rem 1.5rem; }
+      .content-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .sources-list { grid-template-columns: 1fr; }
+      .site-app-footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/karnlakhrangnan-logo.png" alt="Logo">
+      <span>KARN LA<br>KHRANg NAN</span>
+    </a>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <nav class="sidebar" id="navLinks">
+      <div>
+        <a href="index.html" class="nav-logo">
+          <img src="assets/images/karnlakhrangnan-logo.png" alt="Logo">
+          <span>KARN LA<br>KHRANg NAN</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="men-team.html" data-i18n="nav.men_team">Men's Team</a></li>
+          <li><a href="women-team.html" data-i18n="nav.women_team">Women's Team</a></li>
+          <li><a href="trophy.html" data-i18n="nav.trophy">Trophy</a></li>
+          <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+          <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+          <li><a href="about.html" class="active" data-i18n="nav.about">About Us</a></li>
+        </ul>
+        <a href="#" class="nav-links lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">TH</a>
+      </div>
+      
+      <div style="font-size: 0.6rem; opacity: 0.5; font-family: 'Space Mono', monospace;">
+        &copy; 2026 KARN LA KHRANg NAN
+      </div>
+    </nav>
+
+    <main>
+      <span class="meta-label">ID: BLUE-00 · INFORMATION</span>
+      <h1 data-i18n="about.title">About Us</h1>
+
+      <div class="content-grid">
+        <div class="about-text">
+          <h2 data-i18n="about.h_about">🏠 About Us</h2>
+          <p data-i18n="about.p1">KARN LA KHRANg NAN Official is a website created by Chelsea fans out of love and passion for Chelsea Football Club. We gather useful information for all Blues fans, including fixtures, results, league tables, squad lists, trophy cabinet, club legends, and the history of the club.</p>
+          <p data-i18n="about.p2">We are not professional web developers, but fans who want to create a space for fellow fans. Everything on this website comes from dedication and time devoted to what we love.</p>
+
+          <div class="highlight-box">
+            <strong data-i18n="about.inspiration_label">💙 Inspiration:</strong>
+            <p style="margin:0.5rem 0 0 0; font-size: 0.95rem;" data-i18n="about.inspiration_text">We believe every club should have a space where fans can easily access information cleanly and fully without depending solely on official sites. KARN LA KHRANg NAN is a gift from fans to fans.</p>
+          </div>
+
+          <h2 data-i18n="about.h_disclaimer">⚠️ Disclaimer</h2>
+          <div class="disclaimer-box">
+            <p><strong data-i18n="about.disclaimer_bold">KARN LA KHRANg NAN Official is an Unofficial Fan Site.</strong></p>
+            <p data-i18n="about.disclaimer_p2">We have no official affiliation with Chelsea Football Club, Premier League, FA, UEFA, FIFA, or any partner organizations. All logos, trademarks, and intellectual property displayed on this website belong to their respective owners.</p>
+          </div>
+          <p data-i18n="about.disclaimer_p4">The information on this website is compiled from public sources and may differ from official records. We do not guarantee 100% accuracy and recommend checking official club sites for verification.</p>
+
+          <h2 data-i18n="about.h_sources">📡 Data Sources</h2>
+          <ul class="sources-list">
+            <li><span class="source-icon">📊</span><span><strong data-i18n="about.s1_label">Player Data</strong> football-data.org API</span></li>
+            <li><span class="source-icon">📅</span><span><strong data-i18n="about.s2_label">Fixtures</strong> Chelsea FC Official</span></li>
+            <li><span class="source-icon">📚</span><span><strong data-i18n="about.s3_label">History</strong> Wikipedia, 11v11</span></li>
+            <li><span class="source-icon">🏆</span><span><strong data-i18n="about.s4_label">Trophies</strong> RSSSF Statistics</span></li>
+            <li><span class="source-icon">🖼️</span><span><strong data-i18n="about.s5_label">Logos</strong> football-logos.cc</span></li>
+            <li><span class="source-icon">🚩</span><span><strong data-i18n="about.s6_label">Flags</strong> flagcdn.com</span></li>
+          </ul>
+
+          <div class="footer-note">
+            KARN LA KHRANg NAN Official · <span data-i18n="about.footer_note">Made with 💙 by Chelsea Fans, for Chelsea Fans.</span><br>
+            © 2026 — All external trademarks and copyrights belong to their respective owners.
+          </div>
+        </div>
+
+        <div class="sidebar-panel">
+          <div class="contact-card">
+            <h3 data-i18n="about.h_contact">📬 CONTACT US</h3>
+            <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 2rem;" data-i18n="about.contact_p">Have questions, suggestions, or corrections? We welcome all feedback.</p>
+            <a href="mailto:karn.la.khrang.nan@gmail.com" class="email-link">✉️ karn.la.khrang.nan@gmail.com</a>
+            <p style="margin-top: 1.5rem; opacity: 0.6; font-size: 0.7rem; font-family: 'Space Mono', monospace;" data-i18n="about.email_sub">EST RESPONSE: 48H</p>
+          </div>
+          
+          <div style="background: var(--accent); padding: 1.5rem; color: var(--ink); border-radius: 4px;">
+            <p style="font-size: 0.8rem; font-weight: 600;" data-i18n="about.social_p">Social channels coming soon. Stay tuned for the Blue Community update.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-app-footer">
+    <span style="font-family: 'Space Mono', monospace; font-size: 0.7rem;">VERSION 1.0.4-S26</span>
+    <span style="font-size: 0.75rem; opacity: 0.7;">© 2026 KARN LA KHRANg NAN Official. All Rights Reserved. Not affiliated with Chelsea FC.</span>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,118 @@
+======================================================
+  KARN LA KHRANG NAN - TEAM & LOGO REFERENCE GUIDE
+======================================================
+
+1. Men's Team (ทีมชาย)
+------------------------------------------------------
+1.1 ทีมหลัก:
+- ทีม: Chelsea (KANLAKHRANGNAN)
+- พาธโลโก้: databases/logo/teams/england_chelsea.svg
+
+1.2 รายการแข่งขัน (Competitions):
+- Premier League: databases/logo/competitions/men/premier-league.png
+- FA Cup: databases/logo/competitions/men/england_emirates-fa-cup.svg
+- EFL Cup (Carabao Cup): databases/logo/competitions/men/england_efl-cup.svg
+- FA Community Shield: databases/logo/competitions/men/england_fa-community-shield.svg
+- UEFA Champions League: databases/logo/competitions/men/tournaments_uefa-champions-league.svg
+- UEFA Europa League: databases/logo/competitions/men/tournaments_uefa-europa-league.svg
+- UEFA Conference League: databases/logo/competitions/men/tournaments_uefa-conference-league.svg
+
+1.3 ทีมคู่แข่ง (Opponent Clubs):
+- Arsenal: databases/logo/teams/england_arsenal.svg
+- Aston Villa: databases/logo/teams/england_aston-villa.svg
+- Bournemouth: databases/logo/teams/england_bournemouth.svg
+- Brentford: databases/logo/teams/england_brentford.svg
+- Brighton: databases/logo/teams/england_brighton.svg
+- Crystal Palace: databases/logo/teams/england_crystal-palace.svg
+- Everton: databases/logo/teams/england_everton.svg
+- Fulham: databases/logo/teams/england_fulham.svg
+- Ipswich: databases/logo/teams/england_ipswich.svg
+- Liverpool: databases/logo/teams/england_liverpool.svg
+- Luton: databases/logo/teams/england_luton.svg
+- Manchester City: databases/logo/teams/england_manchester-city.svg
+- Manchester United: databases/logo/teams/england_manchester-united.svg
+- Newcastle: databases/logo/teams/england_newcastle.svg
+- Nottingham Forest: databases/logo/teams/england_nottingham-forest.svg
+- Tottenham: databases/logo/teams/england_tottenham--2006-2013.svg
+- West Ham: databases/logo/teams/england_west-ham.svg
+- Juventus: databases/logo/teams/italy_juventus--white.svg
+- AC Milan: databases/logo/teams/italy_milan.svg
+- Real Sociedad: databases/logo/teams/spain_real-sociedad.svg
+- Auckland FC: databases/logo/teams/new-zealand_auckland-fc.svg
+- Western Sydney Wanderers: databases/logo/teams/australia_western-sydney-wanderers.svg
+- Johor Darul Ta'zim: databases/logo/teams/malaysia_johor-darul-tazim.svg
+
+1.4 รูปภาพนักเตะ (Player Images):
+- พาธโฟลเดอร์หลัก: assets/images/players/men/
+- ตัวอย่างการใช้งาน: assets/images/players/men/cole-palmer.webp
+- ตัวอย่างการใช้งาน: assets/images/players/men/enzo-fernandez.webp
+
+
+2. Women's Team (ทีมหญิง)
+------------------------------------------------------
+2.1 ทีมหลัก:
+- ทีม: Chelsea (KANLAKHRANGNAN)
+- พาธโลโก้: databases/logo/teams/england_chelsea.svg
+
+2.2 รายการแข่งขัน (Competitions):
+- Women's Super League (WSL): databases/logo/competitions/women/women_super_league.svg
+- UEFA Women's Champions League (UWCL): databases/logo/competitions/women/women_uwcl_champions_league_logo.svg
+- Pre-season / Friendly: databases/logo/competitions/women/friendly.png
+
+2.3 ทีมคู่แข่ง (Opponent Clubs):
+- A-League Women All-Stars: databases/logo/teams/a-league-women-all-stars.svg
+- London City Lionesses: databases/logo/teams/London_City_Lionesses.svg
+- Birmingham City: databases/logo/teams/england_birmingham.svg
+- Charlton Athletic: databases/logo/teams/england_charlton.svg
+- Coventry City: databases/logo/teams/england_coventry-city.svg
+- Hull City: databases/logo/teams/england_hull-city.svg
+- Leeds United: databases/logo/teams/england_leeds-united.svg
+- Sunderland: databases/logo/teams/england_sunderland.svg
+(หมายเหตุ: ทีมระดับท็อปอื่นๆ สามารถใช้โลโก้ร่วมกับทีมชายในหมวด 1.3 ได้เลย เช่น Arsenal, Man City, Man Utd ฯลฯ)
+
+2.4 รูปภาพนักเตะ (Player Images):
+- พาธโฟลเดอร์หลัก: assets/images/players/women/
+- ตัวอย่างการใช้งาน: assets/images/players/women/aggie-beever-jones.png
+- ตัวอย่างการใช้งาน: assets/images/players/women/erin-cuthbert.png
+
+
+3. ช่องทางการรับชม (Broadcast / TV Logos)
+------------------------------------------------------
+ใช้สำหรับใส่ในข้อมูล "channels" ในไฟล์ fixtures เพื่อแสดงโลโก้ทีวี/สตรีมมิ่ง
+- พาธโฟลเดอร์หลัก: databases/logo/tv/
+- BG SPORTS: databases/logo/tv/bg.svg
+- CFC+: databases/logo/tv/cfc.svg
+- BBC: databases/logo/tv/bbc.png
+- MONOMAX: databases/logo/tv/monomax.svg  (หรือ .png)
+- Sky Sports: databases/logo/tv/sky_sports.png  (หรือ .webp)
+
+
+4. อื่นๆ (Others - ข้อมูลสำคัญเกี่ยวกับเว็บไซต์)
+------------------------------------------------------
+4.1 ไฟล์หน้าจอหลัก (HTML Pages):
+- หน้าแรก (Home/Matches): index.html
+- ทีมชาย (Men's Team): men-team.html
+- ทีมหญิง (Women's Team): women-team.html
+- รายละเอียดการแข่งขัน (Match Detail): match-detail.html
+- โปรไฟล์นักเตะ (Player Profile): player-profile.html
+- สร้างกราฟิกก่อนแข่ง (Pre-Match Graphic): pre-match-graphic.html
+- สร้างกราฟิกหลังแข่ง (Post-Match Graphic): post-match-graphic.html
+- ทำเนียบแชมป์ (Trophy/Honours): trophy.html
+- ตำนานสโมสร (Icons): icons.html
+- เกี่ยวกับสโมสร (About): about.html
+- The Story Blue: the-story-blue.html
+
+4.2 ไฟล์ฐานข้อมูล (Data JSON):
+- โฟลเดอร์หลักที่เก็บข้อมูล: data/
+- โปรแกรมและผลการแข่งขันทีมชาย: data/fixtures.json
+- โปรแกรมและผลการแข่งขันทีมหญิง: data/fixtures.json
+- รายชื่อนักเตะทีมชาย: data/players-men.json
+- รายชื่อนักเตะทีมหญิง: data/players-women.json
+
+4.3 โลโก้หลักของเว็บไซต์ (Site Logo):
+- พาธ: assets/images/karnlakhrangnan-logo.png
+
+4.4 การจัดการระบบ (Build System):
+- ไฟล์ CSS หลัก: assets/css/style.css
+- หากมีการเปลี่ยนแปลงแก้ไข CSS หรือ JS อย่าลืมใช้คำสั่ง `npm run build` ใน Command / Terminal เพื่อมินิฟาย (Minify) โค้ดให้เล็กลงและอัปเดตเว็บไซต์
+======================================================

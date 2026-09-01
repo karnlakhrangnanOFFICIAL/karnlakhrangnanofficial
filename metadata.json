@@ -1,0 +1,6 @@
+{
+  "name": "KARN LA KHRANg NAN Official",
+  "description": "KARN LA KHRANg NAN Official Website · Chelsea FC Fan Website 2026/27 Season",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

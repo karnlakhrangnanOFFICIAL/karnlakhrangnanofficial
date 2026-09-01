@@ -1,0 +1,2164 @@
+[
+  {
+    "id": 1,
+    "name": "Robert Sánchez",
+    "position": "Goalkeeper",
+    "number": 1,
+    "nationality": "Spain",
+    "image": "assets/images/players/men/robert-sanchez.jpg",
+    "height": 197,
+    "foot": "Right",
+    "date_of_birth": "1997-11-18",
+    "age": 28,
+    "current_club": "Chelsea FC",
+    "joined": "2023-08-05",
+    "signed_from": "Brighton & Hove Albion",
+    "market_value": 22000000,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูชาวสเปน ย้ายมาร่วมทีมเชลซีในปี 2023 จากไบรท์ตัน แอนด์ โฮฟ อัลเบี้ยน",
+    "biography_en": "Spanish goalkeeper who joined Chelsea in 2023 from Brighton & Hove Albion.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "Gaga Slonina",
+    "position": "Goalkeeper",
+    "number": 44,
+    "nationality": "USA",
+    "image": "assets/images/players/men/gabriel-slonina.jpg",
+    "height": 193,
+    "foot": "Right",
+    "date_of_birth": "2004-05-15",
+    "age": 22,
+    "current_club": "Chelsea FC",
+    "joined": "2022-08-02",
+    "signed_from": "Chicago Fire",
+    "market_value": 3500000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูดาวรุ่งชาวอเมริกัน ย้ายจากชิคาโก ไฟร์ มาร่วมทีมเชลซีในปี 2022",
+    "biography_en": "Young American goalkeeper who joined Chelsea in 2022 from Chicago Fire.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 3,
+    "name": "Filip Jörgensen",
+    "position": "GK",
+    "number": 12,
+    "nationality": "Denmark",
+    "image": "assets/images/players/men/filip-jorgensen.jpg",
+    "height": 192,
+    "foot": "Right",
+    "date_of_birth": "2002-04-16",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2024-07-30",
+    "signed_from": "Villarreal CF",
+    "market_value": 20000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูชาวเดนมาร์ก ย้ายจากบียาร์เรอัล มาร่วมทีมเชลซีในปี 2024",
+    "biography_en": "Danish goalkeeper who joined Chelsea in 2024 from Villarreal.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "Teddy Sharman-Lowe",
+    "position": "Goalkeeper",
+    "number": 28,
+    "nationality": "England",
+    "image": "assets/images/players/men/teddy-sharman-lowe.jpg",
+    "height": 188,
+    "foot": "Right",
+    "date_of_birth": "2003-01-19",
+    "age": 23,
+    "current_club": "Chelsea FC",
+    "joined": "2020-09-06",
+    "signed_from": "Burton Albion",
+    "market_value": 500000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูดาวรุ่งชาวอังกฤษ เติบโตมาจากเบอร์ตัน อัลเบี้ยน ก่อนย้ายมาร่วมทีมเชลซีในปี 2020",
+    "biography_en": "Young English goalkeeper who developed at Burton Albion before joining Chelsea in 2020.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "Mike Penders",
+    "position": "Goalkeeper",
+    "number": 39,
+    "nationality": "Belgium",
+    "image": "assets/images/players/men/mike-penders.jpg",
+    "height": 200,
+    "foot": "Left",
+    "date_of_birth": "2005-07-31",
+    "age": 21,
+    "current_club": "Chelsea FC",
+    "joined": "2024-08-27",
+    "signed_from": "KRC Genk",
+    "market_value": 25000000,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูดาวรุ่งชาวเบลเยียม ย้ายจากเกงค์ มาร่วมทีมเชลซีในปี 2024",
+    "biography_en": "Young Belgian goalkeeper who joined Chelsea in 2024 from Genk.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "Axel Disasi",
+    "position": "CB",
+    "number": null,
+    "nationality": "France",
+    "image": "assets/images/players/men/axel-disasi.jpg",
+    "height": 190,
+    "foot": "Right",
+    "date_of_birth": "1998-03-11",
+    "age": 28,
+    "current_club": "Crystal Palace",
+    "joined": "2023-08-04",
+    "signed_from": "AS Monaco",
+    "market_value": 15000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังตัวกลางชาวฝรั่งเศส ย้ายจากเอเอ็ม โมนาโก มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "French central defender who joined Chelsea in 2023 from AS Monaco.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "Trevoh Chalobah",
+    "position": "CB / RB",
+    "number": 23,
+    "nationality": "England",
+    "image": "assets/images/players/men/trevoh-chalobah.jpg",
+    "height": 190,
+    "foot": "Right",
+    "date_of_birth": "1999-07-05",
+    "age": 27,
+    "current_club": "Como 1907",
+    "joined": "2021-07-01",
+    "signed_from": "Chelsea FC Academy",
+    "market_value": 25000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังชาวอังกฤษ เด็กปั้นจากอคาเดมี่ของเชลซี ก้าวขึ้นสู่ทีมชุดใหญ่ในปี 2021",
+    "biography_en": "English defender and Chelsea academy graduate who broke into the first team in 2021.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 8,
+    "name": "Tosin Adarabioyo",
+    "position": "Centre-back",
+    "number": 38,
+    "nationality": "England",
+    "image": "assets/images/players/men/tosin-adarabioyo.jpg",
+    "height": 196,
+    "foot": "Right",
+    "date_of_birth": "1997-09-24",
+    "age": 28,
+    "current_club": "Chelsea FC",
+    "joined": "2024-07-01",
+    "signed_from": "Fulham FC",
+    "market_value": 20000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังตัวกลางชาวอังกฤษ ย้ายจากฟูแล่ม มาร่วมทีมเชลซีแบบไม่มีค่าตัวในปี 2024",
+    "biography_en": "English central defender who joined Chelsea on a free transfer from Fulham in 2024.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "Wesley Fofana",
+    "position": "Centre-back",
+    "number": 3,
+    "nationality": "France",
+    "image": "assets/images/players/men/wesley-fofana.jpg",
+    "height": 188,
+    "foot": "Right",
+    "date_of_birth": "2000-12-17",
+    "age": 25,
+    "current_club": "Chelsea FC",
+    "joined": "2022-08-31",
+    "signed_from": "Leicester City",
+    "market_value": 28000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังตัวกลางชาวฝรั่งเศส ย้ายจากเลสเตอร์ ซิตี้ มาร่วมทีมเชลซีในปี 2022",
+    "biography_en": "French central defender who joined Chelsea in 2022 from Leicester City.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 10,
+    "name": "Reece James",
+    "position": "Defender/wing-back/midfielder",
+    "number": 24,
+    "nationality": "England",
+    "image": "assets/images/players/men/James.jpg",
+    "height": 182,
+    "foot": "Right",
+    "date_of_birth": "1999-12-08",
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": "2019-07-01",
+    "signed_from": "Chelsea FC Academy",
+    "market_value": 35000000,
+    "appearances": 2,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "แบ็กขวาและกัปตันทีมเชลซีชาวอังกฤษ เด็กปั้นจากอคาเดมี่ของสโมสรขึ้นสู่ทีมชุดใหญ่ในปี 2019",
+    "biography_en": "English right-back and Chelsea club captain, academy graduate who broke into the first team in 2019.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 11,
+    "name": "Malo Gusto",
+    "position": "Right-back",
+    "number": 27,
+    "nationality": "France",
+    "image": "assets/images/players/men/malo-gusto.jpg",
+    "height": 179,
+    "foot": "Right",
+    "date_of_birth": "2003-05-19",
+    "age": 23,
+    "current_club": "Chelsea FC",
+    "joined": "2023-01-29",
+    "signed_from": "Olympique Lyonnais",
+    "market_value": 35000000,
+    "appearances": 2,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "แบ็กขวาชาวฝรั่งเศส ย้ายจากโอลิมปิก ลียง มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "French right-back who joined Chelsea in 2023 from Olympique Lyonnais.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 12,
+    "name": "Benoît Badiashile",
+    "position": "CB",
+    "number": 5,
+    "nationality": "France",
+    "image": "assets/images/players/men/benoit-badiashile.jpg",
+    "height": 194,
+    "foot": "Left",
+    "date_of_birth": "2001-03-26",
+    "age": 25,
+    "current_club": "Napoli",
+    "joined": "2023-01-05",
+    "signed_from": "AS Monaco",
+    "market_value": 15000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังตัวกลางชาวฝรั่งเศส ย้ายจากโมนาโก มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "French central defender who joined Chelsea in 2023 from AS Monaco.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 13,
+    "name": "Levi Colwill",
+    "position": "Centre-back",
+    "number": 6,
+    "nationality": "England",
+    "image": "assets/images/players/men/levi-colwill.jpg",
+    "height": 187,
+    "foot": "Left",
+    "date_of_birth": "2003-02-26",
+    "age": 23,
+    "current_club": "Chelsea FC",
+    "joined": "2021-07-01",
+    "signed_from": "Chelsea FC Academy",
+    "market_value": 50000000,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังตัวกลางชาวอังกฤษ ผลผลิตจากอคาเดมี่เชลซี ก้าวขึ้นมาเป็นกำลังสำคัญของทีมชุดใหญ่",
+    "biography_en": "English central defender and Chelsea academy product who has established himself as a key first-team player.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 1,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 14,
+    "name": "Caleb Wiley",
+    "position": "LB",
+    "number": 26,
+    "nationality": "USA",
+    "image": "assets/images/players/men/caleb-wiley.jpg",
+    "height": 178,
+    "foot": "Left",
+    "date_of_birth": "2004-12-22",
+    "age": 21,
+    "current_club": "Chelsea FC",
+    "joined": "2024-07-22",
+    "signed_from": "Atlanta United",
+    "market_value": 5000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "แบ็กซ้ายดาวรุ่งชาวอเมริกัน ย้ายจากแอตแลนตา ยูไนเต็ด มาร่วมทีมเชลซีในปี 2024",
+    "biography_en": "Young American left-back who joined Chelsea in 2024 from Atlanta United.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 15,
+    "name": "Jorrel Hato",
+    "position": "Defender",
+    "number": 21,
+    "nationality": "Netherlands",
+    "image": "assets/images/players/men/jorrel-hato.jpg",
+    "height": 182,
+    "foot": "Left",
+    "date_of_birth": "2006-03-07",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2026-07-01",
+    "signed_from": "Ajax",
+    "market_value": 30000000,
+    "appearances": 2,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังดาวรุ่งชาวเนเธอร์แลนด์ ย้ายจากอาแจ็กซ์ อัมสเตอร์ดัม มาร่วมทีมเชลซีในปี 2026",
+    "biography_en": "Young Dutch defender who joined Chelsea in 2026 from Ajax Amsterdam.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 16,
+    "name": "Mamadou Sarr",
+    "position": "Centre-back",
+    "number": 19,
+    "nationality": "Senegal",
+    "image": "assets/images/players/men/mamadou-sarr.jpg",
+    "height": 194,
+    "foot": "Right",
+    "date_of_birth": "2005-08-29",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Strasbourg",
+    "market_value": 10000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังตัวกลางชาวเซเนกัล ย้ายจากสทราซบูร์ มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Senegalese central defender who joined Chelsea in 2025 from Strasbourg.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 17,
+    "name": "Marco Palestra",
+    "position": "Full-back/wing-back",
+    "number": 2,
+    "nationality": "Italy",
+    "image": "assets/images/players/men/marco-palestra.jpg",
+    "height": 184,
+    "foot": "Right",
+    "date_of_birth": "2005-03-03",
+    "age": 21,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Atalanta",
+    "market_value": 35000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "แบ็กขวาดาวรุ่งชาวอิตาลี ย้ายจากอตาลันต้า มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Young Italian right-back who joined Chelsea in 2025 from Atalanta.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 18,
+    "name": "Aaron Anselmino",
+    "position": "Centre-back",
+    "number": 30,
+    "nationality": "Argentina",
+    "image": "assets/images/players/men/aaron-anselmino.jpg",
+    "height": 186,
+    "foot": "Right",
+    "date_of_birth": "2005-04-29",
+    "age": 21,
+    "current_club": "Chelsea FC",
+    "joined": "2024-08-08",
+    "signed_from": "Boca Juniors",
+    "market_value": 10000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังดาวรุ่งชาวอาร์เจนตินา ย้ายจากโบคา จูเนียร์ส มาร่วมทีมเชลซีในปี 2024",
+    "biography_en": "Young Argentine defender who joined Chelsea in 2024 from Boca Juniors.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 19,
+    "name": "Josh Acheampong",
+    "position": "Defender",
+    "number": 34,
+    "nationality": "England",
+    "image": "assets/images/players/men/josh-acheampong.jpg",
+    "height": 185,
+    "foot": "Right",
+    "date_of_birth": "2006-05-05",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2024-01-01",
+    "signed_from": "Chelsea FC Academy",
+    "market_value": 5000000,
+    "appearances": 2,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังดาวรุ่งชาวอังกฤษ เด็กปั้นจากอคาเดมี่ของเชลซี",
+    "biography_en": "Young English defender and home-grown talent from the Chelsea Academy.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 20,
+    "name": "Denner",
+    "position": "LB / LWB",
+    "number": null,
+    "nationality": "Brazil",
+    "image": "assets/images/players/men/denner.jpg",
+    "height": 182,
+    "foot": "Left",
+    "date_of_birth": "2008-02-25",
+    "age": 18,
+    "current_club": "Chelsea FC",
+    "joined": "2026-01-01",
+    "signed_from": "Corinthians",
+    "market_value": 10000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "แบ็กซ้ายดาวรุ่งชาวบราซิล ย้ายจากคอรินเธียนส์ มาร่วมทีมเชลซีในปี 2026",
+    "biography_en": "Young Brazilian left-back who joined Chelsea in 2026 from Corinthians.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 21,
+    "name": "Morgan Rogers",
+    "position": "Attacking midfielder/winger",
+    "number": 17,
+    "nationality": "England",
+    "image": "assets/images/players/men/morgan-rogers.jpg",
+    "height": 189,
+    "foot": "Right",
+    "date_of_birth": "2002-07-26",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2026-07-01",
+    "signed_from": "Aston Villa",
+    "market_value": 90000000,
+    "appearances": 2,
+    "goals": 1,
+    "assists": 0,
+    "biography_th": "กองกลางรุกชาวอังกฤษ ย้ายจากแอสตัน วิลล่า มาร่วมทีมเชลซีในปี 2026",
+    "biography_en": "English attacking midfielder who joined Chelsea in 2026 from Aston Villa.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 1,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 22,
+    "name": "Enzo Fernández",
+    "position": "Midfielder",
+    "number": 8,
+    "nationality": "Argentina",
+    "image": "assets/images/players/men/enzo-fernandez.jpg",
+    "height": 178,
+    "foot": "Right",
+    "date_of_birth": "2001-01-17",
+    "age": 25,
+    "current_club": "Chelsea FC",
+    "joined": "2023-01-31",
+    "signed_from": "Benfica",
+    "market_value": 75000000,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางชาวอาร์เจนตินา ดีกรีแชมป์โลก 2022 ย้ายจากเบนฟิก้า มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "Argentine midfielder and 2022 World Cup winner who joined Chelsea in 2023 from Benfica.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 23,
+    "name": "Moisés Caicedo",
+    "position": "Midfielder",
+    "number": 25,
+    "nationality": "Ecuador",
+    "image": "assets/images/players/men/moises-caicedo.jpg",
+    "height": 178,
+    "foot": "Right",
+    "date_of_birth": "2001-11-02",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2023-08-14",
+    "signed_from": "Brighton & Hove Albion",
+    "market_value": 75000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางตัวตัดเกมชาวเอกวาดอร์ ย้ายจากไบรท์ตัน มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "Ecuadorean defensive midfielder who joined Chelsea in 2023 from Brighton & Hove Albion.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 24,
+    "name": "Cole Palmer",
+    "position": "Attacking midfielder/winger",
+    "number": 10,
+    "nationality": "England",
+    "image": "assets/images/players/men/cole-palmer.jpg",
+    "height": 185,
+    "foot": "Left",
+    "date_of_birth": "2002-05-06",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2023-09-01",
+    "signed_from": "Manchester City",
+    "market_value": 100000000,
+    "appearances": 2,
+    "goals": 1,
+    "assists": 1,
+    "biography_th": "กองกลางตัวรุกชาวอังกฤษ ย้ายจากแมนเชสเตอร์ ซิตี้ มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "English attacking midfielder who joined Chelsea in 2023 from Manchester City.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 1,
+        "assists": 1,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 25,
+    "name": "Dario Essugo",
+    "position": "Midfielder",
+    "number": 16,
+    "nationality": "Portugal",
+    "image": "assets/images/players/men/dario-essugo.jpg",
+    "height": 178,
+    "foot": "Right",
+    "date_of_birth": "2005-03-14",
+    "age": 21,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Sporting CP",
+    "market_value": 15000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางดาวรุ่งชาวโปรตุเกส ย้ายจากสปอร์ติ้ง ลิสบอน มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Young Portuguese midfielder who joined Chelsea in 2025 from Sporting CP.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 26,
+    "name": "Romeo Lavia",
+    "position": "Midfielder",
+    "number": 45,
+    "nationality": "Belgium",
+    "image": "assets/images/players/men/romeo-lavia.jpg",
+    "height": 181,
+    "foot": "Right",
+    "date_of_birth": "2004-01-06",
+    "age": 22,
+    "current_club": "Chelsea FC",
+    "joined": "2023-08-18",
+    "signed_from": "Southampton FC",
+    "market_value": 22000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางชาวเบลเยียม ย้ายจากเซาแธมป์ตัน มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "Belgian midfielder who joined Chelsea in 2023 from Southampton.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 27,
+    "name": "Pedro Neto",
+    "position": "Winger",
+    "number": 7,
+    "nationality": "Portugal",
+    "image": "assets/images/players/men/pedro-neto.jpg",
+    "height": 172,
+    "foot": "Left",
+    "date_of_birth": "2000-03-09",
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": "2024-08-11",
+    "signed_from": "Wolverhampton Wanderers",
+    "market_value": 55000000,
+    "appearances": 2,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ปีกชาวโปรตุเกส ย้ายจากวูล์ฟแฮมป์ตัน วันเดอเรอร์ส มาร่วมทีมเชลซีในปี 2024",
+    "biography_en": "Portuguese winger who joined Chelsea in 2024 from Wolverhampton Wanderers.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 28,
+    "name": "Mykhailo Mudryk",
+    "position": "Winger",
+    "number": 33,
+    "nationality": "Ukraine",
+    "image": "assets/images/players/men/mykhailo-mudryk.jpg",
+    "height": 175,
+    "foot": "Right",
+    "date_of_birth": "2001-01-05",
+    "age": 25,
+    "current_club": "Chelsea FC",
+    "joined": "2023-01-15",
+    "signed_from": "Shakhtar Donetsk",
+    "market_value": 30000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ปีกความเร็วสูงชาวยูเครน ย้ายจากชัคตาร์ โดเนตสก์ มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "Fast Ukrainian winger who joined Chelsea in 2023 from Shakhtar Donetsk.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 29,
+    "name": "João Pedro",
+    "position": "Forward",
+    "number": 9,
+    "nationality": "Brazil",
+    "image": "assets/images/players/men/joao-pedro.jpg",
+    "height": 182,
+    "foot": "Right",
+    "date_of_birth": "2001-09-26",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Brighton & Hove Albion",
+    "market_value": 50000000,
+    "appearances": 2,
+    "goals": 1,
+    "assists": 1,
+    "biography_th": "กองหน้าชาวบราซิล ย้ายจากไบรท์ตัน มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Brazilian forward who joined Chelsea in 2025 from Brighton & Hove Albion.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 1,
+        "assists": 1,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 30,
+    "name": "Emanuel Emegha",
+    "position": "Forward",
+    "number": 22,
+    "nationality": "Netherlands",
+    "image": "assets/images/players/men/emmanuel-emegha.jpg",
+    "height": 195,
+    "foot": "Right",
+    "date_of_birth": "2003-02-03",
+    "age": 23,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Strasbourg",
+    "market_value": 25000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าชาวเนเธอร์แลนด์ ย้ายจากสทราซบูร์ มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Dutch striker who joined Chelsea in 2025 from Strasbourg.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 31,
+    "name": "Liam Delap",
+    "position": "ST",
+    "number": 9,
+    "nationality": "England",
+    "image": "assets/images/players/men/liam-delap.jpg",
+    "height": 186,
+    "foot": "Right",
+    "date_of_birth": "2003-02-08",
+    "age": 23,
+    "current_club": "Nottingham Forest",
+    "joined": "2025-07-01",
+    "signed_from": "Ipswich Town",
+    "market_value": 20000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าชาวอังกฤษ ย้ายจากอิปสวิช ทาวน์ มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "English striker who joined Chelsea in 2025 from Ipswich Town.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 32,
+    "name": "Nicolas Jackson",
+    "position": "Striker",
+    "number": 15,
+    "nationality": "Senegal",
+    "image": "assets/images/players/men/nicolas-jackson.jpg",
+    "height": 186,
+    "foot": "Right",
+    "date_of_birth": "2001-06-20",
+    "age": 25,
+    "current_club": "Chelsea FC",
+    "joined": "2023-06-30",
+    "signed_from": "Villarreal CF",
+    "market_value": 40000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าชาวเซเนกัล ย้ายจากบียาร์เรอัล มาร่วมทีมเชลซีในปี 2023",
+    "biography_en": "Senegalese striker who joined Chelsea in 2023 from Villarreal.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 33,
+    "name": "Jamie Gittens",
+    "position": "Winger",
+    "number": 11,
+    "nationality": "England",
+    "image": "assets/images/players/men/jamie-bynoe-gittens.png",
+    "height": 175,
+    "foot": "Right",
+    "date_of_birth": "2004-08-08",
+    "age": 22,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Borussia Dortmund",
+    "market_value": 35000000,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ปีกดาวรุ่งชาวอังกฤษ ย้ายจากโบรุสเซีย ดอร์ทมุนด์ มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Young English winger who joined Chelsea in 2025 from Borussia Dortmund.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 34,
+    "name": "Marc Guiu",
+    "position": "Striker",
+    "number": null,
+    "nationality": "Spain",
+    "image": "assets/images/players/men/marc-guiu.jpg",
+    "height": 187,
+    "foot": "Right",
+    "date_of_birth": "2006-01-04",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2024-07-01",
+    "signed_from": "FC Barcelona",
+    "market_value": 12000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าดาวรุ่งชาวสเปน ย้ายจากบาร์เซโลน่า มาร่วมทีมเชลซีในปี 2024",
+    "biography_en": "Young Spanish striker who joined Chelsea in 2024 from FC Barcelona.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 35,
+    "name": "Geovany Quenda",
+    "position": "Winger/wing-back",
+    "number": 23,
+    "nationality": "Guinea-Bissau",
+    "image": "assets/images/players/men/geovany-quenda.jpg",
+    "height": 172,
+    "foot": "Left",
+    "date_of_birth": "2007-04-30",
+    "age": 19,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Sporting CP",
+    "market_value": 42000000,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ปีกดาวรุ่งชาวกินี-บิสเซา/โปรตุเกส ย้ายจากสปอร์ติ้ง ลิสบอน มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Young Portuguese winger who joined Chelsea in 2025 from Sporting CP.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 36,
+    "name": "Estevao Willian",
+    "position": "Forward",
+    "number": 41,
+    "nationality": "Brazil",
+    "image": "assets/images/players/men/Estêvão.jpg",
+    "height": 176,
+    "foot": "Left",
+    "date_of_birth": "2007-04-24",
+    "age": 19,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Palmeiras",
+    "market_value": 45000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ตัวรุกดาวรุ่งชาวบราซิล ย้ายจากพัลไมรัส มาร่วมทีมเชลซีในปี 2025",
+    "biography_en": "Young Brazilian attacker who joined Chelsea in 2025 from Palmeiras.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 37,
+    "name": "Dastan Satpaev",
+    "position": "ST",
+    "number": 36,
+    "nationality": "Kazakhstan",
+    "image": "assets/images/players/men/dastan-satpaev.png",
+    "height": 180,
+    "foot": "Right",
+    "date_of_birth": "2008-08-12",
+    "age": 18,
+    "current_club": "Burnley",
+    "joined": "2026-01-01",
+    "signed_from": "Kairat Almaty",
+    "market_value": 3500000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าดาวรุ่งชาวคาซัคสถาน ย้ายจากไครัต อัลมาตี้ มาร่วมทีมเชลซีในปี 2026",
+    "biography_en": "Young Kazakh striker who joined Chelsea in 2026 from Kairat Almaty.",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 38,
+    "name": "Pep Chavarria",
+    "position": "Left-back",
+    "number": 29,
+    "nationality": "Spain",
+    "image": "assets/images/players/men/pep-chavarria.jpg",
+    "height": 174,
+    "foot": null,
+    "date_of_birth": "1998-04-10",
+    "age": 28,
+    "current_club": "Chelsea FC",
+    "joined": "2026-08-24",
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "-",
+    "biography_en": "-",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 39,
+    "name": "Maxence Lacroix",
+    "position": "Centre-back",
+    "number": 5,
+    "nationality": "France",
+    "image": "assets/images/players/men/maxence-lacroix.jpg",
+    "height": 190,
+    "foot": null,
+    "date_of_birth": "2000-04-06",
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 2,
+    "goals": 0,
+    "assists": 1,
+    "biography_th": "",
+    "biography_en": "Maxence Lacroix joined Chelsea in July 2026 when he signed a contract until 2032. The France international defender moved across London from Crystal Palace.\nHe arrived at Stamford Bridge with the reputation of being among European football’s most commanding centre-backs, as well as one of the fastest and best aerial defenders in the Premier League.\n\nHe made 98 appearances for Crystal Palace during two seasons at Selhurst Park and made history with the Eagles by winning the UEFA Conference League, FA Cup and Community Shield.\n\nPrior to playing in England, Lacroix began his career in his homeland and also played in Germany. He is a product of Sochaux's academy and made 28 senior appearances for the French club’s first team before joining Wolfsburg in August 2020.\n\nHe spent four years with the German side and made 130 appearances before his switch to south London.\n\nLacroix’s performances in the Premier League and in Europe with Palace earned him international recognition in March 2026, when he made his debut for France. He was then included in Les Bleus’ squad for the FIFA World Cup later that year and made three appearances at the tournament as his country claimed a fourth-place finish.\n\nLacroix made his Chelsea debut when he started the first Premier League game of the season, a derby away at Fulham, and he was credited with an assist for Morgan Rogers goal in a 3-2 victory.",
+    "stats": {
+      "Premier League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 1,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 40,
+    "name": "Olutayo Subuloye",
+    "position": "Defender",
+    "number": 37,
+    "nationality": "England",
+    "image": "assets/images/players/men/olutayo-subuloye.jpg",
+    "height": 186,
+    "foot": null,
+    "date_of_birth": "2007-12-18",
+    "age": 18,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 41,
+    "name": "Valentin Barco",
+    "position": "Midfielder",
+    "number": 4,
+    "nationality": "Argentina",
+    "image": "assets/images/players/men/valentin-barco.jpg",
+    "height": 170,
+    "foot": null,
+    "date_of_birth": "2004-07-27",
+    "age": 22,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 42,
+    "name": "Jordan Henderson",
+    "position": "Midfielder",
+    "number": 14,
+    "nationality": "England",
+    "image": "assets/images/players/men/jordan-henderson.jpg",
+    "height": 183,
+    "foot": null,
+    "date_of_birth": "1990-06-17",
+    "age": 36,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 43,
+    "name": "Reggie Watson",
+    "position": "Central midfielder",
+    "number": 31,
+    "nationality": "England",
+    "image": "assets/images/players/men/reggie-watson.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": "2010-01-26",
+    "age": 16,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 44,
+    "name": "Mahdi Nicoll-Jazuli",
+    "position": "Attacking midfielder",
+    "number": 32,
+    "nationality": "England",
+    "image": "assets/images/players/men/mahdi-nicoll-jazuli.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": "2010-01-06",
+    "age": 16,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 45,
+    "name": "Danny Welbeck",
+    "position": "Striker",
+    "number": 18,
+    "nationality": "England",
+    "image": "assets/images/players/men/danny-welbeck.jpg",
+    "height": 185,
+    "foot": null,
+    "date_of_birth": "1990-11-26",
+    "age": 35,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 1,
+    "goals": 1,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 1,
+        "goals": 1,
+        "assists": 0,
+        "clean_sheets": 1,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 46,
+    "name": "Emiliano Martínez",
+    "position": "Goalkeeper",
+    "number": 26,
+    "nationality": "Argentina",
+    "image": "assets/images/players/men/emiliano-martínez.jpg",
+    "height": 195,
+    "foot": "Right",
+    "date_of_birth": "1992-09-02",
+    "age": 33,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "",
+    "biography_en": "",
+    "stats": {
+      "Premier League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Carabao Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  }
+]

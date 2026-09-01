@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 5 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="icon" href="../assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .pull-quote {
+      border-left: 4px solid var(--gold); padding: 24px 32px; margin: 0 0 48px;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem,2vw,1.2rem); color: var(--ink-soft); line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 14px; font-family: 'Sarabun', sans-serif; font-style: normal;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .article__inner p em { color: var(--ink); font-style: italic; }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+    hr {
+      border: 0; height: 1px; background: var(--rule); margin: 40px 0; opacity: 0.5;
+    }
+
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; top: 72px; right: 18px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { top: 68px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: top right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:40px;">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../men-team.html">ทีมชาย</a></li>
+        <li><a href="../women-team.html">ทีมหญิง</a></li>
+        <li><a href="../trophy.html">ถ้วยรางวัล</a></li>
+        <li><a href="../icons.html">i-Cons</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLUlVORzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjU1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2M4YTg0YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFOPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwNSIgeDI9IjMyMCIgeTI9IjMwNSIgc3Ryb2tlPSIjYzhhODRiIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8dGV4dCB4PSIyMDAiIHk9IjM0NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2ZmaWNpYWw8L3RleHQ+Cjwvc3ZnPg==" alt="Karn La Krung Nan Logo" style="height:100px;">
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้น<br><em>Karn La Krung Nan News!</em>" data-lang-en="Karn La Krung Nan<br><em>Karn La Krung Nan News!</em>">กาลครั้งนั้น<br><em>Karn La Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- ===================== ARTICLE ===================== -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๕" data-lang-en="CHAPTER 5">บทที่ ๕</div>
+        <h1 data-lang-th="ขึ้นลงบนรถไฟเหาะแห่ง Fulham Road" data-lang-en="The Fulham Road Rollercoaster">ขึ้นลงบนรถไฟเหาะแห่ง Fulham Road</h1>
+      </div>
+
+      <!-- Opening Quote -->
+      <blockquote class="pull-quote">
+        <p data-lang-th="'โครงสร้างเหล็กและคอนกรีตยักษ์นั้นกำลังสูบเลือดสโมสรอันยิ่งใหญ่แห่งหนึ่งของประเทศให้ตายลงอย่างช้าๆ แม้ว่าในขณะนั้นสัญญาณเหล่านั้นจะยังไม่ปรากฏให้เห็นชัด เมื่อทีมย่ำอยู่กับที่ แม้จะมีนักเตะหน้าใหม่ที่มีพรสวรรค์อย่าง เรย์ วิลกินส์, แกรี่ ล็อค, เอียน บริตตัน และ จอห์น สแปร์โรว์ หลั่งไหลเข้ามา ผู้จัดการทีม [เดฟ] เซ็กซ์ตัน ก็กลายเป็นเหยื่อรายแรกของความตื่นตระหนกของเชลซี'" data-lang-en="‘That giant construction of steel and concrete was already bleeding one of the country’s great clubs to death, although the signs were not widely apparent at the time. As the team dawdled, despite the influx of gifted young players like Ray Wilkins, Gary Locke, lan Britton and John Sparrow, manager [Dave] Sexton became the first victim of Chelsea panic.’">'โครงสร้างเหล็กและคอนกรีตยักษ์นั้นกำลังสูบเลือดสโมสรอันยิ่งใหญ่แห่งหนึ่งของประเทศให้ตายลงอย่างช้าๆ แม้ว่าในขณะนั้นสัญญาณเหล่านั้นจะยังไม่ปรากฏให้เห็นชัด เมื่อทีมย่ำอยู่กับที่ แม้จะมีนักเตะหน้าใหม่ที่มีพรสวรรค์อย่าง เรย์ วิลกินส์, แกรี่ ล็อค, เอียน บริตตัน และ จอห์น สแปร์โรว์ หลั่งไหลเข้ามา ผู้จัดการทีม [เดฟ] เซ็กซ์ตัน ก็กลายเป็นเหยื่อรายแรกของความตื่นตระหนกของเชลซี'</p>
+        <cite data-lang-th="— John Moynihan, The Chelsea Story" data-lang-en="— John Moynihan, The Chelsea Story">— John Moynihan, The Chelsea Story</cite>
+      </blockquote>
+
+      <!-- SECTION 1 -->
+      <p class="drop-cap" data-lang-th="ขณะที่ยุค 1960 ก้าวเข้าสู่ทศวรรษ 1970 เชลซีได้ขี่คลื่นแห่งความสำเร็จอย่างที่ไม่เคยมีมาก่อนในประวัติศาสตร์สโมสร ในแง่ของความสำเร็จที่ยั่งยืน นักเตะซูเปอร์สตาร์ ความสนใจจากข่าวระดับชาติ ตลอดจนสีสันและความคลั่งไคล้จากแฟนบอลของเรา สิ่งเหล่านี้ถือเป็นปรากฏการณ์ที่ไม่เคยเกิดขึ้นมาก่อน" data-lang-en="As the 1960s rolled into the 1970s, Chelsea had ridden the crest of the wave like no time before in the club’s history. In terms of sustained success, star players, national news interest, and colour and fervour from our supporters, this was unprecedented.">ขณะที่ยุค 1960 ก้าวเข้าสู่ทศวรรษ 1970 เชลซีได้ขี่คลื่นแห่งความสำเร็จอย่างที่ไม่เคยมีมาก่อนในประวัติศาสตร์สโมสร ในแง่ของความสำเร็จที่ยั่งยืน นักเตะซูเปอร์สตาร์ ความสนใจจากข่าวระดับชาติ ตลอดจนสีสันและความคลั่งไคล้จากแฟนบอลของเรา สิ่งเหล่านี้ถือเป็นปรากฏการณ์ที่ไม่เคยเกิดขึ้นมาก่อน</p>
+      
+      <p data-lang-th="ไม่น่าแปลกใจที่ประธานไบรอัน เมียร์ส และคณะกรรมการจะรู้สึกตื่นเต้นกับความทะเยอทะยานเดียวกันกับที่จุดประกายบรรพบุรุษของเขาผู้ก่อตั้งสโมสรเมื่อต้นศตวรรษ พวกเขาได้สร้างสิ่งที่ในตอนนั้นถูกอธิบายว่าเป็น ‘สนามกีฬาที่จะทำให้มนุษยชาติต้องตะลึง’ บัดนี้คณะกรรมการตัดสินใจที่จะสร้างใหม่ทั้งหมดเพื่อให้สแตมฟอร์ดบริดจ์เป็น ‘สนามกีฬาที่สอดคล้องกับศักยภาพอันยิ่งใหญ่ของทีมเรา’" data-lang-en="No wonder chairman Brian Mears and the directors were electrified with the same ambition that had enthused his own ancestors who had formed the club at the start of the century. They had constructed what was then described as a ‘stadium to stagger humanity’. Now the board decided on a complete reconstruction to make Stamford Bridge ‘a stadium in keeping with the magnificent potential of our team’.">ไม่น่าแปลกใจที่ประธานไบรอัน เมียร์ส และคณะกรรมการจะรู้สึกตื่นเต้นกับความทะเยอทะยานเดียวกันกับที่จุดประกายบรรพบุรุษของเขาผู้ก่อตั้งสโมสรเมื่อต้นศตวรรษ พวกเขาได้สร้างสิ่งที่ในตอนนั้นถูกอธิบายว่าเป็น ‘สนามกีฬาที่จะทำให้มนุษยชาติต้องตะลึง’ บัดนี้คณะกรรมการตัดสินใจที่จะสร้างใหม่ทั้งหมดเพื่อให้สแตมฟอร์ดบริดจ์เป็น ‘สนามกีฬาที่สอดคล้องกับศักยภาพอันยิ่งใหญ่ของทีมเรา’</p>
+
+      <p data-lang-th="มีหลังคาปกคลุมทั้งหมด อยู่ใกล้กับสนามแข่งแทนที่จะเป็นพื้นที่เปิดโล่งกว้างแบบสนามรูปไข่ดั้งเดิม และยังมีศักยภาพในการส่งลมร้อนไปใต้ที่นั่งเพื่อบรรเทาความหนาวเหน็บของฤดูหนาวเมื่อแฟนบอลอยู่ข้างใน นี่ถือเป็นการออกแบบที่ยิ่งใหญ่อย่างแท้จริง สิ่งแรกที่จะเกิดขึ้นคือการรื้อถอนอัฒจันทร์ไม้ดั้งเดิมเก่าแก่ที่เลยเวลามานาน และแทนที่ด้วยอัฒจันทร์ฝั่งตะวันออก (East Stand) แบบคานยื่นที่ทำจากคอนกรีตและเหล็กกล้าขนาดยักษ์ ซึ่งเมื่อเปิดใช้งาน จะเป็นอัฒจันทร์เดี่ยวที่ใหญ่ที่สุดในอังกฤษ" data-lang-en="Fully covered, close to the pitch instead of the wide-open spaces of the original oval-shaped ground, and even with the potential for warm-air to be piped under the seats to keep winter at bay when the fans were inside, it was certainly a grand design. First was to be the overdue demolition of the old, original wooden grandstand and its replacement with a huge concrete-and-steel cantilever East Stand that would be, on opening, the largest single grandstand in Britain.">มีหลังคาปกคลุมทั้งหมด อยู่ใกล้กับสนามแข่งแทนที่จะเป็นพื้นที่เปิดโล่งกว้างแบบสนามรูปไข่ดั้งเดิม และยังมีศักยภาพในการส่งลมร้อนไปใต้ที่นั่งเพื่อบรรเทาความหนาวเหน็บของฤดูหนาวเมื่อแฟนบอลอยู่ข้างใน นี่ถือเป็นการออกแบบที่ยิ่งใหญ่อย่างแท้จริง สิ่งแรกที่จะเกิดขึ้นคือการรื้อถอนอัฒจันทร์ไม้ดั้งเดิมเก่าแก่ที่เลยเวลามานาน และแทนที่ด้วยอัฒจันทร์ฝั่งตะวันออก (East Stand) แบบคานยื่นที่ทำจากคอนกรีตและเหล็กกล้าขนาดยักษ์ ซึ่งเมื่อเปิดใช้งาน จะเป็นอัฒจันทร์เดี่ยวที่ใหญ่ที่สุดในอังกฤษ</p>
+
+      <p data-lang-th="อย่างไรก็ตาม อัตรากำไรทางการเงินนั้นตึงตัว และสิ่งที่คณะกรรมการไม่สามารถรับไหว และไม่ได้วางงบประมาณไว้ คือการตกต่ำของผลงานทีมหรือปัญหาเศรษฐกิจในวงกว้างของสหราชอาณาจักร พวกเขาโดนผลกระทบอย่างหนักจากทั้งสองอย่าง" data-lang-en="Financial margins were tight however and what the board could ill afford, and had not budgeted for, was any decline in the team’s performance or wider problems in the UK economy. They were hit hard by both.">อย่างไรก็ตาม อัตรากำไรทางการเงินนั้นตึงตัว และสิ่งที่คณะกรรมการไม่สามารถรับไหว และไม่ได้วางงบประมาณไว้ คือการตกต่ำของผลงานทีมหรือปัญหาเศรษฐกิจในวงกว้างของสหราชอาณาจักร พวกเขาโดนผลกระทบอย่างหนักจากทั้งสองอย่าง</p>
+
+      <p data-lang-th="การแต่งตั้งสถาปนิกที่ไม่มีประสบการณ์ด้านการออกแบบสนามกีฬาก่อให้เกิดความล่าช้าอยู่แล้ว แต่แรงงานสัมพันธ์ที่เลวร้ายลงของอังกฤษในช่วงต้นทศวรรษ 1970 ทำให้เกิดการทำงานสัปดาห์ละสามวันสำหรับแรงงานทั่วประเทศ รวมถึงการหยุดงานประท้วงของคนงานก่อสร้าง และการขาดแคลนวัสดุก่อสร้าง ในสนาม จากจุดสูงสุดที่จบอันดับสามในลีกในปีที่เราคว้าแชมป์เอฟเอคัพ เรากำลังร่วงหล่นลงมาในตาราง และแม้จะเข้าถึงนัดชิงบอลถ้วยเป็นครั้งที่สามในรอบสามปี ในนัดชิงชนะเลิศลีกคัพที่เวมบลีย์ปี 1972 เชลซีที่เป็นตัวเต็งกลับพ่ายแพ้ให้กับสโต๊ค ซิตี้ ฤดูกาลต่อมาทีมสิงห์บลูส์จบครึ่งล่างของตารางดิวิชั่นหนึ่งในอันดับที่ 12 และจากนั้นในปีถัดมาก็จบอันดับที่ 17 ความมองโลกในแง่ดีในปี 1971 ดูเหมือนจะเป็นความจองหองเมื่อถึงปี 1973" data-lang-en="Appointing architects with no previous experience of stadium design was leading to delays anyway but Britain’s worsening industrial relations in the early 1970s led to a three-day working week for the country’s workforce in general, plus building strikes, and there was a shortage of construction materials. On the pitch, from the high of a third-place league finish the year we won the FA Cup, we were dropping down the table and although a third cup final in three years was reached, the League Cup final at Wembley in 1972, hot favourites Chelsea lost out to Stoke City. The following season the Blues finished below halfway in the First Division, in 12th, and then the following year in 17th. The optimism of 1971 looked like hubris by 1973.">การแต่งตั้งสถาปนิกที่ไม่มีประสบการณ์ด้านการออกแบบสนามกีฬาก่อให้เกิดความล่าช้าอยู่แล้ว แต่แรงงานสัมพันธ์ที่เลวร้ายลงของอังกฤษในช่วงต้นทศวรรษ 1970 ทำให้เกิดการทำงานสัปดาห์ละสามวันสำหรับแรงงานทั่วประเทศ รวมถึงการหยุดงานประท้วงของคนงานก่อสร้าง และการขาดแคลนวัสดุก่อสร้าง ในสนาม จากจุดสูงสุดที่จบอันดับสามในลีกในปีที่เราคว้าแชมป์เอฟเอคัพ เรากำลังร่วงหล่นลงมาในตาราง และแม้จะเข้าถึงนัดชิงบอลถ้วยเป็นครั้งที่สามในรอบสามปี ในนัดชิงชนะเลิศลีกคัพที่เวมบลีย์ปี 1972 เชลซีที่เป็นตัวเต็งกลับพ่ายแพ้ให้กับสโต๊ค ซิตี้ ฤดูกาลต่อมาทีมสิงห์บลูส์จบครึ่งล่างของตารางดิวิชั่นหนึ่งในอันดับที่ 12 และจากนั้นในปีถัดมาก็จบอันดับที่ 17 ความมองโลกในแง่ดีในปี 1971 ดูเหมือนจะเป็นความจองหองเมื่อถึงปี 1973</p>
+
+      <p data-lang-th="ผู้จัดการทีม เดฟ เซ็กซ์ตัน ต้องรับมือกับความสัมพันธ์ที่ย่ำแย่ลงกับอย่างน้อยสองสตาร์ดัง ซึ่งทั้งคู่เป็นผู้เล่นคนสำคัญในปีแห่งการคว้าถ้วยรางวัล: ปีเตอร์ ออสกู้ด และ อลัน ฮัดสัน ด้วยความปั่นป่วนทางการเงินที่ก่อตัวขึ้น คณะกรรมการได้จัดการประชุมพิเศษกับผู้จัดการทีมและสนับสนุนเขาในขณะที่หวังว่าจะรั้งตัวสตาร์ดังไว้ได้ เนื่องจากจำนวนผู้ชมและรายได้จากประตูทางเข้าได้รับผลกระทบ หลังจากพ่ายแพ้สี่นัดรวด สองผู้เล่นนั้นรวมถึง ปีเตอร์ โบเนตติ และ ทอมมี่ บอลด์วิน ถูกดร็อปสำหรับเกมวันปีใหม่ในปี 1974" data-lang-en="Manager Dave Sexton had been wrestling with a deteriorating relationship with at least two of his stars, both key players in the trophy years: Peter Osgood and Alan Hudson. With financial turmoil brewing, the board held special meetings with the manager and backed him while hoping to retain the stars as attendances and therefore gate receipts suffered. After four straight defeats those two players plus Peter Bonetti and Tommy Baldwin were dropped for a New Year’s Day game in 1974.">ผู้จัดการทีม เดฟ เซ็กซ์ตัน ต้องรับมือกับความสัมพันธ์ที่ย่ำแย่ลงกับอย่างน้อยสองสตาร์ดัง ซึ่งทั้งคู่เป็นผู้เล่นคนสำคัญในปีแห่งการคว้าถ้วยรางวัล: ปีเตอร์ ออสกู้ด และ อลัน ฮัดสัน ด้วยความปั่นป่วนทางการเงินที่ก่อตัวขึ้น คณะกรรมการได้จัดการประชุมพิเศษกับผู้จัดการทีมและสนับสนุนเขาในขณะที่หวังว่าจะรั้งตัวสตาร์ดังไว้ได้ เนื่องจากจำนวนผู้ชมและรายได้จากประตูทางเข้าได้รับผลกระทบ หลังจากพ่ายแพ้สี่นัดรวด สองผู้เล่นนั้นรวมถึง ปีเตอร์ โบเนตติ และ ทอมมี่ บอลด์วิน ถูกดร็อปสำหรับเกมวันปีใหม่ในปี 1974</p>
+
+      <p data-lang-th="มีการสั่งพักการแข่งขัน การขอขึ้นบัญชีย้ายทีม และการขอโทษ แต่ในท้ายที่สุด ออสกู้ดและฮัดสันก็ถูกขายออกไปทั้งคู่ ผู้เล่นคนอื่นๆ จากทีมชุดยิ่งใหญ่ก็ทยอยเดินออกจากทีมตามไป และวันเวลาของเซ็กซ์ตันก็นับถอยหลัง" data-lang-en="There were suspensions, transfer requests and apologies, but eventually Osgood and Hudson were both sold. Others from the great side followed out the door too and Sexton’s days were numbered.">มีการสั่งพักการแข่งขัน การขอขึ้นบัญชีย้ายทีม และการขอโทษ แต่ในท้ายที่สุด ออสกู้ดและฮัดสันก็ถูกขายออกไปทั้งคู่ ผู้เล่นคนอื่นๆ จากทีมชุดยิ่งใหญ่ก็ทยอยเดินออกจากทีมตามไป และวันเวลาของเซ็กซ์ตันก็นับถอยหลัง</p>
+
+      <p data-lang-th="บรรยากาศที่เดอะบริดจ์ได้รับผลกระทบจากการมีสถานที่ก่อสร้างขนาดใหญ่อยู่ข้างสนาม และจำนวนผู้ชมก็ลดลงเรื่อยๆ อัฒจันทร์ฝั่งตะวันออกเปิดใช้งานล่าช้ากว่ากำหนดหนึ่งปีและงบบานปลายอย่างมาก เมล็ดพันธุ์แห่งปัญหาสำหรับคนรุ่นต่อไปได้ถูกหว่านลงแล้วเมื่อสโมสรขอให้ธนาคารขยายวงเงินเบิกเกินบัญชี ในเชิงสัญลักษณ์ ในเกมแรกที่เล่นต่อหน้าอัฒจันทร์ใหม่ เชลซีพ่ายแพ้ให้กับคาร์ไลล์ ยูไนเต็ด ทีมน้องใหม่ในลีกสูงสุด เมื่อสิ้นสุดฤดูกาล ทั้งสองสโมสรก็กลับมาพบกันอีกครั้ง – ในการตกชั้น ความปรารถนาใดๆ ที่จะพัฒนาอีกสามด้านของสนามเพื่อให้ทัดเทียมกับอัฒจันทร์ฝั่งตะวันออกถูกพับเก็บไปอย่างเงียบๆ" data-lang-en="The atmosphere at the Bridge was hit anyway by having a massive building site on one side of the pitch, and there were dwindling crowds, too. The East Stand was eventually opened a year behind schedule and significantly over budget. The seeds of problems for a generation to come had been sown as the club asked the bank to extend an overdraft. Symbolically, in the first game played in front of the new stand, Chelsea lost to top-flight newcomers Carlisle United. At the end of the season the two clubs were united again – in relegation. Any aspirations for the other three sides of the ground to be redeveloped to match the East Stand were quietly shelved.">บรรยากาศที่เดอะบริดจ์ได้รับผลกระทบจากการมีสถานที่ก่อสร้างขนาดใหญ่อยู่ข้างสนาม และจำนวนผู้ชมก็ลดลงเรื่อยๆ อัฒจันทร์ฝั่งตะวันออกเปิดใช้งานล่าช้ากว่ากำหนดหนึ่งปีและงบบานปลายอย่างมาก เมล็ดพันธุ์แห่งปัญหาสำหรับคนรุ่นต่อไปได้ถูกหว่านลงแล้วเมื่อสโมสรขอให้ธนาคารขยายวงเงินเบิกเกินบัญชี ในเชิงสัญลักษณ์ ในเกมแรกที่เล่นต่อหน้าอัฒจันทร์ใหม่ เชลซีพ่ายแพ้ให้กับคาร์ไลล์ ยูไนเต็ด ทีมน้องใหม่ในลีกสูงสุด เมื่อสิ้นสุดฤดูกาล ทั้งสองสโมสรก็กลับมาพบกันอีกครั้ง – ในการตกชั้น ความปรารถนาใดๆ ที่จะพัฒนาอีกสามด้านของสนามเพื่อให้ทัดเทียมกับอัฒจันทร์ฝั่งตะวันออกถูกพับเก็บไปอย่างเงียบๆ</p>
+
+      <hr>
+
+      <p data-lang-th="สโมสรกำลังอยู่ในภาวะใกล้ล้มละลายและต้องต่อสู้เพื่อความอยู่รอด แต่เนื่องจากนี่คือเชลซีที่เปรียบเสมือนรถไฟเหาะตีลังกา จึงมีช่วงเวลาขาขึ้นที่น่าทึ่งพอๆ กับการดิ่งลงครั้งใหญ่" data-lang-en="The club was on the verge of bankruptcy and fighting for our very existence but this being helter-skelter Chelsea, there were dramatic ups as well as the big slide down.">สโมสรกำลังอยู่ในภาวะใกล้ล้มละลายและต้องต่อสู้เพื่อความอยู่รอด แต่เนื่องจากนี่คือเชลซีที่เปรียบเสมือนรถไฟเหาะตีลังกา จึงมีช่วงเวลาขาขึ้นที่น่าทึ่งพอๆ กับการดิ่งลงครั้งใหญ่</p>
+
+      <p data-lang-th="การซื้อนักเตะใหม่แทบจะเป็นไปไม่ได้เลยในทางทหารเงิน ดังนั้นฝ่ายจัดการทีมจึงหันกลับมาใช้ระบบเยาวชนอีกครั้ง เรย์ วิลกินส์ คืออัญมณีเม็ดงามที่เพิ่งเริ่มเปล่งประกายและได้รับมอบปลอกแขนกัปตันทีมในวัยเพียง 18 ปี โดยหนึ่งในเสาหลักของยุคโดเคอร์ตี้/เซ็กซ์ตัน อย่าง เอ็ดดี้ แม็คเครดี้ ฟูลแบ็คที่ตอนนี้กลายมาเป็นผู้จัดการทีมหนุ่มผู้คุมบังเหียน" data-lang-en="Buying new players was pretty much out of the question financially so the team management turned once again to the youth scheme. Ray Wilkins was a new, young jewel already beginning to glisten and was handed the captaincy at just 18 by one of the stalwarts of the Docherty/Sexton era, full-back Eddie McCreadie, now the young manager in charge.">การซื้อนักเตะใหม่แทบจะเป็นไปไม่ได้เลยในทางทหารเงิน ดังนั้นฝ่ายจัดการทีมจึงหันกลับมาใช้ระบบเยาวชนอีกครั้ง เรย์ วิลกินส์ คืออัญมณีเม็ดงามที่เพิ่งเริ่มเปล่งประกายและได้รับมอบปลอกแขนกัปตันทีมในวัยเพียง 18 ปี โดยหนึ่งในเสาหลักของยุคโดเคอร์ตี้/เซ็กซ์ตัน อย่าง เอ็ดดี้ แม็คเครดี้ ฟูลแบ็คที่ตอนนี้กลายมาเป็นผู้จัดการทีมหนุ่มผู้คุมบังเหียน</p>
+
+      <p data-lang-th="'คนอย่าง จอห์น ฮอลลินส์, มาร์วิน ฮินตัน, ปีเตอร์ เฮาส์แมน; ผมตระหนักว่านักเตะที่ยอดเยี่ยม วิเศษ และเพื่อนของผมเหล่านี้ ไม่สามารถพาสโมสรกลับไปยังจุดที่ต้องการได้' แม็คเครดี้กล่าวในเวลาต่อมา" data-lang-en="‘People like John Hollins, Marvin Hinton, Peter Houseman; I realised that these fine, wonderful players – and my friends – were not going to put the club back where it wanted to go,’ McCreadie said later.">'คนอย่าง จอห์น ฮอลลินส์, มาร์วิน ฮินตัน, ปีเตอร์ เฮาส์แมน; ผมตระหนักว่านักเตะที่ยอดเยี่ยม วิเศษ และเพื่อนของผมเหล่านี้ ไม่สามารถพาสโมสรกลับไปยังจุดที่ต้องการได้' แม็คเครดี้กล่าวในเวลาต่อมา</p>
+
+      <p data-lang-th="เพื่อนร่วมทีมเก่าของแม็คเครดี้บางคนยังคงอยู่เพื่อมอบประสบการณ์ – โบเนตติ, รอน แฮร์ริส และ ชาร์ลี คุก แต่ทีมในช่วงกลางทศวรรษ 1970 เกือบจะเป็นเด็กลูกหม้อหน้าใหม่ทั้งหมด และเมื่อพวกเขาเริ่มประสบความสำเร็จอย่างไม่คาดคิดในช่วงเวลาแห่งความยากลำบาก สายใยผูกพันก็ถูกสร้างขึ้นกับแฟนบอล ซึ่งทำให้พวกเขาถูกจารึกว่าเป็นหนึ่งในทีมเชลซีที่ได้รับความนิยมอย่างยาวนานที่สุด" data-lang-en="A few of McCreadie’s old team-mates remained to provide experience – Bonetti, Ron Harris and Charlie Cooke, but the mid-1970s team was almost entirely youthful homegrowns and as they began to achieve unexpectedly in a time of adversity, a bond was formed with supporters that marks them down as one of the most enduringly popular Chelsea teams.">เพื่อนร่วมทีมเก่าของแม็คเครดี้บางคนยังคงอยู่เพื่อมอบประสบการณ์ – โบเนตติ, รอน แฮร์ริส และ ชาร์ลี คุก แต่ทีมในช่วงกลางทศวรรษ 1970 เกือบจะเป็นเด็กลูกหม้อหน้าใหม่ทั้งหมด และเมื่อพวกเขาเริ่มประสบความสำเร็จอย่างไม่คาดคิดในช่วงเวลาแห่งความยากลำบาก สายใยผูกพันก็ถูกสร้างขึ้นกับแฟนบอล ซึ่งทำให้พวกเขาถูกจารึกว่าเป็นหนึ่งในทีมเชลซีที่ได้รับความนิยมอย่างยาวนานที่สุด</p>
+
+      <p data-lang-th="แกรี่ ล็อค, สตีฟ วิกส์ และยักษ์ใหญ่มิกกี้ ดรอย คือผู้เล่นในแดนหลัง เรย์ ลูวิงตัน เป็นคู่หูของวิลกินส์ในแดนกลาง พร้อมด้วยแกร์รี่ สแตนลีย์ผู้เปี่ยมพลังและเอียน บริตตันผู้ขยันขันแข็งริมเส้น เคนนี่ สเวน เป็นกองหน้าที่มีสไตล์ และสตีฟ 'จ็อค' ฟินเนสตัน ก็ทำประตูได้อย่างมากมาย และส่งตรงมาจากอัฒจันทร์ Shed End คือกองหน้าวัยรุ่น ทอมมี่ แลงลีย์ ผู้ซึ่งเป็นแฟนบอลสิงห์บลูส์มาตั้งแต่เด็ก" data-lang-en="Gary Locke, Steve Wicks and the giant Micky Droy were players at the back. Ray Lewington was Wilkins’ foil in midfield, with the dynamic Garry Stanley and bustling Ian Britton out wide. Kenny Swain was a stylish forward and Steve ‘Jock’ Finnieston provided plenty of goals. And straight out of the Shed End was teenage striker Tommy Langley, a boyhood Blues fan.">แกรี่ ล็อค, สตีฟ วิกส์ และยักษ์ใหญ่มิกกี้ ดรอย คือผู้เล่นในแดนหลัง เรย์ ลูวิงตัน เป็นคู่หูของวิลกินส์ในแดนกลาง พร้อมด้วยแกร์รี่ สแตนลีย์ผู้เปี่ยมพลังและเอียน บริตตันผู้ขยันขันแข็งริมเส้น เคนนี่ สเวน เป็นกองหน้าที่มีสไตล์ และสตีฟ 'จ็อค' ฟินเนสตัน ก็ทำประตูได้อย่างมากมาย และส่งตรงมาจากอัฒจันทร์ Shed End คือกองหน้าวัยรุ่น ทอมมี่ แลงลีย์ ผู้ซึ่งเป็นแฟนบอลสิงห์บลูส์มาตั้งแต่เด็ก</p>
+
+      <p data-lang-th="ภายในสองฤดูกาล ทีมของแม็คเครดี้ก็คว้าสิทธิ์เลื่อนชั้นกลับสู่ลีกสูงสุด ซึ่งเป็นเส้นชีวิตสำคัญสำหรับสโมสรที่กำลังถูกบดขยี้ด้วยหนี้สินที่พุ่งสูงถึง 3.4 ล้านปอนด์ สิ่งที่น่าทึ่งคือมีการเรี่ยไรเงินในระหว่างการแข่งขัน โดยแฟนบอลถูกขอให้ควักเศษเหรียญในกระเป๋าเพื่อช่วยค้ำจุนอนาคตของสโมสร" data-lang-en="Within two seasons McCreadie’s team had won promotion back to the top division, a vital lifeline for club being crushed by debt that had soared to £3.4 million. Remarkably, collections were being held at games as fans were asked to dip into pockets for loose change to help secure their club’s future.">ภายในสองฤดูกาล ทีมของแม็คเครดี้ก็คว้าสิทธิ์เลื่อนชั้นกลับสู่ลีกสูงสุด ซึ่งเป็นเส้นชีวิตสำคัญสำหรับสโมสรที่กำลังถูกบดขยี้ด้วยหนี้สินที่พุ่งสูงถึง 3.4 ล้านปอนด์ สิ่งที่น่าทึ่งคือมีการเรี่ยไรเงินในระหว่างการแข่งขัน โดยแฟนบอลถูกขอให้ควักเศษเหรียญในกระเป๋าเพื่อช่วยค้ำจุนอนาคตของสโมสร</p>
+
+      <p data-lang-th="รถไฟเหาะยังคงดำเนินต่อไปเมื่อเพียงสองเดือนหลังจากที่เขานำทีมเลื่อนชั้น แม็คเครดี้ลาออกเนื่องจากข้อพิพาทเรื่องสัญญากับคณะกรรมการ สำหรับคนภายนอก ดูเหมือนว่าสโมสรจะมีปืนที่บรรจุกระสุนและเล็งไปที่เท้าของตัวเองเสมอ" data-lang-en="The rollercoaster continued when only two months after he had led the team to promotion, McCreadie resigned following a contract dispute with the board. To those outside, it seemed the club always had a gun loaded and pointed at its own foot.">รถไฟเหาะยังคงดำเนินต่อไปเมื่อเพียงสองเดือนหลังจากที่เขานำทีมเลื่อนชั้น แม็คเครดี้ลาออกเนื่องจากข้อพิพาทเรื่องสัญญากับคณะกรรมการ สำหรับคนภายนอก ดูเหมือนว่าสโมสรจะมีปืนที่บรรจุกระสุนและเล็งไปที่เท้าของตัวเองเสมอ</p>
+
+      <hr>
+
+      <p data-lang-th="ยิ่งไปกว่านั้น ผู้ชมส่วนหนึ่งที่เข้าชมเกมของเราก็ก่อปัญหาที่สร้างความเสียหายอื่นๆ ปัญหาฮูลิแกนในการแข่งขันฟุตบอล ความรุนแรงต่อแฟนบอลฝ่ายตรงข้าม และการทำลายทรัพย์สินในสนามกีฬา ผับ และยานพาหนะ มีมาตั้งแต่ทศวรรษ 1960 แต่มันกลายเป็นสิ่งที่ฝังรากลึกและแพร่หลายในช่วงทศวรรษ 1970 นี่คือวัฒนธรรมย่อยและปรากฏการณ์ทางสังคมที่มีพิธีกรรม อาณาเขต และลำดับชั้นของมันเอง และชื่อเสียงของเชลซีในเรื่องพฤติกรรมแย่ๆ ของแฟนบอลก็ติดอันดับต้นๆ ของกลุ่มที่เลวร้ายที่สุด" data-lang-en="On top of that, a proportion of those attending our games were causing other damaging problems. Hooliganism at football matches, violence against opposition fans and vandalism in stadiums, pubs and on transport dated back to the 1960s, but it had become ingrained and endemic during the 1970s. This was a sub-culture and social phenomenon with its own rituals, territories and hierarchies, and Chelsea’s reputation for bad fan behaviour was up there with the worst.">ยิ่งไปกว่านั้น ผู้ชมส่วนหนึ่งที่เข้าชมเกมของเราก็ก่อปัญหาที่สร้างความเสียหายอื่นๆ ปัญหาฮูลิแกนในการแข่งขันฟุตบอล ความรุนแรงต่อแฟนบอลฝ่ายตรงข้าม และการทำลายทรัพย์สินในสนามกีฬา ผับ และยานพาหนะ มีมาตั้งแต่ทศวรรษ 1960 แต่มันกลายเป็นสิ่งที่ฝังรากลึกและแพร่หลายในช่วงทศวรรษ 1970 นี่คือวัฒนธรรมย่อยและปรากฏการณ์ทางสังคมที่มีพิธีกรรม อาณาเขต และลำดับชั้นของมันเอง และชื่อเสียงของเชลซีในเรื่องพฤติกรรมแย่ๆ ของแฟนบอลก็ติดอันดับต้นๆ ของกลุ่มที่เลวร้ายที่สุด</p>
+
+      <p data-lang-th="ขณะที่กลุ่มแฟนบอลรุ่นเยาว์เดินทางไปชมเกมเยือนในจำนวนที่ไม่เคยมีมาก่อน ความเป็นจริงก็คือ แฟนบอลคนอื่นๆ อีกหลายคนรู้สึกขยะแขยงกับสิ่งที่ประสบการณ์ในวันแข่งขันกลายเป็น และเลือกที่จะไม่ไปสนาม ฟุตบอลกำลังสูญเสียความน่าดึงดูดใจในวงกว้าง และจำนวนผู้ชมทั่วประเทศก็ลดลง มันเป็นสิ่งสุดท้ายที่เชลซีต้องการ ซึ่งได้รับผลกระทบจากผลงานของทีมและวิกฤตกระแสเงินสดอยู่แล้ว" data-lang-en="While bands of young supporters travelled to away games in numbers never seen before, the reality was many other fans were repulsed by what the matchday experience had become and stayed away. Football was losing its broader appeal and attendances across the country declined. It was the last thing needed at Chelsea, already impacted by the team’s struggles and the cash-flow crisis.">ขณะที่กลุ่มแฟนบอลรุ่นเยาว์เดินทางไปชมเกมเยือนในจำนวนที่ไม่เคยมีมาก่อน ความเป็นจริงก็คือ แฟนบอลคนอื่นๆ อีกหลายคนรู้สึกขยะแขยงกับสิ่งที่ประสบการณ์ในวันแข่งขันกลายเป็น และเลือกที่จะไม่ไปสนาม ฟุตบอลกำลังสูญเสียความน่าดึงดูดใจในวงกว้าง และจำนวนผู้ชมทั่วประเทศก็ลดลง มันเป็นสิ่งสุดท้ายที่เชลซีต้องการ ซึ่งได้รับผลกระทบจากผลงานของทีมและวิกฤตกระแสเงินสดอยู่แล้ว</p>
+
+      <p data-lang-th="รัฐบาลเข้ามาแทรกแซง โดยพยายามแบนแฟนบอลเชลซีจากการเข้าชมเกมเยือน และเมื่อปัญหาลุกลามเข้าสู่ทศวรรษ 1980 ก็มีข้อเสนอเรื่องระบบบัตรประจำตัวประชาชน มีกระทั่งการติดตั้งรั้วไฟฟ้าเพื่อควบคุมแฟนบอลที่สแตมฟอร์ดบริดจ์ แต่ไม่เคยถูกเปิดใช้งาน – ซึ่งน่าขันที่เป็นเพราะเหตุผลด้านความปลอดภัย" data-lang-en="The government stepped in, attempting to ban Chelsea fans from away games and, as the problem spiralled into the 1980s, there was talk of national ID schemes. Electric fencing to contain supporters was even installed at Stamford Bridge, but never switched on – ironically for safety reasons.">รัฐบาลเข้ามาแทรกแซง โดยพยายามแบนแฟนบอลเชลซีจากการเข้าชมเกมเยือน และเมื่อปัญหาลุกลามเข้าสู่ทศวรรษ 1980 ก็มีข้อเสนอเรื่องระบบบัตรประจำตัวประชาชน มีกระทั่งการติดตั้งรั้วไฟฟ้าเพื่อควบคุมแฟนบอลที่สแตมฟอร์ดบริดจ์ แต่ไม่เคยถูกเปิดใช้งาน – ซึ่งน่าขันที่เป็นเพราะเหตุผลด้านความปลอดภัย</p>
+
+      <p data-lang-th="ในที่สุด ฟุตบอล สังคม และทางการก็สามารถควบคุมปัญหาฮูลิแกนได้ มีหลายปัจจัยที่เข้ามามีบทบาท ทั้งกล้องวงจรปิด (CCTV), ผลกระทบจากโศกนาฏกรรมอันเลวร้าย, สนามแบบที่นั่งล้วน, ฟุตบอลกลับมาได้รับความนิยมอีกครั้งด้วยกลุ่มประชากรใหม่ที่ช่วยเพิ่มจำนวนผู้ชม เชลซีจะได้รับประโยชน์จากการพัฒนาเหล่านั้น แต่ย้อนกลับไปในช่วงกลางทศวรรษ 1970 ความรุนแรงที่เกี่ยวข้องกับการแข่งขันได้เพิ่มเมฆหมอกปกคลุมเหนือสแตมฟอร์ดบริดจ์" data-lang-en="Steadily, football, society and authorities put a lid on the hooligan problem. Many factors played their part, from CCTV, the impact of dreadful disasters, all-seater stadiums, football becoming fashionable again with a new demographic boosting crowds. Chelsea would benefit from those developments, but back in the mid-1970s match-related violence added to the cloud over Stamford Bridge.">ในที่สุด ฟุตบอล สังคม และทางการก็สามารถควบคุมปัญหาฮูลิแกนได้ มีหลายปัจจัยที่เข้ามามีบทบาท ทั้งกล้องวงจรปิด (CCTV), ผลกระทบจากโศกนาฏกรรมอันเลวร้าย, สนามแบบที่นั่งล้วน, ฟุตบอลกลับมาได้รับความนิยมอีกครั้งด้วยกลุ่มประชากรใหม่ที่ช่วยเพิ่มจำนวนผู้ชม เชลซีจะได้รับประโยชน์จากการพัฒนาเหล่านั้น แต่ย้อนกลับไปในช่วงกลางทศวรรษ 1970 ความรุนแรงที่เกี่ยวข้องกับการแข่งขันได้เพิ่มเมฆหมอกปกคลุมเหนือสแตมฟอร์ดบริดจ์</p>
+
+      <p data-lang-th="เชลซีกลับมาสอดคล้องกับแฟชั่นและยุคสมัยที่กว้างขึ้นอีกครั้ง จากวัฒนธรรมม็อดและสกินเฮดในทศวรรษ 1960 ที่กลายมาเป็นสิ่งที่น่าเกลียดกว่าในยุค 70 King’s Road ของเชลซียังเป็นศูนย์กลางของดนตรีพังก์ร็อกและความกระหายในอนาธิปไตยและสิ่งใหม่ ทั่วทั้งเกาะอังกฤษก็รู้สึกถึงความแตกแยกที่มากขึ้นเช่นกัน โดยมีความขัดแย้งระหว่างกลุ่มวัฒนธรรมย่อยของวัยรุ่น ความรุนแรงแบบสุ่มในงานสังคมทุกรูปแบบ และในช่วงต้นทศวรรษ 1980 มีการจลาจลในเขตเมืองและความไม่สงบทางสังคม ในขณะที่เชลซีประสบปัญหาทางการเงิน เศรษฐกิจของประเทศก็ดิ่งลงสู่ฟอร์มที่ต้องตกชั้นเช่นกัน" data-lang-en="Again Chelsea was chiming with wider fashion and the times. From a mod and skinhead culture in the 1960s that turned into something uglier in the 70s, the King’s Road Chelsea was also the epicentre of punk rock and its thirst for anarchy and the new. Across Britain it felt a more fractious time too, with youth sub-cultures in conflict, random violence at all sorts of social gatherings and in the early 1980s, inner-city riots and social unrest. As Chelsea struggled financially, the country’s economy hit relegation form too.">เชลซีกลับมาสอดคล้องกับแฟชั่นและยุคสมัยที่กว้างขึ้นอีกครั้ง จากวัฒนธรรมม็อดและสกินเฮดในทศวรรษ 1960 ที่กลายมาเป็นสิ่งที่น่าเกลียดกว่าในยุค 70 King’s Road ของเชลซียังเป็นศูนย์กลางของดนตรีพังก์ร็อกและความกระหายในอนาธิปไตยและสิ่งใหม่ ทั่วทั้งเกาะอังกฤษก็รู้สึกถึงความแตกแยกที่มากขึ้นเช่นกัน โดยมีความขัดแย้งระหว่างกลุ่มวัฒนธรรมย่อยของวัยรุ่น ความรุนแรงแบบสุ่มในงานสังคมทุกรูปแบบ และในช่วงต้นทศวรรษ 1980 มีการจลาจลในเขตเมืองและความไม่สงบทางสังคม ในขณะที่เชลซีประสบปัญหาทางการเงิน เศรษฐกิจของประเทศก็ดิ่งลงสู่ฟอร์มที่ต้องตกชั้นเช่นกัน</p>
+
+      <hr>
+
+      <p data-lang-th="แม้แม็คเครดี้จะอำลาตำแหน่งกุนซือไปแล้ว แต่ก็ยังมีช่วงเวลาแห่งความมหัศจรรย์เมื่อลิเวอร์พูล แชมป์ยุโรป ถูกถล่มไป 4-2 ในเอฟเอคัพ โดยมี ไคลฟ์ วอล์คเกอร์ กองหน้าดาวรุ่งผู้ปราดเปรียวเป็นตัวชูโรง แต่การกลับคืนสู่ลีกสูงสุดของเราก็อยู่ได้ไม่นาน เมื่อรถไฟเหาะดิ่งลงสู่จุดต่ำสุดอีกครั้ง" data-lang-en="Despite McCreadie’s departure from the dugout, there was a moment of magic when European champions Liverpool were smashed 4-2 in the FA Cup with speedy young attacker Clive Walker to the fore, but our return to the top division did not last long as the rollercoaster went into one of its big dips again.">แม้แม็คเครดี้จะอำลาตำแหน่งกุนซือไปแล้ว แต่ก็ยังมีช่วงเวลาแห่งความมหัศจรรย์เมื่อลิเวอร์พูล แชมป์ยุโรป ถูกถล่มไป 4-2 ในเอฟเอคัพ โดยมี ไคลฟ์ วอล์คเกอร์ กองหน้าดาวรุ่งผู้ปราดเปรียวเป็นตัวชูโรง แต่การกลับคืนสู่ลีกสูงสุดของเราก็อยู่ได้ไม่นาน เมื่อรถไฟเหาะดิ่งลงสู่จุดต่ำสุดอีกครั้ง</p>
+
+      <p data-lang-th="ผู้จัดการทีมหลายคน รวมถึงเจฟฟ์ เฮิร์สต์ ฮีโร่ผู้ทำแฮตทริกในฟุตบอลโลกปี 1966 ของอังกฤษ สลับสับเปลี่ยนกันมาและไปบ่อยครั้งจนน่าตกใจ และมีข่าวลืออีกครั้งเกี่ยวกับการเซ็นสัญญาคว้าตัวซูเปอร์สตาร์อย่าง โยฮัน ครัฟฟ์ ตำนานชาวดัตช์ – แต่วันเหล่านั้นยังคงอยู่อีกยาวไกล" data-lang-en="Managers, including England’s 1966 World Cup hat-trick hero Geoff Hurst, came and went with startling frequency, and there was talk once more of glamorous signings like Netherlands legend Johan Cruyff – but those days were some way off.">ผู้จัดการทีมหลายคน รวมถึงเจฟฟ์ เฮิร์สต์ ฮีโร่ผู้ทำแฮตทริกในฟุตบอลโลกปี 1966 ของอังกฤษ สลับสับเปลี่ยนกันมาและไปบ่อยครั้งจนน่าตกใจ และมีข่าวลืออีกครั้งเกี่ยวกับการเซ็นสัญญาคว้าตัวซูเปอร์สตาร์อย่าง โยฮัน ครัฟฟ์ ตำนานชาวดัตช์ – แต่วันเหล่านั้นยังคงอยู่อีกยาวไกล</p>
+
+      <p data-lang-th="แม้ว่าลิเวอร์พูลจะถูกเขี่ยตกรอบบอลถ้วยอีกครั้งโดยทีมสิงห์บลูส์ที่ตอนนี้อยู่ในดิวิชั่นสองเมื่อปี 1982 แต่ความหวังที่จะกลับสู่ลีกสูงสุดอย่างรวดเร็วก็มลายหายไป และแม้ว่าหนี้สินจะลดลงเหลือ 1.3 ล้านปอนด์ (ส่วนหนึ่งเป็นผลมาจากการขาย เรย์ วิลกินส์ สตาร์ประจำทีมให้กับแมนฯ ยูไนเต็ด) แต่ความรู้สึกที่ว่าล้มละลายกำลังจ่อคอหอยก็ไม่เคยจางหายไป จำนวนผู้ชมต่ำกว่า 10,000 คนที่สแตมฟอร์ดบริดจ์ไม่ใช่เรื่องแปลก" data-lang-en="Although Liverpool were once again dumped out the cup by the now second division Blues in 1982, optimism for a quick return to the top flight evaporated. And although the debt had been brought down to £1.3 million (helped partly by the sale of generational star player Wilkins to Man United), the wolf of bankruptcy never felt far from the door. Crowds of under 10,000 at Stamford Bridge were not unknown.">แม้ว่าลิเวอร์พูลจะถูกเขี่ยตกรอบบอลถ้วยอีกครั้งโดยทีมสิงห์บลูส์ที่ตอนนี้อยู่ในดิวิชั่นสองเมื่อปี 1982 แต่ความหวังที่จะกลับสู่ลีกสูงสุดอย่างรวดเร็วก็มลายหายไป และแม้ว่าหนี้สินจะลดลงเหลือ 1.3 ล้านปอนด์ (ส่วนหนึ่งเป็นผลมาจากการขาย เรย์ วิลกินส์ สตาร์ประจำทีมให้กับแมนฯ ยูไนเต็ด) แต่ความรู้สึกที่ว่าล้มละลายกำลังจ่อคอหอยก็ไม่เคยจางหายไป จำนวนผู้ชมต่ำกว่า 10,000 คนที่สแตมฟอร์ดบริดจ์ไม่ใช่เรื่องแปลก</p>
+
+      <p data-lang-th="สำหรับสโมสรอื่น สิ่งนี้อาจหมายถึงการหายไปจากความทรงจำของคนทั้งประเทศ – แต่ไม่ใช่กับสโมสรแห่ง King’s Road การดิ้นรนของเราถูกติดตามอย่างกว้างขวาง และเมื่อถึงจุดหนึ่ง การที่ทีมยิงประตูแทบไม่ได้เลยเป็นเวลาครึ่งฤดูกาล ก็กลายเป็นประเด็นที่คู่ควรกับการรายงานในข่าวโทรทัศน์เย็นวันเสาร์ สถิตินั้นทำให้เฮิร์สต์ต้องตกงานในฐานะผู้จัดการทีม" data-lang-en="For other clubs, this might have meant disappearing from the national consciousness – but not the King’s Road club. Our struggles were widely followed and, at one point, the team’s failure to score barely any goals for half-a-season became worthy of a Saturday evening update on the television news. That run cost Hurst his job as manager.">สำหรับสโมสรอื่น สิ่งนี้อาจหมายถึงการหายไปจากความทรงจำของคนทั้งประเทศ – แต่ไม่ใช่กับสโมสรแห่ง King’s Road การดิ้นรนของเราถูกติดตามอย่างกว้างขวาง และเมื่อถึงจุดหนึ่ง การที่ทีมยิงประตูแทบไม่ได้เลยเป็นเวลาครึ่งฤดูกาล ก็กลายเป็นประเด็นที่คู่ควรกับการรายงานในข่าวโทรทัศน์เย็นวันเสาร์ สถิตินั้นทำให้เฮิร์สต์ต้องตกงานในฐานะผู้จัดการทีม</p>
+
+      <p data-lang-th="ฤดูกาล 1982/83 ถือเป็นฤดูกาลที่เลวร้ายที่สุดในประวัติศาสตร์เชลซีในแง่ของผลงาน ขณะที่ทีมเดินทางขึ้นเหนือไปยังโบลตันสำหรับเกมนัดรองสุดท้ายของเรา เราตกอยู่ในสถานการณ์ที่ยากลำบากชนิดที่ว่า ฝ่ายใดที่แพ้การแข่งขันนัดนั้นจะต้องตกชั้นสู่ดิวิชั่นสามอย่างแน่นอน สำหรับทีมสิงห์บลูส์ การตกชั้นสู่ลีกระดับสามที่ไม่เคยเกิดขึ้นมาก่อน นำมาซึ่งภัยคุกคามในการล่มสลายภายใต้น้ำหนักของหนี้สินและการไม่มีวันหวนกลับ" data-lang-en="The 1982/83 season ranks as the worst in Chelsea history in terms of performance. As the team travelled up to Bolton for our penultimate game we were in such a predicament that whichever side lost that match was surely destined for the third division. For the Blues, an unprecedented relegation to the third tier carried the existential threat of collapse under the weight of debt and no return.">ฤดูกาล 1982/83 ถือเป็นฤดูกาลที่เลวร้ายที่สุดในประวัติศาสตร์เชลซีในแง่ของผลงาน ขณะที่ทีมเดินทางขึ้นเหนือไปยังโบลตันสำหรับเกมนัดรองสุดท้ายของเรา เราตกอยู่ในสถานการณ์ที่ยากลำบากชนิดที่ว่า ฝ่ายใดที่แพ้การแข่งขันนัดนั้นจะต้องตกชั้นสู่ดิวิชั่นสามอย่างแน่นอน สำหรับทีมสิงห์บลูส์ การตกชั้นสู่ลีกระดับสามที่ไม่เคยเกิดขึ้นมาก่อน นำมาซึ่งภัยคุกคามในการล่มสลายภายใต้น้ำหนักของหนี้สินและการไม่มีวันหวนกลับ</p>
+
+      <p data-lang-th="วอล์คเกอร์คือผู้กอบกู้สถานการณ์ในวันนั้นท่ามกลางสายฝนที่เทกระหน่ำในแลงคาเชียร์ ด้วยการทำประตูท้ายเกมที่มีค่าเกินจะบรรยาย และนักเตะส่วนใหญ่ต่างถอดเสื้อโยนไปให้กลุ่มแฟนบอลทีมเยือนที่กำลังปลาบปลื้มใจ ตามธรรมเนียมในยุคนั้น ค่าเสื้อตัวใหม่ถูกหักออกจากค่าจ้างของพวกเขา สุดสัปดาห์ต่อมา การเสมอ 0-0 ในบ้านในเกมนัดสุดท้ายทำให้การหนีตายสมบูรณ์แบบ แต่แม้จะโล่งใจ สโมสรฟุตบอลเชลซีก็ยังคงอยู่ในสภาพที่ย่ำแย่อย่างแท้จริง" data-lang-en="It was Walker who saved that day in the pouring Lancashire rain with a late goal of indescribable value and most players threw their shirts into the jubilant massed ranks of travelling supporters. Typically for the time, the cost of replacement jerseys was docked from their wages. The following weekend, a 0-0 draw at home in the final game completed the escape, but despite the relief Chelsea Football Club was still in a real mess.">วอล์คเกอร์คือผู้กอบกู้สถานการณ์ในวันนั้นท่ามกลางสายฝนที่เทกระหน่ำในแลงคาเชียร์ ด้วยการทำประตูท้ายเกมที่มีค่าเกินจะบรรยาย และนักเตะส่วนใหญ่ต่างถอดเสื้อโยนไปให้กลุ่มแฟนบอลทีมเยือนที่กำลังปลาบปลื้มใจ ตามธรรมเนียมในยุคนั้น ค่าเสื้อตัวใหม่ถูกหักออกจากค่าจ้างของพวกเขา สุดสัปดาห์ต่อมา การเสมอ 0-0 ในบ้านในเกมนัดสุดท้ายทำให้การหนีตายสมบูรณ์แบบ แต่แม้จะโล่งใจ สโมสรฟุตบอลเชลซีก็ยังคงอยู่ในสภาพที่ย่ำแย่อย่างแท้จริง</p>
+
+      <p data-lang-th="อย่างไรก็ตาม ในโอกาสนี้ คำกล่าวอันโด่งดังนั้นได้รับการพิสูจน์แล้วว่าเป็นความจริง: ช่วงเวลาที่มืดมิดที่สุดคือช่วงก่อนรุ่งสาง" data-lang-en="On this occasion, however, that famous saying proved true: the darkest hour really was just before dawn.">อย่างไรก็ตาม ในโอกาสนี้ คำกล่าวอันโด่งดังนั้นได้รับการพิสูจน์แล้วว่าเป็นความจริง: ช่วงเวลาที่มืดมิดที่สุดคือช่วงก่อนรุ่งสาง</p>
+
+      <!-- Chapter End -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๕ —" data-lang-en="— End of Chapter 5 —">— จบบทที่ ๕ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-4.html" class="chapter-nav__back" data-lang-th="← บทที่ ๔" data-lang-en="← Chapter 4">← บทที่ ๔</a>
+          <a href="chapter-6.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๖ →" data-lang-en="Read Chapter 6 →">อ่านบทที่ ๖ →</a>
+        </div>
+      </div>
+
+    </div><!-- /.article__inner -->
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:60px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== FLOATING CLOCK ===================== -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // CHAPTER LANGUAGE TOGGLE (TH / EN)
+    // ============================================
+    let chapterLang = 'th';
+
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        if (chapterLang === 'th') {
+          el.innerHTML = el.getAttribute('data-lang-th');
+        } else {
+          el.innerHTML = el.getAttribute('data-lang-en');
+        }
+      });
+    }
+
+    // ============================================
+    // FLOATING CLOCK
+    // ============================================
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    updateFloatingClocks();
+    setInterval(updateFloatingClocks, 1000);
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+    });
+  </script>
+</body>
+</html>

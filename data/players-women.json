@@ -1,0 +1,1650 @@
+[
+  {
+    "id": 1,
+    "name": "Livia Peng",
+    "position": "Goalkeeper",
+    "number": 1,
+    "nationality": "Switzerland",
+    "image": "assets/images/players/women/livia-peng.jpg",
+    "height": 171,
+    "foot": null,
+    "date_of_birth": "2002-03-14",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Werder Bremen",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูชาวสวิตเซอร์แลนด์ ย้ายมาร่วมทีมเชลซีในเดือนกรกฎาคม 2025 จากแวร์เดอร์ เบรเมน",
+    "biography_en": "Swiss goalkeeper who joined Chelsea in July 2025 from Werder Bremen.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "Hannah Hampton",
+    "position": "Goalkeeper",
+    "number": 24,
+    "nationality": "England",
+    "image": "assets/images/players/women/hannah-hampton.jpg",
+    "height": 173,
+    "foot": null,
+    "date_of_birth": "2000-11-16",
+    "age": 25,
+    "current_club": "Chelsea FC",
+    "joined": "2023-07-01",
+    "signed_from": "Aston Villa",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูชาวอังกฤษ ย้ายมาร่วมทีมเชลซีในเดือนกรกฎาคม 2023 จากแอสตัน วิลล่า",
+    "biography_en": "English goalkeeper who joined Chelsea in July 2023 from Aston Villa.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    }
+  },
+  {
+    "id": 3,
+    "name": "Rebecca Spencer",
+    "position": "Goalkeeper",
+    "number": 38,
+    "nationality": "Jamaica",
+    "image": "assets/images/players/women/becky-spencer.jpg",
+    "height": 167,
+    "foot": null,
+    "date_of_birth": "1991-02-22",
+    "age": 35,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Tottenham Hotspur",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูมากประสบการณ์ชาวจาเมกา ย้ายมาอยู่กับเชลซีในเดือนกรกฎาคม 2025 จากท็อตแน่ม ฮ็อตสเปอร์",
+    "biography_en": "Experienced Jamaican goalkeeper who joined Chelsea in July 2025 from Tottenham Hotspur.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "Ellie Carpenter",
+    "position": "Defender",
+    "number": 2,
+    "nationality": "Australia",
+    "image": "assets/images/players/women/ellie-carpenter.jpg",
+    "height": 164,
+    "foot": null,
+    "date_of_birth": "2000-04-28",
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "OL Lyonnais",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังชาวออสเตรเลีย ย้ายมาร่วมทีมเชลซีในเดือนกรกฎาคม 2025 จากโอลิมปิก ลียง",
+    "biography_en": "Australian defender who joined Chelsea in July 2025 from OL Lyonnais.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "Veerle Buurman",
+    "position": "Defender",
+    "number": 5,
+    "nationality": "Netherlands",
+    "image": "assets/images/players/women/veerle-buurman.jpg",
+    "height": 173,
+    "foot": null,
+    "date_of_birth": "2006-04-21",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "PSV",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ปราการหลังดาวรุ่งชาวดัตช์ กลับมาอยู่กับเชลซีอีกครั้งในเดือนกรกฎาคม 2025 หลังจากการยืมตัวที่พีเอสวี",
+    "biography_en": "Young Dutch defender who rejoined Chelsea in July 2025 following a loan spell at PSV.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "Nathalie Björn",
+    "position": "Defender",
+    "number": 14,
+    "nationality": "Sweden",
+    "image": "assets/images/players/women/nathalie-björn.jpg",
+    "height": 174,
+    "foot": null,
+    "date_of_birth": "1997-05-04",
+    "age": 29,
+    "current_club": "Chelsea FC",
+    "joined": "2024-01-01",
+    "signed_from": "Everton",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังชาวสวีเดน ย้ายมาร่วมทีมเชลซีในเดือนมกราคม 2024 จากเอฟเวอร์ตัน",
+    "biography_en": "Swedish defender who joined Chelsea in January 2024 from Everton.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "Naomi Girma",
+    "position": "Defender",
+    "number": 4,
+    "nationality": "USA",
+    "image": "assets/images/players/women/naomi-girma.png",
+    "height": 170,
+    "foot": null,
+    "date_of_birth": "2000-06-14",
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": "2025-01-01",
+    "signed_from": "San Diego Wave",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 1,
+    "assists": 0,
+    "biography_th": "กองหลังชาวอเมริกัน ย้ายมาร่วมทีมเชลซีในเดือนมกราคม 2025 จากซาน ดิเอโก้ เวฟ",
+    "biography_en": "American defender who moved to Chelsea in January 2025 from San Diego Wave.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 1,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 8,
+    "name": "Niamh Charles",
+    "position": "Defender",
+    "number": 21,
+    "nationality": "England",
+    "image": "assets/images/players/women/niamh-charles.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": null,
+    "age": null,
+    "current_club": null,
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": null,
+    "biography_en": null,
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "Lucy Bronze",
+    "position": "Defender",
+    "number": 22,
+    "nationality": "England",
+    "image": "assets/images/players/women/lucy-bronze.jpg",
+    "height": 172,
+    "foot": null,
+    "date_of_birth": "1991-10-28",
+    "age": 34,
+    "current_club": "Chelsea FC",
+    "joined": "2024-07-01",
+    "signed_from": "Barcelona",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังมากประสบการณ์ชาวอังกฤษ ย้ายมาร่วมทีมเชลซีในเดือนกรกฎาคม 2024 จากบาร์เซโลน่า",
+    "biography_en": "Experienced English defender who linked up with Chelsea in July 2024 from Barcelona.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 10,
+    "name": "Kadeisha Buchanan",
+    "position": "Defender",
+    "number": 26,
+    "nationality": "Canada",
+    "image": "assets/images/players/women/kadeisha-buchanan.jpg",
+    "height": 170,
+    "foot": null,
+    "date_of_birth": "1995-11-05",
+    "age": 30,
+    "current_club": "Chelsea FC",
+    "joined": "2022-07-01",
+    "signed_from": "OL Lyonnais",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังชาวแคนาดา ย้ายมาร่วมทีมเชลซีตั้งแต่เดือนกรกฎาคม 2022 จากโอลิมปิก ลียง",
+    "biography_en": "Canadian defender who joined Chelsea in July 2022 from OL Lyonnais.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 11,
+    "name": "Sjoeke Nüsken",
+    "position": "Midfielder",
+    "number": 6,
+    "nationality": "Germany",
+    "image": "assets/images/players/women/sjoeke-nüsken.png",
+    "height": 173,
+    "foot": null,
+    "date_of_birth": "2001-01-22",
+    "age": 25,
+    "current_club": "Chelsea FC",
+    "joined": "2023-07-01",
+    "signed_from": "Eintracht Frankfurt",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางชาวเยอรมัน ย้ายมาร่วมทีมเชลซีในเดือนกรกฎาคม 2023 จากไอน์ทรัค แฟรงก์เฟิร์ต",
+    "biography_en": "German midfielder who moved to Chelsea in July 2023 from Eintracht Frankfurt.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 12,
+    "name": "Erin Cuthbert",
+    "position": "Midfielder",
+    "number": 8,
+    "nationality": "Scotland",
+    "image": "assets/images/players/women/erin-cuthbert.png",
+    "height": 159,
+    "foot": null,
+    "date_of_birth": "1999-07-19",
+    "age": 28,
+    "current_club": "Chelsea FC",
+    "joined": "2017-01-01",
+    "signed_from": "Rangers",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางทีมชาติสก็อตแลนด์ ค้าแข้งอยู่กับเชลซีมาตั้งแต่เดือนมกราคม 2017 หลังย้ายจากเรนเจอร์ส",
+    "biography_en": "Scottish midfielder who joined Chelsea back in January 2017 from Rangers.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 13,
+    "name": "Wieke Kaptein",
+    "position": "Midfielder",
+    "number": 18,
+    "nationality": "Netherlands",
+    "image": "assets/images/players/women/wieke-kaptein.png",
+    "height": 171,
+    "foot": null,
+    "date_of_birth": "2005-08-29",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "มิดฟิลด์ดาวรุ่งชาวเนเธอร์แลนด์ ผู้เป็นกำลังสำคัญของเชลซี",
+    "biography_en": "Young Dutch midfielder playing for Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 14,
+    "name": "Johanna Rytting Kaneryd",
+    "position": "Midfielder",
+    "number": 19,
+    "nationality": "Sweden",
+    "image": "assets/images/players/women/johanna-rytting-kaneryd.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": null,
+    "age": null,
+    "current_club": null,
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": null,
+    "biography_en": null,
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 15,
+    "name": "Keira Walsh",
+    "position": "Midfielder",
+    "number": 30,
+    "nationality": "England",
+    "image": "assets/images/players/women/keira-walsh.png",
+    "height": 167,
+    "foot": null,
+    "date_of_birth": "1997-04-08",
+    "age": 29,
+    "current_club": "Chelsea FC",
+    "joined": "2025-02-01",
+    "signed_from": "Barcelona",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางชาวอังกฤษ ย้ายมาร่วมทีมเชลซีในเดือนกุมภาพันธ์ 2025 จากบาร์เซโลน่า",
+    "biography_en": "English midfielder who joined Chelsea in February 2025 from Barcelona.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 16,
+    "name": "Lexi Potter",
+    "position": "Midfielder",
+    "number": 32,
+    "nationality": "England",
+    "image": "assets/images/players/women/lexi-potter.png",
+    "height": null,
+    "foot": null,
+    "date_of_birth": "2006-08-17",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2025-07-01",
+    "signed_from": "Crystal Palace",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "มิดฟิลด์ดาวรุ่งชาวอังกฤษ กลับสู่ทีมเชลซีในเดือนกรกฎาคม 2025 หลังจากการยืมตัวที่คริสตัล พาเลซ",
+    "biography_en": "Young English midfielder who returned to Chelsea in July 2025 after a loan spell at Crystal Palace.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 17,
+    "name": "Mayra Ramírez",
+    "position": "Forward",
+    "number": 7,
+    "nationality": "Colombia",
+    "image": "assets/images/players/women/mayra-ramírez.jpg",
+    "height": 177,
+    "foot": null,
+    "date_of_birth": "1999-03-25",
+    "age": 27,
+    "current_club": "Chelsea FC",
+    "joined": "2024-01-01",
+    "signed_from": "Levante",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ตัวรุกชาวโคลอมเบีย ย้ายเข้ามาร่วมทีมเชลซีในเดือนมกราคม 2024 จากเลบานเต้",
+    "biography_en": "Colombian attacker who moved to Chelsea in January 2024 from Levante.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 18,
+    "name": "Lauren James",
+    "position": "Forward",
+    "number": 10,
+    "nationality": "England",
+    "image": "assets/images/players/women/lauren-james.jpg",
+    "height": 167,
+    "foot": null,
+    "date_of_birth": "2001-09-29",
+    "age": 24,
+    "current_club": "Chelsea FC",
+    "joined": "2021-07-01",
+    "signed_from": "Manchester United",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ตัวรุกพรสวรรค์สูงชาวอังกฤษ ย้ายร่วมทีมเชลซีในเดือนกรกฎาคม 2021 จากแมนเชสเตอร์ ยูไนเต็ด",
+    "biography_en": "Talented English attacker who joined Chelsea in July 2021 from Manchester United.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 19,
+    "name": "Alyssa Thompson",
+    "position": "Forward",
+    "number": 12,
+    "nationality": "USA",
+    "image": "assets/images/players/women/alyssa-thompson.jpg",
+    "height": 162,
+    "foot": null,
+    "date_of_birth": "2004-11-07",
+    "age": 21,
+    "current_club": "Chelsea FC",
+    "joined": "2025-09-01",
+    "signed_from": "Angel City",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าชาวอเมริกัน ย้ายมาร่วมทีมเชลซีในเดือนกันยายน 2025 จากแองเจิล ซิตี้",
+    "biography_en": "American forward who moved to Chelsea in September 2025 from Angel City.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 20,
+    "name": "Sandy Baltimore",
+    "position": "Midfielder",
+    "number": 11,
+    "nationality": "France",
+    "image": "assets/images/players/women/sandy-baltimore.jpg",
+    "height": 156,
+    "foot": null,
+    "date_of_birth": null,
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางตัวรุกชาวฝรั่งเศสของทีมเชลซี",
+    "biography_en": "French attacking midfielder playing for Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 21,
+    "name": "Sam Kerr",
+    "position": "Forward",
+    "number": 20,
+    "nationality": "Australia",
+    "image": "assets/images/players/women/sam-kerr.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": null,
+    "age": null,
+    "current_club": null,
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": null,
+    "biography_en": null,
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 22,
+    "name": "Aggie Beever-Jones",
+    "position": "Forward",
+    "number": 33,
+    "nationality": "England",
+    "image": "assets/images/players/women/aggie-beever-jones.png",
+    "height": 173,
+    "foot": null,
+    "date_of_birth": "2003-07-27",
+    "age": 23,
+    "current_club": "Chelsea FC",
+    "joined": "2023-07-01",
+    "signed_from": "Everton",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ตัวรุกชาวอังกฤษ กลับมาอยู่กับเชลซีในเดือนกรกฎาคม 2023 หลังการยืมตัวที่เอฟเวอร์ตัน",
+    "biography_en": "English attacker who rejoined Chelsea in July 2023 after a loan spell at Everton.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 23,
+    "name": "Lola Brown",
+    "position": "Midfielder",
+    "number": 25,
+    "nationality": "England",
+    "image": "assets/images/players/women/lola-brown.png",
+    "height": 163,
+    "foot": null,
+    "date_of_birth": "2007-10-31",
+    "age": 18,
+    "current_club": "Crystal Palace",
+    "joined": "2025-08-01",
+    "signed_from": "Chelsea",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางดาวรุ่งชาวอังกฤษ ย้ายจากเชลซีไปเล่นให้คริสตัล พาเลซ ด้วยสัญญายืมตัวในเดือนสิงหาคม 2025",
+    "biography_en": "Young English midfielder who switched to Crystal Palace on loan in August 2025 from Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 24,
+    "name": "Katie McCabe",
+    "position": "Defender",
+    "number": 15,
+    "nationality": "Republic of Ireland",
+    "image": "assets/images/players/women/katie-mccabe.jpg",
+    "height": 168,
+    "foot": null,
+    "date_of_birth": "1995-09-21",
+    "age": 30,
+    "current_club": "Arsenal",
+    "joined": "2018-01-01",
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 1,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังทีมชาติสาธารณรัฐไอร์แลนด์ ค้าแข้งอยู่กับอาร์เซนอล",
+    "biography_en": "Republic of Ireland defender playing for Arsenal.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 25,
+    "name": "Manaka Matsukubo",
+    "position": "Midfielder",
+    "number": 29,
+    "nationality": "Japan",
+    "image": "assets/images/players/women/manaka-matsukubo.png",
+    "height": null,
+    "foot": null,
+    "date_of_birth": null,
+    "age": null,
+    "current_club": null,
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": null,
+    "biography_en": null,
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 26,
+    "name": "Melvine Malard",
+    "position": "Forward",
+    "number": 9,
+    "nationality": "France",
+    "image": "assets/images/players/women/melvine-malard.jpg",
+    "height": 171,
+    "foot": null,
+    "date_of_birth": "2000-06-28",
+    "age": 26,
+    "current_club": "Manchester United",
+    "joined": "2023-09-01",
+    "signed_from": "OL Lyonnais",
+    "market_value": null,
+    "appearances": 1,
+    "goals": 2,
+    "assists": 0,
+    "biography_th": "กองหน้าชาวฝรั่งเศส ย้ายไปเล่นให้แมนเชสเตอร์ ยูไนเต็ด ในเดือนกันยายน 2023 จากโอลิมปิก ลียง",
+    "biography_en": "French attacker who switched to Manchester United in September 2023 from OL Lyonnais.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 1,
+        "goals": 2,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 27,
+    "name": "Vera Jones",
+    "position": "Forward",
+    "number": 34,
+    "nationality": "England",
+    "image": "assets/images/players/women/vera-jones.jpg",
+    "height": 163,
+    "foot": null,
+    "date_of_birth": "2008-02-18",
+    "age": 18,
+    "current_club": "Bristol City",
+    "joined": "2025-08-01",
+    "signed_from": "Chelsea",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหน้าดาวรุ่งชาวอังกฤษ ย้ายจากเชลซีไปเล่นให้บริสตอล ซิตี้ ด้วยสัญญายืมตัวในเดือนสิงหาคม 2025",
+    "biography_en": "Young English attacker who moved to Bristol City on loan in August 2025 from Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 28,
+    "name": "Maika Hamano",
+    "position": "Forward",
+    "number": 23,
+    "nationality": "Japan",
+    "image": "assets/images/players/women/maika-hamano.png",
+    "height": 165,
+    "foot": null,
+    "date_of_birth": "2004-05-09",
+    "age": 22,
+    "current_club": "Tottenham Hotspur",
+    "joined": "2026-01-01",
+    "signed_from": "Chelsea",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ตัวรุกทีมชาติญี่ปุ่น ย้ายจากเชลซีไปท็อตแน่ม ฮ็อตสเปอร์ด้วยสัญญายืมตัวในเดือนมกราคม 2026",
+    "biography_en": "Japanese attacker who moved to Tottenham Hotspur on loan in January 2026 from Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 29,
+    "name": "Chloe Sarwie",
+    "position": "Defender",
+    "number": 42,
+    "nationality": "England",
+    "image": "assets/images/players/women/chloe-sarwie.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": "2008-12-19",
+    "age": 17,
+    "current_club": "Chelsea FC",
+    "joined": null,
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ปราการหลังดาวรุ่งชาวอังกฤษผู้เล่นให้กับสโมสรเชลซี",
+    "biography_en": "Young English defender playing for Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 30,
+    "name": "Nelly Las",
+    "position": "Defender",
+    "number": 15,
+    "nationality": "England",
+    "image": "assets/images/players/women/nelly-las.jpg",
+    "height": 168,
+    "foot": null,
+    "date_of_birth": "2007-12-17",
+    "age": 18,
+    "current_club": "Ipswich Town",
+    "joined": "2026-02-01",
+    "signed_from": "Leicester City",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังดาวรุ่งชาวอังกฤษ ย้ายไปอิปสวิช ทาวน์ ด้วยสัญญายืมตัวในเดือนกุมภาพันธ์ 2026 จากเลสเตอร์ ซิตี้",
+    "biography_en": "Young English defender who switched to Ipswich Town on loan in February 2026 from Leicester City.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 31,
+    "name": "Jorja Fox",
+    "position": "Defender",
+    "number": 29,
+    "nationality": "England",
+    "image": "assets/images/players/women/jorja-fox.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": "2003-08-28",
+    "age": 22,
+    "current_club": "Newcastle United",
+    "joined": "2025-09-01",
+    "signed_from": "Chelsea",
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองหลังชาวอังกฤษ ย้ายจากเชลซีไปเล่นให้นิวคาสเซิ่ล ยูไนเต็ด ด้วยสัญญายืมตัวในเดือนกันยายน 2025",
+    "biography_en": "English defender who linked up with Newcastle United on loan in September 2025 from Chelsea.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0
+      }
+    }
+  },
+  {
+    "id": 32,
+    "name": "Katie Cox",
+    "position": "Goalkeeper",
+    "number": 40,
+    "nationality": "England",
+    "image": "assets/images/players/women/katie-cox.jpg",
+    "height": null,
+    "foot": null,
+    "date_of_birth": "2006-04-28",
+    "age": 20,
+    "current_club": "Chelsea FC",
+    "joined": "2023-03-18",
+    "signed_from": null,
+    "market_value": null,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ผู้รักษาประตูดาวรุ่งชาวอังกฤษที่เซ็นสัญญากับสโมสรเชลซีในเดือนมีนาคม 2023",
+    "biography_en": "Young English goalkeeper who joined Chelsea in March 2023.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    }
+  }
+]

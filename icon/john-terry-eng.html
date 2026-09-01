@@ -1,0 +1,680 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Terry · Captain, Leader, Legend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f2f5;
+            color: #1e1e2a;
+            line-height: 1.7;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #04172f;
+            border-bottom: 3px solid #C8A84B;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.04em;
+        }
+
+        .nav-logo img {
+            height: 34px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .nav-links li a {
+            color: #dbe4f2;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.92rem;
+            letter-spacing: 0.01em;
+            padding: 0.4rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #C8A84B;
+            border-bottom-color: #C8A84B;
+        }
+
+        .nav-links li a.lang-toggle {
+            border: 1px solid #C8A84B;
+            border-radius: 40px;
+            padding: 0.3rem 0.9rem;
+            color: #C8A84B;
+        }
+
+        .nav-links li a.lang-toggle:hover {
+            background: #C8A84B;
+            color: #04172f;
+            border-bottom-color: #C8A84B;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 860px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #04172f;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 3px solid #C8A84B;
+            }
+
+            .nav-links.open {
+                max-height: 480px;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links li a {
+                display: block;
+                width: 100%;
+                padding: 0.9rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+        }
+        /* ============ /NAVBAR ============ */
+
+        .page-wrap {
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 2.5rem 2.8rem;
+        }
+
+        /* header */
+        .hero {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #eef0f4;
+            margin-bottom: 2.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #034694, #0a4b8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #5b677b;
+            font-weight: 500;
+            margin-top: 0.4rem;
+        }
+
+        .hero .subhead span {
+            background: #eef3fc;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #034694;
+            margin: 0 0.3rem;
+        }
+
+        /* profile card */
+        .profile-card {
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e6edf6;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 1.8rem 3rem;
+        }
+
+        .profile-avatar {
+            flex-shrink: 0;
+            width: 96px;
+            height: 96px;
+            background: linear-gradient(135deg, #034694, #1a5ca6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 20px rgba(3, 70, 148, 0.25);
+            letter-spacing: 1px;
+        }
+
+        .profile-info {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.6rem 1.5rem;
+        }
+
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-item .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #6f7d95;
+            font-weight: 600;
+        }
+
+        .profile-item .value {
+            font-weight: 600;
+            color: #0f1a2e;
+            font-size: 1rem;
+        }
+
+        .profile-item .value small {
+            font-weight: 400;
+            color: #4d5c73;
+            font-size: 0.85rem;
+            margin-left: 0.3rem;
+        }
+
+        /* content */
+        .content {
+            font-size: 1rem;
+            color: #1f2a3f;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-top: 2.8rem;
+            margin-bottom: 1rem;
+            color: #0b2a4a;
+            border-left: 6px solid #034694;
+            padding-left: 1rem;
+        }
+
+        .content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.6rem;
+            color: #1d3b5c;
+        }
+
+        .content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content .highlight {
+            background: #f2f7ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-weight: 500;
+            color: #034694;
+        }
+
+        /* quote / banner */
+        .banner-quote {
+            background: #f0f6fe;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0;
+            border-left: 8px solid #034694;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #122b44;
+            font-weight: 500;
+        }
+
+        .banner-quote strong {
+            font-style: normal;
+            color: #034694;
+        }
+
+        /* tables */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.8rem 0 1rem 0;
+            border-radius: 16px;
+            border: 1px solid #e6edf6;
+        }
+
+        .career-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            min-width: 340px;
+        }
+
+        .career-table th {
+            background: #f0f5fd;
+            text-align: left;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            color: #0b2a4a;
+            border-bottom: 2px solid #d6e0ed;
+        }
+
+        .career-table td {
+            padding: 0.7rem 1.2rem;
+            border-bottom: 1px solid #e6edf6;
+            vertical-align: middle;
+        }
+
+        .career-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .career-table .team-badge {
+            font-weight: 600;
+            color: #034694;
+        }
+
+        .career-table .shirt-num {
+            background: #eef3fc;
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #034694;
+            display: inline-block;
+        }
+
+        /* footer */
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 2px solid #eef0f4;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #5f6f87;
+        }
+
+        .footer-note strong {
+            color: #034694;
+        }
+
+        /* responsive */
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1.2rem;
+                border-radius: 24px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .profile-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem 1.2rem;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.15rem;
+            }
+
+            .banner-quote {
+                font-size: 1rem;
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-wrap {
+                padding: 1rem 0.5rem;
+            }
+
+            .container {
+                padding: 1rem 0.8rem;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+                gap: 0.4rem;
+            }
+
+            .career-table td,
+            .career-table th {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <img src="../databases/logo/teams/england_chelsea.svg" alt="Chelsea">
+          <span>KANLAKHRANGNAN</span>
+        </a>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../men-team.html">Men's Team</a></li>
+          <li><a href="../women-team.html">Women's Team</a></li>
+          <li><a href="../trophy.html">Trophies</a></li>
+          <li><a href="../icons.html" class="active">i-Cons</a></li>
+          <li><a href="../the-story-blue.html">The Story Blue</a></li>
+          <li><a href="john-terry.html" class="lang-toggle">TH</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- ============ /NAVBAR ============ -->
+
+    <div class="page-wrap">
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="hero">
+            <h1>John Terry</h1>
+            <div class="subhead">
+                <span>Captain</span> <span>Leader</span> <span>Legend</span>
+            </div>
+        </header>
+
+        <!-- PROFILE CARD -->
+        <section class="profile-card">
+            <img src="assets/images/icons/john-terry.png" alt="John Terry" class="john-terry.png">
+            <div class="profile-info">
+                <div class="profile-item">
+                    <span class="label">Name</span>
+                    <span class="value">John George Terry</span>
+                </div>
+                <div class="profile-item">
+                    <span class="label">Birthday</span>
+                    <span class="value">07.12.1980 <small>(Age: 45)</small></span>
+                </div>
+                <div class="profile-item">
+                    <span class="label">Born in</span>
+                    <span class="value">Barking, England</span>
+                </div>
+                <div class="profile-item">
+                    <span class="label">Country</span>
+                    <span class="value">England</span>
+                </div>
+                <div class="profile-item">
+                    <span class="label">Height / Weight</span>
+                    <span class="value">184 cm / 75 kg</span>
+                </div>
+                <div class="profile-item">
+                    <span class="label">Position(s)</span>
+                    <span class="value">Central Defender</span>
+                </div>
+                <div class="profile-item">
+                    <span class="label">Foot</span>
+                    <span class="value">Right</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- INTRO -->
+            <p>In the century-plus history of Chelsea Football Club, no name is etched as deeply into the hearts of the blue faithful as that of <strong>John Terry</strong>. A man who proudly wore the captain's armband for two decades, known to fans worldwide simply as <strong>"JT"</strong>, and immortalized by the Stamford Bridge banner declaring him a <strong>"Captain, Leader, Legend"</strong>. John Terry's life is a remarkable journey from a working-class boy in suburban London to one of the greatest central defenders England has ever produced.</p>
+
+            <!-- Early Life and Roots -->
+            <h2>Early Life and Roots</h2>
+            <p>John George Terry was born on December 7, 1980, in Barking, East London. He grew up in a working-class residential area within a family that, while not wealthy, was filled with love and determination. His father, Ted Terry, instilled a passion for football in his young son. His mother, Sue, served as the family anchor, nurturing the children with care and dedication. John's younger brother, Paul Terry, also followed in his footsteps into professional football, though not reaching the exact same heights.</p>
+            <p>Growing up on a council estate in Barking forged John Terry's resilient and determined mindset. He attended Eastbury Comprehensive School, where classmates knew him as a high-energy kid with an absolute obsession for football. Every spare moment was spent kicking a ball on the green outside his house, practicing alone, or inviting neighborhood kids to join. This childhood drive laid the foundation for his brilliant future.</p>
+
+            <!-- First Steps in Football -->
+            <h2>First Steps in Football</h2>
+            <p>John Terry's path to greatness was not paved with rose petals from the start. West Ham United, the local club every East London boy dreamed of playing for, released Terry from their Academy when he was still a boy. That disappointment might have crushed an ordinary youngster's dreams, but for John Terry, it was merely the first hurdle to overcome.</p>
+            <p>Fate led him to Chelsea Football Club at the age of 14 in 1995. The club from Stamford Bridge saw a special spark in the Barking teenager and welcomed him into their Academy system. Terry's life changed completely; he trained under knowledgeable coaches, played alongside talented teammates, and learned what professional football truly meant.</p>
+            <p>During his time in the Academy, Terry displayed natural leadership. He wasn't the most technically gifted player, but his grit, determination, and reading of the game stood out above his peers. Every coach who worked with him during this period echoed the same sentiment: Terry possessed something special that couldn't be taught—the heart of a fighter and the spirit of a captain.</p>
+
+            <!-- First Team Debut -->
+            <h2>First Team Debut</h2>
+            <p>October 28, 1998, wrote the opening page of a grand chapter. A 17-year-old John Terry made his senior Chelsea debut in a League Cup match against Aston Villa at Stamford Bridge. The atmosphere that night might not have been grand for casual observers, but for John Terry, it was the realization of a childhood dream.</p>
+            <p>Between 1998 and 2001, Terry steadily gained first-team experience. In March 2000, he went on a short loan to Nottingham Forest to secure regular playing time in the First Division (then England's second tier). Though brief, the experience proved immensely valuable in toughening him up for difficult match situations. Upon returning to Chelsea, his confidence grew noticeably.</p>
+            <p>In the 2001/02 season, Terry began receiving more Premier League opportunities, proving he was ready for the top stage. His aerial strength, tackling precision, and defensive anticipation caught the eyes of Chelsea supporters who began watching the youngster with high hopes.</p>
+
+            <!-- Becoming Captain -->
+            <h2>Becoming Captain</h2>
+            <p>The 2003/04 season marked a major turning point when John Terry was appointed full Chelsea team captain at just 23 years old. This club decision reflected their belief that Terry was the ideal individual to lead the squad. Despite his young age, Terry possessed maturity and leadership qualities that most players take a lifetime to develop.</p>
+            <p>Terry's captaincy extended far beyond wearing the armband; he led both on and off the pitch. On the pitch, he was a vocal organizer, rallying the team through difficult moments and throwing his body in front of every shot. Off the pitch, he was a mentor to younger players and earned the profound respect of senior squad members.</p>
+
+            <!-- Golden Era: Roman Abramovich and Jose Mourinho -->
+            <h2>Golden Era: Roman Abramovich and José Mourinho</h2>
+            <p>The most monumental transformation in Chelsea's history occurred in June 2003 when Russian billionaire Roman Abramovich purchased the club, followed by the appointment of FC Porto manager José Mourinho—fresh off a Champions League triumph—for the 2004/05 season.</p>
+            <p>For John Terry, Mourinho's arrival marked the beginning of the most significant relationship of his career. Mourinho trusted Terry implicitly, building Chelsea's entire defensive system around him as the bedrock. Terry repaid that faith by performing at the absolute peak of his abilities throughout his career.</p>
+            <p>In the 2004/05 season, Chelsea won the Premier League with a breathtaking record. The defense, marshaled by Terry, conceded a mere 15 goals all season—a Premier League record at the time. Chelsea finished with 95 points, setting a new benchmark for champions. As captain and defensive heartbeat, John Terry received global acclaim and won the <strong>PFA Players' Player of the Year</strong> award.</p>
+            <p>In the 2005/06 season, Chelsea successfully defended their Premier League crown. Terry remained the centerpiece of England's most dominant side alongside defensive partner Ricardo Carvalho, supported by Frank Lampard, Didier Drogba, and others, making Chelsea Europe's toughest opponent.</p>
+
+            <!-- First Heartbreak in the Champions League -->
+            <h2>First Heartbreak in the Champions League</h2>
+            <p>Despite domestic dominance, the Champions League trophy continually eluded Chelsea. In the 2007/08 season, Avram Grant's Chelsea reached the Champions League final at the Luzhniki Stadium in Moscow, Russia, facing Manchester United.</p>
+            <p>The final ended in a penalty shootout after a 1–1 draw following extra time. Step forward captain John Terry to take a penalty that would secure Chelsea's first European crown. Cruelly, fortune turned its back; his footing slipped on the wet turf, and his shot struck the post and went wide. Manchester United ultimately claimed the trophy.</p>
+            <div class="banner-quote">
+                <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 40%);transition: background-color 300ms;" src="https://scontent.fkkc3-1.fna.fbcdn.net/v/t51.82787-15/726838066_18054661688760595_3862091456422913099_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1774x2365&amp;ctp=s1774x2365&amp;_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=127cfc&amp;_nc_ohc=Vz62G1GKbmoQ7kNvwEfq8kQ&amp;_nc_oc=AdrsZuIWvPz_SqQ6XSQ3i2jTS48nnqHY04mV-1D3e7DI9578XGQXpVzv5Gz70CQo_wM&amp;_nc_zt=23&amp;_nc_ht=scontent.fkkc3-1.fna&amp;_nc_gid=u29QcE-lDPuGHRSL3j5nVg&amp;_nc_ss=7b2a8&amp;oh=00_AQBPvCctDmkqm-C6eW3i_Bjqp8Ut2iQ-WrC1zLV6lYRgLA&amp;oe=6A544311" width="745" height="993">
+                “The image of John Terry in his Chelsea kit sitting in tears on the Luzhniki pitch that night became one of the most heartbreaking moments in Premier League history. That pain embedded itself deeply in his soul, fueling his drive for years to come.”
+            </div>
+
+            <!-- FWA Footballer of the Year and Continued Success -->
+            <h2>FWA Footballer of the Year and Continued Success</h2>
+            <p>In 2009, Terry won the prestigious <strong>FWA Footballer of the Year</strong> award, cementing his status as the finest player in England. Selection by hundreds of football journalists reflected widespread recognition of his excellence.</p>
+            <p>In the 2009/10 season under Carlo Ancelotti, Chelsea secured a magnificent Premier League and FA Cup Double. As captain, John Terry lifted the FA Cup at Wembley Stadium before tens of thousands of fans—one of the crowning glories of his career.</p>
+
+            <!-- England National Team -->
+            <h2>England National Team</h2>
+            <p>Alongside his Chelsea achievements, John Terry built a stellar international career with the England national team. He received his first senior call-up in 2003 and quickly became an indispensable pillar of the Three Lions' defense.</p>
+            <p>In 2006, Terry was appointed full England captain. He led the team to the 2006 FIFA World Cup in Germany. Although England exited in the quarter-finals on penalties against Portugal, Terry demonstrated immense leadership throughout the tournament.</p>
+            <p>The 2010 World Cup in South Africa saw England fall short once again, but Terry remained the team's most reliable defensive anchor. Over his international career, Terry earned 78 caps and scored 6 goals—an impressive return for a central defender.</p>
+
+            <!-- Personal Life and Family -->
+            <h2>Personal Life and Family</h2>
+            <p>Beyond the pitch, John Terry enjoyed a rich personal life. He met his life partner, Toni Poole, and together they welcomed twins Georgie John Terry and Summer Rose Terry, born in 2006, before marrying in a lavish 2007 ceremony.</p>
+            <p>Terry's family served as his vital emotional anchor through a career filled with both triumph and adversity. Toni Terry stood resiliently by her husband's side through the most testing moments.</p>
+            <p>His friendship with Frank Lampard remains one of English football's most admired bonds. Having played together at Chelsea for years, their partnership transcended the pitch into real life. Terry and Lampard were foundational pillars of Chelsea's golden era, and their mutual understanding on and off the field drove Chelsea's continuous success.</p>
+
+            <!-- Controversies and Challenges -->
+            <h2>Controversies and Challenges</h2>
+            <p>John Terry's long career was not without turbulence. He faced several controversies and challenges that tested both his reputation and public standing.</p>
+            <p>In 2010, media reports regarding an alleged affair with Vanessa Perroncel, former partner of international teammate Wayne Bridge, became public. The scandal prompted England manager Fabio Capello to strip him of the national team captaincy ahead of the 2010 World Cup—a profound personal and professional blow.</p>
+            <p>A more serious incident occurred in October 2011 when Queens Park Rangers player Anton Ferdinand accused Terry of uttering racially offensive language during a Premier League match at Loftus Road. The matter led to a court trial where Terry was cleared of criminal charges in July 2012. However, the Football Association conducted its own independent inquiry, found him guilty, issued a four-match ban, and fined him £220,000.</p>
+            <p>The Anton Ferdinand case also prompted Terry to announce his retirement from the England national team in July 2012 ahead of the FA's verdict, concluding a proud international career, despite briefly returning later.</p>
+
+            <!-- Munich Night: Champions League Dream Realized -->
+            <h2>Munich Night: Champions League Dream Realized</h2>
+            <p>May 19, 2012, is a date Chelsea and fans worldwide will forever cherish. In the Champions League final at the Allianz Arena in Munich, Germany, Chelsea faced hosts Bayern Munich.</p>
+            <p>Tragically, John Terry had to watch Chelsea's greatest historical night from the stands, suspended following a red card received in the semi-final. The agony of watching teammates fight in the most crucial match without being able to contribute is indescribable.</p>
+            <p>Interim manager Roberto Di Matteo led Chelsea bravely against over 60,000 home fans. After a 1–1 draw through regulation and extra time, penalties ensued. Thanks to Didier Drogba's courageous conversion of the decisive spot-kick, Chelsea claimed their first-ever Champions League title.</p>
+            <p>The ensuing imagery captured Terry donning his full kit and shin pads to join the trophy presentation. While heavily criticized by some as inappropriate, Terry explained his desire to share the historic moment with his teammates. Regardless of differing viewpoints, his devotion to Chelsea that night was unquestionable.</p>
+
+            <!-- Europa League 2013 and Continued Fight -->
+            <h2>Europa League 2013 and Continued Fight</h2>
+            <p>Following their 2012 Champions League glory, Chelsea kept making history. In the 2012/13 season under Rafael Benítez, Chelsea won the Europa League by defeating Benfica in the Amsterdam final. Though turbulent for the club overall, Terry led the squad as captain to lift yet another trophy.</p>
+
+            <!-- Mourinho Returns: Final Premier League Title -->
+            <h2>Mourinho Returns: Final Premier League Title</h2>
+            <p>In the 2013/14 season, José Mourinho returned for his second spell at Chelsea, reuniting with captain and defensive leader John Terry. Their bond remained as strong as ever despite the passing years.</p>
+            <p>The 2014/15 season marked the era's final crescendo as Chelsea captured the Premier League. This victory held special resonance for Terry as his fifth league title with Chelsea and his final one lifted as captain. His overall tally at that juncture read: <strong>5 Premier Leagues, 5 FA Cups, 3 League Cups, 1 Champions League, 1 Europa League</strong>—a record rarely matched by any player at a single club.</p>
+
+            <!-- Final Chapter at Stamford Bridge -->
+            <h2>Final Chapter at Stamford Bridge</h2>
+            <p>The 2015/16 season proved difficult for Chelsea collectively, with Mourinho dismissed mid-season. Terry faced advancing years, yet he fought every match with trademark unyielding spirit.</p>
+            <p>When Antonio Conte arrived in 2016/17 to guide Chelsea to another Premier League title, it marked Terry's farewell campaign. The club decided against extending his contract, bringing profound sadness to Chelsea fans globally.</p>
+            <p>John Terry's final appearance in a Chelsea shirt came on May 26, 2017. Conte substituted Terry in the 26th minute—matching his iconic shirt number—allowing Stamford Bridge to shower their legend with one final standing ovation. The thunderous applause provided a fitting send-off for a man who gave everything to Chelsea across 22 years.</p>
+
+            <!-- Aston Villa: A New Chapter -->
+            <h2>Aston Villa: A New Chapter</h2>
+            <p>Leaving Chelsea did not mean immediate retirement. In July 2017, Terry signed with Aston Villa, then competing in the EFL Championship. Moving to Villa Park proved Terry's continued desire to play high-level football past his prime.</p>
+            <p>At Aston Villa, Terry displayed consummate professionalism on and off the pitch. He earned immense respect from teammates and staff alike, planting leadership seeds that would soon bear fruit.</p>
+            <p>In May 2018, Terry announced his official retirement from professional football, concluding a glittering 20-year playing career.</p>
+
+            <!-- Coaching Career Pathway -->
+            <h2>Coaching Career Pathway</h2>
+            <p>Hanging up his boots did not mean leaving football. In July 2018, just months after retiring, he accepted an assistant manager role at Aston Villa under Dean Smith, demonstrating his eagerness to pass knowledge and experience to the next generation.</p>
+            <p>In 2019, Terry tasted his first major managerial success when Aston Villa won the Championship play-off final to secure promotion to the Premier League, proving his leadership extended far beyond the white lines.</p>
+            <p>Terry remained at Villa Park until October 2021, departing alongside Dean Smith following his dismissal. During his time at Villa Park, Terry earned his UEFA Pro Licence—the highest certification for European football managers—qualifying him fully to manage at the highest level.</p>
+
+            <!-- Legacy and Legend Status -->
+            <h2>Legacy and Legend Status</h2>
+            <p>Looking back at John Terry's long and eventful career, no word fits better than <strong>"Legend"</strong>. The numbers speak volumes: <span class="highlight">717 appearances for Chelsea, 67 goals, 5 Premier Leagues, 5 FA Cups, 3 League Cups, 1 Champions League, 1 Europa League, 78 caps for England</span>.</p>
+            <p>Yet statistics alone cannot tell the full story. What truly makes John Terry great are the intangibles: how he elevated those around him, how he forged the <strong>"winning culture"</strong> at Stamford Bridge, and how he shaped Chelsea's identity over two decades.</p>
+            <p>The <strong>"Captain, Leader, Legend"</strong> banner at Stamford Bridge stands as the ultimate testament to how Chelsea supporters view him. Terry was more than a footballer to them; he embodied what Chelsea represents—the heart and soul of the club.</p>
+            <p>In any discussion regarding Chelsea's greatest-ever players, John Terry's name sits near the very top. Similarly, conversations about England's finest central defenders invariably feature Terry prominently.</p>
+
+            <!-- Epilogue -->
+            <h2>Epilogue</h2>
+            <p>John Terry's story is one of dreams, perseverance, success, failure, resurgence, and learning. It is the tale of a boy from Barking rejected by West Ham who never surrendered his dream. It is the story of an athlete proving to the world that with the right heart, sufficient determination, and an exceptional team, anything is possible.</p>
+            <p>John Terry's journey continues. A new chapter as a manager awaits, and wherever that path leads, Chelsea fans and football lovers worldwide know Terry will march forward with the trait that always made him great: the unbreakable heart of a <strong>Captain, Leader, Legend</strong>.</p>
+
+            <p style="text-align: right; margin-top: 1.5rem; font-weight: 500; color: #034694;">— John Terry</p>
+        </div>
+
+        <!-- CAREER TABLES -->
+        <div style="margin-top: 2.8rem; border-top: 2px solid #eef0f4; padding-top: 2rem;">
+
+            <h2 style="font-size: 1.8rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.2rem; color: #0b2a4a; border-left: 6px solid #034694; padding-left: 1rem;">Career &amp; Coaching History</h2>
+
+            <!-- Coach -->
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 1.8rem 0 0.6rem 0; color: #1d3b5c;">📋 Coaching Career</h3>
+            <div class="table-wrap">
+                <table class="career-table">
+                    <thead>
+                        <tr><th>Period</th><th>Team</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>04/2023 – 06/2023</td><td class="team-badge">Leicester City</td></tr>
+                        <tr><td>10/2018 – 06/2021</td><td class="team-badge">Aston Villa</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Player -->
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 1.8rem 0 0.6rem 0; color: #1d3b5c;">⚽ Playing Career</h3>
+            <div class="table-wrap">
+                <table class="career-table">
+                    <thead>
+                        <tr><th>Period</th><th>Team</th><th style="text-align: center;">#</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>07/2017 – 06/2018</td><td class="team-badge">Aston Villa</td><td style="text-align: center;"><span class="shirt-num">26</span></td></tr>
+                        <tr><td>05/2000 – 06/2017</td><td class="team-badge">Chelsea FC</td><td style="text-align: center;"><span class="shirt-num">26</span></td></tr>
+                        <tr><td>11/2016 – 11/2016</td><td class="team-badge">Chelsea FC U21</td><td style="text-align: center;">—</td></tr>
+                        <tr><td>01/2013 – 06/2013</td><td class="team-badge">Chelsea FC U21</td><td style="text-align: center;">—</td></tr>
+                        <tr><td>03/2000 – 05/2000</td><td class="team-badge">Nottingham Forest</td><td style="text-align: center;"><span class="shirt-num">15</span></td></tr>
+                        <tr><td>07/1997 – 03/2000</td><td class="team-badge">Chelsea FC</td><td style="text-align: center;">—</td></tr>
+                        <tr><td>07/1996 – 06/1998</td><td class="team-badge">Chelsea FC U19</td><td style="text-align: center;">—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-note">
+            <strong>Captain · Leader · Legend</strong> &nbsp;—&nbsp; John Terry • 1980 – ∞
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+    </script>
+</body></html>

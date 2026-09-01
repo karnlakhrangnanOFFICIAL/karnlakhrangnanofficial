@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บทที่ 2 · The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="icon" href="../assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
+      --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 740px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: 'Sarabun', sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 1.85; -webkit-font-smoothing: antialiased;
+      padding-top: 70px;
+    }
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end; margin-top: -70px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; background-image: url('https://i.imgur.com/d7cGptr.jpeg');
+      background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
+    }
+    .hero:hover .hero__bg { transform: scale(1.06); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(3,12,30,0.3) 40%, rgba(3,12,30,0.85) 80%, rgba(3,12,30,0.97) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px,6vw,80px) clamp(48px,8vh,90px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .hero__logo {
+      width: clamp(80px,12vw,140px); filter: drop-shadow(0 4px 24px rgba(200,168,75,0.5));
+      margin-bottom: 28px; animation: fadeDown 1s ease both;
+    }
+    .hero__kicker {
+      font-family: 'Sarabun', sans-serif; font-weight: 600; font-size: clamp(10px,1.2vw,13px);
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.4rem,6.5vw,5.5rem);
+      line-height: 1.08; color: var(--white); letter-spacing: -0.01em; max-width: 900px;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: clamp(14px,1.8vw,17px); color: rgba(245,242,236,0.65); margin-top: 22px;
+      letter-spacing: 0.04em; animation: fadeDown 1s 0.35s ease both;
+    }
+    .hero__rule {
+      width: 60px; height: 2px; background: var(--gold); margin: 32px auto 0;
+      animation: fadeDown 1s 0.45s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .article { background: var(--paper); position: relative; }
+    .article::before {
+      content: ''; display: block; width: 100%; height: 6px;
+      background: linear-gradient(to right, var(--blue), var(--gold), var(--blue));
+    }
+    .article__inner {
+      max-width: var(--col-max); margin: 0 auto;
+      padding: clamp(48px,8vw,90px) clamp(20px,5vw,40px);
+    }
+    .pull-quote {
+      border-left: 4px solid var(--gold); padding: 24px 32px; margin: 0 0 48px;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem,2vw,1.2rem); color: var(--ink-soft); line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 14px; font-family: 'Sarabun', sans-serif; font-style: normal;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    }
+    .chapter-heading { text-align: center; margin-bottom: 52px; }
+    .chapter-heading__number {
+      display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+      padding: 6px 16px; margin-bottom: 20px;
+    }
+    .chapter-heading h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.6rem,4vw,2.8rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .article__inner p { margin-bottom: 1.6em; color: var(--ink-soft); }
+    .article__inner p em { color: var(--ink); font-style: italic; }
+    .drop-cap::first-letter {
+      float: left; font-family: 'Playfair Display', serif; font-size: 4.2em; line-height: 0.78;
+      margin: 6px 10px 0 0; color: var(--blue); font-weight: 900;
+    }
+    .article__inner h2 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.25rem,2.8vw,1.7rem); color: var(--blue); margin: 56px 0 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule); letter-spacing: -0.01em;
+    }
+    .img-block { margin: 40px -20px; text-align: center; }
+    .img-block img {
+      width: 100%; max-width: 100%; height: auto; display: block; object-fit: cover;
+      border-radius: 2px; box-shadow: 0 4px 24px rgba(26,20,16,0.15);
+    }
+    .img-block figcaption {
+      margin-top: 12px; font-size: 12.5px; color: var(--ink-muted); letter-spacing: 0.04em;
+      font-style: italic; line-height: 1.5; padding: 0 20px;
+    }
+    .img-block--wide { margin: 48px calc(-1 * clamp(20px,5vw,40px)); }
+    .article__inner blockquote {
+      margin: 36px 0; padding: 24px 28px; background: rgba(3,70,148,0.04);
+      border-left: 3px solid var(--blue); color: var(--ink); font-style: italic;
+    }
+
+    /* Video Reference Box */
+    .video-ref-box {
+      margin: 36px 0;
+      padding: 24px 28px;
+      background: rgba(3, 70, 148, 0.04);
+      border-left: 4px solid #ff0000;
+      border-radius: 4px;
+      font-size: 16px;
+      color: var(--ink-soft);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .video-ref-box p {
+      margin-bottom: 10px !important;
+    }
+    .video-ref-box p:last-child {
+      margin-bottom: 0 !important;
+    }
+    .video-ref-box strong {
+      color: var(--ink);
+    }
+    .video-ref-box a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .video-ref-box a:hover {
+      border-bottom: 1px solid var(--blue);
+    }
+
+    .chapter-end { text-align: center; margin: 64px 0 0; padding-top: 40px; border-top: 1px solid var(--rule); }
+    .chapter-end__ornament { font-size: 28px; color: var(--gold); letter-spacing: 0.3em; }
+    .chapter-end__text {
+      display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-muted);
+    }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .chapter-nav a {
+      display: inline-block; padding: 10px 24px; border-radius: 4px;
+      font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;
+    }
+    .chapter-nav__back { background: transparent; color: var(--ink-muted); border: 1px solid var(--rule); }
+    .chapter-nav__back:hover { background: var(--off-white); color: var(--ink); border-color: var(--ink-muted); }
+    .chapter-nav__next { background: var(--blue); color: var(--white); border: 1px solid var(--blue); }
+    .chapter-nav__next:hover { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+
+    /* Floating Clock */
+    .floating-clock {
+      position: fixed; top: 72px; right: 18px; z-index: 99999; display: flex;
+      align-items: center; gap: 16px; padding: 12px 18px;
+      background: linear-gradient(135deg, rgba(2,31,69,0.95), rgba(3,70,148,0.88));
+      border: 1px solid rgba(200,168,75,0.9); border-radius: 10px;
+      backdrop-filter: blur(10px); box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 18px rgba(3,70,148,0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .floating-clock::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent); opacity: .9;
+    }
+    .floating-clock:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 24px rgba(3,70,148,0.45); }
+    .floating-clock__section { display: flex; flex-direction: column; align-items: flex-end; position: relative; z-index: 2; }
+    .floating-clock__divider {
+      width: 1px; height: 58px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: .45;
+    }
+    .floating-clock__label {
+      font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: .18em; margin-bottom: 3px; text-shadow: 0 0 8px rgba(232,201,122,.25);
+    }
+    .floating-clock__date { font-size: 12px; font-weight: 400; color: rgba(245,242,236,0.78); margin-bottom: 3px; letter-spacing: .04em; }
+    .floating-clock__time {
+      font-size: 17px; font-weight: 700; color: var(--gold);
+      font-family: 'Sarabun', 'Consolas', monospace; letter-spacing: .08em;
+      text-shadow: 0 0 8px rgba(200,168,75,.28), 0 0 18px rgba(200,168,75,.18);
+    }
+
+    @media (max-width: 768px) {
+      .floating-clock { top: 68px; right: 10px; padding: 9px 13px; transform: scale(.88); transform-origin: top right; }
+      .floating-clock:hover { transform: scale(.88) translateY(-3px); }
+      .floating-clock__time { font-size: 15px; }
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Language Toggle Button -->
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="../men-team.html">ทีมชาย</a></li>
+        <li><a href="../women-team.html">ทีมหญิง</a></li>
+        <li><a href="../trophy.html">ถ้วยรางวัล</a></li>
+        <li><a href="../icons.html">i-Cons</a></li>
+        <li><a href="../the-story-blue.html" class="active">The Story Blue</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="https://i.postimg.cc/9QCWzTSV/Logo-CHELSEA-TH-FANs.png" class="hero__logo" alt="Chelsea TH FANs Logo">
+      <p class="hero__kicker">Chelsea TH FANs · Kann Krung Nan News</p>
+      <h1 class="hero__title" data-lang-th="กาลครั้งนั้นKann Krung Nan News!" data-lang-en="Once Upon a TimeKann Krung Nan News!">กาลครั้งนั้น<br><em>Kann Krung Nan News!</em></h1>
+      <p class="hero__subtitle" data-lang-th="ผู้เขียน: อิอิแอแอ" data-lang-en="Author: AeAe">ผู้เขียน: อิอิแอแอ</p>
+      <div class="hero__rule"></div>
+    </div>
+  </header>
+
+  <!-- ===================== ARTICLE ===================== -->
+  <main class="article">
+    <div class="article__inner">
+
+      <div class="chapter-heading">
+        <div class="chapter-heading__number" data-lang-th="บทที่ ๒" data-lang-en="CHAPTER 2">บทที่ ๒</div>
+        <h1 data-lang-th="มุ่งสู่ดวงดาวด้วยดวงดาว" data-lang-en="Aiming for the stars with stars">มุ่งสู่ดวงดาวด้วยดวงดาว</h1>
+      </div>
+
+      <!-- Opening Quote -->
+      <blockquote class="pull-quote">
+        <p data-lang-th="เด็กชายในกลุ่มผู้ชม: 'ใครได้แชมป์ FA Cup ปี 1926?'Mr Memory: 'Cup? Waterloo? Football? หรือจะเป็นชาครับ?'เด็กชายในกลุ่มผู้ชม: 'ฟุตบอลไงล่ะ'เสียงจากกลุ่มผู้ชม: 'Chelsea ได้แชมป์ตั้งแต่เมื่อไหร่?'Mr. Memory: '63 ปีก่อนคริสตกาล ต่อหน้าจักรพรรดิ Nero!'" data-lang-en="Boy in audience: ‘Who won the Cup in 1926?’Mr Memory: ‘Cup? Waterloo? Football? Or tea, sir?’Boy in audience: ‘Football, silly.’Heckler in audience: ‘When did Chelsea win it?’Mr. Memory: ‘63BC in the presence of the Emperor Nero!’">
+          <strong>เด็กชายในกลุ่มผู้ชม:</strong> 'ใครได้แชมป์ FA Cup ปี 1926?'<br>
+          <strong>Mr Memory:</strong> 'Cup? Waterloo? Football? หรือจะเป็นชาครับ?'<br>
+          <strong>เด็กชายในกลุ่มผู้ชม:</strong> 'ฟุตบอลไงล่ะ'<br>
+          <strong>เสียงจากกลุ่มผู้ชม:</strong> 'Chelsea ได้แชมป์ตั้งแต่เมื่อไหร่?'<br>
+          <strong>Mr. Memory:</strong> '63 ปีก่อนคริสตกาล ต่อหน้าจักรพรรดิ Nero!'
+        </p>
+        <cite data-lang-th="— ภาพยนตร์เรื่อง The 39 Steps (1935)" data-lang-en="— The 39 Steps film (1935)">— ภาพยนตร์เรื่อง The 39 Steps (1935)</cite>
+      </blockquote>
+
+      <!-- SECTION 1 -->
+      <h2 data-lang-th="Stamford Bridge ช่างงดงามราวกับสนามแห่งความฝัน" data-lang-en="What a Field of Dreams is Stamford Bridge">Stamford Bridge ช่างงดงามราวกับสนามแห่งความฝัน</h2>
+      <p class="drop-cap" data-lang-th="'สร้างแล้วพวกเขาจะมา' วลีอมตะจากภาพยนตร์เรื่อง Field of Dreams ฟังดูเหมาะกับ Stamford Bridge ยิ่งนัก แก่นแท้ของกีฬาคือการแสวงหาเกียรติยศท่ามกลางความเสี่ยง และด้วยเหตุนี้ กลยุทธ์ในช่วงแรกของ Chelsea ในการดึงดูดผู้ชมจึงตั้งอยู่บนหลักการเดียว: สาธารณชนต้องการเห็นประตูและกองหน้าที่ยิ่งใหญ่ ไม่ใช่แนวรับที่มั่นคง" data-lang-en="‘Build and they will come’, is famously quoted as a line from the movie Field of Dreams, and what a field of dreams is Stamford Bridge. The essence of sport is the quest for glory with the presence of jeopardy and, with that in mind, Chelsea’s early strategy to fill the Bridge was that the public want goals and strikers, not defenders.">'สร้างแล้วพวกเขาจะมา' วลีอมตะจากภาพยนตร์เรื่อง Field of Dreams ฟังดูเหมาะกับ Stamford Bridge ยิ่งนัก แก่นแท้ของกีฬาคือการแสวงหาเกียรติยศท่ามกลางความเสี่ยง และด้วยเหตุนี้ กลยุทธ์ในช่วงแรกของ Chelsea ในการดึงดูดผู้ชมจึงตั้งอยู่บนหลักการเดียว: สาธารณชนต้องการเห็นประตูและกองหน้าที่ยิ่งใหญ่ ไม่ใช่แนวรับที่มั่นคง</p>
+      
+      <p data-lang-th="ไม่ใช่เรื่องบังเอิญแต่อย่างใดที่ดาวเด่นคนแรกของ The Pensioners (ฉายาของสโมสรในยุคแรก) อย่าง 'Gatling Gun' George Hilsdon ได้รับการเชิดชูเกียรติด้วยกังหันลมที่จำลองรูปร่างของเขา ซึ่งตั้งตระหง่านอยู่บนอัฒจันทร์ฝั่งตะวันออกเป็นเวลาหลายทศวรรษ เขาทำประตูได้ถึง 5 ประตูในนัดแรกพบ Glossop ด้วยสกอร์ 9-2 เมื่อเดือนกันยายนปี 1906 และ 28 ประตูอันน่าทึ่งของเขาเป็นแรงขับเคลื่อนที่พาสโมสรเลื่อนชั้นเป็นครั้งแรก" data-lang-en="It is no coincidence the first true star for the Pensioners (the club’s nickname in the early years), ‘Gatling Gun’ George Hilsdon, became enshrined in a weather vane modelled on his image that stood atop the East Stand for decades. He rattled in five goals on his 9-2 debut against Glossop in September 1906 and his sensational 28 goals fired the club to our first promotion.">ไม่ใช่เรื่องบังเอิญแต่อย่างใดที่ดาวเด่นคนแรกของ The Pensioners (ฉายาของสโมสรในยุคแรก) อย่าง 'Gatling Gun' George Hilsdon ได้รับการเชิดชูเกียรติด้วยกังหันลมที่จำลองรูปร่างของเขา ซึ่งตั้งตระหง่านอยู่บนอัฒจันทร์ฝั่งตะวันออกเป็นเวลาหลายทศวรรษ เขาทำประตูได้ถึง 5 ประตูในนัดแรกพบ Glossop ด้วยสกอร์ 9-2 เมื่อเดือนกันยายนปี 1906 และ 28 ประตูอันน่าทึ่งของเขาเป็นแรงขับเคลื่อนที่พาสโมสรเลื่อนชั้นเป็นครั้งแรก</p>
+
+      <p data-lang-th="ตลอดสามฤดูกาล Hilsdon ทำประตูได้มากกว่า 20 ประตูในแต่ละฤดูกาล แต่คุณภาพการเล่นของทีมโดยรวมกลับไม่สอดคล้องกับศักยภาพที่แท้จริง การจบอันดับที่ 11 ถือเป็นจุดสูงสุดที่น่าผิดหวัง จากนั้นกองหน้าคนนี้ก็พบกับสิ่งล่อใจมากมายในลอนดอนตะวันตกที่คึกคัก และชื่อเสียงของเขาก็ค่อยๆ จางหายไป สำหรับบทความเชิดชูและเสียงเชียร์บนอัฒจันทร์ทั้งหมด ไม่มีเกียรติยศใดเลยที่จะนำไปเล่าให้ลูกหลานฟังข้างเตาผิง ประสบการณ์ของเขาจะเป็นแบบฉบับไปอีกสามทศวรรษข้างหน้า" data-lang-en="For three seasons Hilsdon notched more than 20 goals each time but the quality of team performances failed to match him and finishing 11th was a disappointing high point. The centre-forward then found temptation readily available in vibrant west London and his star faded. For all the adoring newspaper column inches and terrace cheers, there was no glory with which to regale grandchildren around the hearth. His experience would be typical over the next three decades.">ตลอดสามฤดูกาล Hilsdon ทำประตูได้มากกว่า 20 ประตูในแต่ละฤดูกาล แต่คุณภาพการเล่นของทีมโดยรวมกลับไม่สอดคล้องกับศักยภาพที่แท้จริง การจบอันดับที่ 11 ถือเป็นจุดสูงสุดที่น่าผิดหวัง จากนั้นกองหน้าคนนี้ก็พบกับสิ่งล่อใจมากมายในลอนดอนตะวันตกที่คึกคัก และชื่อเสียงของเขาก็ค่อยๆ จางหายไป สำหรับบทความเชิดชูและเสียงเชียร์บนอัฒจันทร์ทั้งหมด ไม่มีเกียรติยศใดเลยที่จะนำไปเล่าให้ลูกหลานฟังข้างเตาผิง ประสบการณ์ของเขาจะเป็นแบบฉบับไปอีกสามทศวรรษข้างหน้า</p>
+
+      <p data-lang-th="สโมสรฟุตบอล Chelsea เป็นที่นิยม ทะเยอทะยาน เป็นส่วนเสริมที่น่าทึ่งในวงการฟุตบอล แต่ในปี 1908 หนังสือพิมพ์ Worksop Reporter ได้เหยียดหยามแทนคนจำนวนมากเมื่อเรียก Chelsea ว่าเป็นสโมสรที่ยิ่งใหญ่ 'ซึ่งพุ่งขึ้นมาอยู่แถวหน้าได้ด้วยความมั่งคั่งอันไร้ขีดจำกัดเท่านั้น'" data-lang-en="Chelsea Football Club was popular, ambitious, a remarkable addition to football’s firmament, but in 1908 the Worksop Reporter newspaper sneered on behalf of many when it called Chelsea a great club ‘which has simply forced its way to the front by means of illimitable wealth’.">สโมสรฟุตบอล Chelsea เป็นที่นิยม ทะเยอทะยาน เป็นส่วนเสริมที่น่าทึ่งในวงการฟุตบอล แต่ในปี 1908 หนังสือพิมพ์ Worksop Reporter ได้เหยียดหยามแทนคนจำนวนมากเมื่อเรียก Chelsea ว่าเป็นสโมสรที่ยิ่งใหญ่ 'ซึ่งพุ่งขึ้นมาอยู่แถวหน้าได้ด้วยความมั่งคั่งอันไร้ขีดจำกัดเท่านั้น'</p>
+
+      <p data-lang-th="ปัจจัยอื่นๆ สนับสนุนแนวคิดที่ว่า Chelsea ที่เป็นแนว 'โชว์บิซ' ขาดความจริงจังด้านกีฬา วัตถุประสงค์ของสโมสรคือความบันเทิงมากกว่าความสำเร็จทางฟุตบอล เมื่อเวลาผ่านไป ผู้ที่ยังคงไปที่เดอะบริดจ์ได้สร้างสิ่งที่ Don Davies นักเขียนฟุตบอลชื่อดังตั้งข้อสังเกตว่าเป็นผู้ชมที่ 'ตามใจตัวเองที่สุด' ของฟุตบอลอังกฤษ รูปแบบถูกกำหนดไว้แล้ว" data-lang-en="Other factors encouraged the notion that ‘showbiz’ Chelsea lacked sporting seriousness, that the club’s purpose was entertainment rather than footballing success. Over time those who kept going to the Bridge created, as well-known football writer Don Davies noted, English football’s ‘most indulgent’ crowd. The types were being set.">ปัจจัยอื่นๆ สนับสนุนแนวคิดที่ว่า Chelsea ที่เป็นแนว 'โชว์บิซ' ขาดความจริงจังด้านกีฬา วัตถุประสงค์ของสโมสรคือความบันเทิงมากกว่าความสำเร็จทางฟุตบอล เมื่อเวลาผ่านไป ผู้ที่ยังคงไปที่เดอะบริดจ์ได้สร้างสิ่งที่ Don Davies นักเขียนฟุตบอลชื่อดังตั้งข้อสังเกตว่าเป็นผู้ชมที่ 'ตามใจตัวเองที่สุด' ของฟุตบอลอังกฤษ รูปแบบถูกกำหนดไว้แล้ว</p>
+
+      <p data-lang-th="ศูนย์หน้า Andy Wilson เป็นหนึ่งในนักเตะที่มีสไตล์ยอดเยี่ยมที่สุดของฟุตบอลอังกฤษในทศวรรษ 1920 เขาถูกตามจีบและในที่สุด The Pensioners ก็เซ็นสัญญามาจาก Middlesbrough ด้วยค่าตัวเกือบสถิติฟุตบอลอังกฤษที่ 6,000 ปอนด์ในปี 1923" data-lang-en="Centre-forward Andy Wilson was one of the great stylists of the English game in the 1920s, courted and eventually signed from Middlesbrough by the Pensioners at a near-record for English football of £6,000 in 1923.">ศูนย์หน้า Andy Wilson เป็นหนึ่งในนักเตะที่มีสไตล์ยอดเยี่ยมที่สุดของฟุตบอลอังกฤษในทศวรรษ 1920 เขาถูกตามจีบและในที่สุด The Pensioners ก็เซ็นสัญญามาจาก Middlesbrough ด้วยค่าตัวเกือบสถิติฟุตบอลอังกฤษที่ 6,000 ปอนด์ในปี 1923</p>
+
+      <p data-lang-th="เขาอยู่แปดปี หลายปีในฐานะกัปตันทีม ตกหลุมรัก Chelsea และชมเกมจากอัฒจันทร์จนกระทั่งเสียชีวิตในปี 1973 ในวัย 77 ปี 'ในยุคของผม' เขารำลึกในช่วงกลางทศวรรษที่หกสิบ 'เราเล่นฟุตบอลที่สวยงาม แต่ผลการแข่งขันไม่ได้สำคัญขนาดนั้นในตอนนั้น มันจะไม่ "เวิร์ค" ในสมัยนี้'" data-lang-en="He stayed eight years, many as skipper, fell in love with Chelsea and watched from the stands until his death in 1973 aged 77. ‘In my day,’ he reminisced in the mid-Sixties, ‘we played artistic football, but results didn’t matter so much then. It wouldn’t “do” nowadays.’">เขาอยู่แปดปี หลายปีในฐานะกัปตันทีม ตกหลุมรัก Chelsea และชมเกมจากอัฒจันทร์จนกระทั่งเสียชีวิตในปี 1973 ในวัย 77 ปี 'ในยุคของผม' เขารำลึกในช่วงกลางทศวรรษที่หกสิบ 'เราเล่นฟุตบอลที่สวยงาม แต่ผลการแข่งขันไม่ได้สำคัญขนาดนั้นในตอนนั้น มันจะไม่ "เวิร์ค" ในสมัยนี้'</p>
+
+      <p data-lang-th="ไม่มีการ 'จอดรถบัส' ที่เดอะบริดจ์ในตอนนั้นหรอกนะ ขอบคุณมาก" data-lang-en="No ‘parking the trolley-bus’ at the Bridge back then, thank you very much.">ไม่มีการ 'จอดรถบัส' ที่เดอะบริดจ์ในตอนนั้นหรอกนะ ขอบคุณมาก</p>
+
+      <p data-lang-th="ครั้งหนึ่ง Wilson เคยถูกถ่ายภาพขณะรับบุหรี่ก่อนเกมบนสนาม และแม้เขาจะยอดเยี่ยมในฐานะกองหน้า แต่ทีมจากลอนดอนก็ร่วงโรยอยู่ในดิวิชั่นสองเป็นเวลาที่ยาวนานที่สุดในประวัติศาสตร์ของเรา ทว่าความยิ่งใหญ่ของ Chelsea ก็นำเสนอเวทีสำหรับชื่อเสียงหากคุณเก่งพอ" data-lang-en="Wilson was once photographed accepting a pre-match cigarette on the pitch and despite his brilliance as a forward, the Londoners languished in Division Two for the longest time in our history. Yet Chelsea’s magnitude presented a platform for fame if you were good enough.">ครั้งหนึ่ง Wilson เคยถูกถ่ายภาพขณะรับบุหรี่ก่อนเกมบนสนาม และแม้เขาจะยอดเยี่ยมในฐานะกองหน้า แต่ทีมจากลอนดอนก็ร่วงโรยอยู่ในดิวิชั่นสองเป็นเวลาที่ยาวนานที่สุดในประวัติศาสตร์ของเรา ทว่าความยิ่งใหญ่ของ Chelsea ก็นำเสนอเวทีสำหรับชื่อเสียงหากคุณเก่งพอ</p>
+
+      <p data-lang-th="จำนวนผู้ชมอยู่ในกลุ่มที่สูงและมีความสุขที่สุดในประเทศ แม้แต่ในลีกระดับสอง และชื่อเสียงของสโมสรหมายความว่า FA เลือกให้เป็นที่ทดสอบนวัตกรรมต่างๆ เช่น ทดลองใช้หมายเลขบนเสื้อในปี 1928 และทดลองกฎล้ำหน้าแบบใหม่ที่ปฏิวัติวงการ เมื่อกฎหลังเปลี่ยนแปลงในฤดูกาล 1925/26 ความฉลาดของ Wilson และเพื่อนร่วมทีมได้สร้างสิ่งที่ยังคงเป็นการเริ่มต้นฤดูกาลที่ไม่แพ้ใครดีที่สุดเป็นอันดับสามของ Chelsea (14 เกม)" data-lang-en="The crowds were among the highest and most delighted in the land, even in the second tier, and the club’s high profile meant being chosen by the FA for innovations such as testing numbers on shirts in 1928 and trialling revolutionary new offside laws. When the latter changed for the 1925/26 season, the cleverness of Wilson and his colleagues established what is still the third best unbeaten start to a Chelsea campaign (14 games).">จำนวนผู้ชมอยู่ในกลุ่มที่สูงและมีความสุขที่สุดในประเทศ แม้แต่ในลีกระดับสอง และชื่อเสียงของสโมสรหมายความว่า FA เลือกให้เป็นที่ทดสอบนวัตกรรมต่างๆ เช่น ทดลองใช้หมายเลขบนเสื้อในปี 1928 และทดลองกฎล้ำหน้าแบบใหม่ที่ปฏิวัติวงการ เมื่อกฎหลังเปลี่ยนแปลงในฤดูกาล 1925/26 ความฉลาดของ Wilson และเพื่อนร่วมทีมได้สร้างสิ่งที่ยังคงเป็นการเริ่มต้นฤดูกาลที่ไม่แพ้ใครดีที่สุดเป็นอันดับสามของ Chelsea (14 เกม)</p>
+
+      <p data-lang-th="หลังจากชนะ Port Vale ขาดลอย 6-0 หนังสือพิมพ์ Daily Mail ยกย่องว่าเป็น 'ชัยชนะของแท็คติก วิธีการโจมตีที่ประสบความสำเร็จอย่างมากคือให้ [Bob] Turnbull และปีกสองข้างดันขึ้นหน้าไปไกล โดยให้ [กองหน้าตัวใน] Wilson และ [Albert] Thain ถอยต่ำและรับบทบาทเป็นผู้ป้อนบอลให้กองหน้าสามคนเป็นหลัก'" data-lang-en="After a masterly 6-0 at Port Vale, the Daily Mail hailed ‘a triumph of tactics. The method of attack which turned out so successful was for [Bob] Turnbull and the two outside men to lie well up the field, with [inside-forwards] Wilson and [Albert] Thain well back and playing principally the role of providers for the advance trio.’">หลังจากชนะ Port Vale ขาดลอย 6-0 หนังสือพิมพ์ Daily Mail ยกย่องว่าเป็น 'ชัยชนะของแท็คติก วิธีการโจมตีที่ประสบความสำเร็จอย่างมากคือให้ [Bob] Turnbull และปีกสองข้างดันขึ้นหน้าไปไกล โดยให้ [กองหน้าตัวใน] Wilson และ [Albert] Thain ถอยต่ำและรับบทบาทเป็นผู้ป้อนบอลให้กองหน้าสามคนเป็นหลัก'</p>
+
+      <p data-lang-th="โชคร้ายที่คู่แข่งค่อยๆ จับทางกลยุทธ์ล้ำหน้านี้ได้ และภาพสะท้อนของ Chelsea ที่ยอดเยี่ยมและสร้างสรรค์ก็ปรากฏขึ้นอีกครั้งในฤดูใบไม้ผลิ: สโมสรที่มีปืนที่บรรจุกระสุนพร้อมเสมอ หันกระบอกปืนยิงใส่เท้าตัวเอง ทีมทำคะแนนสำคัญหล่นหายให้กับทีมที่กำลังหนีตกชั้น และขบวนรถไฟเลื่อนชั้นก็ออกจากสถานีโดยทิ้ง The Pensioner ไว้บนชานชาลา" data-lang-en="Unfortunately, rivals eventually twigged the offside strategy and that mirror image of the brilliant and innovative Chelsea re-emerged in the spring: a club with a gun always loaded, pointed at its own foot. The side dropped vital points to relegation candidates, and the promotion train left the station with the Pensioner on the platform.">โชคร้ายที่คู่แข่งค่อยๆ จับทางกลยุทธ์ล้ำหน้านี้ได้ และภาพสะท้อนของ Chelsea ที่ยอดเยี่ยมและสร้างสรรค์ก็ปรากฏขึ้นอีกครั้งในฤดูใบไม้ผลิ: สโมสรที่มีปืนที่บรรจุกระสุนพร้อมเสมอ หันกระบอกปืนยิงใส่เท้าตัวเอง ทีมทำคะแนนสำคัญหล่นหายให้กับทีมที่กำลังหนีตกชั้น และขบวนรถไฟเลื่อนชั้นก็ออกจากสถานีโดยทิ้ง The Pensioner ไว้บนชานชาลา</p>
+
+      <p data-lang-th="เมื่อถึงตอนนั้น เลขาธิการผู้จัดการทีมชาวสกอตแลนด์ David Calderhead — ผู้ได้รับฉายา 'the Sphinx' จากท่าทีที่เงียบขรึม — ได้กุมบังเหียนมาแล้ว 15 ฤดูกาล ระยะเวลาดำรงตำแหน่ง 26 ปีของเขา ซึ่งสิ้นสุดลงอย่างเงียบๆ ในปี 1933 ส่วนใหญ่ได้กำหนดการรับรู้เกี่ยวกับสโมสรมาจนถึงปัจจุบัน" data-lang-en="By then the Scottish secretary-manager David Calderhead – nicknamed ‘the Sphinx’ for his taciturn manner – had been 15 seasons at the helm. His 26-year tenure, which ended quietly in 1933, largely defined perceptions of the club to this day.">เมื่อถึงตอนนั้น เลขาธิการผู้จัดการทีมชาวสกอตแลนด์ David Calderhead — ผู้ได้รับฉายา 'the Sphinx' จากท่าทีที่เงียบขรึม — ได้กุมบังเหียนมาแล้ว 15 ฤดูกาล ระยะเวลาดำรงตำแหน่ง 26 ปีของเขา ซึ่งสิ้นสุดลงอย่างเงียบๆ ในปี 1933 ส่วนใหญ่ได้กำหนดการรับรู้เกี่ยวกับสโมสรมาจนถึงปัจจุบัน</p>
+
+      <p data-lang-th="ว่ากันว่า Calderhead 'เงียบในสองภาษา: สกอตแลนด์และอังกฤษ' และอนุมานได้ว่าเขาจะยอมรับข้อเสนอแนะที่น่าสงสัยจากกรรมการเกี่ยวกับการเลือกทีม นโยบายปล่อยปละละเลยไปไกลกว่านั้น ผู้ชมพบว่ามันตลกดีที่ผู้รักษาประตูผู้แปลกประหลาด Ben Howard Baker อดีตแชมป์กระโดดสูง บางครั้งจะเดาะบอลเล่นในเขตโทษของตัวเอง ขณะที่กรรมการคนหนึ่ง — ไม่ใช่ผู้จัดการทีมหรือผู้ฝึกสอนทีมชุดแรก Jack Whitley — ตะโกนสั่งการผู้เล่นเอาท์ฟิลด์ผ่านโทรโข่งข้างสนาม" data-lang-en="It is said Calderhead was ‘silent in two languages: Scottish and English’ and it was inferred he would accept dubious input from directors on team selection. The laissez-faire went further. Spectators found it amusing that eccentric goalkeeper Ben Howard Baker, a former high jump champion, would occasionally bounce the ball round his area while a director – not the manager or first team trainer Jack Whitley – barked instructions to outfield players through a loudhailer pitch-side.">ว่ากันว่า Calderhead 'เงียบในสองภาษา: สกอตแลนด์และอังกฤษ' และอนุมานได้ว่าเขาจะยอมรับข้อเสนอแนะที่น่าสงสัยจากกรรมการเกี่ยวกับการเลือกทีม นโยบายปล่อยปละละเลยไปไกลกว่านั้น ผู้ชมพบว่ามันตลกดีที่ผู้รักษาประตูผู้แปลกประหลาด Ben Howard Baker อดีตแชมป์กระโดดสูง บางครั้งจะเดาะบอลเล่นในเขตโทษของตัวเอง ขณะที่กรรมการคนหนึ่ง — ไม่ใช่ผู้จัดการทีมหรือผู้ฝึกสอนทีมชุดแรก Jack Whitley — ตะโกนสั่งการผู้เล่นเอาท์ฟิลด์ผ่านโทรโข่งข้างสนาม</p>
+
+      <p data-lang-th="ตราบใดที่เรือสำราญสุดหรูยังอยู่ในเส้นทาง ก็ไม่จำเป็นต้องเปลี่ยนกัปตัน และ Calderhead ก็นำพา Chelsea ผ่านหลักชัยที่แท้จริง ซึ่งรวมถึงการเป็นทีมที่จบอันดับสูงสุดของลอนดอนในฤดูกาลแรกของเขา การเลื่อนชั้นในปี 1912 และช่วงเวลาที่ยาวนานในลีกสูงสุด รวมถึงอันดับสามในปี 1919/20 — ซึ่งเป็นอันดับสูงสุดที่สโมสรจากเมืองหลวงเคยทำได้ในตอนนั้น" data-lang-en="While the luxury liner was on course, though, there was no need to change the captain, and Calderhead steered Chelsea past genuine milestones. Those included becoming London’s highest-placed side in his opening season, promotion in 1912 and a long spell in the top flight including third place in 1919/20 – then the highest ever finish for a club from the capital.">ตราบใดที่เรือสำราญสุดหรูยังอยู่ในเส้นทาง ก็ไม่จำเป็นต้องเปลี่ยนกัปตัน และ Calderhead ก็นำพา Chelsea ผ่านหลักชัยที่แท้จริง ซึ่งรวมถึงการเป็นทีมที่จบอันดับสูงสุดของลอนดอนในฤดูกาลแรกของเขา การเลื่อนชั้นในปี 1912 และช่วงเวลาที่ยาวนานในลีกสูงสุด รวมถึงอันดับสามในปี 1919/20 — ซึ่งเป็นอันดับสูงสุดที่สโมสรจากเมืองหลวงเคยทำได้ในตอนนั้น</p>
+
+      <p data-lang-th="ในการไล่ล่าถ้วยรางวัลเดียวที่มีในตอนนั้นคือ FA Cup โค้ชชาวสกอตแลนด์พาสโมสรเข้าถึงรอบรองชนะเลิศในปี 1910/11 ซึ่งเป็นฤดูกาลที่หกนับตั้งแต่ก่อตั้ง และเข้าถึง 'khaki final' ที่เป็นที่จดจำยาวนานในช่วงสงครามปี 1914/15 (สโมสรที่อายุน้อยที่สุดเป็นอันดับสามจาก Football League ที่เคยไปได้ไกลขนาดนั้น) โดยมีการเข้ารอบสี่ทีมสุดท้ายอีกสองครั้งในปี 1919/20 และ 1931/32" data-lang-en="In the only other pursuit of available silverware back then, the FA Cup, the Scot took the club to the semi-final in 1910/11, its sixth season since foundation, and to the long-remembered ‘khaki final’ during wartime in 1914/15 (the third youngest club from the Football League ever to make it that far), with two further appearances in the last four in 1919/20 and 1931/32.">ในการไล่ล่าถ้วยรางวัลเดียวที่มีในตอนนั้นคือ FA Cup โค้ชชาวสกอตแลนด์พาสโมสรเข้าถึงรอบรองชนะเลิศในปี 1910/11 ซึ่งเป็นฤดูกาลที่หกนับตั้งแต่ก่อตั้ง และเข้าถึง 'khaki final' ที่เป็นที่จดจำยาวนานในช่วงสงครามปี 1914/15 (สโมสรที่อายุน้อยที่สุดเป็นอันดับสามจาก Football League ที่เคยไปได้ไกลขนาดนั้น) โดยมีการเข้ารอบสี่ทีมสุดท้ายอีกสองครั้งในปี 1919/20 และ 1931/32</p>
+
+      <!-- SECTION 2 -->
+      <h2 data-lang-th="Chelsea 'ถุงเงิน'" data-lang-en="'Moneybags' Chelsea">Chelsea 'ถุงเงิน'</h2>
+      <p class="drop-cap" data-lang-th="นอกสนาม การบริหารของ Calderhead ช่วยให้บรรลุผลลัพธ์ที่น่าทึ่ง ทุกฤดูกาลตั้งแต่ 1907/08 ถึง 1914/15 Chelsea มีกำไร โดยมียอดขาย 22,826 ปอนด์ที่บันทึกไว้ในฤดูกาลแรกซึ่งเป็นสถิติของสโมสรฟุตบอลในขณะนั้น" data-lang-en="Off the field, Calderhead’s stewardship helped achieved sensational results. Every season from 1907/08 to 1914/15 Chelsea turned a profit, with the £22,826 turnover recorded in the first of those a record for any football club at the time.">นอกสนาม การบริหารของ Calderhead ช่วยให้บรรลุผลลัพธ์ที่น่าทึ่ง ทุกฤดูกาลตั้งแต่ 1907/08 ถึง 1914/15 Chelsea มีกำไร โดยมียอดขาย 22,826 ปอนด์ที่บันทึกไว้ในฤดูกาลแรกซึ่งเป็นสถิติของสโมสรฟุตบอลในขณะนั้น</p>
+      
+      <p data-lang-th="การเป็นเจ้าภาพจัดการแข่งขัน Charity Shields ครั้งแรกที่ Stamford Bridge ในปี 1908 ช่วยเพิ่มรายได้ และในฤดูกาล 1912/13 ทีมจากลอนดอนตะวันตกก็ยกระดับมาตรฐานขึ้นอีกครั้งเป็น 26,545 ปอนด์ เมื่อนับรวมรายได้จากการแข่งขันระดับนานาชาติระหว่างอังกฤษ-สกอตแลนด์ที่ The Bridge เมื่อถึงปี 1920 หลังจากการปรับปรุงสนามกีฬานับครั้งไม่ถ้วน Stamford Bridge ก็ได้เป็นเจ้าภาพการแข่งขัน FA Cup รอบชิงชนะเลิศครั้งแรกจากทั้งหมดสามครั้ง" data-lang-en="Hosting the first ever Charity Shields at Stamford Bridge from 1908 helped increase revenue, and in 1912/13 the west Londoners raised the bar again, to £26,545 when income from the England-Scotland international match at the Bridge was factored in. By 1920, after countless stadium improvements, Stamford Bridge even staged the first of three FA Cup finals.">การเป็นเจ้าภาพจัดการแข่งขัน Charity Shields ครั้งแรกที่ Stamford Bridge ในปี 1908 ช่วยเพิ่มรายได้ และในฤดูกาล 1912/13 ทีมจากลอนดอนตะวันตกก็ยกระดับมาตรฐานขึ้นอีกครั้งเป็น 26,545 ปอนด์ เมื่อนับรวมรายได้จากการแข่งขันระดับนานาชาติระหว่างอังกฤษ-สกอตแลนด์ที่ The Bridge เมื่อถึงปี 1920 หลังจากการปรับปรุงสนามกีฬานับครั้งไม่ถ้วน Stamford Bridge ก็ได้เป็นเจ้าภาพการแข่งขัน FA Cup รอบชิงชนะเลิศครั้งแรกจากทั้งหมดสามครั้ง</p>
+
+      <!-- YouTube Video Block -->
+      <div class="img-block img-block--wide">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 24px rgba(26,20,16,0.15);">
+          <iframe 
+            src="https://www.youtube.com/embed/7aTx4rHZPKw" 
+            title="The Cup Final (1922)" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <figcaption>
+          🎥 วิดีโอการแข่งขัน: The Cup Final (1922)<br>
+          🙏 ขอขอบคุณ: <a href="https://youtu.be/7aTx4rHZPKw" target="_blank" style="color: var(--gold); text-decoration: underline;">British Pathé</a>
+        </figcaption>
+      </div>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="ผู้ถือหุ้นของสโมสรได้รับเงินปันผลห้าเปอร์เซ็นต์จากผลกำไร แต่ก็มีการบริจาคเงินจำนวนมากให้กับองค์กรการกุศลในท้องถิ่นด้วย เมื่อ Football League จัดตั้งกองทุนสงเคราะห์เหตุการณ์เรือไททานิคหลังจากการอับปางอันน่าตกใจของเรือใหญ่ลำนั้นในเดือนเมษายน 1912 ไม่มีการบริจาคเดี่ยวใดใกล้เคียงกับ 500 ปอนด์ของ Chelsea เลย นี่เป็นสโมสรที่ยังใหม่ แต่มีความรับผิดชอบต่อสังคมอย่างแรงกล้า" data-lang-en="Shareholders in the club received a five per cent dividend on the profits but generous contributions were handed to local charities too. When the Football League established a Titanic benefit fund after the great ship’s shocking demise in April 1912, no single donation came close to Chelsea’s £500. This was still a young club, but its sense of social responsibility was strong.">ผู้ถือหุ้นของสโมสรได้รับเงินปันผลห้าเปอร์เซ็นต์จากผลกำไร แต่ก็มีการบริจาคเงินจำนวนมากให้กับองค์กรการกุศลในท้องถิ่นด้วย เมื่อ Football League จัดตั้งกองทุนสงเคราะห์เหตุการณ์เรือไททานิคหลังจากการอับปางอันน่าตกใจของเรือใหญ่ลำนั้นในเดือนเมษายน 1912 ไม่มีการบริจาคเดี่ยวใดใกล้เคียงกับ 500 ปอนด์ของ Chelsea เลย นี่เป็นสโมสรที่ยังใหม่ แต่มีความรับผิดชอบต่อสังคมอย่างแรงกล้า</p>
+      </blockquote>
+
+      <p data-lang-th="แม้แต่ในช่วงสงครามโลกครั้งที่หนึ่ง เมื่อฟุตบอลถูกจัดเป็นระดับภูมิภาคและรายได้ลดลงอย่างมาก Chelsea ก็ยังมีส่วนร่วมอย่างมากในกองทุนความยากลำบากของ Football League สำหรับสมาชิกที่ได้รับผลกระทบหนักที่สุด ในขณะที่ The Pensioners กัดฟันสู้และไม่ได้ขอเงินจากกองทุน Arsenal ซึ่งเป็นทีมลอนดอนเพื่อนร่วมเมืองกลับยื่นเรื่องเรียกร้องเป็นประจำ ซึ่งส่วนใหญ่ถูกปฏิเสธเนื่องจากไม่เป็นธรรมต่อสโมสรอื่น" data-lang-en="Even during World War One, when football was regionalised and takings vastly reduced, Chelsea contributed strongly to a Football League hardship fund for hardest-hit members. Whereas the Pensioners gritted our teeth and made no call on the fund, fellow Londoners Arsenal made regular claims, most of which were rejected as unfair on fellow clubs.">แม้แต่ในช่วงสงครามโลกครั้งที่หนึ่ง เมื่อฟุตบอลถูกจัดเป็นระดับภูมิภาคและรายได้ลดลงอย่างมาก Chelsea ก็ยังมีส่วนร่วมอย่างมากในกองทุนความยากลำบากของ Football League สำหรับสมาชิกที่ได้รับผลกระทบหนักที่สุด ในขณะที่ The Pensioners กัดฟันสู้และไม่ได้ขอเงินจากกองทุน Arsenal ซึ่งเป็นทีมลอนดอนเพื่อนร่วมเมืองกลับยื่นเรื่องเรียกร้องเป็นประจำ ซึ่งส่วนใหญ่ถูกปฏิเสธเนื่องจากไม่เป็นธรรมต่อสโมสรอื่น</p>
+
+      <p data-lang-th="Chelsea ยังรออย่างอดทนตลอดช่วงสงครามให้ Manchester United ชำระหนี้กว่า 1,500 ปอนด์ที่ค้างชำระทีมลอนดอน The Pensioners เตือน Football League เป็นประจำเกี่ยวกับหนี้สินนี้ แต่ก็ค่อนข้างยินดีที่จะรอเวลาด้วยความรู้ว่าจะได้รับในสักวันหนึ่ง นี่แสดงให้เห็นอีกครั้งถึงความมุ่งมั่นของ Chelsea ที่จะทำในสิ่งที่ถูกต้อง แม้ในสถานการณ์ที่ยากลำบาก" data-lang-en="Chelsea also waited patiently throughout the war for Manchester United to pay more than £1,500 it owed the Londoners. The Pensioners regularly reminded the Football League about the debt, but were reasonably happy to bide our time in the knowledge we would receive it someday. Again, this was Chelsea determined to do the right thing, even in trying circumstances.">Chelsea ยังรออย่างอดทนตลอดช่วงสงครามให้ Manchester United ชำระหนี้กว่า 1,500 ปอนด์ที่ค้างชำระทีมลอนดอน The Pensioners เตือน Football League เป็นประจำเกี่ยวกับหนี้สินนี้ แต่ก็ค่อนข้างยินดีที่จะรอเวลาด้วยความรู้ว่าจะได้รับในสักวันหนึ่ง นี่แสดงให้เห็นอีกครั้งถึงความมุ่งมั่นของ Chelsea ที่จะทำในสิ่งที่ถูกต้อง แม้ในสถานการณ์ที่ยากลำบาก</p>
+
+      <p data-lang-th="และในปี 1931 ที่การประชุมสามัญประจำปีของ Football League ความรู้สึกถึงความเป็นชุมชนของสโมสรได้รับการพิสูจน์เมื่อประธาน Claude Kirby เสนอว่าเพื่อประโยชน์ของสโมสรเล็กๆ ไม่ควรอนุญาตให้มีการถ่ายทอดสดการแข่งขัน ข้อเสนอนี้ผ่านการเห็นชอบ ในฐานะที่เป็นหนึ่งในทีมที่ดึงดูดความสนใจมากที่สุดในลีกสูงสุด Chelsea จะได้รับผลประโยชน์ทางการเงินมากกว่าทีมอื่นๆ ส่วนใหญ่ แต่ตระหนักดีว่าการทำลายรายได้ของผู้อื่นส่งผลกระทบต่อทุกคน" data-lang-en="And in 1931, at the Football League’s annual general meeting, the club’s sense of community was exemplified when Chelsea chair Claude Kirby moved that, in the interests of smaller clubs’ gates, no broadcasting of matches be allowed. This was passed. As one of the most glamorous and biggest attractions in the top tier, Chelsea stood to benefit financially more than most, yet recognised that damaging others’ income affected all.">และในปี 1931 ที่การประชุมสามัญประจำปีของ Football League ความรู้สึกถึงความเป็นชุมชนของสโมสรได้รับการพิสูจน์เมื่อประธาน Claude Kirby เสนอว่าเพื่อประโยชน์ของสโมสรเล็กๆ ไม่ควรอนุญาตให้มีการถ่ายทอดสดการแข่งขัน ข้อเสนอนี้ผ่านการเห็นชอบ ในฐานะที่เป็นหนึ่งในทีมที่ดึงดูดความสนใจมากที่สุดในลีกสูงสุด Chelsea จะได้รับผลประโยชน์ทางการเงินมากกว่าทีมอื่นๆ ส่วนใหญ่ แต่ตระหนักดีว่าการทำลายรายได้ของผู้อื่นส่งผลกระทบต่อทุกคน</p>
+
+      <p data-lang-th="'ถุงเงิน' ของ Chelsea ถูกเติมเต็มด้วยฝูงชนมหาศาลที่หมุนประตูหมุนที่ Stamford Bridge ประชากรของอังกฤษเพิ่มขึ้นจาก 14 ล้านคนในปี 1831 เป็น 32.5 ล้านคนในปี 1901 และตั้งแต่กลางศตวรรษค่าจ้างก็เพิ่มขึ้นและชั่วโมงการทำงานลดลงเล็กน้อยสำหรับพลเมืองส่วนใหญ่" data-lang-en="Chelsea’s ‘moneybags’ were filled by the huge crowds spinning turnstiles at Stamford Bridge. The population of Britain increased from 14m in 1831 to 32.5m in 1901 and from the middle of the century wages had increased and working hours slightly reduced for the majority of citizens.">'ถุงเงิน' ของ Chelsea ถูกเติมเต็มด้วยฝูงชนมหาศาลที่หมุนประตูหมุนที่ Stamford Bridge ประชากรของอังกฤษเพิ่มขึ้นจาก 14 ล้านคนในปี 1831 เป็น 32.5 ล้านคนในปี 1901 และตั้งแต่กลางศตวรรษค่าจ้างก็เพิ่มขึ้นและชั่วโมงการทำงานลดลงเล็กน้อยสำหรับพลเมืองส่วนใหญ่</p>
+
+      <p data-lang-th="เวลาว่างที่เพิ่มขึ้นนำมาซึ่งผู้ชมชนชั้นแรงงานกลุ่มใหม่และรายได้ที่พร้อมจะจ่าย ในจำนวนหลายพันคน และบริษัทท่องเที่ยว Thomas Cook ได้เปิดตัว 'Special Football Trips' ซึ่งเสนอค่าโดยสารรถไฟราคาถูกสำหรับการเดินทางไปชมการแข่งขัน นี่เป็นโอกาสทำเงินที่ยังไม่ถูกนำมาใช้ในลอนดอนที่ผู้รับผิดชอบการกำเนิดของสโมสร Fred Parker, Gus Mears และคณะ เล็งเห็นได้อย่างยอดเยี่ยม" data-lang-en="Expanded leisure time brought new working-class spectators, and their disposable income, in their thousands, and travel agent Thomas Cook launched ‘Special Football Trips’ offering cheap train fares to matches. This was the untapped money-spinning opportunity in London that those responsible for the birth of the club, Fred Parker, Gus Mears and co, quite brilliantly foresaw.">เวลาว่างที่เพิ่มขึ้นนำมาซึ่งผู้ชมชนชั้นแรงงานกลุ่มใหม่และรายได้ที่พร้อมจะจ่าย ในจำนวนหลายพันคน และบริษัทท่องเที่ยว Thomas Cook ได้เปิดตัว 'Special Football Trips' ซึ่งเสนอค่าโดยสารรถไฟราคาถูกสำหรับการเดินทางไปชมการแข่งขัน นี่เป็นโอกาสทำเงินที่ยังไม่ถูกนำมาใช้ในลอนดอนที่ผู้รับผิดชอบการกำเนิดของสโมสร Fred Parker, Gus Mears และคณะ เล็งเห็นได้อย่างยอดเยี่ยม</p>
+
+      <p data-lang-th="ชีวิตผู้คนทุกรูปแบบหลั่งไหลมาจากทั่วทุกสารทิศเพื่อเติมเต็มสนามกีฬาที่ให้บริการอย่างดีโดยทางรถไฟ รถไฟใต้ดิน และรถบัส ในฤดูกาลที่สองของสโมสร ขณะที่เราไล่ล่าการเลื่อนชั้น จำนวนผู้ชมเฉลี่ยที่ Stamford Bridge คือ 30,850 คน ซึ่งน่าประหลาดใจมาก" data-lang-en="All human life came from far and wide to fill a stadium well served by railway, underground and the omnibus. In the club’s second season, as we chased promotion, the average attendance at Stamford Bridge was an astonishing 30,850.">ชีวิตผู้คนทุกรูปแบบหลั่งไหลมาจากทั่วทุกสารทิศเพื่อเติมเต็มสนามกีฬาที่ให้บริการอย่างดีโดยทางรถไฟ รถไฟใต้ดิน และรถบัส ในฤดูกาลที่สองของสโมสร ขณะที่เราไล่ล่าการเลื่อนชั้น จำนวนผู้ชมเฉลี่ยที่ Stamford Bridge คือ 30,850 คน ซึ่งน่าประหลาดใจมาก</p>
+
+      <p data-lang-th="นี่เป็นการพิสูจน์วิสัยทัศน์ของ Fred Parker ในการเริ่มต้นสโมสรใหม่ในเมืองหลวงในระดับมโหฬาร มีเพียงสโมสรเดียวคือ Newcastle ที่เคยทะลุกำแพง 30k มาก่อน และเมื่อทีม Geordies มาเยือนในวันที่ 27 ธันวาคม 1909 ก็มีการสร้างสถิติใหม่ของดิวิชั่นหนึ่งที่ 66,000 คน ในช่วงปี 1913/14 จุดสูงสุดใหม่ก็มาถึงที่ 37,970 คน — เกือบสามเท่าของค่าเฉลี่ยทั่วลอนดอนที่ Arsenal" data-lang-en="This was vindication of the vision of Fred Parker to start a new club in the capital on a mighty scale. Only one club, Newcastle, had ever broken the 30k barrier before and when the Geordies visited on 27 December 1909, a new Division One record of 66,000 was set. During 1913/14, a new high-water mark was reached with 37,970 – almost three times the average across London at Arsenal.">นี่เป็นการพิสูจน์วิสัยทัศน์ของ Fred Parker ในการเริ่มต้นสโมสรใหม่ในเมืองหลวงในระดับมโหฬาร มีเพียงสโมสรเดียวคือ Newcastle ที่เคยทะลุกำแพง 30k มาก่อน และเมื่อทีม Geordies มาเยือนในวันที่ 27 ธันวาคม 1909 ก็มีการสร้างสถิติใหม่ของดิวิชั่นหนึ่งที่ 66,000 คน ในช่วงปี 1913/14 จุดสูงสุดใหม่ก็มาถึงที่ 37,970 คน — เกือบสามเท่าของค่าเฉลี่ยทั่วลอนดอนที่ Arsenal</p>
+
+      <p data-lang-th="ระหว่างปี 1907/08 ถึง 1929/30 Chelsea เป็นสโมสรที่ได้รับความนิยมมากที่สุดในประเทศถึงแปดฤดูกาล และในฤดูกาลสุดท้ายนั้นก็กลายเป็นสโมสรแรก — อาจจะเป็นในโลก — ที่มีผู้ชมผ่านประตูเฉลี่ยมากกว่า 40,000 คน (42,860) The Pensioners ยังคงเป็นหนึ่งในจุดดึงดูดที่ยิ่งใหญ่ที่สุดตลอดยุค 1930 และจะขึ้นเป็นอันดับหนึ่งในตารางผู้ชมครั้งสุดท้ายในปี 1954/55" data-lang-en="Between 1907/08 and 1929/30 Chelsea were the most popular club in the land in eight seasons, and in the last of those became the first – possibly in the world – to average more than 40,000 through the gates (42,860). The Pensioners remained one of the biggest draws throughout the 1930s, and would top the attendance table for the last time in 1954/55.">ระหว่างปี 1907/08 ถึง 1929/30 Chelsea เป็นสโมสรที่ได้รับความนิยมมากที่สุดในประเทศถึงแปดฤดูกาล และในฤดูกาลสุดท้ายนั้นก็กลายเป็นสโมสรแรก — อาจจะเป็นในโลก — ที่มีผู้ชมผ่านประตูเฉลี่ยมากกว่า 40,000 คน (42,860) The Pensioners ยังคงเป็นหนึ่งในจุดดึงดูดที่ยิ่งใหญ่ที่สุดตลอดยุค 1930 และจะขึ้นเป็นอันดับหนึ่งในตารางผู้ชมครั้งสุดท้ายในปี 1954/55</p>
+
+      <!-- SECTION 3 -->
+      <h2 data-lang-th="ระหว่างเวทีและดวงดาว" data-lang-en="Between the Stage and the Stars">ระหว่างเวทีและดวงดาว</h2>
+      <p class="drop-cap" data-lang-th="หนึ่งในความตื่นเต้นของการไป Stamford Bridge คือชื่อเสียงในฐานะสถานที่ที่ต้องมาให้เห็น ศิลปิน นักแสดง และราชวงศ์อยู่เบียดเสียดกันบนอัฒจันทร์ร่วมกับคนขับรถม้า พ่อค้าเร่ และพนักงานเสิร์ฟหญิง" data-lang-en="One of the thrills of going to Stamford Bridge was its reputation for being the place to be seen. Artists, actors and royalty were cheek by jowl on the terracing with carmen, costermongers and barmaids.">หนึ่งในความตื่นเต้นของการไป Stamford Bridge คือชื่อเสียงในฐานะสถานที่ที่ต้องมาให้เห็น ศิลปิน นักแสดง และราชวงศ์อยู่เบียดเสียดกันบนอัฒจันทร์ร่วมกับคนขับรถม้า พ่อค้าเร่ และพนักงานเสิร์ฟหญิง</p>
+
+      <p data-lang-th="รูปแบบแรกของความมีชื่อเสียงในศตวรรษที่ 20 คือราชวงศ์ และความสัมพันธ์ทางสังคมของ Chelsea ได้นำมาซึ่งประกายแสงแห่งดวงดาว เจ้าชายผู้ที่จะทรงเป็นกษัตริย์ George VI เป็นแฟนบอล The Pensioners — การเสด็จพระราชดำเนินเยือน The Bridge ของพระราชวงศ์อาจเป็นแรงผลักดันให้สโมสรเปลี่ยนจากเสื้อสีฟ้า Eton Blue ที่อ่อนกว่าเป็นเสื้อสีน้ำเงิน Royal Blue สำหรับฤดูกาล 1907/08 ในฐานะกษัตริย์ที่ครองราชย์ กษัตริย์ George ทรงพาพระธิดา เจ้าหญิงซึ่งต่อมาคือควีนเอลิซาเบธ ไปชมการแข่งขันฟุตบอลระดับสโมสรครั้งแรกของพระองค์ในปี 1945: Chelsea ชนะ Millwall 2-0 ที่ Wembley ในนัดชิงชนะเลิศ League South Cup ในช่วงสงคราม" data-lang-en="The first form of celebrity in the 20th century was royalty, and Chelsea’s social connections brought a sprinkle of stardust. The prince who would become King George VI was a Pensioners fan – it was the royal family’s visit to the Bridge that may have prompted the club’s switch from a lighter Eton Blue to royal blue shirts for the 1907/08 season. As reigning monarch, King George would take his daughter, Princess, now Queen Elizabeth, to her first ever club football match in 1945: Chelsea 2 Millwall 0 at Wembley in the wartime League South Cup final.">รูปแบบแรกของความมีชื่อเสียงในศตวรรษที่ 20 คือราชวงศ์ และความสัมพันธ์ทางสังคมของ Chelsea ได้นำมาซึ่งประกายแสงแห่งดวงดาว เจ้าชายผู้ที่จะทรงเป็นกษัตริย์ George VI เป็นแฟนบอล The Pensioners — การเสด็จพระราชดำเนินเยือน The Bridge ของพระราชวงศ์อาจเป็นแรงผลักดันให้สโมสรเปลี่ยนจากเสื้อสีฟ้า Eton Blue ที่อ่อนกว่าเป็นเสื้อสีน้ำเงิน Royal Blue สำหรับฤดูกาล 1907/08 ในฐานะกษัตริย์ที่ครองราชย์ กษัตริย์ George ทรงพาพระธิดา เจ้าหญิงซึ่งต่อมาคือควีนเอลิซาเบธ ไปชมการแข่งขันฟุตบอลระดับสโมสรครั้งแรกของพระองค์ในปี 1945: Chelsea ชนะ Millwall 2-0 ที่ Wembley ในนัดชิงชนะเลิศ League South Cup ในช่วงสงคราม</p>
+
+      <!-- YouTube Video Block -->
+      <div class="img-block img-block--wide">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 24px rgba(26,20,16,0.15);">
+          <iframe 
+            src="https://www.youtube.com/embed/ElsTzSXxUNs" 
+            title="Chelsea V Millwall Football Match (1945)" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <figcaption>
+          🎥 วิดีโอการแข่งขัน: Chelsea V Millwall Football Match (1945)<br>
+          🙏 ขอขอบคุณ: <a href="https://youtu.be/ElsTzSXxUNs" target="_blank" style="color: var(--gold); text-decoration: underline;">British Pathé</a>
+        </figcaption>
+      </div>
+
+      <p data-lang-th="เป็นเครื่องวัดความคุ้นเคยของสโมสรกับวงสังคมของพระราชวังบักกิงแฮมที่ประธาน Claude Kirby สามารถเขียนจดหมายถึงผู้ตัดสิน A Ward เพื่อขอบคุณเขาสำหรับวิธีการตัดสินเกม FA Cup กับ Leicester ในเดือนกุมภาพันธ์ 1920 เสมือนเป็นตัวแทนของกษัตริย์ George เอง ซึ่งทรงเข้าร่วมชมเกมนั้น: 'พระบาทสมเด็จพระเจ้าอยู่หัวมีพระราชประสงค์ให้ท่านเข้าเฝ้าหลังจบการแข่งขัน ... แต่เนื่องจากฝูงชนที่เบียดเสียดกันในทางเดินไปยังห้องของท่าน ผู้ส่งสารไม่สามารถเข้าถึงท่านได้ และกษัตริย์ก็ต้องเสด็จออกจากสนาม พระบาทสมเด็จพระเจ้าอยู่หัวมีพระราชกระแสรับสั่งให้ข้าพเจ้าแจ้งให้ท่านทราบว่า พระองค์ทรงพิจารณาว่าท่านทำหน้าที่ตัดสินการแข่งขันได้อย่างเชี่ยวชาญยิ่ง และตรัสว่าพระองค์คงไม่อยากทำหน้าที่นั้นเสียเองอย่างแน่นอน'" data-lang-en="It was a measure of the club’s familiarity with Buckingham Palace circles that chair Claude Kirby could write to referee A Ward to thank him for the way he had run the Leicester FA Cup game in February 1920 almost as the emissary of King George himself, who had attended it: ‘It was his Majesty’s wish you should be presented to him after the match … but owing to the crush of the people in the passage leading to your room the messenger was unable to get to you, and the King had to leave the ground. His Majesty desired me to inform you he considered you refereed the match in a most able manner, and said he would certainly not like to act in that office himself.’">เป็นเครื่องวัดความคุ้นเคยของสโมสรกับวงสังคมของพระราชวังบักกิงแฮมที่ประธาน Claude Kirby สามารถเขียนจดหมายถึงผู้ตัดสิน A Ward เพื่อขอบคุณเขาสำหรับวิธีการตัดสินเกม FA Cup กับ Leicester ในเดือนกุมภาพันธ์ 1920 เสมือนเป็นตัวแทนของกษัตริย์ George เอง ซึ่งทรงเข้าร่วมชมเกมนั้น: 'พระบาทสมเด็จพระเจ้าอยู่หัวมีพระราชประสงค์ให้ท่านเข้าเฝ้าหลังจบการแข่งขัน ... แต่เนื่องจากฝูงชนที่เบียดเสียดกันในทางเดินไปยังห้องของท่าน ผู้ส่งสารไม่สามารถเข้าถึงท่านได้ และกษัตริย์ก็ต้องเสด็จออกจากสนาม พระบาทสมเด็จพระเจ้าอยู่หัวมีพระราชกระแสรับสั่งให้ข้าพเจ้าแจ้งให้ท่านทราบว่า พระองค์ทรงพิจารณาว่าท่านทำหน้าที่ตัดสินการแข่งขันได้อย่างเชี่ยวชาญยิ่ง และตรัสว่าพระองค์คงไม่อยากทำหน้าที่นั้นเสียเองอย่างแน่นอน'</p>
+
+      <p data-lang-th="มักจะมีเรื่องราวให้พูดถึงเสมอ และบางครั้งก็เป็นมุกตลก Chelsea ถูกพูดถึงบนเวทีในมิวสิกฮอลล์ ในภาพยนตร์ของ Will Hay และแม้แต่ในภาพยนตร์ระทึกขวัญสุดคลาสสิก 'The 39 Steps' ในปี 1935 ในบ่ายวันอังคาร สี่วันหลังจากที่แฟนบอลสร้างสถิติ 67,000 คนเข้าชมเกมระหว่าง Chelsea พบกับ Manchester United ในเดือนเมษายน 1906 การมาเยือนในเกมกระชับมิตรระดับนานาชาติของ Sparta Rotterdam ได้กำหนดแนวทางสำหรับสโมสรที่จะเริ่มรูปแบบที่แตกต่างและหลอกหลอนไม่แพ้กันในช่วงหลายปีที่ผ่านมา" data-lang-en="Always a story, and sometimes a punchline, Chelsea were mentioned on stage at music halls, in Will Hay films, and even the classic thriller ‘The 39 Steps’ in 1935. On a Tuesday afternoon four days after a record 67,000 crowd attended Chelsea versus Manchester United in April 1906, the international friendly visit of Sparta Rotterdam set a tone for the club that would start a different and equally haunting motif down the years.">มักจะมีเรื่องราวให้พูดถึงเสมอ และบางครั้งก็เป็นมุกตลก Chelsea ถูกพูดถึงบนเวทีในมิวสิกฮอลล์ ในภาพยนตร์ของ Will Hay และแม้แต่ในภาพยนตร์ระทึกขวัญสุดคลาสสิก 'The 39 Steps' ในปี 1935 ในบ่ายวันอังคาร สี่วันหลังจากที่แฟนบอลสร้างสถิติ 67,000 คนเข้าชมเกมระหว่าง Chelsea พบกับ Manchester United ในเดือนเมษายน 1906 การมาเยือนในเกมกระชับมิตรระดับนานาชาติของ Sparta Rotterdam ได้กำหนดแนวทางสำหรับสโมสรที่จะเริ่มรูปแบบที่แตกต่างและหลอกหลอนไม่แพ้กันในช่วงหลายปีที่ผ่านมา</p>
+
+      <p data-lang-th="นั่นเป็นเพราะเหตุผลบางประการ จึงมีการหาพื้นที่ในรายชื่อผู้เล่น 11 ตัวจริงของทีมเจ้าบ้านให้กับนักแสดงตลกชั้นนำในยุคนั้นคือ George Robey และ Fred Wright โดย Robey ยิงพลาดอย่างน่าเกลียดตั้งแต่ต้นเกม และเจ้าภาพก็พ่ายแพ้ 0-2 ถือเป็นการบันทึกมุกตลกแรกที่เล่นตลกกับความพ่ายแพ้ของ Chelsea แต่ยังห่างไกลจากครั้งสุดท้าย" data-lang-en="This is because for some reason space was found in the home starting line-up for the premier comedians of the day, George Robey and Fred Wright. Robey fluffed an open goal early on and the hosts lost 0-2, thus recording perhaps the first joke at Chelsea’s expense, but far from the last.">นั่นเป็นเพราะเหตุผลบางประการ จึงมีการหาพื้นที่ในรายชื่อผู้เล่น 11 ตัวจริงของทีมเจ้าบ้านให้กับนักแสดงตลกชั้นนำในยุคนั้นคือ George Robey และ Fred Wright โดย Robey ยิงพลาดอย่างน่าเกลียดตั้งแต่ต้นเกม และเจ้าภาพก็พ่ายแพ้ 0-2 ถือเป็นการบันทึกมุกตลกแรกที่เล่นตลกกับความพ่ายแพ้ของ Chelsea แต่ยังห่างไกลจากครั้งสุดท้าย</p>
+
+      <p data-lang-th="ผลประโยชน์ทางการค้าบางครั้งดูเหมือนจะเป็นเรื่องสำคัญกว่าความสำเร็จในสนามแข่งขัน โดยมีการจัดกิจกรรมทำเงินอย่างต่อเนื่องแย่งกันใช้ลู่วิ่ง รวมถึงทีมแข่งมอเตอร์ไซค์ Stamford Bridge (1928-32), สมาคมแข่งสุนัขเกรย์ฮาวด์ (1933-68) และการแข่งรถยนต์ขนาดเล็ก (1948) ผู้เช่าในช่วงฤดูร้อนอย่าง London Athletic Club ถอนตัวออกไปในปี 1933" data-lang-en="Commercial interests sometimes appeared the priority over playing field success, with a succession of money-spinners vying for use of the track including the Stamford Bridge speedway team (1928-32), Greyhound Racing Association (1933-68), and midget car racing (1948). Summer lessees the London Athletic Club quit in 1933.">ผลประโยชน์ทางการค้าบางครั้งดูเหมือนจะเป็นเรื่องสำคัญกว่าความสำเร็จในสนามแข่งขัน โดยมีการจัดกิจกรรมทำเงินอย่างต่อเนื่องแย่งกันใช้ลู่วิ่ง รวมถึงทีมแข่งมอเตอร์ไซค์ Stamford Bridge (1928-32), สมาคมแข่งสุนัขเกรย์ฮาวด์ (1933-68) และการแข่งรถยนต์ขนาดเล็ก (1948) ผู้เช่าในช่วงฤดูร้อนอย่าง London Athletic Club ถอนตัวออกไปในปี 1933</p>
+
+      <p data-lang-th="Stamford Bridge Greyhounds ซึ่งเป็นสาขาของ GRA กลายเป็นผู้มีอำนาจเหนือกว่า ในปี 1935 เมื่อคณะกรรมการขนส่งลอนดอนต้องการสร้างทางเดินตรงไปยังสถานีรถไฟใต้ดิน Fulham Broadway ก็เป็นพวกเกรย์ฮาวนด์ที่ส่งเสียงเห่าว่า 'ไม่เอาล่ะ ขอบคุณ'" data-lang-en="The GRA’s offshoot, Stamford Bridge Greyhounds, became the tail that wagged the dog. In 1935 when the London Transport Board wanted to build a walkway direct to Fulham Broadway underground station, it was the greyhounds that barked ‘no thanks’.">Stamford Bridge Greyhounds ซึ่งเป็นสาขาของ GRA กลายเป็นผู้มีอำนาจเหนือกว่า ในปี 1935 เมื่อคณะกรรมการขนส่งลอนดอนต้องการสร้างทางเดินตรงไปยังสถานีรถไฟใต้ดิน Fulham Broadway ก็เป็นพวกเกรย์ฮาวนด์ที่ส่งเสียงเห่าว่า 'ไม่เอาล่ะ ขอบคุณ'</p>
+
+      <p data-lang-th="เหมือนกับป้ายโฆษณาอันอื้อฉาวในภาพยนตร์ 'Spinal Tap' เมื่อเหล่าร็อคสตาร์ตกอับไปเล่นคอนเสิร์ตที่สวนสนุก – 'ถ้าฉันบอกพวกเขาครั้งหนึ่ง ฉันบอกเป็นพันครั้งแล้ว: "ใส่ชื่อวงก่อน แล้วค่อยเป็นโชว์หุ่นกระบอกทีหลัง"’ – Chelsea กลายเป็นสิ่งรองลงมาจากโชว์ข้างทางที่หน้าประตูบ้านตัวเอง" data-lang-en="Like the infamous billboard in the movie ‘Spinal Tap’, when the washed-up rock stars gigged an amusement park – ‘If I told them once, I told them a thousand times: “Put the band’s name first, puppet show after”’ – Chelsea had become second billing to a sideshow on their own front gate.">เหมือนกับป้ายโฆษณาอันอื้อฉาวในภาพยนตร์ 'Spinal Tap' เมื่อเหล่าร็อคสตาร์ตกอับไปเล่นคอนเสิร์ตที่สวนสนุก – 'ถ้าฉันบอกพวกเขาครั้งหนึ่ง ฉันบอกเป็นพันครั้งแล้ว: "ใส่ชื่อวงก่อน แล้วค่อยเป็นโชว์หุ่นกระบอกทีหลัง"’ – Chelsea กลายเป็นสิ่งรองลงมาจากโชว์ข้างทางที่หน้าประตูบ้านตัวเอง</p>
+
+      <!-- SECTION 4 -->
+      <h2 data-lang-th="ความไม่สอดคล้องที่ยิ่งใหญ่" data-lang-en="The Great Inconsistents">ความไม่สอดคล้องที่ยิ่งใหญ่</h2>
+      <p class="drop-cap" data-lang-th="การที่ Chelsea เป็นที่พูดถึงนั้นเกิดจากความทะเยอทะยานและชื่อเสียงที่มีเงินทุนหนุนหลัง ซึ่งขัดแย้งกับการขาดความสำเร็จที่ยาวนานถึง 50 ปี หรืออย่างที่หนังสือพิมพ์ฉบับหนึ่งในปี 1913 กล่าวไว้ว่า เป็นการถูก 'มองว่าเป็นทีมที่ใช้เงินมากที่สุดและเอาแน่เอานอนไม่ได้ที่สุดในลีก' ในวงการกีฬาอังกฤษ ทุกคนต่างหลงรักความล้มเหลวที่ไร้เกียรติยศ" data-lang-en="Chelsea’s mentionability stemmed from our well-funded ambition and popularity jarring with the lack of success that endured for 50 years. Or, as one 1913 newspaper put it, being ‘regarded as the most expensive as well as the most erratic combination in the whole League.’ In British sport, everyone loves an inglorious failure.">การที่ Chelsea เป็นที่พูดถึงนั้นเกิดจากความทะเยอทะยานและชื่อเสียงที่มีเงินทุนหนุนหลัง ซึ่งขัดแย้งกับการขาดความสำเร็จที่ยาวนานถึง 50 ปี หรืออย่างที่หนังสือพิมพ์ฉบับหนึ่งในปี 1913 กล่าวไว้ว่า เป็นการถูก 'มองว่าเป็นทีมที่ใช้เงินมากที่สุดและเอาแน่เอานอนไม่ได้ที่สุดในลีก' ในวงการกีฬาอังกฤษ ทุกคนต่างหลงรักความล้มเหลวที่ไร้เกียรติยศ</p>
+      
+      <p data-lang-th="หลังจากที่ The Pensioners ตกชั้นในปี 1910 นักวิจารณ์ต่างดุเดือดเกี่ยวกับความพยายามของ Calderhead ที่จะ 'ใช้เงินซื้อทางรอด' โดยการซื้อผู้เล่นใหม่ถึงหกคนในเดือนมีนาคมและเมษายน มรดกอย่างหนึ่งของเสียงวิจารณ์นี้คือการที่ FA นำวันสุดท้ายของการซื้อขายนักเตะ (transfer deadline day) มาใช้เป็นครั้งแรก อีกอย่างคือฉายา 'สโมสรถุงเงิน' ซึ่งยังคงอยู่จนถึงทุกวันนี้ โดยความผิดปกติคือช่วงปี 1974-1995" data-lang-en="After the Pensioners were relegated in 1910, critics were savage about Calderhead’s attempt to ‘buy the way to safety’ through the acquisition of six new players in March and April. One legacy of this outcry was the FA introducing the first transfer deadline day. Another was the label ‘moneybags club’ which has endured to this day, the anomaly being the years 1974-1995.">หลังจากที่ The Pensioners ตกชั้นในปี 1910 นักวิจารณ์ต่างดุเดือดเกี่ยวกับความพยายามของ Calderhead ที่จะ 'ใช้เงินซื้อทางรอด' โดยการซื้อผู้เล่นใหม่ถึงหกคนในเดือนมีนาคมและเมษายน มรดกอย่างหนึ่งของเสียงวิจารณ์นี้คือการที่ FA นำวันสุดท้ายของการซื้อขายนักเตะ (transfer deadline day) มาใช้เป็นครั้งแรก อีกอย่างคือฉายา 'สโมสรถุงเงิน' ซึ่งยังคงอยู่จนถึงทุกวันนี้ โดยความผิดปกติคือช่วงปี 1974-1995</p>
+
+      <p data-lang-th="คำนี้ถูกนำมาใช้เพราะตั้งแต่แรกเริ่ม Chelsea ได้ลงทุนในพรสวรรค์ที่สร้างความพอใจให้กับแฟนบอล ในช่วง 50 ปีแรกของประวัติศาสตร์สโมสร มีถ้วยรางวัลสำคัญเพียงสองรายการเท่านั้น และนักฟุตบอลในสมัยนั้นก็เหมือนสมัยนี้ ที่ใฝ่ฝันจะเล่นให้กับสโมสรที่ประสบความสำเร็จ การคว้าแชมป์หมายถึงโบนัส เหรียญรางวัล และการเป็นพรีเซ็นเตอร์ที่สร้างรายได้งาม" data-lang-en="The term was applied because from the outset Chelsea had invested in crowd-pleasing talent. For the first 50 years of the club’s history there were only two major pieces of silverware to win and footballers, then as now, aspired to play for successful clubs. Winning meant bonuses, medals, lucrative endorsements.">คำนี้ถูกนำมาใช้เพราะตั้งแต่แรกเริ่ม Chelsea ได้ลงทุนในพรสวรรค์ที่สร้างความพอใจให้กับแฟนบอล ในช่วง 50 ปีแรกของประวัติศาสตร์สโมสร มีถ้วยรางวัลสำคัญเพียงสองรายการเท่านั้น และนักฟุตบอลในสมัยนั้นก็เหมือนสมัยนี้ ที่ใฝ่ฝันจะเล่นให้กับสโมสรที่ประสบความสำเร็จ การคว้าแชมป์หมายถึงโบนัส เหรียญรางวัล และการเป็นพรีเซ็นเตอร์ที่สร้างรายได้งาม</p>
+
+      <p data-lang-th="The Pensioners ไม่สามารถเสนอประวัติแห่งความสำเร็จได้ แต่ไม่มีใครเทียบได้ในเรื่องสิ่งจูงใจอื่นๆ ที่นุ่มนวลกว่า: ผู้ติดตามจำนวนมาก อยู่ในหน้าหนังสือพิมพ์เสมอ ตั้งอยู่ในทำเลที่ยอดเยี่ยม และปฏิบัติต่อทีมของเราเหมือนราชวงศ์ ซึ่งนั่นหมายถึง การดูแลทางการแพทย์ที่ดีที่สุด (ก่อนระบบรัฐสวัสดิการปี 1948) การช่วยเหลือเรื่องบ้านและรถยนต์ และเงินติดกระเป๋าจำนวนมากที่ไม่มีการบันทึกสำหรับการทัวร์ช่วงซัมเมอร์" data-lang-en="The Pensioners could not offer a CV of successes but were unequalled on the softer inducements: a huge following, always in the newspapers, wonderfully located, and treated our squad like royalty. That meant, for instance, the best medical care (before the 1948 welfare state), help with a house and car, and lavish off-the-books spending money on summer tours.">The Pensioners ไม่สามารถเสนอประวัติแห่งความสำเร็จได้ แต่ไม่มีใครเทียบได้ในเรื่องสิ่งจูงใจอื่นๆ ที่นุ่มนวลกว่า: ผู้ติดตามจำนวนมาก อยู่ในหน้าหนังสือพิมพ์เสมอ ตั้งอยู่ในทำเลที่ยอดเยี่ยม และปฏิบัติต่อทีมของเราเหมือนราชวงศ์ ซึ่งนั่นหมายถึง การดูแลทางการแพทย์ที่ดีที่สุด (ก่อนระบบรัฐสวัสดิการปี 1948) การช่วยเหลือเรื่องบ้านและรถยนต์ และเงินติดกระเป๋าจำนวนมากที่ไม่มีการบันทึกสำหรับการทัวร์ช่วงซัมเมอร์</p>
+
+      <p data-lang-th="มักจะมีดาวเด่นดวงใหม่ที่เต็มใจเข้าร่วมกับกลุ่มดาวของ The Pensioners เสมอ" data-lang-en="There were always new stars willing to join the Pensioners’ constellation.">มักจะมีดาวเด่นดวงใหม่ที่เต็มใจเข้าร่วมกับกลุ่มดาวของ The Pensioners เสมอ</p>
+
+      <blockquote class="pull-quote">
+        <p data-lang-th="'นับตั้งแต่ก่อตั้งในปี 1905 สโมสรฟุตบอล Chelsea ได้รับการจับตามองในฐานะเวทีความหลากหลายอันยิ่งใหญ่ของสมาคมฟุตบอล' Don Davies นักเขียนฟุตบอลผู้ทรงเกียรติให้ความเห็นในปี 1955 'และเป็นหน้าที่หลักในการนำเสนอดาวเด่นฟุตบอลที่ครองความยิ่งใหญ่ต่อสาธารณชนในลอนดอนให้มากที่สุดเท่าที่จะทำได้'" data-lang-en="‘Ever since its foundation in 1905 the Chelsea Football Club has been looked to as the grand variety stage of Association football,’ reflected venerable football scribe Don Davies in 1955, ‘and one whose prime function it has been to present as many as possible of the reigning football stars to the London public.">'นับตั้งแต่ก่อตั้งในปี 1905 สโมสรฟุตบอล Chelsea ได้รับการจับตามองในฐานะเวทีความหลากหลายอันยิ่งใหญ่ของสมาคมฟุตบอล' Don Davies นักเขียนฟุตบอลผู้ทรงเกียรติให้ความเห็นในปี 1955 'และเป็นหน้าที่หลักในการนำเสนอดาวเด่นฟุตบอลที่ครองความยิ่งใหญ่ต่อสาธารณชนในลอนดอนให้มากที่สุดเท่าที่จะทำได้'</p>
+        
+        <p data-lang-th="'ลองพิจารณาเพียงรายชื่อศูนย์หน้า ซึ่งส่วนใหญ่เป็นนักเตะทีมชาติ ซึ่งเป็นผู้นำแดนหน้าของ Chelsea ในช่วง 50 ปีที่ผ่านมา: Hilsdon ผู้ยิงห้าประตูในนัดแรก; [Bob] Whittingham จอมพังตาข่าย; [Vivian “Jack”] Woodward ผู้คว้าหมวกทีมชาติ [อังกฤษ] 66 ใบ และเป็นดั่ง Claude Duval ของนักฟุตบอลสมัครเล่น; [Jack] Cock ผู้มีรูปร่างสมบูรณ์แบบ; Wilson ปรมาจารย์แห่งการจ่ายบอลซ่อนเร้น; และ [Hugh] Gallacher "พี่น้องชาวสกอต" และจอมหลอกล่อที่แยบยลที่สุดในบรรดาทั้งหมด ผู้ยิงห้าประตูในสี่ครั้ง และเรื่อยมาจนถึง [Joe] Payne – "Payne สิบประตู" – และต่อมาถึง [Tommy] Lawton และ [Roy] Bentley บุคคลผู้สูงส่งในยุคหลังๆ'" data-lang-en="‘Consider only the list of centre forwards, international players most of them, who have led the Chelsea line during the past 50 years: Hilsdon, who scored five goals in his first match; [Bob] Whittingham, the net-breaker; [Vivian “Jack”] Woodward, winner of 66 [England] caps, and the Claude Duval of amateur footballers; [Jack] Cock, of the perfect build; Wilson, master of the veiled pass; and [Hugh] Gallacher, a “brother Scot” and the subtlest trickster of them all, scorer of five goals on four occasions. And so on down to [Joe] Payne – “ten-goal Payne” – and on to [Tommy] Lawton and [Roy] Bentley, august figures of more recent days.">'ลองพิจารณาเพียงรายชื่อศูนย์หน้า ซึ่งส่วนใหญ่เป็นนักเตะทีมชาติ ซึ่งเป็นผู้นำแดนหน้าของ Chelsea ในช่วง 50 ปีที่ผ่านมา: Hilsdon ผู้ยิงห้าประตูในนัดแรก; [Bob] Whittingham จอมพังตาข่าย; [Vivian “Jack”] Woodward ผู้คว้าหมวกทีมชาติ [อังกฤษ] 66 ใบ และเป็นดั่ง Claude Duval ของนักฟุตบอลสมัครเล่น; [Jack] Cock ผู้มีรูปร่างสมบูรณ์แบบ; Wilson ปรมาจารย์แห่งการจ่ายบอลซ่อนเร้น; และ [Hugh] Gallacher "พี่น้องชาวสกอต" และจอมหลอกล่อที่แยบยลที่สุดในบรรดาทั้งหมด ผู้ยิงห้าประตูในสี่ครั้ง และเรื่อยมาจนถึง [Joe] Payne – "Payne สิบประตู" – และต่อมาถึง [Tommy] Lawton และ [Roy] Bentley บุคคลผู้สูงส่งในยุคหลังๆ'</p>
+        
+        <p data-lang-th="'เพิ่ม [Alec] Jackson คนแรกของจอมพเนจรเข้าไปในบทบาทต่างๆ ของพวกเขาเหล่านี้; [Tommy] Walker แห่ง Hearts; [Vic] Woodley ผู้รักษาประตูที่หล่อที่สุด; และ [Len] Goulden และ [Johnny] Harris ผู้จงรักภักดีและช่างฝีมือผู้ยิ่งใหญ่แห่งวันวาน และจะเห็นได้ว่าความบันเทิงอันอุดมสมบูรณ์ที่ The Pensioners มอบให้กับผู้อุปถัมภ์ของพวกเขาคืออะไร; ไม่ใช่ความอุตสาหะที่ยากลำบากของคนทำงานหนัก แต่เป็น "ความไม่แยแสอย่างเทพของศิลปิน"'" data-lang-en="‘Add to these, in their various roles, [Alec] Jackson, first of the roamers; [Tommy] Walker of Hearts; [Vic] Woodley, handsomest of goalkeepers; and [Len] Goulden and [Johnny] Harris, supreme loyalists and craftsmen of yesteryear, and it will be seen what rich entertainment the Pensioners have spread before their patrons; not, it is true, with the painstaking industry of the drudge, but with the “godlike carelessness of the artist”.’">'เพิ่ม [Alec] Jackson คนแรกของจอมพเนจรเข้าไปในบทบาทต่างๆ ของพวกเขาเหล่านี้; [Tommy] Walker แห่ง Hearts; [Vic] Woodley ผู้รักษาประตูที่หล่อที่สุด; และ [Len] Goulden และ [Johnny] Harris ผู้จงรักภักดีและช่างฝีมือผู้ยิ่งใหญ่แห่งวันวาน และจะเห็นได้ว่าความบันเทิงอันอุดมสมบูรณ์ที่ The Pensioners มอบให้กับผู้อุปถัมภ์ของพวกเขาคืออะไร; ไม่ใช่ความอุตสาหะที่ยากลำบากของคนทำงานหนัก แต่เป็น "ความไม่แยแสอย่างเทพของศิลปิน"'</p>
+      </blockquote>
+
+      <p data-lang-th="เหมือนกับเรียลลิตี้ทีวีโชว์ยุคใหม่อย่าง 'Made In Chelsea' มันช่วยได้หากการเซ็นสัญญาที่พาดหัวข่าวล่าสุดมีเรื่องราวเบื้องหลัง — ความใกล้ชิดกับสถานที่ท่องเที่ยวยามค่ำคืนและแหล่งเริงรมย์ของย่าน West End อันหรูหราของลอนดอนมักจะเขียนเรื่องราวใหม่ๆ ให้ในไม่ช้า" data-lang-en="Like the modern-day reality TV show ‘Made In Chelsea’, it helped if the latest headline-grabbing signing had a back story – proximity to the nightspots and fleshpots of London’s glamorous West End would often write a new one soon enough.">เหมือนกับเรียลลิตี้ทีวีโชว์ยุคใหม่อย่าง 'Made In Chelsea' มันช่วยได้หากการเซ็นสัญญาที่พาดหัวข่าวล่าสุดมีเรื่องราวเบื้องหลัง — ความใกล้ชิดกับสถานที่ท่องเที่ยวยามค่ำคืนและแหล่งเริงรมย์ของย่าน West End อันหรูหราของลอนดอนมักจะเขียนเรื่องราวใหม่ๆ ให้ในไม่ช้า</p>
+
+      <p data-lang-th="ความเป็นปัจเจกนิยมที่น่าตื่นตาตื่นใจสร้างความตื่นเต้นให้กับผู้ชม แต่ฟุตบอลคือกีฬาประเภททีม และ 'ความไม่แยแสอย่างเทพ' นั้นบ่อยครั้งเกินไปที่สรุปกลุ่มของ Calderhead ซึ่งขาดการประสานงานกันเกินกว่าที่จะแข่งขันเพื่อชิงแชมป์ได้ แม้แต่ในปี 1930 เมื่อ Chelsea ที่เพิ่งเลื่อนชั้นมีดาวเตะระดับทีมชาติถึงเก้าคนในทีม ซึ่งรวมถึง Gallacher, Jackson และ Wilson ที่ยอดเยี่ยมดังที่ Davies กล่าวถึง ดินปืนทั้งหมดนั้นก็ไม่สามารถจุดประกายได้" data-lang-en="Dazzling individualism thrilled spectators but football is a team game and that ‘godlike carelessness’ too often summed up Calderhead’s cohort which was too uncoordinated to compete for titles. Even in 1930 when freshly promoted Chelsea had nine international stars in the ranks, including the brilliant Gallacher, Jackson and Wilson mentioned by Davies, all that gunpowder failed to spark.">ความเป็นปัจเจกนิยมที่น่าตื่นตาตื่นใจสร้างความตื่นเต้นให้กับผู้ชม แต่ฟุตบอลคือกีฬาประเภททีม และ 'ความไม่แยแสอย่างเทพ' นั้นบ่อยครั้งเกินไปที่สรุปกลุ่มของ Calderhead ซึ่งขาดการประสานงานกันเกินกว่าที่จะแข่งขันเพื่อชิงแชมป์ได้ แม้แต่ในปี 1930 เมื่อ Chelsea ที่เพิ่งเลื่อนชั้นมีดาวเตะระดับทีมชาติถึงเก้าคนในทีม ซึ่งรวมถึง Gallacher, Jackson และ Wilson ที่ยอดเยี่ยมดังที่ Davies กล่าวถึง ดินปืนทั้งหมดนั้นก็ไม่สามารถจุดประกายได้</p>
+
+      <p data-lang-th="ภายใต้ Calderhead ผู้ดำรงตำแหน่งยาวนานที่สุดในประวัติศาสตร์ของสโมสร สนามกีฬาประสบความสำเร็จมากกว่าทีม ท้ายที่สุดแล้ว สิ่งที่จุดประกายความหลงใหลและความคิดถึงของแฟนบอลไม่ใช่เงินในถุงเงิน แต่เป็นการเอาชนะคู่แข่งหรือการคว้าถ้วยรางวัล — แม้แต่สำหรับผู้ชมที่ตามใจตัวเองที่สุดในประเทศก็ตาม" data-lang-en="Under Calderhead, whose tenure is the longest in the club’s history, the stadium proved far more successful than the team. Ultimately, though, it is not the silver in the cash bags that fires supporters’ passion and nostalgia, but the beating of a rival or the winning of a trophy – even for the most indulgent crowd in the country.">ภายใต้ Calderhead ผู้ดำรงตำแหน่งยาวนานที่สุดในประวัติศาสตร์ของสโมสร สนามกีฬาประสบความสำเร็จมากกว่าทีม ท้ายที่สุดแล้ว สิ่งที่จุดประกายความหลงใหลและความคิดถึงของแฟนบอลไม่ใช่เงินในถุงเงิน แต่เป็นการเอาชนะคู่แข่งหรือการคว้าถ้วยรางวัล — แม้แต่สำหรับผู้ชมที่ตามใจตัวเองที่สุดในประเทศก็ตาม</p>
+
+      <p data-lang-th="เมื่อสิ้นสุดฤดูกาล 1932/33 Calderhead ก็เกษียณอายุ และภายในสองปีเขาและกลุ่มกรรมการอาวุโสก็เสียชีวิตลง กลางทศวรรษ 1930 นับเป็นจุดสิ้นสุดของการเริ่มต้นของสโมสรฟุตบอล Chelsea และพลังงานใหม่กำลังจะถูกปลดปล่อย" data-lang-en="At the end of the 1932/33 season Calderhead retired, and within two years he and the old guard of directors had died. The mid-1930s marked the end of the beginning for Chelsea FC, and a new energy was about to be unleashed.">เมื่อสิ้นสุดฤดูกาล 1932/33 Calderhead ก็เกษียณอายุ และภายในสองปีเขาและกลุ่มกรรมการอาวุโสก็เสียชีวิตลง กลางทศวรรษ 1930 นับเป็นจุดสิ้นสุดของการเริ่มต้นของสโมสรฟุตบอล Chelsea และพลังงานใหม่กำลังจะถูกปลดปล่อย</p>
+
+      <!-- Chapter End -->
+      <div class="chapter-end">
+        <div class="chapter-end__ornament">⚽</div>
+        <span class="chapter-end__text" data-lang-th="— จบบทที่ ๒ —" data-lang-en="— End of Chapter 2 —">— จบบทที่ ๒ —</span>
+
+        <div class="chapter-nav">
+          <a href="chapter-1.html" class="chapter-nav__back" data-lang-th="← บทที่ ๑" data-lang-en="← Chapter 1">← บทที่ ๑</a>
+          <a href="chapter-3.html" class="chapter-nav__next" data-lang-th="อ่านบทที่ ๓ →" data-lang-en="Read Chapter 3 →">อ่านบทที่ ๓ →</a>
+        </div>
+      </div>
+
+    </div><!-- /.article__inner -->
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIxOTAiIGZpbGw9IiMwMzQ2OTQiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOGE4NGIiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LQVJOPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzhhODRiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MQSBLSFJBTmc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIyODUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5BTjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIzMTUiIHgyPSIzMjAiIHkyPSIzMTUiIHN0cm9rZT0iI2M4YTg0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNjOGE4NGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsPC90ZXh0Pjwvc3ZnPg==" alt="KARN LA KHRANg NAN Logo" style="height:60px;">
+        <span>KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p style="margin-top: 8px; color: var(--gold); font-size: 0.8rem;">
+        บทความโดย <strong>Chelsea TH FANs</strong> · Karn Krung Nan Official · ผู้เขียน: อิอิแอแอ
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== FLOATING CLOCK ===================== -->
+  <div class="floating-clock">
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇹🇭 ไทย</div>
+      <div class="floating-clock__date" id="th-date">--</div>
+      <div class="floating-clock__time" id="th-time">--:--:--</div>
+    </div>
+    <div class="floating-clock__divider"></div>
+    <div class="floating-clock__section">
+      <div class="floating-clock__label">🇬🇧 London</div>
+      <div class="floating-clock__date" id="uk-date">--</div>
+      <div class="floating-clock__time" id="uk-time">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ============================================
+    // CHAPTER LANGUAGE TOGGLE (TH / EN)
+    // ============================================
+    let chapterLang = 'th';
+
+    function toggleChapterLanguage() {
+      chapterLang = chapterLang === 'th' ? 'en' : 'th';
+      applyChapterLanguage();
+    }
+
+    function applyChapterLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      if (btn) {
+        if (chapterLang === 'th') {
+          btn.textContent = '🇬🇧 Read in English';
+          btn.style.background = 'var(--blue)';
+        } else {
+          btn.textContent = '🇹🇭 อ่านเป็นภาษาไทย';
+          btn.style.background = '#c8a84b';
+          btn.style.color = '#1a1410';
+        }
+      }
+
+      document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+        if (chapterLang === 'th') {
+          el.innerHTML = el.getAttribute('data-lang-th');
+        } else {
+          el.innerHTML = el.getAttribute('data-lang-en');
+        }
+      });
+    }
+
+    // ============================================
+    // FLOATING CLOCK
+    // ============================================
+    function updateFloatingClocks() {
+      const now = new Date();
+      const applyLionTheme = (str) => str.replace(/0/g, '🦁');
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      const thDateRaw = new Intl.DateTimeFormat('th-TH', { ...dateOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thTimeRaw = new Intl.DateTimeFormat('th-TH', { ...timeOptions, timeZone: 'Asia/Bangkok' }).format(now);
+      const thDateEl = document.getElementById('th-date'); if (thDateEl) thDateEl.textContent = applyLionTheme(thDateRaw);
+      const thTimeEl = document.getElementById('th-time'); if (thTimeEl) thTimeEl.textContent = applyLionTheme(thTimeRaw) + ' น.';
+
+      const ukDateRaw = new Intl.DateTimeFormat('en-GB', { ...dateOptions, timeZone: 'Europe/London' }).format(now);
+      const ukTimeRaw = new Intl.DateTimeFormat('en-GB', { ...timeOptions, timeZone: 'Europe/London' }).format(now);
+      const ukDateEl = document.getElementById('uk-date'); if (ukDateEl) ukDateEl.textContent = applyLionTheme(ukDateRaw);
+      const ukTimeEl = document.getElementById('uk-time'); if (ukTimeEl) ukTimeEl.textContent = applyLionTheme(ukTimeRaw);
+    }
+
+    updateFloatingClocks();
+    setInterval(updateFloatingClocks, 1000);
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      applyChapterLanguage();
+    });
+  </script>
+</body>
+</html>

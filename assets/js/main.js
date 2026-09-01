@@ -1,0 +1,2053 @@
+// ============================================
+// KARN LA KHRANg NAN Official - Main JS
+// ============================================
+
+let currentLang = localStorage.getItem('lang') || 'th';
+window.currentLang = currentLang;
+let translations = {};
+
+// ---------- TEAMS DATA (id_team.json) INTEGRATION ----------
+let teamsDataMap = null;
+
+async function loadTeamsData() {
+  if (teamsDataMap) return teamsDataMap;
+  try {
+    const res = await fetch('data/id_team.json');
+    if (res.ok) {
+      const list = await res.json();
+      teamsDataMap = new Map();
+      list.forEach(item => {
+        const key = (item['สโมสร'] || '').toLowerCase().trim();
+        const info = {
+          en: item['สโมสร'],
+          th: item['ชื่อสโมสร (ภาษาไทย)'],
+          short: item['ชื่อย่อ'],
+          league: item['ลีก'],
+          homeStadium: item['ชื่อสนามเหย้า (Home Stadium)'],
+          secondaryStadium: item['ชื่อสนามรอง / นัดสำคัญ (Secondary)']
+        };
+        if (key) teamsDataMap.set(key, info);
+      });
+    }
+  } catch (e) {
+    console.warn('Failed to load id_team.json:', e);
+  }
+  if (!teamsDataMap) teamsDataMap = new Map();
+  window.teamsDataMap = teamsDataMap;
+  return teamsDataMap;
+}
+
+function getTeamInfo(teamName) {
+  if (!teamName) return null;
+  if (!teamsDataMap) return null;
+  const norm = teamName.toLowerCase().trim();
+  if (teamsDataMap.has(norm)) return teamsDataMap.get(norm);
+
+  // Normalize variations e.g. "Chelsea FC", "Chelsea Women"
+  for (const [key, val] of teamsDataMap.entries()) {
+    if (norm === key || norm.startsWith(key) || key.startsWith(norm)) return val;
+  }
+  for (const [key, val] of teamsDataMap.entries()) {
+    if (norm.includes(key) || key.includes(norm)) return val;
+  }
+  return null;
+}
+
+function formatTeamName(teamName, options = {}) {
+  if (!teamName) return '';
+  const info = getTeamInfo(teamName);
+  const lang = options.lang || window.currentLang || 'th';
+  const isMobile = options.isMobile !== undefined ? options.isMobile : (window.innerWidth <= 768);
+
+  if (isMobile && !options.preferFullOnMobile) {
+    if (info && info.short) return info.short;
+  }
+
+  if (lang === 'th' && info && info.th) {
+    return info.th;
+  }
+
+  return (info && info.en) ? info.en : teamName;
+}
+
+function renderTeamNameHTML(teamName, options = {}) {
+  if (!teamName) return '';
+  const info = getTeamInfo(teamName);
+  const lang = options.lang || window.currentLang || 'th';
+  const thName = (info && info.th) ? info.th : teamName;
+  const enName = (info && info.en) ? info.en : teamName;
+  const shortName = (info && info.short) ? info.short : teamName;
+  const fullDisplay = lang === 'th' ? thName : enName;
+  
+  const isChelsea = teamName.toLowerCase().includes('chelsea') || teamName.toLowerCase() === 'kanlakhrangnan';
+  const isArsenal = teamName.toLowerCase().includes('arsenal');
+  
+  let styleStr = 'color: #ffffff !important;';
+  if (isChelsea) {
+      styleStr = 'color: #D4AF37 !important; font-weight: 800 !important; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4) !important;';
+  } else if (isArsenal) {
+      styleStr = 'color: #ffffff !important; font-weight: normal !important; text-shadow: none !important;';
+  }
+
+  return `<span class="team-name-wrapper" title="${fullDisplay}">
+    <span class="team-name-full" style="${styleStr}">${fullDisplay}</span>
+    <span class="team-name-short" style="${styleStr}">${shortName}</span>
+  </span>`;
+}
+
+const flagMap = {
+  "afghanistan": "af",
+  "อัฟกานิสถาน": "af",
+  "af": "af",
+  "AF": "af",
+  "albania": "al",
+  "แอลเบเนีย": "al",
+  "al": "al",
+  "AL": "al",
+  "algeria": "dz",
+  "แอลจีเรีย": "dz",
+  "dz": "dz",
+  "DZ": "dz",
+  "american samoa": "as",
+  "อเมริกันซามัว": "as",
+  "as": "as",
+  "AS": "as",
+  "andorra": "ad",
+  "อันดอร์รา": "ad",
+  "ad": "ad",
+  "AD": "ad",
+  "angola": "ao",
+  "แองโกลา": "ao",
+  "ao": "ao",
+  "AO": "ao",
+  "anguilla": "ai",
+  "แองกวิลลา": "ai",
+  "ai": "ai",
+  "AI": "ai",
+  "antigua and barbuda": "ag",
+  "แอนติกาและบาร์บูดา": "ag",
+  "ag": "ag",
+  "AG": "ag",
+  "argentina": "ar",
+  "อาร์เจนตินา": "ar",
+  "ar": "ar",
+  "AR": "ar",
+  "armenia": "am",
+  "อาร์มีเนีย": "am",
+  "am": "am",
+  "AM": "am",
+  "aruba": "aw",
+  "อารูบา": "aw",
+  "aw": "aw",
+  "AW": "aw",
+  "australia": "au",
+  "ออสเตรเลีย": "au",
+  "au": "au",
+  "AU": "au",
+  "austria": "at",
+  "ออสเตรีย": "at",
+  "at": "at",
+  "AT": "at",
+  "azerbaijan": "az",
+  "อาเซอร์ไบจาน": "az",
+  "az": "az",
+  "AZ": "az",
+  "bahamas": "bs",
+  "บาฮามาส": "bs",
+  "bs": "bs",
+  "BS": "bs",
+  "bahrain": "bh",
+  "บาห์เรน": "bh",
+  "bh": "bh",
+  "BH": "bh",
+  "bangladesh": "bd",
+  "บังกลาเทศ": "bd",
+  "bd": "bd",
+  "BD": "bd",
+  "barbados": "bb",
+  "บาร์เบโดส": "bb",
+  "bb": "bb",
+  "BB": "bb",
+  "belarus": "by",
+  "เบลารุส": "by",
+  "by": "by",
+  "BY": "by",
+  "belgium": "be",
+  "เบลเยียม": "be",
+  "be": "be",
+  "BE": "be",
+  "belize": "bz",
+  "เบลีซ": "bz",
+  "bz": "bz",
+  "BZ": "bz",
+  "benin": "bj",
+  "เบนิน": "bj",
+  "bj": "bj",
+  "BJ": "bj",
+  "bermuda": "bm",
+  "เบอร์มิวดา": "bm",
+  "bm": "bm",
+  "BM": "bm",
+  "bhutan": "bt",
+  "ภูฏาน": "bt",
+  "bt": "bt",
+  "BT": "bt",
+  "bolivia": "bo",
+  "โบลิเวีย": "bo",
+  "bo": "bo",
+  "BO": "bo",
+  "bosnia and herzegovina": "ba",
+  "บอสเนียและเฮอร์เซโกวีนา": "ba",
+  "ba": "ba",
+  "BA": "ba",
+  "botswana": "bw",
+  "บอตสวานา": "bw",
+  "bw": "bw",
+  "BW": "bw",
+  "brazil": "br",
+  "บราซิล": "br",
+  "br": "br",
+  "BR": "br",
+  "british virgin islands": "vg",
+  "หมู่เกาะบริติชเวอร์จิน": "vg",
+  "vg": "vg",
+  "VG": "vg",
+  "brunei": "bn",
+  "บรูไน": "bn",
+  "bn": "bn",
+  "BN": "bn",
+  "bulgaria": "bg",
+  "บัลแกเรีย": "bg",
+  "bg": "bg",
+  "BG": "bg",
+  "burkina faso": "bf",
+  "บูร์กินาฟาโซ": "bf",
+  "bf": "bf",
+  "BF": "bf",
+  "burundi": "bi",
+  "บุรุนดี": "bi",
+  "bi": "bi",
+  "BI": "bi",
+  "cambodia": "kh",
+  "กัมพูชา": "kh",
+  "kh": "kh",
+  "KH": "kh",
+  "cameroon": "cm",
+  "แคเมอรูน": "cm",
+  "cm": "cm",
+  "CM": "cm",
+  "canada": "ca",
+  "แคนาดา": "ca",
+  "ca": "ca",
+  "CA": "ca",
+  "cabo verde": "cv",
+  "กาบูเวร์ดี": "cv",
+  "cv": "cv",
+  "CV": "cv",
+  "cayman islands": "ky",
+  "หมู่เกาะเคย์แมน": "ky",
+  "ky": "ky",
+  "KY": "ky",
+  "central african republic": "cf",
+  "สาธารณรัฐแอฟริกากลาง": "cf",
+  "cf": "cf",
+  "CF": "cf",
+  "chad": "td",
+  "ชาด": "td",
+  "td": "td",
+  "TD": "td",
+  "chile": "cl",
+  "ชิลี": "cl",
+  "cl": "cl",
+  "CL": "cl",
+  "china": "cn",
+  "จีน": "cn",
+  "cn": "cn",
+  "CN": "cn",
+  "chinese taipei": "tw",
+  "จีนไทเป": "tw",
+  "tw": "tw",
+  "TW": "tw",
+  "colombia": "co",
+  "โคลอมเบีย": "co",
+  "co": "co",
+  "CO": "co",
+  "comoros": "km",
+  "คอโมโรส": "km",
+  "km": "km",
+  "KM": "km",
+  "congo": "cg",
+  "คองโก": "cg",
+  "cg": "cg",
+  "CG": "cg",
+  "dr congo": "cd",
+  "สาธารณรัฐประชาธิปไตยคองโก": "cd",
+  "cd": "cd",
+  "CD": "cd",
+  "cook islands": "ck",
+  "หมู่เกาะคุก": "ck",
+  "ck": "ck",
+  "CK": "ck",
+  "costa rica": "cr",
+  "คอสตาริกา": "cr",
+  "cr": "cr",
+  "CR": "cr",
+  "ivory coast": "ci",
+  "โกตดิวัวร์": "ci",
+  "ci": "ci",
+  "CI": "ci",
+  "croatia": "hr",
+  "โครเอเชีย": "hr",
+  "hr": "hr",
+  "HR": "hr",
+  "cuba": "cu",
+  "คิวบา": "cu",
+  "cu": "cu",
+  "CU": "cu",
+  "curaçao": "cw",
+  "กือราเซา": "cw",
+  "cw": "cw",
+  "CW": "cw",
+  "cyprus": "cy",
+  "ไซปรัส": "cy",
+  "cy": "cy",
+  "CY": "cy",
+  "czechia": "cz",
+  "เช็กเกีย": "cz",
+  "cz": "cz",
+  "CZ": "cz",
+  "denmark": "dk",
+  "เดนมาร์ก": "dk",
+  "dk": "dk",
+  "DK": "dk",
+  "djibouti": "dj",
+  "จิบูตี": "dj",
+  "dj": "dj",
+  "DJ": "dj",
+  "dominica": "dm",
+  "ดอมินีกา": "dm",
+  "dm": "dm",
+  "DM": "dm",
+  "dominican republic": "do",
+  "สาธารณรัฐโดมินิกัน": "do",
+  "do": "do",
+  "DO": "do",
+  "ecuador": "ec",
+  "เอกวาดอร์": "ec",
+  "ec": "ec",
+  "EC": "ec",
+  "egypt": "eg",
+  "อียิปต์": "eg",
+  "eg": "eg",
+  "EG": "eg",
+  "el salvador": "sv",
+  "เอลซัลวาดอร์": "sv",
+  "sv": "sv",
+  "SV": "sv",
+  "england": "gb-eng",
+  "อังกฤษ": "gb-eng",
+  "gb-eng": "gb-eng",
+  "GB-ENG": "gb-eng",
+  "equatorial guinea": "gq",
+  "อิเควทอเรียลกินี": "gq",
+  "gq": "gq",
+  "GQ": "gq",
+  "eritrea": "er",
+  "เอริเทรีย": "er",
+  "er": "er",
+  "ER": "er",
+  "estonia": "ee",
+  "เอสโตเนีย": "ee",
+  "ee": "ee",
+  "EE": "ee",
+  "eswatini": "sz",
+  "เอสวาตินี": "sz",
+  "sz": "sz",
+  "SZ": "sz",
+  "ethiopia": "et",
+  "เอธิโอเปีย": "et",
+  "et": "et",
+  "ET": "et",
+  "faroe islands": "fo",
+  "หมู่เกาะแฟโร": "fo",
+  "fo": "fo",
+  "FO": "fo",
+  "fiji": "fj",
+  "ฟีจี": "fj",
+  "fj": "fj",
+  "FJ": "fj",
+  "finland": "fi",
+  "ฟินแลนด์": "fi",
+  "fi": "fi",
+  "FI": "fi",
+  "france": "fr",
+
+  "french": "fr",
+  "english": "gb-eng",
+  "spanish": "es",
+  "dutch": "nl",
+  "brazilian": "br",
+  "argentinian": "ar",
+  "argentine": "ar",
+  "portuguese": "pt",
+  "italian": "it",
+  "belgian": "be",
+  "swiss": "ch",
+  "german": "de",
+  "swedish": "se",
+  "danish": "dk",
+  "senegalese": "sn",
+  "ecuadorian": "ec",
+  "ukrainian": "ua",
+  "jamaican": "jm",
+  "australian": "au",
+  "canadian": "ca",
+  "scottish": "gb-sct",
+  "colombian": "co",
+  "irish": "ie",
+  "ita": "it",
+  "nor": "no",
+  "isl": "is",
+  "cze": "cz",
+  "civ": "ci",
+  "por": "pt",
+  "gha": "gh",
+  "nga": "ng",
+  "srb": "rs",
+  "bra": "br",
+  "bel": "be",
+  "esp": "es",
+  "ned": "nl",
+  "fra": "fr",
+  "ger": "de",
+  "eng": "gb-eng",
+  "sco": "gb-sct",
+  "wls": "gb-wls",
+  "japanese": "jp",
+  "welsh": "gb-wls",
+  "croatian": "hr",
+  "serbian": "rs",
+  "moroccan": "ma",
+  "norwegian": "no",
+  "finnish": "fi",
+  "austrian": "at",
+  "american": "us",
+  "south korean": "kr",
+  "korean": "kr",
+
+  "ฝรั่งเศส": "fr",
+  "fr": "fr",
+  "FR": "fr",
+  "gabon": "ga",
+  "กาบอง": "ga",
+  "ga": "ga",
+  "GA": "ga",
+  "gambia": "gm",
+  "แกมเบีย": "gm",
+  "gm": "gm",
+  "GM": "gm",
+  "georgia": "ge",
+  "จอร์เจีย": "ge",
+  "ge": "ge",
+  "GE": "ge",
+  "germany": "de",
+  "เยอรมนี": "de",
+  "de": "de",
+  "DE": "de",
+  "ghana": "gh",
+  "กานา": "gh",
+  "gh": "gh",
+  "GH": "gh",
+  "gibraltar": "gi",
+  "ยิบรอลตาร์": "gi",
+  "gi": "gi",
+  "GI": "gi",
+  "greece": "gr",
+  "กรีซ": "gr",
+  "gr": "gr",
+  "GR": "gr",
+  "grenada": "gd",
+  "กรีเนดา": "gd",
+  "gd": "gd",
+  "GD": "gd",
+  "guam": "gu",
+  "กวม": "gu",
+  "gu": "gu",
+  "GU": "gu",
+  "guatemala": "gt",
+  "กัวเตมาลา": "gt",
+  "gt": "gt",
+  "GT": "gt",
+  "guinea": "gn",
+  "กินี": "gn",
+  "gn": "gn",
+  "GN": "gn",
+  "guinea-bissau": "gw",
+  "กินี-บิสเซา": "gw",
+  "gw": "gw",
+  "GW": "gw",
+  "guyana": "gy",
+  "กายอานา": "gy",
+  "gy": "gy",
+  "GY": "gy",
+  "haiti": "ht",
+  "เฮติ": "ht",
+  "ht": "ht",
+  "HT": "ht",
+  "honduras": "hn",
+  "ฮอนดูรัส": "hn",
+  "hn": "hn",
+  "HN": "hn",
+  "hong kong": "china\"",
+  "ฮ่องกง": "china\"",
+  "china\"": "china\"",
+  "CHINA\"": "china\"",
+  "hungary": "hu",
+  "ฮังการี": "hu",
+  "hu": "hu",
+  "HU": "hu",
+  "iceland": "is",
+  "ไอซ์แลนด์": "is",
+  "is": "is",
+  "IS": "is",
+  "india": "in",
+  "อินเดีย": "in",
+  "in": "in",
+  "IN": "in",
+  "indonesia": "id",
+  "อินโดนีเซีย": "id",
+  "id": "id",
+  "ID": "id",
+  "iran": "ir",
+  "อิหร่าน": "ir",
+  "ir": "ir",
+  "IR": "ir",
+  "iraq": "iq",
+  "อิรัก": "iq",
+  "iq": "iq",
+  "IQ": "iq",
+  "israel": "il",
+  "อิสราเอล": "il",
+  "il": "il",
+  "IL": "il",
+  "italy": "it",
+  "อิตาลี": "it",
+  "it": "it",
+  "IT": "it",
+  "jamaica": "jm",
+  "จาเมกา": "jm",
+  "jm": "jm",
+  "JM": "jm",
+  "japan": "jp",
+  "ญี่ปุ่น": "jp",
+  "jp": "jp",
+  "JP": "jp",
+  "jordan": "jo",
+  "จอร์แดน": "jo",
+  "jo": "jo",
+  "JO": "jo",
+  "kazakhstan": "kz",
+  "คาซัคสถาน": "kz",
+  "kz": "kz",
+  "KZ": "kz",
+  "kenya": "ke",
+  "เคนยา": "ke",
+  "ke": "ke",
+  "KE": "ke",
+  "kosovo": "xk",
+  "คอซอวอ": "xk",
+  "xk": "xk",
+  "XK": "xk",
+  "kuwait": "kw",
+  "คูเวต": "kw",
+  "kw": "kw",
+  "KW": "kw",
+  "kyrgyzstan": "kg",
+  "คีร์กีซสถาน": "kg",
+  "kg": "kg",
+  "KG": "kg",
+  "laos": "la",
+  "ลาว": "la",
+  "la": "la",
+  "LA": "la",
+  "latvia": "lv",
+  "ลัตเวีย": "lv",
+  "lv": "lv",
+  "LV": "lv",
+  "lebanon": "lb",
+  "เลบานอน": "lb",
+  "lb": "lb",
+  "LB": "lb",
+  "lesotho": "ls",
+  "เลโซโท": "ls",
+  "ls": "ls",
+  "LS": "ls",
+  "liberia": "lr",
+  "ไลบีเรีย": "lr",
+  "lr": "lr",
+  "LR": "lr",
+  "libya": "ly",
+  "ลิเบีย": "ly",
+  "ly": "ly",
+  "LY": "ly",
+  "liechtenstein": "li",
+  "ลีชเทินชไตน์": "li",
+  "li": "li",
+  "LI": "li",
+  "lithuania": "lt",
+  "ลิทัวเนีย": "lt",
+  "lt": "lt",
+  "LT": "lt",
+  "luxembourg": "lu",
+  "ลักเซมเบิร์ก": "lu",
+  "lu": "lu",
+  "LU": "lu",
+  "macau": "mo",
+  "มาเก๊า": "mo",
+  "mo": "mo",
+  "MO": "mo",
+  "madagascar": "mg",
+  "มาดากัสการ์": "mg",
+  "mg": "mg",
+  "MG": "mg",
+  "malawi": "mw",
+  "มาลาวี": "mw",
+  "mw": "mw",
+  "MW": "mw",
+  "malaysia": "my",
+  "มาเลเซีย": "my",
+  "my": "my",
+  "MY": "my",
+  "maldives": "mv",
+  "มัลดีฟส์": "mv",
+  "mv": "mv",
+  "MV": "mv",
+  "mali": "ml",
+  "มาลี": "ml",
+  "ml": "ml",
+  "ML": "ml",
+  "malta": "mt",
+  "มอลตา": "mt",
+  "mt": "mt",
+  "MT": "mt",
+  "mauritania": "mr",
+  "มอริเตเนีย": "mr",
+  "mr": "mr",
+  "MR": "mr",
+  "mauritius": "mu",
+  "มอริเชียส": "mu",
+  "mu": "mu",
+  "MU": "mu",
+  "mexico": "mx",
+  "เม็กซิโก": "mx",
+  "mx": "mx",
+  "MX": "mx",
+  "moldova": "md",
+  "มอลโดวา": "md",
+  "md": "md",
+  "MD": "md",
+  "mongolia": "mn",
+  "มองโกเลีย": "mn",
+  "mn": "mn",
+  "MN": "mn",
+  "montenegro": "me",
+  "มอนเตเนโกร": "me",
+  "me": "me",
+  "ME": "me",
+  "montserrat": "ms",
+  "มอนต์เซอร์รัต": "ms",
+  "ms": "ms",
+  "MS": "ms",
+  "morocco": "ma",
+  "โมร็อกโก": "ma",
+  "ma": "ma",
+  "MA": "ma",
+  "mozambique": "mz",
+  "โมซัมบิก": "mz",
+  "mz": "mz",
+  "MZ": "mz",
+  "myanmar": "mm",
+  "เมียนมา": "mm",
+  "mm": "mm",
+  "MM": "mm",
+  "namibia": "na",
+  "นามิเบีย": "na",
+  "na": "na",
+  "NA": "na",
+  "nepal": "np",
+  "เนปาล": "np",
+  "np": "np",
+  "NP": "np",
+  "netherlands": "nl",
+  "เนเธอร์แลนด์": "nl",
+  "nl": "nl",
+  "NL": "nl",
+  "new caledonia": "nc",
+  "นิวแคลิโดเนีย": "nc",
+  "nc": "nc",
+  "NC": "nc",
+  "new zealand": "nz",
+  "นิวซีแลนด์": "nz",
+  "nz": "nz",
+  "NZ": "nz",
+  "nicaragua": "ni",
+  "นิการากัว": "ni",
+  "ni": "ni",
+  "NI": "ni",
+  "niger": "ne",
+  "ไนเจอร์": "ne",
+  "ne": "ne",
+  "NE": "ne",
+  "nigeria": "ng",
+  "ไนจีเรีย": "ng",
+  "ng": "ng",
+  "NG": "ng",
+  "north korea": "kp",
+  "เกาหลีเหนือ": "kp",
+  "kp": "kp",
+  "KP": "kp",
+  "north macedonia": "mk",
+  "นอร์ทมาซิโดเนีย": "mk",
+  "mk": "mk",
+  "MK": "mk",
+  "northern ireland": "gb-nir",
+  "ไอร์แลนด์เหนือ": "gb-nir",
+  "gb-nir": "gb-nir",
+  "GB-NIR": "gb-nir",
+  "norway": "no",
+  "นอร์เวย์": "no",
+  "no": "no",
+  "NO": "no",
+  "oman": "om",
+  "โอมาน": "om",
+  "om": "om",
+  "OM": "om",
+  "pakistan": "pk",
+  "ปากีสถาน": "pk",
+  "pk": "pk",
+  "PK": "pk",
+  "palestine": "ps",
+  "ปาเลสไตน์": "ps",
+  "ps": "ps",
+  "PS": "ps",
+  "panama": "pa",
+  "ปานามา": "pa",
+  "pa": "pa",
+  "PA": "pa",
+  "papua new guinea": "pg",
+  "ปาปัวนิวกินี": "pg",
+  "pg": "pg",
+  "PG": "pg",
+  "paraguay": "py",
+  "ปารากวัย": "py",
+  "py": "py",
+  "PY": "py",
+  "peru": "pe",
+  "เปรู": "pe",
+  "pe": "pe",
+  "PE": "pe",
+  "philippines": "ph",
+  "ฟิลิปปินส์": "ph",
+  "ph": "ph",
+  "PH": "ph",
+  "poland": "pl",
+  "โปแลนด์": "pl",
+  "pl": "pl",
+  "PL": "pl",
+  "portugal": "pt",
+  "โปรตุเกส": "pt",
+  "pt": "pt",
+  "PT": "pt",
+  "puerto rico": "pr",
+  "ปวยร์โตรีโก": "pr",
+  "pr": "pr",
+  "PR": "pr",
+  "qatar": "qa",
+  "กาตาร์": "qa",
+  "qa": "qa",
+  "QA": "qa",
+  "republic of ireland": "ie",
+  "สาธารณรัฐไอร์แลนด์": "ie",
+  "ie": "ie",
+  "IE": "ie",
+  "romania": "ro",
+  "โรมาเนีย": "ro",
+  "ro": "ro",
+  "RO": "ro",
+  "russia": "ru",
+  "รัสเซีย": "ru",
+  "ru": "ru",
+  "RU": "ru",
+  "rwanda": "rw",
+  "รวันดา": "rw",
+  "rw": "rw",
+  "RW": "rw",
+  "samoa": "ws",
+  "ซามัว": "ws",
+  "ws": "ws",
+  "WS": "ws",
+  "san marino": "sm",
+  "ซานมารีโน": "sm",
+  "sm": "sm",
+  "SM": "sm",
+  "são tomé and príncipe": "st",
+  "เซาตูเมและปรินซิปี": "st",
+  "st": "st",
+  "ST": "st",
+  "saudi arabia": "sa",
+  "ซาอุดีอาระเบีย": "sa",
+  "sa": "sa",
+  "SA": "sa",
+  "scotland": "gb-sct",
+  "สกอตแลนด์": "gb-sct",
+  "gb-sct": "gb-sct",
+  "GB-SCT": "gb-sct",
+  "senegal": "sn",
+  "เซเนกัล": "sn",
+  "sn": "sn",
+  "SN": "sn",
+  "serbia": "rs",
+  "เซอร์เบีย": "rs",
+  "rs": "rs",
+  "RS": "rs",
+  "seychelles": "sc",
+  "เซเชลส์": "sc",
+  "sc": "sc",
+  "SC": "sc",
+  "sierra leone": "sl",
+  "เซียร์ราลีโอน": "sl",
+  "sl": "sl",
+  "SL": "sl",
+  "singapore": "sg",
+  "สิงคโปร์": "sg",
+  "sg": "sg",
+  "SG": "sg",
+  "slovakia": "sk",
+  "สโลวาเกีย": "sk",
+  "sk": "sk",
+  "SK": "sk",
+  "slovenia": "si",
+  "สโลวีเนีย": "si",
+  "si": "si",
+  "SI": "si",
+  "solomon islands": "sb",
+  "หมู่เกาะโซโลมอน": "sb",
+  "sb": "sb",
+  "SB": "sb",
+  "somalia": "so",
+  "โซมาเลีย": "so",
+  "so": "so",
+  "SO": "so",
+  "south africa": "za",
+  "แอฟริกาใต้": "za",
+  "za": "za",
+  "ZA": "za",
+  "south korea": "kr",
+  "เกาหลีใต้": "kr",
+  "kr": "kr",
+  "KR": "kr",
+  "south sudan": "ss",
+  "ซูดานใต้": "ss",
+  "ss": "ss",
+  "SS": "ss",
+  "spain": "es",
+  "สเปน": "es",
+  "es": "es",
+  "ES": "es",
+  "sri lanka": "lk",
+  "ศรีลังกา": "lk",
+  "lk": "lk",
+  "LK": "lk",
+  "saint kitts and nevis": "kn",
+  "เซนต์คิตส์และเนวิส": "kn",
+  "kn": "kn",
+  "KN": "kn",
+  "saint lucia": "lc",
+  "เซนต์ลูเชีย": "lc",
+  "lc": "lc",
+  "LC": "lc",
+  "saint vincent and the grenadines": "vc",
+  "เซนต์วินเซนต์และเกรนาดีนส์": "vc",
+  "vc": "vc",
+  "VC": "vc",
+  "sudan": "sd",
+  "ซูดาน": "sd",
+  "sd": "sd",
+  "SD": "sd",
+  "suriname": "sr",
+  "ซูรินาม": "sr",
+  "sr": "sr",
+  "SR": "sr",
+  "sweden": "se",
+  "สวีเดน": "se",
+  "se": "se",
+  "SE": "se",
+  "switzerland": "ch",
+  "สวิตเซอร์แลนด์": "ch",
+  "ch": "ch",
+  "CH": "ch",
+  "syria": "sy",
+  "ซีเรีย": "sy",
+  "sy": "sy",
+  "SY": "sy",
+  "tahiti": "pf",
+  "ตาฮีตี": "pf",
+  "pf": "pf",
+  "PF": "pf",
+  "tajikistan": "tj",
+  "ทาจิกิสถาน": "tj",
+  "tj": "tj",
+  "TJ": "tj",
+  "tanzania": "tz",
+  "แทนซาเนีย": "tz",
+  "tz": "tz",
+  "TZ": "tz",
+  "thailand": "th",
+  "ไทย": "th",
+  "th": "th",
+  "TH": "th",
+  "timor-leste": "tl",
+  "ติมอร์-เลสเต": "tl",
+  "tl": "tl",
+  "TL": "tl",
+  "togo": "tg",
+  "โตโก": "tg",
+  "tg": "tg",
+  "TG": "tg",
+  "tonga": "to",
+  "ตองกา": "to",
+  "to": "to",
+  "TO": "to",
+  "trinidad and tobago": "tt",
+  "ตรินิแดดและโตเบโก": "tt",
+  "tt": "tt",
+  "TT": "tt",
+  "tunisia": "tn",
+  "ตูนิเซีย": "tn",
+  "tn": "tn",
+  "TN": "tn",
+  "türkiye": "tr",
+  "ตุรกี": "tr",
+  "tr": "tr",
+  "TR": "tr",
+  "turkmenistan": "tm",
+  "เติร์กเมนิสถาน": "tm",
+  "tm": "tm",
+  "TM": "tm",
+  "turks and caicos islands": "tc",
+  "หมู่เกาะเติกส์และเคคอส": "tc",
+  "tc": "tc",
+  "TC": "tc",
+  "uganda": "ug",
+  "ยูกันดา": "ug",
+  "ug": "ug",
+  "UG": "ug",
+  "ukraine": "ua",
+  "ยูเครน": "ua",
+  "ua": "ua",
+  "UA": "ua",
+  "united arab emirates": "ae",
+  "สหรัฐอาหรับเอมิเรตส์": "ae",
+  "ae": "ae",
+  "AE": "ae",
+  "united states": "us",
+  "สหรัฐอเมริกา": "us",
+  "us": "us",
+  "US": "us",
+  "uruguay": "uy",
+  "อุรุกวัย": "uy",
+  "uy": "uy",
+  "UY": "uy",
+  "us virgin islands": "vi",
+  "หมู่เกาะเวอร์จินของสหรัฐ": "vi",
+  "vi": "vi",
+  "VI": "vi",
+  "uzbekistan": "uz",
+  "อุซเบกิสถาน": "uz",
+  "uz": "uz",
+  "UZ": "uz",
+  "vanuatu": "vu",
+  "วานูวาตู": "vu",
+  "vu": "vu",
+  "VU": "vu",
+  "venezuela": "ve",
+  "เวเนซุเอลา": "ve",
+  "ve": "ve",
+  "VE": "ve",
+  "vietnam": "vn",
+  "เวียดนาม": "vn",
+  "vn": "vn",
+  "VN": "vn",
+  "wales": "gb-wls",
+  "เวลส์": "gb-wls",
+  "gb-wls": "gb-wls",
+  "GB-WLS": "gb-wls",
+  "yemen": "ye",
+  "เยเมน": "ye",
+  "ye": "ye",
+  "YE": "ye",
+  "zambia": "zm",
+  "แซมเบีย": "zm",
+  "zm": "zm",
+  "ZM": "zm",
+  "zimbabwe": "zw",
+  "ซิมบับเว": "zw",
+  "zw": "zw",
+  "ZW": "zw",
+  "usa": "us",
+  "united states of america": "us",
+  "eng": "gb-eng",
+  "sco": "gb-sct",
+  "wls": "gb-wls",
+  "nir": "gb-nir",
+  "ireland": "ie",
+  "irl": "ie",
+  "turkey": "tr",
+  "taiwan": "tw",
+  "cape verde": "cv",
+  "ger": "de",
+  "fra": "fr",
+  "esp": "es",
+  "ned": "nl",
+  "jpn": "jp",
+  "jam": "jm",
+  "aus": "au",
+  "can": "ca",
+  "col": "co"
+,
+  "french": "fr",
+  "english": "gb-eng",
+  "argentinian": "ar",
+  "argentine": "ar",
+  "brazilian": "br",
+  "portuguese": "pt",
+  "spanish": "es",
+  "belgian": "be",
+  "dutch": "nl",
+  "italian": "it",
+  "german": "de",
+  "american": "us",
+  "danish": "dk",
+  "senegalese": "sn",
+  "ecuadorian": "ec",
+  "ukrainian": "ua",
+  "swiss": "ch",
+  "swedish": "se",
+  "colombian": "co",
+  "japanese": "jp",
+  "jamaican": "jm",
+  "canadian": "ca",
+  "australian": "au",
+  "scottish": "gb-sct",
+  "welsh": "gb-wls",
+  "irish": "ie"
+};
+
+const countryNames = {
+  "af": {
+    "en": "Afghanistan",
+    "th": "อัฟกานิสถาน"
+  },
+  "al": {
+    "en": "Albania",
+    "th": "แอลเบเนีย"
+  },
+  "dz": {
+    "en": "Algeria",
+    "th": "แอลจีเรีย"
+  },
+  "as": {
+    "en": "American Samoa",
+    "th": "อเมริกันซามัว"
+  },
+  "ad": {
+    "en": "Andorra",
+    "th": "อันดอร์รา"
+  },
+  "ao": {
+    "en": "Angola",
+    "th": "แองโกลา"
+  },
+  "ai": {
+    "en": "Anguilla",
+    "th": "แองกวิลลา"
+  },
+  "ag": {
+    "en": "Antigua and Barbuda",
+    "th": "แอนติกาและบาร์บูดา"
+  },
+  "ar": {
+    "en": "Argentina",
+    "th": "อาร์เจนตินา"
+  },
+  "am": {
+    "en": "Armenia",
+    "th": "อาร์มีเนีย"
+  },
+  "aw": {
+    "en": "Aruba",
+    "th": "อารูบา"
+  },
+  "au": {
+    "en": "Australia",
+    "th": "ออสเตรเลีย"
+  },
+  "at": {
+    "en": "Austria",
+    "th": "ออสเตรีย"
+  },
+  "az": {
+    "en": "Azerbaijan",
+    "th": "อาเซอร์ไบจาน"
+  },
+  "bs": {
+    "en": "Bahamas",
+    "th": "บาฮามาส"
+  },
+  "bh": {
+    "en": "Bahrain",
+    "th": "บาห์เรน"
+  },
+  "bd": {
+    "en": "Bangladesh",
+    "th": "บังกลาเทศ"
+  },
+  "bb": {
+    "en": "Barbados",
+    "th": "บาร์เบโดส"
+  },
+  "by": {
+    "en": "Belarus",
+    "th": "เบลารุส"
+  },
+  "be": {
+    "en": "Belgium",
+    "th": "เบลเยียม"
+  },
+  "bz": {
+    "en": "Belize",
+    "th": "เบลีซ"
+  },
+  "bj": {
+    "en": "Benin",
+    "th": "เบนิน"
+  },
+  "bm": {
+    "en": "Bermuda",
+    "th": "เบอร์มิวดา"
+  },
+  "bt": {
+    "en": "Bhutan",
+    "th": "ภูฏาน"
+  },
+  "bo": {
+    "en": "Bolivia",
+    "th": "โบลิเวีย"
+  },
+  "ba": {
+    "en": "Bosnia and Herzegovina",
+    "th": "บอสเนียและเฮอร์เซโกวีนา"
+  },
+  "bw": {
+    "en": "Botswana",
+    "th": "บอตสวานา"
+  },
+  "br": {
+    "en": "Brazil",
+    "th": "บราซิล"
+  },
+  "vg": {
+    "en": "British Virgin Islands",
+    "th": "หมู่เกาะบริติชเวอร์จิน"
+  },
+  "bn": {
+    "en": "Brunei",
+    "th": "บรูไน"
+  },
+  "bg": {
+    "en": "Bulgaria",
+    "th": "บัลแกเรีย"
+  },
+  "bf": {
+    "en": "Burkina Faso",
+    "th": "บูร์กินาฟาโซ"
+  },
+  "bi": {
+    "en": "Burundi",
+    "th": "บุรุนดี"
+  },
+  "kh": {
+    "en": "Cambodia",
+    "th": "กัมพูชา"
+  },
+  "cm": {
+    "en": "Cameroon",
+    "th": "แคเมอรูน"
+  },
+  "ca": {
+    "en": "Canada",
+    "th": "แคนาดา"
+  },
+  "cv": {
+    "en": "Cabo Verde",
+    "th": "กาบูเวร์ดี"
+  },
+  "ky": {
+    "en": "Cayman Islands",
+    "th": "หมู่เกาะเคย์แมน"
+  },
+  "cf": {
+    "en": "Central African Republic",
+    "th": "สาธารณรัฐแอฟริกากลาง"
+  },
+  "td": {
+    "en": "Chad",
+    "th": "ชาด"
+  },
+  "cl": {
+    "en": "Chile",
+    "th": "ชิลี"
+  },
+  "cn": {
+    "en": "China",
+    "th": "จีน"
+  },
+  "tw": {
+    "en": "Chinese Taipei",
+    "th": "จีนไทเป"
+  },
+  "co": {
+    "en": "Colombia",
+    "th": "โคลอมเบีย"
+  },
+  "km": {
+    "en": "Comoros",
+    "th": "คอโมโรส"
+  },
+  "cg": {
+    "en": "Congo",
+    "th": "คองโก"
+  },
+  "cd": {
+    "en": "DR Congo",
+    "th": "สาธารณรัฐประชาธิปไตยคองโก"
+  },
+  "ck": {
+    "en": "Cook Islands",
+    "th": "หมู่เกาะคุก"
+  },
+  "cr": {
+    "en": "Costa Rica",
+    "th": "คอสตาริกา"
+  },
+  "ci": {
+    "en": "Ivory Coast",
+    "th": "โกตดิวัวร์"
+  },
+  "hr": {
+    "en": "Croatia",
+    "th": "โครเอเชีย"
+  },
+  "cu": {
+    "en": "Cuba",
+    "th": "คิวบา"
+  },
+  "cw": {
+    "en": "Curaçao",
+    "th": "กือราเซา"
+  },
+  "cy": {
+    "en": "Cyprus",
+    "th": "ไซปรัส"
+  },
+  "cz": {
+    "en": "Czechia",
+    "th": "เช็กเกีย"
+  },
+  "dk": {
+    "en": "Denmark",
+    "th": "เดนมาร์ก"
+  },
+  "dj": {
+    "en": "Djibouti",
+    "th": "จิบูตี"
+  },
+  "dm": {
+    "en": "Dominica",
+    "th": "ดอมินีกา"
+  },
+  "do": {
+    "en": "Dominican Republic",
+    "th": "สาธารณรัฐโดมินิกัน"
+  },
+  "ec": {
+    "en": "Ecuador",
+    "th": "เอกวาดอร์"
+  },
+  "eg": {
+    "en": "Egypt",
+    "th": "อียิปต์"
+  },
+  "sv": {
+    "en": "El Salvador",
+    "th": "เอลซัลวาดอร์"
+  },
+  "gb-eng": {
+    "en": "England",
+    "th": "อังกฤษ"
+  },
+  "gq": {
+    "en": "Equatorial Guinea",
+    "th": "อิเควทอเรียลกินี"
+  },
+  "er": {
+    "en": "Eritrea",
+    "th": "เอริเทรีย"
+  },
+  "ee": {
+    "en": "Estonia",
+    "th": "เอสโตเนีย"
+  },
+  "sz": {
+    "en": "Eswatini",
+    "th": "เอสวาตินี"
+  },
+  "et": {
+    "en": "Ethiopia",
+    "th": "เอธิโอเปีย"
+  },
+  "fo": {
+    "en": "Faroe Islands",
+    "th": "หมู่เกาะแฟโร"
+  },
+  "fj": {
+    "en": "Fiji",
+    "th": "ฟีจี"
+  },
+  "fi": {
+    "en": "Finland",
+    "th": "ฟินแลนด์"
+  },
+  "fr": {
+    "en": "France",
+    "th": "ฝรั่งเศส"
+  },
+  "ga": {
+    "en": "Gabon",
+    "th": "กาบอง"
+  },
+  "gm": {
+    "en": "Gambia",
+    "th": "แกมเบีย"
+  },
+  "ge": {
+    "en": "Georgia",
+    "th": "จอร์เจีย"
+  },
+  "de": {
+    "en": "Germany",
+    "th": "เยอรมนี"
+  },
+  "gh": {
+    "en": "Ghana",
+    "th": "กานา"
+  },
+  "gi": {
+    "en": "Gibraltar",
+    "th": "ยิบรอลตาร์"
+  },
+  "gr": {
+    "en": "Greece",
+    "th": "กรีซ"
+  },
+  "gd": {
+    "en": "Grenada",
+    "th": "กรีเนดา"
+  },
+  "gu": {
+    "en": "Guam",
+    "th": "กวม"
+  },
+  "gt": {
+    "en": "Guatemala",
+    "th": "กัวเตมาลา"
+  },
+  "gn": {
+    "en": "Guinea",
+    "th": "กินี"
+  },
+  "gw": {
+    "en": "Guinea-Bissau",
+    "th": "กินี-บิสเซา"
+  },
+  "gy": {
+    "en": "Guyana",
+    "th": "กายอานา"
+  },
+  "ht": {
+    "en": "Haiti",
+    "th": "เฮติ"
+  },
+  "hn": {
+    "en": "Honduras",
+    "th": "ฮอนดูรัส"
+  },
+  "china\"": {
+    "en": "Hong Kong",
+    "th": "ฮ่องกง"
+  },
+  "hu": {
+    "en": "Hungary",
+    "th": "ฮังการี"
+  },
+  "is": {
+    "en": "Iceland",
+    "th": "ไอซ์แลนด์"
+  },
+  "in": {
+    "en": "India",
+    "th": "อินเดีย"
+  },
+  "id": {
+    "en": "Indonesia",
+    "th": "อินโดนีเซีย"
+  },
+  "ir": {
+    "en": "Iran",
+    "th": "อิหร่าน"
+  },
+  "iq": {
+    "en": "Iraq",
+    "th": "อิรัก"
+  },
+  "il": {
+    "en": "Israel",
+    "th": "อิสราเอล"
+  },
+  "it": {
+    "en": "Italy",
+    "th": "อิตาลี"
+  },
+  "jm": {
+    "en": "Jamaica",
+    "th": "จาเมกา"
+  },
+  "jp": {
+    "en": "Japan",
+    "th": "ญี่ปุ่น"
+  },
+  "jo": {
+    "en": "Jordan",
+    "th": "จอร์แดน"
+  },
+  "kz": {
+    "en": "Kazakhstan",
+    "th": "คาซัคสถาน"
+  },
+  "ke": {
+    "en": "Kenya",
+    "th": "เคนยา"
+  },
+  "xk": {
+    "en": "Kosovo",
+    "th": "คอซอวอ"
+  },
+  "kw": {
+    "en": "Kuwait",
+    "th": "คูเวต"
+  },
+  "kg": {
+    "en": "Kyrgyzstan",
+    "th": "คีร์กีซสถาน"
+  },
+  "la": {
+    "en": "Laos",
+    "th": "ลาว"
+  },
+  "lv": {
+    "en": "Latvia",
+    "th": "ลัตเวีย"
+  },
+  "lb": {
+    "en": "Lebanon",
+    "th": "เลบานอน"
+  },
+  "ls": {
+    "en": "Lesotho",
+    "th": "เลโซโท"
+  },
+  "lr": {
+    "en": "Liberia",
+    "th": "ไลบีเรีย"
+  },
+  "ly": {
+    "en": "Libya",
+    "th": "ลิเบีย"
+  },
+  "li": {
+    "en": "Liechtenstein",
+    "th": "ลีชเทินชไตน์"
+  },
+  "lt": {
+    "en": "Lithuania",
+    "th": "ลิทัวเนีย"
+  },
+  "lu": {
+    "en": "Luxembourg",
+    "th": "ลักเซมเบิร์ก"
+  },
+  "mo": {
+    "en": "Macau",
+    "th": "มาเก๊า"
+  },
+  "mg": {
+    "en": "Madagascar",
+    "th": "มาดากัสการ์"
+  },
+  "mw": {
+    "en": "Malawi",
+    "th": "มาลาวี"
+  },
+  "my": {
+    "en": "Malaysia",
+    "th": "มาเลเซีย"
+  },
+  "mv": {
+    "en": "Maldives",
+    "th": "มัลดีฟส์"
+  },
+  "ml": {
+    "en": "Mali",
+    "th": "มาลี"
+  },
+  "mt": {
+    "en": "Malta",
+    "th": "มอลตา"
+  },
+  "mr": {
+    "en": "Mauritania",
+    "th": "มอริเตเนีย"
+  },
+  "mu": {
+    "en": "Mauritius",
+    "th": "มอริเชียส"
+  },
+  "mx": {
+    "en": "Mexico",
+    "th": "เม็กซิโก"
+  },
+  "md": {
+    "en": "Moldova",
+    "th": "มอลโดวา"
+  },
+  "mn": {
+    "en": "Mongolia",
+    "th": "มองโกเลีย"
+  },
+  "me": {
+    "en": "Montenegro",
+    "th": "มอนเตเนโกร"
+  },
+  "ms": {
+    "en": "Montserrat",
+    "th": "มอนต์เซอร์รัต"
+  },
+  "ma": {
+    "en": "Morocco",
+    "th": "โมร็อกโก"
+  },
+  "mz": {
+    "en": "Mozambique",
+    "th": "โมซัมบิก"
+  },
+  "mm": {
+    "en": "Myanmar",
+    "th": "เมียนมา"
+  },
+  "na": {
+    "en": "Namibia",
+    "th": "นามิเบีย"
+  },
+  "np": {
+    "en": "Nepal",
+    "th": "เนปาล"
+  },
+  "nl": {
+    "en": "Netherlands",
+    "th": "เนเธอร์แลนด์"
+  },
+  "nc": {
+    "en": "New Caledonia",
+    "th": "นิวแคลิโดเนีย"
+  },
+  "nz": {
+    "en": "New Zealand",
+    "th": "นิวซีแลนด์"
+  },
+  "ni": {
+    "en": "Nicaragua",
+    "th": "นิการากัว"
+  },
+  "ne": {
+    "en": "Niger",
+    "th": "ไนเจอร์"
+  },
+  "ng": {
+    "en": "Nigeria",
+    "th": "ไนจีเรีย"
+  },
+  "kp": {
+    "en": "North Korea",
+    "th": "เกาหลีเหนือ"
+  },
+  "mk": {
+    "en": "North Macedonia",
+    "th": "นอร์ทมาซิโดเนีย"
+  },
+  "gb-nir": {
+    "en": "Northern Ireland",
+    "th": "ไอร์แลนด์เหนือ"
+  },
+  "no": {
+    "en": "Norway",
+    "th": "นอร์เวย์"
+  },
+  "om": {
+    "en": "Oman",
+    "th": "โอมาน"
+  },
+  "pk": {
+    "en": "Pakistan",
+    "th": "ปากีสถาน"
+  },
+  "ps": {
+    "en": "Palestine",
+    "th": "ปาเลสไตน์"
+  },
+  "pa": {
+    "en": "Panama",
+    "th": "ปานามา"
+  },
+  "pg": {
+    "en": "Papua New Guinea",
+    "th": "ปาปัวนิวกินี"
+  },
+  "py": {
+    "en": "Paraguay",
+    "th": "ปารากวัย"
+  },
+  "pe": {
+    "en": "Peru",
+    "th": "เปรู"
+  },
+  "ph": {
+    "en": "Philippines",
+    "th": "ฟิลิปปินส์"
+  },
+  "pl": {
+    "en": "Poland",
+    "th": "โปแลนด์"
+  },
+  "pt": {
+    "en": "Portugal",
+    "th": "โปรตุเกส"
+  },
+  "pr": {
+    "en": "Puerto Rico",
+    "th": "ปวยร์โตรีโก"
+  },
+  "qa": {
+    "en": "Qatar",
+    "th": "กาตาร์"
+  },
+  "ie": {
+    "en": "Republic of Ireland",
+    "th": "สาธารณรัฐไอร์แลนด์"
+  },
+  "ro": {
+    "en": "Romania",
+    "th": "โรมาเนีย"
+  },
+  "ru": {
+    "en": "Russia",
+    "th": "รัสเซีย"
+  },
+  "rw": {
+    "en": "Rwanda",
+    "th": "รวันดา"
+  },
+  "ws": {
+    "en": "Samoa",
+    "th": "ซามัว"
+  },
+  "sm": {
+    "en": "San Marino",
+    "th": "ซานมารีโน"
+  },
+  "st": {
+    "en": "São Tomé and Príncipe",
+    "th": "เซาตูเมและปรินซิปี"
+  },
+  "sa": {
+    "en": "Saudi Arabia",
+    "th": "ซาอุดีอาระเบีย"
+  },
+  "gb-sct": {
+    "en": "Scotland",
+    "th": "สกอตแลนด์"
+  },
+  "sn": {
+    "en": "Senegal",
+    "th": "เซเนกัล"
+  },
+  "rs": {
+    "en": "Serbia",
+    "th": "เซอร์เบีย"
+  },
+  "sc": {
+    "en": "Seychelles",
+    "th": "เซเชลส์"
+  },
+  "sl": {
+    "en": "Sierra Leone",
+    "th": "เซียร์ราลีโอน"
+  },
+  "sg": {
+    "en": "Singapore",
+    "th": "สิงคโปร์"
+  },
+  "sk": {
+    "en": "Slovakia",
+    "th": "สโลวาเกีย"
+  },
+  "si": {
+    "en": "Slovenia",
+    "th": "สโลวีเนีย"
+  },
+  "sb": {
+    "en": "Solomon Islands",
+    "th": "หมู่เกาะโซโลมอน"
+  },
+  "so": {
+    "en": "Somalia",
+    "th": "โซมาเลีย"
+  },
+  "za": {
+    "en": "South Africa",
+    "th": "แอฟริกาใต้"
+  },
+  "kr": {
+    "en": "South Korea",
+    "th": "เกาหลีใต้"
+  },
+  "ss": {
+    "en": "South Sudan",
+    "th": "ซูดานใต้"
+  },
+  "es": {
+    "en": "Spain",
+    "th": "สเปน"
+  },
+  "lk": {
+    "en": "Sri Lanka",
+    "th": "ศรีลังกา"
+  },
+  "kn": {
+    "en": "Saint Kitts and Nevis",
+    "th": "เซนต์คิตส์และเนวิส"
+  },
+  "lc": {
+    "en": "Saint Lucia",
+    "th": "เซนต์ลูเชีย"
+  },
+  "vc": {
+    "en": "Saint Vincent and the Grenadines",
+    "th": "เซนต์วินเซนต์และเกรนาดีนส์"
+  },
+  "sd": {
+    "en": "Sudan",
+    "th": "ซูดาน"
+  },
+  "sr": {
+    "en": "Suriname",
+    "th": "ซูรินาม"
+  },
+  "se": {
+    "en": "Sweden",
+    "th": "สวีเดน"
+  },
+  "ch": {
+    "en": "Switzerland",
+    "th": "สวิตเซอร์แลนด์"
+  },
+  "sy": {
+    "en": "Syria",
+    "th": "ซีเรีย"
+  },
+  "pf": {
+    "en": "Tahiti",
+    "th": "ตาฮีตี"
+  },
+  "tj": {
+    "en": "Tajikistan",
+    "th": "ทาจิกิสถาน"
+  },
+  "tz": {
+    "en": "Tanzania",
+    "th": "แทนซาเนีย"
+  },
+  "th": {
+    "en": "Thailand",
+    "th": "ไทย"
+  },
+  "tl": {
+    "en": "Timor-Leste",
+    "th": "ติมอร์-เลสเต"
+  },
+  "tg": {
+    "en": "Togo",
+    "th": "โตโก"
+  },
+  "to": {
+    "en": "Tonga",
+    "th": "ตองกา"
+  },
+  "tt": {
+    "en": "Trinidad and Tobago",
+    "th": "ตรินิแดดและโตเบโก"
+  },
+  "tn": {
+    "en": "Tunisia",
+    "th": "ตูนิเซีย"
+  },
+  "tr": {
+    "en": "Türkiye",
+    "th": "ตุรกี"
+  },
+  "tm": {
+    "en": "Turkmenistan",
+    "th": "เติร์กเมนิสถาน"
+  },
+  "tc": {
+    "en": "Turks and Caicos Islands",
+    "th": "หมู่เกาะเติกส์และเคคอส"
+  },
+  "ug": {
+    "en": "Uganda",
+    "th": "ยูกันดา"
+  },
+  "ua": {
+    "en": "Ukraine",
+    "th": "ยูเครน"
+  },
+  "ae": {
+    "en": "United Arab Emirates",
+    "th": "สหรัฐอาหรับเอมิเรตส์"
+  },
+  "us": {
+    "en": "United States",
+    "th": "สหรัฐอเมริกา"
+  },
+  "uy": {
+    "en": "Uruguay",
+    "th": "อุรุกวัย"
+  },
+  "vi": {
+    "en": "US Virgin Islands",
+    "th": "หมู่เกาะเวอร์จินของสหรัฐ"
+  },
+  "uz": {
+    "en": "Uzbekistan",
+    "th": "อุซเบกิสถาน"
+  },
+  "vu": {
+    "en": "Vanuatu",
+    "th": "วานูวาตู"
+  },
+  "ve": {
+    "en": "Venezuela",
+    "th": "เวเนซุเอลา"
+  },
+  "vn": {
+    "en": "Vietnam",
+    "th": "เวียดนาม"
+  },
+  "gb-wls": {
+    "en": "Wales",
+    "th": "เวลส์"
+  },
+  "ye": {
+    "en": "Yemen",
+    "th": "เยเมน"
+  },
+  "zm": {
+    "en": "Zambia",
+    "th": "แซมเบีย"
+  },
+  "zw": {
+    "en": "Zimbabwe",
+    "th": "ซิมบับเว"
+  }
+};
+function getFlagCode(nat) {
+  if (!nat) return '';
+  const n = nat.trim().toLowerCase();
+  return flagMap[n] || n;
+}
+
+function getCountryName(nat, lang = 'en') {
+  if (!nat) return '--';
+  const code = getFlagCode(nat);
+  if (countryNames[code]) {
+    return countryNames[code][lang] || countryNames[code]['en'];
+  }
+  return nat;
+}
+
+function getFlagSpriteHTML(nat, className = 'flag-icon', width = 20, height = 15) {
+  const code = getFlagCode(nat);
+  if (!code) return '';
+  return `<img src="databases/logo/national/${code}.svg" class="${className}" width="${width}" height="${height}" alt="${nat}" style="vertical-align: middle;">`;
+}
+
+window.getFlagCode = getFlagCode;
+window.getCountryName = getCountryName;
+window.getFlagSpriteHTML = getFlagSpriteHTML;
+
+window.loadTeamsData = loadTeamsData;
+window.getTeamInfo = getTeamInfo;
+window.formatTeamName = formatTeamName;
+window.renderTeamNameHTML = renderTeamNameHTML;
+
+
+async function loadLanguage(lang) {
+  try {
+    const res = await fetch(`lang/${lang}.json`);
+    if (!res.ok) return;
+    const ct = res.headers.get('content-type');
+    if (ct && !ct.includes('json') && !ct.includes('javascript')) return;
+    translations = await res.json();
+    currentLang = lang;
+    window.currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+    updateUIText();
+    localStorage.setItem('lang', lang);
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+  } catch (e) {
+    console.error('Failed to load language:', e);
+  }
+}
+
+function updateUIText() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const keys = key.split('.');
+    let value = translations;
+    for (const k of keys) {
+      if (value && value[k] !== undefined) value = value[k];
+      else { value = null; break; }
+    }
+    if (value !== null && value !== undefined) {
+      if (el.children.length === 0) {
+        el.textContent = value;
+      } else {
+        // If element has icon or child element, update text node or innerHTML safely
+        const icon = el.querySelector('.icon, .emoji');
+        if (icon) {
+          const iconHtml = icon.outerHTML;
+          el.innerHTML = iconHtml + ' ' + value;
+        } else {
+          el.innerHTML = value;
+        }
+      }
+    }
+  });
+
+  document.querySelectorAll('[data-lang-th][data-lang-en]').forEach(el => {
+    const val = currentLang === 'th' ? el.getAttribute('data-lang-th') : el.getAttribute('data-lang-en');
+    if (val) el.innerHTML = val;
+  });
+
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle && translations?.nav?.lang_toggle) {
+    langToggle.textContent = translations.nav.lang_toggle;
+  }
+  
+  const langToggleBtn = document.getElementById('langToggleBtn');
+  if (langToggleBtn && translations?.story?.read_btn) {
+    langToggleBtn.textContent = translations.story.read_btn;
+  }
+}
+
+function toggleLanguage() {
+  const newLang = currentLang === 'th' ? 'en' : 'th';
+  loadLanguage(newLang);
+}
+
+// Mobile Menu
+function initMobileMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (!hamburger || !navLinks) return;
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadTeamsData();
+  await loadLanguage(currentLang);
+  initMobileMenu();
+
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleLanguage();
+    });
+  }
+});
+
+
+window.getLocalMatchDateTime = function(dateStr, timeThStr, timeUkStr) {
+  let fallbackTime = timeThStr || timeUkStr || 'TBC';
+  if (fallbackTime !== 'TBC') fallbackTime = fallbackTime.substring(0, 5);
+  
+  if (!timeThStr || timeThStr === 'TBC') {
+    return { date: dateStr, time: fallbackTime === '00:00' ? '00:00' : fallbackTime };
+  }
+
+  try {
+    // We assume timeThStr is UTC+7
+    const isoString = `${dateStr}T${timeThStr}:00+07:00`;
+    const d = new Date(isoString);
+    if (isNaN(d.getTime())) {
+      return { date: dateStr, time: fallbackTime === '00:00' ? '00:00' : fallbackTime };
+    }
+
+    const localHours = String(d.getHours()).padStart(2, '0');
+    const localMins = String(d.getMinutes()).padStart(2, '0');
+    const localTimeStr = `${localHours}:${localMins}`;
+
+    const localYear = d.getFullYear();
+    const localMonth = String(d.getMonth() + 1).padStart(2, '0');
+    const localDay = String(d.getDate()).padStart(2, '0');
+    const localDateStr = `${localYear}-${localMonth}-${localDay}`;
+
+    return {
+      date: localDateStr,
+      time: localTimeStr
+    };
+  } catch (e) {
+    return { date: dateStr, time: fallbackTime === '00:00' ? '00:00' : fallbackTime };
+  }
+};
