@@ -317,13 +317,53 @@ async function loadMenResults() {
   }
 }
 
+
+// ---------- SAFE GOOGLE SHEETS FETCH (Client-side) ----------
+async function fetchGoogleSheetDirect(spreadsheetId, queryParams = 'gid=0') {
+  try {
+    const url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&${queryParams}&headers=1`;
+    const res = await fetch(url);
+    const text = await res.text();
+    if (!text.includes('google.visualization.Query.setResponse')) {
+      throw new Error('Failed to query spreadsheet. Ensure it is public.');
+    }
+    const jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+    const json = JSON.parse(jsonStr);
+    
+    if (json.status === 'error') {
+      throw new Error(json.errors?.[0]?.detailed_message || 'Error reading spreadsheet');
+    }
+    
+    const table = json.table;
+    const cols = table.cols.map((c, i) => (c && c.label && c.label.trim()) ? c.label.trim() : `col_${i}`);
+    const rows = table.rows.map(row => {
+      const obj = {};
+      row.c.forEach((cell, idx) => {
+        const val = cell ? (cell.f !== undefined ? cell.f : cell.v) : null;
+        if (val !== null && val !== undefined) {
+          const colName = cols[idx] || `col_${idx}`;
+          obj[colName] = val;
+        }
+      });
+      return obj;
+    });
+    
+    return {
+      success: true,
+      data: rows
+    };
+  } catch (err) {
+    console.error('Google Sheets Direct Fetch Error:', err);
+    return { success: false, error: err.message };
+  }
+}
+
 async function loadMenTable() {
   const container = document.getElementById('menTableContainer');
   if (!container) return;
   try {
     const SPREADSHEET_ID = '1mdFJwRXRB-xBYiDMJK0LoUD9n3Jf9iF1x6NH1V4W1gY';
-    const res = await fetch(`/api/sheets/${SPREADSHEET_ID}?gid=0`);
-    const sheetData = await res.json();
+    const sheetData = await fetchGoogleSheetDirect(SPREADSHEET_ID, 'gid=0');
     
     let table = [];
     let compLogo = "databases/logo/competitions/men/premier-league.png";
@@ -469,8 +509,7 @@ async function fetchPlayersFromSheet(isMen = true) {
   const SPREADSHEET_ID = '11aZTuUOCacJrnx8nAUKu-PQ59NAVoz1nm8vEOE8x6xs';
   const sheetParam = 'gid=1721120655&sheet=profile-men';
   try {
-    const res = await fetch(`/api/sheets/${SPREADSHEET_ID}?${sheetParam}`);
-    const data = await res.json();
+    const data = await fetchGoogleSheetDirect(SPREADSHEET_ID, sheetParam);
     if (!data.success || !Array.isArray(data.data)) throw new Error(data.error || 'Failed to fetch sheet');
 
     // Try to load local JSON as fallback/merge for extra details if needed
