@@ -97,7 +97,16 @@ function renderFixtures(container, fixtures, badgeClass) {
             <span class="team-name">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
           </div>
         </div>
-        <div class="card-footer">
+            ${match.status === 'completed' && match.goals && match.goals.length > 0 ? `
+            <div class="card-goalscorers" style="display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0 10px 10px; margin-top: -5px; opacity: 0.8; font-family: var(--font-body);">
+              <div class="home-scorers" style="text-align: left; flex: 1; padding-right: 10px; ${match.goals.filter(g => g.team === 'away').length > 0 ? 'border-right: 1px solid rgba(255,255,255,0.1);' : ''}">
+                ${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+              </div>
+              <div class="away-scorers" style="text-align: right; flex: 1; padding-left: 10px;">
+                ${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+              </div>
+            </div>` : ''}
+            <div class="card-footer">
           <div class="venue-item"><span class="venue-icon">📍</span><span>${match.venue}</span></div>
           ${channelsIcons}
         </div>
@@ -151,7 +160,16 @@ function renderResults(container, results, badgeClass) {
             <span class="team-name">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
           </div>
         </div>
-        <div class="card-footer">
+            ${match.status === 'completed' && match.goals && match.goals.length > 0 ? `
+            <div class="card-goalscorers" style="display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0 10px 10px; margin-top: -5px; opacity: 0.8; font-family: var(--font-body);">
+              <div class="home-scorers" style="text-align: left; flex: 1; padding-right: 10px; ${match.goals.filter(g => g.team === 'away').length > 0 ? 'border-right: 1px solid rgba(255,255,255,0.1);' : ''}">
+                ${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+              </div>
+              <div class="away-scorers" style="text-align: right; flex: 1; padding-left: 10px;">
+                ${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+              </div>
+            </div>` : ''}
+            <div class="card-footer">
           <div class="venue-item"><span class="venue-icon">📍</span><span>${match.venue}</span></div>
         </div>
       </div>
