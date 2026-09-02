@@ -398,7 +398,7 @@ This document provides a complete, deeply nested view of all files and folders i
 │           ├── .gitkeep
 │           ├── bbc.png
 │           ├── bg.svg
-│           ├── cfc.svg
+│           ├── cfc.png
 │           ├── monomax.png
 │           ├── monomax.svg
 │           ├── sky_sports.png

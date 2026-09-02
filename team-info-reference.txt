@@ -81,7 +81,7 @@
 ใช้สำหรับใส่ในข้อมูล "channels" ในไฟล์ fixtures เพื่อแสดงโลโก้ทีวี/สตรีมมิ่ง
 - พาธโฟลเดอร์หลัก: databases/logo/tv/
 - BG SPORTS: databases/logo/tv/bg.svg
-- CFC+: databases/logo/tv/cfc.svg
+- CFC+: databases/logo/tv/cfc.png
 - BBC: databases/logo/tv/bbc.png
 - MONOMAX: databases/logo/tv/monomax.svg  (หรือ .png)
 - Sky Sports: databases/logo/tv/sky_sports.png  (หรือ .webp)

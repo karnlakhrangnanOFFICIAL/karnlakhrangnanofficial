@@ -1282,7 +1282,7 @@
       {
         "platform": "CFC+",
         "name": "CFC+",
-        "logo": "databases/logo/tv/cfc.svg"
+        "logo": "databases/logo/tv/cfc.png"
       }
     ],
     "competition_name": "Friendly",
@@ -1327,7 +1327,7 @@
       {
         "platform": "CFC+",
         "name": "CFC+",
-        "logo": "databases/logo/tv/cfc.svg"
+        "logo": "databases/logo/tv/cfc.png"
       }
     ],
     "competition_name": "Friendly",
@@ -2072,7 +2072,13 @@
     "away_score": null,
     "goals": [],
     "events": [],
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+      ],
     "competition_name": "UWCL",
     "team_type": "W",
     "time_th": "00:00",

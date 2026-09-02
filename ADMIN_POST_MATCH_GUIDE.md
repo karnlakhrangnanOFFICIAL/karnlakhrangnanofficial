@@ -53,7 +53,7 @@
     {"team": "away", "player": "Richarlison", "minute": "90+2"}
   ],
   "channels": [
-    { "platform": "chelseafc.com", "name": "CFC+", "logo": "databases/logo/tv/cfc.svg" }
+    { "platform": "chelseafc.com", "name": "CFC+", "logo": "databases/logo/tv/cfc.png" }
   ]
 }
 ```
