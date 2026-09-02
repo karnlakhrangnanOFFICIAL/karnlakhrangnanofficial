@@ -6,20 +6,27 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// Serve static files from the root directory
+// Serve static files
 app.use(express.static(__dirname, { extensions: ['html'] }));
-
-// Also serve the databases directory explicitly if needed
 app.use('/databases', express.static(path.join(__dirname, 'databases')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
-// Serve index.html for the root route
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// Explicit routes for each page (Hardcoded strings are REQUIRED for Vercel's nft static analysis)
+app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
+app.get('/icons', (req, res) => res.sendFile(path.join(__dirname, 'icons.html')));
+app.get('/match-detail', (req, res) => res.sendFile(path.join(__dirname, 'match-detail.html')));
+app.get('/men-team', (req, res) => res.sendFile(path.join(__dirname, 'men-team.html')));
+app.get('/player-profile', (req, res) => res.sendFile(path.join(__dirname, 'player-profile.html')));
+app.get('/post-match-graphic', (req, res) => res.sendFile(path.join(__dirname, 'post-match-graphic.html')));
+app.get('/pre-match-graphic', (req, res) => res.sendFile(path.join(__dirname, 'pre-match-graphic.html')));
+app.get('/the-story-blue', (req, res) => res.sendFile(path.join(__dirname, 'the-story-blue.html')));
+app.get('/transfers', (req, res) => res.sendFile(path.join(__dirname, 'transfers.html')));
+app.get('/trophy', (req, res) => res.sendFile(path.join(__dirname, 'trophy.html')));
+app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-team.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
