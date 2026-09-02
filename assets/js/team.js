@@ -165,7 +165,7 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
     return;
   }
   const isWomenPage = window.location.pathname.includes('women') || (compName && compName.toLowerCase().includes('women'));
-  const logoHtml = compLogo ? `<div class="table-comp-header" style="display:flex; align-items:center; gap:12px; margin-bottom:1rem; padding:10px 14px; background:var(--surface, rgba(255,255,255,0.04)); border:1px solid var(--border-color, rgba(255,255,255,0.08)); border-radius:8px;"><img src="${compLogo}" alt="${compName || ''}" onerror="this.style.display='none'" style="height:32px; max-width:120px; object-fit:contain;"><span style="font-weight:700; font-size:1.05rem; color:var(--ink);">${compName || ''}</span></div>` : '';
+  const logoHtml = compLogo ? `<div class="table-comp-header" style="display:flex; align-items:center; gap:12px; margin-bottom:1rem; padding:10px 14px; background:var(--surface, rgba(255,255,255,0.04)); border:1px solid var(--border-color, rgba(255,255,255,0.08)); border-radius:8px;"><img src="${compLogo}" alt="${compName || ''}" onerror="this.style.display='none'" style="height:60px; width:60px; object-fit:contain;"><span style="font-weight:700; font-size:1.05rem; color:var(--ink);">${compName || ''}</span></div>` : '';
   container.innerHTML = `
     ${logoHtml}
     <table class="league-table">
