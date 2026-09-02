@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chelsea FC Transfer Deadline Day 2026/27">
+  <title>Transfers · KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <style>
+    .transfer-section {
+      margin-bottom: 3rem;
+    }
+    .transfer-header {
+      background: var(--blue-dark);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      font-family: var(--font-heading);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .transfer-header.out {
+      background: #c0392b; /* Red for outs */
+    }
+    .transfer-header.loan {
+      background: #f39c12; /* Yellow for loans */
+    }
+    .transfer-list {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-top: none;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th {
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .player-name {
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--bg-color);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+    .fee-badge {
+      font-family: monospace;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .transfer-header.out + .transfer-list .fee-badge {
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        <span class="team-name cal-team-name">KARNLAKHRANgNAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="https://www.chelseafc.com/en/news/latest-news-all" target="_blank" data-i18n="nav.news">News</a></li>
+        <li><a href="transfers.html" class="active" data-i18n="nav.transfers">Transfers</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" style="min-height: 250px; padding: 4rem 1rem 2rem;">
+    <div class="hero-content">
+      <div class="official-badge" style="margin-bottom: 1rem; display: inline-block;">🔄 TRANSFER HUB</div>
+      <h1>Chelsea Transfers 2026/27</h1>
+      <p class="season">Summer Transfer Window Recap · Final Snapshot</p>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container">
+    <div id="transferContainer">
+      <div style="text-align: center; padding: 3rem;">
+        <p>Loading transfer data...</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js?v=1"></script>
+  <script>
+    async function loadTransfers() {
+      const container = document.getElementById('transferContainer');
+      try {
+        const res = await fetch('data/transfers_26_27.json');
+        if (!res.ok) throw new Error('Failed to load');
+        const data = await res.json();
+        
+        let html = '';
+        
+        // Loop through categories (in, out_permanent, loan_out)
+        const cats = [
+          { key: 'in', class: '' },
+          { key: 'out_permanent', class: 'out' },
+          { key: 'loan_out', class: 'loan' }
+        ];
+
+        cats.forEach(cat => {
+          const categoryData = data.categories[cat.key];
+          if (!categoryData) return;
+
+          let tableRows = '';
+          categoryData.players.forEach(p => {
+            let detailCol = '';
+            if (cat.key === 'in') {
+              detailCol = `<td>From: <strong>${p.from}</strong></td><td><span class="fee-badge">${p.fee}</span></td>`;
+            } else if (cat.key === 'out_permanent') {
+              detailCol = `<td>To: <strong>${p.to || 'Released'}</strong></td><td><span class="fee-badge">${p.fee}</span></td>`;
+            } else if (cat.key === 'loan_out') {
+              detailCol = `<td>To: <strong>${p.to}</strong></td><td>Term: ${p.loan_term}</td>`;
+            }
+
+            tableRows += `
+              <tr>
+                <td><span class="player-name">${p.player}</span></td>
+                <td><span class="badge">${p.position}</span></td>
+                ${detailCol}
+              </tr>
+            `;
+          });
+
+          html += `
+            <div class="transfer-section">
+              <div class="transfer-header ${cat.class}">
+                <h3>${categoryData.label}</h3>
+                <span style="font-size: 0.9rem; font-weight: normal; background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">${categoryData.players.length} Players</span>
+              </div>
+              <div class="transfer-list">
+                <table>
+                  <tbody>
+                    ${tableRows}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          `;
+        });
+        
+        html += `
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+            <strong>Sources:</strong> ${data.sources.join(', ')}<br>
+            Last Updated: ${data.snapshot}
+          </div>
+        `;
+
+        container.innerHTML = html;
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = '<div style="text-align: center; color: red; padding: 2rem;">Error loading transfer data.</div>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadTransfers);
+  </script>
+</body>
+</html>

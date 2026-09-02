@@ -1,0 +1,430 @@
+{
+  "schema_version": "1.0",
+  "season": "2026/27",
+  "club": "Chelsea FC",
+  "snapshot": "2026-09-02",
+  "window_status": "closed",
+  "currency": "GBP",
+  "categories": {
+    "in": {
+      "label": "🟢 Chelsea ซื้อเข้า — ดีลปิดแล้ว",
+      "players": [
+        {
+          "player": "Morgan Rogers",
+          "from": "Aston Villa",
+          "position": "AM/LW",
+          "fee": "£117m",
+          "type": "permanent"
+        },
+        {
+          "player": "Maxence Lacroix",
+          "from": "Crystal Palace",
+          "position": "CB",
+          "fee": "~£52m",
+          "type": "permanent"
+        },
+        {
+          "player": "Marco Palestra",
+          "from": "Atalanta",
+          "position": "RB",
+          "fee": "~£49m",
+          "type": "permanent"
+        },
+        {
+          "player": "Geovany Quenda",
+          "from": "Sporting CP",
+          "position": "RW",
+          "fee": "~£44m",
+          "type": "permanent"
+        },
+        {
+          "player": "Honest Ahanor",
+          "from": "Atalanta",
+          "position": "CB/LB",
+          "fee": "~£40m",
+          "type": "permanent",
+          "current_status": "loaned to Crystal Palace"
+        },
+        {
+          "player": "Valentín Barco",
+          "from": "Strasbourg",
+          "position": "LB/CM",
+          "fee": "~£34m",
+          "type": "permanent"
+        },
+        {
+          "player": "Emmanuel Emegha",
+          "from": "Strasbourg",
+          "position": "ST",
+          "fee": "~£21.4m",
+          "type": "permanent"
+        },
+        {
+          "player": "Pep Chavarría",
+          "from": "Rayo Vallecano",
+          "position": "LB",
+          "fee": "£16.3m",
+          "type": "permanent"
+        },
+        {
+          "player": "Denner",
+          "from": "Corinthians",
+          "position": "LB",
+          "fee": "£8.65m",
+          "type": "permanent"
+        },
+        {
+          "player": "Emiliano Martínez",
+          "from": "Aston Villa",
+          "position": "GK",
+          "fee": "£7.5m",
+          "type": "permanent"
+        },
+        {
+          "player": "Danny Welbeck",
+          "from": "Brighton & Hove Albion",
+          "position": "ST",
+          "fee": "~£5m",
+          "type": "permanent"
+        },
+        {
+          "player": "Dastan Satpaev",
+          "from": "Kairat",
+          "position": "ST",
+          "fee": "~£2m",
+          "type": "permanent",
+          "current_status": "loaned to Burnley"
+        },
+        {
+          "player": "Jordan Henderson",
+          "from": "Brentford",
+          "position": "CM",
+          "fee": "Free transfer",
+          "type": "free"
+        },
+        {
+          "player": "Harrison Bettoni",
+          "from": "Wigan Athletic",
+          "position": "AM",
+          "fee": "Compensation/undisclosed",
+          "type": "permanent"
+        }
+      ]
+    },
+    "out_permanent": {
+      "label": "🔴 Chelsea ขายออก — ดีลถาวร",
+      "players": [
+        {
+          "player": "Enzo Fernández",
+          "to": "Manchester City",
+          "position": "CM",
+          "fee": "£125m",
+          "type": "permanent"
+        },
+        {
+          "player": "Nicolas Jackson",
+          "to": "Aston Villa",
+          "position": "ST",
+          "fee": "up to £65m",
+          "type": "permanent"
+        },
+        {
+          "player": "Marc Cucurella",
+          "to": "Real Madrid",
+          "position": "LB",
+          "fee": "~£47.5m",
+          "type": "permanent"
+        },
+        {
+          "player": "Andrey Santos",
+          "to": "Manchester United",
+          "position": "CM",
+          "fee": "~£48m",
+          "type": "permanent"
+        },
+        {
+          "player": "Liam Delap",
+          "to": "Nottingham Forest",
+          "position": "ST",
+          "fee": "£45m + add-ons",
+          "type": "permanent"
+        },
+        {
+          "player": "Trevoh Chalobah",
+          "to": "Como",
+          "position": "CB",
+          "fee": "~£25.7m",
+          "type": "permanent"
+        },
+        {
+          "player": "Tyrique George",
+          "to": "Everton",
+          "position": "LW",
+          "fee": "~£18m",
+          "type": "permanent"
+        },
+        {
+          "player": "Marc Guiu",
+          "to": "RB Leipzig",
+          "position": "ST",
+          "fee": "£14.6m",
+          "type": "permanent"
+        },
+        {
+          "player": "Tosin Adarabioyo",
+          "to": "Tottenham Hotspur",
+          "position": "CB",
+          "fee": "£7m",
+          "type": "permanent"
+        },
+        {
+          "player": "Omari Kellyman",
+          "to": "Strasbourg",
+          "position": "AM",
+          "fee": "~£5.13m",
+          "type": "permanent"
+        },
+        {
+          "player": "Jimmy-Jay Morgan",
+          "to": "West Bromwich Albion",
+          "position": "ST",
+          "fee": "Undisclosed",
+          "type": "permanent"
+        },
+        {
+          "player": "Frankie Runham",
+          "to": "Ipswich Town",
+          "position": "AM",
+          "fee": "Undisclosed",
+          "type": "permanent"
+        },
+        {
+          "player": "Joseph Wheeler-Henry",
+          "to": "Brentford",
+          "position": "CB",
+          "fee": "Undisclosed",
+          "type": "permanent"
+        },
+        {
+          "player": "Jimi Tauriainen",
+          "to": "AC Horsens",
+          "position": "CM",
+          "fee": "Free",
+          "type": "permanent"
+        },
+        {
+          "player": "Richard Olise",
+          "to": null,
+          "position": "RW",
+          "fee": "Released",
+          "type": "released"
+        },
+        {
+          "player": "Sam Rak-Sakyi",
+          "to": null,
+          "position": "RW",
+          "fee": "Released",
+          "type": "released"
+        },
+        {
+          "player": "Brodi Hughes",
+          "to": null,
+          "position": "CB",
+          "fee": "Released",
+          "type": "released"
+        },
+        {
+          "player": "James Hillson",
+          "to": null,
+          "position": "GK",
+          "fee": "Released",
+          "type": "released"
+        },
+        {
+          "player": "Deivid Washington",
+          "to": "Strasbourg",
+          "position": "ST",
+          "fee": "Undisclosed",
+          "type": "permanent"
+        },
+        {
+          "player": "David Datro Fofana",
+          "to": "Servette",
+          "position": "ST",
+          "fee": "~£2.1m",
+          "type": "permanent"
+        }
+      ]
+    },
+    "loan_out": {
+      "label": "🟡 Chelsea ปล่อยยืมตัว",
+      "players": [
+        {
+          "player": "Mykhailo Mudryk",
+          "to": "Tottenham Hotspur",
+          "position": "LW",
+          "loan_term": "2026/27",
+          "purchase_option": "£75m option reported"
+        },
+        {
+          "player": "Robert Sánchez",
+          "to": "Como",
+          "position": "GK",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Dário Essugo",
+          "to": "Strasbourg",
+          "position": "DM",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Mamadou Sarr",
+          "to": "Real Sociedad",
+          "position": "CB",
+          "loan_term": "2026/27",
+          "purchase_option": "No purchase option"
+        },
+        {
+          "player": "Alejandro Garnacho",
+          "to": "Aston Villa",
+          "position": "LW/RW",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Benoît Badiashile",
+          "to": "Napoli",
+          "position": "CB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Axel Disasi",
+          "to": "Crystal Palace",
+          "position": "CB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Filip Jørgensen",
+          "to": "Strasbourg",
+          "position": "GK",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Dastan Satpaev",
+          "to": "Burnley",
+          "position": "ST",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Caleb Wiley",
+          "to": "Preston North End",
+          "position": "LB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Dujuan Richards",
+          "to": "AFC Wimbledon",
+          "position": "ST",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Jesse Derry",
+          "to": "Sporting CP",
+          "position": "LW",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Harrison Murray-Campbell",
+          "to": "KV Kortrijk",
+          "position": "CB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Ishe Samuels-Smith",
+          "to": "Notts County",
+          "position": "LB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Reggie Walsh",
+          "to": "Wigan Athletic",
+          "position": "CM",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Kaiden Wilson",
+          "to": "Rochdale",
+          "position": "CB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Ollie Harrison",
+          "to": "AFC Wimbledon",
+          "position": "CM",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Max Merrick",
+          "to": "Hartlepool United",
+          "position": "GK",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Hudson Sands",
+          "to": "Dulwich Hamlet",
+          "position": "CM",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Genesis Antwi",
+          "to": "Strasbourg",
+          "position": "RB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Ryan Kavuma-McQueen",
+          "to": "Portsmouth",
+          "position": "LW",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Honest Ahanor",
+          "to": "Crystal Palace",
+          "position": "CB/LB",
+          "loan_term": "2026/27"
+        },
+        {
+          "player": "Landon Emenalo",
+          "to": "Celtic",
+          "position": "AM",
+          "loan_term": "2026/27",
+          "status": "reported"
+        },
+        {
+          "player": "Shim Mheuka",
+          "to": "Celtic",
+          "position": "ST",
+          "loan_term": "2026/27",
+          "status": "reported"
+        }
+      ]
+    }
+  },
+  "failed_deals": [
+    {
+      "player": "Lamine Camara",
+      "from": "Monaco",
+      "status": "failed",
+      "reported_fee": "~£47m",
+      "note": "Not a Chelsea player"
+    }
+  ],
+  "sources": [
+    "Chelsea FC — Transfer Deadline Day 2026",
+    "Premier League — The Wrap: What happened on Transfer Deadline Day?",
+    "Reuters — Premier League clubs smash summer transfer spending record",
+    "Reuters — Mudryk joins Tottenham on loan from Chelsea",
+    "The Guardian — Fernández completes record-equalling £125m move",
+    "Football London — Full confirmed list of 46 Chelsea summer transfer ins and outs"
+  ]
+}
