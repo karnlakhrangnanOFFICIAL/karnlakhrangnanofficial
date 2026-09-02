@@ -745,11 +745,11 @@
       const carousel = document.getElementById('newsCarousel');
       if (!carousel) return;
       try {
-        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://talkchelsea.net/feed/');
+        const res = await fetch('/api/news'); // Fetch from our Serverless Scraper
         if (!res.ok) throw new Error('Failed to fetch news');
         const data = await res.json();
         
-        if (data.status === 'ok' && data.items && data.items.length > 0) {
+        if (data.success && data.items && data.items.length > 0) {
           let html = '';
           data.items.slice(0, 10).forEach((item, index) => {
             const thumbnail = item.thumbnail || 'assets/images/placeholder-team.svg';

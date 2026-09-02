@@ -26,6 +26,13 @@ app.get('/the-story-blue', (req, res) => res.sendFile(path.join(__dirname, 'the-
 app.get('/transfers', (req, res) => res.sendFile(path.join(__dirname, 'transfers.html')));
 app.get('/trophy', (req, res) => res.sendFile(path.join(__dirname, 'trophy.html')));
 app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-team.html')));
+
+// Custom API route for news scraping
+import newsHandler from './api/news.js';
+app.get('/api/news', (req, res) => {
+  newsHandler(req, res);
+});
+
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // Start the server

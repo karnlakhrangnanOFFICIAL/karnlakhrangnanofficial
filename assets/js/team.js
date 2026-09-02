@@ -169,7 +169,7 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
   container.innerHTML = `
     ${logoHtml}
     <table class="league-table">
-      <thead><tr><th>#</th><th>Logo</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>PTS</th></tr></thead>
+      <thead><tr><th title="Rank">#</th><th title="Logo">Logo</th><th title="Team">Team</th><th title="จำนวน Match ที่แข่ง">P</th><th title="ชนะ">W</th><th title="เสมอ">D</th><th title="แพ้">L</th><th title="Goal +">GF</th><th title="Goal -">GA</th><th title="Goal =">GD</th><th title="Point">PTS</th></tr></thead>
       <tbody>
         ${table.map((row, index) => {
           let teamHtml = typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(row.team) : row.team;
