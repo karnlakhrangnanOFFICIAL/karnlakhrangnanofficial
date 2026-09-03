@@ -2067,11 +2067,25 @@
     "away_logo": "databases/logo/teams/england_chelsea.svg",
     "venue": "Instalaciones de Zubieta",
     "ha": "A",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "home_score": 0,
+    "away_score": 1,
+    "goals": [
+      {
+        "team": "away",
+        "player": "Keira Walsh",
+        "minute": 54
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Keira Walsh",
+        "minute": 54,
+        "detail": "Assist: Sandy Baltimore"
+      }
+    ],
     "channels": [
       {
         "platform": "CFC+",
@@ -2262,7 +2276,18 @@
           }
         ]
       }
-    }
+    },
+    "commentary": [
+      {
+        "section": "Full Time / บทสรุปหลังเกม",
+        "events": [
+          {
+            "minute": "FT",
+            "text": "รวมผลสองนัด (Aggregate): เชลซีชนะ 6-2 ผ่านเข้าสู่รอบต่อไปในศึกยูฟ่า วีเมนส์ แชมเปียนส์ลีก!"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "m46",
