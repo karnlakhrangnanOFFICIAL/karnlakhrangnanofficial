@@ -1,61 +1,4 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Match Detail · KARN LA KHRANg NAN Official</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
-  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
-</head>
-<body>
-
-  <!-- ==================== NAVIGATION ==================== -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
-        <span class="team-name">KARN LA KHRANg NAN</span>
-      </a>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
-        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
-        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
-        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
-        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
-        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
-        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
-        <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
-        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ==================== MAIN ==================== -->
-  <main class="main-container">
-    <div id="matchContent" class="loading" style="max-width: 860px; margin: 0 auto;">
-      <div class="spinner"></div>
-      <p data-i18n="common.loading">กำลังโหลด...</p>
-    </div>
-  </main>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
-        <span class="team-name">KARN LA KHRANg NAN</span>
-      </div>
-      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
-      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
-    </div>
-  </footer>
-
-  <!-- ==================== SCRIPTS ==================== -->
-  <script src="assets/js/main.js"></script>
-  <script>
+  
     // ---------- HELPERS (not in main.js) ----------
     let playerImageMap = {};
     let playerIdMap = {};
@@ -655,6 +598,4 @@ const renderEventItem = (e) => {
         }
       });
     });
-  </script>
-</body>
-</html>
+  
