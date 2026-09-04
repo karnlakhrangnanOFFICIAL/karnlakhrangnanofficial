@@ -107,7 +107,7 @@ function renderFixtures(container, fixtures, badgeClass) {
               </div>
             </div>` : ''}
             <div class="card-footer">
-          <div class="venue-item"><span class="venue-icon">📍</span><span>${match.venue}</span></div>
+          <div class="venue-item"><img src="databases/logo/svg/stadium.svg" data-tooltip-th="สนามแข่งขัน" data-tooltip-en="Stadium" class="venue-icon" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle; margin-right: 4px;"><span>${match.venue}</span></div>
           ${channelsIcons}
         </div>
       </div>
@@ -170,7 +170,7 @@ function renderResults(container, results, badgeClass) {
               </div>
             </div>` : ''}
             <div class="card-footer">
-          <div class="venue-item"><span class="venue-icon">📍</span><span>${match.venue}</span></div>
+          <div class="venue-item"><img src="databases/logo/svg/stadium.svg" data-tooltip-th="สนามแข่งขัน" data-tooltip-en="Stadium" class="venue-icon" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle; margin-right: 4px;"><span>${match.venue}</span></div>
         </div>
       </div>
     </a>`;
@@ -714,6 +714,7 @@ async function initPlayerProfile() {
     const playerImgEl = document.getElementById('playerImage');
     if (playerImgEl) {
       playerImgEl.src = pImg;
+      playerImgEl.alt = player.name;
       playerImgEl.onerror = function() {
         this.onerror = null;
         this.src = 'assets/images/placeholder-player.svg';
