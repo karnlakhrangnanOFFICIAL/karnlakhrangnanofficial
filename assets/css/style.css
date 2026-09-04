@@ -2730,3 +2730,166 @@ main:nth-of-type(1) > div#listViewWrapper:nth-of-type(2) > section#results:nth-o
   opacity: 1;
 }
 
+
+
+/* ==================== MATCH WEB CARD CSS ==================== */
+/* Base Match Card Typography */
+.match-card {
+  font-family: sans-serif;
+  font-size: 14pt;
+  background-color: var(--card-bg, #1a1a24);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.match-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* Images always keep aspect ratio */
+.match-card img {
+  object-fit: contain;
+}
+
+/* Top Section (Vertical Flow) */
+.match-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  padding: 0 20px;
+  gap: 14px;
+}
+.match-card-date {
+  color: #a0aec0;
+  font-size: 0.9em;
+}
+.match-card-league {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+.match-card-league img {
+  height: 24px;
+}
+.match-card-venue {
+  color: #cbd5e1;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Match Row (Team & Score) */
+.match-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 30px;
+  width: 100%;
+}
+.match-card-team {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+.match-card-team.home {
+  justify-content: flex-start;
+}
+.match-card-team.away {
+  justify-content: flex-end;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+.match-card-team-logo {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+.match-card-team-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  display: none; /* Hidden on mobile by default */
+}
+.match-card-timebox {
+  width: 90px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0 15px;
+}
+
+/* Footer Section */
+.match-card-footer {
+  height: 70px;
+  width: 100%;
+  border-radius: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  background-color: rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+.match-card-footer-text {
+  font-size: 0.9em;
+  color: #a0aec0;
+}
+.match-card-providers {
+  display: flex;
+  gap: 10px;
+  width: 120px; /* Fixed width for Provider Badges */
+  justify-content: flex-end;
+}
+
+/* Tablet View (768px and up) */
+@media (min-width: 768px) {
+  .match-card-team-name {
+    display: block; /* Show team names on tablet/desktop */
+  }
+}
+
+/* Force hide on mobile just in case */
+@media (max-width: 767px) {
+  .match-card-team-name {
+    display: none !important;
+  }
+}
+
+
+
+/* Mobile: Bring both logos to the center (next to the timebox) */
+@media (max-width: 767px) {
+  .match-card-team.home {
+    justify-content: flex-end !important;
+  }
+  .match-card-team.away {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Hide footer text on men/women team pages - based on brief */
+@media (max-width: 767px) {
+  .match-card-footer-text {
+    display: none !important;
+  }
+}
+
+/* Hide footer text ONLY on mobile devices, globally for match cards */
+@media (max-width: 767px) {
+  .team-page-hide-text {
+    display: none !important;
+  }
+}

@@ -50,70 +50,82 @@ function renderFixtures(container, fixtures, badgeClass) {
     container.innerHTML = `<div class="empty-state"><span class="empty-icon">📅</span><p>${noMsg}</p></div>`;
     return;
   }
-
   const timeNote = lang === 'th' 
     ? 'ℹ️ เวลาการแข่งขันแสดงเป็นเวลาประเทศอังกฤษ (UK Time - GMT/BST)' 
     : 'ℹ️ Match times are displayed in UK Time (GMT/BST)';
-
-  const cardsHtml = fixtures.map(match => {
+  const cardsHtml = fixtures.map((match, index) => {
     const compLogo = match.competition_logo || '';
     const compName = formatCompetitionName(match.competition_name || match.competition);
     const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date, time: (match.time_uk || match.time_th || match.time || 'TBC').substring(0,5) };
     const displayDate = localDT.date;
     const displayTime = localDT.time === 'TBC' ? 'TBC' : localDT.time;
-    const channelsIcons = (match.channels && match.channels.length > 0)
-      ? `<div class="channels-list">${match.channels.map(ch => 
-          `<span class="channel-badge" title="${ch.name}">
-            ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" title="${ch.name}" class="channel-logo" onerror="this.style.display='none'">` : `<span class="channel-name">${ch.name}</span>`}
-          </span>`
-        ).join('')}</div>`
-      : '';
+    
+    let channelsIcons = '';
+    if (match.channels && match.channels.length > 0) {
+        channelsIcons = match.channels.map(ch => {
+            let chName = typeof ch === 'string' ? ch : (ch.name || '');
+            let iconUrl = (ch && typeof ch === 'object' && ch.logo) ? ch.logo : 'databases/logo/channels/default.png';
+            if (!ch.logo) {
+                if (chName.toLowerCase().includes('true')) iconUrl = 'databases/logo/channels/true_premier.png';
+                else if (chName.toLowerCase().includes('bein')) iconUrl = 'databases/logo/channels/bein.png';
+                else if (chName.toLowerCase().includes('pptv')) iconUrl = 'databases/logo/channels/pptv.png';
+                else if (chName.toLowerCase().includes('apple')) iconUrl = 'databases/logo/channels/apple.png';
+            }
+            return `<img src="${iconUrl}" class="channel-icon" alt="${chName}" title="${chName}" onerror="this.style.display='none'">`;
+        }).join('');
+    }
 
     const teamParam = badgeClass === 'W' ? '&team=women' : '&team=men';
+    
+    const homeStr = match.home_team.toLowerCase();
+    const awayStr = match.away_team.toLowerCase();
+    const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+    const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+    
+    let homeNameStyle = 'color: #ffffff;';
+    let awayNameStyle = 'color: #ffffff;';
+    if (isChelseaHome) homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+    if (isChelseaAway) awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+    const teamBadgeClass = badgeClass.toLowerCase();
+
     return `
-    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-date"><span class="date-icon">📅</span><span>${formatDate(displayDate, lang)}</span></div>
-          <div class="card-competition">
-            ${compLogo ? `<img src="${compLogo}" alt="" onerror="this.style.display='none'" style="height:20px;">` : ''}
-            <span>${compName}</span>
-            <span class="team-badge ${badgeClass === 'W' ? 'women' : 'men'}">${badgeClass}</span>
-          </div>
+    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+      <div class="match-card-top">
+        <div class="match-card-date">📅 ${formatDate(displayDate, lang)}</div>
+        <div class="match-card-league">
+          ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
+          <span>${compName} <span class="team-badge ${teamBadgeClass}">${badgeClass}</span></span>
         </div>
-        <div class="card-fixture">
-          <div class="team">
-            <img src="${match.home_logo}" alt="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
-            <div class="team-divider"></div>
-            <span class="team-name">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
-          </div>
-          <div class="fixture-info">
-                ${match.status === 'live' ? `<div style="display:flex; gap:10px; font-size:1.5rem; font-weight:bold;"><span style="color:var(--primary-color);">${match.home_score||0}</span><span>-</span><span style="color:var(--primary-color);">${match.away_score||0}</span></div>` : '<span class="fixture-vs">VS</span>'}
-                <span class="fixture-time" ${match.status==='live' ? 'style="margin-top:5px;"' : ''}>${displayTime}</span>
-              </div>
-          <div class="team">
-            <img src="${match.away_logo}" alt="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
-            <div class="team-divider"></div>
-            <span class="team-name">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
-          </div>
+        <div class="match-card-venue">
+          <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
+          <span>${match.venue || 'Stadium'}</span>
         </div>
-            ${match.status === 'completed' && match.goals && match.goals.length > 0 ? `
-            <div class="card-goalscorers" style="display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0 10px 10px; margin-top: -5px; opacity: 0.8; font-family: var(--font-body);">
-              <div class="home-scorers" style="text-align: left; flex: 1; padding-right: 10px; ${match.goals.filter(g => g.team === 'away').length > 0 ? 'border-right: 1px solid rgba(255,255,255,0.1);' : ''}">
-                ${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
-              </div>
-              <div class="away-scorers" style="text-align: right; flex: 1; padding-left: 10px;">
-                ${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
-              </div>
-            </div>` : ''}
-            <div class="card-footer">
-          <div class="venue-item"><img src="databases/logo/svg/stadium.svg" data-tooltip-th="สนามแข่งขัน" data-tooltip-en="Stadium" class="venue-icon" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle; margin-right: 4px;"><span>${match.venue}</span></div>
+      </div>
+      
+      <div class="match-card-row">
+        <div class="match-card-team home">
+          <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <span class="match-card-team-name" style="${homeNameStyle}">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
+        </div>
+        
+        <div class="match-card-timebox">
+          ${match.status === 'live' ? `<span style="color:var(--primary-color);">${match.home_score||0} - ${match.away_score||0}</span>` : `<span>${displayTime}</span>`}
+        </div>
+        
+        <div class="match-card-team away">
+          <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <span class="match-card-team-name" style="${awayNameStyle}">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
+        </div>
+      </div>
+      
+      <div class="match-card-footer team-page-footer">
+        <span class="match-card-footer-text team-page-hide-text">${match.status === 'live' ? 'LIVE NOW' : 'UPCOMING MATCH'}</span>
+        <div class="match-card-providers">
           ${channelsIcons}
         </div>
       </div>
     </a>`;
   }).join('');
-
   container.innerHTML = `<div class="time-zone-note" style="font-size:0.8rem; color:var(--text-muted, #94a3b8); margin-bottom:0.75rem; font-weight:500;">${timeNote}</div>${cardsHtml}`;
 }
 
@@ -126,51 +138,76 @@ function renderResults(container, results, badgeClass) {
     return;
   }
   const teamParam = badgeClass === 'W' ? '&team=women' : '&team=men';
-  container.innerHTML = results.map(match => {
+  container.innerHTML = results.map((match, index) => {
     const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date };
     const displayDate = localDT.date;
     const homeWin = match.home_score > match.away_score;
     const awayWin = match.away_score > match.home_score;
     const compName = formatCompetitionName(match.competition_name || match.competition);
+    const compLogo = match.competition_logo || '';
+    const teamBadgeClass = badgeClass.toLowerCase();
+    
+    const homeStr = match.home_team.toLowerCase();
+    const awayStr = match.away_team.toLowerCase();
+    const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+    const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+    
+    let homeNameStyle = 'color: #ffffff;';
+    let awayNameStyle = 'color: #ffffff;';
+    if (isChelseaHome) homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+    if (isChelseaAway) awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+
+    let channelsIcons = '';
+    
+    let scorersHtml = '';
+    if (match.status === 'completed' && match.goals && match.goals.length > 0) {
+      scorersHtml = `
+        <div class="card-goalscorers" style="display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0 20px 10px; margin-top: -15px; opacity: 0.8; font-family: var(--font-body);">
+          <div class="home-scorers" style="text-align: left; flex: 1; padding-right: 10px; ${match.goals.filter(g => g.team === 'away').length > 0 ? 'border-right: 1px solid rgba(255,255,255,0.1);' : ''}">
+            ${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+          </div>
+          <div class="away-scorers" style="text-align: right; flex: 1; padding-left: 10px;">
+            ${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+          </div>
+        </div>`;
+    }
+
     return `
-    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-date"><span class="date-icon">📅</span><span>${formatDate(displayDate, lang)}</span></div>
-          <div class="card-competition">
-            ${match.competition_logo ? `<img src="${match.competition_logo}" alt="" onerror="this.style.display='none'" style="height:20px;">` : ''}
-            <span>${compName}</span>
-            <span class="team-badge ${badgeClass === 'W' ? 'women' : 'men'}">${badgeClass}</span>
-          </div>
+    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+      <div class="match-card-top">
+        <div class="match-card-date">📅 ${formatDate(displayDate, lang)}</div>
+        <div class="match-card-league">
+          ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
+          <span>${compName} <span class="team-badge ${teamBadgeClass}">${badgeClass}</span></span>
         </div>
-        <div class="card-result">
-          <div class="team ${homeWin ? 'winner' : ''}">
-            <img src="${match.home_logo}" alt="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
-            <div class="team-divider"></div>
-            <span class="team-name">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
-          </div>
-          <div class="score-display">
-            <span class="score ${homeWin ? 'winner' : ''}">${match.home_score}</span>
-            <span class="score-divider">-</span>
-            <span class="score ${awayWin ? 'winner' : ''}">${match.away_score}</span>
-          </div>
-          <div class="team ${awayWin ? 'winner' : ''}">
-            <img src="${match.away_logo}" alt="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
-            <div class="team-divider"></div>
-            <span class="team-name">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
-          </div>
+        <div class="match-card-venue">
+          <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
+          <span>${match.venue || 'Stadium'}</span>
         </div>
-            ${match.status === 'completed' && match.goals && match.goals.length > 0 ? `
-            <div class="card-goalscorers" style="display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0 10px 10px; margin-top: -5px; opacity: 0.8; font-family: var(--font-body);">
-              <div class="home-scorers" style="text-align: left; flex: 1; padding-right: 10px; ${match.goals.filter(g => g.team === 'away').length > 0 ? 'border-right: 1px solid rgba(255,255,255,0.1);' : ''}">
-                ${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
-              </div>
-              <div class="away-scorers" style="text-align: right; flex: 1; padding-left: 10px;">
-                ${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
-              </div>
-            </div>` : ''}
-            <div class="card-footer">
-          <div class="venue-item"><img src="databases/logo/svg/stadium.svg" data-tooltip-th="สนามแข่งขัน" data-tooltip-en="Stadium" class="venue-icon" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle; margin-right: 4px;"><span>${match.venue}</span></div>
+      </div>
+      
+      <div class="match-card-row">
+        <div class="match-card-team home">
+          <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <span class="match-card-team-name" style="${homeNameStyle}">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
+        </div>
+        
+        <div class="match-card-timebox">
+          <span style="color:var(--primary-color);">${match.home_score} - ${match.away_score}</span>
+        </div>
+        
+        <div class="match-card-team away">
+          <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <span class="match-card-team-name" style="${awayNameStyle}">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
+        </div>
+      </div>
+      
+      ${scorersHtml}
+      
+      <div class="match-card-footer team-page-footer">
+        <span class="match-card-footer-text team-page-hide-text">FULL TIME</span>
+        <div class="match-card-providers">
+          ${channelsIcons}
         </div>
       </div>
     </a>`;

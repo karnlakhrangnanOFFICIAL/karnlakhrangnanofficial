@@ -365,6 +365,7 @@ const renderGoalItem = (g, isChelsea) => {
         const getEventIcon = (type) => {
           switch(type) {
             case 'goal': return '<img src="databases/logo/svg/goal.svg" data-tooltip-th="ทำประตู" data-tooltip-en="Goal" style="width: 24px; height: 24px; object-fit: contain;">';
+            case 'own_goal': return '<img src="databases/logo/svg/goal.svg" data-tooltip-th="ทำเข้าประตูตัวเอง" data-tooltip-en="Own Goal" style="width: 24px; height: 24px; object-fit: contain; filter: invert(36%) sepia(93%) saturate(6288%) hue-rotate(344deg) brightness(97%) contrast(105%);">'; // Make the icon red
             case 'yellow_card': return '<img src="databases/logo/svg/yellow_card.svg" data-tooltip-th="ใบเหลือง" data-tooltip-en="Yellow Card" style="width: 24px; height: 24px; object-fit: contain;">';
             case 'red_card': return '<img src="databases/logo/svg/red_card.svg" data-tooltip-th="ใบแดง" data-tooltip-en="Red Card" style="width: 24px; height: 24px; object-fit: contain;">';
             case 'substitution': return '<img src="databases/logo/svg/substitution_in.svg" data-tooltip-th="เปลี่ยนตัวผู้เล่น" data-tooltip-en="Substitution" style="width: 24px; height: 24px; object-fit: contain;">';
@@ -378,6 +379,7 @@ const renderGoalItem = (g, isChelsea) => {
 
         const getEventTitle = (type) => {
           if (type === 'goal') return 'Goal';
+          if (type === 'own_goal') return 'Own Goal';
           if (type === 'yellow_card') return 'Yellow Card';
           if (type === 'red_card') return 'Red Card';
           if (type === 'substitution') return 'Substitution';
@@ -402,6 +404,7 @@ const renderGoalItem = (g, isChelsea) => {
                }
                return `ทำประตู<br><div style="display: flex; align-items: center; gap: 5px; margin-top: 5px; font-size: 0.85em; color: var(--text-muted);"><img src="databases/logo/svg/assist.svg" data-tooltip-th="ช่วยทำประตู (แอสซิสต์)" data-tooltip-en="Assist" style="width: 14px; height: 14px; object-fit: contain;"> Assist: ${assistHtml}</div>`;
             }
+            if (e.detail === 'Own Goal' || e.type === 'own_goal') return '<span style="color: #f56565; font-weight: bold;">ทำเข้าประตูตัวเอง (Own Goal)</span>';
             return e.detail ? `ทำประตู (${e.detail})` : 'ทำประตู';
           }
           if (e.type === 'yellow_card') return 'ได้รับใบเหลืองจากการทำฟาวล์รุนแรง';
@@ -414,8 +417,10 @@ const renderGoalItem = (g, isChelsea) => {
         };
 
 const renderEventItem = (e) => {
-          const icon = getEventIcon(e.type);
-          const title = getEventTitle(e.type);
+          let eType = e.type;
+          if (e.type === 'goal' && e.detail === 'Own Goal') eType = 'own_goal';
+          const icon = getEventIcon(eType);
+          const title = getEventTitle(eType);
           const time = e.minute + "'";
           const teamLogo = e.team === 'home' ? match.home_logo : (e.team === 'away' ? match.away_logo : '');
           const teamName = e.team === 'home' ? match.home_team : (e.team === 'away' ? match.away_team : '-');
@@ -455,7 +460,7 @@ const renderEventItem = (e) => {
               <td style="padding: 1rem 0.5rem; width: 140px;">
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
                   <span style="font-size: 1.2rem;">${icon}</span>
-                  <strong>${title}</strong>
+                  <strong${eType === 'own_goal' ? ' style="color: #f56565;"' : ''}>${title}</strong>
                 </div>
               </td>
               <td style="padding: 1rem 0.5rem; color: var(--text-muted); font-size: 0.9em; max-width: 200px;">${getEventDesc(e)}</td>
