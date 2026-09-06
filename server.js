@@ -34,6 +34,11 @@ app.get('/api/news', (req, res) => {
 });
 
 import wslStandingsHandler from './api/wsl-standings.js';
+import eplStandingsHandler from './api/epl-standings.js';
+app.get('/api/epl-standings', (req, res) => {
+  eplStandingsHandler(req, res);
+});
+
 app.get('/api/wsl-standings', (req, res) => {
   wslStandingsHandler(req, res);
 });

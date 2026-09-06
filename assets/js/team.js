@@ -417,31 +417,22 @@ async function loadMenTable() {
   const container = document.getElementById('menTableContainer');
   if (!container) return;
   try {
-    const SPREADSHEET_ID = '1mdFJwRXRB-xBYiDMJK0LoUD9n3Jf9iF1x6NH1V4W1gY';
-    const sheetData = await fetchGoogleSheetDirect(SPREADSHEET_ID, 'gid=0');
-    
-    let table = [];
-    let compLogo = "databases/logo/competitions/men/premier-league.png";
-    let compName = "premier-league";
-
-    if (sheetData && sheetData.success && Array.isArray(sheetData.data)) {
-      // Use data from Google Sheet
-      table = sheetData.data.filter(row => row.pos != null && row.pos !== '');
+    let data = await safeFetchJson('/api/epl-standings');
+    if (data && data.success && data.data) {
+      data = data.data;
     } else {
-      // Fallback to static file if API fails
-      const data = await safeFetchJson('data/tables-men.json');
-      table = Array.isArray(data) ? data : (data?.standings || data?.table || []);
-      if (data && data.competition_logo) compLogo = data.competition_logo;
-      if (data && data.competition) compName = data.competition;
+      data = await safeFetchJson('data/tables-men.json');
     }
-
-    if (!table || table.length === 0) {
+    if (!data) {
       container.innerHTML = '<div class="empty-state"><span class="empty-icon">🏆</span><p>No table data yet</p></div>';
       return;
     }
+    const table = Array.isArray(data) ? data : (data.standings || data.table || []);
+    const compLogo = data?.competition_logo || '';
+    const compName = data?.competition || '';
     renderTable(container, table, 'Chelsea', compLogo, compName);
   } catch(e) {
-    container.innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading table</p></div>';
+    container.innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error</p></div>';
     console.error('Table error:', e);
   }
 }
