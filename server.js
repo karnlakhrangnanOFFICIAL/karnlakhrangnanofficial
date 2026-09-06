@@ -33,6 +33,11 @@ app.get('/api/news', (req, res) => {
   newsHandler(req, res);
 });
 
+import wslStandingsHandler from './api/wsl-standings.js';
+app.get('/api/wsl-standings', (req, res) => {
+  wslStandingsHandler(req, res);
+});
+
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // Start the server

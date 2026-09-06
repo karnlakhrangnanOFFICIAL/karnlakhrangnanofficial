@@ -506,7 +506,12 @@ async function loadWomenTable() {
   const container = document.getElementById('womenTableContainer');
   if (!container) return;
   try {
-    const data = await safeFetchJson('data/tables-women.json');
+    let data = await safeFetchJson('/api/wsl-standings');
+    if (data && data.success && data.data) {
+      data = data.data;
+    } else {
+      data = await safeFetchJson('data/tables-women.json');
+    }
     if (!data) {
       container.innerHTML = '<div class="empty-state"><span class="empty-icon">🏆</span><p>No table data yet</p></div>';
       return;
