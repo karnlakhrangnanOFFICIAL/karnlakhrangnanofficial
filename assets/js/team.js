@@ -287,7 +287,7 @@ function renderPlayers(container, players, teamType) {
         <img src="${pImage}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-player.svg';">
         <div class="player-info">
           <h3>${p.name}</h3>
-          <span class="player-number">#${p.number || '?'}</span>
+          <span class="player-number">#${(p.status === 'sold' || p.status === 'loaned_out') ? '?' : (p.number || '?')}</span>
           <span class="player-position">${pos}</span>
           <div class="player-stats">
           ${(() => {
@@ -751,7 +751,7 @@ async function initPlayerProfile() {
     // Render Player Info
     const isTh = (window.currentLang || 'th') === 'th';
     document.getElementById('playerName').textContent = player.name;
-    document.getElementById('playerNumber').textContent = '#' + (player.number || '?');
+    document.getElementById('playerNumber').textContent = '#' + ((player.status === 'sold' || player.status === 'loaned_out') ? '?' : (player.number || '?'));
     const pImg = player.image || 'assets/images/placeholder-player.svg';
     const playerImgEl = document.getElementById('playerImage');
     if (playerImgEl) {
