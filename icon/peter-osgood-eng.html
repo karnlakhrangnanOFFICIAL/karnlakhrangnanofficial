@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peter Osgood - KANLAKHRANGNAN Official</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="../assets/images/karnlakhrangnan-logo.png" type="image/svg+xml">
+  <style>
+    /* Custom hero style for i-cons */
+    .icon-hero {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      padding: 6rem 2rem 3rem;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .icon-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('../databases/logo/national/eng.svg') no-repeat center;
+      background-size: 50%;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    .icon-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .icon-image-wrapper {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--gold);
+      background: var(--surface);
+    }
+    .icon-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .icon-name {
+      font-size: 2.5rem;
+      font-family: var(--font-heading);
+      margin-bottom: 0.5rem;
+    }
+    .icon-subtitle {
+      font-size: 1.2rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .icon-stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      background: rgba(0,0,0,0.2);
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+    }
+    .bio-content {
+      max-width: 800px;
+      margin: 3rem auto;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      color: var(--text-color);
+    }
+    .bio-content p {
+      margin-bottom: 1.5rem;
+    }
+    .bio-content p:first-letter {
+      font-size: 3rem;
+      float: left;
+      line-height: 1;
+      margin-right: 8px;
+      color: var(--blue);
+      font-family: var(--font-heading);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/karnlakhrangnan-logo.png" alt="KANLAKHRANGNAN Logo">
+        <span class="team-name">KARNLAKHRANgNAN</span>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="../men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="../women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="../trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="../icons.html" class="active" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="../the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="../transfers.html" data-i18n="nav.transfers">Transfers</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== ICON HERO ==================== -->
+  <section class="icon-hero">
+    <div class="icon-hero-content">
+      <div class="icon-image-wrapper">
+        <img src="../assets/images/players/peter-osgood/profile.webp" alt="Peter Osgood" onerror="this.src='../assets/images/placeholder-player.svg'">
+      </div>
+      <h1 class="icon-name">Peter Osgood</h1>
+      <div class="icon-subtitle">"The King of Stamford Bridge" · Forward</div>
+      <div class="icon-stats-bar">
+        <div class="stat-item">
+          <span class="stat-value">1964-1979</span>
+          <span class="stat-label" data-lang-th="ช่วงเวลา" data-lang-en="Period">Period</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">380</span>
+          <span class="stat-label" data-lang-th="ลงเล่น" data-lang-en="Appearances">Appearances</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">150</span>
+          <span class="stat-label" data-lang-th="ประตู" data-lang-en="Goals">Goals</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value"><img src="../databases/logo/national/eng.svg" style="width: 24px; vertical-align: middle;" alt="England"></span>
+          <span class="stat-label" data-lang-th="สัญชาติ" data-lang-en="Nationality">England</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container">
+    <div style="margin-bottom: 2rem;">
+      <a href="../icons.html" class="back-link">← กลับหน้า i-Cons</a>
+    </div>
+
+    <div class="bio-content">
+      <h2 style="font-family: var(--font-heading); color: var(--blue-dark); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem;">Personal life</h2>
+<p>Osgood was born at 26 East Crescent, Clewer, Windsor, Berkshire to Leslie Frank Herbert Osgood and Ivy Lilian (née Comley). He attended Clewer Green primary school in Hatch Lane, Windsor, and Dedworth secondary modern school. Osgood described himself as a tearaway and as not the brainiest kid at school (although he was captain at most sports) and was working as a bricklayer and playing football for Windsor when his uncle wrote to Chelsea on his behalf to secure a trial.</p>
+<h2 style="font-family: var(--font-heading); color: var(--blue-dark); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem;">Chelsea</h2>
+<p>Osgood had a previous trial with Arsenal, but said that he tore the papers up because he was happy playing for Windsor and working on building sites, and didn't fancy the travel. Osgood was signed in February 1964 by Chelsea as a junior and made his debut as a 17-year-old in the League Cup, scoring both goals in a 2–0 win against Workington AFC on 16 December 1964. The buzz surrounding the tall, skilful teenager's goalscoring for the club's reserves – 30 goals in 20 games going into that month – was already immense, and he soon became a regular first-teamer.</p>
+<p>Following an end-of-season tour of Australia during which Osgood scored 12 times in eight games, the centre-forward's next senior match was the 22 September 1965 4–1 victory over AS Roma in the Inter-City Fairs Cup (a violent encounter dubbed "the Battle of the Bridge"). A run in the league followed, bringing seven goals, including one involving a 60-yard run past a number of Burnley players.</p>
+<p>The teenager was soon hailed as a possible late call-up for Alf Ramsey's 1966 World Cup squad, having been included in the original 40-man squad announced in April 1966, but he was not included in the final 22.</p>
+<p>A broken leg suffered in a challenge by Blackpool's Emlyn Hughes in the League Cup on 5 October 1966 seriously curtailed his progress, and he missed Chelsea's first-ever Wembley FA Cup final on 20 May 1967. Chelsea lost to Tottenham Hotspur 2–1. This was a major disappointment for Osgood, but after he returned from the injury his abilities were recognised by new manager Dave Sexton playing him often as a midfielder, notably wearing the number 4 shirt for most of the 1968– 69 season (reference page 70  'Ossie – King of Stamford Bridge' written with Martin Knight and Martin King ), but it is as a goalscoring centre-forward that he is best remembered. He was given the nickname "the Wizard of Os".</p>
+<p>In total, Osgood made 289 appearances for The Blues, scoring 105 goals. He was one of only nine players to score in every round of the FA Cup (and, to date, the last to do so), helping Chelsea to victory in a replayed final against Leeds United in 1970. He scored Chelsea's equaliser in the second game at Old Trafford with a diving header from Charlie Cooke's chipped pass twelve minutes from full-time; his side eventually won 2–1.</p>
+<p>In 1971, Osgood was part of the Chelsea team which lifted the European Cup Winners' Cup, defeating Real Madrid 2–1 in a replay in Athens after the original tie had finished 1–1, with Osgood scoring Chelsea's goal in that game. In the replay he scored again, the second goal to put Chelsea 2–0 up, as they went on to win 2–1. In 1972, he scored for Chelsea in a major cup final for the third consecutive year – this time the League Cup – though they lost 2–1 to Stoke City. Chelsea declined as a major force thereafter, but Osgood continued to score regularly; his volley from outside the area against Arsenal in the FA Cup quarter-final was voted BBC goal of the season in 1972–73. As a young player in the 1960s, Osgood enjoyed the trappings of fame, boozy nights out, gambling and owned a racing greyhound called Railroad Billy.</p>
+<h2 style="font-family: var(--font-heading); color: var(--blue-dark); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem;">Southampton, Norwich and return to Chelsea</h2>
+<p>Following a series of disagreements with manager Dave Sexton over his lifestyle (during which supporters picketed Stamford Bridge to demand he stay) Osgood, along with several of his teammates, was dropped from the squad and placed on the transfer list. He was sold to Southampton in March 1974 for a club-record £275,000. During his time on the south coast, he won the FA Cup again in 1976 after a 1–0 victory over Manchester United. He left Southampton in November 1977, shortly before the club were promoted. He scored 36 goals in 161 games for the Saints. Towards the end of his career, he also had a brief loan spell at Norwich City.</p>
+<p>Osgood signed a US $90,000 contract with the Philadelphia Fury on 12 December 1977. High taxes were the primary reason for his departure from England. He returned to Chelsea in December 1978 following a disappointing stint in the United States with the Fury where he scored only one goal in 23 matches for a team which also included Alan Ball and Johnny Giles. On his return to Stamford Bridge, the club were in deep decline and facing a relegation battle. He again scored on his debut to put his team ahead, though Chelsea still lost 7–2 to Middlesbrough. He stayed with the club for the rest of the season before retiring in December 1979.</p>
+<h2 style="font-family: var(--font-heading); color: var(--blue-dark); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem;">England</h2>
+<p>In spite of his talent and goalscoring prowess, Osgood's England career was surprisingly limited, with England manager Alf Ramsey apparently disapproving of his playboy lifestyle. As a result, he only won four international caps, without scoring. Osgood made his England debut in February 1970 in a 3–1 win over Belgium. He was a member of the 1970 World Cup squad, making two appearances against Czechoslovakia and Romania as a substitute.</p>
+<h2 style="font-family: var(--font-heading); color: var(--blue-dark); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem;">Retirement</h2>
+<p>In 1981, Osgood opened a pub in Windsor, the Union Inn, with his old strike partner Ian Hutchinson. In the 1990s, Osgood and many of his 1970s colleagues were banned from Stamford Bridge by chairman Ken Bates for perceived criticism of the club. Osgood returned to his role as hospitality host on matchdays in 2003.</p>
+<p>Osgood was commonly called "Ossie" and also earned the nickname "The King of Stamford Bridge" due to his exceptional skills as a player as well as his personality and status. His autobiography 'Ossie – King of Stamford Bridge' written with Martin Knight and Martin King was released in 2003 and in 2004 Osgood appeared in a cameo role in the British film The Football Factory.</p>
+<p>Prior to his death on 1 March 2006 following a heart attack at a family funeral, he was involved in football-related media work and was well known on the after dinner speaker circuit. Three weeks before his death he had enjoyed a standing ovation when presented to the Stamford Bridge crowd at half-time of a match.</p>
+<p>At Chelsea's first home game after Osgood's death, against local rivals Tottenham, there were many tributes as well as a minute's applause. Many of his former teammates were in attendance and the matchday programme ran a tribute to him. Chelsea ran out 2–1 winners after a last-minute goal by William Gallas. Fans sang the chant in honour of Osgood to the tune of 'The First Noel'.</p>
+<p>In a memorial service on Sunday, 1 October 2006, Peter Osgood's ashes were buried under the penalty spot at the Shed End of Stamford Bridge. Over 2700 fans attended the memorial service and they were joined by former managers, chairmen, players, colleagues and current Chelsea players. In December 2007 in a 4–4 draw against Aston Villa, Andriy Shevchenko scored the first penalty kick at the Shed End since Osgood's ashes were buried there.</p>
+<p>On 24 September 2010, Chelsea revealed that the Peter Osgood statue had been completed and it was to be situated outside the West Stand. A week later there was a private unveiling of the statue, attended by Osgood's friends and family, and a day later the statue was available for public viewing.</p>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="../assets/images/karnlakhrangnan-logo.png" alt="kanlakhrangnan logo" style="height:40px;">
+        <span>KARN LA KHRANG NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANG NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
