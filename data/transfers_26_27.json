@@ -1,104 +1,76 @@
 {
-  "schema_version": "1.0",
-  "season": "2026/27",
-  "club": "Chelsea FC",
-  "snapshot": "2026-09-02",
-  "window_status": "closed",
-  "currency": "GBP",
+  "snapshot": "2026-09-02T13:42:25Z",
   "categories": {
     "in": {
-      "label": "🟢 Chelsea ซื้อเข้า — ดีลปิดแล้ว",
+      "label": "🟢 Chelsea ซื้อเข้า",
       "players": [
-        {
-          "player": "Morgan Rogers",
-          "from": "Aston Villa",
-          "position": "AM/LW",
-          "fee": "£117m",
-          "type": "permanent"
-        },
         {
           "player": "Maxence Lacroix",
           "from": "Crystal Palace",
           "position": "CB",
-          "fee": "~£52m",
+          "fee": "£75m (Record fee for defender)",
           "type": "permanent"
         },
         {
-          "player": "Marco Palestra",
-          "from": "Atalanta",
-          "position": "RB",
-          "fee": "~£49m",
+          "player": "Jorrel Hato",
+          "from": "Ajax",
+          "position": "LB/CB",
+          "fee": "~£47m",
           "type": "permanent"
         },
         {
-          "player": "Geovany Quenda",
-          "from": "Sporting CP",
-          "position": "RW",
-          "fee": "~£44m",
+          "player": "Jamie Gittens",
+          "from": "Borussia Dortmund",
+          "position": "LW/RW",
+          "fee": "£43m",
           "type": "permanent"
         },
         {
-          "player": "Honest Ahanor",
-          "from": "Atalanta",
-          "position": "CB/LB",
-          "fee": "~£40m",
-          "type": "permanent",
-          "current_status": "loaned to Crystal Palace"
-        },
-        {
-          "player": "Valentín Barco",
-          "from": "Strasbourg",
-          "position": "LB/CM",
-          "fee": "~£34m",
-          "type": "permanent"
-        },
-        {
-          "player": "Emmanuel Emegha",
-          "from": "Strasbourg",
-          "position": "ST",
-          "fee": "~£21.4m",
-          "type": "permanent"
-        },
-        {
-          "player": "Pep Chavarría",
-          "from": "Rayo Vallecano",
-          "position": "LB",
-          "fee": "£16.3m",
-          "type": "permanent"
-        },
-        {
-          "player": "Denner",
-          "from": "Corinthians",
-          "position": "LB",
-          "fee": "£8.65m",
-          "type": "permanent"
-        },
-        {
-          "player": "Emiliano Martínez",
+          "player": "Morgan Rogers",
           "from": "Aston Villa",
+          "position": "AM/LW",
+          "fee": "£36.5m",
+          "type": "permanent"
+        },
+        {
+          "player": "Diego Kochen",
+          "from": "FC Barcelona",
           "position": "GK",
-          "fee": "£7.5m",
+          "fee": "£18m",
+          "type": "permanent"
+        },
+        {
+          "player": "Karamoko Dembélé",
+          "from": "Queens Park Rangers",
+          "position": "AM/RW",
+          "fee": "£17m",
           "type": "permanent"
         },
         {
           "player": "Danny Welbeck",
           "from": "Brighton & Hove Albion",
           "position": "ST",
-          "fee": "~£5m",
+          "fee": "£14.6m",
           "type": "permanent"
         },
         {
-          "player": "Dastan Satpaev",
-          "from": "Kairat",
-          "position": "ST",
-          "fee": "~£2m",
-          "type": "permanent",
-          "current_status": "loaned to Burnley"
+          "player": "Oumar Solet",
+          "from": "Udinese",
+          "position": "CB",
+          "fee": "£12.75m",
+          "type": "permanent"
         },
         {
-          "player": "Jordan Henderson",
-          "from": "Brentford",
-          "position": "CM",
+          "player": "Pep Chavarría",
+          "from": "Rayo Vallecano",
+          "position": "LB",
+          "fee": "£2m",
+          "type": "permanent"
+        },
+        {
+          "player": "Amani Richards",
+          "from": "Leicester City",
+          "position": "ST",
           "fee": "Free transfer",
           "type": "free"
         },
@@ -406,6 +378,142 @@
           "position": "ST",
           "loan_term": "2026/27",
           "status": "reported"
+        }
+      ]
+    },
+    "women_in": {
+      "label": "🟢 Chelsea Women ซื้อเข้า / ต่อสัญญา",
+      "players": [
+        {
+          "player": "Katie McCabe",
+          "from": "Arsenal",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "LB/LW"
+        },
+        {
+          "player": "Manaka Matsukubo",
+          "from": "North Carolina Courage",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "AM/FW"
+        },
+        {
+          "player": "Melvine Malard",
+          "from": "Manchester United",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "FW"
+        },
+        {
+          "player": "Nelly Las",
+          "from": "Leicester City",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "DF"
+        },
+        {
+          "player": "Giulia Dragoni",
+          "from": "FC Barcelona",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "MF"
+        },
+        {
+          "player": "Sandy Baltimore",
+          "from": "-",
+          "fee": "Contract Extension",
+          "type": "extension",
+          "position": "LW"
+        },
+        {
+          "player": "Lucy Bronze",
+          "from": "-",
+          "fee": "Contract Extension",
+          "type": "extension",
+          "position": "RB"
+        },
+        {
+          "player": "Aggie Beever-Jones",
+          "from": "-",
+          "fee": "Contract Extension",
+          "type": "extension",
+          "position": "FW"
+        }
+      ]
+    },
+    "women_out": {
+      "label": "🔴 Chelsea Women ขายออก / ปล่อยยืม / หมดสัญญา",
+      "players": [
+        {
+          "player": "Millie Bright",
+          "to": "Retired",
+          "fee": "Retired",
+          "type": "retired",
+          "position": "CB"
+        },
+        {
+          "player": "Sam Kerr",
+          "to": "Free Agent",
+          "fee": "End of Contract",
+          "type": "released",
+          "position": "ST"
+        },
+        {
+          "player": "Guro Reiten",
+          "to": "Free Agent",
+          "fee": "End of Contract",
+          "type": "released",
+          "position": "LW/AM"
+        },
+        {
+          "player": "Johanna Rytting Kaneryd",
+          "to": "Lyon",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "RW"
+        },
+        {
+          "player": "Niamh Charles",
+          "to": "Manchester City",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "LB/LW"
+        },
+        {
+          "player": "Julia Bartel",
+          "to": "Juventus",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "MF"
+        },
+        {
+          "player": "Lois Shooter",
+          "to": "Nottingham Forest",
+          "fee": "Loan",
+          "type": "loan",
+          "position": "DF"
+        },
+        {
+          "player": "Brooke Aspin",
+          "to": "Bristol City",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "CB"
+        },
+        {
+          "player": "Katie Cox",
+          "to": "Nottingham Forest",
+          "fee": "Loan",
+          "type": "loan",
+          "position": "GK"
+        },
+        {
+          "player": "Jorja Fox",
+          "to": "Ipswich Town",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "DF"
         }
       ]
     }
