@@ -131,7 +131,7 @@
     <section class="section" id="fixtures">
       <div class="section-header">
         <h2 class="section-title">
-          <span class="icon">📅</span>
+          <span class="icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span>
           <span data-i18n="home.fixtures">โปรแกรมแข่งขัน</span>
           <span class="count-badge" id="fixturesCount">0</span>
         </h2>
@@ -368,7 +368,7 @@
           
         <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
           <div class="match-card-top">
-            <div class="match-card-date">📅 ${formatDate(displayDate, window.currentLang||'th')}</div>
+            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
             <div class="match-card-league">
               ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
               <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
@@ -396,7 +396,7 @@
           </div>
           
           <div class="match-card-footer">
-            <span class="match-card-footer-text">${match.status === 'live' ? 'LIVE NOW' : 'UPCOMING MATCH'}</span>
+            <span class="match-card-footer-text">${match.status === 'live' ? 'LIVE NOW' : ''}</span>
             <div class="match-card-providers">
               ${channelsIcons}
             </div>
@@ -415,7 +415,7 @@
     function renderFixtures(fixtures) {
       const container = document.getElementById('fixturesContainer');
       if (fixtures.length === 0) {
-        container.innerHTML = '<div class="empty-state"><span class="empty-icon">📅</span><p data-i18n="home.no_fixtures">ยังไม่มีโปรแกรมการแข่งขัน</p></div>';
+        container.innerHTML = '<div class="empty-state"><span class="empty-icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span><p data-i18n="home.no_fixtures">ยังไม่มีโปรแกรมการแข่งขัน</p></div>';
         return;
       }
       
@@ -456,7 +456,7 @@
         return `
         <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
           <div class="match-card-top">
-            <div class="match-card-date">📅 ${formatDate(displayDate, window.currentLang||'th')}</div>
+            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
             <div class="match-card-league">
               ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
               <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
@@ -484,7 +484,7 @@
           </div>
           
           <div class="match-card-footer">
-            <span class="match-card-footer-text">${match.status === 'live' ? 'LIVE NOW' : 'UPCOMING MATCH'}</span>
+            <span class="match-card-footer-text">${match.status === 'live' ? 'LIVE NOW' : ''}</span>
             <div class="match-card-providers">
               ${channelsIcons}
             </div>
@@ -529,7 +529,7 @@
         
         <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
           <div class="match-card-top">
-            <div class="match-card-date">📅 ${formatDate(displayDate, window.currentLang||'th')}</div>
+            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
             <div class="match-card-league">
               ${match.competition_logo ? `<img src="${match.competition_logo}" alt="">` : ''}
               <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
