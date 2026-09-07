@@ -541,6 +541,7 @@ const renderGoalItem = (g, isChelsea) => {
             case 'yellow_card': return '<img src="databases/logo/svg/yellow_card.svg" data-tooltip-th="ใบเหลือง" data-tooltip-en="Yellow Card" style="width: 24px; height: 24px; object-fit: contain;">';
             case 'red_card': return '<img src="databases/logo/svg/red_card.svg" data-tooltip-th="ใบแดง" data-tooltip-en="Red Card" style="width: 24px; height: 24px; object-fit: contain;">';
             case 'substitution': return '<img src="databases/logo/svg/substitution_in.svg" data-tooltip-th="เปลี่ยนตัวผู้เล่น" data-tooltip-en="Substitution" style="width: 24px; height: 24px; object-fit: contain;">';
+            case 'var': return '<img src="databases/logo/svg/var.svg" data-tooltip-th="วีเออาร์" data-tooltip-en="VAR" style="width: 24px; height: 24px; object-fit: contain;">';
             case 'penalty_awarded': return '🎯';
             case 'penalty_missed': return '❌';
             case 'first_half': return '⏱️';
@@ -558,6 +559,7 @@ const renderGoalItem = (g, isChelsea) => {
           if (type === 'penalty_awarded') return 'Penalty Awarded';
           if (type === 'first_half') return 'First Half';
           if (type === 'second_half') return 'Second Half';
+          if (type === 'var') return 'VAR';
           return type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ');
         };
 

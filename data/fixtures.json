@@ -518,13 +518,438 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "home_score": 2,
+    "away_score": 1,
+    "goals": [
+      {
+        "team": "away",
+        "player": "Morgan Rogers",
+        "minute": 2,
+        "assist": "Jorrel Hato"
+      },
+      {
+        "team": "home",
+        "player": "Kai Havertz",
+        "minute": 24,
+        "assist": "Declan Rice"
+      },
+      {
+        "team": "home",
+        "player": "Martin Ødegaard",
+        "minute": 49,
+        "assist": "Christos Tzolis"
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "minute": 2,
+        "detail": "Assist: Jorrel Hato"
+      },
+      {
+        "type": "var",
+        "team": "home",
+        "player": "Riccardo Calafiori",
+        "minute": 13,
+        "detail": "Goal Overturned"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "João Pedro",
+        "minute": 15
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Kai Havertz",
+        "minute": 24,
+        "detail": "Assist: Declan Rice"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Cole Palmer",
+        "minute": 45
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Martin Ødegaard",
+        "minute": 49,
+        "detail": "Assist: Christos Tzolis"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Maxence Lacroix",
+        "minute": 58
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Christos Tzolis",
+        "minute": 58
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Pep Chavarría",
+        "player_out": "Jorrel Hato",
+        "minute": 60
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Malo Gusto",
+        "player_out": "Roméo Lavia",
+        "minute": 60
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Piero Hincapié",
+        "player_out": "Riccardo Calafiori",
+        "minute": 67
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Martín Zubimendi",
+        "player_out": "Myles Lewis-Skelly",
+        "minute": 69
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Mikel Merino",
+        "player_out": "Martin Ødegaard",
+        "minute": 77
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Viktor Gyökeres",
+        "player_out": "Kai Havertz",
+        "minute": 79
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Estêvão",
+        "player_out": "Pedro Neto",
+        "minute": 82
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "minute": 87
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Danny Welbeck",
+        "player_out": "Morgan Rogers",
+        "minute": 88
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Noni Madueke",
+        "player_out": "Bukayo Saka",
+        "minute": 90
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Mikel Merino",
+        "minute": 95
+      }
+    ],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "lineups": {
+      "home": {
+        "manager": "Mikel Arteta",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": "",
+            "name": "David Raya (GK)"
+          },
+          {
+            "number": "",
+            "name": "Ben White"
+          },
+          {
+            "number": "",
+            "name": "Ezri Konsa"
+          },
+          {
+            "number": "",
+            "name": "Gabriel"
+          },
+          {
+            "number": "",
+            "name": "Riccardo Calafiori"
+          },
+          {
+            "number": "",
+            "name": "Myles Lewis-Skelly"
+          },
+          {
+            "number": "",
+            "name": "Declan Rice"
+          },
+          {
+            "number": "",
+            "name": "Bukayo Saka"
+          },
+          {
+            "number": "",
+            "name": "Martin Ødegaard"
+          },
+          {
+            "number": "",
+            "name": "Christos Tzolis"
+          },
+          {
+            "number": "",
+            "name": "Kai Havertz"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": "",
+            "name": "Kepa Arrizabalaga (GK)"
+          },
+          {
+            "number": "",
+            "name": "Piero Hincapié"
+          },
+          {
+            "number": "",
+            "name": "Max Dowman"
+          },
+          {
+            "number": "",
+            "name": "Bruno Guimarães"
+          },
+          {
+            "number": "",
+            "name": "Mikel Merino"
+          },
+          {
+            "number": "",
+            "name": "Martín Zubimendi"
+          },
+          {
+            "number": "",
+            "name": "Eberechi Eze"
+          },
+          {
+            "number": "",
+            "name": "Noni Madueke"
+          },
+          {
+            "number": "",
+            "name": "Viktor Gyökeres"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Xabi Alonso",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": "",
+            "name": "Emiliano Martínez (GK)"
+          },
+          {
+            "number": 34,
+            "name": "Josh Acheampong"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto"
+          },
+          {
+            "number": 24,
+            "name": "Reece James"
+          },
+          {
+            "number": 45,
+            "name": "Roméo Lavia"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer"
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers"
+          },
+          {
+            "number": "",
+            "name": "João Pedro"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 39,
+            "name": "Mike Penders (GK)"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill"
+          },
+          {
+            "number": 29,
+            "name": "Pep Chavarría"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão"
+          },
+          {
+            "number": 11,
+            "name": "Jamie Bynoe-Gittens"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck"
+          }
+        ]
+      }
+    },
+    "commentary": [
+      {
+        "section": "📌 3 ประเด็นสำคัญจากการแข่งขัน (Key Takeaways)",
+        "events": [
+          {
+            "minute": "1",
+            "text": "<strong>การพลิกเกมอย่างแข็งแกร่งของอาร์เซน่อล (Arsenal's Resilient Comeback)</strong><br>• เสียประตูเร็วตั้งแต่ต้นเกม: เชลซีได้ประตูขึ้นนำ 0-1 ในนาทีที่ 2 จาก Morgan Rogers<br>• ถูก VAR ริบประตูคืน: อาร์เซน่อลเกือบได้ประตูตีเสมอในนาทีที่ 13 จาก Riccardo Calafiori แต่ถูก VAR ยกเลิก<br>• ตั้งสติและพลิกกลับมาเอาชนะ: Kai Havertz ยิงประตูตีเสมอ 1-1 ในนาทีที่ 24 ก่อนที่ Martin Ødegaard จะยิงประตูชัย 2-1 ในนาทีที่ 49 จากจังหวะสวนกลับเร็ว"
+          },
+          {
+            "minute": "2",
+            "text": "<strong>ประสิทธิภาพในการสร้างโอกาสทำประตู (Attacking Dominance)</strong><br>• อาร์เซน่อลสร้างโอกาสยิงได้ทั้งหมด 17 ครั้ง ขณะที่เชลซีทำได้ 13 ครั้ง<br>• อาร์เซน่อลได้ลูกเตะมุม 5 ครั้ง เปรียบเทียบกับเชลซี 3 ครั้ง ซึ่งสะท้อนถึงการครองเกมกดดันในพื้นที่แดนหน้าอย่างต่อเนื่อง"
+          },
+          {
+            "minute": "3",
+            "text": "<strong>ความเข้มข้นและการปะทะในเกม (Match Intensity & Discipline)</strong><br>• มีการทำฟาวล์เกิดขึ้นรวม 29 ครั้ง (เชลซี ทำฟาวล์ 16 ครั้ง, อาร์เซน่อล ทำฟาวล์ 13 ครั้ง)<br>• ผู้ตัดสินชูใบเหลืองรวม 6 ใบ โดยแบ่งเป็น เชลซี 4 ใบ (João Pedro 15', Cole Palmer 45', Maxence Lacroix 58', Morgan Rogers 87') และ อาร์เซน่อล 2 ใบ (Christos Tzolis 58', Mikel Merino 90'+5')"
+          }
+        ]
+      },
+      {
+        "section": "⏱️ ลำดับเหตุการณ์สำคัญ (Match Timeline)",
+        "events": [
+          {
+            "minute": "2'",
+            "text": "⚽ <strong>ประตู! (0-1):</strong> Morgan Rogers (Chelsea) ยิงด้วยขวาจากนอกกรอบเขตโทษเข้ามุมซ้ายล่าง (แอสซิสต์โดย Jorrel Hato)"
+          },
+          {
+            "minute": "13'",
+            "text": "❌ <strong>VAR Overturned:</strong> ประตูของ Riccardo Calafiori (Arsenal) ถูกยกเลิกโดย VAR"
+          },
+          {
+            "minute": "15'",
+            "text": "🟨 <strong>ใบเหลือง:</strong> João Pedro (Chelsea)"
+          },
+          {
+            "minute": "24'",
+            "text": "⚽ <strong>ประตู! (1-1):</strong> Kai Havertz (Arsenal) ยิงด้วยซ้ายจากนอกกรอบเขตโทษเสียบมุมขวาล่าง (แอสซิสต์โดย Declan Rice)"
+          },
+          {
+            "minute": "45'",
+            "text": "🟨 <strong>ใบเหลือง:</strong> Cole Palmer (Chelsea)"
+          },
+          {
+            "minute": "45'+5",
+            "text": "⏸️ <strong>จบครึ่งแรก:</strong> อาร์เซน่อล 1 - 1 เชลซี"
+          },
+          {
+            "minute": "49'",
+            "text": "⚽ <strong>ประตู! (2-1):</strong> Martin Ødegaard (Arsenal) ยิงด้วยซ้ายจากกลางกรอบเขตโทษเข้าเสาสูง จากจังหวะสวนกลับเร็ว (แอสซิสต์โดย Christos Tzolis)"
+          },
+          {
+            "minute": "58'",
+            "text": "🟨 <strong>ใบเหลือง:</strong> Maxence Lacroix (Chelsea) และ Christos Tzolis (Arsenal)"
+          },
+          {
+            "minute": "60'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Chelsea):</strong> Pep Chavarría แทน Jorrel Hato / Malo Gusto แทน Roméo Lavia"
+          },
+          {
+            "minute": "67'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Arsenal):</strong> Piero Hincapié แทน Riccardo Calafiori"
+          },
+          {
+            "minute": "69'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Arsenal):</strong> Martín Zubimendi แทน Myles Lewis-Skelly"
+          },
+          {
+            "minute": "77'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Arsenal):</strong> Mikel Merino แทน Martin Ødegaard"
+          },
+          {
+            "minute": "79'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Arsenal):</strong> Viktor Gyökeres แทน Kai Havertz"
+          },
+          {
+            "minute": "82'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Chelsea):</strong> Estêvão แทน Pedro Neto"
+          },
+          {
+            "minute": "87'",
+            "text": "🟨 <strong>ใบเหลือง:</strong> Morgan Rogers (Chelsea)"
+          },
+          {
+            "minute": "88'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Chelsea):</strong> Danny Welbeck แทน Morgan Rogers"
+          },
+          {
+            "minute": "90'",
+            "text": "🔄 <strong>เปลี่ยนตัว (Arsenal):</strong> Noni Madueke แทน Bukayo Saka"
+          },
+          {
+            "minute": "90'+5",
+            "text": "🟨 <strong>ใบเหลือง:</strong> Mikel Merino (Arsenal)"
+          },
+          {
+            "minute": "FT",
+            "text": "🏁 <strong>จบเกม:</strong> อาร์เซน่อล ชนะ เชลซี 2 - 1"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "m10",
@@ -1695,13 +2120,314 @@
         "logo": "databases/logo/tv/bbc.png"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "home_score": 1,
+    "away_score": 1,
+    "goals": [
+      {
+        "team": "home",
+        "player": "Lauren James",
+        "minute": 11,
+        "assist": "Ellie Carpenter"
+      },
+      {
+        "team": "away",
+        "player": "Earl Berman (OG)",
+        "minute": 80
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Lauren James",
+        "minute": 11,
+        "detail": "Assist: Ellie Carpenter"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Miri Taylor",
+        "player_out": "Maya Hijikata",
+        "minute": 58
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Lily Murphy",
+        "player_out": "Mia McAulay",
+        "minute": 69
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Océane Deslandes",
+        "player_out": "Chasity Grant",
+        "minute": 69
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Georgia Mullett",
+        "player_out": "Amalie Vangsgaard",
+        "minute": 70
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Miri Taylor",
+        "minute": 71
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Anna Patten",
+        "player_out": "Lucia Kendall",
+        "minute": 77
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Earl Berman (OG)",
+        "minute": 80,
+        "detail": "Own Goal"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Sandy Baltimore",
+        "player_out": "Wieke Kaptein",
+        "minute": 82
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Justine Kielland",
+        "minute": 94
+      }
+    ],
     "competition_name": "WSL",
-    "team_type": "W"
+    "team_type": "W",
+    "home_manager": "Sonia Bompastor",
+    "home_formation": "3-1-4-2",
+    "home_lineup": [
+      "Hannah Hampton",
+      "Earl Berman",
+      "Lucy Bronze",
+      "Ellie Carpenter",
+      "Wieke Kaptein",
+      "Keira Walsh",
+      "Sjoeke Nüsken",
+      "Aggie Beever-Jones",
+      "Alyssa Thompson",
+      "Katie McCabe",
+      "Lauren James"
+    ],
+    "home_subs": [
+      "Sandy Baltimore",
+      "Livia Peng",
+      "Naomi Girma",
+      "Giulia Dragoni",
+      "Nelly Las",
+      "Maika Hamano",
+      "Kadeisha Buchanan",
+      "Lexi Potter",
+      "Becky Spencer"
+    ],
+    "away_manager": "Natalia Arroyo",
+    "away_formation": "4-4-1-1",
+    "away_lineup": [
+      "Akane Ōkuma",
+      "Mathilde Harviken",
+      "Noelle Maritz",
+      "Lucy Parker",
+      "Lynn Wilms",
+      "Justine Kielland",
+      "Lucia Kendall",
+      "Maya Hijikata",
+      "Mia McAulay",
+      "Amalie Vangsgaard",
+      "Chasity Grant"
+    ],
+    "away_subs": [
+      "Anna Patten",
+      "Georgia Mullett",
+      "Lily Murphy",
+      "Océane Deslandes",
+      "Miri Taylor",
+      "Katie Scott",
+      "Sophia Kelly"
+    ],
+    "lineups": {
+      "home": {
+        "manager": "Sonia Bompastor",
+        "formation": "3-1-4-2",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton (GK)"
+          },
+          {
+            "number": "",
+            "name": "Earl Berman"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter"
+          },
+          {
+            "number": 18,
+            "name": "Wieke Kaptein"
+          },
+          {
+            "number": 30,
+            "name": "Keira Walsh"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 11,
+            "name": "Sandy Baltimore"
+          },
+          {
+            "number": 1,
+            "name": "Livia Peng (GK)"
+          },
+          {
+            "number": 4,
+            "name": "Naomi Girma"
+          },
+          {
+            "number": "",
+            "name": "Giulia Dragoni"
+          },
+          {
+            "number": 15,
+            "name": "Nelly Las"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan"
+          },
+          {
+            "number": 32,
+            "name": "Lexi Potter"
+          },
+          {
+            "number": "",
+            "name": "Becky Spencer (GK)"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Natalia Arroyo",
+        "formation": "4-4-1-1",
+        "starting": [
+          {
+            "number": "",
+            "name": "Akane Ōkuma (GK)"
+          },
+          {
+            "number": "",
+            "name": "Mathilde Harviken"
+          },
+          {
+            "number": "",
+            "name": "Noelle Maritz"
+          },
+          {
+            "number": "",
+            "name": "Lucy Parker"
+          },
+          {
+            "number": "",
+            "name": "Lynn Wilms"
+          },
+          {
+            "number": "",
+            "name": "Justine Kielland"
+          },
+          {
+            "number": "",
+            "name": "Lucia Kendall"
+          },
+          {
+            "number": "",
+            "name": "Maya Hijikata"
+          },
+          {
+            "number": "",
+            "name": "Mia McAulay"
+          },
+          {
+            "number": "",
+            "name": "Amalie Vangsgaard"
+          },
+          {
+            "number": "",
+            "name": "Chasity Grant"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": "",
+            "name": "Anna Patten"
+          },
+          {
+            "number": "",
+            "name": "Georgia Mullett"
+          },
+          {
+            "number": "",
+            "name": "Lily Murphy"
+          },
+          {
+            "number": "",
+            "name": "Océane Deslandes"
+          },
+          {
+            "number": "",
+            "name": "Miri Taylor"
+          },
+          {
+            "number": "",
+            "name": "Katie Scott"
+          },
+          {
+            "number": "",
+            "name": "Sophia Kelly"
+          }
+        ]
+      }
+    }
   },
   {
     "id": "w4",
