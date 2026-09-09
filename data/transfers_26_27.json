@@ -382,7 +382,7 @@
       ]
     },
     "women_in": {
-      "label": "🟢 Chelsea Women ซื้อเข้า / ต่อสัญญา",
+      "label": "🟢 Chelsea Women ขาเข้า / ซื้อเข้า / ต่อสัญญา (Signings & Extensions)",
       "players": [
         {
           "player": "Katie McCabe",
@@ -420,22 +420,50 @@
           "position": "MF"
         },
         {
+          "player": "Ellie Carpenter",
+          "from": "Lyon",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "RB"
+        },
+        {
+          "player": "Livia Peng",
+          "from": "Werder Bremen",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "GK"
+        },
+        {
+          "player": "Rebecca Spencer",
+          "from": "Tottenham Hotspur",
+          "fee": "Free Transfer",
+          "type": "permanent",
+          "position": "GK"
+        },
+        {
+          "player": "Alyssa Thompson",
+          "from": "Angel City FC",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "FW"
+        },
+        {
           "player": "Sandy Baltimore",
-          "from": "-",
+          "from": "Chelsea FC",
           "fee": "Contract Extension",
           "type": "extension",
           "position": "LW"
         },
         {
           "player": "Lucy Bronze",
-          "from": "-",
+          "from": "Chelsea FC",
           "fee": "Contract Extension",
           "type": "extension",
           "position": "RB"
         },
         {
           "player": "Aggie Beever-Jones",
-          "from": "-",
+          "from": "Chelsea FC",
           "fee": "Contract Extension",
           "type": "extension",
           "position": "FW"
@@ -443,7 +471,7 @@
       ]
     },
     "women_out": {
-      "label": "🔴 Chelsea Women ขายออก / ปล่อยยืม / หมดสัญญา",
+      "label": "🔴 Chelsea Women ขายออก / ปล่อยยืม / หมดสัญญา (All Departures)",
       "players": [
         {
           "player": "Millie Bright",
@@ -488,11 +516,128 @@
           "position": "MF"
         },
         {
+          "player": "Brooke Aspin",
+          "to": "Bristol City",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "CB"
+        },
+        {
+          "player": "Jorja Fox",
+          "to": "Ipswich Town",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "DF"
+        },
+        {
+          "player": "Aniek Nouwen",
+          "to": "Free Agent",
+          "fee": "End of Contract",
+          "type": "released",
+          "position": "CB"
+        },
+        {
           "player": "Lois Shooter",
           "to": "Nottingham Forest",
           "fee": "Loan",
+          "loan_term": "Season Loan",
           "type": "loan",
           "position": "DF"
+        },
+        {
+          "player": "Katie Cox",
+          "to": "Nottingham Forest",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "GK"
+        },
+        {
+          "player": "Ashanti Akpan",
+          "to": "Birmingham City",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "MF"
+        },
+        {
+          "player": "Lucy Watson",
+          "to": "Southampton",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "FW"
+        },
+        {
+          "player": "Greta Humphries",
+          "to": "Bristol City",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "DF"
+        },
+        {
+          "player": "Cerys Brown",
+          "to": "Watford",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "DF"
+        },
+        {
+          "player": "Aimee Claypole",
+          "to": "Durham",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "FW"
+        }
+      ]
+    },
+    "women_out_permanent": {
+      "label": "🔴 Chelsea Women ขายออกถาวร / หมดสัญญา / ย้ายออก (Permanent Out & Departures)",
+      "players": [
+        {
+          "player": "Millie Bright",
+          "to": "Retired",
+          "fee": "Retired",
+          "type": "retired",
+          "position": "CB"
+        },
+        {
+          "player": "Sam Kerr",
+          "to": "Free Agent",
+          "fee": "End of Contract",
+          "type": "released",
+          "position": "ST"
+        },
+        {
+          "player": "Guro Reiten",
+          "to": "Free Agent",
+          "fee": "End of Contract",
+          "type": "released",
+          "position": "LW/AM"
+        },
+        {
+          "player": "Johanna Rytting Kaneryd",
+          "to": "Lyon",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "RW"
+        },
+        {
+          "player": "Niamh Charles",
+          "to": "Manchester City",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "LB/LW"
+        },
+        {
+          "player": "Julia Bartel",
+          "to": "Juventus",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": "MF"
         },
         {
           "player": "Brooke Aspin",
@@ -502,18 +647,79 @@
           "position": "CB"
         },
         {
-          "player": "Katie Cox",
-          "to": "Nottingham Forest",
-          "fee": "Loan",
-          "type": "loan",
-          "position": "GK"
-        },
-        {
           "player": "Jorja Fox",
           "to": "Ipswich Town",
           "fee": "Undisclosed",
           "type": "permanent",
           "position": "DF"
+        },
+        {
+          "player": "Aniek Nouwen",
+          "to": "Free Agent",
+          "fee": "End of Contract",
+          "type": "released",
+          "position": "CB"
+        }
+      ]
+    },
+    "women_loan_out": {
+      "label": "🟡 Chelsea Women ปล่อยยืม (Loans Out)",
+      "players": [
+        {
+          "player": "Lois Shooter",
+          "to": "Nottingham Forest",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "DF"
+        },
+        {
+          "player": "Katie Cox",
+          "to": "Nottingham Forest",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "GK"
+        },
+        {
+          "player": "Ashanti Akpan",
+          "to": "Birmingham City",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "MF"
+        },
+        {
+          "player": "Lucy Watson",
+          "to": "Southampton",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "FW"
+        },
+        {
+          "player": "Greta Humphries",
+          "to": "Bristol City",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "DF"
+        },
+        {
+          "player": "Cerys Brown",
+          "to": "Watford",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "DF"
+        },
+        {
+          "player": "Aimee Claypole",
+          "to": "Durham",
+          "fee": "Loan",
+          "loan_term": "Season Loan",
+          "type": "loan",
+          "position": "FW"
         }
       ]
     }

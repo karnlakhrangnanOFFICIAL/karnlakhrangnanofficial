@@ -273,12 +273,21 @@ function renderPlayers(container, players, teamType) {
     let opacity = '1';
     
     if (p.status === 'sold') {
-      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#c0392b; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1;">${isTh ? 'ย้ายออก' : 'Sold'}</div>`;
-      opacity = '0.6';
+      const dest = p.current_club ? ` → ${p.current_club}` : '';
+      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#c0392b; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? 'ย้ายออก' : 'Sold'}${dest}</div>`;
+      opacity = '0.65';
     } else if (p.status === 'loaned_out') {
-      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#f39c12; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1;">${isTh ? 'ยืมตัว' : 'Loaned Out'}</div>`;
+      const dest = p.current_club ? ` → ${p.current_club}` : '';
+      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#f39c12; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? 'ยืมตัว' : 'Loaned Out'}${dest}</div>`;
+      opacity = '0.85';
+    } else if (p.status === 'released') {
+      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#7f8c8d; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? 'หมดสัญญา' : 'Released'}</div>`;
+      opacity = '0.65';
+    } else if (p.status === 'retired') {
+      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#4a5568; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? 'แขวนสตั๊ด' : 'Retired'}</div>`;
+      opacity = '0.65';
     } else if (p.status === 'new_signing') {
-      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#27ae60; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1;">${isTh ? 'นักเตะใหม่' : 'New Signing'}</div>`;
+      statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#27ae60; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? 'นักเตะใหม่' : 'New Signing'}</div>`;
     }
 
     return `
@@ -287,7 +296,7 @@ function renderPlayers(container, players, teamType) {
         <img src="${pImage}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-player.svg';">
         <div class="player-info">
           <h3>${p.name}</h3>
-          <span class="player-number">#${(p.status === 'sold' || p.status === 'loaned_out') ? '?' : (p.number || '?')}</span>
+          <span class="player-number">#${(p.status === 'sold' || p.status === 'loaned_out' || p.status === 'released' || p.status === 'retired') ? '?' : (p.number || '?')}</span>
           <span class="player-position">${pos}</span>
           <div class="player-stats">
           ${(() => {
@@ -742,7 +751,7 @@ async function initPlayerProfile() {
     // Render Player Info
     const isTh = (window.currentLang || 'th') === 'th';
     document.getElementById('playerName').textContent = player.name;
-    document.getElementById('playerNumber').textContent = '#' + ((player.status === 'sold' || player.status === 'loaned_out') ? '?' : (player.number || '?'));
+    document.getElementById('playerNumber').textContent = '#' + ((player.status === 'sold' || player.status === 'loaned_out' || player.status === 'released' || player.status === 'retired') ? '?' : (player.number || '?'));
     const pImg = player.image || 'assets/images/placeholder-player.svg';
     const playerImgEl = document.getElementById('playerImage');
     if (playerImgEl) {
@@ -754,6 +763,34 @@ async function initPlayerProfile() {
       };
     }
     document.getElementById('playerTeamBadge').textContent = isMen ? (isTh ? 'ทีมชาย' : "MEN'S TEAM") : (isTh ? 'ทีมหญิง' : "WOMEN'S TEAM");
+
+    // Status Badge in Hero
+    const statusBadgeEl = document.getElementById('playerStatusBadge');
+    if (statusBadgeEl) {
+      if (player.status === 'sold') {
+        statusBadgeEl.style.display = 'inline-block';
+        statusBadgeEl.style.background = '#c0392b';
+        statusBadgeEl.textContent = isTh ? (player.current_club ? `ย้ายไป ${player.current_club}` : 'ย้ายออก') : (player.current_club ? `Sold to ${player.current_club}` : 'Sold');
+      } else if (player.status === 'loaned_out') {
+        statusBadgeEl.style.display = 'inline-block';
+        statusBadgeEl.style.background = '#f39c12';
+        statusBadgeEl.textContent = isTh ? (player.current_club ? `ยืมตัวไป ${player.current_club}` : 'ยืมตัว') : (player.current_club ? `On Loan at ${player.current_club}` : 'On Loan');
+      } else if (player.status === 'released') {
+        statusBadgeEl.style.display = 'inline-block';
+        statusBadgeEl.style.background = '#7f8c8d';
+        statusBadgeEl.textContent = isTh ? 'หมดสัญญา (Free Agent)' : 'Released (Free Agent)';
+      } else if (player.status === 'retired') {
+        statusBadgeEl.style.display = 'inline-block';
+        statusBadgeEl.style.background = '#4a5568';
+        statusBadgeEl.textContent = isTh ? 'แขวนสตั๊ด (Retired)' : 'Retired';
+      } else if (player.status === 'new_signing') {
+        statusBadgeEl.style.display = 'inline-block';
+        statusBadgeEl.style.background = '#27ae60';
+        statusBadgeEl.textContent = isTh ? 'นักเตะใหม่' : 'New Signing';
+      } else {
+        statusBadgeEl.style.display = 'none';
+      }
+    }
 
     // Update active nav link & back link & document title based on team (men / women)
     const menNavLink = document.querySelector('.nav-links a[href="men-team.html"]');
@@ -796,6 +833,16 @@ async function initPlayerProfile() {
     document.getElementById('playerFoot').textContent = player.foot || '--';
     document.getElementById('playerJoined').textContent = player.joined ? formatDate(player.joined, isTh ? 'th' : 'en') : '--';
     document.getElementById('playerSignedFrom').textContent = player.signed_from || '--';
+    const clubRow = document.getElementById('playerClubRow');
+    const clubEl = document.getElementById('playerCurrentClub');
+    if (clubRow && clubEl) {
+      if (player.current_club && !player.current_club.includes('Chelsea FC')) {
+        clubRow.style.display = 'list-item';
+        clubEl.textContent = player.current_club;
+      } else {
+        clubRow.style.display = 'none';
+      }
+    }
     
     let mvText = '--';
     if (player.market_value) {

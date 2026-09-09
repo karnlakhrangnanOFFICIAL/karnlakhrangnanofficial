@@ -41,7 +41,10 @@
         <img src="assets/images/players/men/joao-pedro.jpg" alt="Player Image" id="playerImage" class="player-main-image" loading="lazy">
       </div>
       <div class="player-header-info">
-        <div class="player-hero-badge" id="playerTeamBadge">TEAM</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <div class="player-hero-badge" id="playerTeamBadge">TEAM</div>
+          <div class="player-hero-badge" id="playerStatusBadge" style="display: none; background: #c0392b;">STATUS</div>
+        </div>
         <h1 id="playerName">Loading...</h1>
         <div class="player-meta">
           <span class="player-number" id="playerNumber">#--</span>
@@ -70,6 +73,7 @@
             <li><strong data-lang-th="เท้าที่ถนัด:" data-lang-en="Preferred Foot:">Preferred Foot:</strong> <span id="playerFoot">--</span></li>
             <li><strong data-lang-th="เข้าร่วมทีม:" data-lang-en="Joined:">Joined:</strong> <span id="playerJoined">--</span></li>
             <li><strong data-lang-th="ย้ายมาจาก:" data-lang-en="Signed From:">Signed From:</strong> <span id="playerSignedFrom">--</span></li>
+            <li id="playerClubRow" style="display: none;"><strong data-lang-th="สโมสรปัจจุบัน:" data-lang-en="Current Club:">Current Club:</strong> <span id="playerCurrentClub">--</span></li>
             <li><strong data-lang-th="มูลค่าทางการตลาด:" data-lang-en="Market Value:">Market Value:</strong> <span id="playerMarketValue">--</span></li>
           </ul>
         </section>

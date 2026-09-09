@@ -21,11 +21,16 @@
       justify-content: space-between;
       align-items: center;
     }
-    .transfer-header.out {
-      background: #c0392b; /* Red for outs */
+    .transfer-header.out,
+    .transfer-header.sold {
+      background: #c0392b; /* Red for outs / sold */
     }
-    .transfer-header.loan {
+    .transfer-header.loan,
+    .transfer-header.loaned {
       background: #f39c12; /* Yellow for loans */
+    }
+    .transfer-header.released {
+      background: #7f8c8d; /* Grey for released */
     }
     .transfer-list {
       background: var(--card-bg);
@@ -170,6 +175,7 @@
           <p>Loading transfer data...</p>
         </div>
       </div>
+      <div id="playerStatusSectionsMen" style="margin-top: 2.5rem;"></div>
     </div>
     
     <div id="tab-women" class="tab-content">
@@ -178,6 +184,7 @@
           <p>Loading transfer data...</p>
         </div>
       </div>
+      <div id="playerStatusSectionsWomen" style="margin-top: 2.5rem;"></div>
     </div>
 
   </main>
@@ -203,16 +210,32 @@
             let tableRows = '';
             categoryData.players.forEach(p => {
               let detailCol = '';
-              if (cat.key.includes('in')) {
+              let typeBadge = '';
+              if (p.type === 'loan') {
+                typeBadge = '<span class="badge" style="background: rgba(243, 156, 18, 0.15); color: #d35400; border-color: rgba(243, 156, 18, 0.4);">ยืมตัว (Loan)</span>';
+              } else if (p.type === 'released') {
+                typeBadge = '<span class="badge" style="background: rgba(127, 140, 141, 0.15); color: #7f8c8d; border-color: rgba(127, 140, 141, 0.4);">หมดสัญญา (Released)</span>';
+              } else if (p.type === 'retired') {
+                typeBadge = '<span class="badge" style="background: rgba(74, 85, 104, 0.15); color: #4a5568; border-color: rgba(74, 85, 104, 0.4);">แขวนสตั๊ด (Retired)</span>';
+              } else if (p.type === 'extension') {
+                typeBadge = '<span class="badge" style="background: rgba(39, 174, 96, 0.15); color: #27ae60; border-color: rgba(39, 174, 96, 0.4);">ต่อสัญญา (Extension)</span>';
+              } else if (p.type === 'permanent') {
+                typeBadge = '<span class="badge" style="background: rgba(41, 128, 185, 0.15); color: #2980b9; border-color: rgba(41, 128, 185, 0.4);">ย้ายถาวร (Permanent)</span>';
+              }
+
+              if (cat.key.includes('loan')) {
+                detailCol = `<td>To: <strong>${p.to}</strong></td><td><span class="fee-badge" style="color: #f39c12;">${p.loan_term || p.fee || 'Season Loan'}</span></td>`;
+              } else if (cat.key.includes('in')) {
                 detailCol = `<td>From: <strong>${p.from}</strong></td><td><span class="fee-badge">${p.fee}</span></td>`;
               } else if (cat.key.includes('out')) {
                 detailCol = `<td>To: <strong>${p.to || 'Released'}</strong></td><td><span class="fee-badge">${p.fee || ''}</span></td>`;
-              } else if (cat.key === 'loan_out') {
-                detailCol = `<td>To: <strong>${p.to}</strong></td><td>Term: ${p.loan_term}</td>`;
               }
               tableRows += `
                 <tr>
-                  <td><span class="player-name">${p.player}</span></td>
+                  <td>
+                    <span class="player-name">${p.player}</span>
+                    ${typeBadge ? ` <span style="margin-left: 6px;">${typeBadge}</span>` : ''}
+                  </td>
                   <td><span class="badge">${p.position || '-'}</span></td>
                   ${detailCol}
                 </tr>
@@ -251,7 +274,11 @@
         containerMen.innerHTML = renderTable(menCats, false);
         
         // Render Women
-        const womenCats = [
+        const womenCats = data.categories.women_out_permanent ? [
+          { key: 'women_in', class: '' },
+          { key: 'women_out_permanent', class: 'out' },
+          { key: 'women_loan_out', class: 'loan' }
+        ] : [
           { key: 'women_in', class: '' },
           { key: 'women_out', class: 'out' }
         ];
@@ -275,6 +302,214 @@
       }
     }
 
+    /**
+     * Fetches player data and categorizes them into 'Sold', 'Loaned', and 'Released' sections
+     * based on their status property.
+     *
+     * @param {string|Array} [source='data/players-men.json'] - File path, team name ('men'|'women'|'all'), or array of player objects
+     * @param {string|HTMLElement} [targetContainer=null] - Optional DOM container (element or selector) to render sections into
+     * @returns {Promise<{ Sold: Array, Loaned: Array, Released: Array, sections: Object, html: string, elements: Object }>}
+     */
+    async function fetchAndCategorizePlayers(source = 'data/players-men.json', targetContainer = null) {
+      let players = [];
+
+      // Support container passed as first argument if source is a DOM element or selector
+      if (typeof source === 'object' && source !== null && !Array.isArray(source) && (source.nodeType || source instanceof HTMLElement)) {
+        targetContainer = source;
+        source = 'data/players-men.json';
+      } else if (typeof source === 'string' && (source.startsWith('#') || (document.getElementById(source) && !source.includes('.json') && source !== 'men' && source !== 'women' && source !== 'all'))) {
+        targetContainer = source;
+        source = 'data/players-men.json';
+      }
+
+      // 1. Fetch player data
+      if (Array.isArray(source)) {
+        players = source;
+      } else if (typeof source === 'string') {
+        let url = source;
+        if (source === 'men' || source === 'all_men') {
+          url = 'data/players-men.json';
+        } else if (source === 'women' || source === 'all_women') {
+          url = 'data/players-women.json';
+        } else if (source === 'all') {
+          const [resMen, resWomen] = await Promise.all([
+            fetch('data/players-men.json').then(r => r.json()).catch(() => []),
+            fetch('data/players-women.json').then(r => r.json()).catch(() => [])
+          ]);
+          players = [...resMen, ...resWomen];
+          url = '';
+        }
+
+        if (url) {
+          const res = await fetch(url);
+          if (!res.ok) {
+            throw new Error(`Failed to fetch player data from ${url}: status ${res.status}`);
+          }
+          players = await res.json();
+        }
+      } else if (source && typeof source === 'object' && Array.isArray(source.players)) {
+        players = source.players;
+      }
+
+      // 2. Categorize players into 'Sold', 'Loaned', and 'Released' sections based on their status property
+      const categorized = {
+        Sold: [],
+        Loaned: [],
+        Released: []
+      };
+
+      if (Array.isArray(players)) {
+        players.forEach(player => {
+          if (!player) return;
+          const status = String(player.status || '').toLowerCase().trim();
+
+          if (status === 'sold') {
+            categorized.Sold.push(player);
+          } else if (status === 'loaned' || status === 'loaned_out' || status === 'loan' || status === 'on_loan') {
+            categorized.Loaned.push(player);
+          } else if (status === 'released' || status === 'retired' || status === 'free_agent' || status === 'contract_expired') {
+            categorized.Released.push(player);
+          }
+        });
+      }
+
+      // Convenience aliases and properties
+      categorized.sections = {
+        Sold: categorized.Sold,
+        Loaned: categorized.Loaned,
+        Released: categorized.Released
+      };
+      Object.defineProperty(categorized, 'sold', { get: () => categorized.Sold, enumerable: true });
+      Object.defineProperty(categorized, 'loaned', { get: () => categorized.Loaned, enumerable: true });
+      Object.defineProperty(categorized, 'released', { get: () => categorized.Released, enumerable: true });
+
+      // 3. Render HTML sections for 'Sold', 'Loaned', and 'Released'
+      const isTh = (window.currentLang || 'th') === 'th';
+      const isMen = typeof source === 'string' && (source.includes('men') && !source.includes('women'));
+      const idPrefix = isMen ? 'men-' : (typeof source === 'string' && source.includes('women') ? 'women-' : '');
+
+      function renderStatusSection(sectionName, list, headerClass) {
+        const rawId = `${sectionName.toLowerCase()}-section`;
+        const sectionId = (!document.getElementById(rawId) || idPrefix === 'men-') ? rawId : `${idPrefix}${rawId}`;
+
+        let label = sectionName;
+        if (isTh) {
+          if (sectionName === 'Sold') label = '🔴 ย้ายออกถาวร (Sold)';
+          else if (sectionName === 'Loaned') label = '🟡 ปล่อยยืมตัว (Loaned)';
+          else if (sectionName === 'Released') label = '⚪ หมดสัญญา / แขวนสตั๊ด (Released)';
+        }
+
+        let rows = '';
+        if (list.length === 0) {
+          rows = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">${isTh ? 'ไม่มีข้อมูลนักเตะในหมวดหมู่นี้' : `No players in ${sectionName} category`}</td></tr>`;
+        } else {
+          list.forEach(p => {
+            const dest = p.current_club || (p.to ? p.to : '--');
+            const num = p.number ? `#${p.number}` : '';
+            const img = p.image || 'assets/images/placeholder-player.svg';
+            let badgeColor = 'color: #2980b9;';
+            if (sectionName === 'Loaned') badgeColor = 'color: #f39c12;';
+            if (sectionName === 'Released') badgeColor = 'color: #7f8c8d;';
+
+            const displayStatus = p.status ? p.status.replace('_', ' ').toUpperCase() : sectionName.toUpperCase();
+
+            rows += `
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="${img}" alt="${p.name || p.player || ''}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #222;" onerror="this.onerror=null; this.src='assets/images/placeholder-player.svg';">
+                    <div>
+                      <span class="player-name">${p.name || p.player || 'Unknown'}</span>
+                      ${num ? `<span style="color: var(--text-muted); font-size: 0.8rem; margin-left: 4px;">${num}</span>` : ''}
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge">${p.position || '-'}</span></td>
+                <td>To: <strong>${dest}</strong></td>
+                <td><span class="fee-badge" style="${badgeColor}">${displayStatus}</span></td>
+              </tr>
+            `;
+          });
+        }
+
+        return `
+          <section id="${sectionId}" class="transfer-section ${rawId} ${headerClass}" data-section="${sectionName}">
+            <div class="transfer-header ${headerClass}">
+              <h3>${label}</h3>
+              <span style="font-size: 0.9rem; font-weight: normal; background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">${list.length} Players</span>
+            </div>
+            <div class="transfer-list">
+              <table>
+                <thead>
+                  <tr>
+                    <th>${isTh ? 'นักเตะ (Player)' : 'Player'}</th>
+                    <th>${isTh ? 'ตำแหน่ง (Position)' : 'Position'}</th>
+                    <th>${isTh ? 'สโมสรปลายทาง (Destination)' : 'Destination'}</th>
+                    <th>${isTh ? 'สถานะ (Status)' : 'Status'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        `;
+      }
+
+      const headerTitleTh = isMen ? '📋 บัญชีสถานะนักเตะทีมชายตามสัญญา (Player Status Roster)' : '📋 บัญชีสถานะนักเตะทีมหญิงตามสัญญา (Player Status Roster)';
+      const headerTitleEn = isMen ? "📋 Men's Team Player Status Roster" : "📋 Women's Team Player Status Roster";
+      const titleBanner = `
+        <div style="margin: 2rem 0 1rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+          <h2 style="font-size: 1.25rem; font-family: var(--font-heading); color: var(--text-color); display: flex; align-items: center; gap: 8px;">
+            ${isTh ? headerTitleTh : headerTitleEn}
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+            ${isTh ? 'จัดหมวดหมู่สถานะนักเตะ: Sold (ย้ายออก) · Loaned (ปล่อยยืม) · Released (หมดสัญญา/แขวนสตั๊ด)' : 'Categorized by status: Sold · Loaned · Released'}
+          </p>
+        </div>
+      `;
+
+      const soldSectionHtml = renderStatusSection('Sold', categorized.Sold, 'sold');
+      const loanedSectionHtml = renderStatusSection('Loaned', categorized.Loaned, 'loaned');
+      const releasedSectionHtml = renderStatusSection('Released', categorized.Released, 'released');
+      const sectionsHtml = titleBanner + soldSectionHtml + loanedSectionHtml + releasedSectionHtml;
+
+      categorized.html = sectionsHtml;
+      categorized.sectionsHtml = {
+        Sold: soldSectionHtml,
+        Loaned: loanedSectionHtml,
+        Released: releasedSectionHtml
+      };
+
+      // Populate DOM elements map
+      const tempContainer = document.createElement('div');
+      tempContainer.innerHTML = sectionsHtml;
+      categorized.elements = {
+        Sold: tempContainer.querySelector('[data-section="Sold"]'),
+        Loaned: tempContainer.querySelector('[data-section="Loaned"]'),
+        Released: tempContainer.querySelector('[data-section="Released"]')
+      };
+
+      // If container provided or exists, inject sections
+      if (targetContainer) {
+        const el = typeof targetContainer === 'string'
+          ? (document.querySelector(targetContainer) || document.getElementById(targetContainer.replace('#', '')))
+          : targetContainer;
+        if (el) {
+          el.innerHTML = sectionsHtml;
+        }
+      }
+
+      return categorized;
+    }
+
+    // Expose globally with aliases
+    window.fetchAndCategorizePlayers = fetchAndCategorizePlayers;
+    window.categorizePlayersByStatus = fetchAndCategorizePlayers;
+    window.categorizePlayers = fetchAndCategorizePlayers;
+    window.fetchPlayerTransfers = fetchAndCategorizePlayers;
+
     // Tabs logic
     function setupTabs() {
       const tabBtns = document.querySelectorAll('.tab-btn');
@@ -296,6 +531,8 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       loadTransfers();
+      fetchAndCategorizePlayers('data/players-men.json', '#playerStatusSectionsMen');
+      fetchAndCategorizePlayers('data/players-women.json', '#playerStatusSectionsWomen');
       setupTabs();
     });
 

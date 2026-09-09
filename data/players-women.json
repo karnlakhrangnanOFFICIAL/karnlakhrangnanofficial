@@ -52,7 +52,8 @@
         "red_cards": 0,
         "clean_sheets": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 2,
@@ -107,7 +108,8 @@
         "red_cards": 0,
         "clean_sheets": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 3,
@@ -115,7 +117,7 @@
     "position": "Goalkeeper",
     "number": 38,
     "nationality": "Jamaica",
-    "image": "assets/images/players/women/becky-spencer.jpg",
+    "image": "assets/images/players/women/rebecca-spencer.jpg",
     "height": 167,
     "foot": null,
     "date_of_birth": "1991-02-22",
@@ -162,7 +164,8 @@
         "red_cards": 0,
         "clean_sheets": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 4,
@@ -213,7 +216,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 5,
@@ -264,7 +268,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 6,
@@ -272,7 +277,7 @@
     "position": "Defender",
     "number": 14,
     "nationality": "Sweden",
-    "image": "assets/images/players/women/nathalie-björn.jpg",
+    "image": "assets/images/players/women/nathalie-bjorn.jpg",
     "height": 174,
     "foot": null,
     "date_of_birth": "1997-05-04",
@@ -315,7 +320,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 7,
@@ -366,7 +372,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 8,
@@ -379,7 +386,7 @@
     "foot": null,
     "date_of_birth": null,
     "age": null,
-    "current_club": null,
+    "current_club": "Manchester City",
     "joined": null,
     "signed_from": null,
     "market_value": null,
@@ -417,7 +424,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "sold"
   },
   {
     "id": 9,
@@ -468,7 +476,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 10,
@@ -519,7 +528,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 11,
@@ -570,7 +580,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 12,
@@ -621,7 +632,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 13,
@@ -672,7 +684,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 14,
@@ -685,7 +698,7 @@
     "foot": null,
     "date_of_birth": null,
     "age": null,
-    "current_club": null,
+    "current_club": "Lyon",
     "joined": null,
     "signed_from": null,
     "market_value": null,
@@ -723,7 +736,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "sold"
   },
   {
     "id": 15,
@@ -774,7 +788,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 16,
@@ -825,7 +840,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 17,
@@ -876,7 +892,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 18,
@@ -927,7 +944,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 19,
@@ -978,7 +996,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 20,
@@ -1029,7 +1048,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 21,
@@ -1042,7 +1062,7 @@
     "foot": null,
     "date_of_birth": null,
     "age": null,
-    "current_club": null,
+    "current_club": "Free Agent",
     "joined": null,
     "signed_from": null,
     "market_value": null,
@@ -1080,7 +1100,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "released"
   },
   {
     "id": 22,
@@ -1131,7 +1152,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 23,
@@ -1182,7 +1204,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 24,
@@ -1233,7 +1256,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 25,
@@ -1284,7 +1308,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 26,
@@ -1335,7 +1360,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 27,
@@ -1386,7 +1412,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 28,
@@ -1437,7 +1464,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 29,
@@ -1488,7 +1516,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "active"
   },
   {
     "id": 30,
@@ -1539,7 +1568,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "new_signing"
   },
   {
     "id": 31,
@@ -1552,7 +1582,7 @@
     "foot": null,
     "date_of_birth": "2003-08-28",
     "age": 22,
-    "current_club": "Newcastle United",
+    "current_club": "Ipswich Town",
     "joined": "2025-09-01",
     "signed_from": "Chelsea",
     "market_value": null,
@@ -1590,7 +1620,8 @@
         "yellow_cards": 0,
         "red_cards": 0
       }
-    }
+    },
+    "status": "sold"
   },
   {
     "id": 32,
@@ -1603,7 +1634,7 @@
     "foot": null,
     "date_of_birth": "2006-04-28",
     "age": 20,
-    "current_club": "Chelsea FC",
+    "current_club": "Nottingham Forest",
     "joined": "2023-03-18",
     "signed_from": null,
     "market_value": null,
@@ -1638,6 +1669,127 @@
         "clean_sheets": 0
       },
       "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    },
+    "status": "loaned_out"
+  },
+  {
+    "id": 33,
+    "name": "Giulia Dragoni",
+    "position": "Midfielder",
+    "number": 16,
+    "nationality": "Italy",
+    "image": "assets/images/players/women/giulia-dragoni.png",
+    "height": 165,
+    "foot": "Right",
+    "date_of_birth": "2006-11-07",
+    "age": 19,
+    "current_club": "Chelsea FC",
+    "joined": "2026-07-01",
+    "signed_from": "FC Barcelona",
+    "market_value": 250000,
+    "status": "new_signing",
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "กองกลางดาวรุ่งทีมชาติอิตาลี ย้ายมาจาก บาร์เซโลนา ได้รับการยกย่องให้เป็นหนึ่งในดาวรุ่งพรสวรรค์สูงสุดของวงการฟุตบอลหญิงยุโรป",
+    "biography_en": "Italian midfield sensation signed from FC Barcelona, widely regarded as one of Europe top rising talents.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "UEFA Women's Champions League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's League Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      },
+      "Women's FA Cup": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    }
+  },
+  {
+    "id": 34,
+    "name": "Millie Bright",
+    "position": "Defender",
+    "number": 4,
+    "nationality": "England",
+    "image": "assets/images/placeholder-player.svg",
+    "height": 178,
+    "foot": "Right",
+    "date_of_birth": "1993-08-21",
+    "age": 32,
+    "current_club": "Retired",
+    "joined": "2014-12-01",
+    "signed_from": "Doncaster Rovers Belles",
+    "market_value": null,
+    "status": "retired",
+    "appearances": 245,
+    "goals": 15,
+    "assists": 8,
+    "biography_th": "อดีตกัปตันทีมเชลซีและทีมชาติอังกฤษ ผู้นำที่พาสโมสรคว้าแชมป์มากมาย ประกาศแขวนสตั๊ดอย่างสมเกียรติ",
+    "biography_en": "Former Chelsea and England captain who led the club to multiple major trophies before announcing her retirement.",
+    "stats": {
+      "Barclays Women's Super League": {
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow_cards": 0,
+        "red_cards": 0,
+        "clean_sheets": 0
+      }
+    }
+  },
+  {
+    "id": 35,
+    "name": "Guro Reiten",
+    "position": "Midfielder",
+    "number": 11,
+    "nationality": "Norway",
+    "image": "assets/images/placeholder-player.svg",
+    "height": 166,
+    "foot": "Left",
+    "date_of_birth": "1994-07-26",
+    "age": 31,
+    "current_club": "Free Agent",
+    "joined": "2019-05-31",
+    "signed_from": "LSK Kvinner",
+    "market_value": null,
+    "status": "released",
+    "appearances": 140,
+    "goals": 38,
+    "assists": 45,
+    "biography_th": "ปีกและกองกลางตัวรุกชาวนอร์เวย์ ผู้สร้างสรรค์โอกาสและทำประตูสำคัญมากมาย หมดสัญญาหลังจบฤดูกาล",
+    "biography_en": "Norwegian winger and playmaker who delivered numerous crucial goals and assists, departing at the end of her contract.",
+    "stats": {
+      "Barclays Women's Super League": {
         "appearances": 0,
         "goals": 0,
         "assists": 0,
