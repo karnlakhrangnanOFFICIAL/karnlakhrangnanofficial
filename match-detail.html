@@ -839,6 +839,27 @@
           }
         });
       });
+
+      // Handle activeIndex or tab from URL params
+      const urlParams = new URLSearchParams(window.location.search);
+      const activeIdx = urlParams.get('activeIndex');
+      const tabParam = urlParams.get('tab');
+      let defaultTargetId = null;
+
+      if (activeIdx === '3' || tabParam === 'stats') {
+        defaultTargetId = 'tab-stats';
+      } else if (activeIdx === '1' || tabParam === 'lineups') {
+        defaultTargetId = 'tab-lineups';
+      } else if (activeIdx === '2' || tabParam === 'timeline') {
+        defaultTargetId = 'tab-timeline';
+      }
+
+      if (defaultTargetId) {
+        const targetBtn = document.querySelector(`.tab-btn[data-target="${defaultTargetId}"]`);
+        if (targetBtn) {
+          targetBtn.click();
+        }
+      }
     }
 
     // ---------- Match Stats HTML Generator ----------

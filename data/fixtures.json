@@ -3391,6 +3391,13 @@
         "player": "Tarik Muharemovic",
         "minute": 23,
         "detail": "Goal (0-1)"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Ronnie Watson",
+        "minute": 46,
+        "detail": "Foul (45'+1')"
       }
     ],
     "competition_name": "league-cup",
@@ -3573,36 +3580,36 @@
         ]
       }
     },
-    "time_live": "28'",
+    "time_live": "HT (45'+1)",
     "stats": [
       {
-        "name": "ครองบอล (Possession)",
-        "home": 60,
-        "away": 40,
-        "isPercentage": true
-      },
-      {
-        "name": "โอกาสยิง (Shots)",
-        "home": 1,
+        "name": "เตะมุม (Corners)",
+        "home": 2,
         "away": 4,
         "isPercentage": false
       },
       {
-        "name": "ยิงตรงกรอบ (Shots on Target)",
-        "home": 1,
-        "away": 3,
-        "isPercentage": false
-      },
-      {
-        "name": "เตะมุม (Corners)",
-        "home": 0,
-        "away": 3,
-        "isPercentage": false
-      },
-      {
         "name": "ทำฟาวล์ (Fouls)",
-        "home": 0,
-        "away": 2,
+        "home": 2,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ครองบอล (Possession)",
+        "home": 51.8,
+        "away": 48.2,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสยิง (Shots)",
+        "home": 5,
+        "away": 9,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 2,
+        "away": 4,
         "isPercentage": false
       }
     ],
@@ -3615,8 +3622,12 @@
             "text": "⚽ <strong>ประตู! (0-1):</strong> Tarik Muharemovic ยิงให้ ลีดส์ ยูไนเต็ด ขึ้นนำ เชลซี 0-1"
           },
           {
-            "minute": "28'",
-            "text": "⏱️ <strong>การแข่งขันดำเนินถึงนาทีที่ 28:</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด | เชลซีครองบอล 60% แต่ลีดส์สร้างโอกาสยิงได้มากกว่า 4 ครั้ง (เข้ากรอบ 3 ครั้ง)"
+            "minute": "45'+1'",
+            "text": "🟨 <strong>ใบเหลือง:</strong> Ronnie Watson (เชลซี) ได้รับใบเหลืองจากการตัดฟาวล์"
+          },
+          {
+            "minute": "HT",
+            "text": "⏸️ <strong>จบครึ่งแรก (Half-Time):</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด | เชลซีครองบอล 51.8% โอกาสยิง 5 ครั้ง (ตรงกรอบ 2) ส่วนลีดส์ ยูไนเต็ด ครองบอล 48.2% โอกาสยิง 9 ครั้ง (ตรงกรอบ 4) และได้ประตูนำ 1-0 จาก Tarik Muharemovic ในนาทีที่ 23'"
           }
         ]
       }
