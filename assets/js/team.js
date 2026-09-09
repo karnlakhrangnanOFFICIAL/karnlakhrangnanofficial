@@ -87,11 +87,23 @@ function renderFixtures(container, fixtures, badgeClass) {
     if (isChelseaHome) homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
     if (isChelseaAway) awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
     const teamBadgeClass = badgeClass.toLowerCase();
+    const isLive = match.status === 'live';
 
     return `
-    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card ${isLive ? 'is-live' : ''}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
       <div class="match-card-top">
-        <div class="match-card-date">📅 ${formatDate(displayDate, lang)}</div>
+        <div class="match-card-date" style="display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap;">
+          ${isLive ? `
+            <span class="live-flashing-badge mini">
+              <span class="live-beacon">
+                <span class="live-dot-ping"></span>
+                <span class="live-dot-core"></span>
+              </span>
+              <span class="live-badge-text">LIVE ${match.time_live || ''}</span>
+            </span>
+          ` : ''}
+          <span>📅 ${formatDate(displayDate, lang)}</span>
+        </div>
         <div class="match-card-league">
           ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
           <span>${compName} <span class="team-badge ${teamBadgeClass}">${badgeClass}</span></span>
@@ -109,7 +121,7 @@ function renderFixtures(container, fixtures, badgeClass) {
         </div>
         
         <div class="match-card-timebox">
-          ${match.status === 'live' ? `<span style="color:var(--primary-color);">${match.home_score||0} - ${match.away_score||0}</span>` : `<span>${displayTime}</span>`}
+          ${isLive ? `<span style="color:#ef4444; font-weight:800;">${match.home_score||0} - ${match.away_score||0}</span>` : `<span>${displayTime}</span>`}
         </div>
         
         <div class="match-card-team away">
@@ -119,7 +131,17 @@ function renderFixtures(container, fixtures, badgeClass) {
       </div>
       
       <div class="match-card-footer team-page-footer">
-        <span class="match-card-footer-text team-page-hide-text">${match.status === 'live' ? 'LIVE NOW' : 'UPCOMING MATCH'}</span>
+        <span class="match-card-footer-text team-page-hide-text">
+          ${isLive ? `
+            <span class="live-flashing-badge mini">
+              <span class="live-beacon">
+                <span class="live-dot-ping"></span>
+                <span class="live-dot-core"></span>
+              </span>
+              <span class="live-badge-text">LIVE ${match.time_live || 'NOW'}</span>
+            </span>
+          ` : 'UPCOMING MATCH'}
+        </span>
         <div class="match-card-providers">
           ${channelsIcons}
         </div>

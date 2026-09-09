@@ -136,7 +136,9 @@
     "goals": "⚽ Goalscorers",
     "not_found_id": "⚠️ Match ID not found",
     "not_found_match": "⚠️ Match information not found",
-    "load_error": "⚠️ Failed to load match data"
+    "load_error": "⚠️ Failed to load match data",
+    "live_badge": "LIVE",
+    "view_live": "View Live Match & Stats"
   },
   "common": {
     "date": "Date",

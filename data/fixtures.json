@@ -3374,11 +3374,25 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "live",
+    "home_score": 0,
+    "away_score": 1,
+    "goals": [
+      {
+        "team": "away",
+        "player": "Tarik Muharemovic",
+        "minute": 23
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Tarik Muharemovic",
+        "minute": 23,
+        "detail": "Goal (0-1)"
+      }
+    ],
     "competition_name": "league-cup",
     "team_type": "M",
     "lineups": {
@@ -3558,6 +3572,54 @@
           }
         ]
       }
-    }
+    },
+    "time_live": "28'",
+    "stats": [
+      {
+        "name": "ครองบอล (Possession)",
+        "home": 60,
+        "away": 40,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสยิง (Shots)",
+        "home": 1,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 1,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 0,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 0,
+        "away": 2,
+        "isPercentage": false
+      }
+    ],
+    "commentary": [
+      {
+        "section": "⏱️ ลำดับเหตุการณ์สด (Live Match Timeline)",
+        "events": [
+          {
+            "minute": "23'",
+            "text": "⚽ <strong>ประตู! (0-1):</strong> Tarik Muharemovic ยิงให้ ลีดส์ ยูไนเต็ด ขึ้นนำ เชลซี 0-1"
+          },
+          {
+            "minute": "28'",
+            "text": "⏱️ <strong>การแข่งขันดำเนินถึงนาทีที่ 28:</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด | เชลซีครองบอล 60% แต่ลีดส์สร้างโอกาสยิงได้มากกว่า 4 ครั้ง (เข้ากรอบ 3 ครั้ง)"
+          }
+        ]
+      }
+    ]
   }
 ]

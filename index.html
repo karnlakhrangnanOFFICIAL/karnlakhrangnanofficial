@@ -134,9 +134,21 @@
           <span class="icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span>
           <span data-i18n="home.fixtures">โปรแกรมแข่งขัน</span>
           <span class="count-badge" id="fixturesCount">0</span>
+          <!-- LIVE Flashing Badge Component at the top of the Fixtures section -->
+          <span id="fixturesLiveHeaderBadge" class="live-flashing-badge header-badge" style="display: none;" title="Match currently in progress">
+            <span class="live-beacon">
+              <span class="live-dot-ping"></span>
+              <span class="live-dot-core"></span>
+            </span>
+            <span class="live-badge-text">LIVE</span>
+          </span>
         </h2>
         <a href="men-team.html" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
       </div>
+
+      <!-- LIVE Spotlight Component for in-progress matches at the top of Fixtures -->
+      <div id="fixturesLiveSpotlight" class="fixtures-live-spotlight" style="display: none;"></div>
+
       <div class="cards-grid" id="fixturesContainer">
         <div class="loading">
           <div class="spinner"></div>
@@ -246,12 +258,16 @@
           return isNaN(t) ? (new Date(match.date).getTime() || 0) : t;
         }
 
+        const liveMatches = allMatches.filter(m => m.status === 'live');
         window.allMatchesGlobal = allMatches;
+        window.fixturesGlobal = fixtures;
+        window.resultsGlobal = results;
+        window.liveMatchesGlobal = liveMatches;
         initCalendarToggle();
         
-        // fixtures and results arrays are already loaded and correctly filtered by the build script,
-        // but we can sort them again if needed. Let's just use the fetched ones directly.
-        
+        // Render LIVE Spotlight & Flashing Badge at the top of Fixtures
+        renderLiveSpotlight(liveMatches);
+
         renderFixtures(fixtures.slice(0, 6));
         renderResults(results.slice(0, 6));
 
@@ -396,7 +412,7 @@
           </div>
           
           <div class="match-card-footer">
-            <span class="match-card-footer-text">${match.status === 'live' ? 'LIVE NOW' : ''}</span>
+            <span class="match-card-footer-text" style="${match.status === 'live' ? 'color:#e74c3c; font-weight:700;' : ''}">${match.status === 'live' ? `<span style="display:inline-block; width:8px; height:8px; background:#e74c3c; border-radius:50%; margin-right:4px; box-shadow:0 0 8px #e74c3c;"></span>LIVE ${match.time_live || 'NOW'}` : ''}</span>
             <div class="match-card-providers">
               ${channelsIcons}
             </div>
@@ -409,6 +425,129 @@
         overlay.style.opacity = '1';
         content.style.transform = 'translateY(0)';
       }, 10);
+    }
+
+    // ---------- RENDER LIVE SPOTLIGHT & BADGE AT TOP OF FIXTURES ----------
+    function renderLiveSpotlight(liveMatches) {
+      const headerBadge = document.getElementById('fixturesLiveHeaderBadge');
+      const spotlightContainer = document.getElementById('fixturesLiveSpotlight');
+
+      if (!liveMatches || liveMatches.length === 0) {
+        if (headerBadge) headerBadge.style.display = 'none';
+        if (spotlightContainer) {
+          spotlightContainer.style.display = 'none';
+          spotlightContainer.innerHTML = '';
+        }
+        return;
+      }
+
+      // Show Flashing 'LIVE' Badge at the top header of the Fixtures section
+      if (headerBadge) {
+        headerBadge.style.display = 'inline-flex';
+        const badgeText = headerBadge.querySelector('.live-badge-text');
+        if (badgeText) {
+          badgeText.textContent = liveMatches.length > 1 ? `LIVE (${liveMatches.length})` : 'LIVE';
+        }
+      }
+
+      // Render Spotlight Banner Component at the top of the Fixtures section
+      if (spotlightContainer) {
+        const lang = window.currentLang || 'th';
+        const isTh = lang === 'th';
+
+        spotlightContainer.innerHTML = liveMatches.map(match => {
+          const compName = formatCompetitionName(match.competition_name || match.competition);
+          const compLogo = match.competition_logo || '';
+          const teamBadge = match.team_type || 'M';
+          const teamBadgeClass = teamBadge.toLowerCase();
+
+          const homeStr = (match.home_team || '').toLowerCase();
+          const awayStr = (match.away_team || '').toLowerCase();
+          const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+          const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
+
+          const sHome = match.home_score !== null && match.home_score !== undefined ? match.home_score : 0;
+          const sAway = match.away_score !== null && match.away_score !== undefined ? match.away_score : 0;
+
+          // Extract latest event
+          let latestEventText = '';
+          if (match.events && match.events.length > 0) {
+            const ev = match.events[match.events.length - 1];
+            if (ev.type === 'goal') {
+              latestEventText = `⚽ ${ev.player || ''} ${ev.minute ? ev.minute + '\'' : ''} (${ev.detail || 'Goal'})`;
+            } else {
+              latestEventText = `${ev.detail || ev.player || ''} ${ev.minute ? ev.minute + '\'' : ''}`;
+            }
+          } else if (match.goals && match.goals.length > 0) {
+            const g = match.goals[match.goals.length - 1];
+            latestEventText = `⚽ ${g.player} ${g.minute ? g.minute + '\'' : ''}`;
+          }
+
+          return `
+            <div class="live-match-banner-card" id="live-spotlight-${match.id}">
+              <div class="live-banner-top">
+                <div class="live-flashing-badge">
+                  <span class="live-beacon">
+                    <span class="live-dot-ping"></span>
+                    <span class="live-dot-core"></span>
+                  </span>
+                  <span class="live-badge-text">LIVE ${match.time_live ? match.time_live : ''}</span>
+                </div>
+                <div class="live-banner-league">
+                  ${compLogo ? `<img src="${compLogo}" alt="${compName}">` : ''}
+                  <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
+                </div>
+              </div>
+
+              <div class="live-banner-main">
+                <div class="live-banner-team home">
+                  <span class="live-banner-team-name ${isChelseaHome ? 'chelsea-gold' : ''}">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
+                  <img src="${match.home_logo}" alt="${match.home_team}" class="live-banner-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+                </div>
+
+                <div class="live-banner-score-wrap">
+                  <div class="live-banner-score">
+                    <span>${sHome}</span>
+                    <span class="live-banner-score-divider">-</span>
+                    <span>${sAway}</span>
+                  </div>
+                  <div class="live-banner-minute-label">
+                    <span class="live-beacon" style="width:6px; height:6px;">
+                      <span class="live-dot-ping"></span>
+                      <span class="live-dot-core" style="width:4px; height:4px;"></span>
+                    </span>
+                    <span>${match.time_live || 'IN PROGRESS'}</span>
+                  </div>
+                </div>
+
+                <div class="live-banner-team away">
+                  <img src="${match.away_logo}" alt="${match.away_team}" class="live-banner-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+                  <span class="live-banner-team-name ${isChelseaAway ? 'chelsea-gold' : ''}">${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
+                </div>
+              </div>
+
+              ${latestEventText ? `
+                <div class="live-banner-events-ticker">
+                  <span>${latestEventText}</span>
+                </div>
+              ` : ''}
+
+              <div class="live-banner-footer">
+                <div class="live-banner-venue">
+                  <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
+                  <span>${match.venue || 'Stadium'}</span>
+                </div>
+                <a href="match-detail.html?id=${match.id}" class="live-banner-cta">
+                  <span>${isTh ? 'ดูการแข่งขันสด & สถิติ' : 'View Live Match & Stats'}</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        spotlightContainer.style.display = 'block';
+      }
     }
 
     // ---------- RENDER FIXTURES (CARDS) ----------
@@ -427,6 +566,7 @@
         const compLogo = match.competition_logo;
         const teamBadge = match.team_type || 'M';
         const teamBadgeClass = teamBadge.toLowerCase();
+        const isLive = match.status === 'live';
         
         let channelsIcons = '';
         if (match.channels && match.channels.length > 0) {
@@ -454,9 +594,20 @@
         if (isChelseaAway) awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
 
         return `
-        <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+        <a href="match-detail.html?id=${match.id}" class="card-link match-card ${isLive ? 'is-live' : ''}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
           <div class="match-card-top">
-            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
+            <div class="match-card-date" style="display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap;">
+              ${isLive ? `
+                <span class="live-flashing-badge mini">
+                  <span class="live-beacon">
+                    <span class="live-dot-ping"></span>
+                    <span class="live-dot-core"></span>
+                  </span>
+                  <span class="live-badge-text">LIVE ${match.time_live || ''}</span>
+                </span>
+              ` : ''}
+              <span style="display:inline-flex; align-items:center;"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</span>
+            </div>
             <div class="match-card-league">
               ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
               <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
@@ -474,7 +625,7 @@
             </div>
             
             <div class="match-card-timebox">
-              ${match.status === 'live' ? `<span style="color:var(--primary-color);">${match.home_score||0} - ${match.away_score||0}</span>` : `<span>${displayTime}</span>`}
+              ${isLive ? `<span style="color:#ef4444; font-weight:800;">${match.home_score||0} - ${match.away_score||0}</span>` : `<span>${displayTime}</span>`}
             </div>
             
             <div class="match-card-team away">
@@ -484,7 +635,17 @@
           </div>
           
           <div class="match-card-footer">
-            <span class="match-card-footer-text">${match.status === 'live' ? 'LIVE NOW' : ''}</span>
+            <span class="match-card-footer-text" style="${isLive ? 'color:#ef4444; font-weight:700;' : ''}">
+              ${isLive ? `
+                <span class="live-flashing-badge mini">
+                  <span class="live-beacon">
+                    <span class="live-dot-ping"></span>
+                    <span class="live-dot-core"></span>
+                  </span>
+                  <span class="live-badge-text">LIVE ${match.time_live || 'NOW'}</span>
+                </span>
+              ` : ''}
+            </span>
             <div class="match-card-providers">
               ${channelsIcons}
             </div>
@@ -620,6 +781,18 @@
     document.addEventListener('DOMContentLoaded', () => {
       loadAllData();
       fetchChelseaNews();
+    });
+
+    window.addEventListener('languageChanged', () => {
+      if (window.liveMatchesGlobal) {
+        renderLiveSpotlight(window.liveMatchesGlobal);
+      }
+      if (window.fixturesGlobal) {
+        renderFixtures(window.fixturesGlobal.slice(0, 6));
+      }
+      if (window.resultsGlobal) {
+        renderResults(window.resultsGlobal.slice(0, 6));
+      }
     });
   </script>
 </body>
