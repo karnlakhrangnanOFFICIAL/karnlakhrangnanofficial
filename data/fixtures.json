@@ -3380,6 +3380,184 @@
     "goals": [],
     "events": [],
     "competition_name": "league-cup",
-    "team_type": "M"
+    "team_type": "M",
+    "lineups": {
+      "home": {
+        "manager": "Xabi Alonso",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 39,
+            "name": "Mike Penders (GK)"
+          },
+          {
+            "number": 34,
+            "name": "Josh-Kofi Acheampong"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto"
+          },
+          {
+            "number": 31,
+            "name": "Ronnie Watson"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco"
+          },
+          {
+            "number": 29,
+            "name": "Pep Chavarría"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão Willian"
+          },
+          {
+            "number": 11,
+            "name": "Jamie Gittens"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Emiliano Martínez (GK)"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana"
+          },
+          {
+            "number": 24,
+            "name": "Reece James"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda"
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers"
+          },
+          {
+            "number": 9,
+            "name": "João Pedro"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Daniel Farke",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 16,
+            "name": "Michael Zetterer (GK)"
+          },
+          {
+            "number": 5,
+            "name": "Tarik Muharemovic"
+          },
+          {
+            "number": 15,
+            "name": "Jaka Bijol"
+          },
+          {
+            "number": 24,
+            "name": "James Justin"
+          },
+          {
+            "number": 26,
+            "name": "Mitchel Bard"
+          },
+          {
+            "number": 8,
+            "name": "Sean Longstaff"
+          },
+          {
+            "number": 4,
+            "name": "Ethan Ampadu"
+          },
+          {
+            "number": 7,
+            "name": "Daniel James"
+          },
+          {
+            "number": 11,
+            "name": "Brenden Aaronson"
+          },
+          {
+            "number": 10,
+            "name": "Harry Wilson"
+          },
+          {
+            "number": 14,
+            "name": "Lukas Nmecha"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "James Trafford (GK)"
+          },
+          {
+            "number": 3,
+            "name": "Gabriel Gudmundsson"
+          },
+          {
+            "number": 30,
+            "name": "Nico Elvedi"
+          },
+          {
+            "number": 2,
+            "name": "Jayden Bogle"
+          },
+          {
+            "number": 22,
+            "name": "Ao Tanaka"
+          },
+          {
+            "number": 18,
+            "name": "Anton Stach"
+          },
+          {
+            "number": 19,
+            "name": "Noah Okafor"
+          },
+          {
+            "number": 9,
+            "name": "Dominic Calvert-Lewin"
+          },
+          {
+            "number": 23,
+            "name": "Jean-Matteo Bahoya"
+          }
+        ]
+      }
+    }
   }
 ]
