@@ -3374,9 +3374,9 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "live",
-    "time_live": "82'",
-    "home_score": 5,
+    "status": "completed",
+    "time_live": "FT",
+    "home_score": 6,
     "away_score": 3,
     "efl_id": "g2685176",
     "goals": [
@@ -3419,6 +3419,11 @@
         "team": "home",
         "player": "Valentín Barco",
         "minute": 80
+      },
+      {
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 90
       }
     ],
     "events": [
@@ -3574,6 +3579,20 @@
         "player": "Valentín Barco",
         "minute": 80,
         "detail": "Goal (5-3)"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "MANAGER: Xabi Alonso",
+        "minute": 82,
+        "detail": "Dissent"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 90,
+        "detail": "Goal (6-3, 90'+4')"
       }
     ],
     "competition_name": "league-cup",
@@ -3760,32 +3779,32 @@
     "stats": [
       {
         "name": "ครองบอล (Possession)",
-        "home": 51.1,
-        "away": 48.9,
+        "home": 49.4,
+        "away": 50.6,
         "isPercentage": true
       },
       {
         "name": "โอกาสยิง (Shots)",
-        "home": 13,
-        "away": 14,
+        "home": 16,
+        "away": 18,
         "isPercentage": false
       },
       {
         "name": "ยิงตรงกรอบ (Shots on Target)",
-        "home": 7,
+        "home": 8,
         "away": 6,
         "isPercentage": false
       },
       {
         "name": "เตะมุม (Corners)",
-        "home": 2,
+        "home": 3,
         "away": 5,
         "isPercentage": false
       },
       {
         "name": "ทำฟาวล์ (Fouls)",
         "home": 6,
-        "away": 9,
+        "away": 10,
         "isPercentage": false
       }
     ],
@@ -3855,7 +3874,19 @@
           },
           {
             "minute": "82'",
-            "text": "⚡ <strong>แมตช์ประวัติศาสตร์ (82'):</strong> เชลซี 5 - 3 ลีดส์ ยูไนเต็ด รวม 8 ประตูในเกมเดียวสุดบ้าคลั่ง!"
+            "text": "🟨 <strong>ใบเหลือง (เชลซี):</strong> MANAGER: Xabi Alonso ได้รับใบเหลืองจากการประท้วงผู้ตัดสิน (Dissent)"
+          },
+          {
+            "minute": "90'+4'",
+            "text": "⚽ <strong>เชตซียิงปิดกล่อง! (6-3):</strong> Danny Welbeck ซัดประตูที่สองของตัวเองในเกมนี้ในช่วงทดเวลาบาดเจ็บ! เชลซีหนีห่างเป็น 6-3!"
+          },
+          {
+            "minute": "90'+",
+            "text": "⏰ <strong>เข้าสู่ช่วงทดเวลาบาดเจ็บ:</strong> เกมกำลังจะจบลงด้วยชัยชนะอันท่วมท้นของเชลซี"
+          },
+          {
+            "minute": "FT",
+            "text": "🏁 <strong>จบการแข่งขัน (Full-Time):</strong> เชลซี เปิดบ้านเอาชนะ ลีดส์ ยูไนเต็ด ไปด้วยสกอร์สุดมันส์ 6-3!"
           }
         ]
       }

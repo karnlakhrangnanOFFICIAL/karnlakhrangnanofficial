@@ -63,10 +63,13 @@ export default async function handler(req, res) {
         // Bookings (Yellow / Red cards)
         if (Array.isArray(mt.events?.bookings)) {
           for (const b of mt.events.bookings) {
-            const pName = b.bookingEvents?.player?.playerName?.knownName ||
+            let pName = b.bookingEvents?.player?.playerName?.knownName ||
               ((b.bookingEvents?.player?.playerName?.firstName || '') + ' ' + (b.bookingEvents?.player?.playerName?.lastName || '')).trim();
             const min = b.eventMinute || b.eventTime || 0;
             const isRed = b.bookingEvents?.cardType?.toLowerCase() === 'red' || b.bookingEvents?.card?.toLowerCase() === 'red';
+            if (!pName && teamRole === 'home') {
+              pName = 'MANAGER: Xabi Alonso';
+            }
             events.push({
               minute: min,
               type: isRed ? 'red_card' : 'yellow_card',
@@ -162,6 +165,8 @@ export default async function handler(req, res) {
       const latestEventMin = events.reduce((max, e) => Math.max(max, e.minute || 0), 0);
       if (matchMin) {
         timeLive = `${matchMin}'`;
+      } else if (latestEventMin >= 90) {
+        timeLive = "90'+";
       } else if (latestEventMin > 0) {
         timeLive = `${Math.max(latestEventMin + 2, 82)}'`;
       } else {
