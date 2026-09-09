@@ -3375,13 +3375,50 @@
       }
     ],
     "status": "live",
-    "home_score": 0,
-    "away_score": 1,
+    "time_live": "82'",
+    "home_score": 5,
+    "away_score": 3,
+    "efl_id": "g2685176",
     "goals": [
       {
         "team": "away",
         "player": "Tarik Muharemovic",
         "minute": 23
+      },
+      {
+        "team": "away",
+        "player": "Brenden Aaronson",
+        "minute": 48
+      },
+      {
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 53
+      },
+      {
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 55
+      },
+      {
+        "team": "home",
+        "player": "Pedro Neto",
+        "minute": 60
+      },
+      {
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 65
+      },
+      {
+        "team": "away",
+        "player": "Dominic Calvert-Lewin",
+        "minute": 75
+      },
+      {
+        "team": "home",
+        "player": "Valentín Barco",
+        "minute": 80
       }
     ],
     "events": [
@@ -3393,11 +3430,150 @@
         "detail": "Goal (0-1)"
       },
       {
+        "type": "substitution",
+        "team": "home",
+        "player": "Reece James",
+        "player_in": "Reece James",
+        "player_out": "Ronnie Watson",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "player_in": "Morgan Rogers",
+        "player_out": "Malo Gusto",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Cole Palmer",
+        "player_in": "Cole Palmer",
+        "player_out": "Jamie Gittens",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Pedro Neto",
+        "player_in": "Pedro Neto",
+        "player_out": "Estêvão Willian",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
         "type": "yellow_card",
         "team": "home",
         "player": "Ronnie Watson",
         "minute": 46,
         "detail": "Foul (45'+1')"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Brenden Aaronson",
+        "minute": 48,
+        "detail": "Goal (0-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 53,
+        "detail": "Penalty (1-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 55,
+        "detail": "Goal (2-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Pedro Neto",
+        "minute": 60,
+        "detail": "Goal (3-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 65,
+        "detail": "Goal (4-2)"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Anton Stach",
+        "player_in": "Anton Stach",
+        "player_out": "Daniel James",
+        "minute": 66,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Dominic Calvert-Lewin",
+        "player_in": "Dominic Calvert-Lewin",
+        "player_out": "Lukas Nmecha",
+        "minute": 66,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Noah Okafor",
+        "player_in": "Noah Okafor",
+        "player_out": "Brenden Aaronson",
+        "minute": 67,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Ao Tanaka",
+        "player_in": "Ao Tanaka",
+        "player_out": "Sean Longstaff",
+        "minute": 67,
+        "detail": "Tactical"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Dominic Calvert-Lewin",
+        "minute": 75,
+        "detail": "Goal (4-3)"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "player_in": "Wesley Fofana",
+        "player_out": "Levi Colwill",
+        "minute": 76,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Gabriel Gudmundsson",
+        "player_in": "Gabriel Gudmundsson",
+        "player_out": "Melvin Bard",
+        "minute": 78,
+        "detail": "Tactical"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Valentín Barco",
+        "minute": 80,
+        "detail": "Goal (5-3)"
       }
     ],
     "competition_name": "league-cup",
@@ -3580,36 +3756,36 @@
         ]
       }
     },
-    "time_live": "HT (45'+1)",
+    "time_live": "82'",
     "stats": [
       {
-        "name": "เตะมุม (Corners)",
-        "home": 2,
-        "away": 4,
-        "isPercentage": false
-      },
-      {
-        "name": "ทำฟาวล์ (Fouls)",
-        "home": 2,
-        "away": 4,
-        "isPercentage": false
-      },
-      {
         "name": "ครองบอล (Possession)",
-        "home": 51.8,
-        "away": 48.2,
+        "home": 51.1,
+        "away": 48.9,
         "isPercentage": true
       },
       {
         "name": "โอกาสยิง (Shots)",
-        "home": 5,
-        "away": 9,
+        "home": 13,
+        "away": 14,
         "isPercentage": false
       },
       {
         "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 7,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
         "home": 2,
-        "away": 4,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 6,
+        "away": 9,
         "isPercentage": false
       }
     ],
@@ -3622,12 +3798,64 @@
             "text": "⚽ <strong>ประตู! (0-1):</strong> Tarik Muharemovic ยิงให้ ลีดส์ ยูไนเต็ด ขึ้นนำ เชลซี 0-1"
           },
           {
+            "minute": "45'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (เชลซี):</strong> เชลซีแก้เกมเปลี่ยน 4 คนรวด! Reece James, Morgan Rogers, Cole Palmer, Pedro Neto ลงสนามแทน Ronnie Watson, Malo Gusto, Jamie Gittens, Estêvão"
+          },
+          {
             "minute": "45'+1'",
             "text": "🟨 <strong>ใบเหลือง:</strong> Ronnie Watson (เชลซี) ได้รับใบเหลืองจากการตัดฟาวล์"
           },
           {
             "minute": "HT",
-            "text": "⏸️ <strong>จบครึ่งแรก (Half-Time):</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด | เชลซีครองบอล 51.8% โอกาสยิง 5 ครั้ง (ตรงกรอบ 2) ส่วนลีดส์ ยูไนเต็ด ครองบอล 48.2% โอกาสยิง 9 ครั้ง (ตรงกรอบ 4) และได้ประตูนำ 1-0 จาก Tarik Muharemovic ในนาทีที่ 23'"
+            "text": "⏸️ <strong>จบครึ่งแรก (Half-Time):</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด"
+          },
+          {
+            "minute": "48'",
+            "text": "⚽ <strong>ประตู! (0-2):</strong> Brenden Aaronson ทำประตูให้ ลีดส์ ยูไนเต็ด หนีห่างเป็น 0-2"
+          },
+          {
+            "minute": "53'",
+            "text": "⚽ <strong>ประตู! จุดโทษ (1-2):</strong> Cole Palmer สังหารจุดโทษเข้าไปอย่างเฉียบขาด เชลซีไล่มาเป็น 1-2!"
+          },
+          {
+            "minute": "55'",
+            "text": "⚽ <strong>ประตูตีเสมอสุดดราม่า! (2-2):</strong> Cole Palmer ยิงเบิ้ลลูกที่สองในรอบ 2 นาที! เชลซีตามตีเสมอ ลีดส์ ยูไนเต็ด 2-2 สำเร็จ!"
+          },
+          {
+            "minute": "60'",
+            "text": "⚽ <strong>แซงนำเหลือเชื่อ! (3-2):</strong> Pedro Neto ซัดประตูช่วยให้ เชลซี พลิกกลับมาแซงนำ 3-2 จากตามหลัง 0-2!"
+          },
+          {
+            "minute": "65'",
+            "text": "⚽ <strong>ประตูฉีกหนี! (4-2):</strong> Danny Welbeck ซัดประตูที่ 4 ให้ เชลซี ทะยานนำ ลีดส์ ยูไนเต็ด เป็น 4-2! รัว 4 ประตูรวดใน 12 นาที!"
+          },
+          {
+            "minute": "66'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Anton Stach และ Dominic Calvert-Lewin ลงสนามแทน Daniel James และ Lukas Nmecha"
+          },
+          {
+            "minute": "67'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Noah Okafor และ Ao Tanaka ลงสนามแทน Brenden Aaronson และ Sean Longstaff"
+          },
+          {
+            "minute": "75'",
+            "text": "⚽ <strong>ลีดส์ไล่จี้มา! (4-3):</strong> Dominic Calvert-Lewin ตัวสำรองยิงประตูให้ ลีดส์ ยูไนเต็ด ไล่ตามมาเป็น 4-3!"
+          },
+          {
+            "minute": "76'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (เชลซี):</strong> Wesley Fofana ลงสนามขันเกมรับแทน Levi Colwill"
+          },
+          {
+            "minute": "78'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Gabriel Gudmundsson ลงสนามแทน Melvin Bard"
+          },
+          {
+            "minute": "80'",
+            "text": "⚽ <strong>ประตูตอกย้ำชัยชนะ! (5-3):</strong> Valentín Barco ยิงประตูที่ 5 ให้ เชลซี ฉีกหนี ลีดส์ ยูไนเต็ด เป็น 5-3!"
+          },
+          {
+            "minute": "82'",
+            "text": "⚡ <strong>แมตช์ประวัติศาสตร์ (82'):</strong> เชลซี 5 - 3 ลีดส์ ยูไนเต็ด รวม 8 ประตูในเกมเดียวสุดบ้าคลั่ง!"
           }
         ]
       }

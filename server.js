@@ -35,12 +35,18 @@ app.get('/api/news', (req, res) => {
 
 import wslStandingsHandler from './api/wsl-standings.js';
 import eplStandingsHandler from './api/epl-standings.js';
+import eflMatchHandler from './api/efl-match.js';
+
 app.get('/api/epl-standings', (req, res) => {
   eplStandingsHandler(req, res);
 });
 
 app.get('/api/wsl-standings', (req, res) => {
   wslStandingsHandler(req, res);
+});
+
+app.get('/api/efl-match', (req, res) => {
+  eflMatchHandler(req, res);
 });
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));

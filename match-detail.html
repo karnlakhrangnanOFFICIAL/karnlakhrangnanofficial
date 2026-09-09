@@ -638,15 +638,26 @@
     }
     .player-name-wrap {
       flex: 1;
+      display: flex;
+      align-items: center;
     }
     .player-name-wrap a {
-      color: var(--ink);
+      color: var(--gold, #d4af37);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
     .player-name-wrap a:hover {
-      color: var(--gold);
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+      transform: translateX(3px);
+    }
+    .player-name-wrap span.non-link {
+      color: var(--ink);
+      font-weight: 500;
     }
 
     /* Video Tab */
@@ -748,6 +759,7 @@
     let playerImageMap = {};
     let playerIdMap = {};
     let playerTeamMap = {};
+    let playerNumberMap = {};
 
     function normalizeName(str) {
       if (!str) return '';
@@ -785,12 +797,28 @@
       return `assets/images/players/men/${slug}.webp`;
     }
 
-    function getPlayerIdByName(playerName) {
-      if (!playerName) return '';
+    function getPlayerIdByName(playerName, playerNumber, teamType = 'men') {
+      if (playerNumber) {
+        if (teamType && playerNumberMap[`${teamType}_${playerNumber}`]) {
+          return playerNumberMap[`${teamType}_${playerNumber}`];
+        }
+        if (playerNumberMap[`men_${playerNumber}`]) return playerNumberMap[`men_${playerNumber}`];
+        if (playerNumberMap[`women_${playerNumber}`]) return playerNumberMap[`women_${playerNumber}`];
+      }
+      if (!playerName) return null;
       const norm = normalizeName(playerName);
       if (playerIdMap[norm]) return playerIdMap[norm];
       for (const [k, idVal] of Object.entries(playerIdMap)) {
         if (norm === k) return idVal;
+      }
+      const parts = norm.split(' ').filter(p => p.length > 2);
+      for (const part of parts) {
+        if (playerIdMap[part]) return playerIdMap[part];
+      }
+      for (const [k, idVal] of Object.entries(playerIdMap)) {
+        if (k.length > 2 && (norm.includes(k) || k.includes(norm))) {
+          return idVal;
+        }
       }
       return null;
     }
@@ -799,6 +827,10 @@
       if (!playerName) return defaultTeam || 'men';
       const norm = normalizeName(playerName);
       if (playerTeamMap[norm]) return playerTeamMap[norm];
+      const parts = norm.split(' ').filter(p => p.length > 2);
+      for (const part of parts) {
+        if (playerTeamMap[part]) return playerTeamMap[part];
+      }
       for (const [k, teamVal] of Object.entries(playerTeamMap)) {
         if (norm.includes(k) || k.includes(norm)) return teamVal;
       }
@@ -932,7 +964,10 @@
               if (p.name) {
                 const n = normalizeName(p.name);
                 if (p.image) playerImageMap[n] = p.image;
-                if (p.id) playerIdMap[n] = p.id;
+                if (p.id) {
+                  playerIdMap[n] = p.id;
+                  if (p.number) playerNumberMap[`men_${p.number}`] = p.id;
+                }
                 playerTeamMap[n] = 'men';
                 const parts = n.split(' ');
                 if (parts.length > 1) {
@@ -963,7 +998,10 @@
               if (p.name) {
                 const n = normalizeName(p.name);
                 if (p.image) playerImageMap[n] = p.image;
-                if (p.id) playerIdMap[n] = p.id;
+                if (p.id) {
+                  playerIdMap[n] = p.id;
+                  if (p.number) playerNumberMap[`women_${p.number}`] = p.id;
+                }
                 playerTeamMap[n] = 'women';
                 const parts = n.split(' ');
                 if (parts.length > 1) {
@@ -1001,11 +1039,100 @@
           return;
         }
 
+        // Real-Time Sync from EFL API if match is m46 or has efl_id
+        if (match.id === 'm46' || match.efl_id) {
+          try {
+            const fixtureId = match.efl_id || 'g2685176';
+            const eflRes = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+            if (eflRes.ok) {
+              const eflJson = await eflRes.json();
+              if (eflJson.success && eflJson.data) {
+                applyEflLiveData(match, eflJson.data);
+              }
+            }
+          } catch (e) {
+            console.warn('EFL live fetch error:', e);
+          }
+        }
+
         renderMatchDetail(match, container);
+        startRealTimeSync(match);
       } catch (error) {
         console.error(error);
         container.innerHTML = '<div class="empty-tab-box"><p>⚠️ ไม่สามารถโหลดข้อมูลได้ในขณะนี้</p></div>';
       }
+    }
+
+    function applyEflLiveData(match, live) {
+      if (!match || !live) return;
+      if (live.status) match.status = live.status;
+      if (live.time_live) match.time_live = live.time_live;
+      if (live.home_score !== undefined && live.home_score !== null) match.home_score = live.home_score;
+      if (live.away_score !== undefined && live.away_score !== null) match.away_score = live.away_score;
+      if (live.goals && Array.isArray(live.goals) && live.goals.length > 0) match.goals = live.goals;
+      if (live.events && Array.isArray(live.events) && live.events.length > 0) match.events = live.events;
+      if (live.stats && Array.isArray(live.stats) && live.stats.length > 0) match.stats = live.stats;
+    }
+
+    let livePollInterval = null;
+    function startRealTimeSync(match) {
+      if (livePollInterval) {
+        clearInterval(livePollInterval);
+        livePollInterval = null;
+      }
+      if (!match || (match.id !== 'm46' && !match.efl_id)) return;
+      if (match.status !== 'live') return;
+
+      const fixtureId = match.efl_id || 'g2685176';
+      livePollInterval = setInterval(async () => {
+        try {
+          const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+          if (!res.ok) return;
+          const json = await res.json();
+          if (!json.success || !json.data) return;
+          const live = json.data;
+
+          const oldScore = `${match.home_score}-${match.away_score}`;
+          const newScore = `${live.home_score}-${live.away_score}`;
+          const scoreChanged = oldScore !== newScore;
+          const oldEventsCount = (match.events || []).length;
+          const newEventsCount = (live.events || []).length;
+
+          applyEflLiveData(match, live);
+
+          // Update Scoreboard Header
+          const scoreMainEl = document.getElementById('scoreMain');
+          if (scoreMainEl) {
+            scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
+          }
+          const liveBadgeWrapEl = document.getElementById('liveBadgeWrap');
+          if (liveBadgeWrapEl) {
+            liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${match.time_live || 'LIVE'}</div>`;
+          }
+
+          // Update Stats Tab
+          const statsTabEl = document.getElementById('tab-stats');
+          if (statsTabEl && match.stats) {
+            statsTabEl.innerHTML = generateMatchStatsHTML(match.stats, match.home_team, match.away_team);
+          }
+
+          // If score changed or new events, re-render full details to refresh timeline and goalscorers
+          if (scoreChanged || newEventsCount !== oldEventsCount) {
+            const container = document.getElementById('matchContent');
+            if (container) {
+              const activeBtn = document.querySelector('.tab-btn.active');
+              const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+              renderMatchDetail(match, container);
+              if (activeTarget) {
+                const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                if (newBtn) newBtn.click();
+              }
+            }
+          }
+        } catch (err) {
+          console.warn('Real-time sync error:', err);
+        }
+      }, 15000);
     }
 
     // ---------- Render Match Detail ----------
@@ -1320,13 +1447,13 @@
         const awayL = match.lineups.away || { starting: [], substitutes: [], manager: '-' };
 
         const renderPlayerRow = (p, isChelsea) => {
-          let pNameDisplay = p.name;
+          let pNameDisplay = `<span class="non-link">${p.name}</span>`;
           if (isChelsea) {
             const cleanName = p.name.replace(/\s*\(GK\)/i, '').replace(/\s*\(C\)/i, '').trim();
-            const pId = getPlayerIdByName(cleanName);
+            const pId = getPlayerIdByName(cleanName, p.number, teamType);
             const pTeam = getPlayerTeamByName(cleanName, teamType);
             if (pId) {
-              pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}">${p.name}</a>`;
+              pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${p.name}</a>`;
             }
           }
           return `
@@ -1433,8 +1560,8 @@
               </h2>
             </div>
             <div class="score-center-box">
-              <div class="score-main">${sHome} - ${sAway}</div>
-              ${statusBadge}
+              <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
+              <div id="liveBadgeWrap">${statusBadge}</div>
             </div>
             <div class="team-box">
               <img src="${match.away_logo}" alt="${match.away_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
