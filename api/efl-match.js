@@ -189,7 +189,18 @@ export default async function handler(req, res) {
         away_score: awayScore,
         goals,
         events,
-        stats
+        stats,
+        youtube_id: '7tYEgY-rbZc',
+        video: {
+          id: '7tYEgY-rbZc',
+          title: 'Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27',
+          desc_th: 'ไฮไลท์การแข่งขัน เชลซี 6-3 ลีดส์ ยูไนเต็ด | คาราบาว คัพ 2026/27',
+          desc_en: 'Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27',
+          credit: 'Thank you to the Chelsea Football Club channel for the excellent match highlights content.',
+          channel_name: 'Chelsea Football Club',
+          channel_handle: '@chelseafc',
+          channel_url: 'https://www.youtube.com/@chelseafc'
+        }
       }
     });
   } catch (err) {

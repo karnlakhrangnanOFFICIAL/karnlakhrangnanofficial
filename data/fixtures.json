@@ -2123,6 +2123,17 @@
     "status": "completed",
     "home_score": 1,
     "away_score": 1,
+    "youtube_id": "7epDVB4Yubw",
+    "video": {
+      "id": "7epDVB4Yubw",
+      "title": "Chelsea Women 1-1 Aston Villa Women | HIGHLIGHTS | WSL 26/27",
+      "desc_th": "ไฮไลท์การแข่งขัน เชลซี วูเมน 1-1 แอสตัน วิลล่า วูเมน | บาร์เคลย์ส วีเมนส์ ซูเปอร์ลีก 2026/27",
+      "desc_en": "Chelsea Women 1-1 Aston Villa Women | HIGHLIGHTS | WSL 26/27",
+      "credit": "Thank you to the Chelsea Football Club channel for the excellent match highlights content.",
+      "channel_name": "Chelsea FC Women",
+      "channel_handle": "@chelseafcwomen",
+      "channel_url": "https://www.youtube.com/@chelseafcwomen"
+    },
     "goals": [
       {
         "team": "home",
@@ -3379,6 +3390,17 @@
     "home_score": 6,
     "away_score": 3,
     "efl_id": "g2685176",
+    "youtube_id": "7tYEgY-rbZc",
+    "video": {
+      "id": "7tYEgY-rbZc",
+      "title": "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
+      "desc_th": "ไฮไลท์การแข่งขัน เชลซี 6-3 ลีดส์ ยูไนเต็ด | คาราบาว คัพ 2026/27",
+      "desc_en": "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
+      "credit": "Thank you to the Chelsea Football Club channel for the excellent match highlights content.",
+      "channel_name": "Chelsea Football Club",
+      "channel_handle": "@chelseafc",
+      "channel_url": "https://www.youtube.com/@chelseafc"
+    },
     "goals": [
       {
         "team": "away",
