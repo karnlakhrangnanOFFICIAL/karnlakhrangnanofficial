@@ -560,13 +560,13 @@
         "type": "yellow_card",
         "team": "away",
         "player": "João Pedro",
-        "minute": 15
+        "minute": 14
       },
       {
         "type": "goal",
         "team": "home",
         "player": "Kai Havertz",
-        "minute": 24,
+        "minute": 25,
         "detail": "Assist: Declan Rice"
       },
       {
@@ -579,19 +579,19 @@
         "type": "goal",
         "team": "home",
         "player": "Martin Ødegaard",
-        "minute": 49,
+        "minute": 50,
         "detail": "Assist: Christos Tzolis"
-      },
-      {
-        "type": "yellow_card",
-        "team": "away",
-        "player": "Maxence Lacroix",
-        "minute": 58
       },
       {
         "type": "yellow_card",
         "team": "home",
         "player": "Christos Tzolis",
+        "minute": 58
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Maxence Lacroix",
         "minute": 58
       },
       {
@@ -620,7 +620,7 @@
         "team": "home",
         "player_in": "Martín Zubimendi",
         "player_out": "Myles Lewis-Skelly",
-        "minute": 69
+        "minute": 67
       },
       {
         "type": "substitution",
@@ -634,27 +634,27 @@
         "team": "home",
         "player_in": "Viktor Gyökeres",
         "player_out": "Kai Havertz",
-        "minute": 79
+        "minute": 78
       },
       {
         "type": "substitution",
         "team": "away",
         "player_in": "Estêvão",
         "player_out": "Pedro Neto",
-        "minute": 82
+        "minute": 81
       },
       {
         "type": "yellow_card",
         "team": "away",
         "player": "Morgan Rogers",
-        "minute": 87
+        "minute": 83
       },
       {
         "type": "substitution",
         "team": "away",
         "player_in": "Danny Welbeck",
         "player_out": "Morgan Rogers",
-        "minute": 88
+        "minute": 87
       },
       {
         "type": "substitution",
@@ -678,86 +678,86 @@
         "formation": "4-2-3-1",
         "starting": [
           {
-            "number": "",
+            "number": 1,
             "name": "David Raya (GK)"
           },
           {
-            "number": "",
+            "number": 4,
             "name": "Ben White"
           },
           {
-            "number": "",
+            "number": 15,
             "name": "Ezri Konsa"
           },
           {
-            "number": "",
-            "name": "Gabriel"
+            "number": 6,
+            "name": "Gabriel Magalhães"
           },
           {
-            "number": "",
+            "number": 33,
             "name": "Riccardo Calafiori"
           },
           {
-            "number": "",
-            "name": "Myles Lewis-Skelly"
-          },
-          {
-            "number": "",
+            "number": 41,
             "name": "Declan Rice"
           },
           {
-            "number": "",
+            "number": 49,
+            "name": "Myles Lewis-Skelly"
+          },
+          {
+            "number": 7,
             "name": "Bukayo Saka"
           },
           {
-            "number": "",
-            "name": "Martin Ødegaard"
+            "number": 8,
+            "name": "Martin Ødegaard (C)"
           },
           {
-            "number": "",
+            "number": 17,
             "name": "Christos Tzolis"
           },
           {
-            "number": "",
+            "number": 29,
             "name": "Kai Havertz"
           }
         ],
         "substitutes": [
           {
-            "number": "",
+            "number": 13,
             "name": "Kepa Arrizabalaga (GK)"
           },
           {
-            "number": "",
+            "number": 5,
             "name": "Piero Hincapié"
           },
           {
-            "number": "",
-            "name": "Max Dowman"
-          },
-          {
-            "number": "",
-            "name": "Bruno Guimarães"
-          },
-          {
-            "number": "",
-            "name": "Mikel Merino"
-          },
-          {
-            "number": "",
-            "name": "Martín Zubimendi"
-          },
-          {
-            "number": "",
+            "number": 10,
             "name": "Eberechi Eze"
           },
           {
-            "number": "",
+            "number": 14,
+            "name": "Viktor Gyökeres"
+          },
+          {
+            "number": 20,
             "name": "Noni Madueke"
           },
           {
-            "number": "",
-            "name": "Viktor Gyökeres"
+            "number": 23,
+            "name": "Mikel Merino"
+          },
+          {
+            "number": 36,
+            "name": "Martín Zubimendi"
+          },
+          {
+            "number": 39,
+            "name": "Bruno Guimarães"
+          },
+          {
+            "number": 56,
+            "name": "Max Dowman"
           }
         ]
       },
@@ -766,7 +766,7 @@
         "formation": "3-4-2-1",
         "starting": [
           {
-            "number": "",
+            "number": 1,
             "name": "Emiliano Martínez (GK)"
           },
           {
@@ -774,24 +774,24 @@
             "name": "Josh Acheampong"
           },
           {
-            "number": 3,
-            "name": "Wesley Fofana"
-          },
-          {
             "number": 5,
             "name": "Maxence Lacroix"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana"
           },
           {
             "number": 7,
             "name": "Pedro Neto"
           },
           {
-            "number": 24,
-            "name": "Reece James"
-          },
-          {
             "number": 45,
             "name": "Roméo Lavia"
+          },
+          {
+            "number": 24,
+            "name": "Reece James (C)"
           },
           {
             "number": 21,
@@ -806,7 +806,7 @@
             "name": "Morgan Rogers"
           },
           {
-            "number": "",
+            "number": 9,
             "name": "João Pedro"
           }
         ],
@@ -816,39 +816,65 @@
             "name": "Mike Penders (GK)"
           },
           {
-            "number": 6,
-            "name": "Levi Colwill"
-          },
-          {
-            "number": 29,
-            "name": "Pep Chavarría"
-          },
-          {
-            "number": 27,
-            "name": "Malo Gusto"
-          },
-          {
             "number": 4,
             "name": "Valentín Barco"
           },
           {
-            "number": 41,
-            "name": "Estêvão"
+            "number": 6,
+            "name": "Levi Colwill"
           },
           {
             "number": 11,
-            "name": "Jamie Bynoe-Gittens"
+            "name": "Jamie Gittens"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck"
           },
           {
             "number": 23,
             "name": "Geovany Quenda"
           },
           {
-            "number": 18,
-            "name": "Danny Welbeck"
+            "number": 27,
+            "name": "Malo Gusto"
+          },
+          {
+            "number": 29,
+            "name": "Pep Chavarría"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão"
           }
         ]
-      }
+      },
+      "officials": [
+        {
+          "role": "ผู้ตัดสิน (Referee)",
+          "name": "Chris Kavanagh"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน 1 (Assistant Referee 1)",
+          "name": "Dan Cook"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน 2 (Assistant Referee 2)",
+          "name": "Timothy Wood"
+        },
+        {
+          "role": "ผู้ตัดสินที่ 4 (Fourth Official)",
+          "name": "Thomas Bramall"
+        },
+        {
+          "role": "ผู้ตัดสิน VAR (Video Assistant Referee)",
+          "name": "Darren England"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน VAR (Assistant VAR)",
+          "name": "Constantine Hatzidakis"
+        }
+      ]
     },
     "commentary": [
       {
@@ -948,6 +974,1303 @@
             "text": "🏁 <strong>จบเกม:</strong> อาร์เซน่อล ชนะ เชลซี 2 - 1"
           }
         ]
+      }
+    ],
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 54.5,
+        "away": 45.5,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสทำประตูที่คาดหวัง (Expected Goals - xG)",
+        "home": 2.05,
+        "away": 0.39,
+        "isPercentage": false
+      },
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 16,
+        "away": 13,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 9,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงหลุดกรอบ (Shots off Target)",
+        "home": 1,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงติดบล็อก (Blocked Shots)",
+        "home": 6,
+        "away": 2,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงในกรอบเขตโทษ (Shots Inside Box)",
+        "home": 13,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงนอกกรอบเขตโทษ (Shots Outside Box)",
+        "home": 3,
+        "away": 8,
+        "isPercentage": false
+      },
+      {
+        "name": "ความแม่นยำในการส่งบอล (Passing Accuracy)",
+        "home": 84.6,
+        "away": 81.8,
+        "isPercentage": true
+      },
+      {
+        "name": "การส่งบอลทั้งหมด (Total Passes)",
+        "home": 461,
+        "away": 384,
+        "isPercentage": false
+      },
+      {
+        "name": "ส่งบอลสำเร็จ (Accurate Passes)",
+        "home": 390,
+        "away": 314,
+        "isPercentage": false
+      },
+      {
+        "name": "สัมผัสบอลทั้งหมด (Touches)",
+        "home": 634,
+        "away": 549,
+        "isPercentage": false
+      },
+      {
+        "name": "สัมผัสบอลในกรอบคู่แข่ง (Touches in Opp Box)",
+        "home": 44,
+        "away": 26,
+        "isPercentage": false
+      },
+      {
+        "name": "โอกาสทองที่สร้างได้ (Big Chances Created)",
+        "home": 3,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "พลาดโอกาสทอง (Big Chances Missed)",
+        "home": 3,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 5,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 3,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "เข้าปะทะสำเร็จ (Tackles Won)",
+        "home": 5,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "เคลียร์บอล (Clearances)",
+        "home": 24,
+        "away": 23,
+        "isPercentage": false
+      },
+      {
+        "name": "ตัดบอล (Interceptions)",
+        "home": 9,
+        "away": 7,
+        "isPercentage": false
+      },
+      {
+        "name": "ชนะการดวลกลางอากาศ (Aerial Duels Won)",
+        "home": 13,
+        "away": 16,
+        "isPercentage": false
+      },
+      {
+        "name": "เซฟของผู้รักษาประตู (Saves)",
+        "home": 4,
+        "away": 8,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls Conceded)",
+        "home": 13,
+        "away": 16,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 2,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      }
+    ],
+    "live_commentary": [
+      {
+        "id": 1,
+        "time": "",
+        "type": "lineup",
+        "text": "Lineups are announced and players are warming up.",
+        "team": null,
+        "isKey": false,
+        "timestamp": "2026-09-06 15:26:31"
+      },
+      {
+        "id": 2,
+        "time": "",
+        "type": "start",
+        "text": "First Half begins.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:30:45"
+      },
+      {
+        "id": 3,
+        "time": "1'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:31:24"
+      },
+      {
+        "id": 4,
+        "time": "1'",
+        "type": "free kick lost",
+        "text": "Foul by Ezri Konsa (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:31:24"
+      },
+      {
+        "id": 5,
+        "time": "2'",
+        "type": "goal",
+        "text": "Goal! Arsenal 0, Chelsea 1. Morgan Rogers (Chelsea) right footed shot from outside the box to the bottom left corner. Assisted by Jorrel Hato with a headed pass following a set piece situation.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 16:32:03"
+      },
+      {
+        "id": 6,
+        "time": "4'",
+        "type": "free kick won",
+        "text": "Kai Havertz (Arsenal) wins a free kick on the right wing.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:34:09"
+      },
+      {
+        "id": 7,
+        "time": "4'",
+        "type": "free kick lost",
+        "text": "Foul by Wesley Fofana (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:34:09"
+      },
+      {
+        "id": 8,
+        "time": "5'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Riccardo Calafiori (Arsenal) right footed shot from the centre of the box is saved in the centre of the goal by Emiliano Martínez (Chelsea). Assisted by Martin Ødegaard.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:35:02"
+      },
+      {
+        "id": 9,
+        "time": "5'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Gabriel Magalhães (Arsenal) right footed shot from the right side of the six yard box is saved in the bottom right corner by Emiliano Martínez (Chelsea).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:35:06"
+      },
+      {
+        "id": 10,
+        "time": "5'",
+        "type": "start delay",
+        "text": "Delay in match because of an injury Emiliano Martínez (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:35:42"
+      },
+      {
+        "id": 11,
+        "time": "6'",
+        "type": "end delay",
+        "text": "Delay over. They are ready to continue.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:36:32"
+      },
+      {
+        "id": 12,
+        "time": "8'",
+        "type": "corner",
+        "text": "Corner, Arsenal. Conceded by Wesley Fofana.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:37:51"
+      },
+      {
+        "id": 13,
+        "time": "8'",
+        "type": "offside",
+        "text": "Offside, Arsenal. Bukayo Saka is caught offside.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:38:43"
+      },
+      {
+        "id": 14,
+        "time": "10'",
+        "type": "free kick lost",
+        "text": "Foul by Myles Lewis-Skelly (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:39:47"
+      },
+      {
+        "id": 15,
+        "time": "10'",
+        "type": "free kick won",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the defensive half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:39:47"
+      },
+      {
+        "id": 16,
+        "time": "10'",
+        "type": "free kick won",
+        "text": "Bukayo Saka (Arsenal) wins a free kick in the attacking half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:40:44"
+      },
+      {
+        "id": 17,
+        "time": "10'",
+        "type": "free kick lost",
+        "text": "Foul by Jorrel Hato (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:40:44"
+      },
+      {
+        "id": 18,
+        "time": "12'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Gabriel Magalhães (Arsenal) right footed shot from the left side of the six yard box is saved in the centre of the goal by Emiliano Martínez (Chelsea).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:41:55"
+      },
+      {
+        "id": 19,
+        "time": "12'",
+        "type": "offside",
+        "text": "Offside, Arsenal. Ezri Konsa is caught offside.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:41:56"
+      },
+      {
+        "id": 20,
+        "time": "12'",
+        "type": "VAR cancelled goal",
+        "text": "GOAL OVERTURNED BY VAR: Riccardo Calafiori (Arsenal) scores but the goal is ruled out after a VAR review.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 16:41:59"
+      },
+      {
+        "id": 21,
+        "time": "13'",
+        "type": "contentious referee decisions",
+        "text": "VAR Decision: No Goal Arsenal 0-1 Chelsea.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 16:43:16"
+      },
+      {
+        "id": 22,
+        "time": "14'",
+        "type": "free kick won",
+        "text": "Ben White (Arsenal) wins a free kick in the defensive half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:43:57"
+      },
+      {
+        "id": 23,
+        "time": "14'",
+        "type": "free kick lost",
+        "text": "Foul by João Pedro (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:43:57"
+      },
+      {
+        "id": 24,
+        "time": "14'",
+        "type": "yellow card",
+        "text": "João Pedro (Chelsea) is shown the yellow card.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 16:44:04"
+      },
+      {
+        "id": 25,
+        "time": "15'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Kai Havertz (Arsenal) header from the left side of the six yard box is saved in the top left corner by Emiliano Martínez (Chelsea). Assisted by Martin Ødegaard.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:45:41"
+      },
+      {
+        "id": 26,
+        "time": "16'",
+        "type": "free kick lost",
+        "text": "Foul by Morgan Rogers (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:45:51"
+      },
+      {
+        "id": 27,
+        "time": "16'",
+        "type": "free kick won",
+        "text": "Ezri Konsa (Arsenal) wins a free kick in the attacking half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:45:51"
+      },
+      {
+        "id": 28,
+        "time": "18'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Bukayo Saka (Arsenal) right footed shot from a difficult angle on the right is saved in the bottom right corner by Emiliano Martínez (Chelsea). Assisted by Martin Ødegaard with a through ball.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:48:02"
+      },
+      {
+        "id": 29,
+        "time": "20'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Kai Havertz (Arsenal) left footed shot from the centre of the box is blocked. Assisted by Christos Tzolis with a cross.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:50:18"
+      },
+      {
+        "id": 30,
+        "time": "20'",
+        "type": "corner",
+        "text": "Corner, Arsenal. Conceded by Wesley Fofana.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:50:19"
+      },
+      {
+        "id": 31,
+        "time": "21'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Cole Palmer (Chelsea) left footed shot from outside the box is saved in the centre of the goal by David Raya (Arsenal). Assisted by Pedro Neto.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:51:41"
+      },
+      {
+        "id": 32,
+        "time": "23'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Reece James (Chelsea) right footed shot from outside the box is saved in the top centre of the goal by David Raya (Arsenal). Assisted by Wesley Fofana.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:53:00"
+      },
+      {
+        "id": 33,
+        "time": "23'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Martin Ødegaard (Arsenal) left footed shot from the centre of the box is blocked. Assisted by Kai Havertz.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:53:20"
+      },
+      {
+        "id": 34,
+        "time": "23'",
+        "type": "miss",
+        "text": "Attempt missed. João Pedro (Chelsea) right footed shot from very close range misses to the left. Assisted by Cole Palmer following a fast break.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:53:43"
+      },
+      {
+        "id": 35,
+        "time": "24'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Riccardo Calafiori (Arsenal) right footed shot from the centre of the box is blocked. Assisted by Myles Lewis-Skelly.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:54:12"
+      },
+      {
+        "id": 36,
+        "time": "25'",
+        "type": "goal",
+        "text": "Goal! Arsenal 1, Chelsea 1. Kai Havertz (Arsenal) left footed shot from outside the box to the bottom right corner. Assisted by Declan Rice.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 16:55:05"
+      },
+      {
+        "id": 37,
+        "time": "29'",
+        "type": "free kick won",
+        "text": "Bukayo Saka (Arsenal) wins a free kick on the left wing.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:59:36"
+      },
+      {
+        "id": 38,
+        "time": "29'",
+        "type": "free kick lost",
+        "text": "Foul by Wesley Fofana (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 16:59:36"
+      },
+      {
+        "id": 39,
+        "time": "30'",
+        "type": "free kick lost",
+        "text": "Foul by Riccardo Calafiori (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:00:22"
+      },
+      {
+        "id": 40,
+        "time": "30'",
+        "type": "free kick won",
+        "text": "Reece James (Chelsea) wins a free kick in the defensive half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:00:22"
+      },
+      {
+        "id": 41,
+        "time": "31'",
+        "type": "miss",
+        "text": "Attempt missed. Morgan Rogers (Chelsea) right footed shot from the left side of the box is close, but misses to the right. Assisted by João Pedro.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:01:08"
+      },
+      {
+        "id": 42,
+        "time": "32'",
+        "type": "free kick lost",
+        "text": "Foul by Wesley Fofana (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:01:48"
+      },
+      {
+        "id": 43,
+        "time": "32'",
+        "type": "free kick won",
+        "text": "Martin Ødegaard (Arsenal) wins a free kick in the attacking half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:01:48"
+      },
+      {
+        "id": 44,
+        "time": "34'",
+        "type": "miss",
+        "text": "Attempt missed. Myles Lewis-Skelly (Arsenal) left footed shot from the left side of the box is too high. Assisted by Christos Tzolis.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:03:52"
+      },
+      {
+        "id": 45,
+        "time": "35'",
+        "type": "free kick won",
+        "text": "Myles Lewis-Skelly (Arsenal) wins a free kick in the defensive half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:05:41"
+      },
+      {
+        "id": 46,
+        "time": "35'",
+        "type": "free kick lost",
+        "text": "Foul by Cole Palmer (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:05:41"
+      },
+      {
+        "id": 47,
+        "time": "36'",
+        "type": "miss",
+        "text": "Attempt missed. João Pedro (Chelsea) right footed shot from outside the box misses to the left. Assisted by Reece James.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:06:45"
+      },
+      {
+        "id": 48,
+        "time": "43'",
+        "type": "free kick lost",
+        "text": "Foul by Myles Lewis-Skelly (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:13:02"
+      },
+      {
+        "id": 49,
+        "time": "43'",
+        "type": "free kick won",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:13:02"
+      },
+      {
+        "id": 50,
+        "time": "43'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:13:22"
+      },
+      {
+        "id": 51,
+        "time": "43'",
+        "type": "free kick lost",
+        "text": "Foul by Declan Rice (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:13:22"
+      },
+      {
+        "id": 52,
+        "time": "44'",
+        "type": "free kick won",
+        "text": "Cole Palmer (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:14:30"
+      },
+      {
+        "id": 53,
+        "time": "44'",
+        "type": "free kick lost",
+        "text": "Foul by Myles Lewis-Skelly (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:14:30"
+      },
+      {
+        "id": 54,
+        "time": "45'",
+        "type": "free kick won",
+        "text": "Kai Havertz (Arsenal) wins a free kick in the attacking half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:15:15"
+      },
+      {
+        "id": 55,
+        "time": "45'",
+        "type": "free kick lost",
+        "text": "Foul by Cole Palmer (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:15:15"
+      },
+      {
+        "id": 56,
+        "time": "45'",
+        "type": "yellow card",
+        "text": "Cole Palmer (Chelsea) is shown the yellow card for a bad foul.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:15:18"
+      },
+      {
+        "id": 57,
+        "time": "45'",
+        "type": "added time",
+        "text": "Fourth official has announced 4 minutes of added time.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:15:46"
+      },
+      {
+        "id": 58,
+        "time": "45'+3'",
+        "type": "post",
+        "text": "Pedro Neto (Chelsea) hits the left post with a left footed shot from the right side of the box. Assisted by João Pedro following a fast break.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:18:28"
+      },
+      {
+        "id": 59,
+        "time": "45'+4'",
+        "type": "free kick won",
+        "text": "Ezri Konsa (Arsenal) wins a free kick in the defensive half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:19:15"
+      },
+      {
+        "id": 60,
+        "time": "45'+4'",
+        "type": "free kick lost",
+        "text": "Foul by João Pedro (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:19:15"
+      },
+      {
+        "id": 61,
+        "time": "45'+5'",
+        "type": "end 1",
+        "text": "First Half ends, Arsenal 1, Chelsea 1.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:20:32"
+      },
+      {
+        "id": 62,
+        "time": "",
+        "type": "start",
+        "text": "Second Half begins Arsenal 1, Chelsea 1.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:37:25"
+      },
+      {
+        "id": 63,
+        "time": "46'",
+        "type": "free kick lost",
+        "text": "Foul by Josh Acheampong (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:37:35"
+      },
+      {
+        "id": 64,
+        "time": "46'",
+        "type": "free kick won",
+        "text": "Christos Tzolis (Arsenal) wins a free kick on the left wing.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:37:35"
+      },
+      {
+        "id": 65,
+        "time": "48'",
+        "type": "free kick lost",
+        "text": "Foul by Reece James (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:39:58"
+      },
+      {
+        "id": 66,
+        "time": "48'",
+        "type": "free kick won",
+        "text": "Martin Ødegaard (Arsenal) wins a free kick on the right wing.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:39:58"
+      },
+      {
+        "id": 67,
+        "time": "49'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Bukayo Saka (Arsenal) left footed shot from outside the box is blocked. Assisted by Kai Havertz.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:40:55"
+      },
+      {
+        "id": 68,
+        "time": "50'",
+        "type": "goal",
+        "text": "Goal! Arsenal 2, Chelsea 1. Martin Ødegaard (Arsenal) left footed shot from the centre of the box to the high centre of the goal. Assisted by Christos Tzolis following a fast break.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:42:05"
+      },
+      {
+        "id": 69,
+        "time": "52'",
+        "type": "free kick won",
+        "text": "Ben White (Arsenal) wins a free kick in the defensive half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:43:42"
+      },
+      {
+        "id": 70,
+        "time": "52'",
+        "type": "free kick lost",
+        "text": "Foul by Morgan Rogers (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:43:42"
+      },
+      {
+        "id": 71,
+        "time": "53'",
+        "type": "free kick lost",
+        "text": "Foul by Pedro Neto (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:44:56"
+      },
+      {
+        "id": 72,
+        "time": "53'",
+        "type": "free kick won",
+        "text": "Christos Tzolis (Arsenal) wins a free kick on the left wing.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:44:56"
+      },
+      {
+        "id": 73,
+        "time": "55'",
+        "type": "free kick won",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the defensive half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:46:29"
+      },
+      {
+        "id": 74,
+        "time": "55'",
+        "type": "free kick lost",
+        "text": "Foul by Myles Lewis-Skelly (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:46:29"
+      },
+      {
+        "id": 75,
+        "time": "56'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Declan Rice (Arsenal) right footed shot from outside the box is blocked. Assisted by Bukayo Saka.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:47:28"
+      },
+      {
+        "id": 76,
+        "time": "56'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Bukayo Saka (Arsenal) left footed shot from the left side of the box is saved in the centre of the goal by Emiliano Martínez (Chelsea). Assisted by Christos Tzolis.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:48:05"
+      },
+      {
+        "id": 77,
+        "time": "57'",
+        "type": "free kick lost",
+        "text": "Foul by Myles Lewis-Skelly (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:48:51"
+      },
+      {
+        "id": 78,
+        "time": "57'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick on the right wing.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:48:51"
+      },
+      {
+        "id": 79,
+        "time": "58'",
+        "type": "free kick lost",
+        "text": "Foul by Maxence Lacroix (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:49:56"
+      },
+      {
+        "id": 80,
+        "time": "58'",
+        "type": "free kick won",
+        "text": "Christos Tzolis (Arsenal) wins a free kick in the attacking half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:49:56"
+      },
+      {
+        "id": 81,
+        "time": "58'",
+        "type": "yellow card",
+        "text": "Christos Tzolis (Arsenal) is shown the yellow card.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:49:59"
+      },
+      {
+        "id": 82,
+        "time": "58'",
+        "type": "yellow card",
+        "text": "Maxence Lacroix (Chelsea) is shown the yellow card for a bad foul.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:50:03"
+      },
+      {
+        "id": 83,
+        "time": "60'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Pep Chavarría replaces Jorrel Hato.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:51:45"
+      },
+      {
+        "id": 84,
+        "time": "60'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Malo Gusto replaces Roméo Lavia.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:51:55"
+      },
+      {
+        "id": 85,
+        "time": "61'",
+        "type": "miss",
+        "text": "Attempt missed. Malo Gusto (Chelsea) right footed shot from outside the box is too high. Assisted by Pedro Neto.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:52:56"
+      },
+      {
+        "id": 86,
+        "time": "63'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Cole Palmer (Chelsea) right footed shot from the right side of the box is saved in the top right corner by David Raya (Arsenal).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:54:40"
+      },
+      {
+        "id": 87,
+        "time": "65'",
+        "type": "free kick won",
+        "text": "Wesley Fofana (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:56:29"
+      },
+      {
+        "id": 88,
+        "time": "65'",
+        "type": "free kick lost",
+        "text": "Foul by Bukayo Saka (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:56:29"
+      },
+      {
+        "id": 89,
+        "time": "65'",
+        "type": "miss",
+        "text": "Attempt missed. Morgan Rogers (Chelsea) right footed shot from outside the box is too high. Assisted by Wesley Fofana.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:57:13"
+      },
+      {
+        "id": 90,
+        "time": "66'",
+        "type": "free kick lost",
+        "text": "Foul by Pep Chavarría (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:57:49"
+      },
+      {
+        "id": 91,
+        "time": "66'",
+        "type": "free kick won",
+        "text": "Bukayo Saka (Arsenal) wins a free kick on the right wing.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 17:57:49"
+      },
+      {
+        "id": 92,
+        "time": "67'",
+        "type": "substitution",
+        "text": "Substitution, Arsenal. Piero Hincapié replaces Riccardo Calafiori.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:58:30"
+      },
+      {
+        "id": 93,
+        "time": "67'",
+        "type": "substitution",
+        "text": "Substitution, Arsenal. Martín Zubimendi replaces Myles Lewis-Skelly.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 17:58:37"
+      },
+      {
+        "id": 94,
+        "time": "69'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Martín Zubimendi (Arsenal) right footed shot from the centre of the box is blocked. Assisted by Martin Ødegaard.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:00:34"
+      },
+      {
+        "id": 95,
+        "time": "69'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Bukayo Saka (Arsenal) left footed shot from the right side of the box is saved in the bottom left corner by Emiliano Martínez (Chelsea). Assisted by Kai Havertz with a through ball.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:00:59"
+      },
+      {
+        "id": 96,
+        "time": "69'",
+        "type": "corner",
+        "text": "Corner, Arsenal. Conceded by Emiliano Martínez.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:01:01"
+      },
+      {
+        "id": 97,
+        "time": "70'",
+        "type": "corner",
+        "text": "Corner, Arsenal. Conceded by Reece James.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:02:10"
+      },
+      {
+        "id": 98,
+        "time": "70'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Kai Havertz (Arsenal) header from the left side of the six yard box is blocked. Assisted by Declan Rice with a cross.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:02:11"
+      },
+      {
+        "id": 99,
+        "time": "71'",
+        "type": "corner",
+        "text": "Corner, Arsenal. Conceded by Josh Acheampong.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:03:00"
+      },
+      {
+        "id": 100,
+        "time": "72'",
+        "type": "offside",
+        "text": "Offside, Arsenal. Kai Havertz is caught offside.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:03:55"
+      },
+      {
+        "id": 101,
+        "time": "75'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Ezri Konsa.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:06:45"
+      },
+      {
+        "id": 102,
+        "time": "75'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Reece James (Chelsea) right footed shot from outside the box is blocked.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:07:26"
+      },
+      {
+        "id": 103,
+        "time": "77'",
+        "type": "free kick won",
+        "text": "Martin Ødegaard (Arsenal) wins a free kick in the attacking half.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:08:53"
+      },
+      {
+        "id": 104,
+        "time": "77'",
+        "type": "free kick lost",
+        "text": "Foul by Reece James (Chelsea).",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:08:53"
+      },
+      {
+        "id": 105,
+        "time": "77'",
+        "type": "substitution",
+        "text": "Substitution, Arsenal. Mikel Merino replaces Martin Ødegaard.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:09:25"
+      },
+      {
+        "id": 106,
+        "time": "78'",
+        "type": "substitution",
+        "text": "Substitution, Arsenal. Viktor Gyökeres replaces Kai Havertz.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:09:26"
+      },
+      {
+        "id": 107,
+        "time": "79'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Gabriel Magalhães.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:11:17"
+      },
+      {
+        "id": 108,
+        "time": "80'",
+        "type": "free kick lost",
+        "text": "Foul by Martín Zubimendi (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:12:17"
+      },
+      {
+        "id": 109,
+        "time": "80'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:12:17"
+      },
+      {
+        "id": 110,
+        "time": "81'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Estêvão replaces Pedro Neto.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:13:01"
+      },
+      {
+        "id": 111,
+        "time": "82'",
+        "type": "free kick lost",
+        "text": "Foul by Viktor Gyökeres (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:13:49"
+      },
+      {
+        "id": 112,
+        "time": "82'",
+        "type": "free kick won",
+        "text": "Wesley Fofana (Chelsea) wins a free kick in the defensive half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:13:49"
+      },
+      {
+        "id": 113,
+        "time": "83'",
+        "type": "miss",
+        "text": "Attempt missed. Cole Palmer (Chelsea) left footed shot from the left side of the box is too high. Assisted by Morgan Rogers.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:14:34"
+      },
+      {
+        "id": 114,
+        "time": "83'",
+        "type": "yellow card",
+        "text": "Morgan Rogers (Chelsea) is shown the yellow card.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:15:12"
+      },
+      {
+        "id": 115,
+        "time": "87'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick in the attacking half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:18:28"
+      },
+      {
+        "id": 116,
+        "time": "87'",
+        "type": "free kick lost",
+        "text": "Foul by Martín Zubimendi (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:18:28"
+      },
+      {
+        "id": 117,
+        "time": "87'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Danny Welbeck replaces Morgan Rogers.",
+        "team": "away",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:19:00"
+      },
+      {
+        "id": 118,
+        "time": "88'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Reece James (Chelsea) right footed shot from outside the box is blocked.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:19:54"
+      },
+      {
+        "id": 119,
+        "time": "89'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Estêvão (Chelsea) left footed shot from the right side of the box is saved in the top centre of the goal by David Raya (Arsenal). Assisted by Cole Palmer.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:20:52"
+      },
+      {
+        "id": 120,
+        "time": "89'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by David Raya.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:20:54"
+      },
+      {
+        "id": 121,
+        "time": "90'",
+        "type": "substitution",
+        "text": "Substitution, Arsenal. Noni Madueke replaces Bukayo Saka.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:21:56"
+      },
+      {
+        "id": 122,
+        "time": "90'",
+        "type": "added time",
+        "text": "Fourth official has announced 4 minutes of added time.",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:22:24"
+      },
+      {
+        "id": 123,
+        "time": "90'+4'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick in the defensive half.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:26:20"
+      },
+      {
+        "id": 124,
+        "time": "90'+4'",
+        "type": "free kick lost",
+        "text": "Foul by Martín Zubimendi (Arsenal).",
+        "team": "home",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:26:20"
+      },
+      {
+        "id": 125,
+        "time": "90'+5'",
+        "type": "yellow card",
+        "text": "Mikel Merino (Arsenal) is shown the yellow card.",
+        "team": "home",
+        "isKey": true,
+        "timestamp": "2026-09-06 18:26:26"
+      },
+      {
+        "id": 126,
+        "time": "90'+5'",
+        "type": "end 2",
+        "text": "Second Half ends, Arsenal 2, Chelsea 1.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:27:08"
+      },
+      {
+        "id": 127,
+        "time": "",
+        "type": "end 14",
+        "text": "Match ends, Arsenal 2, Chelsea 1.",
+        "team": "away",
+        "isKey": false,
+        "timestamp": "2026-09-06 18:27:30"
       }
     ]
   },
@@ -3386,7 +4709,7 @@
       }
     ],
     "status": "completed",
-    "time_live": "FT",
+    "time_live": "82'",
     "home_score": 6,
     "away_score": 3,
     "efl_id": "g2685176",
@@ -3797,7 +5120,6 @@
         ]
       }
     },
-    "time_live": "82'",
     "stats": [
       {
         "name": "ครองบอล (Possession)",

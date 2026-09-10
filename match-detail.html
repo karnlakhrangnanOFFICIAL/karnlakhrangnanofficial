@@ -500,6 +500,147 @@
       color: var(--ink);
     }
 
+    /* Live Commentary Feed & Filter */
+    .commentary-feed-card {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .commentary-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+    .commentary-filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--ink-faint);
+      color: var(--ink-muted);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Space Mono', monospace;
+    }
+    .commentary-filter-btn:hover {
+      color: var(--ink);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .commentary-filter-btn.active {
+      background: var(--accent, #0033a0);
+      color: #ffffff;
+      border-color: var(--accent, #0033a0);
+      box-shadow: 0 2px 8px rgba(0, 51, 160, 0.3);
+    }
+    .live-comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .live-comment-item {
+      display: flex;
+      gap: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .live-comment-item:hover {
+      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .live-comment-item.is-goal {
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 3px solid var(--gold);
+    }
+    .live-comment-item.is-card {
+      background: rgba(255, 193, 7, 0.05);
+      border-left: 3px solid #ffc107;
+    }
+    .live-comment-item.is-var {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 3px solid #ef4444;
+    }
+    .live-comment-item.is-sub {
+      background: rgba(59, 130, 246, 0.05);
+      border-left: 3px solid #3b82f6;
+    }
+    .live-comment-time {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 46px;
+      font-size: 0.95rem;
+      padding-top: 2px;
+    }
+    .live-comment-content {
+      flex: 1;
+    }
+    .live-comment-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .live-comment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--ink-muted);
+    }
+    .live-comment-text {
+      color: var(--ink);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Officials Section */
+    .officials-card {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--ink-faint);
+    }
+    .officials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .official-item {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .official-role {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-family: 'Space Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .official-name {
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin-top: 3px;
+    }
+
     /* Stats Card & Bars */
     .stats-card {
       background: var(--card-bg);
@@ -748,7 +889,7 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
         <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
-        <span class="team-name">KARN LA KHRANg NAN</span>
+        
       </a>
       <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -921,6 +1062,8 @@
         defaultTargetId = 'tab-timeline';
       } else if (activeIdx === '4' || tabParam === 'video') {
         defaultTargetId = 'tab-video';
+      } else if (activeIdx === '5' || tabParam === 'commentary') {
+        defaultTargetId = 'tab-commentary';
       }
 
       if (defaultTargetId) {
@@ -929,21 +1072,49 @@
           targetBtn.click();
         }
       }
+
+      // Initialize Commentary filter buttons
+      const filterBtns = document.querySelectorAll('.commentary-filter-btn');
+      const commentItems = document.querySelectorAll('.live-comment-item');
+      if (filterBtns.length > 0 && commentItems.length > 0) {
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            commentItems.forEach(item => {
+              const cats = (item.getAttribute('data-category') || '').split(' ');
+              if (filter === 'all' || cats.includes(filter)) {
+                item.style.display = 'flex';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      }
     }
 
     // ---------- Match Stats HTML Generator ----------
-    function generateMatchStatsHTML(statsArray, homeTeamName, awayTeamName) {
+    function generateMatchStatsHTML(statsArray, homeTeamName, awayTeamName, lang) {
+      const isTh = lang !== 'en';
       if (!statsArray || statsArray.length === 0) {
         return `
           <div class="empty-tab-box">
             <div style="font-size: 1.5rem; margin-bottom: 8px;">📊</div>
-            <strong style="color: var(--ink);">ไม่มีข้อมูลสถิติสำหรับการแข่งขันนี้</strong>
-            <p>สถิติจะแสดงผลเมื่อการแข่งขันเริ่มต้นขึ้น</p>
+            <strong style="color: var(--ink);">${isTh ? 'ไม่มีข้อมูลสถิติสำหรับการแข่งขันนี้' : 'No match statistics available'}</strong>
+            <p>${isTh ? 'สถิติจะแสดงผลเมื่อการแข่งขันเริ่มต้นขึ้น' : 'Stats will update once match begins.'}</p>
           </div>
         `;
       }
 
-      let html = `<div class="stats-card">`;
+      let html = `
+        <div class="stats-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--ink-faint); font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em;">
+            <span>📊 ${isTh ? 'สถิติการแข่งขันอย่างเป็นทางการ (Official Match Stats)' : 'Official Match Statistics'}</span>
+            <span style="color: var(--ink-muted); font-size: 0.72rem;">Premier League</span>
+          </div>
+      `;
       statsArray.forEach(stat => {
         const homeVal = parseFloat(stat.home) || 0;
         const awayVal = parseFloat(stat.away) || 0;
@@ -958,11 +1129,17 @@
         const homeLead = homeVal > awayVal;
         const awayLead = awayVal > homeVal;
 
+        let displayName = stat.name;
+        if (!isTh && stat.name.includes('(') && stat.name.includes(')')) {
+          const matchEn = stat.name.match(/\((.*?)\)/);
+          if (matchEn) displayName = matchEn[1];
+        }
+
         html += `
           <div class="stat-row">
             <div class="stat-labels">
               <span class="stat-value-home ${homeLead ? 'stat-highlight' : ''}">${displayHome}</span>
-              <span class="stat-name">${stat.name}</span>
+              <span class="stat-name">${displayName}</span>
               <span class="stat-value-away ${awayLead ? 'stat-highlight' : ''}">${displayAway}</span>
             </div>
             <div class="stat-bar-container">
@@ -1477,7 +1654,7 @@
         ];
       }
 
-      statsTabHtml = generateMatchStatsHTML(statsData, match.home_team, match.away_team);
+      statsTabHtml = generateMatchStatsHTML(statsData, match.home_team, match.away_team, lang);
 
       // ---------- TAB 3: LINEUPS ----------
       let lineupsTabHtml = '';
@@ -1544,6 +1721,22 @@
                 <div>${(awayL.substitutes || []).map(p => renderPlayerRow(p, isAwayChelsea)).join('')}</div>
               </div>
             </div>
+
+            ${match.lineups.officials && match.lineups.officials.length > 0 ? `
+              <div class="officials-card">
+                <div class="lineup-group-title" style="margin-top: 0; margin-bottom: 14px;">
+                  <span>⚖️</span> <span>${isTh ? 'คณะผู้ตัดสิน (Match Officials)' : 'Match Officials'}</span>
+                </div>
+                <div class="officials-grid">
+                  ${match.lineups.officials.map(o => `
+                    <div class="official-item">
+                      <span class="official-role">${o.role}</span>
+                      <strong class="official-name">${o.name}</strong>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
           </div>
         `;
       } else {
@@ -1556,7 +1749,121 @@
         `;
       }
 
-      // ---------- TAB 4: VIDEO ----------
+      // ---------- TAB 4: COMMENTARY ----------
+      let commentaryTabHtml = '';
+      const hasLiveCommentary = match.live_commentary && match.live_commentary.length > 0;
+      const hasSummaryCommentary = match.commentary && match.commentary.length > 0;
+
+      if (hasLiveCommentary || hasSummaryCommentary) {
+        // Summary Takeaways (if present)
+        let summaryTakeawaysHtml = '';
+        if (hasSummaryCommentary) {
+          const takeaways = match.commentary.find(c => c.section && (c.section.includes('ประเด็นสำคัญ') || c.section.includes('Key')));
+          if (takeaways && takeaways.events) {
+            summaryTakeawaysHtml = `
+              <div class="commentary-section" style="margin-bottom: 20px; border-left: 4px solid var(--gold);">
+                <div class="commentary-section-title" style="display: flex; align-items: center; gap: 8px;">
+                  <span>📌</span> <span>${isTh ? 'ประเด็นสำคัญจากการแข่งขัน (Key Takeaways)' : 'Match Key Takeaways'}</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+                  ${takeaways.events.map(ev => `
+                    <div style="display: flex; gap: 12px; font-size: 0.9rem; line-height: 1.6;">
+                      <span style="color: var(--gold); font-weight: 700; font-family: 'Space Mono', monospace;">•</span>
+                      <div style="color: var(--ink);">${ev.text}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        // Live Feed (Full Premier League Play-by-Play Events)
+        let liveFeedHtml = '';
+        if (hasLiveCommentary) {
+          const getCommentaryBadge = (type) => {
+            const t = (type || '').toLowerCase();
+            if (t.includes('goal') && !t.includes('var')) return { label: 'Goal', icon: '⚽', cls: 'is-goal' };
+            if (t.includes('var')) return { label: 'VAR Decision', icon: '❌', cls: 'is-var' };
+            if (t.includes('yellow card')) return { label: 'Yellow Card', icon: '🟨', cls: 'is-card' };
+            if (t.includes('red card')) return { label: 'Red Card', icon: '🟥', cls: 'is-card' };
+            if (t.includes('substitution')) return { label: 'Substitution', icon: '🔄', cls: 'is-sub' };
+            if (t.includes('attempt saved')) return { label: 'Save', icon: '🧤', cls: '' };
+            if (t.includes('attempt blocked')) return { label: 'Blocked Shot', icon: '🛡️', cls: '' };
+            if (t.includes('miss') || t.includes('post') || t.includes('woodwork')) return { label: 'Attempt', icon: '🎯', cls: '' };
+            if (t.includes('corner')) return { label: 'Corner', icon: '🚩', cls: '' };
+            if (t.includes('offside')) return { label: 'Offside', icon: '🏁', cls: '' };
+            if (t.includes('free kick') || t.includes('foul')) return { label: 'Foul / Free Kick', icon: '🛑', cls: '' };
+            if (t.includes('start') || t.includes('end') || t.includes('halftime')) return { label: 'Match Period', icon: '⏱️', cls: '' };
+            return { label: 'Commentary', icon: '⚡', cls: '' };
+          };
+
+          const keyCount = match.live_commentary.filter(c => c.isKey).length;
+          const goalsCount = match.live_commentary.filter(c => {
+            const t = (c.type || '').toLowerCase();
+            return t.includes('goal') || t.includes('var');
+          }).length;
+          const cardsCount = match.live_commentary.filter(c => (c.type || '').toLowerCase().includes('card')).length;
+          const subsCount = match.live_commentary.filter(c => (c.type || '').toLowerCase().includes('substitution')).length;
+
+          const renderedRows = match.live_commentary.map(c => {
+            const badge = getCommentaryBadge(c.type);
+            const timeStr = c.time || ' ';
+            const specificType = (c.type || '').toLowerCase();
+            let categoryTags = 'all';
+            if (c.isKey) categoryTags += ' key';
+            if (specificType.includes('goal') || specificType.includes('var')) categoryTags += ' goals';
+            if (specificType.includes('card')) categoryTags += ' cards';
+            if (specificType.includes('substitution')) categoryTags += ' subs';
+
+            return `
+              <div class="live-comment-item ${badge.cls}" data-category="${categoryTags}">
+                <div class="live-comment-time">${timeStr}</div>
+                <div class="live-comment-content">
+                  <div class="live-comment-header">
+                    <span class="live-comment-badge">${badge.icon} ${badge.label}</span>
+                    ${c.team === 'home' ? `<span style="font-size: 0.75rem; color: var(--gold); font-family: 'Space Mono', monospace; font-weight: 600;">${match.home_team}</span>` : ''}
+                    ${c.team === 'away' ? `<span style="font-size: 0.75rem; color: #60a5fa; font-family: 'Space Mono', monospace; font-weight: 600;">${match.away_team}</span>` : ''}
+                  </div>
+                  <p class="live-comment-text">${c.text}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          liveFeedHtml = `
+            <div class="commentary-feed-card">
+              <div class="commentary-filter-bar">
+                <button class="commentary-filter-btn active" data-filter="all">${isTh ? 'ทั้งหมด' : 'All'} (${match.live_commentary.length})</button>
+                <button class="commentary-filter-btn" data-filter="key">${isTh ? 'เหตุการณ์สำคัญ' : 'Key Events'} (${keyCount})</button>
+                <button class="commentary-filter-btn" data-filter="goals">⚽ ${isTh ? 'ประตู & VAR' : 'Goals & VAR'} (${goalsCount})</button>
+                <button class="commentary-filter-btn" data-filter="cards">🟨 ${isTh ? 'ใบเตือน' : 'Cards'} (${cardsCount})</button>
+                <button class="commentary-filter-btn" data-filter="subs">🔄 ${isTh ? 'เปลี่ยนตัว' : 'Subs'} (${subsCount})</button>
+              </div>
+              <div class="live-comment-list">
+                ${renderedRows}
+              </div>
+            </div>
+          `;
+        }
+
+        commentaryTabHtml = `
+          <div>
+            ${summaryTakeawaysHtml}
+            ${liveFeedHtml}
+          </div>
+        `;
+      } else {
+        commentaryTabHtml = `
+          <div class="empty-tab-box">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">💬</div>
+            <strong style="color: var(--ink);">${isTh ? 'ยังไม่มีรายงานบรรยายสด' : 'No commentary stream available'}</strong>
+            <p>${isTh ? 'รายงานเหตุการณ์แบบสดจะพร้อมให้ติดตามเมื่อการแข่งขันเริ่ม' : 'Live commentary will be available during match play.'}</p>
+          </div>
+        `;
+      }
+
+      // ---------- TAB 5: VIDEO ----------
       let videoTabHtml = '';
       const videoId = match.youtube_id || (match.video && match.video.id);
       if (videoId) {
@@ -1671,16 +1978,19 @@
             <!-- Tab Buttons -->
             <div class="match-tabs">
               <button class="tab-btn active" data-target="tab-timeline">
-                <span>⏱️</span> <span>Timeline</span>
+                <span>⏱️</span> <span>${isTh ? 'ไทม์ไลน์' : 'Timeline'}</span>
               </button>
               <button class="tab-btn" data-target="tab-stats">
-                <span>📊</span> <span>Stats</span>
+                <span>📊</span> <span>${isTh ? 'สถิติ' : 'Stats'}</span>
               </button>
               <button class="tab-btn" data-target="tab-lineups">
-                <span>📋</span> <span>Lineups</span>
+                <span>📋</span> <span>${isTh ? 'รายชื่อผู้เล่น' : 'Lineups'}</span>
+              </button>
+              <button class="tab-btn" data-target="tab-commentary">
+                <span>💬</span> <span>${isTh ? 'บรรยายสด' : 'Commentary'}</span>
               </button>
               <button class="tab-btn" data-target="tab-video">
-                <span>🎥</span> <span>Video</span>
+                <span>🎥</span> <span>${isTh ? 'ไฮไลท์' : 'Video'}</span>
               </button>
             </div>
 
@@ -1701,7 +2011,12 @@
                 ${lineupsTabHtml}
               </div>
 
-              <!-- Tab 4: Video -->
+              <!-- Tab 4: Commentary -->
+              <div id="tab-commentary" class="tab-pane">
+                ${commentaryTabHtml}
+              </div>
+
+              <!-- Tab 5: Video -->
               <div id="tab-video" class="tab-pane">
                 ${videoTabHtml}
               </div>
