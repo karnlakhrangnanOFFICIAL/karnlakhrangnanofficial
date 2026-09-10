@@ -385,88 +385,68 @@
       "label": "🟢 Chelsea Women ขาเข้า / ซื้อเข้า / ต่อสัญญา (Signings & Extensions)",
       "players": [
         {
-          "player": "Katie McCabe",
-          "from": "Arsenal",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "LB/LW"
-        },
-        {
-          "player": "Manaka Matsukubo",
-          "from": "North Carolina Courage",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "AM/FW"
-        },
-        {
-          "player": "Melvine Malard",
-          "from": "Manchester United",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "FW"
-        },
-        {
-          "player": "Nelly Las",
-          "from": "Leicester City",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "DF"
-        },
-        {
+          "date": "31 Jul 2026",
           "player": "Giulia Dragoni",
           "from": "FC Barcelona",
           "fee": "Undisclosed",
           "type": "permanent",
-          "position": "MF"
+          "position": ""
         },
         {
-          "player": "Ellie Carpenter",
-          "from": "Lyon",
+          "date": "24 Jul 2026",
+          "player": "Nelly Las",
+          "from": "Leicester City",
           "fee": "Undisclosed",
           "type": "permanent",
-          "position": "RB"
+          "position": ""
         },
         {
-          "player": "Livia Peng",
+          "date": "04 Jul 2026",
+          "player": "Manaka Matsukubo",
+          "from": "North Carolina Courage",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": ""
+        },
+        {
+          "date": "30 Jun 2026",
+          "player": "Vera Jones",
+          "from": "Bristol City",
+          "fee": "End of Loan",
+          "type": "loan_return",
+          "position": ""
+        },
+        {
+          "date": "30 Jun 2026",
+          "player": "Katie Cox",
+          "from": "Aberdeen LFC",
+          "fee": "End of Loan",
+          "type": "loan_return",
+          "position": ""
+        },
+        {
+          "date": "30 Jun 2026",
+          "player": "Mara Alber",
           "from": "Werder Bremen",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "GK"
+          "fee": "End of Loan",
+          "type": "loan_return",
+          "position": ""
         },
         {
-          "player": "Rebecca Spencer",
+          "date": "30 Jun 2026",
+          "player": "Maika Hamano",
           "from": "Tottenham Hotspur",
+          "fee": "End of Loan",
+          "type": "loan_return",
+          "position": ""
+        },
+        {
+          "date": "01 Jun 2026",
+          "player": "Katie McCabe",
+          "from": "Arsenal",
           "fee": "Free Transfer",
           "type": "permanent",
-          "position": "GK"
-        },
-        {
-          "player": "Alyssa Thompson",
-          "from": "Angel City FC",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "FW"
-        },
-        {
-          "player": "Sandy Baltimore",
-          "from": "Chelsea FC",
-          "fee": "Contract Extension",
-          "type": "extension",
-          "position": "LW"
-        },
-        {
-          "player": "Lucy Bronze",
-          "from": "Chelsea FC",
-          "fee": "Contract Extension",
-          "type": "extension",
-          "position": "RB"
-        },
-        {
-          "player": "Aggie Beever-Jones",
-          "from": "Chelsea FC",
-          "fee": "Contract Extension",
-          "type": "extension",
-          "position": "FW"
+          "position": ""
         }
       ]
     },
@@ -598,67 +578,60 @@
       "label": "🔴 Chelsea Women ขายออกถาวร / หมดสัญญา / ย้ายออก (Permanent Out & Departures)",
       "players": [
         {
-          "player": "Millie Bright",
-          "to": "Retired",
-          "fee": "Retired",
-          "type": "retired",
-          "position": "CB"
-        },
-        {
-          "player": "Sam Kerr",
-          "to": "Free Agent",
-          "fee": "End of Contract",
-          "type": "released",
-          "position": "ST"
-        },
-        {
-          "player": "Guro Reiten",
-          "to": "Free Agent",
-          "fee": "End of Contract",
-          "type": "released",
-          "position": "LW/AM"
-        },
-        {
-          "player": "Johanna Rytting Kaneryd",
-          "to": "Lyon",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "RW"
-        },
-        {
-          "player": "Niamh Charles",
-          "to": "Manchester City",
-          "fee": "Undisclosed",
-          "type": "permanent",
-          "position": "LB/LW"
-        },
-        {
+          "date": "11 Jul 2026",
           "player": "Julia Bartel",
           "to": "Juventus",
           "fee": "Undisclosed",
           "type": "permanent",
-          "position": "MF"
+          "position": ""
         },
         {
-          "player": "Brooke Aspin",
-          "to": "Bristol City",
+          "date": "10 Jul 2026",
+          "player": "Niamh Charles",
+          "to": "Manchester City",
           "fee": "Undisclosed",
           "type": "permanent",
-          "position": "CB"
+          "position": ""
         },
         {
-          "player": "Jorja Fox",
-          "to": "Ipswich Town",
+          "date": "06 Jul 2026",
+          "player": "Johanna Rytting Kaneryd",
+          "to": "OL Lyonnes",
           "fee": "Undisclosed",
           "type": "permanent",
-          "position": "DF"
+          "position": ""
         },
         {
-          "player": "Aniek Nouwen",
-          "to": "Free Agent",
-          "fee": "End of Contract",
+          "date": "29 Jun 2026",
+          "player": "Sam Kerr",
+          "to": "NJ/NY Gotham FC",
+          "fee": "Free Transfer",
           "type": "released",
-          "position": "CB"
+          "position": ""
+        },
+        {
+          "date": "12 Mar 2026",
+          "player": "Guro Reiten",
+          "to": "NJ/NY Gotham FC",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": ""
+        },
+        {
+          "date": "23 Jan 2026",
+          "player": "Ashanti Akpa",
+          "to": "Newcastle United",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": ""
+        },
+        {
+          "date": "12 Jan 2026",
+          "player": "Oriane Jean-François",
+          "to": "Aston Villa",
+          "fee": "Undisclosed",
+          "type": "permanent",
+          "position": ""
         }
       ]
     },
@@ -666,60 +639,49 @@
       "label": "🟡 Chelsea Women ปล่อยยืม (Loans Out)",
       "players": [
         {
-          "player": "Lois Shooter",
-          "to": "Nottingham Forest",
+          "date": "21 Aug 2026",
+          "player": "Vera Jones",
+          "to": "Watford",
           "fee": "Loan",
           "loan_term": "Season Loan",
           "type": "loan",
-          "position": "DF"
+          "position": ""
         },
         {
+          "date": "20 Aug 2026",
           "player": "Katie Cox",
           "to": "Nottingham Forest",
           "fee": "Loan",
           "loan_term": "Season Loan",
           "type": "loan",
-          "position": "GK"
+          "position": ""
         },
         {
-          "player": "Ashanti Akpan",
-          "to": "Birmingham City",
+          "date": "14 Aug 2026",
+          "player": "Mara Alber",
+          "to": "VfL Wolfsburg",
           "fee": "Loan",
           "loan_term": "Season Loan",
           "type": "loan",
-          "position": "MF"
+          "position": ""
         },
         {
-          "player": "Lucy Watson",
-          "to": "Southampton",
+          "date": "06 Jan 2026",
+          "player": "Mara Alber",
+          "to": "Werder Bremen",
           "fee": "Loan",
           "loan_term": "Season Loan",
           "type": "loan",
-          "position": "FW"
+          "position": ""
         },
         {
-          "player": "Greta Humphries",
-          "to": "Bristol City",
+          "date": "04 Jan 2026",
+          "player": "Maika Hamano",
+          "to": "Tottenham Hotspur",
           "fee": "Loan",
           "loan_term": "Season Loan",
           "type": "loan",
-          "position": "DF"
-        },
-        {
-          "player": "Cerys Brown",
-          "to": "Watford",
-          "fee": "Loan",
-          "loan_term": "Season Loan",
-          "type": "loan",
-          "position": "DF"
-        },
-        {
-          "player": "Aimee Claypole",
-          "to": "Durham",
-          "fee": "Loan",
-          "loan_term": "Season Loan",
-          "type": "loan",
-          "position": "FW"
+          "position": ""
         }
       ]
     }
