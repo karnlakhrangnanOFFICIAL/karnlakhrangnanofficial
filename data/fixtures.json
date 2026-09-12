@@ -2292,13 +2292,468 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "live",
+    "home_score": 1,
+    "away_score": 0,
+    "goals": [
+      {
+        "minute": 7,
+        "player": "Morgan Rogers",
+        "assist": "João Pedro",
+        "team": "home",
+        "score": "1-0"
+      }
+    ],
+    "events": [
+      {
+        "minute": 7,
+        "type": "goal",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "assist": "João Pedro",
+        "detail": "Goal! Chelsea 1, Hull City 0. Morgan Rogers (Chelsea) left footed shot from the left side of the box to the bottom left corner. Assisted by João Pedro following a fast break."
+      }
+    ],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "lineups": {
+      "home": {
+        "manager": "Xabi Alonso",
+        "formation": "3-4-3",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Emiliano Martinez"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana"
+          },
+          {
+            "number": 24,
+            "name": "Reece James"
+          },
+          {
+            "number": 45,
+            "name": "Romeo Lavia"
+          },
+          {
+            "number": 9,
+            "name": "Joao Pedro"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer"
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 11,
+            "name": "Jamie Gittens"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix"
+          },
+          {
+            "number": 29,
+            "name": "Pep Chavarria"
+          },
+          {
+            "number": 4,
+            "name": "Valentin Barco"
+          },
+          {
+            "number": 39,
+            "name": "Mike Penders"
+          },
+          {
+            "number": 34,
+            "name": "Josh Acheampong"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda"
+          },
+          {
+            "number": 41,
+            "name": "Estevao Willian"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Sergej Jakirovic",
+        "formation": "5-4-1",
+        "starting": [
+          {
+            "number": 19,
+            "name": "Konstantinos Tzolakis"
+          },
+          {
+            "number": 2,
+            "name": "Lewie Coyle"
+          },
+          {
+            "number": 3,
+            "name": "Ryan Giles"
+          },
+          {
+            "number": 32,
+            "name": "Nobel Mendy"
+          },
+          {
+            "number": 15,
+            "name": "John Egan"
+          },
+          {
+            "number": 6,
+            "name": "Semi Ajayi"
+          },
+          {
+            "number": 10,
+            "name": "Mohamed Belloumi"
+          },
+          {
+            "number": 25,
+            "name": "Matt Crooks"
+          },
+          {
+            "number": 9,
+            "name": "Oliver McBurnie"
+          },
+          {
+            "number": 27,
+            "name": "Regan Slater"
+          },
+          {
+            "number": 21,
+            "name": "Elliot Stroud"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 47,
+            "name": "Robinio Vaz"
+          },
+          {
+            "number": 22,
+            "name": "Lucas Herrington"
+          },
+          {
+            "number": 18,
+            "name": "Brooke Norton-Cuffy"
+          },
+          {
+            "number": 50,
+            "name": "Mohamed-Ali Cho"
+          },
+          {
+            "number": 42,
+            "name": "Tim Iroegbunam"
+          },
+          {
+            "number": 7,
+            "name": "Sorba Thomas"
+          },
+          {
+            "number": 23,
+            "name": "Matt Targett"
+          },
+          {
+            "number": 12,
+            "name": "Dillon Phillips"
+          },
+          {
+            "number": 29,
+            "name": "Lucas Gourna-Douath"
+          }
+        ]
+      }
+    },
+    "pl_match_id": "2645227",
+    "period": "FirstHalf",
+    "clock": "13'",
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 72.3,
+        "away": 27.7,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสทำประตูที่คาดหวัง (Expected Goals - xG)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 2,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 1,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงหลุดกรอบ (Shots off Target)",
+        "home": 0,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงติดบล็อก (Blocked Shots)",
+        "home": 1,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงในกรอบเขตโทษ (Shots Inside Box)",
+        "home": 2,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงนอกกรอบเขตโทษ (Shots Outside Box)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ความแม่นยำในการส่งบอล (Passing Accuracy)",
+        "home": 91.7,
+        "away": 71,
+        "isPercentage": true
+      },
+      {
+        "name": "การส่งบอลทั้งหมด (Total Passes)",
+        "home": 84,
+        "away": 31,
+        "isPercentage": false
+      },
+      {
+        "name": "ส่งบอลสำเร็จ (Accurate Passes)",
+        "home": 77,
+        "away": 22,
+        "isPercentage": false
+      },
+      {
+        "name": "สัมผัสบอลทั้งหมด (Touches)",
+        "home": 113,
+        "away": 49,
+        "isPercentage": false
+      },
+      {
+        "name": "สัมผัสบอลในกรอบคู่แข่ง (Touches in Opp Box)",
+        "home": 3,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "โอกาสทองที่สร้างได้ (Big Chances Created)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 1,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "เข้าปะทะสำเร็จ (Tackles)",
+        "home": 2,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "เคลียร์บอล (Clearances)",
+        "home": 1,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ตัดบอล (Interceptions)",
+        "home": 1,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ชนะการดวลกลางอากาศ (Aerial Duels Won)",
+        "home": 1,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "name": "เซฟของผู้รักษาประตู (Saves)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls Conceded)",
+        "home": 0,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      }
+    ],
+    "live_commentary": [
+      {
+        "time": " ",
+        "type": "start",
+        "text": "First Half begins.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:00:20"
+      },
+      {
+        "time": "1'",
+        "type": "free kick lost",
+        "text": "Foul by Elliot Stroud (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:00:45"
+      },
+      {
+        "time": "1'",
+        "type": "free kick won",
+        "text": "Wesley Fofana (Chelsea) wins a free kick in the defensive half.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:00:45"
+      },
+      {
+        "time": "3'",
+        "type": "free kick won",
+        "text": "João Pedro (Chelsea) wins a free kick on the left wing.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:03:15"
+      },
+      {
+        "time": "3'",
+        "type": "free kick lost",
+        "text": "Foul by Mohamed Belloumi (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:03:15"
+      },
+      {
+        "time": "6'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Mohamed Belloumi (Hull City) left footed shot from the right side of the box is blocked. Assisted by Regan Slater.",
+        "team": "away",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:05:41"
+      },
+      {
+        "time": "6'",
+        "type": "corner",
+        "text": "Corner, Hull City. Conceded by Jorrel Hato.",
+        "team": "away",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:05:42"
+      },
+      {
+        "time": "7'",
+        "type": "goal",
+        "text": "Goal! Chelsea 1, Hull City 0. Morgan Rogers (Chelsea) left footed shot from the left side of the box to the bottom left corner. Assisted by João Pedro following a fast break.",
+        "team": "away",
+        "category": "goal_var",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:06:35"
+      },
+      {
+        "time": "9'",
+        "type": "free kick lost",
+        "text": "Foul by John Egan (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:09:15"
+      },
+      {
+        "time": "9'",
+        "type": "free kick won",
+        "text": "Reece James (Chelsea) wins a free kick in the attacking half.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:09:15"
+      },
+      {
+        "time": "12'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by John Egan.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:11:22"
+      },
+      {
+        "time": "13'",
+        "type": "miss",
+        "text": "Attempt missed. Pedro Neto (Chelsea) right footed shot from the right side of the six yard box.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:12:34"
+      }
+    ],
+    "last_synced": "2026-09-12T14:15:12.876Z"
   },
   {
     "id": "m11",

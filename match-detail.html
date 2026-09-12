@@ -160,6 +160,35 @@
       background: #ffffff;
       border-radius: 50%;
     }
+    @keyframes spinIcon {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .sync-icon.spinning {
+      animation: spinIcon 1s linear infinite;
+    }
+    .live-sync-banner {
+      background: rgba(3, 25, 75, 0.55);
+      border: 1px solid rgba(0, 102, 255, 0.4);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .live-pulse-dot {
+      width: 9px;
+      height: 9px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00e676;
+      display: inline-block;
+      animation: pulseLive 1.5s infinite;
+    }
 
     /* Details Grid Layout */
     .details-grid {
@@ -1064,6 +1093,12 @@
         defaultTargetId = 'tab-video';
       } else if (activeIdx === '5' || tabParam === 'commentary') {
         defaultTargetId = 'tab-commentary';
+      } else if (!tabParam && !activeIdx && currentMatch) {
+        if ((currentMatch.status === 'live' || currentMatch.status === 'halftime') && currentMatch.live_commentary && currentMatch.live_commentary.length > 0) {
+          defaultTargetId = 'tab-commentary';
+        } else if (currentMatch.status === 'upcoming' && currentMatch.lineups) {
+          defaultTargetId = 'tab-lineups';
+        }
       }
 
       if (defaultTargetId) {
@@ -1269,6 +1304,24 @@
           }
         }
 
+        // Real-Time Sync from Premier League API if match is m10 or has pl_match_id
+        if (match.id === 'm10' || match.pl_match_id) {
+          try {
+            const plId = match.pl_match_id || (match.id === 'm10' ? '2645227' : null);
+            if (plId) {
+              const plRes = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
+              if (plRes.ok) {
+                const plJson = await plRes.json();
+                if (plJson.success) {
+                  applyPlLiveData(match, plJson);
+                }
+              }
+            }
+          } catch (e) {
+            console.warn('PL live fetch error:', e);
+          }
+        }
+
         renderMatchDetail(match, container);
         startRealTimeSync(match);
       } catch (error) {
@@ -1290,58 +1343,191 @@
       if (live.youtube_id) match.youtube_id = live.youtube_id;
     }
 
+    function applyPlLiveData(match, live) {
+      if (!match || !live) return;
+      if (live.status) match.status = live.status;
+      if (live.clock) match.clock = live.clock;
+      if (live.period) match.period = live.period;
+      if (live.score) {
+        if (live.score.home !== undefined) match.home_score = live.score.home;
+        if (live.score.away !== undefined) match.away_score = live.score.away;
+      }
+      if (live.goals && Array.isArray(live.goals) && live.goals.length > 0) match.goals = live.goals;
+      if (live.events && Array.isArray(live.events) && live.events.length > 0) match.events = live.events;
+      if (live.stats && Array.isArray(live.stats) && live.stats.length > 0) match.stats = live.stats;
+      if (live.live_commentary && Array.isArray(live.live_commentary) && live.live_commentary.length > 0) {
+        match.live_commentary = live.live_commentary;
+      }
+      if (live.lastUpdated) match.last_synced = live.lastUpdated;
+    }
+
     let livePollInterval = null;
+    let isManualSyncing = false;
+
+    window.handleManualLiveSync = async function() {
+      if (!currentMatch || isManualSyncing) return;
+      isManualSyncing = true;
+      const btn = document.getElementById('btnManualSync');
+      const icon = btn ? btn.querySelector('.sync-icon') : null;
+      if (icon) icon.classList.add('spinning');
+
+      try {
+        if (currentMatch.id === 'm10' || currentMatch.pl_match_id) {
+          const plId = currentMatch.pl_match_id || '2645227';
+          const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
+          if (res.ok) {
+            const json = await res.json();
+            if (json.success) {
+              applyPlLiveData(currentMatch, json);
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(currentMatch, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          }
+        } else if (currentMatch.id === 'm46' || currentMatch.efl_id) {
+          const fixtureId = currentMatch.efl_id || 'g2685176';
+          const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+          if (res.ok) {
+            const json = await res.json();
+            if (json.success && json.data) {
+              applyEflLiveData(currentMatch, json.data);
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(currentMatch, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Manual sync failed:', err);
+      } finally {
+        isManualSyncing = false;
+        if (icon) icon.classList.remove('spinning');
+      }
+    };
+
     function startRealTimeSync(match) {
       if (livePollInterval) {
         clearInterval(livePollInterval);
         livePollInterval = null;
       }
-      if (!match || (match.id !== 'm46' && !match.efl_id)) return;
-      if (match.status !== 'live') return;
+      const isEfl = match && (match.id === 'm46' || match.efl_id);
+      const isPl = match && (match.id === 'm10' || match.pl_match_id);
+      if (!isEfl && !isPl) return;
+      if (match.status !== 'live' && match.status !== 'halftime' && match.period !== 'FirstHalf' && match.period !== 'SecondHalf') return;
 
       const fixtureId = match.efl_id || 'g2685176';
+      const plId = match.pl_match_id || '2645227';
+
       livePollInterval = setInterval(async () => {
         try {
-          const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
-          if (!res.ok) return;
-          const json = await res.json();
-          if (!json.success || !json.data) return;
-          const live = json.data;
+          if (isPl) {
+            const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
+            if (!res.ok) return;
+            const json = await res.json();
+            if (!json.success) return;
 
-          const oldScore = `${match.home_score}-${match.away_score}`;
-          const newScore = `${live.home_score}-${live.away_score}`;
-          const scoreChanged = oldScore !== newScore;
-          const oldEventsCount = (match.events || []).length;
-          const newEventsCount = (live.events || []).length;
+            const oldScore = `${match.home_score}-${match.away_score}`;
+            const newScore = `${json.score.home}-${json.score.away}`;
+            const scoreChanged = oldScore !== newScore;
+            const oldEventsCount = (match.events || []).length;
+            const newEventsCount = (json.events || []).length;
+            const oldCommentsCount = (match.live_commentary || []).length;
+            const newCommentsCount = (json.live_commentary || []).length;
 
-          applyEflLiveData(match, live);
+            applyPlLiveData(match, json);
 
-          // Update Scoreboard Header
-          const scoreMainEl = document.getElementById('scoreMain');
-          if (scoreMainEl) {
-            scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
-          }
-          const liveBadgeWrapEl = document.getElementById('liveBadgeWrap');
-          if (liveBadgeWrapEl) {
-            liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${match.time_live || 'LIVE'}</div>`;
-          }
+            // Update Scoreboard Header
+            const scoreMainEl = document.getElementById('scoreMain');
+            if (scoreMainEl) {
+              scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
+            }
+            const liveBadgeWrapEl = document.getElementById('liveBadgeWrap');
+            if (liveBadgeWrapEl) {
+              const liveText = match.period === 'HalfTime' ? 'HT' : (match.clock || 'LIVE');
+              liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${liveText}</div>`;
+            }
 
-          // Update Stats Tab
-          const statsTabEl = document.getElementById('tab-stats');
-          if (statsTabEl && match.stats) {
-            statsTabEl.innerHTML = generateMatchStatsHTML(match.stats, match.home_team, match.away_team);
-          }
+            // Update Timestamp
+            const timeEl = document.getElementById('liveSyncTimestamp');
+            if (timeEl) {
+              timeEl.textContent = `อัปเดตล่าสุด: ${new Date().toLocaleTimeString('th-TH')}`;
+            }
 
-          // If score changed or new events, re-render full details to refresh timeline and goalscorers
-          if (scoreChanged || newEventsCount !== oldEventsCount) {
-            const container = document.getElementById('matchContent');
-            if (container) {
-              const activeBtn = document.querySelector('.tab-btn.active');
-              const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
-              renderMatchDetail(match, container);
-              if (activeTarget) {
-                const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
-                if (newBtn) newBtn.click();
+            // Update Stats Tab if active
+            const statsTabEl = document.getElementById('tab-stats');
+            if (statsTabEl && match.stats) {
+              statsTabEl.innerHTML = generateMatchStatsHTML(match.stats, match.home_team, match.away_team, window.currentLang || 'th');
+            }
+
+            // If score or events or commentary changed, refresh match view
+            if (scoreChanged || newEventsCount !== oldEventsCount || newCommentsCount !== oldCommentsCount) {
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(match, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          } else if (isEfl) {
+            const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+            if (!res.ok) return;
+            const json = await res.json();
+            if (!json.success || !json.data) return;
+            const live = json.data;
+
+            const oldScore = `${match.home_score}-${match.away_score}`;
+            const newScore = `${live.home_score}-${live.away_score}`;
+            const scoreChanged = oldScore !== newScore;
+            const oldEventsCount = (match.events || []).length;
+            const newEventsCount = (live.events || []).length;
+
+            applyEflLiveData(match, live);
+
+            // Update Scoreboard Header
+            const scoreMainEl = document.getElementById('scoreMain');
+            if (scoreMainEl) {
+              scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
+            }
+            const liveBadgeWrapEl = document.getElementById('liveBadgeWrap');
+            if (liveBadgeWrapEl) {
+              liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${match.time_live || 'LIVE'}</div>`;
+            }
+
+            // Update Stats Tab
+            const statsTabEl = document.getElementById('tab-stats');
+            if (statsTabEl && match.stats) {
+              statsTabEl.innerHTML = generateMatchStatsHTML(match.stats, match.home_team, match.away_team, window.currentLang || 'th');
+            }
+
+            // If score changed or new events, re-render full details to refresh timeline and goalscorers
+            if (scoreChanged || newEventsCount !== oldEventsCount) {
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(match, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
               }
             }
           }
@@ -1391,8 +1577,11 @@
       // Status Badge
       let statusBadge = '';
       if (match.status === 'live') {
-        statusBadge = `<div class="match-status live"><span class="live-dot"></span> ${match.time_live || 'LIVE'}</div>`;
-      } else if (match.status === 'completed') {
+        const liveClock = match.clock || match.time_live || 'LIVE';
+        statusBadge = `<div class="match-status live"><span class="live-dot"></span> ${liveClock}</div>`;
+      } else if (match.status === 'halftime' || match.period === 'HalfTime') {
+        statusBadge = `<div class="match-status live" style="background: #e65100; color: #fff;"><span class="live-dot"></span> HT</div>`;
+      } else if (match.status === 'completed' || match.period === 'FullTime') {
         statusBadge = `<div class="match-status">FULL TIME</div>`;
       } else {
         statusBadge = `<div class="match-status" style="background: rgba(255,255,255,0.1); color: var(--ink-muted);">UPCOMING</div>`;
@@ -1940,6 +2129,31 @@
             </div>
           </div>
         </header>
+
+        ${(match.id === 'm10' || match.pl_match_id || match.id === 'm46' || match.efl_id) ? `
+          <div class="live-sync-banner" id="liveSyncBanner">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="live-pulse-dot"></span>
+              <div>
+                <span style="font-weight: 700; color: #ffffff; font-size: 0.92rem;">
+                  ${isTh ? 'ดึงข้อมูลสดแบบเรียลไทม์จาก Premier League Official' : 'Premier League Official Real-time Live Sync'}
+                </span>
+                <span style="font-size: 0.8rem; color: #90caf9; margin-left: 6px; font-weight: 500;">
+                  ${match.period === 'HalfTime' ? (isTh ? '• พักครึ่ง' : '• Half Time') : (match.clock ? `• ${isTh ? 'นาทีที่' : 'Min'} ${match.clock}` : (match.status === 'live' ? `• ${isTh ? 'กำลังแข่งขัน' : 'In Progress'}` : ''))}
+                </span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span id="liveSyncTimestamp" style="font-size: 0.78rem; color: var(--ink-muted); font-family: 'Space Mono', monospace;">
+                ${isTh ? 'อัปเดตล่าสุด' : 'Updated'}: ${match.last_synced ? new Date(match.last_synced).toLocaleTimeString('th-TH') : (isTh ? 'เมื่อสักครู่' : 'Just now')}
+              </span>
+              <button id="btnManualSync" onclick="window.handleManualLiveSync()" style="background: rgba(0, 102, 255, 0.25); border: 1px solid rgba(0, 102, 255, 0.6); color: #fff; border-radius: 6px; padding: 6px 14px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
+                <span class="sync-icon">🔄</span>
+                <span>${isTh ? 'ดึงข้อมูลสด' : 'Sync Live'}</span>
+              </button>
+            </div>
+          </div>
+        ` : ''}
 
         <!-- Main Content & Sidebar Grid -->
         <div class="details-grid">
