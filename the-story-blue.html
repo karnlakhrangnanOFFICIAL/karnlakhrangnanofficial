@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Story Blue · KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('theme-' + t);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
   <style>
@@ -11,10 +19,15 @@
        BASE & VARIABLES
        ========================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
+    :root, [data-theme="classic-blue"], .theme-classic-blue {
       --blue: #034694; --blue-light: #1565c0; --gold: #c8a84b; --gold-light: #e8c97a;
       --white: #f5f2ec; --off-white: #ede8df; --ink: #1a1410; --ink-soft: #3d342a;
       --ink-muted: #7a6f63; --rule: #c5b89a; --paper: #f9f6f0; --col-max: 1000px;
+    }
+    [data-theme="modern-dark"], .theme-modern-dark {
+      --blue: #0b0f19; --blue-light: #1e293b; --gold: #c8a84b; --gold-light: #e8c97a;
+      --white: #f8fafc; --off-white: #1e293b; --ink: #f1f5f9; --ink-soft: #cbd5e1;
+      --ink-muted: #94a3b8; --rule: #334155; --paper: #0f172a; --col-max: 1000px;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -180,6 +193,12 @@
         <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
         <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+        <li>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <span class="theme-icon" id="themeIcon">🔵</span>
+            <span class="theme-label" id="themeLabel">Classic Blue</span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -344,5 +363,6 @@
       setInterval(updateFloatingClocks, 1000);
     });
   </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

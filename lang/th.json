@@ -9,7 +9,10 @@
     "about": "เกี่ยวกับเรา",
     "transfers": "ตลาดซื้อขาย",
     "news": "ข่าวสาร",
-    "lang_toggle": "EN"
+    "lang_toggle": "EN",
+    "theme_classic": "คลาสสิคบลู",
+    "theme_dark": "โมเดิร์นดาร์ก",
+    "theme_toggle": "เปลี่ยนธีม"
   },
   "home": {
     "title": "กาลครั้งนั้น Official",

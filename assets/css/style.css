@@ -39,13 +39,99 @@
   box-sizing: border-box;
 }
 
+/* ============================================
+   THEMES: Classic Blue & Modern Dark
+   ============================================ */
 :root {
+  /* Default: Classic Blue (Official Chelsea Stamford Bridge Identity) */
+  --bg: #061328;
+  --bg-card: #0b2046;
+  --bg-card-hover: #112c5c;
+  --bg-header: #040e1f;
+  --navbar-bg: #040e1f;
+  --hero-bg: linear-gradient(180deg, #030a17 0%, #061530 100%);
+  --table-header-bg: #051329;
+  --card-bg: #0b2046;
+  --card-border: 1px solid rgba(147, 197, 253, 0.16);
+  --border-color: rgba(147, 197, 253, 0.16);
+  --ink: #ffffff;
+  --text-color: #ffffff;
+  --text-muted: #93c5fd;
+  --accent: #0033A0;
+  --accent-light: #38bdf8;
+  --accent-glow: rgba(0, 51, 160, 0.35);
+  --ink-faint: rgba(147, 197, 253, 0.15);
+  --ink-muted: #93c5fd;
+  --blue-dark: #001489;
+  --blue: #0033A0;
+  --blue-light: #1e60d5;
+  --gold: #D4AF37;
+  --gold-light: #F0D060;
+  --white: #FFFFFF;
+  --gray-100: #0b2046;
+  --gray-200: rgba(147, 197, 253, 0.15);
+  --gray-800: #FFFFFF;
+  --shadow: 0 6px 24px rgba(2, 6, 23, 0.5);
+  --radius: 8px;
+  --transition: 0.25s ease;
+  --body-gradient: radial-gradient(circle at 80% 10%, rgba(3, 70, 148, 0.3), transparent 60%), radial-gradient(circle at 10% 80%, rgba(0, 20, 137, 0.2), transparent 50%);
+}
+
+/* Explicit Classic Blue */
+:root[data-theme="classic-blue"],
+html[data-theme="classic-blue"],
+body.theme-classic-blue {
+  --bg: #061328;
+  --bg-card: #0b2046;
+  --bg-card-hover: #112c5c;
+  --bg-header: #040e1f;
+  --navbar-bg: #040e1f;
+  --hero-bg: linear-gradient(180deg, #030a17 0%, #061530 100%);
+  --table-header-bg: #051329;
+  --card-bg: #0b2046;
+  --card-border: 1px solid rgba(147, 197, 253, 0.16);
+  --border-color: rgba(147, 197, 253, 0.16);
+  --ink: #ffffff;
+  --text-color: #ffffff;
+  --text-muted: #93c5fd;
+  --accent: #0033A0;
+  --accent-light: #38bdf8;
+  --accent-glow: rgba(0, 51, 160, 0.35);
+  --ink-faint: rgba(147, 197, 253, 0.15);
+  --ink-muted: #93c5fd;
+  --blue-dark: #001489;
+  --blue: #0033A0;
+  --blue-light: #1e60d5;
+  --gold: #D4AF37;
+  --gold-light: #F0D060;
+  --white: #FFFFFF;
+  --gray-100: #0b2046;
+  --gray-200: rgba(147, 197, 253, 0.15);
+  --gray-800: #FFFFFF;
+  --shadow: 0 6px 24px rgba(2, 6, 23, 0.5);
+  --body-gradient: radial-gradient(circle at 80% 10%, rgba(3, 70, 148, 0.3), transparent 60%), radial-gradient(circle at 10% 80%, rgba(0, 20, 137, 0.2), transparent 50%);
+}
+
+/* Explicit Modern Dark (Sleek Obsidian & Slate Dark Theme) */
+:root[data-theme="modern-dark"],
+html[data-theme="modern-dark"],
+body.theme-modern-dark {
   --bg: #0c0c0e;
   --bg-card: #121216;
   --bg-card-hover: #181822;
+  --bg-header: #000000;
+  --navbar-bg: #000000;
+  --hero-bg: #000000;
+  --table-header-bg: #000000;
+  --card-bg: #121216;
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.1);
   --ink: #ffffff;
+  --text-color: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
   --accent: #0033A0;
   --accent-light: #1E50D6;
+  --accent-glow: rgba(0, 51, 160, 0.25);
   --ink-faint: rgba(255, 255, 255, 0.1);
   --ink-muted: rgba(255, 255, 255, 0.6);
   --blue-dark: #001489;
@@ -58,18 +144,18 @@
   --gray-200: rgba(255, 255, 255, 0.12);
   --gray-800: #FFFFFF;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --radius: 8px;
-  --transition: 0.25s ease;
+  --body-gradient: radial-gradient(circle at top right, rgba(0, 51, 160, 0.15), transparent 60%);
 }
 
 body {
   font-family: 'Inter', 'Anakotmai', 'Sarabun', sans-serif;
   background-color: var(--bg);
-  background-image: radial-gradient(circle at top right, rgba(0, 51, 160, 0.15), transparent 60%);
+  background-image: var(--body-gradient);
   color: var(--ink);
   line-height: 1.5;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 a {
@@ -85,12 +171,13 @@ img {
 
 /* ---------- NAVIGATION BAR ---------- */
 .navbar {
-  background: #000000;
+  background: var(--navbar-bg);
   padding: 0 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid var(--ink-faint);
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .nav-container {
@@ -180,15 +267,62 @@ img {
   border-color: var(--accent) !important;
 }
 
+/* ---------- THEME TOGGLE ---------- */
+.theme-toggle {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink-faint);
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle .theme-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle .theme-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* ---------- HERO SECTION ---------- */
 .hero {
-  background: #000000;
+  background: var(--hero-bg);
   border-bottom: 1px solid var(--ink-faint);
   padding: 60px 20px;
   text-align: center;
   color: var(--ink);
   position: relative;
   overflow: hidden;
+  transition: background var(--transition), border-color var(--transition);
 }
 
 .hero-content {
@@ -525,10 +659,11 @@ img {
 /* ---------- LEAGUE TABLE ---------- */
 .table-container {
   overflow-x: auto;
-  background: #000000;
+  background: var(--bg-card);
   border: 1px solid var(--ink-faint);
   border-radius: var(--radius);
   margin-bottom: 20px;
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .league-table {
@@ -538,7 +673,7 @@ img {
 }
 
 .league-table th {
-  background: #000000;
+  background: var(--table-header-bg);
   color: var(--ink-muted);
   font-family: 'Space Mono', monospace;
   font-size: 1.3rem;
@@ -548,6 +683,7 @@ img {
   text-align: center;
   vertical-align: middle;
   border-bottom: 1px solid var(--ink-faint);
+  transition: background-color var(--transition);
 }
 
 .league-table td {
@@ -634,12 +770,13 @@ img {
 
 /* ---------- TABLE RULES & LEGEND ---------- */
 .table-rules-card {
-  background: #000000;
+  background: var(--bg-card);
   border: 1px solid var(--ink-faint);
   border-radius: var(--radius);
   padding: 20px;
   margin-top: 16px;
   margin-bottom: 24px;
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .table-rules-header {
@@ -780,11 +917,11 @@ img {
 }
 
 .player-card {
-  background: #000000;
+  background: var(--bg-card);
   border: 1px solid var(--ink-faint);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: border-color 0.3s, transform 0.2s;
+  transition: border-color 0.3s, transform 0.2s, background-color var(--transition);
   text-align: center;
   padding-bottom: 15px;
 }
@@ -848,10 +985,11 @@ img {
 
 /* ---------- FOOTER ---------- */
 .footer {
-  background: #000000;
+  background: var(--navbar-bg);
   color: var(--ink-muted);
   padding: 40px 20px;
   border-top: 1px solid var(--ink-faint);
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .footer-content {
@@ -880,9 +1018,10 @@ img {
 
 /* ---------- MATCH DETAIL STYLES ---------- */
 .match-hero {
-  background: #000000;
+  background: var(--hero-bg);
   border-bottom: 1px solid var(--ink-faint);
   padding: 40px 20px;
+  transition: background var(--transition);
 }
 
 .match-detail-card {
@@ -905,10 +1044,11 @@ img {
 
 /* ---------- PLAYER PROFILE STYLES ---------- */
 .player-hero {
-  background: #000000;
+  background: var(--hero-bg);
   border-bottom: 1px solid var(--ink-faint);
   color: var(--ink);
   padding: 50px 20px;
+  transition: background var(--transition);
 }
 
 .player-hero-content {
@@ -925,7 +1065,7 @@ img {
   height: 240px;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #181822;
+  background: var(--bg-card-hover);
   border: 1px solid var(--ink-faint);
 }
 
@@ -977,11 +1117,12 @@ img {
 }
 
 .stat-box {
-  background: #000000;
+  background: var(--bg-card);
   border: 1px solid var(--ink-faint);
   border-radius: var(--radius);
   padding: 16px 10px;
   text-align: center;
+  transition: background-color var(--transition);
 }
 
 .stat-value {
@@ -1417,6 +1558,14 @@ img {
   .nav-links li a {
     padding: 14px 20px;
     font-size: 1.1rem;
+  }
+
+  .nav-links li .theme-toggle {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    margin-top: 4px;
   }
 
   .hero h1 {

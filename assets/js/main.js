@@ -2069,12 +2069,103 @@ function updateUIText() {
   if (langToggleBtn && translations?.story?.read_btn) {
     langToggleBtn.textContent = translations.story.read_btn;
   }
+
+  updateThemeToggleUI();
 }
 
 function toggleLanguage() {
   const newLang = currentLang === 'th' ? 'en' : 'th';
   loadLanguage(newLang);
 }
+
+// ============================================
+// THEME SWITCHER: Classic Blue & Modern Dark
+// ============================================
+const THEMES = {
+  CLASSIC_BLUE: 'classic-blue',
+  MODERN_DARK: 'modern-dark'
+};
+
+let currentTheme = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || THEMES.CLASSIC_BLUE;
+window.currentTheme = currentTheme;
+
+function applyTheme(theme, persist = true) {
+  if (theme !== THEMES.CLASSIC_BLUE && theme !== THEMES.MODERN_DARK) {
+    theme = THEMES.CLASSIC_BLUE;
+  }
+  currentTheme = theme;
+  window.currentTheme = theme;
+
+  if (document.documentElement) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.remove('theme-classic-blue', 'theme-modern-dark');
+    document.documentElement.classList.add(`theme-${theme}`);
+  }
+  if (document.body) {
+    document.body.setAttribute('data-theme', theme);
+    document.body.classList.remove('theme-classic-blue', 'theme-modern-dark');
+    document.body.classList.add(`theme-${theme}`);
+  }
+
+  if (persist) {
+    try {
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('chelsea_theme', theme);
+    } catch (e) {
+      console.warn('Could not save theme to localStorage:', e);
+    }
+  }
+
+  updateThemeToggleUI();
+
+  try {
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+  } catch (e) {}
+}
+
+function toggleTheme() {
+  const nextTheme = currentTheme === THEMES.CLASSIC_BLUE ? THEMES.MODERN_DARK : THEMES.CLASSIC_BLUE;
+  applyTheme(nextTheme, true);
+}
+
+function updateThemeToggleUI() {
+  const isTh = (window.currentLang || currentLang || 'th') === 'th';
+  const isClassic = currentTheme === THEMES.CLASSIC_BLUE;
+
+  const classicLabel = translations?.nav?.theme_classic || (isTh ? 'คลาสสิคบลู' : 'Classic Blue');
+  const darkLabel = translations?.nav?.theme_dark || (isTh ? 'โมเดิร์นดาร์ก' : 'Modern Dark');
+  const currentLabel = isClassic ? classicLabel : darkLabel;
+  const nextLabel = isClassic ? darkLabel : classicLabel;
+
+  const tooltipText = isTh
+    ? `เปลี่ยนธีมเป็น ${nextLabel} (ปัจจุบัน: ${currentLabel})`
+    : `Switch to ${nextLabel} (Current: ${currentLabel})`;
+
+  const toggles = document.querySelectorAll('.theme-toggle, #themeToggle');
+  toggles.forEach(btn => {
+    btn.setAttribute('data-current-theme', currentTheme);
+    btn.setAttribute('aria-label', tooltipText);
+    btn.setAttribute('title', tooltipText);
+    btn.setAttribute('data-tooltip-th', `เปลี่ยนธีมเป็น ${nextLabel} (ปัจจุบัน: ${currentLabel})`);
+    btn.setAttribute('data-tooltip-en', `Switch to ${nextLabel} (Current: ${currentLabel})`);
+
+    const iconEl = btn.querySelector('.theme-icon, #themeIcon');
+    if (iconEl) {
+      iconEl.textContent = isClassic ? '🔵' : '🌙';
+    }
+    const labelEl = btn.querySelector('.theme-label, #themeLabel');
+    if (labelEl) {
+      labelEl.textContent = currentLabel;
+    }
+  });
+}
+
+window.applyTheme = applyTheme;
+window.toggleTheme = toggleTheme;
+window.updateThemeToggleUI = updateThemeToggleUI;
+
+// Run immediate theme setup to prevent FOUC
+applyTheme(currentTheme, false);
 
 // Mobile Menu
 function initMobileMenu() {
@@ -2087,7 +2178,7 @@ function initMobileMenu() {
     navLinks.classList.toggle('active');
   });
 
-  navLinks.querySelectorAll('a').forEach(link => {
+  navLinks.querySelectorAll('a:not(.theme-toggle)').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navLinks.classList.remove('active');
@@ -2096,6 +2187,7 @@ function initMobileMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  applyTheme(currentTheme, false);
   await loadTeamsData();
   await loadLanguage(currentLang);
   initMobileMenu();
@@ -2107,6 +2199,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       toggleLanguage();
     });
   }
+
+  const themeToggles = document.querySelectorAll('.theme-toggle, #themeToggle');
+  themeToggles.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  });
+  updateThemeToggleUI();
 });
 
 

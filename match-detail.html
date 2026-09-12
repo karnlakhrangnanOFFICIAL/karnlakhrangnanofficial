@@ -6,11 +6,18 @@
   <title>Match Detail · KARN LA KHRANg NAN Official</title>
   <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
   <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('theme-' + t);
+    })();
+  </script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
     
-    :root {
+    :root, [data-theme="modern-dark"], .theme-modern-dark {
       --bg: #0c0c0e;
       --card-bg: rgba(255, 255, 255, 0.03);
       --ink: #ffffff;
@@ -20,6 +27,20 @@
       --ink-muted: rgba(255, 255, 255, 0.55);
       --gold: #D4AF37;
       --gold-light: #F3E5AB;
+      --danger: #EF4444;
+      --success: #10B981;
+    }
+
+    [data-theme="classic-blue"], .theme-classic-blue {
+      --bg: #f4f6fa;
+      --card-bg: #ffffff;
+      --ink: #001489;
+      --accent: #001489;
+      --accent-light: #034694;
+      --ink-faint: rgba(0, 20, 137, 0.1);
+      --ink-muted: #536471;
+      --gold: #D4AF37;
+      --gold-light: #856404;
       --danger: #EF4444;
       --success: #10B981;
     }
@@ -1215,6 +1236,12 @@
         <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
         <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+        <li>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <span class="theme-icon" id="themeIcon">🔵</span>
+            <span class="theme-label" id="themeLabel">Classic Blue</span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>

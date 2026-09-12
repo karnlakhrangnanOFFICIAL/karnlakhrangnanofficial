@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('theme-' + t);
+    })();
+  </script>
   <style>
     :root {
       --bg: #f8f7f4;
@@ -16,6 +23,65 @@
       --ink-faint: rgba(0, 20, 137, 0.1);
       --accent: #d4af37;
       --white: #ffffff;
+    }
+
+    [data-theme="modern-dark"], .theme-modern-dark {
+      --bg: #0c0c0e;
+      --ink: #f0f4f8;
+      --ink-faint: rgba(255, 255, 255, 0.08);
+      --accent: #d4af37;
+      --white: #16171d;
+    }
+    .theme-modern-dark .sidebar,
+    [data-theme="modern-dark"] .sidebar {
+      background: #090a0d;
+      border-right-color: rgba(255, 255, 255, 0.08);
+    }
+    .theme-modern-dark .mobile-header,
+    [data-theme="modern-dark"] .mobile-header {
+      background: #090a0d;
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+    .theme-modern-dark .nav-links a,
+    [data-theme="modern-dark"] .nav-links a {
+      color: #9ca3af;
+    }
+    .theme-modern-dark .nav-links a:hover,
+    .theme-modern-dark .nav-links a.active,
+    [data-theme="modern-dark"] .nav-links a:hover,
+    [data-theme="modern-dark"] .nav-links a.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .theme-modern-dark .contact-card,
+    [data-theme="modern-dark"] .contact-card {
+      background: #16171d;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .theme-modern-dark .disclaimer-box,
+    [data-theme="modern-dark"] .disclaimer-box {
+      background: rgba(220, 38, 38, 0.1);
+      color: #fca5a5;
+    }
+    .theme-toggle-about {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--ink-faint);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .theme-toggle-about:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -337,7 +403,13 @@
           <li><a href="about.html" class="active" data-i18n="nav.about">About Us</a></li>
         <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
         </ul>
-        <a href="#" class="nav-links lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">TH</a>
+        <div style="display: flex; gap: 8px; margin-top: 1.5rem;">
+          <a href="#" class="nav-links lang-toggle" id="langToggle" data-i18n="nav.lang_toggle" style="flex: 1; text-align: center;">TH</a>
+          <button type="button" class="theme-toggle-about theme-toggle" id="themeToggle" style="flex: 1; justify-content: center;" aria-label="Toggle Theme">
+            <span class="theme-icon" id="themeIcon">🔵</span>
+            <span class="theme-label" id="themeLabel">Classic Blue</span>
+          </button>
+        </div>
       </div>
       
       <div style="font-size: 0.6rem; opacity: 0.5; font-family: 'Space Mono', monospace;">

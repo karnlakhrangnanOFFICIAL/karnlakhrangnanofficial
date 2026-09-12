@@ -9,7 +9,10 @@
     "about": "About Us",
     "transfers": "Transfers",
     "news": "News",
-    "lang_toggle": "TH"
+    "lang_toggle": "TH",
+    "theme_classic": "Classic Blue",
+    "theme_dark": "Modern Dark",
+    "theme_toggle": "Theme"
   },
   "home": {
     "title": "KARN LA KHRANg NAN Official",

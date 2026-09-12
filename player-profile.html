@@ -6,6 +6,13 @@
   <title>Men's Team - KANLAKHRANGNAN Official</title>
   <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
   <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/svg+xml">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('theme-' + t);
+    })();
+  </script>
 </head>
 <body>
 
@@ -29,6 +36,12 @@
         <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
         <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+        <li>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <span class="theme-icon" id="themeIcon">🔵</span>
+            <span class="theme-label" id="themeLabel">Classic Blue</span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
