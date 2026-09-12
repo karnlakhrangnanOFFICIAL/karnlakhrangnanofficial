@@ -39,11 +39,11 @@ export default async function handler(req, res) {
       } catch (e) {}
     }
 
-    // 2. Fetch commentary with cursor pagination (up to 10 pages)
+    // 2. Fetch commentary with cursor pagination (up to 30 pages)
     let rawComments = [];
     let nextUrl = commBaseUrl;
     let page = 0;
-    while (nextUrl && page < 10) {
+    while (nextUrl && page < 30) {
       page++;
       try {
         const commRes = await fetch(nextUrl, { headers: PL_HEADERS });
@@ -220,6 +220,10 @@ export default async function handler(req, res) {
         timestamp: c.timestamp || ''
       });
     });
+
+    // Sort goals and events chronologically
+    goals.sort((a, b) => a.minute - b.minute);
+    events.sort((a, b) => a.minute - b.minute);
 
     // 3. Process Official Stats
     let formattedStats = [];

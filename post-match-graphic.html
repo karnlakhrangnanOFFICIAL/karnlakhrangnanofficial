@@ -141,34 +141,9 @@
                 const data = await res.json();
                 
                 allMatches = data
-                    .filter(m => m.status === 'completed' || m.home_score !== null)
+                    .filter(m => m.status === 'completed' || (m.home_score !== null && m.home_score !== undefined))
                     .map(m => ({...m, teamType: m.team_type === 'M' ? 'Men' : 'Women'}))
                     .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-
-        async function init() {
-            try {
-                // Fetch matches
-                const [menRes, womenRes] = await Promise.all([
-                    fetch('data/fixtures.json'),
-                    fetch('data/fixtures.json')
-                ]);
-                const menData = await menRes.json();
-                const womenData = await womenRes.json();
-                
-                // Extract all completed matches
-                const extractMatches = (data, team) => {
-                    let matches = [];
-                    for (const comp in data) {
-                        matches = matches.concat(data[comp].filter(m => m.status === 'completed' || m.home_score !== null).map(m => ({...m, teamType: team})));
-                    }
-                    return matches;
-                };
-                
-                allMatches = [
-                    ...extractMatches(menData, 'Men'),
-                    ...extractMatches(womenData, 'Women')
-                ].sort((a, b) => new Date(b.date) - new Date(a.date));
 
                 const select = document.getElementById('matchSelect');
                 allMatches.forEach((m, idx) => {

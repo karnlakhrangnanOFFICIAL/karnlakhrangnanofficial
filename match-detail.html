@@ -1977,8 +1977,8 @@
         `;
       };
 
-      const homeGoals = safeGoals.filter(g => g.team === 'home');
-      const awayGoals = safeGoals.filter(g => g.team === 'away');
+      const homeGoals = safeGoals.filter(g => g.team === 'home').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+      const awayGoals = safeGoals.filter(g => g.team === 'away').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
 
       const homeHeroGoalsHtml = homeGoals.map(g => renderHeroScorerItem(g, isHomeChelsea)).join('');
       const awayHeroGoalsHtml = awayGoals.map(g => renderHeroScorerItem(g, isAwayChelsea)).join('');

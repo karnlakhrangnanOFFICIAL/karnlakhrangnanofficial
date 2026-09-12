@@ -2294,7 +2294,7 @@
     ],
     "status": "live",
     "home_score": 1,
-    "away_score": 0,
+    "away_score": 2,
     "goals": [
       {
         "minute": 7,
@@ -2302,6 +2302,20 @@
         "assist": "João Pedro",
         "team": "home",
         "score": "1-0"
+      },
+      {
+        "minute": 28,
+        "player": "Mohamed Belloumi",
+        "assist": "Ryan Giles with a cross",
+        "team": "away",
+        "score": "1-1"
+      },
+      {
+        "minute": 34,
+        "player": "Mohamed Belloumi",
+        "assist": "Oliver McBurnie",
+        "team": "away",
+        "score": "1-2"
       }
     ],
     "events": [
@@ -2312,6 +2326,36 @@
         "player": "Morgan Rogers",
         "assist": "João Pedro",
         "detail": "Goal! Chelsea 1, Hull City 0. Morgan Rogers (Chelsea) left footed shot from the left side of the box to the bottom left corner. Assisted by João Pedro following a fast break."
+      },
+      {
+        "minute": 17,
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Oliver McBurnie",
+        "detail": "Oliver McBurnie (Hull City) is shown the yellow card for a bad foul."
+      },
+      {
+        "minute": 28,
+        "type": "goal",
+        "team": "away",
+        "player": "Mohamed Belloumi",
+        "assist": "Ryan Giles with a cross",
+        "detail": "Goal! Chelsea 1, Hull City 1. Mohamed Belloumi (Hull City) left footed shot from the centre of the box to the bottom right corner. Assisted by Ryan Giles with a cross."
+      },
+      {
+        "minute": 34,
+        "type": "goal",
+        "team": "away",
+        "player": "Mohamed Belloumi",
+        "assist": "Oliver McBurnie",
+        "detail": "Goal! Chelsea 1, Hull City 2. Mohamed Belloumi (Hull City) left footed shot from outside the box to the bottom left corner. Assisted by Oliver McBurnie following a corner."
+      },
+      {
+        "minute": 45,
+        "type": "substitution",
+        "team": "home",
+        "player": "Pep Chavarría",
+        "player_out": "Jorrel Hato"
       }
     ],
     "competition_name": "premier-league",
@@ -2495,13 +2539,13 @@
       }
     },
     "pl_match_id": "2645227",
-    "period": "FirstHalf",
-    "clock": "13'",
+    "period": "SecondHalf",
+    "clock": "47'",
     "stats": [
       {
         "name": "การครองบอล (Possession)",
-        "home": 72.3,
-        "away": 27.7,
+        "home": 63.7,
+        "away": 36.3,
         "isPercentage": true
       },
       {
@@ -2512,122 +2556,122 @@
       },
       {
         "name": "โอกาสยิงทั้งหมด (Total Shots)",
-        "home": 2,
-        "away": 1,
+        "home": 3,
+        "away": 6,
         "isPercentage": false
       },
       {
         "name": "ยิงตรงกรอบ (Shots on Target)",
-        "home": 1,
-        "away": 0,
+        "home": 2,
+        "away": 2,
         "isPercentage": false
       },
       {
         "name": "ยิงหลุดกรอบ (Shots off Target)",
         "home": 0,
-        "away": 1,
+        "away": 3,
         "isPercentage": false
       },
       {
         "name": "ยิงติดบล็อก (Blocked Shots)",
-        "home": 1,
-        "away": 0,
+        "home": 2,
+        "away": 1,
         "isPercentage": false
       },
       {
         "name": "ยิงในกรอบเขตโทษ (Shots Inside Box)",
         "home": 2,
-        "away": 1,
+        "away": 4,
         "isPercentage": false
       },
       {
         "name": "ยิงนอกกรอบเขตโทษ (Shots Outside Box)",
-        "home": 0,
-        "away": 0,
+        "home": 1,
+        "away": 2,
         "isPercentage": false
       },
       {
         "name": "ความแม่นยำในการส่งบอล (Passing Accuracy)",
-        "home": 91.7,
-        "away": 71,
+        "home": 85.2,
+        "away": 70.2,
         "isPercentage": true
       },
       {
         "name": "การส่งบอลทั้งหมด (Total Passes)",
-        "home": 84,
-        "away": 31,
+        "home": 284,
+        "away": 161,
         "isPercentage": false
       },
       {
         "name": "ส่งบอลสำเร็จ (Accurate Passes)",
-        "home": 77,
-        "away": 22,
+        "home": 242,
+        "away": 113,
         "isPercentage": false
       },
       {
         "name": "สัมผัสบอลทั้งหมด (Touches)",
-        "home": 113,
-        "away": 49,
+        "home": 383,
+        "away": 245,
         "isPercentage": false
       },
       {
         "name": "สัมผัสบอลในกรอบคู่แข่ง (Touches in Opp Box)",
-        "home": 3,
-        "away": 1,
+        "home": 16,
+        "away": 6,
         "isPercentage": false
       },
       {
         "name": "โอกาสทองที่สร้างได้ (Big Chances Created)",
         "home": 0,
-        "away": 0,
+        "away": 2,
         "isPercentage": false
       },
       {
         "name": "เตะมุม (Corners)",
-        "home": 1,
-        "away": 1,
+        "home": 7,
+        "away": 2,
         "isPercentage": false
       },
       {
         "name": "ล้ำหน้า (Offsides)",
-        "home": 0,
+        "home": 1,
         "away": 0,
         "isPercentage": false
       },
       {
         "name": "เข้าปะทะสำเร็จ (Tackles)",
-        "home": 2,
-        "away": 3,
+        "home": 5,
+        "away": 10,
         "isPercentage": false
       },
       {
         "name": "เคลียร์บอล (Clearances)",
-        "home": 1,
-        "away": 4,
+        "home": 9,
+        "away": 13,
         "isPercentage": false
       },
       {
         "name": "ตัดบอล (Interceptions)",
-        "home": 1,
-        "away": 0,
+        "home": 5,
+        "away": 4,
         "isPercentage": false
       },
       {
         "name": "ชนะการดวลกลางอากาศ (Aerial Duels Won)",
-        "home": 1,
-        "away": 1,
+        "home": 10,
+        "away": 10,
         "isPercentage": false
       },
       {
         "name": "เซฟของผู้รักษาประตู (Saves)",
         "home": 0,
-        "away": 0,
+        "away": 1,
         "isPercentage": false
       },
       {
         "name": "ทำฟาวล์ (Fouls Conceded)",
-        "home": 0,
-        "away": 3,
+        "home": 3,
+        "away": 5,
         "isPercentage": false
       },
       {
@@ -2751,9 +2795,342 @@
         "category": "general",
         "isKey": false,
         "timestamp": "2026-09-12 15:12:34"
+      },
+      {
+        "time": "16'",
+        "type": "free kick won",
+        "text": "Morgan Rogers (Chelsea) wins a free kick on the left wing.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:15:50"
+      },
+      {
+        "time": "16'",
+        "type": "free kick lost",
+        "text": "Foul by Matt Crooks (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:15:50"
+      },
+      {
+        "time": "17'",
+        "type": "free kick lost",
+        "text": "Foul by Oliver McBurnie (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:16:32"
+      },
+      {
+        "time": "17'",
+        "type": "free kick won",
+        "text": "Cole Palmer (Chelsea) wins a free kick in the attacking half.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:16:32"
+      },
+      {
+        "time": "17'",
+        "type": "yellow card",
+        "text": "Oliver McBurnie (Hull City) is shown the yellow card for a bad foul.",
+        "team": "away",
+        "category": "card",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:16:34"
+      },
+      {
+        "time": "21'",
+        "type": "free kick won",
+        "text": "Oliver McBurnie (Hull City) wins a free kick in the defensive half.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:20:54"
+      },
+      {
+        "time": "21'",
+        "type": "free kick lost",
+        "text": "Foul by Wesley Fofana (Chelsea).",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:20:54"
+      },
+      {
+        "time": "22'",
+        "type": "attempt saved",
+        "text": "Attempt saved. Pedro Neto (Chelsea) left footed shot from the right side of the box is saved in the bottom left corner by Konstantinos Tzolakis (Hull City). Assisted by Cole Palmer.",
+        "team": "away",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:21:54"
+      },
+      {
+        "time": "22'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Konstantinos Tzolakis.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:21:55"
+      },
+      {
+        "time": "25'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Ryan Giles.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:24:52"
+      },
+      {
+        "time": "26'",
+        "type": "free kick lost",
+        "text": "Foul by Levi Colwill (Chelsea).",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:25:36"
+      },
+      {
+        "time": "26'",
+        "type": "free kick won",
+        "text": "Konstantinos Tzolakis (Hull City) wins a free kick in the defensive half.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:25:36"
+      },
+      {
+        "time": "26'",
+        "type": "start delay",
+        "text": "Delay in match because of an injury Konstantinos Tzolakis (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:26:15"
+      },
+      {
+        "time": "26'",
+        "type": "start delay",
+        "text": "El juego está detenido debido a una lesión Konstantinos Tzolakis (Hull City).",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:26:15"
+      },
+      {
+        "time": "27'",
+        "type": "end delay",
+        "text": "Delay over. They are ready to continue.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:27:04"
+      },
+      {
+        "time": "27'",
+        "type": "end delay",
+        "text": "Se reanuda el partido.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:27:04"
+      },
+      {
+        "time": "28'",
+        "type": "goal",
+        "text": "Goal! Chelsea 1, Hull City 1. Mohamed Belloumi (Hull City) left footed shot from the centre of the box to the bottom right corner. Assisted by Ryan Giles with a cross.",
+        "team": "away",
+        "category": "goal_var",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:27:59"
+      },
+      {
+        "time": "30'",
+        "type": "free kick lost",
+        "text": "Foul by Roméo Lavia (Chelsea).",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:29:54"
+      },
+      {
+        "time": "30'",
+        "type": "free kick won",
+        "text": "Oliver McBurnie (Hull City) wins a free kick in the attacking half.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:29:54"
+      },
+      {
+        "time": "33'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Lewie Coyle (Hull City) right footed shot from the centre of the box is blocked. Assisted by Mohamed Belloumi.",
+        "team": "away",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:32:40"
+      },
+      {
+        "time": "33'",
+        "type": "corner",
+        "text": "Corner, Hull City. Conceded by Levi Colwill.",
+        "team": "away",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:32:42"
+      },
+      {
+        "time": "34'",
+        "type": "post",
+        "text": "Semi Ajayi (Hull City) hits the bar with a header from the centre of the box. Assisted by Regan Slater with a cross following a corner.",
+        "team": "away",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:33:29"
+      },
+      {
+        "time": "34'",
+        "type": "goal",
+        "text": "Goal! Chelsea 1, Hull City 2. Mohamed Belloumi (Hull City) left footed shot from outside the box to the bottom left corner. Assisted by Oliver McBurnie following a corner.",
+        "team": "away",
+        "category": "goal_var",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:33:32"
+      },
+      {
+        "time": "39'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Lewie Coyle.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:38:54"
+      },
+      {
+        "time": "44'",
+        "type": "offside",
+        "text": "Offside, Chelsea. Jorrel Hato is caught offside.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:43:45"
+      },
+      {
+        "time": "45'",
+        "type": "added time",
+        "text": "Fourth official has announced 2 minutes of added time.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:45:20"
+      },
+      {
+        "time": "45'",
+        "type": "added time",
+        "text": "El cuarto árbitro ha anunciado 2 minutos de tiempo añadido.",
+        "team": "home",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:45:20"
+      },
+      {
+        "time": "45'+2'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Lewie Coyle.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:46:41"
+      },
+      {
+        "time": "45'+2'",
+        "type": "attempt blocked",
+        "text": "Attempt blocked. Malo Gusto (Chelsea) left footed shot from outside the box is blocked. Assisted by Pedro Neto with a headed pass.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:47:13"
+      },
+      {
+        "time": "45'+2'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Matt Crooks.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:47:15"
+      },
+      {
+        "time": "45'+3'",
+        "type": "corner",
+        "text": "Corner, Chelsea. Conceded by Matt Crooks.",
+        "team": "home",
+        "category": "key",
+        "isKey": true,
+        "timestamp": "2026-09-12 15:47:48"
+      },
+      {
+        "time": "45'+3'",
+        "type": "end 1",
+        "text": "First Half ends, Chelsea 1, Hull City 2.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:47:53"
+      },
+      {
+        "time": "45'+3'",
+        "type": "end 1",
+        "text": "Final primera parte, Chelsea 1, Hull City 2.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 15:47:53"
+      },
+      {
+        "time": "45'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Pep Chavarría replaces Jorrel Hato.",
+        "team": "home",
+        "category": "sub",
+        "isKey": true,
+        "timestamp": "2026-09-12 16:02:49"
+      },
+      {
+        "time": "45'",
+        "type": "substitution",
+        "text": "Cambio en Chelsea, entra al campo Pep Chavarría sustituyendo a Jorrel Hato.",
+        "team": "home",
+        "category": "sub",
+        "isKey": true,
+        "timestamp": "2026-09-12 16:02:49"
+      },
+      {
+        "time": " ",
+        "type": "start",
+        "text": "Second Half begins Chelsea 1, Hull City 2.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 16:03:55"
+      },
+      {
+        "time": "47'",
+        "type": "miss",
+        "text": "Attempt missed. Elliot Stroud (Hull City) left footed shot from outside the box.",
+        "team": "away",
+        "category": "general",
+        "isKey": false,
+        "timestamp": "2026-09-12 16:05:50"
       }
     ],
-    "last_synced": "2026-09-12T14:15:12.876Z"
+    "last_synced": "2026-09-12T15:07:21.054Z"
   },
   {
     "id": "m11",

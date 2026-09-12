@@ -374,50 +374,44 @@
       `;
       
       htmlContent += matches.map((match) => {
-        const homeStr = match.home_team.toLowerCase();
-        const awayStr = match.away_team.toLowerCase();
+        const homeStr = (match.home_team || '').toLowerCase();
+        const awayStr = (match.away_team || '').toLowerCase();
         const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
         const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
-        const compName = formatCompetitionName(match.competition_name);
+        const compName = formatCompetitionName(match.competition_name || match.competition);
+        const compLogo = match.competition_logo || '';
+        const teamBadge = match.team_type || 'M';
+        const teamBadgeClass = teamBadge.toLowerCase();
+        const timeStr = (match.time_th || match.time || 'TBC');
+        const displayTime = timeStr.length > 5 ? timeStr.substring(0, 5) : timeStr;
         
         return `
-          
-        <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
-          <div class="match-card-top">
-            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
-            <div class="match-card-league">
-              ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
-              <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
+          <a href="match-detail.html?id=${match.id}" class="card-link" style="text-decoration: none; display: block; opacity: 1; animation: none;">
+            <div class="card" style="padding: 12px; background: var(--card-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted);">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  ${compLogo ? `<img src="${compLogo}" style="height:14px; object-fit: contain;">` : ''}
+                  <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;">${compName}</span>
+                  <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem;">${teamBadge}</span>
+                </div>
+                <span>${displayTime}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <div style="display: flex; align-items: center; gap: 6px; flex: 1; justify-content: flex-end; text-align: right;">
+                  <span style="font-size: 0.85rem; font-weight: ${isChelseaHome ? 'bold' : 'normal'}; color: ${isChelseaHome ? 'var(--text-color)' : 'var(--text-muted)'};">${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}</span>
+                  <img src="${match.home_logo}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 24px; height: 24px; object-fit: contain;">
+                </div>
+                <div style="padding: 0 10px; font-weight: bold; font-size: 0.95rem; color: var(--primary-color); text-align: center; min-width: 50px;">
+                  ${match.status === 'completed' ? `${match.home_score !== undefined ? match.home_score : 0} - ${match.away_score !== undefined ? match.away_score : 0}` : (match.status === 'live' ? `<span style="color: #e74c3c;">${match.home_score || 0} - ${match.away_score || 0}</span>` : 'VS')}
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; flex: 1; text-align: left;">
+                  <img src="${match.away_logo}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 24px; height: 24px; object-fit: contain;">
+                  <span style="font-size: 0.85rem; font-weight: ${isChelseaAway ? 'bold' : 'normal'}; color: ${isChelseaAway ? 'var(--text-color)' : 'var(--text-muted)'};">${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}</span>
+                </div>
+              </div>
             </div>
-            <div class="match-card-venue">
-              <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
-              <span>${match.venue}</span>
-            </div>
-          </div>
-          
-          <div class="match-card-row">
-            <div class="match-card-team home">
-              <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <span class="match-card-team-name" style="${homeNameStyle}">${renderTeamNameHTML(match.home_team)}</span>
-            </div>
-            
-            <div class="match-card-timebox">
-              ${match.status === 'live' ? `<span style="color:var(--primary-color);">${match.home_score||0} - ${match.away_score||0}</span>` : `<span>${displayTime}</span>`}
-            </div>
-            
-            <div class="match-card-team away">
-              <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <span class="match-card-team-name" style="${awayNameStyle}">${renderTeamNameHTML(match.away_team)}</span>
-            </div>
-          </div>
-          
-          <div class="match-card-footer">
-            <span class="match-card-footer-text" style="${match.status === 'live' ? 'color:#e74c3c; font-weight:700;' : ''}">${match.status === 'live' ? `<span style="display:inline-block; width:8px; height:8px; background:#e74c3c; border-radius:50%; margin-right:4px; box-shadow:0 0 8px #e74c3c;"></span>LIVE ${match.time_live || 'NOW'}` : ''}</span>
-            <div class="match-card-providers">
-              ${channelsIcons}
-            </div>
-          </div>
-        </a>`;
+          </a>
+        `;
       }).join('');
       content.innerHTML = htmlContent;
       overlay.style.display = 'flex';
@@ -425,6 +419,137 @@
         overlay.style.opacity = '1';
         content.style.transform = 'translateY(0)';
       }, 10);
+    };
+
+    function renderCalendar() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+      const lang = window.currentLang || 'th';
+
+      const monthYearEl = document.getElementById('currentMonthYear');
+      if (monthYearEl) {
+        if (lang === 'th') {
+          const thaiMonths = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+          monthYearEl.textContent = `${thaiMonths[month]} ${year + 543}`;
+        } else {
+          monthYearEl.textContent = currentCalDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+        }
+      }
+
+      const grid = document.getElementById('calendarGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const dayNames = lang === 'th' 
+        ? ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.']
+        : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      dayNames.forEach(name => {
+        const hEl = document.createElement('div');
+        hEl.className = 'cal-day-header';
+        hEl.style.cssText = 'font-weight: 700; text-align: center; padding: 10px 4px; background: var(--card-bg); border-radius: var(--radius-sm); color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-color);';
+        hEl.textContent = name;
+        grid.appendChild(hEl);
+      });
+
+      const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Sun
+      const totalDays = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDayIndex; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-empty-slot';
+        emptyCell.style.cssText = 'background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-sm); min-height: 110px; border: 1px dashed rgba(255, 255, 255, 0.05);';
+        grid.appendChild(emptyCell);
+      }
+
+      const todayObj = new Date();
+      const todayStr = `${todayObj.getFullYear()}-${String(todayObj.getMonth() + 1).padStart(2, '0')}-${String(todayObj.getDate()).padStart(2, '0')}`;
+
+      for (let d = 1; d <= totalDays; d++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const isToday = dateStr === todayStr;
+        const dayOfWeek = new Date(year, month, d).getDay();
+        const dayOfWeekName = dayNames[dayOfWeek];
+
+        const dayEl = document.createElement('div');
+        dayEl.className = 'cal-day-cell';
+        dayEl.style.cssText = `background: var(--card-bg); border-radius: var(--radius-sm); border: 1px solid ${isToday ? 'var(--primary-color)' : 'var(--border-color)'}; padding: 8px; min-height: 115px; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.2s, transform 0.2s; position: relative;`;
+        if (isToday) {
+          dayEl.style.boxShadow = '0 0 10px rgba(0, 51, 160, 0.3)';
+        }
+
+        const numEl = document.createElement('div');
+        numEl.style.cssText = 'display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 700; color: var(--text-color); margin-bottom: 2px;';
+        numEl.innerHTML = `
+          <span>${d}</span>
+          <span class="cal-mobile-day" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${dayOfWeekName}</span>
+          ${isToday ? `<span style="font-size: 0.65rem; background: var(--primary-color); color: #fff; padding: 1px 5px; border-radius: 4px;">${lang === 'th' ? 'วันนี้' : 'Today'}</span>` : ''}
+        `;
+        dayEl.appendChild(numEl);
+
+        const dayMatches = (window.allMatchesGlobal || []).filter(m => m.date === dateStr);
+        if (dayMatches.length > 2) {
+          dayEl.classList.add('has-many-matches');
+        }
+
+        dayMatches.forEach((match) => {
+          const homeStr = (match.home_team || '').toLowerCase();
+          const awayStr = (match.away_team || '').toLowerCase();
+          const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
+          const isHome = isChelseaHome;
+          const oppName = isHome ? (match.away_team || '') : (match.home_team || '');
+          const oppLogo = isHome ? (match.away_logo || '') : (match.home_logo || '');
+          
+          const teamBadge = match.team_type || 'M';
+          const teamBadgeClass = teamBadge.toLowerCase();
+          const homeAwayDotColor = isHome ? '#00ff00' : '#ff0000'; // Green = Home, Red = Away
+
+          let timeOrScore = '';
+          if (match.status === 'completed') {
+            timeOrScore = `${match.home_score !== undefined ? match.home_score : 0} - ${match.away_score !== undefined ? match.away_score : 0}`;
+          } else if (match.status === 'live') {
+            timeOrScore = `${match.home_score || 0} - ${match.away_score || 0}`;
+          } else {
+            const t = match.time_th || match.time || 'TBC';
+            timeOrScore = t.length > 5 ? t.substring(0, 5) : t;
+          }
+
+          const mEl = document.createElement('a');
+          mEl.href = `match-detail.html?id=${match.id}`;
+          mEl.className = 'cal-match-item';
+          mEl.style.cssText = 'text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; background: rgba(255, 255, 255, 0.04); border-radius: var(--radius-sm); font-size: 0.74rem; border: 1px solid rgba(255,255,255,0.06); gap: 4px; transition: background 0.2s;';
+          
+          mEl.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 4px; overflow: hidden;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background-color: ${homeAwayDotColor}; flex-shrink: 0;" title="${isHome ? 'Home' : 'Away'}"></span>
+              <span class="team-badge ${teamBadgeClass}" style="padding: 1px 3px; font-size: 0.55rem; flex-shrink: 0;">${teamBadge}</span>
+              ${oppLogo ? `<img src="${oppLogo}" alt="" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 14px; height: 14px; object-fit: contain; flex-shrink: 0;">` : ''}
+              <span class="cal-team-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55px; color: var(--text-color);">${window.renderTeamNameHTML ? window.renderTeamNameHTML(oppName) : oppName}</span>
+            </div>
+            <span style="font-weight: 700; color: ${match.status === 'live' ? '#ff4d4f' : (match.status === 'completed' ? 'var(--gold, #d4af37)' : 'var(--text-muted)')}; font-size: 0.72rem; flex-shrink: 0; font-family: 'Space Mono', monospace;">${timeOrScore}</span>
+          `;
+          dayEl.appendChild(mEl);
+        });
+
+        if (dayMatches.length > 2) {
+          const badge = document.createElement('div');
+          badge.className = 'mobile-match-counter';
+          badge.textContent = lang === 'en' ? dayMatches.length + ' Matches' : dayMatches.length + ' นัด';
+          dayEl.appendChild(badge);
+        }
+
+        if (dayMatches.length > 0) {
+          dayEl.style.cursor = 'pointer';
+          dayEl.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              window.showMobileMatchOverlay(dayMatches, dateStr);
+            }
+          });
+        }
+
+        grid.appendChild(dayEl);
+      }
     }
 
     // ---------- RENDER LIVE SPOTLIGHT & BADGE AT TOP OF FIXTURES ----------
@@ -792,6 +917,10 @@
       }
       if (window.resultsGlobal) {
         renderResults(window.resultsGlobal.slice(0, 6));
+      }
+      const calWrap = document.getElementById('calendarViewWrapper');
+      if (calWrap && calWrap.style.display !== 'none' && typeof renderCalendar === 'function') {
+        renderCalendar();
       }
     });
   </script>
