@@ -142,12 +142,13 @@
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.08em;
-      border-radius: 2px;
+      border-radius: 4px;
     }
     .match-status.live {
-      background: var(--danger);
+      background: #d32f2f;
       color: #ffffff;
       animation: pulseLive 2s infinite ease-in-out;
+      box-shadow: 0 0 12px rgba(211, 47, 47, 0.5);
     }
     @keyframes pulseLive {
       0%, 100% { opacity: 1; }
@@ -167,22 +168,69 @@
     .sync-icon.spinning {
       animation: spinIcon 1s linear infinite;
     }
+
+    /* Scoreboard Goalscorers in Hero */
+    .team-hero-scorers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      max-width: 260px;
+    }
+    .team-hero-scorer-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.2s ease;
+    }
+    .team-hero-scorer-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+    .team-hero-scorer-item a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .team-hero-scorer-item a:hover {
+      text-decoration: underline;
+    }
+    .team-hero-scorer-item .scorer-minute {
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .team-hero-scorer-item .scorer-assist {
+      color: var(--ink-muted);
+      font-size: 0.72rem;
+      margin-left: 2px;
+    }
+
+    /* Live Sync Banner */
     .live-sync-banner {
-      background: rgba(3, 25, 75, 0.55);
-      border: 1px solid rgba(0, 102, 255, 0.4);
-      border-radius: 8px;
-      padding: 12px 18px;
-      margin-bottom: 24px;
+      background: linear-gradient(135deg, rgba(3, 25, 75, 0.65) 0%, rgba(5, 38, 107, 0.45) 100%);
+      border: 1px solid rgba(0, 102, 255, 0.35);
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-bottom: 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      gap: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
     }
     .live-pulse-dot {
-      width: 9px;
-      height: 9px;
+      width: 10px;
+      height: 10px;
       background: #00e676;
       border-radius: 50%;
       box-shadow: 0 0 10px #00e676;
@@ -194,7 +242,7 @@
     .details-grid {
       display: grid;
       grid-template-columns: 320px 1fr;
-      gap: 48px;
+      gap: 40px;
       align-items: start;
     }
     @media (max-width: 880px) {
@@ -207,46 +255,70 @@
       }
       .details-grid {
         grid-template-columns: 1fr !important;
-        gap: 32px;
+        gap: 28px;
       }
       .sidebar-meta {
-        border-right: none !important;
-        border-bottom: 1px solid var(--ink-faint);
-        padding-right: 0 !important;
-        padding-bottom: 28px;
+        padding-bottom: 8px;
       }
     }
 
-    /* Sidebar Meta */
+    /* Sidebar Meta & Cards */
     .sidebar-meta {
       display: flex;
       flex-direction: column;
-      gap: 28px;
-      border-right: 1px solid var(--ink-faint);
-      padding-right: 36px;
+      gap: 20px;
     }
-    .meta-group {
+    .sidebar-card {
+      background: var(--card-bg, #0b1528);
+      border: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.08));
+      border-radius: 10px;
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     }
-    .meta-item {
+    .sidebar-card-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.08));
+    }
+    .sidebar-card-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 12px;
     }
-    .sidebar-meta .label {
+    .sidebar-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      padding: 2px 0;
+    }
+    .sidebar-info-label {
       font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+      font-size: 0.72rem;
       color: var(--ink-muted);
-      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
     }
-    .sidebar-meta .value {
-      font-size: 0.95rem;
+    .sidebar-info-val {
       font-weight: 600;
       color: var(--ink);
+      text-align: right;
     }
     .channel-badges-wrap {
       display: flex;
@@ -258,7 +330,7 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--ink-faint);
       padding: 6px 12px;
-      border-radius: 4px;
+      border-radius: 6px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -268,25 +340,11 @@
       object-fit: contain;
     }
 
-    /* Goalscorers Sidebar */
-    .goalscorers-block {
-      border-top: 1px solid var(--ink-faint);
-      padding-top: 20px;
-    }
-    .goalscorers-heading {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-      margin-bottom: 12px;
-      display: block;
-      font-weight: 700;
-    }
+    /* Goalscorers in Sidebar Summary */
     .goals-grid {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
     .col-team-name {
       font-family: 'Space Mono', monospace;
@@ -343,6 +401,230 @@
     }
     .scorer-link:hover {
       color: var(--gold);
+    }
+
+    /* Timeline Visual Cards */
+    .timeline-visual-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .timeline-header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .timeline-meta-title {
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .timeline-meta-badge {
+      background: rgba(0, 230, 118, 0.15);
+      color: #00e676;
+      border: 1px solid rgba(0, 230, 118, 0.4);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .timeline-period-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 0 8px;
+      position: relative;
+    }
+    .timeline-period-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--ink-faint);
+      z-index: 1;
+    }
+    .timeline-period-divider span {
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
+      padding: 4px 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gold);
+      border: 1px solid var(--ink-faint);
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .timeline-events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .timeline-event-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 14px 18px;
+      transition: all 0.2s ease;
+    }
+    .timeline-event-card:hover {
+      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    .timeline-event-card.is-goal {
+      border-left: 4px solid var(--gold);
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), var(--card-bg));
+    }
+    .timeline-event-card.is-card {
+      border-left: 4px solid #ffc107;
+      background: linear-gradient(90deg, rgba(255, 193, 7, 0.06), var(--card-bg));
+    }
+    .timeline-event-card.is-red {
+      border-left: 4px solid #ef4444;
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.08), var(--card-bg));
+    }
+    .timeline-event-card.is-sub {
+      border-left: 4px solid #3b82f6;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.06), var(--card-bg));
+    }
+    .timeline-time-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      padding-top: 2px;
+    }
+    .timeline-time-pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .timeline-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .timeline-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .timeline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .timeline-badge.goal {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+    }
+    .timeline-badge.yellow {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+    }
+    .timeline-badge.red {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    .timeline-team-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .timeline-team-tag img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+    .timeline-score-progress {
+      margin-left: auto;
+      font-family: 'Space Mono', monospace;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #ffffff;
+      background: rgba(0, 102, 255, 0.3);
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 102, 255, 0.5);
+    }
+    .timeline-player-name {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .timeline-player-name a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .timeline-player-name a:hover {
+      text-decoration: underline;
+    }
+    .timeline-event-detail {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* Stats Header Bar */
+    .stats-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+    .stats-header-team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .stats-header-team img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .stats-vs-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 700;
+      padding: 4px 12px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
     }
 
     /* Tabs Navigation */
@@ -1143,10 +1425,26 @@
         `;
       }
 
+      const isHomeChelsea = homeTeamName && homeTeamName.toLowerCase().includes('chelsea');
+      const isAwayChelsea = awayTeamName && awayTeamName.toLowerCase().includes('chelsea');
+      const homeLogo = currentMatch ? currentMatch.home_logo : '';
+      const awayLogo = currentMatch ? currentMatch.away_logo : '';
+
       let html = `
         <div class="stats-card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--ink-faint); font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em;">
-            <span>📊 ${isTh ? 'สถิติการแข่งขันอย่างเป็นทางการ (Official Match Stats)' : 'Official Match Statistics'}</span>
+          <div class="stats-header-bar">
+            <div class="stats-header-team">
+              ${homeLogo ? `<img src="${homeLogo}" alt="${homeTeamName}" onerror="this.src='assets/images/placeholder-team.svg'">` : ''}
+              <span style="${isHomeChelsea ? 'color: var(--gold);' : 'color: var(--ink);'}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(homeTeamName) : homeTeamName}</span>
+            </div>
+            <div class="stats-vs-badge">VS</div>
+            <div class="stats-header-team" style="justify-content: flex-end;">
+              <span style="${isAwayChelsea ? 'color: var(--gold);' : 'color: var(--ink);'}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(awayTeamName) : awayTeamName}</span>
+              ${awayLogo ? `<img src="${awayLogo}" alt="${awayTeamName}" onerror="this.src='assets/images/placeholder-team.svg'">` : ''}
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--ink-faint); font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em;">
+            <span>📊 ${isTh ? 'สถิติการแข่งขันอย่างเป็นทางการ' : 'Official Match Statistics'}</span>
             <span style="color: var(--ink-muted); font-size: 0.72rem;">Premier League</span>
           </div>
       `;
@@ -1640,8 +1938,50 @@
         }
       };
 
+      const renderHeroScorerItem = (g, isChelsea) => {
+        const playerName = g.player;
+        let isOwnGoal = playerName.includes('(OG)');
+        let isPenalty = playerName.includes('(Pen)');
+        let assist = g.assist || '';
+
+        if (match.events) {
+          const ev = match.events.find(e => e.type === 'goal' && (e.player === playerName || e.player === playerName.replace(/ \(OG\)$/, '')) && e.minute === g.minute);
+          if (ev) {
+            if (ev.detail === 'Penalty') isPenalty = true;
+            if (ev.detail === 'Own Goal') isOwnGoal = true;
+            if (!assist && ev.assist) assist = ev.assist;
+          }
+        }
+
+        const cleanName = playerName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+        const pId = getPlayerIdByName(cleanName);
+        const pTeam = getPlayerTeamByName(cleanName, teamType);
+
+        let suffix = '';
+        if (isPenalty) suffix = ' (Pen)';
+        if (isOwnGoal) suffix = ' (OG)';
+
+        const nameDisplay = (isChelsea && pId)
+          ? `<a href="player-profile.html?id=${pId}&team=${pTeam}">${cleanName}${suffix}</a>`
+          : `<strong>${cleanName}${suffix}</strong>`;
+
+        const assistDisplay = assist ? `<span class="scorer-assist">(${isTh ? 'แอสซิสต์: ' : 'ast: '}${assist})</span>` : '';
+
+        return `
+          <div class="team-hero-scorer-item">
+            <span>⚽</span>
+            ${nameDisplay}
+            <span class="scorer-minute">${g.minute}'</span>
+            ${assistDisplay}
+          </div>
+        `;
+      };
+
       const homeGoals = safeGoals.filter(g => g.team === 'home');
       const awayGoals = safeGoals.filter(g => g.team === 'away');
+
+      const homeHeroGoalsHtml = homeGoals.map(g => renderHeroScorerItem(g, isHomeChelsea)).join('');
+      const awayHeroGoalsHtml = awayGoals.map(g => renderHeroScorerItem(g, isAwayChelsea)).join('');
 
       const homeGoalsList = homeGoals.length > 0
         ? homeGoals.map(g => renderGoalItem(g, isHomeChelsea)).join('')
@@ -1664,7 +2004,7 @@
         </div>
       `;
 
-      // ---------- TAB 1: TIMELINE & COMMENTARY ----------
+      // ---------- TAB 1: TIMELINE ----------
       let timelineTabHtml = '';
       if (match.events && match.events.length > 0) {
         const sortedEvents = [...match.events].sort((a, b) => {
@@ -1701,9 +2041,9 @@
           return type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ');
         };
 
-        const renderEventRow = (e) => {
+        const renderTimelineCard = (e) => {
           let eType = e.type;
-          if (e.type === 'goal' && (e.detail === 'Own Goal' || e.player.includes('(OG)'))) eType = 'own_goal';
+          if (e.type === 'goal' && (e.detail === 'Own Goal' || (e.player && e.player.includes('(OG)')))) eType = 'own_goal';
           const icon = getEventIcon(eType);
           const title = getEventTitle(eType);
           const time = e.minute + "'";
@@ -1717,7 +2057,7 @@
             const pId = getPlayerIdByName(pName);
             const pTeam = getPlayerTeamByName(pName, teamType);
             if (pId) {
-              return `<a href="player-profile.html?id=${pId}&team=${pTeam}" style="color: var(--gold); text-decoration: none; font-weight: 600;">${pName}</a>`;
+              return `<a href="player-profile.html?id=${pId}&team=${pTeam}">${pName}</a>`;
             }
             return pName;
           };
@@ -1726,7 +2066,7 @@
           if (e.type === 'substitution') {
             const inPlayer = getPlayerLink(e.player_in || e.player);
             const outPlayer = getPlayerLink(e.player_out);
-            playerHtml = `<div><span style="color: var(--success); font-weight: 600;">⬆️ In:</span> ${inPlayer}</div><div style="font-size: 0.85em; color: var(--ink-muted); margin-top: 2px;"><span style="color: var(--danger); font-weight: 600;">⬇️ Out:</span> ${outPlayer}</div>`;
+            playerHtml = `<span style="color: var(--success); font-weight: 700;">⬆️ In:</span> ${inPlayer} <span style="color: var(--ink-muted); margin: 0 4px;">•</span> <span style="color: var(--danger); font-weight: 700;">⬇️ Out:</span> ${outPlayer}`;
           }
 
           let detailText = e.detail || '';
@@ -1735,78 +2075,66 @@
             detailText = `<span style="color: var(--ink-muted); font-size: 0.85rem;">👟 ${isTh ? 'แอสซิสต์:' : 'Assist:'} <strong>${assistPlayer}</strong></span>`;
           }
 
+          let cardClass = '';
+          let badgeClass = '';
+          if (eType === 'goal' || eType === 'own_goal') {
+            cardClass = 'is-goal';
+            badgeClass = 'goal';
+          } else if (eType === 'yellow_card') {
+            cardClass = 'is-card';
+            badgeClass = 'yellow';
+          } else if (eType === 'red_card') {
+            cardClass = 'is-red';
+            badgeClass = 'red';
+          } else if (eType === 'substitution') {
+            cardClass = 'is-sub';
+            badgeClass = '';
+          }
+
           return `
-            <tr>
-              <td class="event-time-col">${time}</td>
-              <td class="event-team-col">
-                <div class="event-team-pill">
-                  ${teamLogo ? `<img src="${teamLogo}" alt="${teamName}">` : ''}
-                  <span>${window.renderTeamNameHTML ? window.renderTeamNameHTML(teamName) : teamName}</span>
+            <div class="timeline-event-card ${cardClass}">
+              <div class="timeline-time-col">
+                <span class="timeline-time-pill">${time}</span>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-badge ${badgeClass}">
+                    ${icon}
+                    <span>${title}</span>
+                  </span>
+                  <div class="timeline-team-tag">
+                    ${teamLogo ? `<img src="${teamLogo}" alt="${teamName}">` : ''}
+                    <span>${window.renderTeamNameHTML ? window.renderTeamNameHTML(teamName) : teamName}</span>
+                  </div>
+                  ${eType === 'goal' && e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ''}
                 </div>
-              </td>
-              <td>${playerHtml}</td>
-              <td>
-                <div class="event-type-badge">
-                  ${icon}
-                  <span>${title}</span>
-                </div>
-              </td>
-              <td>${detailText}</td>
-            </tr>
+                <div class="timeline-player-name">${playerHtml}</div>
+                ${detailText ? `<div class="timeline-event-detail">${detailText}</div>` : ''}
+              </div>
+            </div>
           `;
         };
 
-        timelineTabHtml += `
-          <div class="timeline-container">
-            <table class="events-table">
-              <thead>
-                <tr>
-                  <th style="text-align: center;">${isTh ? 'นาที' : 'Min'}</th>
-                  <th>${isTh ? 'ทีม' : 'Team'}</th>
-                  <th>${isTh ? 'ผู้เล่น' : 'Player'}</th>
-                  <th>${isTh ? 'เหตุการณ์' : 'Event'}</th>
-                  <th>${isTh ? 'รายละเอียด' : 'Detail'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${sortedEvents.map(e => renderEventRow(e)).join('')}
-              </tbody>
-            </table>
+        timelineTabHtml = `
+          <div class="timeline-visual-wrap">
+            <div class="timeline-header-meta">
+              <span class="timeline-meta-title">⏱️ ${isTh ? 'ลำดับเหตุการณ์สำคัญ' : 'Key Match Events'}</span>
+              <span class="timeline-meta-badge">${match.clock ? `${isTh ? 'นาทีที่' : 'Min'} ${match.clock}` : (match.status === 'live' ? 'LIVE' : (match.status === 'completed' ? 'FULL TIME' : ''))}</span>
+            </div>
+            <div class="timeline-period-divider">
+              <span>${isTh ? 'ครึ่งแรก (First Half)' : 'First Half'}</span>
+            </div>
+            <div class="timeline-events-list">
+              ${sortedEvents.map(e => renderTimelineCard(e)).join('')}
+            </div>
           </div>
         `;
       } else {
-        timelineTabHtml += `
+        timelineTabHtml = `
           <div class="empty-tab-box">
             <div style="font-size: 1.5rem; margin-bottom: 8px;">⏱️</div>
             <strong style="color: var(--ink);">${isTh ? 'ยังไม่มีเหตุการณ์สำคัญ' : 'No match events recorded'}</strong>
             <p>${isTh ? 'ข้อมูลเหตุการณ์สำคัญจะอัปเดตแบบสดระหว่างการแข่งขัน' : 'Key match events will update during the match.'}</p>
-          </div>
-        `;
-      }
-
-      // Commentary in Timeline Tab
-      if (match.commentary && match.commentary.length > 0) {
-        let commentarySectionsHtml = '';
-        match.commentary.forEach(sec => {
-          const rows = sec.events.map(ev => `
-            <div class="commentary-item">
-              <div class="commentary-time">${String(ev.minute).endsWith("'") || ev.minute === 'FT' || ev.minute === 'HT' ? ev.minute : ev.minute + "'"}</div>
-              <div class="commentary-text">${ev.text}</div>
-            </div>
-          `).join('');
-
-          commentarySectionsHtml += `
-            <div class="commentary-section">
-              <div class="commentary-section-title">${sec.section}</div>
-              <div>${rows}</div>
-            </div>
-          `;
-        });
-
-        timelineTabHtml += `
-          <div class="commentary-block">
-            <h3 class="section-subtitle">${isTh ? '🎙️ บรรยายเหตุการณ์แบบละเอียด' : '🎙️ Live Commentary'}</h3>
-            ${commentarySectionsHtml}
           </div>
         `;
       }
@@ -2116,6 +2444,7 @@
               <h2 class="team-name-display" style="${isHomeChelsea ? 'color: var(--gold);' : ''}">
                 ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}
               </h2>
+              ${homeHeroGoalsHtml ? `<div class="team-hero-scorers">${homeHeroGoalsHtml}</div>` : ''}
             </div>
             <div class="score-center-box">
               <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
@@ -2126,65 +2455,63 @@
               <h2 class="team-name-display" style="${isAwayChelsea ? 'color: var(--gold);' : ''}">
                 ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}
               </h2>
+              ${awayHeroGoalsHtml ? `<div class="team-hero-scorers">${awayHeroGoalsHtml}</div>` : ''}
             </div>
           </div>
         </header>
-
-        ${(match.id === 'm10' || match.pl_match_id || match.id === 'm46' || match.efl_id) ? `
-          <div class="live-sync-banner" id="liveSyncBanner">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span class="live-pulse-dot"></span>
-              <div>
-                <span style="font-weight: 700; color: #ffffff; font-size: 0.92rem;">
-                  ${isTh ? 'ดึงข้อมูลสดแบบเรียลไทม์จาก Premier League Official' : 'Premier League Official Real-time Live Sync'}
-                </span>
-                <span style="font-size: 0.8rem; color: #90caf9; margin-left: 6px; font-weight: 500;">
-                  ${match.period === 'HalfTime' ? (isTh ? '• พักครึ่ง' : '• Half Time') : (match.clock ? `• ${isTh ? 'นาทีที่' : 'Min'} ${match.clock}` : (match.status === 'live' ? `• ${isTh ? 'กำลังแข่งขัน' : 'In Progress'}` : ''))}
-                </span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 14px;">
-              <span id="liveSyncTimestamp" style="font-size: 0.78rem; color: var(--ink-muted); font-family: 'Space Mono', monospace;">
-                ${isTh ? 'อัปเดตล่าสุด' : 'Updated'}: ${match.last_synced ? new Date(match.last_synced).toLocaleTimeString('th-TH') : (isTh ? 'เมื่อสักครู่' : 'Just now')}
-              </span>
-              <button id="btnManualSync" onclick="window.handleManualLiveSync()" style="background: rgba(0, 102, 255, 0.25); border: 1px solid rgba(0, 102, 255, 0.6); color: #fff; border-radius: 6px; padding: 6px 14px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
-                <span class="sync-icon">🔄</span>
-                <span>${isTh ? 'ดึงข้อมูลสด' : 'Sync Live'}</span>
-              </button>
-            </div>
-          </div>
-        ` : ''}
 
         <!-- Main Content & Sidebar Grid -->
         <div class="details-grid">
           <!-- Left Sidebar Meta -->
           <aside class="sidebar-meta">
-            <div class="meta-group">
-              <div class="meta-item">
-                <span class="label">Date</span>
-                <span class="value">${formatDate(displayDate, lang)}</span>
+            <!-- Card 1: Match Info -->
+            <div class="sidebar-card">
+              <div class="sidebar-card-title">
+                <span>📌</span>
+                <span>${isTh ? 'ข้อมูลการแข่งขัน' : 'Match Details'}</span>
               </div>
-              <div class="meta-item">
-                <span class="label">Kick Off</span>
-                <span class="value">${displayTime}</span>
-              </div>
-              <div class="meta-item">
-                <span class="label">Venue</span>
-                <span class="value">${match.venue || '-'}</span>
-              </div>
-              ${channelsHtml ? `
-                <div class="meta-item" style="margin-top: 8px;">
-                  <span class="label">Broadcaster</span>
-                  ${channelsHtml}
+              <div class="sidebar-card-list">
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">🏆 ${isTh ? 'การแข่งขัน' : 'Comp'}</span>
+                  <span class="sidebar-info-val">${compName}</span>
                 </div>
-              ` : ''}
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">📅 ${isTh ? 'วันที่' : 'Date'}</span>
+                  <span class="sidebar-info-val">${formatDate(displayDate, lang)}</span>
+                </div>
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">⏰ ${isTh ? 'เวลาคิกออฟ' : 'Kick Off'}</span>
+                  <span class="sidebar-info-val">${displayTime} ${isTh ? 'น.' : ''}</span>
+                </div>
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">🏟️ ${isTh ? 'สนาม' : 'Venue'}</span>
+                  <span class="sidebar-info-val">${match.venue || 'Stamford Bridge'}</span>
+                </div>
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">⚡ ${isTh ? 'สถานะ' : 'Status'}</span>
+                  <span class="sidebar-info-val" style="color: ${match.status === 'live' ? '#00e676' : 'var(--gold)'}; font-weight: 700;">
+                    ${match.status === 'live' ? (isTh ? `กำลังแข่งขัน (${match.clock || 'LIVE'})` : `In Progress (${match.clock || 'LIVE'})`) : (match.status === 'halftime' ? (isTh ? 'พักครึ่ง (HT)' : 'Half Time') : (match.status === 'completed' ? (isTh ? 'จบการแข่งขัน' : 'Full Time') : (isTh ? 'ยังไม่เริ่มแข่งขัน' : 'Upcoming')))}
+                  </span>
+                </div>
+                ${channelsHtml ? `
+                  <div class="sidebar-info-row" style="flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 4px;">
+                    <span class="sidebar-info-label">📺 ${isTh ? 'ถ่ายทอดสด' : 'Broadcaster'}</span>
+                    ${channelsHtml}
+                  </div>
+                ` : ''}
+              </div>
             </div>
 
-            <!-- Goalscorers in Sidebar -->
-            <div class="goalscorers-block">
-              <span class="goalscorers-heading">⚽ Goalscorers</span>
-              ${goalsHtml}
-            </div>
+            <!-- Card 2: Goalscorers in Sidebar -->
+            ${safeGoals.length > 0 ? `
+              <div class="sidebar-card">
+                <div class="sidebar-card-title">
+                  <span>⚽</span>
+                  <span>${isTh ? 'ผู้ทำประตู' : 'Goalscorers'}</span>
+                </div>
+                ${goalsHtml}
+              </div>
+            ` : ''}
           </aside>
 
           <!-- Right Content Tabs -->
