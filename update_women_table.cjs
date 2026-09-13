@@ -23,8 +23,11 @@ function updateTeam(teamName, gf, ga) {
 }
 
 // Chelsea vs Aston Villa (1 - 1)
-updateTeam("Chelsea", 1, 1);
-updateTeam("Aston Villa", 1, 1);
+// Already applied previously
+
+// Manchester United vs Chelsea (0 - 5)
+updateTeam("Chelsea", 5, 0);
+updateTeam("Manchester United", 0, 5);
 
 // Sort standings by PTS, then GD, then GF
 tableData.standings.sort((a, b) => {

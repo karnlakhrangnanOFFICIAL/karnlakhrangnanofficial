@@ -1312,15 +1312,17 @@
     }
 
     function getPlayerIdByName(playerName, playerNumber, teamType = 'men') {
+      const normalizedTeam = (teamType === 'W' || teamType === 'women') ? 'women' : 'men';
       if (playerNumber) {
-        if (teamType && playerNumberMap[`${teamType}_${playerNumber}`]) {
-          return playerNumberMap[`${teamType}_${playerNumber}`];
+        if (playerNumberMap[`${normalizedTeam}_${playerNumber}`]) {
+          return playerNumberMap[`${normalizedTeam}_${playerNumber}`];
         }
         if (playerNumberMap[`men_${playerNumber}`]) return playerNumberMap[`men_${playerNumber}`];
         if (playerNumberMap[`women_${playerNumber}`]) return playerNumberMap[`women_${playerNumber}`];
       }
       if (!playerName) return null;
       const norm = normalizeName(playerName);
+      if (playerIdMap[`${normalizedTeam}_${norm}`]) return playerIdMap[`${normalizedTeam}_${norm}`];
       if (playerIdMap[norm]) return playerIdMap[norm];
       for (const [k, idVal] of Object.entries(playerIdMap)) {
         if (norm === k) return idVal;
@@ -1930,7 +1932,7 @@
       // Goalscorers Sidebar List
       let goalsHtml = '';
       const safeGoals = match.goals || [];
-      const teamType = match.team_type || 'men';
+      const teamType = isWomenMatch ? 'women' : (match.team_type || 'men');
 
       const renderGoalItem = (g, isChelsea) => {
         const playerName = g.player;
@@ -1947,7 +1949,7 @@
 
         const cleanName = playerName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
         const imgUrl = getPlayerImage(cleanName);
-        const pId = getPlayerIdByName(cleanName);
+        const pId = getPlayerIdByName(cleanName, g.number, teamType);
         const pTeam = getPlayerTeamByName(cleanName, teamType);
 
         let suffix = '';
@@ -1981,7 +1983,7 @@
         }
 
         const cleanName = playerName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
-        const pId = getPlayerIdByName(cleanName);
+        const pId = getPlayerIdByName(cleanName, g.number, teamType);
         const pTeam = getPlayerTeamByName(cleanName, teamType);
 
         let suffix = '';
@@ -2081,7 +2083,7 @@
           const getPlayerLink = (pName) => {
             if (!pName) return '-';
             if (!isChelseaTeam) return pName;
-            const pId = getPlayerIdByName(pName);
+            const pId = getPlayerIdByName(pName, null, teamType);
             const pTeam = getPlayerTeamByName(pName, teamType);
             if (pId) {
               return `<a href="player-profile.html?id=${pId}&team=${pTeam}">${pName}</a>`;
@@ -2411,7 +2413,7 @@
       let videoTabHtml = '';
       const videoId = match.youtube_id || (match.video && match.video.id);
       if (videoId) {
-        const isWomenTeam = match.team_type === 'W' || match.team_type === 'women' || (match.home_team && match.home_team.toLowerCase().includes('women'));
+        const isWomenTeam = isWomenMatch;
         const defaultChannelName = isWomenTeam ? 'Chelsea FC Women' : 'Chelsea Football Club';
         const defaultChannelHandle = isWomenTeam ? '@chelseafcwomen' : '@chelseafc';
         const defaultChannelUrl = isWomenTeam ? 'https://www.youtube.com/@chelseafcwomen' : 'https://www.youtube.com/@chelseafc';
@@ -2514,6 +2516,18 @@
                   <span class="sidebar-info-label">🏟️ ${isTh ? 'สนาม' : 'Venue'}</span>
                   <span class="sidebar-info-val">${match.venue || 'Stamford Bridge'}</span>
                 </div>
+                ${match.attendance ? `
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">👥 ${isTh ? 'จำนวนผู้ชม' : 'Attendance'}</span>
+                  <span class="sidebar-info-val">${typeof match.attendance === 'number' ? match.attendance.toLocaleString() : match.attendance} ${isTh ? 'คน' : ''}</span>
+                </div>
+                ` : ''}
+                ${match.referee ? `
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">⚖️ ${isTh ? 'ผู้ตัดสิน' : 'Referee'}</span>
+                  <span class="sidebar-info-val">${match.referee}</span>
+                </div>
+                ` : ''}
                 <div class="sidebar-info-row">
                   <span class="sidebar-info-label">⚡ ${isTh ? 'สถานะ' : 'Status'}</span>
                   <span class="sidebar-info-val" style="color: ${match.status === 'live' ? '#00e676' : 'var(--gold)'}; font-weight: 700;">
