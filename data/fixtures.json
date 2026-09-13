@@ -2292,6 +2292,16 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
+    "video": {
+      "id": "hYxPyiY0O1I",
+      "credit": "Thank you to the Monomax Sports channel for the excellent match highlights content.",
+      "channel_name": "Monomax Sports",
+      "channel_handle": "@MonomaxSports",
+      "channel_url": "https://www.youtube.com/@MonomaxSports",
+      "title": "Match Highlights",
+      "desc_th": "ไฮไลท์การแข่งขัน",
+      "desc_en": "Match Highlights"
+    },
     "status": "live",
     "home_score": 1,
     "away_score": 2,
