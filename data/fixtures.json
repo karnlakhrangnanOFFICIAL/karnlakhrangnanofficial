@@ -5342,7 +5342,7 @@
       {
         "platform": "Sky Sports",
         "name": "Sky Sports",
-        "logo": "databases/logo/tv/sky_sports.webp"
+        "logo": "databases/logo/tv/sky_sports.svg"
       }
     ],
     "status": "completed",
@@ -5570,66 +5570,186 @@
         "manager": "Eva Olid",
         "formation": "4-2-3-1",
         "starting": [
-          { "number": 91, "name": "Phallon Tullis-Joyce (GK)" },
-          { "number": 6, "name": "Andrea Medina" },
-          { "number": 17, "name": "Dominique Janssen" },
-          { "number": 4, "name": "Maya Le Tissier (C)" },
-          { "number": 5, "name": "Hanna Lundkvist" },
-          { "number": 20, "name": "Hinata Miyazawa" },
-          { "number": 15, "name": "Julia Zigiotti Olme" },
-          { "number": 23, "name": "Marie-Therese Jusu Bah" },
-          { "number": 7, "name": "Ella Toone" },
-          { "number": 8, "name": "Jess Park" },
-          { "number": 10, "name": "Elisabeth Terland" }
+          {
+            "number": 91,
+            "name": "Phallon Tullis-Joyce (GK)"
+          },
+          {
+            "number": 6,
+            "name": "Andrea Medina"
+          },
+          {
+            "number": 17,
+            "name": "Dominique Janssen"
+          },
+          {
+            "number": 4,
+            "name": "Maya Le Tissier (C)"
+          },
+          {
+            "number": 5,
+            "name": "Hanna Lundkvist"
+          },
+          {
+            "number": 20,
+            "name": "Hinata Miyazawa"
+          },
+          {
+            "number": 15,
+            "name": "Julia Zigiotti Olme"
+          },
+          {
+            "number": 23,
+            "name": "Marie-Therese Jusu Bah"
+          },
+          {
+            "number": 7,
+            "name": "Ella Toone"
+          },
+          {
+            "number": 8,
+            "name": "Jess Park"
+          },
+          {
+            "number": 10,
+            "name": "Elisabeth Terland"
+          }
         ],
         "substitutes": [
-          { "number": 47, "name": "Jennifer Anderson" },
-          { "number": 13, "name": "Simi Awujo" },
-          { "number": 16, "name": "Rosa Bernal" },
-          { "number": 36, "name": "Mared Griffiths" },
-          { "number": 22, "name": "Safia Hill" },
-          { "number": 25, "name": "Jennifer Leitzig (GK)" },
-          { "number": 2, "name": "Anna Sandberg" },
-          { "number": 24, "name": "Lea Schüller" },
-          { "number": 26, "name": "Jayde Simpson" }
+          {
+            "number": 47,
+            "name": "Jennifer Anderson"
+          },
+          {
+            "number": 13,
+            "name": "Simi Awujo"
+          },
+          {
+            "number": 16,
+            "name": "Rosa Bernal"
+          },
+          {
+            "number": 36,
+            "name": "Mared Griffiths"
+          },
+          {
+            "number": 22,
+            "name": "Safia Hill"
+          },
+          {
+            "number": 25,
+            "name": "Jennifer Leitzig (GK)"
+          },
+          {
+            "number": 2,
+            "name": "Anna Sandberg"
+          },
+          {
+            "number": 24,
+            "name": "Lea Schüller"
+          },
+          {
+            "number": 26,
+            "name": "Jayde Simpson"
+          }
         ]
       },
       "away": {
         "manager": "Sonia Bompastor",
         "formation": "4-3-3",
         "starting": [
-          { "number": 24, "name": "Hannah Hampton (GK)" },
-          { "number": 15, "name": "Katie McCabe" },
-          { "number": 26, "name": "Kadeisha Buchanan" },
-          { "number": 22, "name": "Lucy Bronze (C)" },
-          { "number": 2, "name": "Ellie Carpenter" },
-          { "number": 6, "name": "Sjoeke Nüsken" },
-          { "number": 21, "name": "Keira Walsh" },
-          { "number": 32, "name": "Lexi Potter" },
-          { "number": 12, "name": "Alyssa Thompson" },
-          { "number": 10, "name": "Lauren James" },
-          { "number": 19, "name": "Wieke Kaptein" }
+          {
+            "number": 24,
+            "name": "Hannah Hampton (GK)"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze (C)"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh"
+          },
+          {
+            "number": 32,
+            "name": "Lexi Potter"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein"
+          }
         ],
         "substitutes": [
-          { "number": 11, "name": "Sandy Baltimore" },
-          { "number": 33, "name": "Aggie Beever-Jones" },
-          { "number": 14, "name": "Nathalie Björn" },
-          { "number": 5, "name": "Veerle Buurman" },
-          { "number": 16, "name": "Giulia Dragoni" },
-          { "number": 23, "name": "Maika Hamano" },
-          { "number": 17, "name": "Noa Las" },
-          { "number": 1, "name": "Lu Peng (GK)" }
+          {
+            "number": 11,
+            "name": "Sandy Baltimore"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano"
+          },
+          {
+            "number": 17,
+            "name": "Noa Las"
+          },
+          {
+            "number": 1,
+            "name": "Lu Peng (GK)"
+          }
         ]
       },
       "officials": [
-        { "role": "Referee", "name": "Grace Lowe" }
+        {
+          "role": "Referee",
+          "name": "Grace Lowe"
+        }
       ]
     },
     "stats": [
       {
         "name": "การครองบอล (Possession)",
-        "home": 38.0,
-        "away": 62.0,
+        "home": 38,
+        "away": 62,
         "isPercentage": true
       },
       {
@@ -5646,8 +5766,8 @@
       },
       {
         "name": "ความแม่นยำในการส่งบอล (Pass Accuracy)",
-        "home": 74.0,
-        "away": 87.0,
+        "home": 74,
+        "away": 87,
         "isPercentage": true
       },
       {
@@ -5675,7 +5795,7 @@
     "date": "2026-09-19",
     "time": "18:45",
     "time_th": "18:45",
-    "time_uk": "12:45",
+    "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
@@ -5688,7 +5808,7 @@
       {
         "platform": "Sky Sports",
         "name": "Sky Sports",
-        "logo": "databases/logo/tv/sky_sports.webp"
+        "logo": "databases/logo/tv/sky_sports.svg"
       }
     ],
     "status": "upcoming",
@@ -5704,7 +5824,7 @@
     "date": "2026-09-27",
     "time": "22:30",
     "time_th": "22:30",
-    "time_uk": "16:30",
+    "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
@@ -5717,7 +5837,7 @@
       {
         "platform": "Sky Sports",
         "name": "Sky Sports",
-        "logo": "databases/logo/tv/sky_sports.webp"
+        "logo": "databases/logo/tv/sky_sports.svg"
       }
     ],
     "status": "upcoming",
@@ -5731,8 +5851,8 @@
   {
     "id": "w7",
     "date": "2026-10-04",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "20:00",
+    "time_th": "20:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5740,7 +5860,7 @@
     "home_logo": "databases/logo/teams/england_west-ham.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Chigwell Stadium",
+    "venue": "Chigwell Construction Stadium",
     "ha": "A",
     "channels": [],
     "status": "upcoming",
@@ -5754,8 +5874,8 @@
   {
     "id": "w8",
     "date": "2026-10-18",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "18:00",
+    "time_th": "18:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5777,8 +5897,8 @@
   {
     "id": "w9",
     "date": "2026-10-25",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "19:00",
+    "time_th": "19:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5786,7 +5906,7 @@
     "home_logo": "databases/logo/teams/england_crystal-palace.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "VBS Stadium",
+    "venue": "VBS Community Stadium",
     "ha": "A",
     "channels": [],
     "status": "upcoming",
@@ -5800,8 +5920,8 @@
   {
     "id": "w10",
     "date": "2026-11-01",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:30",
+    "time_th": "21:30",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5823,8 +5943,8 @@
   {
     "id": "w11",
     "date": "2026-11-07",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "19:30",
+    "time_th": "19:30",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5846,8 +5966,8 @@
   {
     "id": "w12",
     "date": "2026-11-14",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5869,8 +5989,8 @@
   {
     "id": "w13",
     "date": "2026-11-22",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5892,8 +6012,8 @@
   {
     "id": "w14",
     "date": "2026-12-13",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5915,8 +6035,8 @@
   {
     "id": "w15",
     "date": "2026-12-19",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "19:30",
+    "time_th": "19:30",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5938,8 +6058,8 @@
   {
     "id": "w16",
     "date": "2027-01-10",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5960,9 +6080,9 @@
   },
   {
     "id": "w17",
-    "date": "2027-01-20",
-    "time": "TBC",
-    "time_th": "TBC",
+    "date": "2027-01-21",
+    "time": "02:00",
+    "time_th": "02:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -5984,8 +6104,8 @@
   {
     "id": "w18",
     "date": "2027-01-24",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6007,8 +6127,8 @@
   {
     "id": "w19",
     "date": "2027-01-31",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6030,8 +6150,8 @@
   {
     "id": "w20",
     "date": "2027-02-07",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6053,8 +6173,8 @@
   {
     "id": "w21",
     "date": "2027-02-14",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "21:00",
+    "time_th": "21:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6062,7 +6182,7 @@
     "home_logo": "databases/logo/teams/London_City_Lionesses.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Copperjax Stadium",
+    "venue": "Copperjax Community Stadium",
     "ha": "A",
     "channels": [],
     "status": "upcoming",
@@ -6076,8 +6196,8 @@
   {
     "id": "w22",
     "date": "2027-03-13",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "19:30",
+    "time_th": "19:30",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6085,7 +6205,7 @@
     "home_logo": "databases/logo/teams/england_birmingham.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "St. Andrew's",
+    "venue": "St. Andrew's @ Knighthead Park",
     "ha": "A",
     "channels": [],
     "status": "upcoming",
@@ -6098,9 +6218,9 @@
   },
   {
     "id": "w23",
-    "date": "2027-03-17",
-    "time": "TBC",
-    "time_th": "TBC",
+    "date": "2027-03-18",
+    "time": "02:00",
+    "time_th": "02:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6122,8 +6242,8 @@
   {
     "id": "w24",
     "date": "2027-03-28",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "20:00",
+    "time_th": "20:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6145,8 +6265,8 @@
   {
     "id": "w25",
     "date": "2027-04-04",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "20:00",
+    "time_th": "20:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6167,9 +6287,9 @@
   },
   {
     "id": "w26",
-    "date": "2027-05-02",
-    "time": "TBC",
-    "time_th": "TBC",
+    "date": "2027-05-03",
+    "time": "00:00",
+    "time_th": "00:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6191,8 +6311,8 @@
   {
     "id": "w27",
     "date": "2027-05-09",
-    "time": "TBC",
-    "time_th": "TBC",
+    "time": "20:00",
+    "time_th": "20:00",
     "time_uk": "TBC",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
@@ -6213,7 +6333,7 @@
   },
   {
     "id": "w28",
-    "date": "2027-05-22",
+    "date": "TBC",
     "time": "TBC",
     "time_th": "TBC",
     "time_uk": "TBC",
