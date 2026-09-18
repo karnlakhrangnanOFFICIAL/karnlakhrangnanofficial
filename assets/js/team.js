@@ -360,6 +360,63 @@ async function safeFetchJson(url) {
   }
 }
 
+// ---------- HELPER FOR COMPETITION FILTERING ----------
+function getMatchCompKey(match) {
+  if (!match) return 'other';
+  const c = (match.competition || '').toLowerCase();
+  const cn = (match.competition_name || '').toLowerCase();
+  if (c.includes('premier') || cn.includes('premier')) return 'premier-league';
+  if (c.includes('super league') || cn === 'wsl' || c === 'wsl' || cn.includes('wsl') || c.includes('barclays')) return 'wsl';
+  if (c.includes('champions league') || cn === 'uwcl' || c === 'uwcl' || cn.includes('uwcl')) return 'uwcl';
+  if (c.includes('league-cup') || cn.includes('league-cup') || c.includes('carabao') || cn.includes('carabao') || c.includes('efl') || cn.includes('efl')) return 'league-cup';
+  if (c.includes('friendly') || cn.includes('friendly')) return 'friendly';
+  if (c.includes('fa cup') || cn.includes('fa-cup')) return 'fa-cup';
+  return (match.competition_name || match.competition || 'other').toLowerCase();
+}
+
+function getCompDisplayName(key, lang) {
+  const isTh = (lang || window.currentLang || 'th') === 'th';
+  const names = {
+    'all': isTh ? '🏆 ทุกรายการแข่งขัน' : '🏆 All Tournaments',
+    'premier-league': isTh ? '🏴󠁧󠁢󠁥󠁮󠁧󠁿 พรีเมียร์ลีก' : '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League',
+    'wsl': isTh ? '🏆 บาร์เคลย์ส วีเมนส์ ซูเปอร์ลีก' : '🏆 Barclays WSL',
+    'uwcl': isTh ? '⭐ ยูฟ่า แชมเปียนส์ลีก (หญิง)' : '⭐ UEFA Women\'s Champions League',
+    'league-cup': isTh ? '🥤 คาราบาว คัพ' : '🥤 Carabao Cup',
+    'friendly': isTh ? '🤝 นัดกระชับมิตร' : '🤝 Club Friendly',
+    'fa-cup': isTh ? '🏆 เอฟเอ คัพ' : '🏆 FA Cup'
+  };
+  return names[key] || formatCompetitionName(key);
+}
+
+function setupSelectCompFilter(selectId, matches, onFilterChange) {
+  const selectEl = document.getElementById(selectId);
+  if (!selectEl) return;
+  const lang = window.currentLang || 'th';
+  const compKeys = new Set();
+  matches.forEach(m => compKeys.add(getMatchCompKey(m)));
+
+  let html = `<option value="all">${getCompDisplayName('all', lang)} (${matches.length})</option>`;
+  const order = ['premier-league', 'wsl', 'uwcl', 'league-cup', 'friendly', 'fa-cup'];
+  const sortedKeys = Array.from(compKeys).sort((a, b) => {
+    const idxA = order.indexOf(a);
+    const idxB = order.indexOf(b);
+    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+    if (idxA !== -1) return -1;
+    if (idxB !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  sortedKeys.forEach(k => {
+    const count = matches.filter(m => getMatchCompKey(m) === k).length;
+    html += `<option value="${k}">${getCompDisplayName(k, lang)} (${count})</option>`;
+  });
+
+  selectEl.innerHTML = html;
+  selectEl.onchange = (e) => {
+    onFilterChange(e.target.value);
+  };
+}
+
 // ---------- LOAD DATA ----------
 async function loadMenFixtures() {
   const container = document.getElementById('menFixturesContainer');
@@ -378,6 +435,12 @@ async function loadMenFixtures() {
       if (timeB === 'TBC') timeB = '00:00';
       return new Date(a.date+'T'+timeA) - new Date(b.date+'T'+timeB);
     });
+
+    setupSelectCompFilter('menFixturesCompFilter', upcoming, (comp) => {
+      const filtered = comp === 'all' ? upcoming : upcoming.filter(m => getMatchCompKey(m) === comp);
+      renderFixtures(container, filtered, 'M');
+    });
+
     renderFixtures(container, upcoming, 'M');
   } catch(e) {
     container.innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading fixtures</p></div>';
@@ -396,6 +459,12 @@ async function loadMenResults() {
     }
     all = all.filter(m => m.team_type === 'M');
     const results = all.filter(m => m.status === 'completed').sort((a,b) => new Date(b.date) - new Date(a.date));
+
+    setupSelectCompFilter('menResultsCompFilter', results, (comp) => {
+      const filtered = comp === 'all' ? results : results.filter(m => getMatchCompKey(m) === comp);
+      renderResults(container, filtered, 'M');
+    });
+
     renderResults(container, results, 'M');
   } catch(e) {
     container.innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading results</p></div>';
@@ -500,13 +569,20 @@ async function loadWomenFixtures() {
       return;
     }
     all = all.filter(m => m.team_type === 'W');
-    renderFixtures(container, all.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a,b) => {
+    const upcoming = all.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a,b) => {
       let timeA = a.time || '00:00';
       if (timeA === 'TBC') timeA = '00:00';
       let timeB = b.time || '00:00';
       if (timeB === 'TBC') timeB = '00:00';
       return new Date(a.date+'T'+timeA) - new Date(b.date+'T'+timeB);
-    }), 'W');
+    });
+
+    setupSelectCompFilter('womenFixturesCompFilter', upcoming, (comp) => {
+      const filtered = comp === 'all' ? upcoming : upcoming.filter(m => getMatchCompKey(m) === comp);
+      renderFixtures(container, filtered, 'W');
+    });
+
+    renderFixtures(container, upcoming, 'W');
   } catch(e) { container.innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error</p></div>'; console.error(e); }
 }
 
@@ -520,7 +596,14 @@ async function loadWomenResults() {
       return;
     }
     all = all.filter(m => m.team_type === 'W');
-    renderResults(container, all.filter(m => m.status === 'completed').sort((a,b) => new Date(b.date)-new Date(a.date)), 'W');
+    const results = all.filter(m => m.status === 'completed').sort((a,b) => new Date(b.date)-new Date(a.date));
+
+    setupSelectCompFilter('womenResultsCompFilter', results, (comp) => {
+      const filtered = comp === 'all' ? results : results.filter(m => getMatchCompKey(m) === comp);
+      renderResults(container, filtered, 'W');
+    });
+
+    renderResults(container, results, 'W');
   } catch(e) { container.innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error</p></div>'; console.error(e); }
 }
 

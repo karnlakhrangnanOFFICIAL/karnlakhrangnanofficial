@@ -69,7 +69,11 @@
     <section id="tab-results" class="tab-content active">
       <div class="section-header">
         <h2 class="section-title" data-i18n="tabs.results">📊 Results</h2>
-        <a href="men-team.html#results" class="view-all" data-i18n="men.all_results">All Results</a>
+        <div class="tournament-select-container" style="min-width: 180px;">
+          <select id="menResultsCompFilter" class="tournament-filter-select" aria-label="Filter tournament">
+            <option value="all" data-i18n="filters.all_tournaments">🏆 All Tournaments</option>
+          </select>
+        </div>
       </div>
       <div class="cards-grid" id="menResultsContainer">
         <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>
@@ -80,7 +84,11 @@
     <section id="tab-fixtures" class="tab-content">
       <div class="section-header">
         <h2 class="section-title" data-i18n="tabs.fixtures"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" class="icon" style="width: 20px; height: 20px; vertical-align: bottom; margin-right: 6px;"> Fixtures</h2>
-        <a href="men-team.html" class="view-all" data-i18n="men.all_fixtures">All Fixtures</a>
+        <div class="tournament-select-container" style="min-width: 180px;">
+          <select id="menFixturesCompFilter" class="tournament-filter-select" aria-label="Filter tournament">
+            <option value="all" data-i18n="filters.all_tournaments">🏆 All Tournaments</option>
+          </select>
+        </div>
       </div>
       <div class="cards-grid" id="menFixturesContainer">
         <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>

@@ -161,5 +161,25 @@
     "legend_women": "Women's Team",
     "legend_home": "Home Match",
     "legend_away": "Away Match"
+  },
+  "filters": {
+    "filter_title": "Filters",
+    "team_label": "Team",
+    "all_teams": "All Teams",
+    "men_team": "Men's Team",
+    "women_team": "Women's Team",
+    "tournament_label": "Tournament",
+    "all_tournaments": "All Tournaments",
+    "premier_league": "Premier League",
+    "wsl": "Barclays WSL",
+    "uwcl": "UEFA Women's Champions League",
+    "carabao_cup": "Carabao Cup",
+    "friendly": "Club Friendly",
+    "fa_cup": "FA Cup",
+    "clear_filters": "Clear Filters",
+    "no_matches_found": "No matches found matching the selected filters.",
+    "no_fixtures_filter": "No upcoming fixtures found matching this filter.",
+    "no_results_filter": "No match results found matching this filter.",
+    "reset_filter_btn": "Reset Filters"
   }
 }

@@ -161,5 +161,25 @@
     "legend_women": "ทีมหญิง",
     "legend_home": "เหย้า",
     "legend_away": "เยือน"
+  },
+  "filters": {
+    "filter_title": "ตัวกรอง",
+    "team_label": "ทีม",
+    "all_teams": "ทุกทีม",
+    "men_team": "ทีมชาย",
+    "women_team": "ทีมหญิง",
+    "tournament_label": "รายการแข่งขัน",
+    "all_tournaments": "ทุกรายการแข่งขัน",
+    "premier_league": "พรีเมียร์ลีก",
+    "wsl": "บาร์เคลย์ส วีเมนส์ ซูเปอร์ลีก",
+    "uwcl": "ยูฟ่า แชมเปียนส์ลีก (หญิง)",
+    "carabao_cup": "คาราบาว คัพ",
+    "friendly": "นัดกระชับมิตร",
+    "fa_cup": "เอฟเอ คัพ",
+    "clear_filters": "ล้างตัวกรอง",
+    "no_matches_found": "ไม่พบนัดการแข่งขันที่ตรงกับตัวกรองที่เลือก",
+    "no_fixtures_filter": "ไม่พบโปรแกรมการแข่งขันที่ตรงกับตัวกรองนี้",
+    "no_results_filter": "ไม่พบผลการแข่งขันที่ตรงกับตัวกรองนี้",
+    "reset_filter_btn": "รีเซ็ตตัวกรอง"
   }
 }

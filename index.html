@@ -137,9 +137,58 @@
       </div>
     </div>
     <!-- VIEW TOGGLE -->
-    <div class="view-controls" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+    <div class="view-controls" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
       <button id="btnListView" class="tab-btn active" data-i18n="home.list_view">List View</button>
       <button id="btnCalendarView" class="tab-btn" data-i18n="home.calendar_view">Calendar View</button>
+    </div>
+
+    <!-- MATCHES & FIXTURES FILTER BAR -->
+    <div class="matches-filter-bar" id="matchesFilterBar">
+      <!-- Team Filter Group -->
+      <div class="filter-group">
+        <span class="filter-group-label">
+          <span>👥</span>
+          <span data-i18n="filters.team_label">Team</span>:
+        </span>
+        <div class="filter-pills-container" id="teamFilterPills" role="radiogroup" aria-label="Filter matches by team">
+          <button type="button" class="match-filter-pill active" data-team="all" id="filterTeamAll">
+            <span>⚽</span>
+            <span data-i18n="filters.all_teams">All Teams</span>
+            <span class="pill-badge" id="teamFilterAllCount">0</span>
+          </button>
+          <button type="button" class="match-filter-pill" data-team="M" id="filterTeamMen">
+            <span class="team-badge m">M</span>
+            <span data-i18n="filters.men_team">Men's Team</span>
+            <span class="pill-badge" id="teamFilterMenCount">0</span>
+          </button>
+          <button type="button" class="match-filter-pill" data-team="W" id="filterTeamWomen">
+            <span class="team-badge w">W</span>
+            <span data-i18n="filters.women_team">Women's Team</span>
+            <span class="pill-badge" id="teamFilterWomenCount">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tournament Filter Group -->
+      <div class="filter-group">
+        <span class="filter-group-label">
+          <span>🏆</span>
+          <span data-i18n="filters.tournament_label">Tournament</span>:
+        </span>
+        <div class="tournament-select-container">
+          <select id="tournamentFilterSelect" class="tournament-filter-select" aria-label="Filter matches by tournament">
+            <option value="all" data-i18n="filters.all_tournaments">🏆 All Tournaments</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Actions & Reset -->
+      <div class="filter-actions-group">
+        <button type="button" id="resetMatchFiltersBtn" class="reset-filter-btn" style="display: none;" title="Reset all filters">
+          <span class="reset-icon">↺</span>
+          <span data-i18n="filters.clear_filters">Clear Filters</span>
+        </button>
+      </div>
     </div>
 
     <!-- LIST VIEW WRAPPER -->
@@ -267,6 +316,222 @@
       return name.replace(/-/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     }
 
+    // ---------- FILTERING STATE & LOGIC ----------
+    let currentFilterTeam = 'all'; // 'all', 'M', 'W'
+    let currentFilterTournament = 'all'; // 'all', 'premier-league', 'wsl', 'uwcl', 'league-cup', 'friendly', etc.
+    let filterControlsInitialized = false;
+
+    function getCompKey(match) {
+      if (!match) return 'other';
+      const c = (match.competition || '').toLowerCase();
+      const cn = (match.competition_name || '').toLowerCase();
+      if (c.includes('premier') || cn.includes('premier')) return 'premier-league';
+      if (c.includes('super league') || cn === 'wsl' || c === 'wsl' || cn.includes('wsl') || c.includes('barclays')) return 'wsl';
+      if (c.includes('champions league') || cn === 'uwcl' || c === 'uwcl' || cn.includes('uwcl')) return 'uwcl';
+      if (c.includes('league-cup') || cn.includes('league-cup') || c.includes('carabao') || cn.includes('carabao') || c.includes('efl') || cn.includes('efl')) return 'league-cup';
+      if (c.includes('friendly') || cn.includes('friendly')) return 'friendly';
+      if (c.includes('fa cup') || cn.includes('fa-cup')) return 'fa-cup';
+      return (match.competition_name || match.competition || 'other').toLowerCase();
+    }
+
+    function getTournamentDisplayName(key, lang) {
+      const isTh = (lang || window.currentLang || 'th') === 'th';
+      const names = {
+        'all': isTh ? '🏆 ทุกรายการแข่งขัน' : '🏆 All Tournaments',
+        'premier-league': isTh ? '🏴󠁧󠁢󠁥󠁮󠁧󠁿 พรีเมียร์ลีก' : '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League',
+        'wsl': isTh ? '🏆 บาร์เคลย์ส วีเมนส์ ซูเปอร์ลีก' : '🏆 Barclays WSL',
+        'uwcl': isTh ? '⭐ ยูฟ่า แชมเปียนส์ลีก (หญิง)' : '⭐ UEFA Women\'s Champions League',
+        'league-cup': isTh ? '🥤 คาราบาว คัพ' : '🥤 Carabao Cup',
+        'friendly': isTh ? '🤝 นัดกระชับมิตร' : '🤝 Club Friendly',
+        'fa-cup': isTh ? '🏆 เอฟเอ คัพ' : '🏆 FA Cup'
+      };
+      return names[key] || formatCompetitionName(key);
+    }
+
+    function isMatchMatchingFilter(match, teamFilter, tournamentFilter) {
+      if (!match) return false;
+      if (teamFilter !== 'all') {
+        const mTeam = match.team_type || (match.id && match.id.startsWith('w') ? 'W' : 'M');
+        if (mTeam !== teamFilter) return false;
+      }
+      if (tournamentFilter !== 'all') {
+        const compKey = getCompKey(match);
+        if (compKey !== tournamentFilter) return false;
+      }
+      return true;
+    }
+
+    function populateFilterControls() {
+      const all = window.allMatchesGlobal || [];
+      if (!all || all.length === 0) return;
+
+      const lang = window.currentLang || 'th';
+
+      // Update team counts
+      const allCount = all.length;
+      const menCount = all.filter(m => (m.team_type || 'M') === 'M').length;
+      const womenCount = all.filter(m => (m.team_type || 'W') === 'W').length;
+
+      const countAllEl = document.getElementById('teamFilterAllCount');
+      if (countAllEl) countAllEl.textContent = allCount;
+      const countMenEl = document.getElementById('teamFilterMenCount');
+      if (countMenEl) countMenEl.textContent = menCount;
+      const countWomenEl = document.getElementById('teamFilterWomenCount');
+      if (countWomenEl) countWomenEl.textContent = womenCount;
+
+      // Get available tournaments based on selected team or all matches
+      const relevantMatches = currentFilterTeam === 'all' 
+        ? all 
+        : all.filter(m => (m.team_type || (m.id && m.id.startsWith('w') ? 'W' : 'M')) === currentFilterTeam);
+
+      const compKeys = new Set();
+      all.forEach(m => {
+        compKeys.add(getCompKey(m));
+      });
+
+      const selectEl = document.getElementById('tournamentFilterSelect');
+      if (selectEl) {
+        const currentVal = currentFilterTournament || 'all';
+
+        let optionsHtml = `<option value="all">${getTournamentDisplayName('all', lang)} (${relevantMatches.length})</option>`;
+
+        const order = ['premier-league', 'wsl', 'uwcl', 'league-cup', 'friendly', 'fa-cup'];
+        const sortedKeys = Array.from(compKeys).sort((a, b) => {
+          const idxA = order.indexOf(a);
+          const idxB = order.indexOf(b);
+          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+          if (idxA !== -1) return -1;
+          if (idxB !== -1) return 1;
+          return a.localeCompare(b);
+        });
+
+        sortedKeys.forEach(k => {
+          const count = relevantMatches.filter(m => getCompKey(m) === k).length;
+          const dName = getTournamentDisplayName(k, lang);
+          // Show option, disable if 0 matches for selected team
+          const disabledAttr = count === 0 ? ' disabled style="color:#666;"' : '';
+          optionsHtml += `<option value="${k}"${disabledAttr}>${dName} (${count})</option>`;
+        });
+
+        selectEl.innerHTML = optionsHtml;
+        // Keep selected if valid, otherwise reset to 'all'
+        if (Array.from(selectEl.options).some(opt => opt.value === currentVal && !opt.disabled)) {
+          selectEl.value = currentVal;
+        } else {
+          currentFilterTournament = 'all';
+          selectEl.value = 'all';
+        }
+      }
+    }
+
+    function initMatchFilters() {
+      if (filterControlsInitialized) return;
+      filterControlsInitialized = true;
+
+      // Check URL parameters for preset filters
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('team')) {
+          const t = urlParams.get('team').toLowerCase();
+          if (t === 'men' || t === 'm') currentFilterTeam = 'M';
+          else if (t === 'women' || t === 'w') currentFilterTeam = 'W';
+        }
+        if (urlParams.has('tournament') || urlParams.has('comp')) {
+          currentFilterTournament = urlParams.get('tournament') || urlParams.get('comp');
+        }
+      } catch (e) {}
+
+      // Team filter pills
+      const pills = document.querySelectorAll('#teamFilterPills .match-filter-pill');
+      pills.forEach(pill => {
+        const team = pill.getAttribute('data-team');
+        if (team === currentFilterTeam) {
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+        }
+
+        pill.addEventListener('click', (e) => {
+          e.preventDefault();
+          const selectedTeam = pill.getAttribute('data-team');
+          if (currentFilterTeam === selectedTeam) return;
+          currentFilterTeam = selectedTeam;
+
+          pills.forEach(p => p.classList.toggle('active', p === pill));
+          populateFilterControls();
+          applyMatchFilters();
+        });
+      });
+
+      // Tournament select
+      const selectEl = document.getElementById('tournamentFilterSelect');
+      if (selectEl) {
+        selectEl.addEventListener('change', (e) => {
+          currentFilterTournament = e.target.value;
+          applyMatchFilters();
+        });
+      }
+
+      // Reset button
+      const resetBtn = document.getElementById('resetMatchFiltersBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          window.resetMatchFilters();
+        });
+      }
+    }
+
+    window.resetMatchFilters = function() {
+      currentFilterTeam = 'all';
+      currentFilterTournament = 'all';
+
+      const pills = document.querySelectorAll('#teamFilterPills .match-filter-pill');
+      pills.forEach(p => {
+        p.classList.toggle('active', p.getAttribute('data-team') === 'all');
+      });
+
+      populateFilterControls();
+      applyMatchFilters();
+    };
+
+    function applyMatchFilters() {
+      const fixtures = window.fixturesGlobal || [];
+      const results = window.resultsGlobal || [];
+      const liveMatches = window.liveMatchesGlobal || [];
+
+      const filteredFixtures = fixtures.filter(m => isMatchMatchingFilter(m, currentFilterTeam, currentFilterTournament));
+      const filteredResults = results.filter(m => isMatchMatchingFilter(m, currentFilterTeam, currentFilterTournament));
+      const filteredLive = liveMatches.filter(m => isMatchMatchingFilter(m, currentFilterTeam, currentFilterTournament));
+
+      // Render Live Spotlight
+      renderLiveSpotlight(filteredLive);
+
+      // Render Fixtures and Results
+      const isFiltered = currentFilterTeam !== 'all' || currentFilterTournament !== 'all';
+      const fixturesToRender = isFiltered ? filteredFixtures : filteredFixtures.slice(0, 6);
+      const resultsToRender = isFiltered ? filteredResults : filteredResults.slice(0, 6);
+
+      renderFixtures(fixturesToRender);
+      renderResults(resultsToRender);
+
+      // Update count badges in section headers
+      const fcEl = document.getElementById('fixturesCount');
+      if (fcEl) fcEl.textContent = filteredFixtures.length;
+      const rcEl = document.getElementById('resultsCount');
+      if (rcEl) rcEl.textContent = filteredResults.length;
+
+      // Update reset button visibility
+      const resetBtn = document.getElementById('resetMatchFiltersBtn');
+      if (resetBtn) {
+        resetBtn.style.display = isFiltered ? 'inline-flex' : 'none';
+      }
+
+      // Update Calendar if in calendar view
+      const calWrap = document.getElementById('calendarViewWrapper');
+      if (calWrap && calWrap.style.display !== 'none' && typeof renderCalendar === 'function') {
+        renderCalendar();
+      }
+    }
+
     // ---------- LOAD ALL DATA ----------
     async function loadAllData() {
       try {
@@ -277,9 +542,9 @@
         try {
           const res = await fetch('data/fixtures.json');
           if (res.ok) {
-             allMatches = await res.json();
-             fixtures = allMatches.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a, b) => getMatchTimestamp(a) - getMatchTimestamp(b));
-             results = allMatches.filter(m => m.status === 'completed').sort((a, b) => getMatchTimestamp(b) - getMatchTimestamp(a));
+            allMatches = await res.json();
+            fixtures = allMatches.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a, b) => getMatchTimestamp(a) - getMatchTimestamp(b));
+            results = allMatches.filter(m => m.status === 'completed').sort((a, b) => getMatchTimestamp(b) - getMatchTimestamp(a));
           }
         } catch(err) {
           console.error('Error loading fixtures data:', err);
@@ -300,18 +565,11 @@
         window.fixturesGlobal = fixtures;
         window.resultsGlobal = results;
         window.liveMatchesGlobal = liveMatches;
-        initCalendarToggle();
         
-        // Render LIVE Spotlight & Flashing Badge at the top of Fixtures
-        renderLiveSpotlight(liveMatches);
-
-        renderFixtures(fixtures.slice(0, 6));
-        renderResults(results.slice(0, 6));
-
-        const fcEl = document.getElementById('fixturesCount');
-        if (fcEl) fcEl.textContent = fixtures.length;
-        const rcEl = document.getElementById('resultsCount');
-        if (rcEl) rcEl.textContent = results.length;
+        initCalendarToggle();
+        populateFilterControls();
+        initMatchFilters();
+        applyMatchFilters();
 
       } catch (error) {
         console.error(error);
@@ -524,7 +782,7 @@
         `;
         dayEl.appendChild(numEl);
 
-        const dayMatches = (window.allMatchesGlobal || []).filter(m => m.date === dateStr);
+        const dayMatches = (window.allMatchesGlobal || []).filter(m => m.date === dateStr && isMatchMatchingFilter(m, currentFilterTeam, currentFilterTournament));
         if (dayMatches.length > 2) {
           dayEl.classList.add('has-many-matches');
         }
@@ -715,8 +973,15 @@
     // ---------- RENDER FIXTURES (CARDS) ----------
     function renderFixtures(fixtures) {
       const container = document.getElementById('fixturesContainer');
+      const lang = window.currentLang || 'th';
+      const isFiltered = currentFilterTeam !== 'all' || currentFilterTournament !== 'all';
+
       if (fixtures.length === 0) {
-        container.innerHTML = '<div class="empty-state"><span class="empty-icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span><p data-i18n="home.no_fixtures">ยังไม่มีโปรแกรมการแข่งขัน</p></div>';
+        const msg = isFiltered 
+          ? (lang === 'th' ? 'ไม่พบโปรแกรมการแข่งขันที่ตรงกับตัวกรองนี้' : 'No upcoming fixtures match this filter.')
+          : (lang === 'th' ? 'ยังไม่มีโปรแกรมการแข่งขัน' : 'No upcoming fixtures at the moment.');
+        const resetBtnHtml = isFiltered ? `<button type="button" class="empty-state-reset-btn" onclick="window.resetMatchFilters()">${lang === 'th' ? '↺ รีเซ็ตตัวกรอง' : '↺ Reset Filters'}</button>` : '';
+        container.innerHTML = `<div class="empty-state"><span class="empty-icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span><p>${msg}</p>${resetBtnHtml}</div>`;
         return;
       }
       
@@ -724,7 +989,7 @@
         const localDT = window.getLocalMatchDateTime ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) : { date: match.date };
         const displayDate = localDT.date;
         const displayTime = localDT.time;
-        const compName = formatCompetitionName(match.competition_name);
+        const compName = formatCompetitionName(match.competition_name || match.competition);
         const compLogo = match.competition_logo;
         const teamBadge = match.team_type || 'M';
         const teamBadgeClass = teamBadge.toLowerCase();
@@ -819,8 +1084,15 @@
     // ---------- RENDER RESULTS (CARDS) ----------
     function renderResults(results) {
       const container = document.getElementById('resultsContainer');
+      const lang = window.currentLang || 'th';
+      const isFiltered = currentFilterTeam !== 'all' || currentFilterTournament !== 'all';
+
       if (results.length === 0) {
-        container.innerHTML = '<div class="empty-state"><span class="empty-icon">📊</span><p data-i18n="home.no_results">ยังไม่มีผลการแข่งขัน</p></div>';
+        const msg = isFiltered 
+          ? (lang === 'th' ? 'ไม่พบผลการแข่งขันที่ตรงกับตัวกรองนี้' : 'No match results match this filter.')
+          : (lang === 'th' ? 'ยังไม่มีผลการแข่งขัน' : 'No match results available.');
+        const resetBtnHtml = isFiltered ? `<button type="button" class="empty-state-reset-btn" onclick="window.resetMatchFilters()">${lang === 'th' ? '↺ รีเซ็ตตัวกรอง' : '↺ Reset Filters'}</button>` : '';
+        container.innerHTML = `<div class="empty-state"><span class="empty-icon">📊</span><p>${msg}</p>${resetBtnHtml}</div>`;
         return;
       }
 
@@ -829,7 +1101,7 @@
         const displayDate = localDT.date;
         const homeWin = match.home_score > match.away_score;
         const awayWin = match.away_score > match.home_score;
-        const compName = formatCompetitionName(match.competition_name);
+        const compName = formatCompetitionName(match.competition_name || match.competition);
         const teamBadge = match.team_type || 'M';
         const teamBadgeClass = teamBadge.toLowerCase();
         
@@ -1055,21 +1327,10 @@
     });
 
     window.addEventListener('languageChanged', () => {
-      if (window.liveMatchesGlobal) {
-        renderLiveSpotlight(window.liveMatchesGlobal);
-      }
-      if (window.fixturesGlobal) {
-        renderFixtures(window.fixturesGlobal.slice(0, 6));
-      }
-      if (window.resultsGlobal) {
-        renderResults(window.resultsGlobal.slice(0, 6));
-      }
+      populateFilterControls();
+      applyMatchFilters();
       if (window.newsItemsGlobal && window.newsItemsGlobal.length > 0) {
         renderChelseaNewsCards(window.newsItemsGlobal);
-      }
-      const calWrap = document.getElementById('calendarViewWrapper');
-      if (calWrap && calWrap.style.display !== 'none' && typeof renderCalendar === 'function') {
-        renderCalendar();
       }
     });
   </script>
