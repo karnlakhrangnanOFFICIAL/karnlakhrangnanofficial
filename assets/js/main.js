@@ -187,6 +187,185 @@ function renderTeamNameHTML(teamName, options = {}) {
   </span>`;
 }
 
+// ---------- PLAYER AVATAR LOOKUP SYSTEM ----------
+let playerAvatarMap = null;
+
+function normalizePlayerName(str) {
+  if (!str) return '';
+  return str.toLowerCase()
+    .replace(/-/g, ' ')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9 ]/g, '')
+    .trim();
+}
+
+async function loadPlayersAvatarMap() {
+  if (playerAvatarMap) return playerAvatarMap;
+  playerAvatarMap = {};
+  
+  // Pre-populate key players immediately so lookup is instantaneous
+  const fastKnown = {
+    'cole palmer': 'assets/images/players/men/cole-palmer.jpg',
+    'palmer': 'assets/images/players/men/cole-palmer.jpg',
+    'joao pedro': 'assets/images/players/men/joao-pedro.jpg',
+    'pedro': 'assets/images/players/men/joao-pedro.jpg',
+    'morgan rogers': 'assets/images/players/men/morgan-rogers.jpg',
+    'rogers': 'assets/images/players/men/morgan-rogers.jpg',
+    'pedro neto': 'assets/images/players/men/pedro-neto.jpg',
+    'neto': 'assets/images/players/men/pedro-neto.jpg',
+    'romeo lavia': 'assets/images/players/men/romeo-lavia.jpg',
+    'lavia': 'assets/images/players/men/romeo-lavia.jpg',
+    'danny welbeck': 'assets/images/players/men/danny-welbeck.jpg',
+    'welbeck': 'assets/images/players/men/danny-welbeck.jpg',
+    'valentin barco': 'assets/images/players/men/valentin-barco.jpg',
+    'barco': 'assets/images/players/men/valentin-barco.jpg',
+    'dastan satpaev': 'assets/images/players/men/dastan-satpaev.png',
+    'satpaev': 'assets/images/players/men/dastan-satpaev.png',
+    'dario essugo': 'assets/images/players/men/dario-essugo.jpg',
+    'essugo': 'assets/images/players/men/dario-essugo.jpg',
+    'jamie gittens': 'assets/images/players/men/jamie-bynoe-gittens.png',
+    'gittens': 'assets/images/players/men/jamie-bynoe-gittens.png',
+    'estevao willian': 'assets/images/players/men/Estêvão.jpg',
+    'estevao': 'assets/images/players/men/Estêvão.jpg',
+    'moises caicedo': 'assets/images/players/men/moises-caicedo.jpg',
+    'caicedo': 'assets/images/players/men/moises-caicedo.jpg',
+    'reece james': 'assets/images/players/men/James.jpg',
+    'james': 'assets/images/players/men/James.jpg',
+    'enzo fernandez': 'assets/images/players/men/enzo-fernandez.jpg',
+    'enzo': 'assets/images/players/men/enzo-fernandez.jpg',
+    'fernandez': 'assets/images/players/men/enzo-fernandez.jpg',
+    'nicolas jackson': 'assets/images/players/men/nicolas-jackson.jpg',
+    'jackson': 'assets/images/players/men/nicolas-jackson.jpg',
+    'marc guiu': 'assets/images/players/men/marc-guiu.jpg',
+    'guiu': 'assets/images/players/men/marc-guiu.jpg',
+    'emanuel emegha': 'assets/images/players/men/emmanuel-emegha.jpg',
+    'emegha': 'assets/images/players/men/emmanuel-emegha.jpg',
+    'malo gusto': 'assets/images/players/men/malo-gusto.jpg',
+    'gusto': 'assets/images/players/men/malo-gusto.jpg',
+    'levi colwill': 'assets/images/players/men/levi-colwill.jpg',
+    'colwill': 'assets/images/players/men/levi-colwill.jpg',
+    'jorrel hato': 'assets/images/players/men/jorrel-hato.jpg',
+    'hato': 'assets/images/players/men/jorrel-hato.jpg',
+    'wesley fofana': 'assets/images/players/men/wesley-fofana.jpg',
+    'fofana': 'assets/images/players/men/wesley-fofana.jpg',
+    'trevoh chalobah': 'assets/images/players/men/trevoh-chalobah.jpg',
+    'chalobah': 'assets/images/players/men/trevoh-chalobah.jpg',
+    'tosin adarabioyo': 'assets/images/players/men/tosin-adarabioyo.jpg',
+    'adarabioyo': 'assets/images/players/men/tosin-adarabioyo.jpg',
+    'tosin': 'assets/images/players/men/tosin-adarabioyo.jpg',
+    'robert sanchez': 'assets/images/players/men/robert-sanchez.jpg',
+    'sanchez': 'assets/images/players/men/robert-sanchez.jpg',
+    'filip jorgensen': 'assets/images/players/men/filip-jorgensen.jpg',
+    'jorgensen': 'assets/images/players/men/filip-jorgensen.jpg',
+    'gaga slonina': 'assets/images/players/men/gabriel-slonina.jpg',
+    'slonina': 'assets/images/players/men/gabriel-slonina.jpg',
+    // Women
+    'aggie beever jones': 'assets/images/players/women/aggie-beever-jones.png',
+    'beever jones': 'assets/images/players/women/aggie-beever-jones.png',
+    'sandy baltimore': 'assets/images/players/women/sandy-baltimore.jpg',
+    'baltimore': 'assets/images/players/women/sandy-baltimore.jpg',
+    'giulia dragoni': 'assets/images/players/women/giulia-dragoni.png',
+    'dragoni': 'assets/images/players/women/giulia-dragoni.png',
+    'maika hamano': 'assets/images/players/women/maika-hamano.png',
+    'hamano': 'assets/images/players/women/maika-hamano.png',
+    'mayra ramirez': 'assets/images/players/women/mayra-ramírez.jpg',
+    'ramirez': 'assets/images/players/women/mayra-ramírez.jpg',
+    'sjoeke nusken': 'assets/images/players/women/sjoeke-nüsken.png',
+    'nusken': 'assets/images/players/women/sjoeke-nüsken.png',
+    'lexi potter': 'assets/images/players/women/lexi-potter.png',
+    'potter': 'assets/images/players/women/lexi-potter.png',
+    'lauren james': 'assets/images/players/women/lauren-james.jpg',
+    'keira walsh': 'assets/images/players/women/keira-walsh.png',
+    'walsh': 'assets/images/players/women/keira-walsh.png',
+    'ellie carpenter': 'assets/images/players/women/ellie-carpenter.jpg',
+    'carpenter': 'assets/images/players/women/ellie-carpenter.jpg',
+    'lucy bronze': 'assets/images/players/women/lucy-bronze.jpg',
+    'bronze': 'assets/images/players/women/lucy-bronze.jpg',
+    'naomi girma': 'assets/images/players/women/naomi-girma.png',
+    'girma': 'assets/images/players/women/naomi-girma.png',
+    'veerle buurman': 'assets/images/players/women/veerle-buurman.jpg',
+    'buurman': 'assets/images/players/women/veerle-buurman.jpg',
+    'melvine malard': 'assets/images/players/women/melvine-malard.jpg',
+    'malard': 'assets/images/players/women/melvine-malard.jpg',
+    'erin cuthbert': 'assets/images/players/women/erin-cuthbert.png',
+    'cuthbert': 'assets/images/players/women/erin-cuthbert.png',
+    'wieke kaptein': 'assets/images/players/women/wieke-kaptein.png',
+    'kaptein': 'assets/images/players/women/wieke-kaptein.png',
+    'sam kerr': 'assets/images/players/women/sam-kerr.jpg',
+    'kerr': 'assets/images/players/women/sam-kerr.jpg',
+    'hannah hampton': 'assets/images/players/women/hannah-hampton.jpg',
+    'hampton': 'assets/images/players/women/hannah-hampton.jpg',
+    'livia peng': 'assets/images/players/women/livia-peng.jpg',
+    'peng': 'assets/images/players/women/livia-peng.jpg',
+    'kadeisha buchanan': 'assets/images/players/women/kadeisha-buchanan.jpg',
+    'buchanan': 'assets/images/players/women/kadeisha-buchanan.jpg',
+    'nathalie bjorn': 'assets/images/players/women/nathalie-bjorn.jpg',
+    'bjorn': 'assets/images/players/women/nathalie-bjorn.jpg'
+  };
+  Object.assign(playerAvatarMap, fastKnown);
+
+  try {
+    const [menRes, womenRes] = await Promise.all([
+      fetch('data/players-men.json').catch(() => null),
+      fetch('data/players-women.json').catch(() => null)
+    ]);
+    if (menRes && menRes.ok) {
+      const pm = await menRes.json();
+      pm.forEach(p => {
+        if (p.image) {
+          const n = normalizePlayerName(p.name);
+          playerAvatarMap[n] = p.image;
+          const parts = n.split(' ');
+          if (parts.length > 1) {
+            const last = parts[parts.length - 1];
+            if (!playerAvatarMap[last]) playerAvatarMap[last] = p.image;
+          }
+        }
+      });
+    }
+    if (womenRes && womenRes.ok) {
+      const pw = await womenRes.json();
+      pw.forEach(p => {
+        if (p.image) {
+          const n = normalizePlayerName(p.name);
+          playerAvatarMap[n] = p.image;
+          const parts = n.split(' ');
+          if (parts.length > 1) {
+            const last = parts[parts.length - 1];
+            if (!playerAvatarMap[last]) playerAvatarMap[last] = p.image;
+          }
+        }
+      });
+    }
+  } catch (e) {
+    console.warn('Error fetching players JSON:', e);
+  }
+  return playerAvatarMap;
+}
+
+// Global function to get avatar url
+function getPlayerAvatarUrl(name) {
+  if (!name) return 'assets/images/placeholder-player.svg';
+  const clean = name.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+  const n = normalizePlayerName(clean);
+  if (playerAvatarMap && playerAvatarMap[n]) return playerAvatarMap[n];
+  if (playerAvatarMap) {
+    for (const [k, v] of Object.entries(playerAvatarMap)) {
+      if (k.length > 3 && (n.includes(k) || k.includes(n))) return v;
+    }
+    const parts = n.split(' ');
+    for (const part of parts) {
+      if (part.length > 3 && playerAvatarMap[part]) return playerAvatarMap[part];
+    }
+  }
+  return 'assets/images/placeholder-player.svg';
+}
+
+window.getPlayerAvatarUrl = getPlayerAvatarUrl;
+window.loadPlayersAvatarMap = loadPlayersAvatarMap;
+// Trigger pre-load
+loadPlayersAvatarMap();
+
 const flagMap = {
   "afghanistan": "af",
   "อัฟกานิสถาน": "af",

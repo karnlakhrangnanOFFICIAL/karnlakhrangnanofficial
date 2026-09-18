@@ -183,15 +183,51 @@ function renderResults(container, results, badgeClass) {
     
     let scorersHtml = '';
     if (match.status === 'completed' && match.goals && match.goals.length > 0) {
+      const homeGoals = match.goals.filter(g => g.team === 'home').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+      const awayGoals = match.goals.filter(g => g.team === 'away').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+
+      const renderHomeGoal = (g) => {
+        const rawName = g.player || '';
+        const isOG = rawName.includes('(OG)');
+        const isPen = rawName.includes('(Pen)');
+        const clean = rawName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+        const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
+        const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
+        return `
+          <div class="card-goal-item home" title="${clean}${suffix} ${g.minute}'">
+            <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+            <span class="goal-player-name">${clean}${suffix}</span>
+            <span class="goal-minute">${g.minute}'</span>
+          </div>
+        `;
+      };
+
+      const renderAwayGoal = (g) => {
+        const rawName = g.player || '';
+        const isOG = rawName.includes('(OG)');
+        const isPen = rawName.includes('(Pen)');
+        const clean = rawName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+        const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
+        const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
+        return `
+          <div class="card-goal-item away" title="${clean}${suffix} ${g.minute}'">
+            <span class="goal-minute">${g.minute}'</span>
+            <span class="goal-player-name">${clean}${suffix}</span>
+            <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+          </div>
+        `;
+      };
+
       scorersHtml = `
-        <div class="card-goalscorers" style="display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0 20px 10px; margin-top: -15px; opacity: 0.8; font-family: var(--font-body);">
-          <div class="home-scorers" style="text-align: left; flex: 1; padding-right: 10px; ${match.goals.filter(g => g.team === 'away').length > 0 ? 'border-right: 1px solid rgba(255,255,255,0.1);' : ''}">
-            ${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+        <div class="card-goals-row">
+          <div class="card-goals-col home">
+            ${homeGoals.map(renderHomeGoal).join('')}
           </div>
-          <div class="away-scorers" style="text-align: right; flex: 1; padding-left: 10px;">
-            ${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player.replace(/\(OG\)/i, '(OG)').replace(/\(Pen\)/i, '(Pen)')} ${g.minute}'</div>`).join('')}
+          <div class="card-goals-col away">
+            ${awayGoals.map(renderAwayGoal).join('')}
           </div>
-        </div>`;
+        </div>
+      `;
     }
 
     return `

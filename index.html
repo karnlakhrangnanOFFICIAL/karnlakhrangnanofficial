@@ -1120,6 +1120,55 @@
             awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
         }
 
+        let scorersHtml = '';
+        if (match.goals && match.goals.length > 0) {
+          const homeGoals = match.goals.filter(g => g.team === 'home').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+          const awayGoals = match.goals.filter(g => g.team === 'away').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+
+          const renderHomeGoal = (g) => {
+            const rawName = g.player || '';
+            const isOG = rawName.includes('(OG)');
+            const isPen = rawName.includes('(Pen)');
+            const clean = rawName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+            const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
+            const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
+            return `
+              <div class="card-goal-item home" title="${clean}${suffix} ${g.minute}'">
+                <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+                <span class="goal-player-name">${clean}${suffix}</span>
+                <span class="goal-minute">${g.minute}'</span>
+              </div>
+            `;
+          };
+
+          const renderAwayGoal = (g) => {
+            const rawName = g.player || '';
+            const isOG = rawName.includes('(OG)');
+            const isPen = rawName.includes('(Pen)');
+            const clean = rawName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+            const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
+            const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
+            return `
+              <div class="card-goal-item away" title="${clean}${suffix} ${g.minute}'">
+                <span class="goal-minute">${g.minute}'</span>
+                <span class="goal-player-name">${clean}${suffix}</span>
+                <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+              </div>
+            `;
+          };
+
+          scorersHtml = `
+            <div class="card-goals-row">
+              <div class="card-goals-col home">
+                ${homeGoals.map(renderHomeGoal).join('')}
+              </div>
+              <div class="card-goals-col away">
+                ${awayGoals.map(renderAwayGoal).join('')}
+              </div>
+            </div>
+          `;
+        }
+
         return `
         
         <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
@@ -1151,11 +1200,7 @@
             </div>
           </div>
           
-          ${match.goals && match.goals.length > 0 ? `
-          <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 0 20px 10px; color: #a0aec0;">
-            <div style="flex:1;">${match.goals.filter(g => g.team === 'home').map(g => `<div>${g.player} ${g.minute}'</div>`).join('')}</div>
-            <div style="flex:1; text-align:right;">${match.goals.filter(g => g.team === 'away').map(g => `<div>${g.player} ${g.minute}'</div>`).join('')}</div>
-          </div>` : ''}
+          ${scorersHtml}
           
           <div class="match-card-footer">
             <span class="match-card-footer-text">FULL TIME</span>
