@@ -1,0 +1,7 @@
+<svg viewBox="0 0 24 24" width="24" height="24" fill="white" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+  <line x1="16" y1="2" x2="16" y2="6" />
+  <line x1="8" y1="2" x2="8" y2="6" />
+  <line x1="3" y1="10" x2="21" y2="10" />
+  <text x="12" y="17.5" fill="rgb(51, 51, 51)" stroke="none" font-size="5" font-family="Asar, sans-serif" font-weight="700" text-anchor="middle">2026</text>
+</svg>

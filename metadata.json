@@ -1,0 +1,8 @@
+{
+  "name": "Chelsea FC Hub - Live Match Results, Dashboard & Manager Stats",
+  "description": "Chelsea FC live match results, Premier League standings, upcoming fixtures, squad list, manager timeline stats, and head-to-head analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,2632 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Detail · KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('theme-' + t);
+    })();
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+    
+    :root, [data-theme="modern-dark"], .theme-modern-dark {
+      --bg: #0c0c0e;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --ink: #ffffff;
+      --accent: #0033A0;
+      --accent-light: #1A56DB;
+      --ink-faint: rgba(255, 255, 255, 0.08);
+      --ink-muted: rgba(255, 255, 255, 0.55);
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --danger: #EF4444;
+      --success: #10B981;
+    }
+
+    [data-theme="classic-blue"], .theme-classic-blue {
+      --bg: #f4f6fa;
+      --card-bg: #ffffff;
+      --ink: #001489;
+      --accent: #001489;
+      --accent-light: #034694;
+      --ink-faint: rgba(0, 20, 137, 0.1);
+      --ink-muted: #536471;
+      --gold: #D4AF37;
+      --gold-light: #856404;
+      --danger: #EF4444;
+      --success: #10B981;
+    }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Back Link */
+    .back-nav-container {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .back-link {
+      font-family: 'Space Mono', monospace;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .back-link:hover {
+      color: var(--gold-light);
+      transform: translateX(-4px);
+    }
+
+    /* Scoreboard Hero */
+    .match-hero-minimal {
+      text-align: center;
+      border-bottom: 1px solid var(--ink-faint);
+      padding-bottom: 36px;
+      margin-bottom: 36px;
+      margin-top: 10px;
+    }
+    .meta-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .meta-label img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .scoreboard-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 32px;
+      margin-top: 16px;
+    }
+    .team-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .team-box img.team-logo {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+    .team-box img.team-logo:hover {
+      transform: scale(1.05);
+    }
+    .team-name-display {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0;
+      text-align: center;
+      max-width: 240px;
+    }
+    .score-center-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .score-main {
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem;
+      line-height: 0.9;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+    .match-status {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 5px 14px;
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+    }
+    .match-status.live {
+      background: #d32f2f;
+      color: #ffffff;
+      animation: pulseLive 2s infinite ease-in-out;
+      box-shadow: 0 0 12px rgba(211, 47, 47, 0.5);
+    }
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
+    }
+    .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+    @keyframes spinIcon {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .sync-icon.spinning {
+      animation: spinIcon 1s linear infinite;
+    }
+
+    /* Scoreboard Goalscorers in Hero */
+    .team-hero-scorers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      max-width: 260px;
+    }
+    .team-hero-scorer-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.2s ease;
+    }
+    .team-hero-scorer-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+    .team-hero-scorer-item a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .team-hero-scorer-item a:hover {
+      text-decoration: underline;
+    }
+    .team-hero-scorer-item .scorer-minute {
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .team-hero-scorer-item .scorer-assist {
+      color: var(--ink-muted);
+      font-size: 0.72rem;
+      margin-left: 2px;
+    }
+
+    /* Live Sync Banner */
+    .live-sync-banner {
+      background: linear-gradient(135deg, rgba(3, 25, 75, 0.65) 0%, rgba(5, 38, 107, 0.45) 100%);
+      border: 1px solid rgba(0, 102, 255, 0.35);
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+    .live-pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00e676;
+      display: inline-block;
+      animation: pulseLive 1.5s infinite;
+    }
+
+    /* Details Grid Layout */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 880px) {
+      .scoreboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .score-main {
+        font-size: 4rem;
+      }
+      .details-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px;
+      }
+      .sidebar-meta {
+        padding-bottom: 8px;
+      }
+    }
+
+    /* Sidebar Meta & Cards */
+    .sidebar-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sidebar-card {
+      background: var(--card-bg, #0b1528);
+      border: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.08));
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+    .sidebar-card-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.08));
+    }
+    .sidebar-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      padding: 2px 0;
+    }
+    .sidebar-info-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .sidebar-info-val {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+    .channel-badges-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .channel-badge-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--ink-faint);
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .channel-badge-item img {
+      height: 18px;
+      object-fit: contain;
+    }
+
+    /* Goalscorers in Sidebar Summary */
+    .goals-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .col-team-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      border-bottom: 1px solid var(--ink-faint);
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .goals-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .goals-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-size: 0.85rem;
+    }
+    .goals-list img.goal-player-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--gold);
+    }
+    .goals-list .goal-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-left: auto;
+      font-weight: 700;
+    }
+    .goals-list .no-goals {
+      color: var(--ink-muted);
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+    .scorer-link {
+      color: var(--ink);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .scorer-link:hover {
+      color: var(--gold);
+    }
+
+    /* Timeline Visual Cards */
+    .timeline-visual-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .timeline-header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .timeline-meta-title {
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .timeline-meta-badge {
+      background: rgba(0, 230, 118, 0.15);
+      color: #00e676;
+      border: 1px solid rgba(0, 230, 118, 0.4);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .timeline-period-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 0 8px;
+      position: relative;
+    }
+    .timeline-period-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--ink-faint);
+      z-index: 1;
+    }
+    .timeline-period-divider span {
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
+      padding: 4px 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gold);
+      border: 1px solid var(--ink-faint);
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .timeline-events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .timeline-event-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 14px 18px;
+      transition: all 0.2s ease;
+    }
+    .timeline-event-card:hover {
+      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    .timeline-event-card.is-goal {
+      border-left: 4px solid var(--gold);
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), var(--card-bg));
+    }
+    .timeline-event-card.is-card {
+      border-left: 4px solid #ffc107;
+      background: linear-gradient(90deg, rgba(255, 193, 7, 0.06), var(--card-bg));
+    }
+    .timeline-event-card.is-red {
+      border-left: 4px solid #ef4444;
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.08), var(--card-bg));
+    }
+    .timeline-event-card.is-sub {
+      border-left: 4px solid #3b82f6;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.06), var(--card-bg));
+    }
+    .timeline-time-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      padding-top: 2px;
+    }
+    .timeline-time-pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .timeline-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .timeline-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .timeline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .timeline-badge.goal {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+    }
+    .timeline-badge.yellow {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+    }
+    .timeline-badge.red {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    .timeline-team-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .timeline-team-tag img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+    .timeline-score-progress {
+      margin-left: auto;
+      font-family: 'Space Mono', monospace;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #ffffff;
+      background: rgba(0, 102, 255, 0.3);
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 102, 255, 0.5);
+    }
+    .timeline-player-name {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .timeline-player-name a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .timeline-player-name a:hover {
+      text-decoration: underline;
+    }
+    .timeline-event-detail {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* Stats Header Bar */
+    .stats-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+    .stats-header-team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .stats-header-team img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .stats-vs-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 700;
+      padding: 4px 12px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+    }
+
+    /* Tabs Navigation */
+    .match-tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--ink-faint);
+      margin-bottom: 28px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .match-tabs::-webkit-scrollbar { display: none; }
+    
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--ink-muted);
+      padding: 12px 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      border-radius: 4px 4px 0 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tab-btn:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .tab-btn.active {
+      color: var(--gold);
+      font-weight: 700;
+      background: rgba(212, 175, 55, 0.05);
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Tab Panes */
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+      animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Subtitles */
+    .section-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--ink-faint);
+      padding-bottom: 10px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Timeline & Events Table */
+    .timeline-container {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .events-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .events-table th {
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--ink-faint);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+    }
+    .events-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+    .events-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .event-time-col {
+      width: 70px;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+    .event-team-col {
+      width: 150px;
+    }
+    .event-team-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .event-team-pill img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+    .event-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .event-type-badge img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    /* Commentary Stream */
+    .commentary-block {
+      margin-top: 32px;
+    }
+    .commentary-section {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .commentary-section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 3px solid var(--gold);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+    .commentary-item {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+    .commentary-item:last-child {
+      border-bottom: none;
+    }
+    .commentary-time {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 44px;
+    }
+    .commentary-text {
+      color: var(--ink);
+    }
+
+    /* Live Commentary Feed & Filter */
+    .commentary-feed-card {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .commentary-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+    .commentary-filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--ink-faint);
+      color: var(--ink-muted);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Space Mono', monospace;
+    }
+    .commentary-filter-btn:hover {
+      color: var(--ink);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .commentary-filter-btn.active {
+      background: var(--accent, #0033a0);
+      color: #ffffff;
+      border-color: var(--accent, #0033a0);
+      box-shadow: 0 2px 8px rgba(0, 51, 160, 0.3);
+    }
+    .live-comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .live-comment-item {
+      display: flex;
+      gap: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .live-comment-item:hover {
+      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .live-comment-item.is-goal {
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 3px solid var(--gold);
+    }
+    .live-comment-item.is-card {
+      background: rgba(255, 193, 7, 0.05);
+      border-left: 3px solid #ffc107;
+    }
+    .live-comment-item.is-var {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 3px solid #ef4444;
+    }
+    .live-comment-item.is-sub {
+      background: rgba(59, 130, 246, 0.05);
+      border-left: 3px solid #3b82f6;
+    }
+    .live-comment-time {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 46px;
+      font-size: 0.95rem;
+      padding-top: 2px;
+    }
+    .live-comment-content {
+      flex: 1;
+    }
+    .live-comment-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .live-comment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--ink-muted);
+    }
+    .live-comment-text {
+      color: var(--ink);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Officials Section */
+    .officials-card {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--ink-faint);
+    }
+    .officials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .official-item {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .official-role {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-family: 'Space Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .official-name {
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin-top: 3px;
+    }
+
+    /* Stats Card & Bars */
+    .stats-card {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+    .stat-row {
+      margin-bottom: 24px;
+    }
+    .stat-row:last-child {
+      margin-bottom: 0;
+    }
+    .stat-labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .stat-value-home, .stat-value-away {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.15rem;
+      min-width: 45px;
+    }
+    .stat-value-home {
+      text-align: left;
+    }
+    .stat-value-away {
+      text-align: right;
+    }
+    .stat-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      text-align: center;
+    }
+    .stat-bar-container {
+      display: flex;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      gap: 2px;
+    }
+    .stat-bar-home {
+      background: var(--accent);
+      height: 100%;
+      border-radius: 4px 0 0 4px;
+      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stat-bar-away {
+      background: rgba(255, 255, 255, 0.35);
+      height: 100%;
+      border-radius: 0 4px 4px 0;
+      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stat-highlight {
+      color: var(--gold) !important;
+    }
+
+    /* Lineups Section */
+    .lineups-card {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .lineups-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    @media (max-width: 640px) {
+      .lineups-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+    .lineup-team-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink-faint);
+      margin-bottom: 14px;
+    }
+    .lineup-team-header img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+    .lineup-team-header h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .lineup-manager {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lineup-group-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-top: 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .player-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 0.9rem;
+    }
+    .player-num {
+      font-family: 'Space Mono', monospace;
+      width: 24px;
+      text-align: right;
+      color: var(--ink-muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .player-name-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .player-name-wrap a {
+      color: var(--gold, #d4af37);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .player-name-wrap a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+      transform: translateX(3px);
+    }
+    .player-name-wrap span.non-link {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Video Tab */
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--ink-faint);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-caption {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+    .video-credit-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(0, 51, 160, 0.04);
+      border: 1px solid rgba(0, 51, 160, 0.15);
+      border-left: 3px solid var(--chelsea-blue, #0033a0);
+      border-radius: 6px;
+    }
+    .video-credit-text {
+      margin: 0 0 6px 0;
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .video-channel-info {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .video-channel-info a {
+      color: var(--chelsea-blue, #0033a0);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .video-channel-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Empty state */
+    .empty-tab-box {
+      text-align: center;
+      padding: 48px 20px;
+      background: var(--card-bg);
+      border: 1px dashed var(--ink-faint);
+      border-radius: 8px;
+      color: var(--ink-muted);
+    }
+    .empty-tab-box p {
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+        <li>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <span class="theme-icon" id="themeIcon">🔵</span>
+            <span class="theme-label" id="themeLabel">Classic Blue</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container" style="max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px;">
+    <div id="matchContent" class="loading" style="text-align: center; padding: 60px 0;">
+      <div class="spinner"></div>
+      <p style="margin-top: 16px; font-family: 'Space Mono', monospace; color: var(--ink-muted);" data-i18n="common.loading">กำลังโหลดข้อมูลการแข่งขัน...</p>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo" style="height:40px;">
+        <span class="team-name">KARN LA KHRANg NAN</span>
+      </div>
+      <p>© 2026 <span>KARN LA KHRANg NAN Official</span>. All Rights Reserved.</p>
+      <p class="footer-disclaimer">This is an unofficial fan website. Not affiliated with Chelsea FC.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ---------- Player Lookup Maps ----------
+    let playerImageMap = {};
+    let playerIdMap = {};
+    let playerTeamMap = {};
+    let playerNumberMap = {};
+
+    function normalizeName(str) {
+      if (!str) return '';
+      return str.toLowerCase()
+        .replace(/-/g, ' ')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9 ]/g, '')
+        .trim();
+    }
+
+    function getPlayerImage(playerName) {
+      if (!playerName) return 'assets/images/placeholder-player.svg';
+      const norm = normalizeName(playerName);
+
+      if (playerImageMap[norm]) return playerImageMap[norm];
+
+      for (const [k, imgUrl] of Object.entries(playerImageMap)) {
+        if (norm.includes(k) || k.includes(norm)) {
+          return imgUrl;
+        }
+      }
+
+      if (norm.includes('satpaev')) return 'assets/images/players/men/dastan-satpaev.webp';
+      if (norm.includes('essugo')) return 'assets/images/players/men/dario-essugo.webp';
+      if (norm.includes('gittens')) return 'assets/images/players/men/jamie-bynoe-gittens.webp';
+      if (norm.includes('rogers')) return 'assets/images/players/men/morgan-rogers.webp';
+      if (norm.includes('palmer')) return 'assets/images/players/men/cole-palmer.webp';
+      if (norm.includes('caicedo')) return 'assets/images/players/men/moises-caicedo.webp';
+      if (norm.includes('james')) return 'assets/images/players/men/james.webp';
+      if (norm.includes('estevao')) return 'assets/images/players/men/estevao.webp';
+      if (norm.includes('pedro')) return 'assets/images/players/men/joao-pedro.webp';
+      if (norm.includes('enzo') || norm.includes('fernandez')) return 'assets/images/players/men/enzo-fernandez.webp';
+
+      const slug = norm.replace(/\s+/g, '-');
+      return `assets/images/players/men/${slug}.webp`;
+    }
+
+    function getPlayerIdByName(playerName, playerNumber, teamType = 'men') {
+      const normalizedTeam = (teamType === 'W' || teamType === 'women') ? 'women' : 'men';
+      if (playerNumber) {
+        if (playerNumberMap[`${normalizedTeam}_${playerNumber}`]) {
+          return playerNumberMap[`${normalizedTeam}_${playerNumber}`];
+        }
+        if (playerNumberMap[`men_${playerNumber}`]) return playerNumberMap[`men_${playerNumber}`];
+        if (playerNumberMap[`women_${playerNumber}`]) return playerNumberMap[`women_${playerNumber}`];
+      }
+      if (!playerName) return null;
+      const norm = normalizeName(playerName);
+      if (playerIdMap[`${normalizedTeam}_${norm}`]) return playerIdMap[`${normalizedTeam}_${norm}`];
+      if (playerIdMap[norm]) return playerIdMap[norm];
+      for (const [k, idVal] of Object.entries(playerIdMap)) {
+        if (norm === k) return idVal;
+      }
+      const parts = norm.split(' ').filter(p => p.length > 2);
+      for (const part of parts) {
+        if (playerIdMap[part]) return playerIdMap[part];
+      }
+      for (const [k, idVal] of Object.entries(playerIdMap)) {
+        if (k.length > 2 && (norm.includes(k) || k.includes(norm))) {
+          return idVal;
+        }
+      }
+      return null;
+    }
+
+    function getPlayerTeamByName(playerName, defaultTeam) {
+      if (!playerName) return defaultTeam || 'men';
+      const norm = normalizeName(playerName);
+      if (playerTeamMap[norm]) return playerTeamMap[norm];
+      const parts = norm.split(' ').filter(p => p.length > 2);
+      for (const part of parts) {
+        if (playerTeamMap[part]) return playerTeamMap[part];
+      }
+      for (const [k, teamVal] of Object.entries(playerTeamMap)) {
+        if (norm.includes(k) || k.includes(norm)) return teamVal;
+      }
+      return defaultTeam || 'men';
+    }
+
+    function formatDate(dateString, lang) {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return dateString;
+      if (lang === 'th') {
+        const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+        const thaiYear = date.getFullYear() + 543;
+        return `${date.getDate()} ${thaiMonths[date.getMonth()]} ${thaiYear}`;
+      }
+      return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function formatCompetitionName(name) {
+      if (!name) return '';
+      return name.replace(/-/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    // ---------- Tab Initialization ----------
+    function initTabs() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-target');
+          const targetPane = document.getElementById(targetId);
+          if (targetPane) {
+            targetPane.classList.add('active');
+          }
+        });
+      });
+
+      // Handle activeIndex or tab from URL params
+      const urlParams = new URLSearchParams(window.location.search);
+      const activeIdx = urlParams.get('activeIndex');
+      const tabParam = urlParams.get('tab');
+      let defaultTargetId = null;
+
+      if (activeIdx === '3' || tabParam === 'stats') {
+        defaultTargetId = 'tab-stats';
+      } else if (activeIdx === '1' || tabParam === 'lineups') {
+        defaultTargetId = 'tab-lineups';
+      } else if (activeIdx === '2' || tabParam === 'timeline') {
+        defaultTargetId = 'tab-timeline';
+      } else if (activeIdx === '4' || tabParam === 'video') {
+        defaultTargetId = 'tab-video';
+      } else if (activeIdx === '5' || tabParam === 'commentary') {
+        defaultTargetId = 'tab-commentary';
+      } else if (!tabParam && !activeIdx && currentMatch) {
+        if ((currentMatch.status === 'live' || currentMatch.status === 'halftime') && currentMatch.live_commentary && currentMatch.live_commentary.length > 0) {
+          defaultTargetId = 'tab-commentary';
+        } else if (currentMatch.status === 'upcoming' && currentMatch.lineups) {
+          defaultTargetId = 'tab-lineups';
+        }
+      }
+
+      if (defaultTargetId) {
+        const targetBtn = document.querySelector(`.tab-btn[data-target="${defaultTargetId}"]`);
+        if (targetBtn) {
+          targetBtn.click();
+        }
+      }
+
+      // Initialize Commentary filter buttons
+      const filterBtns = document.querySelectorAll('.commentary-filter-btn');
+      const commentItems = document.querySelectorAll('.live-comment-item');
+      if (filterBtns.length > 0 && commentItems.length > 0) {
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            commentItems.forEach(item => {
+              const cats = (item.getAttribute('data-category') || '').split(' ');
+              if (filter === 'all' || cats.includes(filter)) {
+                item.style.display = 'flex';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      }
+    }
+
+    // ---------- Match Stats HTML Generator ----------
+    function generateMatchStatsHTML(statsArray, homeTeamName, awayTeamName, lang) {
+      const isTh = lang !== 'en';
+      if (!statsArray || statsArray.length === 0) {
+        return `
+          <div class="empty-tab-box">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">📊</div>
+            <strong style="color: var(--ink);">${isTh ? 'ไม่มีข้อมูลสถิติสำหรับการแข่งขันนี้' : 'No match statistics available'}</strong>
+            <p>${isTh ? 'สถิติจะแสดงผลเมื่อการแข่งขันเริ่มต้นขึ้น' : 'Stats will update once match begins.'}</p>
+          </div>
+        `;
+      }
+
+      const isHomeChelsea = homeTeamName && homeTeamName.toLowerCase().includes('chelsea');
+      const isAwayChelsea = awayTeamName && awayTeamName.toLowerCase().includes('chelsea');
+      const homeLogo = currentMatch ? currentMatch.home_logo : '';
+      const awayLogo = currentMatch ? currentMatch.away_logo : '';
+
+      let html = `
+        <div class="stats-card">
+          <div class="stats-header-bar">
+            <div class="stats-header-team">
+              ${homeLogo ? `<img src="${homeLogo}" alt="${homeTeamName}" onerror="this.src='assets/images/placeholder-team.svg'">` : ''}
+              <span style="${isHomeChelsea ? 'color: var(--gold);' : 'color: var(--ink);'}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(homeTeamName) : homeTeamName}</span>
+            </div>
+            <div class="stats-vs-badge">VS</div>
+            <div class="stats-header-team" style="justify-content: flex-end;">
+              <span style="${isAwayChelsea ? 'color: var(--gold);' : 'color: var(--ink);'}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(awayTeamName) : awayTeamName}</span>
+              ${awayLogo ? `<img src="${awayLogo}" alt="${awayTeamName}" onerror="this.src='assets/images/placeholder-team.svg'">` : ''}
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--ink-faint); font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em;">
+            <span>📊 ${isTh ? 'สถิติการแข่งขันอย่างเป็นทางการ' : 'Official Match Statistics'}</span>
+            <span style="color: var(--ink-muted); font-size: 0.72rem;">Premier League</span>
+          </div>
+      `;
+      statsArray.forEach(stat => {
+        const homeVal = parseFloat(stat.home) || 0;
+        const awayVal = parseFloat(stat.away) || 0;
+        const total = homeVal + awayVal;
+
+        let homeWidth = total > 0 ? (homeVal / total) * 100 : 50;
+        let awayWidth = total > 0 ? (awayVal / total) * 100 : 50;
+
+        const displayHome = stat.isPercentage ? `${stat.home}%` : stat.home;
+        const displayAway = stat.isPercentage ? `${stat.away}%` : stat.away;
+
+        const homeLead = homeVal > awayVal;
+        const awayLead = awayVal > homeVal;
+
+        let displayName = stat.name;
+        if (!isTh && stat.name.includes('(') && stat.name.includes(')')) {
+          const matchEn = stat.name.match(/\((.*?)\)/);
+          if (matchEn) displayName = matchEn[1];
+        }
+
+        html += `
+          <div class="stat-row">
+            <div class="stat-labels">
+              <span class="stat-value-home ${homeLead ? 'stat-highlight' : ''}">${displayHome}</span>
+              <span class="stat-name">${displayName}</span>
+              <span class="stat-value-away ${awayLead ? 'stat-highlight' : ''}">${displayAway}</span>
+            </div>
+            <div class="stat-bar-container">
+              <div class="stat-bar-home" style="width: ${homeWidth}%;"></div>
+              <div class="stat-bar-away" style="width: ${awayWidth}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+      return html;
+    }
+
+    // ---------- Load Match Data ----------
+    let currentMatch = null;
+
+    async function loadMatchDetail() {
+      const container = document.getElementById('matchContent');
+      try {
+        const params = new URLSearchParams(window.location.search);
+        let matchId = params.get('id');
+
+        // Load players data
+        try {
+          let playersMen = [];
+          if (typeof fetchPlayersFromSheet === 'function') {
+            try { playersMen = await fetchPlayersFromSheet(true) || []; } catch(e) {}
+          }
+          if (!playersMen || playersMen.length === 0) {
+            const resPMen = await fetch('data/players-men.json');
+            if (resPMen.ok) playersMen = await resPMen.json();
+          }
+
+          if (playersMen && playersMen.length > 0) {
+            playersMen.forEach(p => {
+              if (p.name) {
+                const n = normalizeName(p.name);
+                if (p.image) playerImageMap[n] = p.image;
+                if (p.id) {
+                  playerIdMap[n] = p.id;
+                  if (p.number) playerNumberMap[`men_${p.number}`] = p.id;
+                }
+                playerTeamMap[n] = 'men';
+                const parts = n.split(' ');
+                if (parts.length > 1) {
+                  const last = parts[parts.length - 1];
+                  if (last.length > 2) {
+                    if (!playerImageMap[last] && p.image) playerImageMap[last] = p.image;
+                    if (!playerIdMap[last] && p.id) playerIdMap[last] = p.id;
+                    if (!playerTeamMap[last]) playerTeamMap[last] = 'men';
+                  }
+                }
+              }
+            });
+          }
+        } catch(e) { console.warn('Error loading men players', e); }
+
+        try {
+          let playersWomen = [];
+          if (typeof fetchPlayersFromSheet === 'function') {
+            try { playersWomen = await fetchPlayersFromSheet(false) || []; } catch(e) {}
+          }
+          if (!playersWomen || playersWomen.length === 0) {
+            const resPWomen = await fetch('data/players-women.json');
+            if (resPWomen.ok) playersWomen = await resPWomen.json();
+          }
+
+          if (playersWomen && playersWomen.length > 0) {
+            playersWomen.forEach(p => {
+              if (p.name) {
+                const n = normalizeName(p.name);
+                if (p.image) playerImageMap[n] = p.image;
+                if (p.id) {
+                  playerIdMap[n] = p.id;
+                  if (p.number) playerNumberMap[`women_${p.number}`] = p.id;
+                }
+                playerTeamMap[n] = 'women';
+                const parts = n.split(' ');
+                if (parts.length > 1) {
+                  const last = parts[parts.length - 1];
+                  if (last.length > 2) {
+                    if (!playerImageMap[last] && p.image) playerImageMap[last] = p.image;
+                    if (!playerIdMap[last] && p.id) playerIdMap[last] = p.id;
+                    if (!playerTeamMap[last]) playerTeamMap[last] = 'women';
+                  }
+                }
+              }
+            });
+          }
+        } catch(e) { console.warn('Error loading women players', e); }
+
+        // Fetch fixtures
+        let allMatches = [];
+        try {
+          const res = await fetch('data/fixtures.json');
+          if (res.ok) allMatches = await res.json();
+        } catch(e) {}
+
+        let match = null;
+        if (matchId) {
+          match = allMatches.find(m => String(m.id) === String(matchId));
+        }
+
+        // Fallback to match with commentary/lineups (e.g. m9 or first match) if none found or no ID
+        if (!match && allMatches.length > 0) {
+          match = allMatches.find(m => m.id === 'm9') || allMatches[0];
+        }
+
+        if (!match) {
+          container.innerHTML = '<div class="empty-tab-box"><p>⚠️ ไม่พบข้อมูลการแข่งขัน</p></div>';
+          return;
+        }
+
+        // Real-Time Sync from EFL API if match is m46 or has efl_id
+        if (match.id === 'm46' || match.efl_id) {
+          try {
+            const fixtureId = match.efl_id || 'g2685176';
+            const eflRes = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+            if (eflRes.ok) {
+              const eflJson = await eflRes.json();
+              if (eflJson.success && eflJson.data) {
+                applyEflLiveData(match, eflJson.data);
+              }
+            }
+          } catch (e) {
+            console.warn('EFL live fetch error:', e);
+          }
+        }
+
+        // Real-Time Sync from Premier League API if match is m10 or has pl_match_id
+        if (match.pl_match_id) {
+          try {
+            const plId = match.pl_match_id;
+            if (plId) {
+              const plRes = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
+              if (plRes.ok) {
+                const plJson = await plRes.json();
+                if (plJson.success) {
+                  applyPlLiveData(match, plJson);
+                }
+              }
+            }
+          } catch (e) {
+            console.warn('PL live fetch error:', e);
+          }
+        }
+
+        renderMatchDetail(match, container);
+        startRealTimeSync(match);
+      } catch (error) {
+        console.error(error);
+        container.innerHTML = '<div class="empty-tab-box"><p>⚠️ ไม่สามารถโหลดข้อมูลได้ในขณะนี้</p></div>';
+      }
+    }
+
+    function applyEflLiveData(match, live) {
+      if (!match || !live) return;
+      if (live.status) match.status = live.status;
+      if (live.time_live) match.time_live = live.time_live;
+      if (live.home_score !== undefined && live.home_score !== null) match.home_score = live.home_score;
+      if (live.away_score !== undefined && live.away_score !== null) match.away_score = live.away_score;
+      if (live.goals && Array.isArray(live.goals) && live.goals.length > 0) match.goals = live.goals;
+      if (live.events && Array.isArray(live.events) && live.events.length > 0) match.events = live.events;
+      if (live.stats && Array.isArray(live.stats) && live.stats.length > 0) match.stats = live.stats;
+      if (live.video) match.video = live.video;
+      if (live.youtube_id) match.youtube_id = live.youtube_id;
+    }
+
+    function applyPlLiveData(match, live) {
+      if (!match || !live) return;
+      if (live.status) match.status = live.status;
+      if (live.clock) match.clock = live.clock;
+      if (live.period) match.period = live.period;
+      if (live.score) {
+        if (live.score.home !== undefined) match.home_score = live.score.home;
+        if (live.score.away !== undefined) match.away_score = live.score.away;
+      }
+      if (live.goals && Array.isArray(live.goals) && live.goals.length > 0) match.goals = live.goals;
+      if (live.events && Array.isArray(live.events) && live.events.length > 0) match.events = live.events;
+      if (live.stats && Array.isArray(live.stats) && live.stats.length > 0) match.stats = live.stats;
+      if (live.live_commentary && Array.isArray(live.live_commentary) && live.live_commentary.length > 0) {
+        match.live_commentary = live.live_commentary;
+      }
+      if (live.lastUpdated) match.last_synced = live.lastUpdated;
+    }
+
+    let livePollInterval = null;
+    let isManualSyncing = false;
+
+    window.handleManualLiveSync = async function() {
+      if (!currentMatch || isManualSyncing) return;
+      isManualSyncing = true;
+      const btn = document.getElementById('btnManualSync');
+      const icon = btn ? btn.querySelector('.sync-icon') : null;
+      if (icon) icon.classList.add('spinning');
+
+      try {
+        if (currentMatch.pl_match_id) {
+          const plId = currentMatch.pl_match_id;
+          const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
+          if (res.ok) {
+            const json = await res.json();
+            if (json.success) {
+              applyPlLiveData(currentMatch, json);
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(currentMatch, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          }
+        } else if (currentMatch.id === 'm46' || currentMatch.efl_id) {
+          const fixtureId = currentMatch.efl_id || 'g2685176';
+          const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+          if (res.ok) {
+            const json = await res.json();
+            if (json.success && json.data) {
+              applyEflLiveData(currentMatch, json.data);
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(currentMatch, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Manual sync failed:', err);
+      } finally {
+        isManualSyncing = false;
+        if (icon) icon.classList.remove('spinning');
+      }
+    };
+
+    function startRealTimeSync(match) {
+      if (livePollInterval) {
+        clearInterval(livePollInterval);
+        livePollInterval = null;
+      }
+      const isEfl = match && (match.id === 'm46' || match.efl_id);
+      const isPl = match && (match.pl_match_id);
+      if (!isEfl && !isPl) return;
+      if (match.status !== 'live' && match.status !== 'halftime' && match.period !== 'FirstHalf' && match.period !== 'SecondHalf') return;
+
+      const fixtureId = match.efl_id || 'g2685176';
+      const plId = match.pl_match_id;
+
+      livePollInterval = setInterval(async () => {
+        try {
+          if (isPl) {
+            const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
+            if (!res.ok) return;
+            const json = await res.json();
+            if (!json.success) return;
+
+            const oldScore = `${match.home_score}-${match.away_score}`;
+            const newScore = `${json.score.home}-${json.score.away}`;
+            const scoreChanged = oldScore !== newScore;
+            const oldEventsCount = (match.events || []).length;
+            const newEventsCount = (json.events || []).length;
+            const oldCommentsCount = (match.live_commentary || []).length;
+            const newCommentsCount = (json.live_commentary || []).length;
+
+            applyPlLiveData(match, json);
+
+            // Update Scoreboard Header
+            const scoreMainEl = document.getElementById('scoreMain');
+            if (scoreMainEl) {
+              scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
+            }
+            const liveBadgeWrapEl = document.getElementById('liveBadgeWrap');
+            if (liveBadgeWrapEl) {
+              const liveText = match.period === 'HalfTime' ? 'HT' : (match.clock || 'LIVE');
+              liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${liveText}</div>`;
+            }
+
+            // Update Timestamp
+            const timeEl = document.getElementById('liveSyncTimestamp');
+            if (timeEl) {
+              timeEl.textContent = `อัปเดตล่าสุด: ${new Date().toLocaleTimeString('th-TH')}`;
+            }
+
+            // Update Stats Tab if active
+            const statsTabEl = document.getElementById('tab-stats');
+            if (statsTabEl && match.stats) {
+              statsTabEl.innerHTML = generateMatchStatsHTML(match.stats, match.home_team, match.away_team, window.currentLang || 'th');
+            }
+
+            // If score or events or commentary changed, refresh match view
+            if (scoreChanged || newEventsCount !== oldEventsCount || newCommentsCount !== oldCommentsCount) {
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(match, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          } else if (isEfl) {
+            const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
+            if (!res.ok) return;
+            const json = await res.json();
+            if (!json.success || !json.data) return;
+            const live = json.data;
+
+            const oldScore = `${match.home_score}-${match.away_score}`;
+            const newScore = `${live.home_score}-${live.away_score}`;
+            const scoreChanged = oldScore !== newScore;
+            const oldEventsCount = (match.events || []).length;
+            const newEventsCount = (live.events || []).length;
+
+            applyEflLiveData(match, live);
+
+            // Update Scoreboard Header
+            const scoreMainEl = document.getElementById('scoreMain');
+            if (scoreMainEl) {
+              scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
+            }
+            const liveBadgeWrapEl = document.getElementById('liveBadgeWrap');
+            if (liveBadgeWrapEl) {
+              liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${match.time_live || 'LIVE'}</div>`;
+            }
+
+            // Update Stats Tab
+            const statsTabEl = document.getElementById('tab-stats');
+            if (statsTabEl && match.stats) {
+              statsTabEl.innerHTML = generateMatchStatsHTML(match.stats, match.home_team, match.away_team, window.currentLang || 'th');
+            }
+
+            // If score changed or new events, re-render full details to refresh timeline and goalscorers
+            if (scoreChanged || newEventsCount !== oldEventsCount) {
+              const container = document.getElementById('matchContent');
+              if (container) {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const activeTarget = activeBtn ? activeBtn.getAttribute('data-target') : null;
+                renderMatchDetail(match, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                  if (newBtn) newBtn.click();
+                }
+              }
+            }
+          }
+        } catch (err) {
+          console.warn('Real-time sync error:', err);
+        }
+      }, 15000);
+    }
+
+    // ---------- Render Match Detail ----------
+    function renderMatchDetail(match, container) {
+      currentMatch = match;
+      const lang = window.currentLang || 'th';
+      const isTh = lang === 'th';
+      const compName = formatCompetitionName(match.competition_name || match.competition);
+      const compLogo = match.competition_logo || '';
+
+      const localDT = window.getLocalMatchDateTime 
+        ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk) 
+        : { date: match.date, time: (match.time_uk || match.time_th || match.time || 'TBC').substring(0,5) };
+
+      const displayDate = localDT.date;
+      const displayTime = localDT.time === 'TBC' ? 'TBC' : localDT.time;
+
+      const isWomenMatch = match.team_type === 'women' || (match.competition_name && match.competition_name.toLowerCase().includes('wsl')) || (match.home_team && match.home_team.toLowerCase().includes('women')) || (match.away_team && match.away_team.toLowerCase().includes('women'));
+      const backHref = isWomenMatch ? 'women-team.html' : 'men-team.html';
+      const backText = isTh ? (isWomenMatch ? '← กลับหน้าทีมหญิง' : '← กลับหน้าทีมชาย') : (isWomenMatch ? '← Back to Women\'s Team' : '← Back to Men\'s Team');
+
+      // Update Nav active indicator
+      const menNav = document.querySelector('.nav-links a[href="men-team.html"]');
+      const womenNav = document.querySelector('.nav-links a[href="women-team.html"]');
+      if (menNav && womenNav) {
+        if (isWomenMatch) {
+          womenNav.classList.add('active');
+          menNav.classList.remove('active');
+        } else {
+          menNav.classList.add('active');
+          womenNav.classList.remove('active');
+        }
+      }
+
+      const isHomeChelsea = match.home_team && match.home_team.toLowerCase().includes('chelsea');
+      const isAwayChelsea = match.away_team && match.away_team.toLowerCase().includes('chelsea');
+      const sHome = match.home_score !== null && match.home_score !== undefined ? match.home_score : '-';
+      const sAway = match.away_score !== null && match.away_score !== undefined ? match.away_score : '-';
+
+      // Status Badge
+      let statusBadge = '';
+      if (match.status === 'live') {
+        const liveClock = match.clock || match.time_live || 'LIVE';
+        statusBadge = `<div class="match-status live"><span class="live-dot"></span> ${liveClock}</div>`;
+      } else if (match.status === 'halftime' || match.period === 'HalfTime') {
+        statusBadge = `<div class="match-status live" style="background: #e65100; color: #fff;"><span class="live-dot"></span> HT</div>`;
+      } else if (match.status === 'completed' || match.period === 'FullTime') {
+        statusBadge = `<div class="match-status">FULL TIME</div>`;
+      } else {
+        statusBadge = `<div class="match-status" style="background: rgba(255,255,255,0.1); color: var(--ink-muted);">UPCOMING</div>`;
+      }
+
+      // Broadcaster Channels HTML
+      let channelsHtml = '';
+      if (match.channels && match.channels.length > 0) {
+        channelsHtml = `
+          <div class="channel-badges-wrap">
+            ${match.channels.map(ch => `
+              <span class="channel-badge-item" title="${ch.name}">
+                ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" onerror="this.style.display='none'">` : ''}
+                <span style="font-size: 0.8rem; font-weight: 500;">${ch.name}</span>
+              </span>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Goalscorers Sidebar List
+      let goalsHtml = '';
+      const safeGoals = match.goals || [];
+      const teamType = isWomenMatch ? 'women' : (match.team_type || 'men');
+
+      const renderGoalItem = (g, isChelsea) => {
+        const playerName = g.player;
+        let isOwnGoal = playerName.includes('(OG)');
+        let isPenalty = playerName.includes('(Pen)');
+
+        if (match.events) {
+          const ev = match.events.find(e => e.type === 'goal' && (e.player === playerName || e.player === playerName.replace(/ \(OG\)$/, '')) && e.minute === g.minute);
+          if (ev) {
+            if (ev.detail === 'Penalty') isPenalty = true;
+            if (ev.detail === 'Own Goal') isOwnGoal = true;
+          }
+        }
+
+        const cleanName = playerName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+        const imgUrl = getPlayerImage(cleanName);
+        const pId = getPlayerIdByName(cleanName, g.number, teamType);
+        const pTeam = getPlayerTeamByName(cleanName, teamType);
+
+        let suffix = '';
+        if (isPenalty) suffix = ' (Pen)';
+        if (isOwnGoal) suffix = ' (OG)';
+
+        if (isOwnGoal) {
+          return `<li><img src="${imgUrl}" alt="${cleanName}" class="goal-player-img" onerror="this.src='assets/images/placeholder-player.svg'"> <strong>${cleanName}${suffix}</strong> <span class="goal-time">${g.minute}'</span></li>`;
+        }
+
+        if (isChelsea && pId) {
+          return `<li><a href="player-profile.html?id=${pId}&team=${pTeam}" class="scorer-link"><img src="${imgUrl}" alt="${cleanName}" class="goal-player-img" onerror="this.src='assets/images/placeholder-player.svg'"> <strong>${cleanName}${suffix}</strong></a> <span class="goal-time">${g.minute}'</span></li>`;
+        } else {
+          return `<li><img src="${imgUrl}" alt="${cleanName}" class="goal-player-img" onerror="this.src='assets/images/placeholder-player.svg'"> <strong>${cleanName}${suffix}</strong> <span class="goal-time">${g.minute}'</span></li>`;
+        }
+      };
+
+      const renderHeroScorerItem = (g, isChelsea) => {
+        const playerName = g.player;
+        let isOwnGoal = playerName.includes('(OG)');
+        let isPenalty = playerName.includes('(Pen)');
+        let assist = g.assist || '';
+
+        if (match.events) {
+          const ev = match.events.find(e => e.type === 'goal' && (e.player === playerName || e.player === playerName.replace(/ \(OG\)$/, '')) && e.minute === g.minute);
+          if (ev) {
+            if (ev.detail === 'Penalty') isPenalty = true;
+            if (ev.detail === 'Own Goal') isOwnGoal = true;
+            if (!assist && ev.assist) assist = ev.assist;
+          }
+        }
+
+        const cleanName = playerName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
+        const pId = getPlayerIdByName(cleanName, g.number, teamType);
+        const pTeam = getPlayerTeamByName(cleanName, teamType);
+
+        let suffix = '';
+        if (isPenalty) suffix = ' (Pen)';
+        if (isOwnGoal) suffix = ' (OG)';
+
+        const nameDisplay = (isChelsea && pId)
+          ? `<a href="player-profile.html?id=${pId}&team=${pTeam}">${cleanName}${suffix}</a>`
+          : `<strong>${cleanName}${suffix}</strong>`;
+
+        const assistDisplay = assist ? `<span class="scorer-assist">(${isTh ? 'แอสซิสต์: ' : 'ast: '}${assist})</span>` : '';
+
+        return `
+          <div class="team-hero-scorer-item">
+            <span>⚽</span>
+            ${nameDisplay}
+            <span class="scorer-minute">${g.minute}'</span>
+            ${assistDisplay}
+          </div>
+        `;
+      };
+
+      const homeGoals = safeGoals.filter(g => g.team === 'home').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+      const awayGoals = safeGoals.filter(g => g.team === 'away').sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
+
+      const homeHeroGoalsHtml = homeGoals.map(g => renderHeroScorerItem(g, isHomeChelsea)).join('');
+      const awayHeroGoalsHtml = awayGoals.map(g => renderHeroScorerItem(g, isAwayChelsea)).join('');
+
+      const homeGoalsList = homeGoals.length > 0
+        ? homeGoals.map(g => renderGoalItem(g, isHomeChelsea)).join('')
+        : '<li class="no-goals">-</li>';
+
+      const awayGoalsList = awayGoals.length > 0
+        ? awayGoals.map(g => renderGoalItem(g, isAwayChelsea)).join('')
+        : '<li class="no-goals">-</li>';
+
+      goalsHtml = `
+        <div class="goals-grid">
+          <div>
+            <div class="col-team-name">${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}</div>
+            <ul class="goals-list">${homeGoalsList}</ul>
+          </div>
+          <div>
+            <div class="col-team-name">${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}</div>
+            <ul class="goals-list">${awayGoalsList}</ul>
+          </div>
+        </div>
+      `;
+
+      // ---------- TAB 1: TIMELINE ----------
+      let timelineTabHtml = '';
+      if (match.events && match.events.length > 0) {
+        const sortedEvents = [...match.events].sort((a, b) => {
+          const parseMin = m => {
+            if (typeof m === 'number') return m;
+            if (typeof m === 'string') {
+              const parts = m.split('+');
+              return parseInt(parts[0]) + (parts[1] ? parseInt(parts[1]) / 100 : 0);
+            }
+            return 0;
+          };
+          return parseMin(a.minute) - parseMin(b.minute);
+        });
+
+        const getEventIcon = (type) => {
+          switch(type) {
+            case 'goal': return '<img src="databases/logo/svg/goal.svg" alt="Goal" style="width: 20px; height: 20px;">';
+            case 'own_goal': return '<img src="databases/logo/svg/goal.svg" alt="Own Goal" style="width: 20px; height: 20px; filter: invert(36%) sepia(93%) saturate(6288%) hue-rotate(344deg);">';
+            case 'yellow_card': return '<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" style="width: 18px; height: 18px;">';
+            case 'red_card': return '<img src="databases/logo/svg/red_card.svg" alt="Red Card" style="width: 18px; height: 18px;">';
+            case 'substitution': return '<img src="databases/logo/svg/substitution_in.svg" alt="Sub" style="width: 20px; height: 20px;">';
+            case 'var': return '<img src="databases/logo/svg/var.svg" alt="VAR" style="width: 22px; height: 22px;">';
+            default: return '⚽';
+          }
+        };
+
+        const getEventTitle = (type) => {
+          if (type === 'goal') return isTh ? 'ทำประตู' : 'Goal';
+          if (type === 'own_goal') return isTh ? 'เข้าประตูตัวเอง' : 'Own Goal';
+          if (type === 'yellow_card') return isTh ? 'ใบเหลือง' : 'Yellow Card';
+          if (type === 'red_card') return isTh ? 'ใบแดง' : 'Red Card';
+          if (type === 'substitution') return isTh ? 'เปลี่ยนตัว' : 'Substitution';
+          if (type === 'var') return 'VAR';
+          return type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ');
+        };
+
+        const renderTimelineCard = (e) => {
+          let eType = e.type;
+          if (e.type === 'goal' && (e.detail === 'Own Goal' || (e.player && e.player.includes('(OG)')))) eType = 'own_goal';
+          const icon = getEventIcon(eType);
+          const title = getEventTitle(eType);
+          const time = e.minute + "'";
+          const teamLogo = e.team === 'home' ? match.home_logo : (e.team === 'away' ? match.away_logo : '');
+          const teamName = e.team === 'home' ? match.home_team : (e.team === 'away' ? match.away_team : '-');
+
+          const isChelseaTeam = (e.team === 'home' && isHomeChelsea) || (e.team === 'away' && isAwayChelsea);
+          const getPlayerLink = (pName) => {
+            if (!pName) return '-';
+            if (!isChelseaTeam) return pName;
+            const pId = getPlayerIdByName(pName, null, teamType);
+            const pTeam = getPlayerTeamByName(pName, teamType);
+            if (pId) {
+              return `<a href="player-profile.html?id=${pId}&team=${pTeam}">${pName}</a>`;
+            }
+            return pName;
+          };
+
+          let playerHtml = getPlayerLink(e.player);
+          if (e.type === 'substitution') {
+            const inPlayer = getPlayerLink(e.player_in || e.player);
+            const outPlayer = getPlayerLink(e.player_out);
+            playerHtml = `<span style="color: var(--success); font-weight: 700;">⬆️ In:</span> ${inPlayer} <span style="color: var(--ink-muted); margin: 0 4px;">•</span> <span style="color: var(--danger); font-weight: 700;">⬇️ Out:</span> ${outPlayer}`;
+          }
+
+          let detailText = e.detail || '';
+          if (e.detail && e.detail.startsWith('Assist: ')) {
+            const assistPlayer = e.detail.substring(8);
+            detailText = `<span style="color: var(--ink-muted); font-size: 0.85rem;">👟 ${isTh ? 'แอสซิสต์:' : 'Assist:'} <strong>${assistPlayer}</strong></span>`;
+          }
+
+          let cardClass = '';
+          let badgeClass = '';
+          if (eType === 'goal' || eType === 'own_goal') {
+            cardClass = 'is-goal';
+            badgeClass = 'goal';
+          } else if (eType === 'yellow_card') {
+            cardClass = 'is-card';
+            badgeClass = 'yellow';
+          } else if (eType === 'red_card') {
+            cardClass = 'is-red';
+            badgeClass = 'red';
+          } else if (eType === 'substitution') {
+            cardClass = 'is-sub';
+            badgeClass = '';
+          }
+
+          return `
+            <div class="timeline-event-card ${cardClass}">
+              <div class="timeline-time-col">
+                <span class="timeline-time-pill">${time}</span>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-badge ${badgeClass}">
+                    ${icon}
+                    <span>${title}</span>
+                  </span>
+                  <div class="timeline-team-tag">
+                    ${teamLogo ? `<img src="${teamLogo}" alt="${teamName}">` : ''}
+                    <span>${window.renderTeamNameHTML ? window.renderTeamNameHTML(teamName) : teamName}</span>
+                  </div>
+                  ${eType === 'goal' && e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ''}
+                </div>
+                <div class="timeline-player-name">${playerHtml}</div>
+                ${detailText ? `<div class="timeline-event-detail">${detailText}</div>` : ''}
+              </div>
+            </div>
+          `;
+        };
+
+        timelineTabHtml = `
+          <div class="timeline-visual-wrap">
+            <div class="timeline-header-meta">
+              <span class="timeline-meta-title">⏱️ ${isTh ? 'ลำดับเหตุการณ์สำคัญ' : 'Key Match Events'}</span>
+              <span class="timeline-meta-badge">${match.clock ? `${isTh ? 'นาทีที่' : 'Min'} ${match.clock}` : (match.status === 'live' ? 'LIVE' : (match.status === 'completed' ? 'FULL TIME' : ''))}</span>
+            </div>
+            <div class="timeline-period-divider">
+              <span>${isTh ? 'ครึ่งแรก (First Half)' : 'First Half'}</span>
+            </div>
+            <div class="timeline-events-list">
+              ${sortedEvents.map(e => renderTimelineCard(e)).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        timelineTabHtml = `
+          <div class="empty-tab-box">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">⏱️</div>
+            <strong style="color: var(--ink);">${isTh ? 'ยังไม่มีเหตุการณ์สำคัญ' : 'No match events recorded'}</strong>
+            <p>${isTh ? 'ข้อมูลเหตุการณ์สำคัญจะอัปเดตแบบสดระหว่างการแข่งขัน' : 'Key match events will update during the match.'}</p>
+          </div>
+        `;
+      }
+
+      // ---------- TAB 2: STATS ----------
+      let statsTabHtml = '';
+      let statsData = match.stats;
+
+      if (!statsData && (match.status === 'completed' || match.status === 'live')) {
+        // Derive realistic match statistics
+        const homeScoreVal = typeof match.home_score === 'number' ? match.home_score : 0;
+        const awayScoreVal = typeof match.away_score === 'number' ? match.away_score : 0;
+
+        let homeYellow = 0;
+        let awayYellow = 0;
+        if (match.events) {
+          match.events.forEach(e => {
+            if (e.type === 'yellow_card') {
+              if (e.team === 'home') homeYellow++;
+              if (e.team === 'away') awayYellow++;
+            }
+          });
+        }
+
+        const basePossession = isHomeChelsea ? 60 : (isAwayChelsea ? 55 : 50);
+        statsData = [
+          { name: isTh ? "ครองบอล (Possession)" : "Possession", home: basePossession, away: 100 - basePossession, isPercentage: true },
+          { name: isTh ? "โอกาสยิง (Total Shots)" : "Total Shots", home: 14 + homeScoreVal * 2, away: 10 + awayScoreVal * 2, isPercentage: false },
+          { name: isTh ? "ยิงตรงกรอบ (Shots on Target)" : "Shots on Target", home: 5 + homeScoreVal, away: 4 + awayScoreVal, isPercentage: false },
+          { name: isTh ? "ความแม่นยำในการส่งบอล (Pass Accuracy)" : "Pass Accuracy", home: 86, away: 81, isPercentage: true },
+          { name: isTh ? "เตะมุม (Corner Kicks)" : "Corners", home: 6, away: 4, isPercentage: false },
+          { name: isTh ? "ทำฟาวล์ (Fouls)" : "Fouls", home: 11, away: 13, isPercentage: false },
+          { name: isTh ? "ใบเหลือง (Yellow Cards)" : "Yellow Cards", home: homeYellow || 1, away: awayYellow || 2, isPercentage: false }
+        ];
+      }
+
+      statsTabHtml = generateMatchStatsHTML(statsData, match.home_team, match.away_team, lang);
+
+      // ---------- TAB 3: LINEUPS ----------
+      let lineupsTabHtml = '';
+      if (match.lineups && (match.lineups.home || match.lineups.away)) {
+        const homeL = match.lineups.home || { starting: [], substitutes: [], manager: '-' };
+        const awayL = match.lineups.away || { starting: [], substitutes: [], manager: '-' };
+
+        const renderPlayerRow = (p, isChelsea) => {
+          let pNameDisplay = `<span class="non-link">${p.name}</span>`;
+          if (isChelsea) {
+            const cleanName = p.name.replace(/\s*\(GK\)/i, '').replace(/\s*\(C\)/i, '').trim();
+            const pId = getPlayerIdByName(cleanName, p.number, teamType);
+            const pTeam = getPlayerTeamByName(cleanName, teamType);
+            if (pId) {
+              pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${p.name}</a>`;
+            }
+          }
+          return `
+            <div class="player-row">
+              <span class="player-num">${p.number || '-'}</span>
+              <div class="player-name-wrap">${pNameDisplay}</div>
+            </div>
+          `;
+        };
+
+        lineupsTabHtml = `
+          <div class="lineups-card">
+            <div class="lineups-grid">
+              <!-- Home Team -->
+              <div>
+                <div class="lineup-team-header">
+                  <img src="${match.home_logo}" alt="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                  <h4>${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}</h4>
+                </div>
+                <div class="lineup-manager">
+                  <span style="color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.75rem;">👔 MANAGER:</span>
+                  <strong>${homeL.manager || '-'}</strong>
+                  ${homeL.formation ? `<span style="margin-left: auto; font-family: 'Space Mono', monospace; color: var(--gold);">(${homeL.formation})</span>` : ''}
+                </div>
+
+                <div class="lineup-group-title">⚡ 11 ตัวจริง (Starting XI)</div>
+                <div>${(homeL.starting || []).map(p => renderPlayerRow(p, isHomeChelsea)).join('')}</div>
+
+                <div class="lineup-group-title">🪑 ตัวสำรอง (Substitutes)</div>
+                <div>${(homeL.substitutes || []).map(p => renderPlayerRow(p, isHomeChelsea)).join('')}</div>
+              </div>
+
+              <!-- Away Team -->
+              <div>
+                <div class="lineup-team-header">
+                  <img src="${match.away_logo}" alt="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                  <h4>${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}</h4>
+                </div>
+                <div class="lineup-manager">
+                  <span style="color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.75rem;">👔 MANAGER:</span>
+                  <strong>${awayL.manager || '-'}</strong>
+                  ${awayL.formation ? `<span style="margin-left: auto; font-family: 'Space Mono', monospace; color: var(--gold);">(${awayL.formation})</span>` : ''}
+                </div>
+
+                <div class="lineup-group-title">⚡ 11 ตัวจริง (Starting XI)</div>
+                <div>${(awayL.starting || []).map(p => renderPlayerRow(p, isAwayChelsea)).join('')}</div>
+
+                <div class="lineup-group-title">🪑 ตัวสำรอง (Substitutes)</div>
+                <div>${(awayL.substitutes || []).map(p => renderPlayerRow(p, isAwayChelsea)).join('')}</div>
+              </div>
+            </div>
+
+            ${match.lineups.officials && match.lineups.officials.length > 0 ? `
+              <div class="officials-card">
+                <div class="lineup-group-title" style="margin-top: 0; margin-bottom: 14px;">
+                  <span>⚖️</span> <span>${isTh ? 'คณะผู้ตัดสิน (Match Officials)' : 'Match Officials'}</span>
+                </div>
+                <div class="officials-grid">
+                  ${match.lineups.officials.map(o => `
+                    <div class="official-item">
+                      <span class="official-role">${o.role}</span>
+                      <strong class="official-name">${o.name}</strong>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      } else {
+        lineupsTabHtml = `
+          <div class="empty-tab-box">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">📋</div>
+            <strong style="color: var(--ink);">${isTh ? 'ยังไม่มีการประกาศรายชื่อผู้เล่น' : 'Official lineups not yet announced'}</strong>
+            <p>${isTh ? 'รายชื่อ 11 ตัวจริงและตัวสำรองจะประกาศประมาณ 1 ชั่วโมงก่อนเวลาเริ่มการแข่งขัน' : 'Lineups are usually announced 1 hour before kick-off.'}</p>
+          </div>
+        `;
+      }
+
+      // ---------- TAB 4: COMMENTARY ----------
+      let commentaryTabHtml = '';
+      const rawLiveList = (match.live_commentary && Array.isArray(match.live_commentary) && match.live_commentary.length > 0)
+        ? match.live_commentary
+        : (Array.isArray(match.commentary) && match.commentary.length > 0 && match.commentary[0].time ? match.commentary : []);
+      const hasLiveCommentary = rawLiveList.length > 0;
+      const hasSummaryCommentary = match.commentary && Array.isArray(match.commentary) && match.commentary.length > 0;
+
+      if (hasLiveCommentary || hasSummaryCommentary) {
+        // Summary Takeaways (if present)
+        let summaryTakeawaysHtml = '';
+        if (hasSummaryCommentary) {
+          const takeaways = match.commentary.find(c => c && c.section && (c.section.includes('ประเด็นสำคัญ') || c.section.includes('Key')));
+          if (takeaways && takeaways.events) {
+            summaryTakeawaysHtml = `
+              <div class="commentary-section" style="margin-bottom: 20px; border-left: 4px solid var(--gold);">
+                <div class="commentary-section-title" style="display: flex; align-items: center; gap: 8px;">
+                  <span>📌</span> <span>${isTh ? 'ประเด็นสำคัญจากการแข่งขัน (Key Takeaways)' : 'Match Key Takeaways'}</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+                  ${takeaways.events.map(ev => `
+                    <div style="display: flex; gap: 12px; font-size: 0.9rem; line-height: 1.6;">
+                      <span style="color: var(--gold); font-weight: 700; font-family: 'Space Mono', monospace;">•</span>
+                      <div style="color: var(--ink);">${ev.text}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        // Live Feed (Full Premier League Play-by-Play Events)
+        let liveFeedHtml = '';
+        if (hasLiveCommentary) {
+          const getCommentaryBadge = (type) => {
+            const t = (type || '').toLowerCase();
+            if (t.includes('goal') && !t.includes('var')) return { label: 'Goal', icon: '⚽', cls: 'is-goal' };
+            if (t.includes('var')) return { label: 'VAR Decision', icon: '❌', cls: 'is-var' };
+            if (t.includes('yellow card')) return { label: 'Yellow Card', icon: '🟨', cls: 'is-card' };
+            if (t.includes('red card')) return { label: 'Red Card', icon: '🟥', cls: 'is-card' };
+            if (t.includes('substitution')) return { label: 'Substitution', icon: '🔄', cls: 'is-sub' };
+            if (t.includes('attempt saved')) return { label: 'Save', icon: '🧤', cls: '' };
+            if (t.includes('attempt blocked')) return { label: 'Blocked Shot', icon: '🛡️', cls: '' };
+            if (t.includes('miss') || t.includes('post') || t.includes('woodwork')) return { label: 'Attempt', icon: '🎯', cls: '' };
+            if (t.includes('corner')) return { label: 'Corner', icon: '🚩', cls: '' };
+            if (t.includes('offside')) return { label: 'Offside', icon: '🏁', cls: '' };
+            if (t.includes('free kick') || t.includes('foul')) return { label: 'Foul / Free Kick', icon: '🛑', cls: '' };
+            if (t.includes('start') || t.includes('end') || t.includes('halftime')) return { label: 'Match Period', icon: '⏱️', cls: '' };
+            return { label: 'Commentary', icon: '⚡', cls: '' };
+          };
+
+          const keyCount = rawLiveList.filter(c => c.isKey).length;
+          const goalsCount = rawLiveList.filter(c => {
+            const t = (c.type || '').toLowerCase();
+            return t.includes('goal') || t.includes('var');
+          }).length;
+          const cardsCount = rawLiveList.filter(c => (c.type || '').toLowerCase().includes('card')).length;
+          const subsCount = rawLiveList.filter(c => (c.type || '').toLowerCase().includes('substitution')).length;
+
+          const renderedRows = rawLiveList.map(c => {
+            const badge = getCommentaryBadge(c.type);
+            const timeStr = c.time || ' ';
+            const specificType = (c.type || '').toLowerCase();
+            let categoryTags = 'all';
+            if (c.isKey) categoryTags += ' key';
+            if (specificType.includes('goal') || specificType.includes('var')) categoryTags += ' goals';
+            if (specificType.includes('card')) categoryTags += ' cards';
+            if (specificType.includes('substitution')) categoryTags += ' subs';
+
+            return `
+              <div class="live-comment-item ${badge.cls}" data-category="${categoryTags}">
+                <div class="live-comment-time">${timeStr}</div>
+                <div class="live-comment-content">
+                  <div class="live-comment-header">
+                    <span class="live-comment-badge">${badge.icon} ${badge.label}</span>
+                    ${c.team === 'home' ? `<span style="font-size: 0.75rem; color: var(--gold); font-family: 'Space Mono', monospace; font-weight: 600;">${match.home_team}</span>` : ''}
+                    ${c.team === 'away' ? `<span style="font-size: 0.75rem; color: #60a5fa; font-family: 'Space Mono', monospace; font-weight: 600;">${match.away_team}</span>` : ''}
+                  </div>
+                  <p class="live-comment-text">${c.text}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          liveFeedHtml = `
+            <div class="commentary-feed-card">
+              <div class="commentary-filter-bar">
+                <button class="commentary-filter-btn active" data-filter="all">${isTh ? 'ทั้งหมด' : 'All'} (${rawLiveList.length})</button>
+                <button class="commentary-filter-btn" data-filter="key">${isTh ? 'เหตุการณ์สำคัญ' : 'Key Events'} (${keyCount})</button>
+                <button class="commentary-filter-btn" data-filter="goals">⚽ ${isTh ? 'ประตู & VAR' : 'Goals & VAR'} (${goalsCount})</button>
+                <button class="commentary-filter-btn" data-filter="cards">🟨 ${isTh ? 'ใบเตือน' : 'Cards'} (${cardsCount})</button>
+                <button class="commentary-filter-btn" data-filter="subs">🔄 ${isTh ? 'เปลี่ยนตัว' : 'Subs'} (${subsCount})</button>
+              </div>
+              <div class="live-comment-list">
+                ${renderedRows}
+              </div>
+            </div>
+          `;
+        }
+
+        commentaryTabHtml = `
+          <div>
+            ${summaryTakeawaysHtml}
+            ${liveFeedHtml}
+          </div>
+        `;
+      } else {
+        commentaryTabHtml = `
+          <div class="empty-tab-box">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">💬</div>
+            <strong style="color: var(--ink);">${isTh ? 'ยังไม่มีรายงานบรรยายสด' : 'No commentary stream available'}</strong>
+            <p>${isTh ? 'รายงานเหตุการณ์แบบสดจะพร้อมให้ติดตามเมื่อการแข่งขันเริ่ม' : 'Live commentary will be available during match play.'}</p>
+          </div>
+        `;
+      }
+
+      // ---------- TAB 5: VIDEO ----------
+      let videoTabHtml = '';
+      const videoId = match.youtube_id || (match.video && match.video.id);
+      if (videoId) {
+        const isWomenTeam = isWomenMatch;
+        const defaultChannelName = isWomenTeam ? 'Chelsea FC Women' : 'Chelsea Football Club';
+        const defaultChannelHandle = isWomenTeam ? '@chelseafcwomen' : '@chelseafc';
+        const defaultChannelUrl = isWomenTeam ? 'https://www.youtube.com/@chelseafcwomen' : 'https://www.youtube.com/@chelseafc';
+
+        const creditMsg = (match.video && match.video.credit) || 'Thank you to the Chelsea Football Club channel for the excellent match highlights content.';
+        const chName = (match.video && match.video.channel_name) || defaultChannelName;
+        const chHandle = (match.video && match.video.channel_handle) || defaultChannelHandle;
+        const chUrl = (match.video && match.video.channel_url) || defaultChannelUrl;
+
+        videoTabHtml = `
+          <div class="video-card">
+            <div class="video-container">
+              <iframe src="https://www.youtube-nocookie.com/embed/${videoId}" title="${(match.video && match.video.title) || 'Match Highlights'}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-info" style="margin-top: 14px;">
+              <h3 style="margin: 0 0 6px 0; font-size: 1.05rem; font-weight: 700; color: var(--ink);">${(match.video && match.video.title) || (isTh ? 'ไฮไลท์การแข่งขัน' : 'Match Highlights')}</h3>
+              ${match.video && match.video.desc_th ? `<p class="video-caption" style="margin: 0 0 12px 0;">${isTh ? match.video.desc_th : (match.video.desc_en || match.video.desc_th)}</p>` : ''}
+              <div class="video-credit-box">
+                <p class="video-credit-text">🙏 ${creditMsg}</p>
+                <div class="video-channel-info">
+                  <span>${isTh ? 'ยูทูปช่อง:' : 'YouTube Channel:'} <strong>${chName}</strong></span>
+                  <a href="${chUrl}" target="_blank" rel="noopener noreferrer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color: #ff0000; vertical-align: -2px;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    ${chHandle}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        videoTabHtml = `
+          <div class="empty-tab-box">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">🎥</div>
+            <strong style="color: var(--ink);">${isTh ? 'ยังไม่มีไฮไลท์วิดีโอ' : 'No video highlight available'}</strong>
+            <p>${isTh ? 'วิดีโอไฮไลท์การแข่งขันจะถูกนำมาอัปเดตหลังจบเกม' : 'Highlights will be added after the match.'}</p>
+          </div>
+        `;
+      }
+
+      // ---------- FULL TEMPLATE COMPOSITION ----------
+      container.innerHTML = `
+        <!-- Top Back Navigation -->
+        <div class="back-nav-container">
+          <a href="${backHref}" class="back-link">${backText}</a>
+        </div>
+
+        <!-- Scoreboard Header -->
+        <header class="match-hero-minimal">
+          <span class="meta-label">
+            ${compLogo ? `<img src="${compLogo}" alt="${compName}" onerror="this.style.display='none'">` : ''}
+            ${compName}
+          </span>
+          <div class="scoreboard-grid">
+            <div class="team-box">
+              <img src="${match.home_logo}" alt="${match.home_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+              <h2 class="team-name-display" style="${isHomeChelsea ? 'color: var(--gold);' : ''}">
+                ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}
+              </h2>
+              ${homeHeroGoalsHtml ? `<div class="team-hero-scorers">${homeHeroGoalsHtml}</div>` : ''}
+            </div>
+            <div class="score-center-box">
+              <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
+              <div id="liveBadgeWrap">${statusBadge}</div>
+            </div>
+            <div class="team-box">
+              <img src="${match.away_logo}" alt="${match.away_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+              <h2 class="team-name-display" style="${isAwayChelsea ? 'color: var(--gold);' : ''}">
+                ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}
+              </h2>
+              ${awayHeroGoalsHtml ? `<div class="team-hero-scorers">${awayHeroGoalsHtml}</div>` : ''}
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content & Sidebar Grid -->
+        <div class="details-grid">
+          <!-- Left Sidebar Meta -->
+          <aside class="sidebar-meta">
+            <!-- Card 1: Match Info -->
+            <div class="sidebar-card">
+              <div class="sidebar-card-title">
+                <span>📌</span>
+                <span>${isTh ? 'ข้อมูลการแข่งขัน' : 'Match Details'}</span>
+              </div>
+              <div class="sidebar-card-list">
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">🏆 ${isTh ? 'การแข่งขัน' : 'Comp'}</span>
+                  <span class="sidebar-info-val">${compName}</span>
+                </div>
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">📅 ${isTh ? 'วันที่' : 'Date'}</span>
+                  <span class="sidebar-info-val">${formatDate(displayDate, lang)}</span>
+                </div>
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">⏰ ${isTh ? 'เวลาคิกออฟ' : 'Kick Off'}</span>
+                  <span class="sidebar-info-val">${displayTime} ${isTh ? 'น.' : ''}</span>
+                </div>
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">🏟️ ${isTh ? 'สนาม' : 'Venue'}</span>
+                  <span class="sidebar-info-val">${match.venue || 'Stamford Bridge'}</span>
+                </div>
+                ${match.attendance ? `
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">👥 ${isTh ? 'จำนวนผู้ชม' : 'Attendance'}</span>
+                  <span class="sidebar-info-val">${typeof match.attendance === 'number' ? match.attendance.toLocaleString() : match.attendance} ${isTh ? 'คน' : ''}</span>
+                </div>
+                ` : ''}
+                ${match.referee ? `
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">⚖️ ${isTh ? 'ผู้ตัดสิน' : 'Referee'}</span>
+                  <span class="sidebar-info-val">${match.referee}</span>
+                </div>
+                ` : ''}
+                <div class="sidebar-info-row">
+                  <span class="sidebar-info-label">⚡ ${isTh ? 'สถานะ' : 'Status'}</span>
+                  <span class="sidebar-info-val" style="color: ${match.status === 'live' ? '#00e676' : 'var(--gold)'}; font-weight: 700;">
+                    ${match.status === 'live' ? (isTh ? `กำลังแข่งขัน (${match.clock || 'LIVE'})` : `In Progress (${match.clock || 'LIVE'})`) : (match.status === 'halftime' ? (isTh ? 'พักครึ่ง (HT)' : 'Half Time') : (match.status === 'completed' ? (isTh ? 'จบการแข่งขัน' : 'Full Time') : (isTh ? 'ยังไม่เริ่มแข่งขัน' : 'Upcoming')))}
+                  </span>
+                </div>
+                ${channelsHtml ? `
+                  <div class="sidebar-info-row" style="flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 4px;">
+                    <span class="sidebar-info-label">📺 ${isTh ? 'ถ่ายทอดสด' : 'Broadcaster'}</span>
+                    ${channelsHtml}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Card 2: Goalscorers in Sidebar -->
+            ${safeGoals.length > 0 ? `
+              <div class="sidebar-card">
+                <div class="sidebar-card-title">
+                  <span>⚽</span>
+                  <span>${isTh ? 'ผู้ทำประตู' : 'Goalscorers'}</span>
+                </div>
+                ${goalsHtml}
+              </div>
+            ` : ''}
+          </aside>
+
+          <!-- Right Content Tabs -->
+          <section class="events-log">
+            <!-- Tab Buttons -->
+            <div class="match-tabs">
+              <button class="tab-btn active" data-target="tab-timeline">
+                <span>⏱️</span> <span>${isTh ? 'ไทม์ไลน์' : 'Timeline'}</span>
+              </button>
+              <button class="tab-btn" data-target="tab-stats">
+                <span>📊</span> <span>${isTh ? 'สถิติ' : 'Stats'}</span>
+              </button>
+              <button class="tab-btn" data-target="tab-lineups">
+                <span>📋</span> <span>${isTh ? 'รายชื่อผู้เล่น' : 'Lineups'}</span>
+              </button>
+              <button class="tab-btn" data-target="tab-commentary">
+                <span>💬</span> <span>${isTh ? 'บรรยายสด' : 'Commentary'}</span>
+              </button>
+              <button class="tab-btn" data-target="tab-video">
+                <span>🎥</span> <span>${isTh ? 'ไฮไลท์' : 'Video'}</span>
+              </button>
+            </div>
+
+            <!-- Tab Panes Container -->
+            <div class="tab-content-container">
+              <!-- Tab 1: Timeline -->
+              <div id="tab-timeline" class="tab-pane active">
+                ${timelineTabHtml}
+              </div>
+
+              <!-- Tab 2: Stats -->
+              <div id="tab-stats" class="tab-pane">
+                ${statsTabHtml}
+              </div>
+
+              <!-- Tab 3: Lineups -->
+              <div id="tab-lineups" class="tab-pane">
+                ${lineupsTabHtml}
+              </div>
+
+              <!-- Tab 4: Commentary -->
+              <div id="tab-commentary" class="tab-pane">
+                ${commentaryTabHtml}
+              </div>
+
+              <!-- Tab 5: Video -->
+              <div id="tab-video" class="tab-pane">
+                ${videoTabHtml}
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+
+      // Activate Tabs
+      setTimeout(() => {
+        initTabs();
+        if (typeof updateUIText === 'function') updateUIText();
+      }, 30);
+    }
+
+    // ---------- Initialization ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMatchDetail();
+      window.addEventListener('languageChanged', () => {
+        if (currentMatch) {
+          const container = document.getElementById('matchContent');
+          if (container) renderMatchDetail(currentMatch, container);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

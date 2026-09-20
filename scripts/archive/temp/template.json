@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Player Name",
+    "position": "Forward",
+    "number": 10,
+    "nationality": "Thailand",
+    "image": "assets/images/players/player-name.png",
+    "height": 180,
+    "foot": "Right",
+    "date_of_birth": "2000-01-01",
+    "age": 26,
+    "current_club": "Chelsea FC",
+    "joined": "2023-08-01",
+    "signed_from": "Previous Club",
+    "market_value": 10000000,
+    "appearances": 0,
+    "goals": 0,
+    "assists": 0,
+    "biography_th": "ใส่ประวัตินักเตะภาษาไทย...",
+    "biography_en": "Player biography in English..."
+  }
+]
