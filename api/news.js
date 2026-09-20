@@ -1,14 +1,18 @@
 export default async function handler(req, res) {
   try {
     const urls = [
-      'https://www.chelseafc.com/en/news/latest-news-all',
-      'https://www.chelseafc.com/en/news/category/mens-team',
-      'https://www.chelseafc.com/en/news/category/womens-team',
-      'https://www.chelseafc.com/en/news/category/club'
+      "https://www.chelseafc.com/en/news/latest-news-all",
+      "https://www.chelseafc.com/en/news/category/mens-team",
+      "https://www.chelseafc.com/en/news/category/womens-team",
+      "https://www.chelseafc.com/en/news/category/club",
     ];
 
     const responses = await Promise.all(
-      urls.map(u => fetch(u, { headers: { 'User-Agent': 'Mozilla/5.0' } }).then(r => r.text()).catch(() => ''))
+      urls.map((u) =>
+        fetch(u, { headers: { "User-Agent": "Mozilla/5.0" } })
+          .then((r) => r.text())
+          .catch(() => "")
+      )
     );
 
     const news = [];
@@ -27,7 +31,7 @@ export default async function handler(req, res) {
         const imgMatch = segment.match(/\"thumbnail\":\{.+?\"url\":\"([^\"]+)\"/);
 
         if (titleMatch && urlMatch && imgMatch) {
-          const articleUrl = 'https://www.chelseafc.com' + urlMatch[1];
+          const articleUrl = "https://www.chelseafc.com" + urlMatch[1];
           let rawTitle = titleMatch[1];
 
           let cleanTitle = rawTitle;
@@ -49,7 +53,7 @@ export default async function handler(req, res) {
           seenUrls.add(articleUrl);
           seenTitles.add(cleanTitle.toLowerCase());
 
-          let img = imgMatch[1].replace('http://', 'https://');
+          let img = imgMatch[1].replace("http://", "https://");
 
           // Extract publication date / timestamp from Cloudinary version /v(\d{10})/ or date path
           let pubDate = null;
@@ -69,7 +73,7 @@ export default async function handler(req, res) {
             title: cleanTitle,
             link: articleUrl,
             thumbnail: img,
-            pubDate: pubDate
+            pubDate: pubDate,
           });
         }
       }
@@ -78,11 +82,11 @@ export default async function handler(req, res) {
     // Sort newest first
     news.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
     res.status(200).json({ success: true, items: news });
   } catch (err) {
-    console.error('API Error:', err);
+    console.error("API Error:", err);
     res.status(500).json({ success: false, error: err.message });
   }
 }

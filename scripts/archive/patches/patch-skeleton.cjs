@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 const oldContent = `<style>#newsCarousel::-webkit-scrollbar { display: none; }</style>
         <div style="padding: 1rem; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted); width: 100%;">
@@ -54,4 +54,4 @@ const newContent = `<style>
         </div>`;
 
 html = html.replace(oldContent, newContent);
-fs.writeFileSync('index.html', html);
+fs.writeFileSync("index.html", html);

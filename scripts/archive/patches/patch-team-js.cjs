@@ -1,5 +1,5 @@
-const fs = require('fs');
-let content = fs.readFileSync('assets/js/team.js', 'utf8');
+const fs = require("fs");
+let content = fs.readFileSync("assets/js/team.js", "utf8");
 
 const replacement = `
   container.innerHTML = players.map(p => {
@@ -32,6 +32,9 @@ const replacement = `
 `;
 
 // It's safer to use string replace
-content = content.replace(/container\.innerHTML = players\.map\(p => \{\s*let pos = p\.position \|\| '';\s*pos = formatPlayerPosition\(p\.position, isTh\);\s*let pImage = p\.image \|\| 'assets\/images\/placeholder-player\.svg';\s*return `[\s\S]*?<img src="\${pImage}" alt="\${p\.name}" loading="lazy" onerror="this\.onerror=null; this\.src='assets\/images\/placeholder-player\.svg';">\s*<div class="player-info">\s*<h3>\${p\.name}<\/h3>\s*<span class="player-number">#\${p\.number \|\| '\?'}<\/span>\s*<span class="player-position">\${pos}<\/span>\s*<div class="player-stats">\s*\$\{?\(\(\) => \{/m, replacement);
+content = content.replace(
+  /container\.innerHTML = players\.map\(p => \{\s*let pos = p\.position \|\| '';\s*pos = formatPlayerPosition\(p\.position, isTh\);\s*let pImage = p\.image \|\| 'assets\/images\/placeholder-player\.svg';\s*return `[\s\S]*?<img src="\${pImage}" alt="\${p\.name}" loading="lazy" onerror="this\.onerror=null; this\.src='assets\/images\/placeholder-player\.svg';">\s*<div class="player-info">\s*<h3>\${p\.name}<\/h3>\s*<span class="player-number">#\${p\.number \|\| '\?'}<\/span>\s*<span class="player-position">\${pos}<\/span>\s*<div class="player-stats">\s*\$\{?\(\(\) => \{/m,
+  replacement
+);
 
-fs.writeFileSync('assets/js/team.js', content);
+fs.writeFileSync("assets/js/team.js", content);

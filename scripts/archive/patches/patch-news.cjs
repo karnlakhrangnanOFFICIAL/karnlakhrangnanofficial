@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 // Insert HTML
 html = html.replace(
@@ -67,7 +67,7 @@ const fetchNewsFunc = `
 
 html = html.replace(
   /document\.addEventListener\('DOMContentLoaded', \(\) => \{/,
-  fetchNewsFunc + '\n    document.addEventListener(\'DOMContentLoaded\', () => {'
+  fetchNewsFunc + "\n    document.addEventListener('DOMContentLoaded', () => {"
 );
 html = html.replace(
   /loadAllData\(\);\n\s*\}\);/,
@@ -76,4 +76,4 @@ html = html.replace(
     });`
 );
 
-fs.writeFileSync('index.html', html);
+fs.writeFileSync("index.html", html);

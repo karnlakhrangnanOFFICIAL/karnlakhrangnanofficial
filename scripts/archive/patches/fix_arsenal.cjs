@@ -1,5 +1,5 @@
-const fs = require('fs');
-let js = fs.readFileSync('assets/js/main.js', 'utf8');
+const fs = require("fs");
+let js = fs.readFileSync("assets/js/main.js", "utf8");
 
 const target = `  const isChelsea = teamName.toLowerCase().includes('chelsea') || teamName.toLowerCase() === 'kanlakhrangnan';
   const styleStr = isChelsea ? 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);' : 'color: #ffffff;';
@@ -25,5 +25,5 @@ const replacement = `  const isChelsea = teamName.toLowerCase().includes('chelse
   </span>\`;`;
 
 js = js.replace(target, replacement);
-fs.writeFileSync('assets/js/main.js', js, 'utf8');
-console.log('done fixing arsenal');
+fs.writeFileSync("assets/js/main.js", js, "utf8");
+console.log("done fixing arsenal");

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chelsea FC Transfer Deadline Day 2026/27">
+  <title>Transfers · KARN LA KHRANg NAN Official</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('theme-' + t);
+    })();
+  </script>
+  <style>
+    .transfer-section {
+      margin-bottom: 3rem;
+    }
+    .transfer-header {
+      background: var(--blue-dark);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      font-family: var(--font-heading);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .transfer-header.out,
+    .transfer-header.sold {
+      background: #c0392b; /* Red for outs / sold */
+    }
+    .transfer-header.loan,
+    .transfer-header.loaned {
+      background: #f39c12; /* Yellow for loans */
+    }
+    .transfer-header.released {
+      background: #7f8c8d; /* Grey for released */
+    }
+    .transfer-list {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-top: none;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th {
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .player-name {
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--bg-color);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+    .fee-badge {
+      font-family: monospace;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .transfer-header.out + .transfer-list .fee-badge {
+      color: #2980b9;
+    }
+  
+    /* TABS */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .tab-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tab-btn:hover {
+      color: var(--text-color);
+    }
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN Logo">
+        
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
+        <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
+        <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
+        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
+        <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        <li><a href="transfers.html" class="active" data-i18n="nav.transfers">Transfers</a></li>
+        <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
+        <li>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <span class="theme-icon" id="themeIcon">🔵</span>
+            <span class="theme-label" id="themeLabel">Classic Blue</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" style="min-height: 250px; padding: 4rem 1rem 2rem;">
+    <div class="hero-content">
+      <div class="official-badge" style="margin-bottom: 1rem; display: inline-block;">🔄 TRANSFER HUB</div>
+      <h1>Chelsea Transfers 2026/27</h1>
+      <p class="season">Summer Transfer Window Recap · Final Snapshot</p>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-container">
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="men">MEN'S TEAM</button>
+      <button class="tab-btn" data-tab="women">WOMEN'S TEAM</button>
+    </div>
+    
+    <div id="tab-men" class="tab-content active">
+      <div id="transferContainerMen">
+        <div style="text-align: center; padding: 3rem;">
+          <p>Loading transfer data...</p>
+        </div>
+      </div>
+      <div id="playerStatusSectionsMen" style="margin-top: 2.5rem;"></div>
+    </div>
+    
+    <div id="tab-women" class="tab-content">
+      <div id="transferContainerWomen">
+        <div style="text-align: center; padding: 3rem;">
+          <p>Loading transfer data...</p>
+        </div>
+      </div>
+      <div id="playerStatusSectionsWomen" style="margin-top: 2.5rem;"></div>
+    </div>
+
+  </main>
+
+  <script src="assets/js/main.js?v=1"></script>
+  <script>
+    
+    async function loadTransfers() {
+      const containerMen = document.getElementById('transferContainerMen');
+      const containerWomen = document.getElementById('transferContainerWomen');
+      try {
+        const res = await fetch('data/transfers_26_27.json');
+        if (!res.ok) throw new Error('Failed to load');
+        const data = await res.json();
+        
+        function renderTable(cats, isWomen) {
+          let html = '';
+          let hasData = false;
+          cats.forEach(cat => {
+            const categoryData = data.categories[cat.key];
+            if (!categoryData || !categoryData.players || categoryData.players.length === 0) return;
+            hasData = true;
+            let tableRows = '';
+            categoryData.players.forEach(p => {
+              let detailCol = '';
+              let typeBadge = '';
+              if (p.type === 'loan') {
+                typeBadge = '<span class="badge" style="background: rgba(243, 156, 18, 0.15); color: #d35400; border-color: rgba(243, 156, 18, 0.4);">ยืมตัว (Loan)</span>';
+              } else if (p.type === 'released') {
+                typeBadge = '<span class="badge" style="background: rgba(127, 140, 141, 0.15); color: #7f8c8d; border-color: rgba(127, 140, 141, 0.4);">หมดสัญญา (Released)</span>';
+              } else if (p.type === 'retired') {
+                typeBadge = '<span class="badge" style="background: rgba(74, 85, 104, 0.15); color: #4a5568; border-color: rgba(74, 85, 104, 0.4);">แขวนสตั๊ด (Retired)</span>';
+              } else if (p.type === 'extension') {
+                typeBadge = '<span class="badge" style="background: rgba(39, 174, 96, 0.15); color: #27ae60; border-color: rgba(39, 174, 96, 0.4);">ต่อสัญญา (Extension)</span>';
+              } else if (p.type === 'permanent') {
+                typeBadge = '<span class="badge" style="background: rgba(41, 128, 185, 0.15); color: #2980b9; border-color: rgba(41, 128, 185, 0.4);">ย้ายถาวร (Permanent)</span>';
+              } else if (p.type === 'loan_return') {
+                typeBadge = '<span class="badge" style="background: rgba(155, 89, 182, 0.15); color: #8e44ad; border-color: rgba(155, 89, 182, 0.4);">หมดสัญญายืมตัว (End of Loan)</span>';
+              }
+
+              if (cat.key.includes('loan')) {
+                detailCol = `<td>To: <strong>${p.to}</strong></td><td><span class="fee-badge" style="color: #f39c12;">${p.loan_term || p.fee || 'Season Loan'}</span></td>`;
+              } else if (cat.key.includes('in')) {
+                detailCol = `<td>From: <strong>${p.from}</strong></td><td><span class="fee-badge">${p.fee}</span></td>`;
+              } else if (cat.key.includes('out')) {
+                detailCol = `<td>To: <strong>${p.to || 'Released'}</strong></td><td><span class="fee-badge">${p.fee || ''}</span></td>`;
+              }
+              tableRows += `
+                <tr>
+                  ${p.date ? `<td style="color: var(--ink-muted); font-size: 0.85rem; width: 110px;">${p.date}</td>` : ''}
+                  <td>
+                    <span class="player-name">${p.player}</span>
+                    ${typeBadge ? ` <span style="margin-left: 6px;">${typeBadge}</span>` : ''}
+                  </td>
+                  <td><span class="badge">${p.position || '-'}</span></td>
+                  ${detailCol}
+                </tr>
+              `;
+            });
+            html += `
+              <div class="transfer-section">
+                <div class="transfer-header ${cat.class}">
+                  <h3>${categoryData.label}</h3>
+                  <span style="font-size: 0.9rem; font-weight: normal; background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">${categoryData.players.length} Players</span>
+                </div>
+                <div class="transfer-list">
+                  <table>
+                    <tbody>
+                      ${tableRows}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            `;
+          });
+          
+          if (!hasData) {
+            html = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">No transfer data available for this category yet.</div>';
+          }
+          
+          return html;
+        }
+        
+        // Render Men
+        const menCats = [
+          { key: 'in', class: '' },
+          { key: 'out_permanent', class: 'out' },
+          { key: 'loan_out', class: 'loan' }
+        ];
+        containerMen.innerHTML = renderTable(menCats, false);
+        
+        // Render Women
+        const womenCats = data.categories.women_out_permanent ? [
+          { key: 'women_in', class: '' },
+          { key: 'women_out_permanent', class: 'out' },
+          { key: 'women_loan_out', class: 'loan' }
+        ] : [
+          { key: 'women_in', class: '' },
+          { key: 'women_out', class: 'out' }
+        ];
+        containerWomen.innerHTML = renderTable(womenCats, true);
+        
+        // Footer sources
+        const sourcesHtml = `
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1rem; clear: both;">
+            <strong>Sources:</strong> ${data.sources.join(', ')}<br>
+            Last Updated: ${data.snapshot}
+          </div>
+        `;
+        
+        containerMen.innerHTML += sourcesHtml;
+        containerWomen.innerHTML += sourcesHtml;
+        
+      } catch (err) {
+        console.error(err);
+        containerMen.innerHTML = '<div style="text-align: center; color: red; padding: 2rem;">Error loading transfer data.</div>';
+        containerWomen.innerHTML = '<div style="text-align: center; color: red; padding: 2rem;">Error loading transfer data.</div>';
+      }
+    }
+
+    /**
+     * Fetches player data and categorizes them into 'Sold', 'Loaned', and 'Released' sections
+     * based on their status property.
+     *
+     * @param {string|Array} [source='data/players-men.json'] - File path, team name ('men'|'women'|'all'), or array of player objects
+     * @param {string|HTMLElement} [targetContainer=null] - Optional DOM container (element or selector) to render sections into
+     * @returns {Promise<{ Sold: Array, Loaned: Array, Released: Array, sections: Object, html: string, elements: Object }>}
+     */
+    async function fetchAndCategorizePlayers(source = 'data/players-men.json', targetContainer = null) {
+      let players = [];
+
+      // Support container passed as first argument if source is a DOM element or selector
+      if (typeof source === 'object' && source !== null && !Array.isArray(source) && (source.nodeType || source instanceof HTMLElement)) {
+        targetContainer = source;
+        source = 'data/players-men.json';
+      } else if (typeof source === 'string' && (source.startsWith('#') || (document.getElementById(source) && !source.includes('.json') && source !== 'men' && source !== 'women' && source !== 'all'))) {
+        targetContainer = source;
+        source = 'data/players-men.json';
+      }
+
+      // 1. Fetch player data
+      if (Array.isArray(source)) {
+        players = source;
+      } else if (typeof source === 'string') {
+        let url = source;
+        if (source === 'men' || source === 'all_men') {
+          url = 'data/players-men.json';
+        } else if (source === 'women' || source === 'all_women') {
+          url = 'data/players-women.json';
+        } else if (source === 'all') {
+          const [resMen, resWomen] = await Promise.all([
+            fetch('data/players-men.json').then(r => r.json()).catch(() => []),
+            fetch('data/players-women.json').then(r => r.json()).catch(() => [])
+          ]);
+          players = [...resMen, ...resWomen];
+          url = '';
+        }
+
+        if (url) {
+          const res = await fetch(url);
+          if (!res.ok) {
+            throw new Error(`Failed to fetch player data from ${url}: status ${res.status}`);
+          }
+          players = await res.json();
+        }
+      } else if (source && typeof source === 'object' && Array.isArray(source.players)) {
+        players = source.players;
+      }
+
+      // 2. Categorize players into 'Sold', 'Loaned', and 'Released' sections based on their status property
+      const categorized = {
+        Sold: [],
+        Loaned: [],
+        Released: []
+      };
+
+      if (Array.isArray(players)) {
+        players.forEach(player => {
+          if (!player) return;
+          const status = String(player.status || '').toLowerCase().trim();
+
+          if (status === 'sold') {
+            categorized.Sold.push(player);
+          } else if (status === 'loaned' || status === 'loaned_out' || status === 'loan' || status === 'on_loan') {
+            categorized.Loaned.push(player);
+          } else if (status === 'released' || status === 'retired' || status === 'free_agent' || status === 'contract_expired') {
+            categorized.Released.push(player);
+          }
+        });
+      }
+
+      // Convenience aliases and properties
+      categorized.sections = {
+        Sold: categorized.Sold,
+        Loaned: categorized.Loaned,
+        Released: categorized.Released
+      };
+      Object.defineProperty(categorized, 'sold', { get: () => categorized.Sold, enumerable: true });
+      Object.defineProperty(categorized, 'loaned', { get: () => categorized.Loaned, enumerable: true });
+      Object.defineProperty(categorized, 'released', { get: () => categorized.Released, enumerable: true });
+
+      // 3. Render HTML sections for 'Sold', 'Loaned', and 'Released'
+      const isTh = (window.currentLang || 'th') === 'th';
+      const isMen = typeof source === 'string' && (source.includes('men') && !source.includes('women'));
+      const idPrefix = isMen ? 'men-' : (typeof source === 'string' && source.includes('women') ? 'women-' : '');
+
+      function renderStatusSection(sectionName, list, headerClass) {
+        const rawId = `${sectionName.toLowerCase()}-section`;
+        const sectionId = (!document.getElementById(rawId) || idPrefix === 'men-') ? rawId : `${idPrefix}${rawId}`;
+
+        let label = sectionName;
+        if (isTh) {
+          if (sectionName === 'Sold') label = '🔴 ย้ายออกถาวร (Sold)';
+          else if (sectionName === 'Loaned') label = '🟡 ปล่อยยืมตัว (Loaned)';
+          else if (sectionName === 'Released') label = '⚪ หมดสัญญา / แขวนสตั๊ด (Released)';
+        }
+
+        let rows = '';
+        if (list.length === 0) {
+          rows = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">${isTh ? 'ไม่มีข้อมูลนักเตะในหมวดหมู่นี้' : `No players in ${sectionName} category`}</td></tr>`;
+        } else {
+          list.forEach(p => {
+            const dest = p.current_club || (p.to ? p.to : '--');
+            const num = p.number ? `#${p.number}` : '';
+            const img = p.image || 'assets/images/placeholder-player.svg';
+            let badgeColor = 'color: #2980b9;';
+            if (sectionName === 'Loaned') badgeColor = 'color: #f39c12;';
+            if (sectionName === 'Released') badgeColor = 'color: #7f8c8d;';
+
+            const displayStatus = p.status ? p.status.replace('_', ' ').toUpperCase() : sectionName.toUpperCase();
+
+            rows += `
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="${img}" alt="${p.name || p.player || ''}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #222;" onerror="this.onerror=null; this.src='assets/images/placeholder-player.svg';">
+                    <div>
+                      <span class="player-name">${p.name || p.player || 'Unknown'}</span>
+                      ${num ? `<span style="color: var(--text-muted); font-size: 0.8rem; margin-left: 4px;">${num}</span>` : ''}
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge">${p.position || '-'}</span></td>
+                <td>To: <strong>${dest}</strong></td>
+                <td><span class="fee-badge" style="${badgeColor}">${displayStatus}</span></td>
+              </tr>
+            `;
+          });
+        }
+
+        return `
+          <section id="${sectionId}" class="transfer-section ${rawId} ${headerClass}" data-section="${sectionName}">
+            <div class="transfer-header ${headerClass}">
+              <h3>${label}</h3>
+              <span style="font-size: 0.9rem; font-weight: normal; background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">${list.length} Players</span>
+            </div>
+            <div class="transfer-list">
+              <table>
+                <thead>
+                  <tr>
+                    <th>${isTh ? 'นักเตะ (Player)' : 'Player'}</th>
+                    <th>${isTh ? 'ตำแหน่ง (Position)' : 'Position'}</th>
+                    <th>${isTh ? 'สโมสรปลายทาง (Destination)' : 'Destination'}</th>
+                    <th>${isTh ? 'สถานะ (Status)' : 'Status'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        `;
+      }
+
+      const headerTitleTh = isMen ? '📋 บัญชีสถานะนักเตะทีมชายตามสัญญา (Player Status Roster)' : '📋 บัญชีสถานะนักเตะทีมหญิงตามสัญญา (Player Status Roster)';
+      const headerTitleEn = isMen ? "📋 Men's Team Player Status Roster" : "📋 Women's Team Player Status Roster";
+      const titleBanner = `
+        <div style="margin: 2rem 0 1rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+          <h2 style="font-size: 1.25rem; font-family: var(--font-heading); color: var(--text-color); display: flex; align-items: center; gap: 8px;">
+            ${isTh ? headerTitleTh : headerTitleEn}
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+            ${isTh ? 'จัดหมวดหมู่สถานะนักเตะ: Sold (ย้ายออก) · Loaned (ปล่อยยืม) · Released (หมดสัญญา/แขวนสตั๊ด)' : 'Categorized by status: Sold · Loaned · Released'}
+          </p>
+        </div>
+      `;
+
+      const soldSectionHtml = renderStatusSection('Sold', categorized.Sold, 'sold');
+      const loanedSectionHtml = renderStatusSection('Loaned', categorized.Loaned, 'loaned');
+      const releasedSectionHtml = renderStatusSection('Released', categorized.Released, 'released');
+      const sectionsHtml = titleBanner + soldSectionHtml + loanedSectionHtml + releasedSectionHtml;
+
+      categorized.html = sectionsHtml;
+      categorized.sectionsHtml = {
+        Sold: soldSectionHtml,
+        Loaned: loanedSectionHtml,
+        Released: releasedSectionHtml
+      };
+
+      // Populate DOM elements map
+      const tempContainer = document.createElement('div');
+      tempContainer.innerHTML = sectionsHtml;
+      categorized.elements = {
+        Sold: tempContainer.querySelector('[data-section="Sold"]'),
+        Loaned: tempContainer.querySelector('[data-section="Loaned"]'),
+        Released: tempContainer.querySelector('[data-section="Released"]')
+      };
+
+      // If container provided or exists, inject sections
+      if (targetContainer) {
+        const el = typeof targetContainer === 'string'
+          ? (document.querySelector(targetContainer) || document.getElementById(targetContainer.replace('#', '')))
+          : targetContainer;
+        if (el) {
+          el.innerHTML = sectionsHtml;
+        }
+      }
+
+      return categorized;
+    }
+
+    // Expose globally with aliases
+    window.fetchAndCategorizePlayers = fetchAndCategorizePlayers;
+    window.categorizePlayersByStatus = fetchAndCategorizePlayers;
+    window.categorizePlayers = fetchAndCategorizePlayers;
+    window.fetchPlayerTransfers = fetchAndCategorizePlayers;
+
+    // Tabs logic
+    function setupTabs() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          document.getElementById('tab-' + tabId).classList.add('active');
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTransfers();
+      fetchAndCategorizePlayers('data/players-men.json', '#playerStatusSectionsMen');
+      fetchAndCategorizePlayers('data/players-women.json', '#playerStatusSectionsWomen');
+      setupTabs();
+    });
+
+  </script>
+</body>
+</html>

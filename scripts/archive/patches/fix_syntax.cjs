@@ -1,6 +1,6 @@
-const fs = require('fs');
-let js = fs.readFileSync('assets/js/team.js', 'utf8');
+const fs = require("fs");
+let js = fs.readFileSync("assets/js/team.js", "utf8");
 
-js = js.replace(/\\`/g, '`');
+js = js.replace(/\\`/g, "`");
 
-fs.writeFileSync('assets/js/team.js', js);
+fs.writeFileSync("assets/js/team.js", js);

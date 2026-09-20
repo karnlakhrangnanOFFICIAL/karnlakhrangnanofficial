@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = require("fs");
 
-let content = fs.readFileSync('match-detail.html', 'utf8');
+let content = fs.readFileSync("match-detail.html", "utf8");
 
 const lineupReplacement = `
       // Lineups Section
@@ -87,12 +87,11 @@ const startIndex = content.indexOf(startMarker);
 const endIndex = content.indexOf(endMarker);
 
 if (startIndex !== -1 && endIndex !== -1) {
-    const before = content.substring(0, startIndex);
-    const after = content.substring(endIndex);
-    content = before + lineupReplacement + "\\n      " + after;
-    fs.writeFileSync('match-detail.html', content);
-    console.log("Updated lineups successfully.");
+  const before = content.substring(0, startIndex);
+  const after = content.substring(endIndex);
+  content = before + lineupReplacement + "\\n      " + after;
+  fs.writeFileSync("match-detail.html", content);
+  console.log("Updated lineups successfully.");
 } else {
-    console.log("Could not find lineup section to replace.");
+  console.log("Could not find lineup section to replace.");
 }
-

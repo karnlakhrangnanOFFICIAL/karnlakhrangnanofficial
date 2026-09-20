@@ -1,5 +1,5 @@
-const fs = require('fs');
-let content = fs.readFileSync('assets/js/team.js', 'utf8');
+const fs = require("fs");
+let content = fs.readFileSync("assets/js/team.js", "utf8");
 
 const fetchSheetFunc = `
 // ---------- SAFE GOOGLE SHEETS FETCH (Client-side) ----------
@@ -44,7 +44,10 @@ async function fetchGoogleSheetDirect(spreadsheetId, queryParams = 'gid=0') {
 `;
 
 // Insert it right before loadMenTable
-content = content.replace(/async function loadMenTable\(\)/, fetchSheetFunc + '\nasync function loadMenTable()');
+content = content.replace(
+  /async function loadMenTable\(\)/,
+  fetchSheetFunc + "\nasync function loadMenTable()"
+);
 
 // Update loadMenTable usage
 content = content.replace(
@@ -58,4 +61,4 @@ content = content.replace(
   `const data = await fetchGoogleSheetDirect(SPREADSHEET_ID, sheetParam);`
 );
 
-fs.writeFileSync('assets/js/team.js', content);
+fs.writeFileSync("assets/js/team.js", content);

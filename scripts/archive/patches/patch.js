@@ -1,10 +1,10 @@
-const fs = require('fs');
+const fs = require("fs");
 
 function injectGoalScorers(file) {
-    let content = fs.readFileSync(file, 'utf8');
-    
-    // Find the renderResults card-result replacement
-    const replacement = `            <div class="team \${awayWin ? 'winner' : ''}">
+  let content = fs.readFileSync(file, "utf8");
+
+  // Find the renderResults card-result replacement
+  const replacement = `            <div class="team \${awayWin ? 'winner' : ''}">
                 <img src="\${match.away_logo}" alt="\${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
                 <div class="team-divider"></div>
                 <span class="team-name cal-team-name">\${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
@@ -21,7 +21,7 @@ function injectGoalScorers(file) {
             </div>\` : ''}
             <div class="card-footer">`;
 
-    const searchStr = `            <div class="team \${awayWin ? 'winner' : ''}">
+  const searchStr = `            <div class="team \${awayWin ? 'winner' : ''}">
                 <img src="\${match.away_logo}" alt="\${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
                 <div class="team-divider"></div>
                 <span class="team-name cal-team-name">\${typeof renderTeamNameHTML === 'function' ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
@@ -29,6 +29,6 @@ function injectGoalScorers(file) {
             </div>
             <div class="card-footer">`;
 
-    // team.js might not have cal-team-name or typeof check in the original?
-    // Let's use a regex instead.
+  // team.js might not have cal-team-name or typeof check in the original?
+  // Let's use a regex instead.
 }

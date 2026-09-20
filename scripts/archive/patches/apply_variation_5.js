@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = require("fs");
 
-let content = fs.readFileSync('match-detail.html.bak', 'utf-8');
+let content = fs.readFileSync("match-detail.html.bak", "utf-8");
 
 // 1. Add Variation 5 styles to the <head>
 const newStyles = `
@@ -160,11 +160,12 @@ const newStyles = `
     }
   </style>
 </head>`;
-content = content.replace('</head>', newStyles);
+content = content.replace("</head>", newStyles);
 
 // 2. We need to replace the container.innerHTML output.
 // We look for: container.innerHTML = ` (and ends at );\n      if (typeof updateUIText === 'function') updateUIText();)
-const templateRegex = /container\.innerHTML = `[\s\S]*?`;\s+if \(typeof updateUIText === 'function'\) updateUIText\(\);/m;
+const templateRegex =
+  /container\.innerHTML = `[\s\S]*?`;\s+if \(typeof updateUIText === 'function'\) updateUIText\(\);/m;
 
 const newTemplate = `
       const isHomeChelsea = match.home_team && match.home_team.toLowerCase().includes('chelsea');
@@ -232,5 +233,5 @@ const newTemplate = `
 
 content = content.replace(templateRegex, newTemplate);
 
-fs.writeFileSync('match-detail.html', content);
-console.log('match-detail.html updated successfully.');
+fs.writeFileSync("match-detail.html", content);
+console.log("match-detail.html updated successfully.");

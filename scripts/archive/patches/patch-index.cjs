@@ -1,11 +1,14 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 // Add class to completed matches
 html = html.replace(/<span class="team-name"/g, '<span class="team-name cal-team-name"');
 
 // Add class to upcoming matches
-html = html.replace(/<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">\$\{oppName\}<\/span>/g, '<span class="cal-team-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${oppName}</span>');
+html = html.replace(
+  /<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">\$\{oppName\}<\/span>/g,
+  '<span class="cal-team-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${oppName}</span>'
+);
 
 html = html.replace(
   /const dayMatches = window\.allMatchesGlobal\.filter\(m => m\.date === dateStr\);/g,
@@ -31,6 +34,9 @@ html = html.replace(
     }`
 );
 
-html = html.replace(/const mEl = document\.createElement\('a'\);/g, `const mEl = document.createElement('a');\n          mEl.classList.add('cal-match-item');`);
+html = html.replace(
+  /const mEl = document\.createElement\('a'\);/g,
+  `const mEl = document.createElement('a');\n          mEl.classList.add('cal-match-item');`
+);
 
-fs.writeFileSync('index.html', html);
+fs.writeFileSync("index.html", html);

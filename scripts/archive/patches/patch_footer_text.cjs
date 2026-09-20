@@ -1,5 +1,5 @@
-const fs = require('fs');
-let css = fs.readFileSync('assets/css/style.css', 'utf8');
+const fs = require("fs");
+let css = fs.readFileSync("assets/css/style.css", "utf8");
 
 const footerTextHide = `
 /* Hide footer text on men/women team pages - based on brief */
@@ -12,4 +12,4 @@ const footerTextHide = `
 
 css += footerTextHide;
 
-fs.writeFileSync('assets/css/style.css', css);
+fs.writeFileSync("assets/css/style.css", css);

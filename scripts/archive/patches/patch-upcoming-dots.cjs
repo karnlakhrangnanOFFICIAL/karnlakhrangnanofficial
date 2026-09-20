@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 html = html.replace(
   /mEl\.innerHTML = `\n\s*<div style="display: flex; align-items: center; gap: 4px; overflow: hidden;">\n\s*<span class="team-badge \$\{teamBadgeClass\}" style="padding: 1px 4px; font-size: 0.6rem; min-width: unset;">\$\{match\.team_type\}<\/span>/,
@@ -10,4 +10,4 @@ html = html.replace(
                 <span class="team-badge \${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem; min-width: unset;">\${match.team_type}</span>`
 );
 
-fs.writeFileSync('index.html', html);
+fs.writeFileSync("index.html", html);

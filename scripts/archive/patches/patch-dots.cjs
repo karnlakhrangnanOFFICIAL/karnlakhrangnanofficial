@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 // The match item card has:
 // <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem;">${teamBadge}</span>
@@ -12,5 +12,5 @@ html = html.replace(
 
 // For the compact upcoming match item, it has:
 // <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem; min-width: unset;">${match.team_type}</span>
-// But wait, the upcoming match uses `match.team_type` as text and does not have `isChelseaHome` calculated. 
+// But wait, the upcoming match uses `match.team_type` as text and does not have `isChelseaHome` calculated.
 // Ah, let's see how upcoming match is rendered.

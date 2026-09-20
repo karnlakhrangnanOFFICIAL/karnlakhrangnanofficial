@@ -1,5 +1,5 @@
-const fs = require('fs');
-let js = fs.readFileSync('assets/js/main.js', 'utf8');
+const fs = require("fs");
+let js = fs.readFileSync("assets/js/main.js", "utf8");
 
 const replacement = `function renderTeamNameHTML(teamName, options = {}) {
   if (!teamName) return '';
@@ -19,7 +19,10 @@ const replacement = `function renderTeamNameHTML(teamName, options = {}) {
   </span>\`;
 }`;
 
-js = js.replace(/function renderTeamNameHTML\(teamName, options = \{\}\) \{[\s\S]*?<\/span>`;\n\}/, replacement);
+js = js.replace(
+  /function renderTeamNameHTML\(teamName, options = \{\}\) \{[\s\S]*?<\/span>`;\n\}/,
+  replacement
+);
 
-fs.writeFileSync('assets/js/main.js', js, 'utf8');
-console.log('done');
+fs.writeFileSync("assets/js/main.js", js, "utf8");
+console.log("done");

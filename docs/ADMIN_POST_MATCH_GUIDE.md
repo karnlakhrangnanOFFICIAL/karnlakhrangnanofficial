@@ -6,15 +6,15 @@
 
 ## 📁 1. ไฟล์ที่เกี่ยวข้องทั้งหมด (Related Files)
 
-| ชื่อไฟล์ / Directory | หน้าที่และคำอธิบาย |
-| :--- | :--- |
-| **`data/fixtures.json`** | ไฟล์หลักสำหรับเก็บตารางการแข่งขันและรายละเอียดแมตช์ (รวมถึงรายชื่อผู้ทำประตู `goals`) |
-| **`data/results-men.json`** | ไฟล์สำหรับเก็บสรุปผลการแข่งขันของทีมชาย |
-| **`data/players-men.json`** | รายชื่อและโปรไฟล์นักเตะทีมชาย (ใช้ดึงรูปภาพรูปโปรไฟล์นักเตะ) |
-| **`assets/images/players/men/`** | โฟลเดอร์เก็บรูปภาพโปรไฟล์นักเตะทีมชาย (`.jpg` / `.png` / `.webp`) |
-| **`assets/images/players/women/`** | โฟลเดอร์เก็บรูปภาพโปรไฟล์นักเตะทีมหญิง (`.jpg` / `.png` / `.webp`) |
+| ชื่อไฟล์ / Directory               | หน้าที่และคำอธิบาย                                                                    |
+| :--------------------------------- | :------------------------------------------------------------------------------------ |
+| **`data/fixtures.json`**           | ไฟล์หลักสำหรับเก็บตารางการแข่งขันและรายละเอียดแมตช์ (รวมถึงรายชื่อผู้ทำประตู `goals`) |
+| **`data/results-men.json`**        | ไฟล์สำหรับเก็บสรุปผลการแข่งขันของทีมชาย                                               |
+| **`data/players-men.json`**        | รายชื่อและโปรไฟล์นักเตะทีมชาย (ใช้ดึงรูปภาพรูปโปรไฟล์นักเตะ)                          |
+| **`assets/images/players/men/`**   | โฟลเดอร์เก็บรูปภาพโปรไฟล์นักเตะทีมชาย (`.jpg` / `.png` / `.webp`)                     |
+| **`assets/images/players/women/`** | โฟลเดอร์เก็บรูปภาพโปรไฟล์นักเตะทีมหญิง (`.jpg` / `.png` / `.webp`)                    |
 
-*(หมายเหตุ: สำหรับทีมหญิง ให้ดำเนินการในลักษณะเดียวกันกับไฟล์ `fixtures.json`, `results-women.json` และ `players-women.json`)*
+_(หมายเหตุ: สำหรับทีมหญิง ให้ดำเนินการในลักษณะเดียวกันกับไฟล์ `fixtures.json`, `results-women.json` และ `players-women.json`)_
 
 ---
 
@@ -48,17 +48,16 @@
   "away_score": 2,
   "status": "completed",
   "goals": [
-    {"team": "away", "player": "Tonali", "minute": 17},
-    {"team": "home", "player": "Estêvão", "minute": 21},
-    {"team": "away", "player": "Richarlison", "minute": "90+2"}
+    { "team": "away", "player": "Tonali", "minute": 17 },
+    { "team": "home", "player": "Estêvão", "minute": 21 },
+    { "team": "away", "player": "Richarlison", "minute": "90+2" }
   ],
-  "channels": [
-    { "platform": "chelseafc.com", "name": "CFC+", "logo": "databases/logo/tv/cfc.png" }
-  ]
+  "channels": [{ "platform": "chelseafc.com", "name": "CFC+", "logo": "databases/logo/tv/cfc.png" }]
 }
 ```
 
 #### 📌 รายละเอียดโครงสร้างใน `"goals"`:
+
 - **`team`**: ระบุ `"home"` (ทีมเหย้า) หรือ `"away"` (ทีมเยือน)
 - **`player`**: ชื่อผู้ทำประตู (เช่น `"Estêvão"`, `"Dastan Satpaev"`, `"Cole Palmer"`)
 - **`minute`**: นาทีที่ยิงประตู (เป็นตัวเลข เช่น `21` หรือเป็นข้อความทดเวลา เช่น `"90+2"`)
@@ -114,7 +113,7 @@
 }
 ```
 
-> ⚡ **ระบบค้นหารูปภาพผู้ทำประตูอัตโนมัติ**: 
+> ⚡ **ระบบค้นหารูปภาพผู้ทำประตูอัตโนมัติ**:
 > หน้าแสดงผลรายละเอียดแมตช์ (`match-detail.html`) มีระบบแมปชื่ออัจฉริยะ จะทำการค้นหารูปภาพจาก `data/players-men.json` / `data/players-women.json` และไฟล์ใน `assets/images/players/men/` / `assets/images/players/women/` ให้อัตโนมัติ โดยจับคู่จากชื่อหรือนามสกุลนักเตะ
 
 ---
@@ -132,4 +131,4 @@
 
 ---
 
-*สร้างเมื่อ: 1 สิงหาคม 2026 | เอกสารคู่มือระบบจัดการเว็บไซต์แฟนคลับ*
+_สร้างเมื่อ: 1 สิงหาคม 2026 | เอกสารคู่มือระบบจัดการเว็บไซต์แฟนคลับ_

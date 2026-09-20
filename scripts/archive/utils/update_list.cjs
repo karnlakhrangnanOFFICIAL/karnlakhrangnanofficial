@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 const getStyleLogic = `
         const isHomeChelsea = match.home_team.toLowerCase().includes('chelsea') || match.home_team === 'KANLAKHRANGNAN';
@@ -44,14 +44,16 @@ const resultHtmlReplace = `<span class="team-name" style="\${homeNameStyle}">\${
                 <div class="team-divider"></div>
                 <span class="team-name" style="\${awayNameStyle}">\${renderTeamNameHTML(match.away_team)}</span>`;
 
-
-html = html.replace(/const teamBadgeClass = teamBadge\.toLowerCase\(\);\s*return \`/g, (match) => {
-    return \`const teamBadgeClass = teamBadge.toLowerCase();
-\${getStyleLogic}
-        return \\\`\`;
+html = html.replace(/const teamBadgeClass = teamBadge\.toLowerCase\(\);\s*return `/g, (match) => {
+  return `const teamBadgeClass = teamBadge.toLowerCase();
+${getStyleLogic}
+        return \`\`;`;
 });
 
-html = html.replace(new RegExp(resultHtmlTarget.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), 'g'), resultHtmlReplace);
+html = html.replace(
+  new RegExp(resultHtmlTarget.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), "g"),
+  resultHtmlReplace
+);
 
-fs.writeFileSync('index.html', html, 'utf8');
-console.log('Done update_list.cjs');
+fs.writeFileSync("index.html", html, "utf8");
+console.log("Done update_list.cjs");

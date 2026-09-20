@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = require("fs");
 
-let content = fs.readFileSync('match-detail.html', 'utf8');
+let content = fs.readFileSync("match-detail.html", "utf8");
 
 const lineupLogic = `
       // Lineups Section
@@ -76,7 +76,10 @@ const finalReplacement = `        <!-- Goals -->
         \${lineupsHtml}
         <!-- Events -->`;
 
-content = content.replace("        <!-- Goals -->\n        ${goalsHtml}\n        <!-- Events -->", finalReplacement);
+content = content.replace(
+  "        <!-- Goals -->\n        ${goalsHtml}\n        <!-- Events -->",
+  finalReplacement
+);
 
-fs.writeFileSync('match-detail.html', content);
+fs.writeFileSync("match-detail.html", content);
 console.log("Updated match-detail.html successfully.");

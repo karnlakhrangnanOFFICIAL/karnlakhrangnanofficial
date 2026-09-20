@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 const target = `      }).join('');
     }
@@ -98,7 +98,7 @@ const replacement = `      }).join('');
 
 if (html.includes(target)) {
   html = html.replace(target, replacement);
-  fs.writeFileSync('index.html', html);
+  fs.writeFileSync("index.html", html);
   console.log("Successfully replaced");
 } else {
   console.log("Target not found!");

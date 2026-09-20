@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 html = html.replace(
   "const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://talkchelsea.net/feed/');",
@@ -12,4 +12,4 @@ html = html.replace(
   "if (data.success && data.items && data.items.length > 0)"
 );
 
-fs.writeFileSync('index.html', html);
+fs.writeFileSync("index.html", html);

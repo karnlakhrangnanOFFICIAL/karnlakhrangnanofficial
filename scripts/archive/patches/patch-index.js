@@ -1,5 +1,5 @@
-const fs = require('fs');
-let html = fs.readFileSync('index.html', 'utf8');
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
 
 // Inside renderCalendar, at the start of the day loop, we know dayMatches.length
 // But wait, dayMatches is computed inside the loop.
@@ -38,6 +38,9 @@ html = html.replace(
 );
 
 // And we should also add `cal-match-item` to `mEl` so we can target it.
-html = html.replace(/const mEl = document\.createElement\('a'\);/g, `const mEl = document.createElement('a');\n          mEl.classList.add('cal-match-item');`);
+html = html.replace(
+  /const mEl = document\.createElement\('a'\);/g,
+  `const mEl = document.createElement('a');\n          mEl.classList.add('cal-match-item');`
+);
 
-fs.writeFileSync('index.html', html);
+fs.writeFileSync("index.html", html);
