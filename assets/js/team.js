@@ -553,28 +553,12 @@ async function loadMenTable() {
   const container = document.getElementById('menTableContainer');
   if (!container) return;
   try {
-    let data = await safeFetchJson('/api/football-data/competitions/PL/standings');
-    if (data && data.standings && data.standings[0]?.table) {
-      const table = data.standings[0].table.map(r => ({
-        position: r.position,
-        team: r.team.name,
-        team_th: r.team.shortName || r.team.name,
-        team_en: r.team.name,
-        team_logo: r.team.crest,
-        played: r.playedGames,
-        won: r.won,
-        drawn: r.draw,
-        lost: r.lost,
-        goals_for: r.goalsFor,
-        goals_against: r.goalsAgainst,
-        goal_diff: r.goalDifference,
-        points: r.points,
-        form: r.form ? r.form.split(',') : []
-      }));
-      renderTable(container, table, 'Chelsea', data.competition?.emblem, data.competition?.name || 'Premier League');
-      return;
+    let data = await safeFetchJson('/api/epl-standings');
+    if (data && data.success && data.data) {
+      data = data.data;
+    } else {
+      data = await safeFetchJson('data/tables-men.json');
     }
-    data = await safeFetchJson('data/tables-men.json');
     if (!data) {
       container.innerHTML = '<div class="empty-state"><span class="empty-icon">🏆</span><p>No table data yet</p></div>';
       return;
@@ -663,7 +647,12 @@ async function loadWomenTable() {
   const container = document.getElementById('womenTableContainer');
   if (!container) return;
   try {
-    let data = await safeFetchJson('data/tables-women.json');
+    let data = await safeFetchJson('/api/wsl-standings');
+    if (data && data.success && data.data) {
+      data = data.data;
+    } else {
+      data = await safeFetchJson('data/tables-women.json');
+    }
     if (!data) {
       container.innerHTML = '<div class="empty-state"><span class="empty-icon">🏆</span><p>No table data yet</p></div>';
       return;

@@ -18,19 +18,6 @@
     },
     {
       "pos": 2,
-      "logo": "databases/logo/teams/england_brentford.svg",
-      "team": "Brentford",
-      "p": 3,
-      "w": 2,
-      "d": 1,
-      "l": 0,
-      "gf": 10,
-      "ga": 5,
-      "gd": 5,
-      "pts": 7
-    },
-    {
-      "pos": 3,
       "logo": "databases/logo/teams/england_manchester-city.svg",
       "team": "Manchester City",
       "p": 2,
@@ -43,20 +30,20 @@
       "pts": 6
     },
     {
-      "pos": 4,
+      "pos": 3,
       "logo": "databases/logo/teams/england_chelsea.svg",
       "team": "Chelsea",
-      "p": 4,
+      "p": 3,
       "w": 2,
       "d": 0,
-      "l": 2,
+      "l": 1,
       "gf": 5,
-      "ga": 6,
-      "gd": -1,
+      "ga": 3,
+      "gd": 2,
       "pts": 6
     },
     {
-      "pos": 5,
+      "pos": 4,
       "logo": "databases/logo/teams/england_hull-city.svg",
       "team": "Hull City",
       "p": 2,
@@ -69,7 +56,7 @@
       "pts": 6
     },
     {
-      "pos": 6,
+      "pos": 5,
       "logo": "databases/logo/teams/england_liverpool.svg",
       "team": "Liverpool",
       "p": 3,
@@ -80,6 +67,19 @@
       "ga": 4,
       "gd": 3,
       "pts": 5
+    },
+    {
+      "pos": 6,
+      "logo": "databases/logo/teams/england_brentford.svg",
+      "team": "Brentford",
+      "p": 2,
+      "w": 1,
+      "d": 1,
+      "l": 0,
+      "gf": 7,
+      "ga": 5,
+      "gd": 2,
+      "pts": 4
     },
     {
       "pos": 7,

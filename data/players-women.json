@@ -70,19 +70,19 @@
     "joined": "2023-07-01",
     "signed_from": "Aston Villa",
     "market_value": null,
-    "appearances": 2,
+    "appearances": 1,
     "goals": 0,
     "assists": 0,
     "biography_th": "ผู้รักษาประตูชาวอังกฤษ ย้ายมาร่วมทีมเชลซีในเดือนกรกฎาคม 2023 จากแอสตัน วิลล่า",
     "biography_en": "English goalkeeper who joined Chelsea in July 2023 from Aston Villa.",
     "stats": {
       "Barclays Women's Super League": {
-        "appearances": 1,
+        "appearances": 0,
         "goals": 0,
         "assists": 0,
         "yellow_cards": 0,
         "red_cards": 0,
-        "clean_sheets": 1
+        "clean_sheets": 0
       },
       "UEFA Women's Champions League": {
         "appearances": 1,
@@ -806,15 +806,15 @@
     "joined": "2025-07-01",
     "signed_from": "Crystal Palace",
     "market_value": null,
-    "appearances": 1,
-    "goals": 1,
+    "appearances": 0,
+    "goals": 0,
     "assists": 0,
     "biography_th": "มิดฟิลด์ดาวรุ่งชาวอังกฤษ กลับสู่ทีมเชลซีในเดือนกรกฎาคม 2025 หลังจากการยืมตัวที่คริสตัล พาเลซ",
     "biography_en": "Young English midfielder who returned to Chelsea in July 2025 after a loan spell at Crystal Palace.",
     "stats": {
       "Barclays Women's Super League": {
-        "appearances": 1,
-        "goals": 1,
+        "appearances": 0,
+        "goals": 0,
         "assists": 0,
         "yellow_cards": 0,
         "red_cards": 0
@@ -962,16 +962,16 @@
     "joined": "2025-09-01",
     "signed_from": "Angel City",
     "market_value": null,
-    "appearances": 2,
+    "appearances": 1,
     "goals": 0,
-    "assists": 1,
+    "assists": 0,
     "biography_th": "กองหน้าชาวอเมริกัน ย้ายมาร่วมทีมเชลซีในเดือนกันยายน 2025 จากแองเจิล ซิตี้",
     "biography_en": "American forward who moved to Chelsea in September 2025 from Angel City.",
     "stats": {
       "Barclays Women's Super League": {
-        "appearances": 1,
+        "appearances": 0,
         "goals": 0,
-        "assists": 1,
+        "assists": 0,
         "yellow_cards": 0,
         "red_cards": 0
       },
@@ -1322,19 +1322,19 @@
     "foot": null,
     "date_of_birth": "2000-06-28",
     "age": 26,
-    "current_club": "Chelsea FC",
+    "current_club": "Manchester United",
     "joined": "2023-09-01",
     "signed_from": "OL Lyonnais",
     "market_value": null,
-    "appearances": 2,
-    "goals": 3,
+    "appearances": 1,
+    "goals": 2,
     "assists": 0,
     "biography_th": "กองหน้าชาวฝรั่งเศส ย้ายไปเล่นให้แมนเชสเตอร์ ยูไนเต็ด ในเดือนกันยายน 2023 จากโอลิมปิก ลียง",
     "biography_en": "French attacker who switched to Manchester United in September 2023 from OL Lyonnais.",
     "stats": {
       "Barclays Women's Super League": {
-        "appearances": 1,
-        "goals": 1,
+        "appearances": 0,
+        "goals": 0,
         "assists": 0,
         "yellow_cards": 0,
         "red_cards": 0
