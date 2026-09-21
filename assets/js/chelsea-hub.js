@@ -11,10 +11,102 @@
 (function () {
   'use strict';
 
-  // API Configuration
-  const FOOTBALL_DATA_TOKEN = 'fb73ad1df2194fdab3fe56614d1a953e';
-  const CHELSEA_TEAM_ID = 61;
+  // ========================================================
+  // ฟังก์ชันดึงข้อมูลเฉพาะทีมชาย (Chelsea FC Men - Team ID: 61)
+  // ========================================================
+
+  const CHELSEA_MEN_CONFIG = {
+    teamId: 61,
+    apiKey: 'fb73ad1df2194fdab3fe56614d1a953e',
+    // ใช้ผ่าน Proxy ของเซิร์ฟเวอร์ในโปรเจกต์เพื่อเลี่ยงปัญหา CORS
+    proxyBase: '/api/football-data'
+  };
+
+  const FOOTBALL_DATA_TOKEN = CHELSEA_MEN_CONFIG.apiKey;
+  const CHELSEA_TEAM_ID = CHELSEA_MEN_CONFIG.teamId;
   const PREMIER_LEAGUE_CODE = 'PL';
+
+  // 1. ดึงผลการแข่งขันและโปรแกรมแข่งทั้งหมดของทีมชาย
+  async function getChelseaMenMatches(status = 'SCHEDULED,LIVE,IN_PLAY,PAUSED,FINISHED') {
+    try {
+      const statusQuery = status ? `?status=${status}` : '';
+      let res;
+      try {
+        res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/teams/${CHELSEA_MEN_CONFIG.teamId}/matches${statusQuery}`);
+      } catch (e) {
+        // Fallback to direct fetch
+      }
+      if (!res || !res.ok) {
+        res = await fetch(`https://api.football-data.org/v4/teams/${CHELSEA_MEN_CONFIG.teamId}/matches${statusQuery}`, {
+          headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
+        });
+      }
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      return data.matches || [];
+    } catch (error) {
+      console.error("Error fetching matches:", error);
+      return [];
+    }
+  }
+
+  // 2. ดึงรายชื่อนักเตะและทีมงานสต๊าฟโค้ชทีมชาย (Chelsea FC Men Squad)
+  async function getChelseaMenSquad() {
+    try {
+      let res;
+      try {
+        res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/teams/${CHELSEA_MEN_CONFIG.teamId}`);
+      } catch (e) {
+        // Fallback to direct fetch
+      }
+      if (!res || !res.ok) {
+        res = await fetch(`https://api.football-data.org/v4/teams/${CHELSEA_MEN_CONFIG.teamId}`, {
+          headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
+        });
+      }
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      return {
+        squad: data.squad || [],
+        coach: data.coach || null,
+        team: data
+      };
+    } catch (error) {
+      console.error("Error fetching squad:", error);
+      return { squad: [], coach: null };
+    }
+  }
+
+  // 3. ดึงตารางคะแนนพรีเมียร์ลีก (Premier League Standings)
+  async function getPremierLeagueTable() {
+    try {
+      let res;
+      try {
+        res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/competitions/PL/standings`);
+      } catch (e) {
+        // Fallback to direct fetch
+      }
+      if (!res || !res.ok) {
+        res = await fetch(`https://api.football-data.org/v4/competitions/PL/standings`, {
+          headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
+        });
+      }
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      return data.standings?.[0]?.table || [];
+    } catch (error) {
+      console.error("Error fetching table:", error);
+      return [];
+    }
+  }
+
+  // Expose on window object for global project scripts and console access
+  if (typeof window !== 'undefined') {
+    window.CHELSEA_MEN_CONFIG = CHELSEA_MEN_CONFIG;
+    window.getChelseaMenMatches = getChelseaMenMatches;
+    window.getChelseaMenSquad = getChelseaMenSquad;
+    window.getPremierLeagueTable = getPremierLeagueTable;
+  }
 
   // Shared Data Cache
   const HubState = {
@@ -45,11 +137,12 @@
   // Safe API Fetch with Direct Token & Proxy Fallback
   async function fetchFootballData(endpoint, isLive = false) {
     const cacheBuster = isLive ? (endpoint.includes('?') ? `&_t=${Date.now()}&live=true` : `?_t=${Date.now()}&live=true`) : '';
-    const fullEndpoint = `${endpoint}${cacheBuster}`;
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint.substring(1) : endpoint;
+    const fullEndpoint = `${cleanEndpoint}${cacheBuster}`;
 
     // Try proxy first to bypass browser CORS if on web server
     try {
-      const proxyUrl = `/api/football-data/${fullEndpoint}`;
+      const proxyUrl = `${CHELSEA_MEN_CONFIG.proxyBase}/${fullEndpoint}`;
       const res = await fetch(proxyUrl, {
         headers: isLive ? { 'Cache-Control': 'no-cache' } : {}
       });
@@ -64,7 +157,7 @@
     const directUrl = fullEndpoint.startsWith('http') ? fullEndpoint : `https://api.football-data.org/v4/${fullEndpoint}`;
     const directRes = await fetch(directUrl, {
       headers: {
-        'X-Auth-Token': FOOTBALL_DATA_TOKEN
+        'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey
       }
     });
 
@@ -178,8 +271,8 @@
         console.warn('Could not load local fixtures.json:', e);
       }
 
-      const data = await fetchFootballData(`teams/${CHELSEA_TEAM_ID}/matches`);
-      HubState.matches = data.matches || [];
+      const matches = await getChelseaMenMatches();
+      HubState.matches = matches || [];
       renderMatchesTable();
       populateCompetitionFilter();
       updateDashboardFixtures();
@@ -577,9 +670,8 @@
     `;
 
     try {
-      const data = await fetchFootballData(`competitions/${PREMIER_LEAGUE_CODE}/standings`);
-      const standingsTable = data.standings?.[0]?.table || [];
-      HubState.standings = standingsTable;
+      const standingsTable = await getPremierLeagueTable();
+      HubState.standings = standingsTable || [];
 
       if (standingsTable.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="10" class="hub-state-box">ไม่มีข้อมูลตารางคะแนน</td></tr>`;
@@ -966,8 +1058,11 @@
         HubState.squad = players.filter(p => p.status !== 'sold' && p.status !== 'retired');
       } else {
         // Fallback to Football-Data API
-        const data = await fetchFootballData(`teams/${CHELSEA_TEAM_ID}`);
-        HubState.squad = data.squad || [];
+        const squadData = await getChelseaMenSquad();
+        HubState.squad = squadData.squad || [];
+        if (squadData.coach) {
+          HubState.coach = squadData.coach;
+        }
       }
 
       // 2. Render Coach Profile (Enzo Maresca)

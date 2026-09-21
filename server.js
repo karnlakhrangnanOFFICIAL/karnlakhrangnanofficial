@@ -36,6 +36,13 @@ app.get('/api/news', (req, res) => {
 // Football-Data.org API Proxy with Token & CORS support
 const FOOTBALL_DATA_TOKEN = process.env.FOOTBALL_DATA_TOKEN || 'fb73ad1df2194fdab3fe56614d1a953e';
 
+app.options('/api/football-data/*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token');
+  res.sendStatus(204);
+});
+
 app.get('/api/football-data/*', async (req, res) => {
   try {
     const apiPath = req.params[0] || '';
@@ -63,6 +70,24 @@ app.get('/api/football-data/*', async (req, res) => {
   } catch (err) {
     console.error('Football-data proxy error:', err);
     res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/epl-standings', async (req, res) => {
+  try {
+    const targetUrl = 'https://api.football-data.org/v4/competitions/PL/standings';
+    const response = await fetch(targetUrl, {
+      headers: {
+        'X-Auth-Token': FOOTBALL_DATA_TOKEN,
+        'User-Agent': 'Mozilla/5.0'
+      }
+    });
+    const data = await response.json();
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json({ success: true, data: data.standings?.[0]?.table || [] });
+  } catch (err) {
+    console.error('EPL Standings proxy error:', err);
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
