@@ -515,15 +515,111 @@
    ========================================================================== */
 .dashboard-grid-top {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  align-items: start;
 }
 
 @media (max-width: 992px) {
   .dashboard-grid-top {
     grid-template-columns: 1fr;
   }
+}
+
+/* Standings Gender Switcher Controls */
+.standings-switch-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(4, 14, 31, 0.6);
+  padding: 0.25rem 0.35rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color, rgba(147, 197, 253, 0.18));
+}
+
+.standings-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(147, 197, 253, 0.2);
+  color: var(--text-muted, #93c5fd);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.standings-nav-btn:hover {
+  background: rgba(0, 51, 160, 0.4);
+  color: #ffffff;
+  border-color: #38bdf8;
+  transform: scale(1.05);
+}
+
+.standings-gender-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 0.15rem;
+}
+
+.standings-toggle-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #93c5fd);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.standings-toggle-item .gender-icon {
+  font-size: 0.85rem;
+}
+
+.standings-toggle-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.standings-toggle-item.active {
+  background: linear-gradient(135deg, #0033a0 0%, #1d4ed8 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 51, 160, 0.5);
+}
+
+/* Dashboard Standings Table - Full visibility without vertical scrolling */
+.dashboard-standings-wrapper {
+  max-height: none !important;
+  overflow-y: visible !important;
+}
+
+.dashboard-standings-table td,
+.dashboard-standings-table th {
+  padding: 0.55rem 0.65rem;
+  font-size: 0.84rem;
+}
+
+.dashboard-standings-table .hub-team-cell {
+  gap: 0.45rem;
+}
+
+.dashboard-standings-table .hub-team-crest {
+  width: 20px;
+  height: 20px;
 }
 
 /* Next Fixture Spotlight Card */

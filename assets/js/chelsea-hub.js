@@ -26,28 +26,41 @@
   const CHELSEA_TEAM_ID = CHELSEA_MEN_CONFIG.teamId;
   const PREMIER_LEAGUE_CODE = 'PL';
 
-  // Helper: แปลง fixtures ใน data/fixtures.json เป็นรูปแบบ Football-Data API Matches
-  function convertLocalFixturesToMatches(fixtures) {
+  // Helper: ตรวจสอบว่าเป็นทีมเชลซี (ทั้งทีมชายและทีมหญิง)
+  function isChelseaTeam(team) {
+    if (!team) return false;
+    if (team.id === CHELSEA_TEAM_ID) return true;
+    const name = (team.name || team.shortName || '').toLowerCase();
+    return name.includes('chelsea');
+  }
+
+  // Helper: แปลง fixtures ใน data/fixtures.json เป็นรูปแบบ Football-Data API Matches (รองรับทั้งทีมชายและทีมหญิง)
+  function convertLocalFixturesToMatches(fixtures, includeWomen = true) {
     if (!Array.isArray(fixtures)) return [];
     const chelseaFixtures = fixtures.filter(f => {
-      const isMen = !f.team_type || f.team_type === 'M';
+      const isWomen = f.team_type === 'W' || (f.home_team || '').toLowerCase().includes('women') || (f.away_team || '').toLowerCase().includes('women');
+      if (!includeWomen && isWomen) return false;
       const hasChe = (f.home_team || '').toLowerCase().includes('chelsea') ||
                      (f.away_team || '').toLowerCase().includes('chelsea');
-      return isMen && hasChe;
+      return hasChe;
     });
 
     return chelseaFixtures.map(f => {
+      const isWomen = f.team_type === 'W' || (f.home_team || '').toLowerCase().includes('women') || (f.away_team || '').toLowerCase().includes('women');
       const isHome = (f.home_team || '').toLowerCase().includes('chelsea');
       const isCompleted = f.status === 'completed' || f.status === 'FINISHED';
       const isLive = f.status === 'live' || f.status === 'IN_PLAY';
       const status = isCompleted ? 'FINISHED' : (isLive ? 'IN_PLAY' : 'SCHEDULED');
       const timeStr = (f.time && f.time !== 'TBC') ? f.time : '19:00';
-      const utcDate = f.date ? `${f.date}T${timeStr}:00Z` : new Date().toISOString();
+      const utcDate = (f.date && f.date !== 'TBC') ? `${f.date}T${timeStr}:00Z` : '2027-05-31T19:00:00Z';
 
       let compCode = 'PL';
       let compName = 'Premier League';
       const compLower = (f.competition || '').toLowerCase();
-      if (compLower.includes('league-cup') || compLower.includes('carabao')) {
+      if (compLower.includes('women') || compLower.includes('wsl') || isWomen) {
+        compCode = 'WSL';
+        compName = f.competition_name || f.competition || "Women's Super League";
+      } else if (compLower.includes('league-cup') || compLower.includes('carabao')) {
         compCode = 'FLC';
         compName = 'Carabao Cup';
       } else if (compLower.includes('fa-cup')) {
@@ -62,21 +75,22 @@
         id: f.id || ('m_' + Math.random().toString(36).substring(2, 8)),
         utcDate: utcDate,
         status: status,
+        teamType: isWomen ? 'W' : 'M',
         matchday: f.matchday || f.round || null,
         competition: {
-          id: 2021,
-          name: compName,
+          id: isWomen ? 2022 : 2021,
+          name: f.competition_name || f.competition || compName,
           code: compCode,
           emblem: f.competition_logo || null
         },
         homeTeam: {
-          id: isHome ? CHELSEA_MEN_CONFIG.teamId : 9999,
+          id: isHome ? CHELSEA_MEN_CONFIG.teamId : (f.home_id || 9999),
           name: f.home_team,
           shortName: f.home_team,
           crest: f.home_logo || 'assets/images/placeholder-team.svg'
         },
         awayTeam: {
-          id: !isHome ? CHELSEA_MEN_CONFIG.teamId : 9999,
+          id: !isHome ? CHELSEA_MEN_CONFIG.teamId : (f.away_id || 9999),
           name: f.away_team,
           shortName: f.away_team,
           crest: f.away_logo || 'assets/images/placeholder-team.svg'
@@ -254,12 +268,51 @@
     return [];
   }
 
+  // Fetch Women's Super League Standings
+  async function getWomenLeagueTable() {
+    try {
+      const localRes = await fetch('data/tables-women.json');
+      if (localRes.ok) {
+        const localData = await localRes.json();
+        const rawStandings = localData.standings || (Array.isArray(localData) ? localData : []);
+        if (rawStandings.length > 0) {
+          return rawStandings.map((row, idx) => {
+            const teamName = typeof row.team === 'string' ? row.team : (row.team?.name || 'Unknown');
+            const isChe = teamName.toLowerCase().includes('chelsea');
+            return {
+              position: row.pos ?? (idx + 1),
+              team: {
+                id: isChe ? CHELSEA_MEN_CONFIG.teamId : (row.id || (idx + 200)),
+                name: teamName,
+                shortName: teamName,
+                crest: row.logo || 'assets/images/placeholder-team.svg'
+              },
+              playedGames: row.p ?? 0,
+              won: row.w ?? 0,
+              draw: row.d ?? 0,
+              lost: row.l ?? 0,
+              goalsFor: row.gf ?? 0,
+              goalsAgainst: row.ga ?? 0,
+              goalDifference: row.gd ?? ((row.gf || 0) - (row.ga || 0)),
+              points: row.pts ?? 0
+            };
+          });
+        }
+      }
+    } catch (err) {
+      console.error("Local women standings fallback error:", err);
+    }
+
+    return [];
+  }
+
   // Expose on window object for global project scripts and console access
   if (typeof window !== 'undefined') {
     window.CHELSEA_MEN_CONFIG = CHELSEA_MEN_CONFIG;
     window.getChelseaMenMatches = getChelseaMenMatches;
     window.getChelseaMenSquad = getChelseaMenSquad;
     window.getPremierLeagueTable = getPremierLeagueTable;
+    window.getWomenLeagueTable = getWomenLeagueTable;
   }
 
   // Shared Data Cache
@@ -267,6 +320,9 @@
     matches: [],
     localFixtures: [],
     standings: [],
+    standingsGender: 'men', // 'men' or 'women'
+    menStandings: [],
+    womenStandings: [],
     squad: [],
     coach: null,
     activeTab: 'dashboard',
@@ -348,7 +404,7 @@
     if (match.status !== 'FINISHED' || !match.score || match.score.fullTime?.home == null) {
       return null;
     }
-    const isHome = match.homeTeam.id === CHELSEA_TEAM_ID;
+    const isHome = isChelseaTeam(match.homeTeam);
     const chelseaScore = isHome ? match.score.fullTime.home : match.score.fullTime.away;
     const oppScore = isHome ? match.score.fullTime.away : match.score.fullTime.home;
 
@@ -415,18 +471,34 @@
     `;
 
     try {
-      // Pre-load local fixtures for rich match detail links
+      // Pre-load local fixtures for rich match detail links and women fixtures
+      let localConverted = [];
       try {
         const fRes = await fetch('data/fixtures.json');
         if (fRes.ok) {
           HubState.localFixtures = await fRes.json();
+          localConverted = convertLocalFixturesToMatches(HubState.localFixtures, true);
         }
       } catch (e) {
         console.warn('Could not load local fixtures.json:', e);
       }
 
       const matches = await getChelseaMenMatches();
-      HubState.matches = matches || [];
+      let allMatches = matches && matches.length ? [...matches] : [];
+
+      // รวมโปรแกรมและผลการแข่งขันของทีมหญิงเข้าไปด้วย (ไม่ให้มี ID ซ้ำ)
+      if (localConverted && localConverted.length > 0) {
+        const existingIds = new Set(allMatches.map(m => m.id));
+        const womenMatches = localConverted.filter(m => m.teamType === 'W' || (m.homeTeam.name || '').toLowerCase().includes('women') || (m.awayTeam.name || '').toLowerCase().includes('women'));
+        womenMatches.forEach(wm => {
+          if (!existingIds.has(wm.id)) {
+            allMatches.push(wm);
+            existingIds.add(wm.id);
+          }
+        });
+      }
+
+      HubState.matches = allMatches;
       renderMatchesTable();
       populateCompetitionFilter();
       updateDashboardFixtures();
@@ -507,8 +579,8 @@
     }
 
     const rowsHtml = filtered.map(m => {
-      const isChelseaHome = m.homeTeam.id === CHELSEA_TEAM_ID;
-      const isChelseaAway = m.awayTeam.id === CHELSEA_TEAM_ID;
+      const isChelseaHome = isChelseaTeam(m.homeTeam);
+      const isChelseaAway = isChelseaTeam(m.awayTeam);
       const outcome = getChelseaOutcome(m);
       const isFinished = m.status === 'FINISHED';
 
@@ -810,7 +882,32 @@
     loadSquad();
   }
 
-  async function loadStandings() {
+  async function loadStandings(targetGender) {
+    if (targetGender && (targetGender === 'men' || targetGender === 'women')) {
+      HubState.standingsGender = targetGender;
+    }
+    const currentGender = HubState.standingsGender || 'men';
+
+    // Update Header Text & Button Active states
+    const titleText = document.getElementById('standingsTitleText');
+    if (titleText) {
+      titleText.textContent = currentGender === 'men' 
+        ? 'ตารางคะแนน Premier League (ทีมชาย)' 
+        : "ตารางคะแนน Women's Super League (ทีมหญิง)";
+    }
+
+    const menBtn = document.getElementById('standingsMenBtn');
+    const womenBtn = document.getElementById('standingsWomenBtn');
+    if (menBtn && womenBtn) {
+      if (currentGender === 'men') {
+        menBtn.classList.add('active');
+        womenBtn.classList.remove('active');
+      } else {
+        womenBtn.classList.add('active');
+        menBtn.classList.remove('active');
+      }
+    }
+
     const tableBody = document.getElementById('dashboardStandingsBody');
     if (!tableBody) return;
 
@@ -818,13 +915,29 @@
       <tr>
         <td colspan="10" class="hub-state-box">
           <div class="hub-spinner"></div>
-          <p>กำลังดึงตารางคะแนนล่าสุด...</p>
+          <p>กำลังดึงตารางคะแนน${currentGender === 'men' ? 'ทีมชาย' : 'ทีมหญิง'}ล่าสุด...</p>
         </td>
       </tr>
     `;
 
     try {
-      const standingsTable = await getPremierLeagueTable();
+      let standingsTable = [];
+      if (currentGender === 'men') {
+        if (HubState.menStandings && HubState.menStandings.length > 0) {
+          standingsTable = HubState.menStandings;
+        } else {
+          standingsTable = await getPremierLeagueTable();
+          HubState.menStandings = standingsTable || [];
+        }
+      } else {
+        if (HubState.womenStandings && HubState.womenStandings.length > 0) {
+          standingsTable = HubState.womenStandings;
+        } else {
+          standingsTable = await getWomenLeagueTable();
+          HubState.womenStandings = standingsTable || [];
+        }
+      }
+
       HubState.standings = standingsTable || [];
 
       if (standingsTable.length === 0) {
@@ -833,11 +946,11 @@
       }
 
       tableBody.innerHTML = standingsTable.map(row => {
-        const isChelsea = row.team.id === CHELSEA_TEAM_ID;
+        const isChelsea = isChelseaTeam(row.team);
 
         return `
           <tr class="${isChelsea ? 'row-highlight' : ''}">
-            <td style="font-weight: 700; width: 40px; text-align: center;">${row.position}</td>
+            <td style="font-weight: 700; width: 36px; text-align: center;">${row.position}</td>
             <td>
               <div class="hub-team-cell">
                 <img src="${row.team.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
@@ -851,7 +964,7 @@
             <td style="text-align: center;">${row.goalsFor}</td>
             <td style="text-align: center;">${row.goalsAgainst}</td>
             <td style="text-align: center; font-weight: 600;">${row.goalDifference > 0 ? '+' + row.goalDifference : row.goalDifference}</td>
-            <td style="text-align: center; font-weight: 800; color: #38bdf8; font-size: 1rem;">${row.points}</td>
+            <td style="text-align: center; font-weight: 800; color: #38bdf8; font-size: 0.95rem;">${row.points}</td>
           </tr>
         `;
       }).join('');
@@ -915,7 +1028,7 @@
 
       // Render Spotlight Pre-Match Card with countdown timer
       if (spotlightContainer) {
-        const isHome = nextMatch.homeTeam.id === CHELSEA_TEAM_ID;
+        const isHome = isChelseaTeam(nextMatch.homeTeam);
         const venue = isHome ? 'Stamford Bridge (Home)' : 'Away Match';
 
         spotlightContainer.innerHTML = `
@@ -927,8 +1040,8 @@
 
             <div class="spotlight-match-teams">
               <div class="spotlight-team">
-                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="" />
-                <div class="spotlight-team-name ${nextMatch.homeTeam.id === CHELSEA_TEAM_ID ? 'hub-team-chelsea' : ''}">
+                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                <div class="spotlight-team-name ${isChelseaTeam(nextMatch.homeTeam) ? 'hub-team-chelsea' : ''}">
                   ${nextMatch.homeTeam.shortName || nextMatch.homeTeam.name}
                 </div>
               </div>
@@ -936,8 +1049,8 @@
               <div class="spotlight-vs">VS</div>
 
               <div class="spotlight-team">
-                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="" />
-                <div class="spotlight-team-name ${nextMatch.awayTeam.id === CHELSEA_TEAM_ID ? 'hub-team-chelsea' : ''}">
+                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                <div class="spotlight-team-name ${isChelseaTeam(nextMatch.awayTeam) ? 'hub-team-chelsea' : ''}">
                   ${nextMatch.awayTeam.shortName || nextMatch.awayTeam.name}
                 </div>
               </div>
@@ -981,16 +1094,18 @@
             <table class="hub-table">
               <tbody>
                 ${restUpcoming.map(m => {
+                  const isHomeChe = isChelseaTeam(m.homeTeam);
+                  const isAwayChe = isChelseaTeam(m.awayTeam);
                   return `
                     <tr>
                       <td style="font-size: 0.82rem; color: #93c5fd; width: 140px;">${formatMatchDate(m.utcDate)}</td>
                       <td>
                         <div class="hub-team-cell">
-                          <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" style="width: 20px; height: 20px;" alt="" />
-                          <span class="${m.homeTeam.id === CHELSEA_TEAM_ID ? 'hub-team-chelsea' : ''}">${m.homeTeam.shortName || m.homeTeam.name}</span>
+                          <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" style="width: 20px; height: 20px;" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                          <span class="${isHomeChe ? 'hub-team-chelsea' : ''}">${m.homeTeam.shortName || m.homeTeam.name}</span>
                           <span style="color: #93c5fd; margin: 0 4px;">vs</span>
-                          <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" style="width: 20px; height: 20px;" alt="" />
-                          <span class="${m.awayTeam.id === CHELSEA_TEAM_ID ? 'hub-team-chelsea' : ''}">${m.awayTeam.shortName || m.awayTeam.name}</span>
+                          <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" style="width: 20px; height: 20px;" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                          <span class="${isAwayChe ? 'hub-team-chelsea' : ''}">${m.awayTeam.shortName || m.awayTeam.name}</span>
                         </div>
                       </td>
                       <td style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-align: right;">${m.competition?.name || ''}</td>
@@ -1009,7 +1124,7 @@
     const spotlightContainer = document.getElementById('nextFixtureSpotlight');
     if (!spotlightContainer || !match) return;
 
-    const isHome = match.homeTeam.id === CHELSEA_TEAM_ID;
+    const isHome = isChelseaTeam(match.homeTeam);
     const venue = isHome ? 'Stamford Bridge (Home)' : 'Away Match';
 
     // Get real-time scores
@@ -1981,7 +2096,32 @@
       });
     }
 
-    // 6. Player Stats Modal Close Listeners
+    // 6. Standings Gender Toggle Buttons & Arrows
+    const toggleStandingsGender = () => {
+      const next = (HubState.standingsGender === 'men') ? 'women' : 'men';
+      loadStandings(next);
+    };
+
+    const prevBtn = document.getElementById('standingsPrevBtn');
+    if (prevBtn) prevBtn.addEventListener('click', toggleStandingsGender);
+
+    const nextBtn = document.getElementById('standingsNextBtn');
+    if (nextBtn) nextBtn.addEventListener('click', toggleStandingsGender);
+
+    const menBtn = document.getElementById('standingsMenBtn');
+    if (menBtn) menBtn.addEventListener('click', () => loadStandings('men'));
+
+    const womenBtn = document.getElementById('standingsWomenBtn');
+    if (womenBtn) womenBtn.addEventListener('click', () => loadStandings('women'));
+
+    const refreshDashboardBtn = document.getElementById('btnRefreshDashboard');
+    if (refreshDashboardBtn) {
+      refreshDashboardBtn.addEventListener('click', () => {
+        loadDashboardData();
+      });
+    }
+
+    // 7. Player Stats Modal Close Listeners
     const modalBackdrop = document.getElementById('playerStatsModal');
     const btnCloseModal = document.getElementById('btnClosePlayerModal');
     if (btnCloseModal) {
@@ -2016,6 +2156,7 @@
   window.ChelseaHub = {
     loadChelseaMatches,
     loadDashboardData,
+    loadStandings,
     renderManagerTimeline,
     renderH2HAnalysis,
     calculateManagerStats,

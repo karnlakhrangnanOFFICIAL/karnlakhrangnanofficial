@@ -179,28 +179,47 @@
 
         <!-- Top Grid: Standings + Next Fixture -->
         <div class="dashboard-grid-top">
-          <!-- Section 1: Latest Standings -->
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-              <h3 style="font-size: 1.1rem; color: var(--text-color); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+          <!-- Section 1: Latest Standings (Men / Women with Left-Right switch and full view) -->
+          <div id="dashboardStandingsSection">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h3 id="dashboardStandingsHeading" style="font-size: 1.1rem; color: var(--text-color); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                 <span>🏆</span>
-                <span>ตารางคะแนน Premier League ล่าสุด</span>
+                <span id="standingsTitleText">ตารางคะแนน Premier League (ทีมชาย)</span>
               </h3>
+              <!-- Left/Right switch buttons for Men / Women table -->
+              <div class="standings-switch-bar" style="display: flex; align-items: center; gap: 0.35rem;">
+                <button type="button" id="standingsPrevBtn" class="standings-nav-btn" aria-label="ตารางก่อนหน้า" title="สลับตาราง">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <div class="standings-gender-toggle">
+                  <button type="button" id="standingsMenBtn" class="standings-toggle-item active" data-gender="men">
+                    <span class="gender-icon">👨</span>
+                    <span>ทีมชาย</span>
+                  </button>
+                  <button type="button" id="standingsWomenBtn" class="standings-toggle-item" data-gender="women">
+                    <span class="gender-icon">👩</span>
+                    <span>ทีมหญิง</span>
+                  </button>
+                </div>
+                <button type="button" id="standingsNextBtn" class="standings-nav-btn" aria-label="ตารางถัดไป" title="สลับตาราง">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
             </div>
-            <div class="hub-table-wrapper" style="max-height: 480px; overflow-y: auto;">
-              <table class="hub-table">
+            <div class="hub-table-wrapper dashboard-standings-wrapper" style="overflow-x: auto;">
+              <table class="hub-table dashboard-standings-table">
                 <thead>
                   <tr>
-                    <th style="text-align: center;">#</th>
+                    <th style="text-align: center; width: 36px;">#</th>
                     <th>สโมสร</th>
-                    <th style="text-align: center;">แข่ง</th>
-                    <th style="text-align: center;">ชนะ</th>
-                    <th style="text-align: center;">เสมอ</th>
-                    <th style="text-align: center;">แพ้</th>
-                    <th style="text-align: center;">ได้</th>
-                    <th style="text-align: center;">เสีย</th>
-                    <th style="text-align: center;">ต่าง</th>
-                    <th style="text-align: center;">แต้ม</th>
+                    <th style="text-align: center; width: 44px;">แข่ง</th>
+                    <th style="text-align: center; width: 44px;">ชนะ</th>
+                    <th style="text-align: center; width: 44px;">เสมอ</th>
+                    <th style="text-align: center; width: 44px;">แพ้</th>
+                    <th style="text-align: center; width: 44px;">ได้</th>
+                    <th style="text-align: center; width: 44px;">เสีย</th>
+                    <th style="text-align: center; width: 48px;">ต่าง</th>
+                    <th style="text-align: center; width: 50px;">แต้ม</th>
                   </tr>
                 </thead>
                 <tbody id="dashboardStandingsBody">
