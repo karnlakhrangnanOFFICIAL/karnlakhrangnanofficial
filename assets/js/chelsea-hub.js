@@ -26,7 +26,78 @@
   const CHELSEA_TEAM_ID = CHELSEA_MEN_CONFIG.teamId;
   const PREMIER_LEAGUE_CODE = 'PL';
 
-  // 1. ดึงผลการแข่งขันและโปรแกรมแข่งทั้งหมดของทีมชาย
+  // Helper: แปลง fixtures ใน data/fixtures.json เป็นรูปแบบ Football-Data API Matches
+  function convertLocalFixturesToMatches(fixtures) {
+    if (!Array.isArray(fixtures)) return [];
+    const chelseaFixtures = fixtures.filter(f => {
+      const isMen = !f.team_type || f.team_type === 'M';
+      const hasChe = (f.home_team || '').toLowerCase().includes('chelsea') ||
+                     (f.away_team || '').toLowerCase().includes('chelsea');
+      return isMen && hasChe;
+    });
+
+    return chelseaFixtures.map(f => {
+      const isHome = (f.home_team || '').toLowerCase().includes('chelsea');
+      const isCompleted = f.status === 'completed' || f.status === 'FINISHED';
+      const isLive = f.status === 'live' || f.status === 'IN_PLAY';
+      const status = isCompleted ? 'FINISHED' : (isLive ? 'IN_PLAY' : 'SCHEDULED');
+      const timeStr = (f.time && f.time !== 'TBC') ? f.time : '19:00';
+      const utcDate = f.date ? `${f.date}T${timeStr}:00Z` : new Date().toISOString();
+
+      let compCode = 'PL';
+      let compName = 'Premier League';
+      const compLower = (f.competition || '').toLowerCase();
+      if (compLower.includes('league-cup') || compLower.includes('carabao')) {
+        compCode = 'FLC';
+        compName = 'Carabao Cup';
+      } else if (compLower.includes('fa-cup')) {
+        compCode = 'FAC';
+        compName = 'FA Cup';
+      } else if (compLower.includes('friendly')) {
+        compCode = 'FRIENDLY';
+        compName = 'Club Friendly';
+      }
+
+      return {
+        id: f.id || ('m_' + Math.random().toString(36).substring(2, 8)),
+        utcDate: utcDate,
+        status: status,
+        matchday: f.matchday || f.round || null,
+        competition: {
+          id: 2021,
+          name: compName,
+          code: compCode,
+          emblem: f.competition_logo || null
+        },
+        homeTeam: {
+          id: isHome ? CHELSEA_MEN_CONFIG.teamId : 9999,
+          name: f.home_team,
+          shortName: f.home_team,
+          crest: f.home_logo || 'assets/images/placeholder-team.svg'
+        },
+        awayTeam: {
+          id: !isHome ? CHELSEA_MEN_CONFIG.teamId : 9999,
+          name: f.away_team,
+          shortName: f.away_team,
+          crest: f.away_logo || 'assets/images/placeholder-team.svg'
+        },
+        score: {
+          winner: isCompleted ? (f.home_score > f.away_score ? 'HOME_TEAM' : (f.home_score < f.away_score ? 'AWAY_TEAM' : 'DRAW')) : null,
+          duration: 'REGULAR',
+          fullTime: {
+            home: f.home_score ?? null,
+            away: f.away_score ?? null
+          },
+          halfTime: {
+            home: f.home_half_score ?? null,
+            away: f.away_half_score ?? null
+          }
+        }
+      };
+    });
+  }
+
+  // 1. ดึงผลการแข่งขันและโปรแกรมแข่งทั้งหมดของทีมชาย (พร้อม Fallback สำหรับ Vercel)
   async function getChelseaMenMatches(status = 'SCHEDULED,LIVE,IN_PLAY,PAUSED,FINISHED') {
     try {
       const statusQuery = status ? `?status=${status}` : '';
@@ -34,70 +105,153 @@
       try {
         res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/teams/${CHELSEA_MEN_CONFIG.teamId}/matches${statusQuery}`);
       } catch (e) {
-        // Fallback to direct fetch
+        // Proxy unavailable (e.g. on Vercel static)
       }
       if (!res || !res.ok) {
         res = await fetch(`https://api.football-data.org/v4/teams/${CHELSEA_MEN_CONFIG.teamId}/matches${statusQuery}`, {
           headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
         });
       }
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      const data = await res.json();
-      return data.matches || [];
+      if (res && res.ok) {
+        const data = await res.json();
+        if (data.matches && data.matches.length > 0) {
+          return data.matches;
+        }
+      }
     } catch (error) {
-      console.error("Error fetching matches:", error);
-      return [];
+      console.warn("API matches fetch unavailable, falling back to data/fixtures.json:", error);
     }
+
+    // Fallback: ดึงจาก data/fixtures.json สำหรับกรณี Vercel หรือออฟไลน์
+    try {
+      const localRes = await fetch('data/fixtures.json');
+      if (localRes.ok) {
+        const fixtures = await localRes.json();
+        const converted = convertLocalFixturesToMatches(fixtures);
+        if (converted.length > 0) return converted;
+      }
+    } catch (err) {
+      console.error("Local fixtures fallback error:", err);
+    }
+
+    return [];
   }
 
-  // 2. ดึงรายชื่อนักเตะและทีมงานสต๊าฟโค้ชทีมชาย (Chelsea FC Men Squad)
+  // 2. ดึงรายชื่อนักเตะและทีมงานสต๊าฟโค้ชทีมชาย (Chelsea FC Men Squad) (พร้อม Fallback สำหรับ Vercel)
   async function getChelseaMenSquad() {
     try {
       let res;
       try {
         res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/teams/${CHELSEA_MEN_CONFIG.teamId}`);
       } catch (e) {
-        // Fallback to direct fetch
+        // Fallback
       }
       if (!res || !res.ok) {
         res = await fetch(`https://api.football-data.org/v4/teams/${CHELSEA_MEN_CONFIG.teamId}`, {
           headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
         });
       }
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      const data = await res.json();
-      return {
-        squad: data.squad || [],
-        coach: data.coach || null,
-        team: data
-      };
+      if (res && res.ok) {
+        const data = await res.json();
+        return {
+          squad: data.squad || [],
+          coach: data.coach || null,
+          team: data
+        };
+      }
     } catch (error) {
-      console.error("Error fetching squad:", error);
-      return { squad: [], coach: null };
+      console.warn("API squad fetch unavailable, falling back to data/players-men.json:", error);
     }
+
+    // Fallback: ดึงจาก data/players-men.json
+    try {
+      const pRes = await fetch('data/players-men.json');
+      if (pRes.ok) {
+        const players = await pRes.json();
+        return {
+          squad: Array.isArray(players) ? players : [],
+          coach: { name: 'Enzo Maresca', nationality: 'Italy' },
+          team: { id: 61, name: 'Chelsea FC', shortName: 'Chelsea', tla: 'CHE' }
+        };
+      }
+    } catch (err) {
+      console.error("Local squad fallback error:", err);
+    }
+
+    return { squad: [], coach: { name: 'Enzo Maresca', nationality: 'Italy' } };
   }
 
-  // 3. ดึงตารางคะแนนพรีเมียร์ลีก (Premier League Standings)
+  // 3. ดึงตารางคะแนนพรีเมียร์ลีก (Premier League Standings) พร้อม Fallback อัตโนมัติไปยัง data/tables-men.json
   async function getPremierLeagueTable() {
+    // 1. ลองดึงผ่าน Proxy ของเซิร์ฟเวอร์ก่อน
     try {
-      let res;
-      try {
-        res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/competitions/PL/standings`);
-      } catch (e) {
-        // Fallback to direct fetch
+      let res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/competitions/PL/standings`);
+      if (!res.ok) {
+        res = await fetch('/api/epl-standings');
       }
-      if (!res || !res.ok) {
-        res = await fetch(`https://api.football-data.org/v4/competitions/PL/standings`, {
-          headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
-        });
+      if (res && res.ok) {
+        const data = await res.json();
+        const table = data.standings?.[0]?.table || data.data;
+        if (Array.isArray(table) && table.length > 0) {
+          return table;
+        }
       }
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      const data = await res.json();
-      return data.standings?.[0]?.table || [];
-    } catch (error) {
-      console.error("Error fetching table:", error);
-      return [];
+    } catch (e) {
+      // Proxy unavailable (เช่น โฮสต์บน Vercel.app)
     }
+
+    // 2. ลองดึงตรงจาก Football-Data.org API
+    try {
+      const res = await fetch(`https://api.football-data.org/v4/competitions/PL/standings`, {
+        headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
+      });
+      if (res && res.ok) {
+        const data = await res.json();
+        const table = data.standings?.[0]?.table;
+        if (Array.isArray(table) && table.length > 0) {
+          return table;
+        }
+      }
+    } catch (e) {
+      // Direct API fetch blocked by CORS on browser
+    }
+
+    // 3. Fallback อัตโนมัติ: โหลดจาก data/tables-men.json (แก้ปัญหา Vercel.app และกรณีออฟไลน์)
+    try {
+      console.warn("Football-data API unavailable, falling back to data/tables-men.json");
+      const localRes = await fetch('data/tables-men.json');
+      if (localRes.ok) {
+        const localData = await localRes.json();
+        const rawStandings = localData.standings || (Array.isArray(localData) ? localData : []);
+        if (rawStandings.length > 0) {
+          return rawStandings.map((row, idx) => {
+            const teamName = typeof row.team === 'string' ? row.team : (row.team?.name || 'Unknown');
+            const isChe = teamName.toLowerCase().includes('chelsea');
+            return {
+              position: row.pos ?? (idx + 1),
+              team: {
+                id: isChe ? CHELSEA_MEN_CONFIG.teamId : (row.id || (idx + 100)),
+                name: teamName,
+                shortName: teamName,
+                crest: row.logo || 'assets/images/placeholder-team.svg'
+              },
+              playedGames: row.p ?? 0,
+              won: row.w ?? 0,
+              draw: row.d ?? 0,
+              lost: row.l ?? 0,
+              goalsFor: row.gf ?? 0,
+              goalsAgainst: row.ga ?? 0,
+              goalDifference: row.gd ?? ((row.gf || 0) - (row.ga || 0)),
+              points: row.pts ?? 0
+            };
+          });
+        }
+      }
+    } catch (err) {
+      console.error("Local standings fallback error:", err);
+    }
+
+    return [];
   }
 
   // Expose on window object for global project scripts and console access
@@ -417,7 +571,7 @@
           </td>
           <td>
             <div class="hub-team-cell">
-              <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" />
+              <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               <span class="${isChelseaHome ? 'hub-team-chelsea' : ''}">${m.homeTeam.shortName || m.homeTeam.name}</span>
             </div>
           </td>
@@ -426,7 +580,7 @@
           </td>
           <td>
             <div class="hub-team-cell">
-              <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" />
+              <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               <span class="${isChelseaAway ? 'hub-team-chelsea' : ''}">${m.awayTeam.shortName || m.awayTeam.name}</span>
             </div>
           </td>
@@ -686,7 +840,7 @@
             <td style="font-weight: 700; width: 40px; text-align: center;">${row.position}</td>
             <td>
               <div class="hub-team-cell">
-                <img src="${row.team.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" />
+                <img src="${row.team.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
                 <span class="${isChelsea ? 'hub-team-chelsea' : ''}">${row.team.shortName || row.team.name}</span>
               </div>
             </td>
