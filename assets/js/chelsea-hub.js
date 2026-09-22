@@ -1138,16 +1138,25 @@
                 ${restUpcoming.map(m => {
                   const isHomeChe = isChelseaTeam(m.homeTeam);
                   const isAwayChe = isChelseaTeam(m.awayTeam);
+                  const homeName = m.homeTeam.shortName || m.homeTeam.name || 'Chelsea';
+                  const awayName = m.awayTeam.shortName || m.awayTeam.name || 'Opponent';
+                  const homeLogo = resolveLocalTeamLogo(homeName, m.homeTeam.crest);
+                  const awayLogo = resolveLocalTeamLogo(awayName, m.awayTeam.crest);
+
                   return `
                     <tr>
                       <td style="font-size: 0.82rem; color: #93c5fd; width: 140px;">${formatMatchDate(m.utcDate)}</td>
                       <td>
-                        <div class="hub-team-cell">
-                          <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" style="width: 20px; height: 20px;" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
-                          <span class="${isHomeChe ? 'hub-team-chelsea' : ''}">${m.homeTeam.shortName || m.homeTeam.name}</span>
-                          <span style="color: #93c5fd; margin: 0 4px;">vs</span>
-                          <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" style="width: 20px; height: 20px;" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
-                          <span class="${isAwayChe ? 'hub-team-chelsea' : ''}">${m.awayTeam.shortName || m.awayTeam.name}</span>
+                        <div class="hub-fixture-logos-cell">
+                          <div class="hub-logo-tooltip-wrap ${isHomeChe ? 'is-chelsea' : ''}" data-tooltip="${homeName}">
+                            <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" title="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                            <span class="hub-logo-tooltip">${homeName}</span>
+                          </div>
+                          <span class="hub-fixture-vs-badge">VS</span>
+                          <div class="hub-logo-tooltip-wrap ${isAwayChe ? 'is-chelsea' : ''}" data-tooltip="${awayName}">
+                            <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" title="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                            <span class="hub-logo-tooltip">${awayName}</span>
+                          </div>
                         </div>
                       </td>
                       <td style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-align: right;">${m.competition?.name || ''}</td>

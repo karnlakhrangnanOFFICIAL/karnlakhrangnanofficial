@@ -622,6 +622,103 @@
   height: 20px;
 }
 
+/* Upcoming Fixtures - Logo-Only with Tooltip */
+.hub-fixture-logos-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2px 0;
+}
+
+.hub-logo-tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hub-fixture-logo-only {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.22s ease;
+  vertical-align: middle;
+}
+
+.hub-logo-tooltip-wrap:hover .hub-fixture-logo-only {
+  transform: scale(1.22);
+  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.65));
+}
+
+.hub-logo-tooltip-wrap.is-chelsea .hub-fixture-logo-only {
+  filter: drop-shadow(0 2px 6px rgba(0, 51, 160, 0.6));
+}
+
+.hub-logo-tooltip-wrap.is-chelsea:hover .hub-fixture-logo-only {
+  filter: drop-shadow(0 4px 14px rgba(212, 175, 55, 0.8));
+}
+
+.hub-fixture-vs-badge {
+  font-family: "Space Mono", monospace, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #93c5fd;
+  background: rgba(0, 51, 160, 0.3);
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  padding: 1px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.hub-logo-tooltip {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(6, 19, 40, 0.95);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(147, 197, 253, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 60;
+  line-height: 1.3;
+}
+
+.hub-logo-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(6, 19, 40, 0.95) transparent transparent transparent;
+}
+
+.hub-logo-tooltip-wrap.is-chelsea .hub-logo-tooltip {
+  color: #fde047;
+  border-color: rgba(253, 224, 71, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(253, 224, 71, 0.2);
+}
+
+.hub-logo-tooltip-wrap:hover .hub-logo-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* Next Fixture Spotlight Card */
 .spotlight-card {
   background: linear-gradient(135deg, rgba(11, 32, 70, 0.95) 0%, rgba(6, 19, 40, 0.98) 100%);
