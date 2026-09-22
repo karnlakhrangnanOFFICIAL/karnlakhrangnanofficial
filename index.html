@@ -312,11 +312,16 @@
           <table class="hub-table">
             <thead>
               <tr>
-                <th>วันที่ / เวลา</th>
+                <th id="thMatchDate" class="sortable-th active-timeline-sort" style="cursor: pointer;" title="คลิกเพื่อสลับการเรียงลำดับไทม์ไลน์ (เก่าไปใหม่ / ใหม่ไปเก่า)">
+                  <div style="display: inline-flex; align-items: center; gap: 6px;">
+                    <span>🗓️ วันที่ / เวลา</span>
+                    <span class="timeline-badge" id="timelineSortBadge" style="font-size: 0.72rem; padding: 1px 6px; border-radius: 4px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-family: 'Space Mono', monospace;">ไทม์ไลน์ ⏱️</span>
+                  </div>
+                </th>
                 <th>รายการแข่งขัน</th>
-                <th>ทีมเหย้า</th>
+                <th style="text-align: center;">ทีมเหย้า</th>
                 <th style="text-align: center;">สกอร์ / ผลการแข่งขัน</th>
-                <th>ทีมเยือน</th>
+                <th style="text-align: center;">ทีมเยือน</th>
                 <th>สถานะ</th>
               </tr>
             </thead>

@@ -370,7 +370,8 @@
     matchesFilter: {
       status: 'all',
       competition: 'all',
-      search: ''
+      search: '',
+      sortOrder: 'asc' // Timeline order: 'asc' = chronological (oldest to newest)
     },
     managerFilter: {
       startDate: '2024-07-01',
@@ -606,6 +607,13 @@
       return true;
     });
 
+    // เรียงลำดับตามไทม์ไลน์ (Timeline chronological sort)
+    filtered.sort((a, b) => {
+      const timeA = new Date(a.utcDate).getTime() || 0;
+      const timeB = new Date(b.utcDate).getTime() || 0;
+      return (HubState.matchesFilter.sortOrder === 'desc') ? (timeB - timeA) : (timeA - timeB);
+    });
+
     if (countBadge) countBadge.textContent = `${filtered.length} แมตช์`;
 
     if (filtered.length === 0) {
@@ -670,6 +678,11 @@
 
       const compEmblem = m.competition?.emblem ? `<img src="${m.competition.emblem}" class="hub-comp-emblem" alt="" />` : '';
 
+      const homeName = m.homeTeam.shortName || m.homeTeam.name || 'Chelsea';
+      const awayName = m.awayTeam.shortName || m.awayTeam.name || 'Opponent';
+      const homeLogo = resolveLocalTeamLogo(homeName, m.homeTeam.crest);
+      const awayLogo = resolveLocalTeamLogo(awayName, m.awayTeam.crest);
+
       return `
         <tr ${rowAttrs}>
           <td style="white-space: nowrap; font-size: 0.85rem; color: #93c5fd;">
@@ -682,19 +695,23 @@
               <span>${m.competition?.name || 'Tournament'}</span>
             </div>
           </td>
-          <td>
-            <div class="hub-team-cell">
-              <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
-              <span class="${isChelseaHome ? 'hub-team-chelsea' : ''}">${m.homeTeam.shortName || m.homeTeam.name}</span>
+          <td style="text-align: center;">
+            <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
+              <div class="hub-logo-tooltip-wrap ${isChelseaHome ? 'is-chelsea' : ''}" data-tooltip="${homeName}">
+                <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" title="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                <span class="hub-logo-tooltip">${homeName}</span>
+              </div>
             </div>
           </td>
           <td style="text-align: center;">
             ${scoreBadgeHtml}
           </td>
-          <td>
-            <div class="hub-team-cell">
-              <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
-              <span class="${isChelseaAway ? 'hub-team-chelsea' : ''}">${m.awayTeam.shortName || m.awayTeam.name}</span>
+          <td style="text-align: center;">
+            <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
+              <div class="hub-logo-tooltip-wrap ${isChelseaAway ? 'is-chelsea' : ''}" data-tooltip="${awayName}">
+                <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" title="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                <span class="hub-logo-tooltip">${awayName}</span>
+              </div>
             </div>
           </td>
           <td>
@@ -872,23 +889,32 @@
           aria-label="ดูรายละเอียดแมตช์ ${matchTitle}"
         ` : '';
 
+        const homeName = m.homeTeam.shortName || m.homeTeam.name || 'Chelsea';
+        const awayName = m.awayTeam.shortName || m.awayTeam.name || 'Opponent';
+        const homeLogo = resolveLocalTeamLogo(homeName, m.homeTeam.crest);
+        const awayLogo = resolveLocalTeamLogo(awayName, m.awayTeam.crest);
+
         return `
           <tr ${rowAttrs}>
             <td style="font-size: 0.85rem; color: #93c5fd;">${formatMatchDate(m.utcDate)}</td>
             <td style="font-size: 0.82rem;">${m.competition?.name || 'Tournament'}</td>
-            <td>
-              <div class="hub-team-cell">
-                <img src="${m.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" />
-                <span class="${isChelseaHome ? 'hub-team-chelsea' : ''}">${m.homeTeam.shortName || m.homeTeam.name}</span>
+            <td style="text-align: center;">
+              <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
+                <div class="hub-logo-tooltip-wrap ${isChelseaHome ? 'is-chelsea' : ''}" data-tooltip="${homeName}">
+                  <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" title="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                  <span class="hub-logo-tooltip">${homeName}</span>
+                </div>
               </div>
             </td>
             <td style="text-align: center;">
               <span class="hub-score-badge ${badgeClass}">${homeScore} - ${awayScore}</span>
             </td>
-            <td>
-              <div class="hub-team-cell">
-                <img src="${m.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="hub-team-crest" alt="" />
-                <span class="${isChelseaAway ? 'hub-team-chelsea' : ''}">${m.awayTeam.shortName || m.awayTeam.name}</span>
+            <td style="text-align: center;">
+              <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
+                <div class="hub-logo-tooltip-wrap ${isChelseaAway ? 'is-chelsea' : ''}" data-tooltip="${awayName}">
+                  <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" title="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                  <span class="hub-logo-tooltip">${awayName}</span>
+                </div>
               </div>
             </td>
           </tr>
@@ -2169,6 +2195,19 @@
     if (refreshDashboardBtn) {
       refreshDashboardBtn.addEventListener('click', () => {
         loadDashboardData();
+      });
+    }
+
+    // Timeline Sort Header Toggle
+    const thMatchDate = document.getElementById('thMatchDate');
+    if (thMatchDate) {
+      thMatchDate.addEventListener('click', () => {
+        HubState.matchesFilter.sortOrder = (HubState.matchesFilter.sortOrder === 'asc') ? 'desc' : 'asc';
+        const badge = document.getElementById('timelineSortBadge');
+        if (badge) {
+          badge.textContent = HubState.matchesFilter.sortOrder === 'asc' ? 'ไทม์ไลน์ (เก่า→ใหม่) ⬆' : 'ไทม์ไลน์ (ใหม่→เก่า) ⬇';
+        }
+        renderMatchesTable();
       });
     }
 
