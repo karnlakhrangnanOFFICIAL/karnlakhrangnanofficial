@@ -342,6 +342,46 @@ function renderResults(container, results, badgeClass) {
     .join("");
 }
 
+function getLocalTeamLogo(teamName, fallbackLogo) {
+  if (!teamName) return fallbackLogo || "databases/logo/teams/england_chelsea.svg";
+  const name = teamName.toLowerCase();
+  if (name.includes("city lionesses") || name.includes("london city")) return "databases/logo/teams/London_City_Lionesses.svg";
+  if (name.includes("manchester city") || name.includes("man city")) return "databases/logo/teams/england_manchester-city.svg";
+  if (name.includes("manchester united") || name.includes("man utd")) return "databases/logo/teams/england_manchester-united.svg";
+  if (name.includes("chelsea") || name === "kanlakhrangnan") return "databases/logo/teams/england_chelsea.svg";
+  if (name.includes("tottenham") || name.includes("spurs")) return "databases/logo/teams/england_tottenham--2006-2013.svg";
+  if (name.includes("arsenal")) return "databases/logo/teams/england_arsenal.svg";
+  if (name.includes("aston villa")) return "databases/logo/teams/england_aston-villa.svg";
+  if (name.includes("birmingham")) return "databases/logo/teams/england_birmingham.svg";
+  if (name.includes("bournemouth")) return "databases/logo/teams/england_bournemouth.svg";
+  if (name.includes("brentford")) return "databases/logo/teams/england_brentford.svg";
+  if (name.includes("brighton")) return "databases/logo/teams/england_brighton.svg";
+  if (name.includes("charlton")) return "databases/logo/teams/england_charlton.svg";
+  if (name.includes("coventry")) return "databases/logo/teams/england_coventry-city.svg";
+  if (name.includes("crystal palace")) return "databases/logo/teams/england_crystal-palace.svg";
+  if (name.includes("everton")) return "databases/logo/teams/england_everton.svg";
+  if (name.includes("fulham")) return "databases/logo/teams/england_fulham.svg";
+  if (name.includes("hull")) return "databases/logo/teams/england_hull-city.svg";
+  if (name.includes("ipswich")) return "databases/logo/teams/england_ipswich.svg";
+  if (name.includes("leeds")) return "databases/logo/teams/england_leeds-united.svg";
+  if (name.includes("liverpool")) return "databases/logo/teams/england_liverpool.svg";
+  if (name.includes("luton")) return "databases/logo/teams/england_luton.svg";
+  if (name.includes("newcastle")) return "databases/logo/teams/england_newcastle.svg";
+  if (name.includes("nottingham")) return "databases/logo/teams/england_nottingham-forest.svg";
+  if (name.includes("sunderland")) return "databases/logo/teams/england_sunderland.svg";
+  if (name.includes("west ham")) return "databases/logo/teams/england_west-ham.svg";
+  if (name.includes("juventus")) return "databases/logo/teams/italy_juventus--white.svg";
+  if (name.includes("milan")) return "databases/logo/teams/italy_milan.svg";
+  if (name.includes("sociedad")) return "databases/logo/teams/spain_real-sociedad.svg";
+  if (name.includes("auckland")) return "databases/logo/teams/new-zealand_auckland-fc.svg";
+  if (name.includes("wanderers")) return "databases/logo/teams/australia_western-sydney-wanderers.svg";
+  if (name.includes("johor") || name.includes("tazim")) return "databases/logo/teams/malaysia_johor-darul-tazim.svg";
+  if (name.includes("all stars") || name.includes("all-stars")) return "databases/logo/teams/a-league-women-all-stars.svg";
+  
+  if (fallbackLogo && fallbackLogo.startsWith("databases/logo/teams/")) return fallbackLogo;
+  return fallbackLogo || "databases/logo/teams/england_chelsea.svg";
+}
+
 function renderTable(container, table, highlightTeam, compLogo, compName) {
   if (!table || table.length === 0) {
     container.innerHTML =
@@ -365,6 +405,7 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
               typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(row.team) : row.team;
             let posNum = parseInt(row.pos, 10);
             let posClass = "";
+            let teamLogo = getLocalTeamLogo(row.team, row.logo);
 
             if (isWomenPage) {
               if (posNum >= 1 && posNum <= 2) posClass = "pos-ucl";
@@ -380,7 +421,7 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
             return `
           <tr class="${posClass} ${row.team === highlightTeam ? "highlight" : ""}">
             <td>${row.pos}</td>
-            <td class="logo-cell">${row.logo ? `<img src="${row.logo}" alt="${row.team}" class="table-team-logo" onerror="this.style.display='none'">` : ""}</td>
+            <td class="logo-cell">${teamLogo ? `<img src="${teamLogo}" alt="${row.team}" class="table-team-logo" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';">` : ""}</td>
             <td class="team-cell">${teamHtml}</td>
             <td>${row.p}</td><td>${row.w}</td><td>${row.d}</td><td>${row.l}</td>
             <td>${row.gf}</td><td>${row.ga}</td><td>${row.gd}</td>
