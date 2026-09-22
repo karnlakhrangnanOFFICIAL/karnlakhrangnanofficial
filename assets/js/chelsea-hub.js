@@ -1018,7 +1018,7 @@
 
         return `
           <tr class="${isChelsea ? 'row-highlight' : ''}">
-            <td style="font-weight: 700; width: 36px; text-align: center;">${row.position}</td>
+            <td style="font-weight: 700; width: 28px; text-align: center;">${row.position}</td>
             <td>
               <div class="hub-team-cell">
                 <img src="${teamCrest}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />

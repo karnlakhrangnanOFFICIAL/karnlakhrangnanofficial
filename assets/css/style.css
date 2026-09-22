@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
 
 /* ============================================
    ฟอนต์ Anakotmai (Webfont)
@@ -33,6 +33,7 @@
 
 /* ============================================
    KANLAKHRANGNAN Official - Main Stylesheet
+   Design Variation 6: Chelsea Hub - Editorial Portfolio
    ============================================ */
 
 /* ---------- RESET & BASE ---------- */
@@ -43,43 +44,49 @@
 }
 
 /* ============================================
-   THEMES: Classic Blue & Modern Dark
+   THEMES: Editorial Portfolio (Default), Classic Blue & Modern Dark
    ============================================ */
-:root {
-  /* Default: Classic Blue (Official Chelsea Stamford Bridge Identity) */
-  --bg: #061328;
-  --bg-card: #0b2046;
-  --bg-card-hover: #112c5c;
-  --bg-header: #040e1f;
-  --navbar-bg: #040e1f;
-  --hero-bg: linear-gradient(180deg, #030a17 0%, #061530 100%);
-  --table-header-bg: #051329;
-  --card-bg: #0b2046;
-  --card-border: 1px solid rgba(147, 197, 253, 0.16);
-  --border-color: rgba(147, 197, 253, 0.16);
-  --ink: #ffffff;
-  --text-color: #ffffff;
-  --text-muted: #93c5fd;
+:root,
+:root[data-theme="editorial"],
+html[data-theme="editorial"],
+body.theme-editorial {
+  /* Editorial Portfolio Identity */
+  --bg: #f8f7f4;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f2ed;
+  --bg-header: #ffffff;
+  --navbar-bg: #ffffff;
+  --hero-bg: #f8f7f4;
+  --table-header-bg: #f2f0ea;
+  --card-bg: #ffffff;
+  --card-border: 1px solid rgba(26, 26, 26, 0.08);
+  --border-color: rgba(26, 26, 26, 0.08);
+  --ink: #1a1a1a;
+  --text-color: #1a1a1a;
+  --text-muted: #64748b;
   --accent: #0033a0;
-  --accent-light: #38bdf8;
-  --accent-glow: rgba(0, 51, 160, 0.35);
-  --ink-faint: rgba(147, 197, 253, 0.15);
-  --ink-muted: #93c5fd;
+  --accent-light: #1e60d5;
+  --accent-glow: rgba(0, 51, 160, 0.15);
+  --faint: rgba(26, 26, 26, 0.05);
+  --ink-faint: rgba(26, 26, 26, 0.06);
+  --ink-muted: #64748b;
   --blue-dark: #001489;
   --blue: #0033a0;
   --blue-light: #1e60d5;
-  --gold: #d4af37;
-  --gold-light: #f0d060;
+  --gold: #b38e1b;
+  --gold-light: #d4af37;
   --white: #ffffff;
-  --gray-100: #0b2046;
-  --gray-200: rgba(147, 197, 253, 0.15);
-  --gray-800: #ffffff;
-  --shadow: 0 6px 24px rgba(2, 6, 23, 0.5);
+  --gray-100: #f8f7f4;
+  --gray-200: #eae8e1;
+  --gray-800: #1a1a1a;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
   --radius: 8px;
+  --radius-lg: 12px;
   --transition: 0.25s ease;
-  --body-gradient:
-    radial-gradient(circle at 80% 10%, rgba(3, 70, 148, 0.3), transparent 60%),
-    radial-gradient(circle at 10% 80%, rgba(0, 20, 137, 0.2), transparent 50%);
+  --body-gradient: none;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Mono', monospace;
 }
 
 /* Explicit Classic Blue */
@@ -102,6 +109,7 @@ body.theme-classic-blue {
   --accent: #0033a0;
   --accent-light: #38bdf8;
   --accent-glow: rgba(0, 51, 160, 0.35);
+  --faint: rgba(147, 197, 253, 0.08);
   --ink-faint: rgba(147, 197, 253, 0.15);
   --ink-muted: #93c5fd;
   --blue-dark: #001489;
@@ -139,6 +147,7 @@ body.theme-modern-dark {
   --accent: #0033a0;
   --accent-light: #1e50d6;
   --accent-glow: rgba(0, 51, 160, 0.25);
+  --faint: rgba(255, 255, 255, 0.06);
   --ink-faint: rgba(255, 255, 255, 0.1);
   --ink-muted: rgba(255, 255, 255, 0.6);
   --blue-dark: #001489;
@@ -152,6 +161,14 @@ body.theme-modern-dark {
   --gray-800: #ffffff;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   --body-gradient: radial-gradient(circle at top right, rgba(0, 51, 160, 0.15), transparent 60%);
+}
+
+.meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
 }
 
 body {
@@ -322,6 +339,190 @@ img {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* ---------- EDITORIAL PORTFOLIO (VARIATION 6) STYLES ---------- */
+header.editorial-header,
+.editorial-header {
+  padding: 35px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.editorial-header .brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.editorial-header .brand .meta {
+  color: var(--ink);
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.editorial-header .brand h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3.2rem;
+  font-style: italic;
+  line-height: 0.88;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.editorial-header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.editorial-header nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.editorial-header nav a:hover,
+.editorial-header nav a.active {
+  color: var(--accent);
+  opacity: 1;
+  font-weight: 700;
+}
+
+/* --- HERO EDITORIAL SPLIT SECTION --- */
+.hero-editorial-section {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  padding: 35px 50px 60px;
+  gap: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 1080px) {
+  .hero-editorial-section {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  header.editorial-header,
+  .editorial-header {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* --- NEWS COLUMN --- */
+.news-column {
+  overflow-y: auto;
+  padding-right: 15px;
+  scrollbar-width: thin;
+}
+
+.news-featured {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+.news-featured img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.news-featured h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.2rem;
+  font-style: italic;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.news-featured p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.news-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.news-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.news-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.news-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-top: 4px;
+}
+
+/* --- EDITORIAL FOOTER --- */
+footer.editorial-footer,
+.editorial-footer {
+  padding: 24px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  background: var(--navbar-bg);
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* ---------- HERO SECTION ---------- */
