@@ -159,8 +159,12 @@ async function loadTeamsData() {
 
 function getTeamInfo(teamName) {
   if (!teamName) return null;
-  if (!teamsDataMap) return null;
-  const norm = teamName.toLowerCase().trim();
+  const rawStr =
+    typeof teamName === "object" && teamName !== null
+      ? teamName.shortName || teamName.name || ""
+      : String(teamName);
+  if (!rawStr || !teamsDataMap) return null;
+  const norm = rawStr.toLowerCase().trim();
   if (teamsDataMap.has(norm)) return teamsDataMap.get(norm);
 
   // Normalize variations e.g. "Chelsea FC", "Chelsea Women"
@@ -175,7 +179,11 @@ function getTeamInfo(teamName) {
 
 function formatTeamName(teamName, options = {}) {
   if (!teamName) return "";
-  const info = getTeamInfo(teamName);
+  const rawStr =
+    typeof teamName === "object" && teamName !== null
+      ? teamName.shortName || teamName.name || ""
+      : String(teamName);
+  const info = getTeamInfo(rawStr);
   const lang = options.lang || window.currentLang || "th";
   const isMobile = options.isMobile !== undefined ? options.isMobile : window.innerWidth <= 768;
 
@@ -187,21 +195,25 @@ function formatTeamName(teamName, options = {}) {
     return info.th;
   }
 
-  return info && info.en ? info.en : teamName;
+  return info && info.en ? info.en : rawStr;
 }
 
 function renderTeamNameHTML(teamName, options = {}) {
   if (!teamName) return "";
-  const info = getTeamInfo(teamName);
+  const rawStr =
+    typeof teamName === "object" && teamName !== null
+      ? teamName.shortName || teamName.name || ""
+      : String(teamName);
+  const info = getTeamInfo(rawStr);
   const lang = options.lang || window.currentLang || "th";
-  const thName = info && info.th ? info.th : teamName;
-  const enName = info && info.en ? info.en : teamName;
-  const shortName = info && info.short ? info.short : teamName;
+  const thName = info && info.th ? info.th : rawStr;
+  const enName = info && info.en ? info.en : rawStr;
+  const shortName = info && info.short ? info.short : rawStr;
   const fullDisplay = lang === "th" ? thName : enName;
 
   const isChelsea =
-    teamName.toLowerCase().includes("chelsea") || teamName.toLowerCase() === "kanlakhrangnan";
-  const isArsenal = teamName.toLowerCase().includes("arsenal");
+    rawStr.toLowerCase().includes("chelsea") || rawStr.toLowerCase() === "kanlakhrangnan";
+  const isArsenal = rawStr.toLowerCase().includes("arsenal");
 
   let styleStr = "color: #ffffff !important;";
   if (isChelsea) {

@@ -1868,3 +1868,171 @@ html[data-theme="editorial"] .spotlight-countdown-val,
   font-family: 'Space Mono', monospace;
   color: #0033a0;
 }
+
+/* Coach Profile Card Styling */
+.coach-profile-card {
+  background: linear-gradient(135deg, rgba(6, 26, 64, 0.9) 0%, rgba(2, 14, 38, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.coach-profile-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.coach-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(147, 197, 253, 0.15);
+}
+
+.coach-avatar-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0033a0 0%, #1e40af 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  border: 2.5px solid #38bdf8;
+  box-shadow: 0 4px 14px rgba(0, 51, 160, 0.5), 0 0 12px rgba(56, 189, 248, 0.3);
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.coach-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.coach-meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.coach-meta-chip {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(147, 197, 253, 0.2);
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  color: #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.coach-meta-chip strong {
+  color: #93c5fd;
+}
+
+.coach-highlights-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.9rem 0;
+}
+
+.coach-trophy-tag {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #fef08a;
+  border-radius: 9999px;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.coach-bio-box {
+  margin-top: 1rem;
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(147, 197, 253, 0.12);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  position: relative;
+}
+
+.coach-bio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.coach-bio-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.coach-bio-toggle-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #93c5fd;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coach-bio-toggle-btn:hover {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+.coach-bio-content {
+  font-size: 0.84rem;
+  line-height: 1.68;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.coach-bio-content p {
+  margin: 0;
+}
+
+.coach-bio-content p:first-of-type {
+  color: #f1f5f9;
+  font-size: 0.88rem;
+}
+

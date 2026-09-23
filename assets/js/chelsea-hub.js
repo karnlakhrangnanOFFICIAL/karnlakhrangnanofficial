@@ -225,7 +225,7 @@
         const players = await pRes.json();
         return {
           squad: Array.isArray(players) ? players : [],
-          coach: { name: 'Enzo Maresca', nationality: 'Italy' },
+          coach: { name: 'Xabi Alonso', nationality: 'Spanish', role: 'Manager' },
           team: { id: 61, name: 'Chelsea FC', shortName: 'Chelsea', tla: 'CHE' }
         };
       }
@@ -233,7 +233,7 @@
       console.error("Local squad fallback error:", err);
     }
 
-    return { squad: [], coach: { name: 'Enzo Maresca', nationality: 'Italy' } };
+    return { squad: [], coach: { name: 'Xabi Alonso', nationality: 'Spanish', role: 'Manager' } };
   }
 
   // 3. ดึงตารางคะแนนพรีเมียร์ลีก (Premier League Standings) พร้อม Fallback อัตโนมัติไปยัง data/tables-men.json
@@ -374,9 +374,9 @@
       sortOrder: 'asc' // Timeline order: 'asc' = chronological (oldest to newest)
     },
     managerFilter: {
-      startDate: '2024-07-01',
+      startDate: '2026-07-01',
       endDate: new Date().toISOString().split('T')[0],
-      managerName: 'Enzo Maresca'
+      managerName: 'Xabi Alonso'
     },
     h2hSelectedOpponent: 57, // Default Arsenal FC
     countdownInterval: null,
@@ -774,7 +774,8 @@
   // 2. MANAGER TIMELINE & PERFORMANCE FILTER & SUMMARY REPORT
   // ==========================================================================
   const MANAGER_PRESETS = [
-    { name: 'Enzo Maresca', start: '2024-07-01', end: new Date().toISOString().split('T')[0], label: 'Enzo Maresca (2024 - ปัจจุบัน)' },
+    { name: 'Xabi Alonso', start: '2026-07-01', end: new Date().toISOString().split('T')[0], label: 'Xabi Alonso (2026 - ปัจจุบัน)' },
+    { name: 'Enzo Maresca', start: '2024-07-01', end: '2026-06-30', label: 'Enzo Maresca (2024 - 2026)' },
     { name: 'Mauricio Pochettino', start: '2023-07-01', end: '2024-05-31', label: 'M. Pochettino (2023 - 2024)' },
     { name: 'Frank Lampard (Interim)', start: '2023-04-06', end: '2023-05-28', label: 'Frank Lampard (2023)' },
     { name: 'Graham Potter', start: '2022-09-08', end: '2023-04-02', label: 'Graham Potter (2022 - 2023)' },
@@ -1649,26 +1650,107 @@
         }
       }
 
-      // 2. Render Coach Profile (Enzo Maresca)
+      // 2. Render Coach Profile (Xabi Alonso)
       if (coachContainer) {
         coachContainer.innerHTML = `
-          <div style="background: rgba(0, 51, 160, 0.25); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 1.1rem 1.35rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;">
-            <div style="display: flex; align-items: center; gap: 0.9rem;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #0033a0, #1e40af); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">👔</div>
-              <div>
-                <div style="font-size: 0.75rem; color: #38bdf8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Head Coach / หัวหน้าผู้ฝึกสอน</div>
-                <div style="font-size: 1.2rem; font-weight: 800; color: #ffffff;">Enzo Maresca</div>
+          <div class="coach-profile-card">
+            <div class="coach-header-row">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="coach-avatar-badge" title="Xabi Alonso">
+                  <img src="https://img.chelseafc.com/image/upload/f_auto,h_860,q_50/editorial/people/management/2026-27/Xabi_Alonso_2026-27_profile_avatar-removebg.png" alt="Xabi Alonso" class="coach-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <span class="coach-avatar-fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">XA</span>
+                </div>
+                <div>
+                  <div style="font-size: 0.78rem; color: #38bdf8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
+                    <span>👔</span>
+                    <span>Manager / ผู้จัดการทีมชุดใหญ่</span>
+                  </div>
+                  <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
+                    Xabi Alonso
+                  </div>
+                </div>
+              </div>
+
+              <div class="coach-meta-badges">
+                <div class="coach-meta-chip">
+                  <span>🇪🇸</span>
+                  <span><strong>สัญชาติ:</strong> ESP 'Spanish'</span>
+                </div>
+                <div class="coach-meta-chip">
+                  <span>👔</span>
+                  <span><strong>ตำแหน่ง:</strong> Manager</span>
+                </div>
+                <div class="coach-meta-chip">
+                  <span>📅</span>
+                  <span><strong>เริ่มคุมทีม:</strong> 1 July 2026 (4-year contract)</span>
+                </div>
               </div>
             </div>
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; font-size: 0.85rem; color: #93c5fd;">
-              <div>🌍 <strong>สัญชาติ:</strong> อิตาลี (Italy)</div>
-              <div>📅 <strong>เริ่มคุมทีม:</strong> ก.ค. 2024 (สัญญาถึง 2029)</div>
-              <div style="background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 6px; color: #38bdf8; font-weight: 600;">
-                👔 ผู้จัดการทีมชุดใหญ่
+
+            <!-- Key Honours & Milestones -->
+            <div class="coach-highlights-row">
+              <span class="coach-trophy-tag">🏆 ไร้พ่ายประวัติศาสตร์ บุนเดสลีกา (2023/24)</span>
+              <span class="coach-trophy-tag">🛡️ สถิติยุโรป ไม่แพ้ติดต่อกัน 51 นัด</span>
+              <span class="coach-trophy-tag">🏆 DFB-Pokal & German Super Cup</span>
+              <span class="coach-trophy-tag">🌍 แชมป์ฟุตบอลโลก 2010 & ยูโร 2008, 2012</span>
+              <span class="coach-trophy-tag">⭐ แชมป์ยูฟ่า แชมเปียนส์ ลีก 2 สมัย</span>
+            </div>
+
+            <!-- Detailed Biography Box -->
+            <div class="coach-bio-box">
+              <div class="coach-bio-header" id="coachBioToggle">
+                <div class="coach-bio-title">
+                  <span>📖</span>
+                  <span>ประวัติและบทสัมภาษณ์เปิดตัว (Official Biography)</span>
+                </div>
+                <button type="button" class="coach-bio-toggle-btn" id="coachBioToggleBtn">
+                  ย่อ/ขยายเนื้อหา ▼
+                </button>
+              </div>
+              <div class="coach-bio-content" id="coachBioContent">
+                <p>
+                  "One of the most respected figures in the modern game, Alonso arrived at Chelsea on a four‑year contract having already experienced coaching at the highest level of European football with Real Madrid and Bayer Leverkusen. He led the German club to the first league title in their history."
+                </p>
+                <p>
+                  "His appointment at Chelsea reflects the club’s belief in his broad set of experiences, coaching quality and game model, leadership attributes, character and integrity, which were key to the decision to ask him to help lead the next phase of Chelsea’s journey."
+                </p>
+                <p>
+                  "He is regarded not only as an outstanding football coach, but also as a proven leader and partner across a number of areas essential to the demands of driving the team."
+                </p>
+                <p>
+                  "At Bayer Leverkusen during the historic 2023/24 Bundesliga title-winning season, Alonso’s team were unbeaten throughout that campaign, contributing to setting a new European record for any club of 51 competitive matches without defeat in all competitions."
+                </p>
+                <p>
+                  "In the same season they won the DFB-Pokal, the main knockout cup competition in Germany, and that was followed up by the German Super Cup. Leverkusen were also runners-up in the UEFA Europa League. Naturally, Alonso won a host of individual manager honours that year."
+                </p>
+                <p>
+                  "As a player, Alonso was part of Spain’s golden generation that won the 2010 World Cup and two European Championships, in 2008 and 2012."
+                </p>
+                <p>
+                  "At club level, he won the Champions League with Liverpool and Real Madrid and domestic league titles with Real and Bayern Munich, as well as cup competitions with all three clubs."
+                </p>
               </div>
             </div>
           </div>
         `;
+
+        // Bind collapsible toggle listener
+        const toggleBtn = document.getElementById('coachBioToggleBtn');
+        const toggleHeader = document.getElementById('coachBioToggle');
+        const bioContent = document.getElementById('coachBioContent');
+        if (toggleBtn && bioContent) {
+          const handleToggle = () => {
+            if (bioContent.style.display === 'none') {
+              bioContent.style.display = 'flex';
+              toggleBtn.textContent = 'ย่อเนื้อหา ▲';
+            } else {
+              bioContent.style.display = 'none';
+              toggleBtn.textContent = 'ขยายอ่านทั้งหมด ▼';
+            }
+          };
+          toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); handleToggle(); });
+          if (toggleHeader) toggleHeader.addEventListener('click', handleToggle);
+        }
       }
 
       renderSquadCards('ALL');

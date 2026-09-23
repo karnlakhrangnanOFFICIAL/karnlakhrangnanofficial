@@ -343,8 +343,18 @@ function renderResults(container, results, badgeClass) {
 }
 
 function getLocalTeamLogo(teamName, fallbackLogo) {
-  if (!teamName) return fallbackLogo || "databases/logo/teams/england_chelsea.svg";
-  const name = teamName.toLowerCase();
+  const nameStr =
+    typeof teamName === "object" && teamName !== null
+      ? teamName.shortName || teamName.name || ""
+      : String(teamName || "");
+  const fallback =
+    typeof fallbackLogo === "string"
+      ? fallbackLogo
+      : typeof teamName === "object" && teamName?.crest
+      ? teamName.crest
+      : "";
+  if (!nameStr) return fallback || "databases/logo/teams/england_chelsea.svg";
+  const name = nameStr.toLowerCase();
   if (name.includes("city lionesses") || name.includes("london city")) return "databases/logo/teams/London_City_Lionesses.svg";
   if (name.includes("manchester city") || name.includes("man city")) return "databases/logo/teams/england_manchester-city.svg";
   if (name.includes("manchester united") || name.includes("man utd")) return "databases/logo/teams/england_manchester-united.svg";
@@ -378,8 +388,8 @@ function getLocalTeamLogo(teamName, fallbackLogo) {
   if (name.includes("johor") || name.includes("tazim")) return "databases/logo/teams/malaysia_johor-darul-tazim.svg";
   if (name.includes("all stars") || name.includes("all-stars")) return "databases/logo/teams/a-league-women-all-stars.svg";
   
-  if (fallbackLogo && fallbackLogo.startsWith("databases/logo/teams/")) return fallbackLogo;
-  return fallbackLogo || "databases/logo/teams/england_chelsea.svg";
+  if (fallback && fallback.startsWith("databases/logo/teams/")) return fallback;
+  return fallback || "databases/logo/teams/england_chelsea.svg";
 }
 
 function renderTable(container, table, highlightTeam, compLogo, compName) {
@@ -401,11 +411,18 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
       <tbody>
         ${table
           .map((row, index) => {
+            const rawTeamName =
+              typeof row.team === "object" && row.team !== null
+                ? row.team.shortName || row.team.name || ""
+                : row.team || "";
+            const rawTeamLogo =
+              row.logo ||
+              (typeof row.team === "object" && row.team !== null ? row.team.crest : "");
             let teamHtml =
-              typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(row.team) : row.team;
-            let posNum = parseInt(row.pos, 10);
+              typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(rawTeamName) : rawTeamName;
+            let posNum = parseInt(row.pos ?? row.position ?? index + 1, 10);
             let posClass = "";
-            let teamLogo = getLocalTeamLogo(row.team, row.logo);
+            let teamLogo = getLocalTeamLogo(row.team, rawTeamLogo);
 
             if (isWomenPage) {
               if (posNum >= 1 && posNum <= 2) posClass = "pos-ucl";
@@ -418,14 +435,28 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
               else if (posNum >= 18) posClass = "pos-rel";
             }
 
+            const p = row.p ?? row.playedGames ?? 0;
+            const w = row.w ?? row.won ?? 0;
+            const d = row.d ?? row.draw ?? 0;
+            const l = row.l ?? row.lost ?? 0;
+            const gf = row.gf ?? row.goalsFor ?? 0;
+            const ga = row.ga ?? row.goalsAgainst ?? 0;
+            const gd = row.gd ?? row.goalDifference ?? gf - ga;
+            const pts = row.pts ?? row.points ?? 0;
+
+            const isHighlighted =
+              rawTeamName.toLowerCase().includes("chelsea") ||
+              (highlightTeam &&
+                rawTeamName.toLowerCase().includes(String(highlightTeam).toLowerCase()));
+
             return `
-          <tr class="${posClass} ${row.team === highlightTeam ? "highlight" : ""}">
-            <td>${row.pos}</td>
-            <td class="logo-cell">${teamLogo ? `<img src="${teamLogo}" alt="${row.team}" class="table-team-logo" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';">` : ""}</td>
+          <tr class="${posClass} ${isHighlighted ? "highlight" : ""}">
+            <td>${posNum}</td>
+            <td class="logo-cell">${teamLogo ? `<img src="${teamLogo}" alt="${rawTeamName}" class="table-team-logo" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';">` : ""}</td>
             <td class="team-cell">${teamHtml}</td>
-            <td>${row.p}</td><td>${row.w}</td><td>${row.d}</td><td>${row.l}</td>
-            <td>${row.gf}</td><td>${row.ga}</td><td>${row.gd}</td>
-            <td><strong>${row.pts}</strong></td>
+            <td>${p}</td><td>${w}</td><td>${d}</td><td>${l}</td>
+            <td>${gf}</td><td>${ga}</td><td>${gd}</td>
+            <td><strong>${pts}</strong></td>
           </tr>
           `;
           })
@@ -720,8 +751,9 @@ async function loadMenTable() {
       return;
     }
     const table = Array.isArray(data) ? data : data.standings || data.table || [];
-    const compLogo = data?.competition_logo || "";
-    const compName = data?.competition || "";
+    const compLogo =
+      data?.competition_logo || "databases/logo/competitions/men/premier-league.png";
+    const compName = data?.competition || "Premier League";
     renderTable(container, table, "Chelsea", compLogo, compName);
   } catch (e) {
     container.innerHTML =
@@ -834,8 +866,9 @@ async function loadWomenTable() {
       return;
     }
     const table = Array.isArray(data) ? data : data.standings || data.table || [];
-    const compLogo = data?.competition_logo || "";
-    const compName = data?.competition || "";
+    const compLogo =
+      data?.competition_logo || "databases/logo/competitions/women/women_super_league.png";
+    const compName = data?.competition || "Barclays Women's Super League";
     renderTable(container, table, "Chelsea Women", compLogo, compName);
   } catch (e) {
     container.innerHTML =
