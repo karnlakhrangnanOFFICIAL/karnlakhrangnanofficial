@@ -848,6 +848,83 @@
   margin-top: 0.35rem;
 }
 
+/* Live Goalscorers Section */
+.spotlight-goalscorers-box {
+  margin: 0.9rem 0 0.5rem 0;
+  padding: 0.65rem 0.85rem;
+  background: rgba(4, 14, 31, 0.65);
+  border: 1px solid rgba(147, 197, 253, 0.14);
+  border-radius: 8px;
+}
+
+.spotlight-goalscorers-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.spotlight-goalscorers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: 0.78rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-top: 0.45rem;
+}
+
+.scorers-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.scorers-col.home {
+  text-align: left;
+}
+
+.scorers-col.away {
+  text-align: right;
+}
+
+.scorers-col-header {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 0.15rem;
+}
+
+.scorer-item {
+  color: #f1f5f9;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.scorers-col.away .scorer-item {
+  justify-content: flex-end;
+}
+
+.scorer-minute {
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.scorer-empty {
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+  font-size: 0.72rem;
+}
+
 .spotlight-live-status-bar {
   margin-top: 1.1rem;
   background: rgba(4, 14, 31, 0.7);
@@ -901,6 +978,117 @@
 
 .live-refresh-mini-btn:hover {
   background: #0033a0;
+  color: #ffffff;
+}
+
+/* Live Demo Mode Toggle & Simulation Controls */
+.live-demo-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 0.28rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.live-demo-toggle-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+}
+
+.live-demo-toggle-btn.is-active {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  color: #ffffff;
+  border-color: #f87171;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+.spotlight-sim-controls {
+  margin-top: 1rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(4, 14, 31, 0.85);
+  border: 1px dashed rgba(239, 68, 68, 0.4);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sim-controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #fca5a5;
+  font-weight: 700;
+}
+
+.sim-controls-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.sim-btn {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  color: #f1f5f9;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.sim-btn:hover {
+  background: #0033a0;
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.sim-btn-goal-chelsea {
+  background: rgba(2, 70, 148, 0.35);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #93c5fd;
+}
+
+.sim-btn-goal-chelsea:hover {
+  background: #034694;
+  color: #ffffff;
+}
+
+.sim-btn-goal-opp {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+.sim-btn-goal-opp:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.sim-btn-close {
+  background: rgba(71, 85, 105, 0.4);
+  color: #cbd5e1;
+}
+
+.sim-btn-close:hover {
+  background: rgba(71, 85, 105, 0.8);
   color: #ffffff;
 }
 
@@ -1491,4 +1679,192 @@
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   Editorial Portfolio (Variation 6) Theme Additions for Chelsea Hub
+   ========================================================================== */
+html[data-theme="editorial"] .hub-header-card,
+:root[data-theme="editorial"] .hub-header-card,
+body.theme-editorial .hub-header-card {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+html[data-theme="editorial"] .hub-header-title h2,
+:root[data-theme="editorial"] .hub-header-title h2,
+body.theme-editorial .hub-header-title h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.85rem;
+  font-style: italic;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
+
+html[data-theme="editorial"] .hub-header-subtitle,
+:root[data-theme="editorial"] .hub-header-subtitle,
+body.theme-editorial .hub-header-subtitle {
+  color: #64748b;
+}
+
+html[data-theme="editorial"] .hub-nav-tabs,
+:root[data-theme="editorial"] .hub-nav-tabs,
+body.theme-editorial .hub-nav-tabs {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+html[data-theme="editorial"] .hub-tab-btn,
+:root[data-theme="editorial"] .hub-tab-btn,
+body.theme-editorial .hub-tab-btn {
+  color: #64748b;
+  font-weight: 700;
+}
+
+html[data-theme="editorial"] .hub-tab-btn:hover,
+:root[data-theme="editorial"] .hub-tab-btn:hover,
+body.theme-editorial .hub-tab-btn:hover {
+  color: #1a1a1a;
+  background: rgba(26, 26, 26, 0.04);
+}
+
+html[data-theme="editorial"] .hub-tab-btn.active,
+:root[data-theme="editorial"] .hub-tab-btn.active,
+body.theme-editorial .hub-tab-btn.active {
+  background: #0033a0;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 51, 160, 0.25);
+}
+
+html[data-theme="editorial"] .hub-kpi-card,
+:root[data-theme="editorial"] .hub-kpi-card,
+body.theme-editorial .hub-kpi-card,
+html[data-theme="editorial"] .hub-table-wrapper,
+:root[data-theme="editorial"] .hub-table-wrapper,
+body.theme-editorial .hub-table-wrapper,
+html[data-theme="editorial"] .hub-match-card,
+:root[data-theme="editorial"] .hub-match-card,
+body.theme-editorial .hub-match-card,
+html[data-theme="editorial"] .hub-filters-bar,
+:root[data-theme="editorial"] .hub-filters-bar,
+body.theme-editorial .hub-filters-bar,
+html[data-theme="editorial"] .hub-standings-preview-card,
+:root[data-theme="editorial"] .hub-standings-preview-card,
+body.theme-editorial .hub-standings-preview-card,
+html[data-theme="editorial"] .hub-fixtures-preview-card,
+:root[data-theme="editorial"] .hub-fixtures-preview-card,
+body.theme-editorial .hub-fixtures-preview-card {
+  background: #ffffff;
+  border-color: rgba(26, 26, 26, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+html[data-theme="editorial"] .hub-kpi-value,
+:root[data-theme="editorial"] .hub-kpi-value,
+body.theme-editorial .hub-kpi-value {
+  color: #1a1a1a;
+  font-family: 'Space Mono', monospace;
+}
+
+html[data-theme="editorial"] .hub-kpi-label,
+:root[data-theme="editorial"] .hub-kpi-label,
+body.theme-editorial .hub-kpi-label {
+  color: #64748b;
+  font-family: 'Space Mono', monospace;
+}
+
+html[data-theme="editorial"] .hub-table th,
+:root[data-theme="editorial"] .hub-table th,
+body.theme-editorial .hub-table th {
+  background: #f4f3ee;
+  color: #64748b;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+html[data-theme="editorial"] .hub-table td,
+:root[data-theme="editorial"] .hub-table td,
+body.theme-editorial .hub-table td {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.05);
+  color: #1a1a1a;
+}
+
+html[data-theme="editorial"] .hub-table tbody tr:hover,
+:root[data-theme="editorial"] .hub-table tbody tr:hover,
+body.theme-editorial .hub-table tbody tr:hover {
+  background: rgba(0, 51, 160, 0.03);
+}
+
+html[data-theme="editorial"] .hub-table tbody tr.row-highlight,
+:root[data-theme="editorial"] .hub-table tbody tr.row-highlight,
+body.theme-editorial .hub-table tbody tr.row-highlight {
+  background: rgba(0, 51, 160, 0.05);
+  border-left: 3px solid #0033a0;
+}
+
+html[data-theme="editorial"] .hub-input-group input[type="date"],
+html[data-theme="editorial"] .hub-input-group select,
+html[data-theme="editorial"] .hub-input-group input[type="text"] {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  color: #1a1a1a;
+}
+
+html[data-theme="editorial"] .standings-switch-bar {
+  background: #f2f0ea;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+html[data-theme="editorial"] .standings-nav-btn {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  color: #1a1a1a;
+}
+
+html[data-theme="editorial"] .standings-gender-toggle {
+  background: #e8e6df;
+}
+
+html[data-theme="editorial"] .standings-toggle-item {
+  color: #64748b;
+}
+
+html[data-theme="editorial"] .standings-toggle-item.active {
+  background: #0033a0;
+  color: #ffffff;
+}
+
+html[data-theme="editorial"] .hub-btn,
+:root[data-theme="editorial"] .hub-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-color: rgba(26, 26, 26, 0.15);
+}
+
+html[data-theme="editorial"] .hub-btn:hover,
+:root[data-theme="editorial"] .hub-btn:hover {
+  background: #0033a0;
+  color: #ffffff;
+  border-color: #0033a0;
+}
+
+html[data-theme="editorial"] .spotlight-card,
+:root[data-theme="editorial"] .spotlight-card {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+html[data-theme="editorial"] .spotlight-vs,
+:root[data-theme="editorial"] .spotlight-vs {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: #1a1a1a;
+}
+
+html[data-theme="editorial"] .spotlight-countdown-val,
+:root[data-theme="editorial"] .spotlight-countdown-val {
+  font-family: 'Space Mono', monospace;
+  color: #0033a0;
 }

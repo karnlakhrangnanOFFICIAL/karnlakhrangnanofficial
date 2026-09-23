@@ -2296,32 +2296,33 @@ function toggleLanguage() {
 }
 
 // ============================================
-// THEME SWITCHER: Classic Blue & Modern Dark
+// THEME SWITCHER: Editorial, Classic Blue & Modern Dark
 // ============================================
 const THEMES = {
+  EDITORIAL: "editorial",
   CLASSIC_BLUE: "classic-blue",
   MODERN_DARK: "modern-dark",
 };
 
 let currentTheme =
-  localStorage.getItem("theme") || localStorage.getItem("chelsea_theme") || THEMES.CLASSIC_BLUE;
+  localStorage.getItem("theme") || localStorage.getItem("chelsea_theme") || THEMES.EDITORIAL;
 window.currentTheme = currentTheme;
 
 function applyTheme(theme, persist = true) {
-  if (theme !== THEMES.CLASSIC_BLUE && theme !== THEMES.MODERN_DARK) {
-    theme = THEMES.CLASSIC_BLUE;
+  if (theme !== THEMES.EDITORIAL && theme !== THEMES.CLASSIC_BLUE && theme !== THEMES.MODERN_DARK) {
+    theme = THEMES.EDITORIAL;
   }
   currentTheme = theme;
   window.currentTheme = theme;
 
   if (document.documentElement) {
     document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.classList.remove("theme-classic-blue", "theme-modern-dark");
+    document.documentElement.classList.remove("theme-editorial", "theme-classic-blue", "theme-modern-dark");
     document.documentElement.classList.add(`theme-${theme}`);
   }
   if (document.body) {
     document.body.setAttribute("data-theme", theme);
-    document.body.classList.remove("theme-classic-blue", "theme-modern-dark");
+    document.body.classList.remove("theme-editorial", "theme-classic-blue", "theme-modern-dark");
     document.body.classList.add(`theme-${theme}`);
   }
 
@@ -2342,18 +2343,37 @@ function applyTheme(theme, persist = true) {
 }
 
 function toggleTheme() {
-  const nextTheme = currentTheme === THEMES.CLASSIC_BLUE ? THEMES.MODERN_DARK : THEMES.CLASSIC_BLUE;
+  let nextTheme;
+  if (currentTheme === THEMES.EDITORIAL) {
+    nextTheme = THEMES.CLASSIC_BLUE;
+  } else if (currentTheme === THEMES.CLASSIC_BLUE) {
+    nextTheme = THEMES.MODERN_DARK;
+  } else {
+    nextTheme = THEMES.EDITORIAL;
+  }
   applyTheme(nextTheme, true);
 }
 
 function updateThemeToggleUI() {
   const isTh = (window.currentLang || currentLang || "th") === "th";
-  const isClassic = currentTheme === THEMES.CLASSIC_BLUE;
+  
+  let currentLabel = "Editorial";
+  let nextLabel = "Classic Blue";
+  let icon = "📰";
 
-  const classicLabel = translations?.nav?.theme_classic || (isTh ? "คลาสสิคบลู" : "Classic Blue");
-  const darkLabel = translations?.nav?.theme_dark || (isTh ? "โมเดิร์นดาร์ก" : "Modern Dark");
-  const currentLabel = isClassic ? classicLabel : darkLabel;
-  const nextLabel = isClassic ? darkLabel : classicLabel;
+  if (currentTheme === THEMES.EDITORIAL) {
+    currentLabel = isTh ? "เอ็ดดิโทเรียล" : "Editorial";
+    nextLabel = isTh ? "คลาสสิคบลู" : "Classic Blue";
+    icon = "📰";
+  } else if (currentTheme === THEMES.CLASSIC_BLUE) {
+    currentLabel = isTh ? "คลาสสิคบลู" : "Classic Blue";
+    nextLabel = isTh ? "โมเดิร์นดาร์ก" : "Modern Dark";
+    icon = "🔵";
+  } else {
+    currentLabel = isTh ? "โมเดิร์นดาร์ก" : "Modern Dark";
+    nextLabel = isTh ? "เอ็ดดิโทเรียล" : "Editorial";
+    icon = "🌙";
+  }
 
   const tooltipText = isTh
     ? `เปลี่ยนธีมเป็น ${nextLabel} (ปัจจุบัน: ${currentLabel})`
@@ -2369,7 +2389,7 @@ function updateThemeToggleUI() {
 
     const iconEl = btn.querySelector(".theme-icon, #themeIcon");
     if (iconEl) {
-      iconEl.textContent = isClassic ? "🔵" : "🌙";
+      iconEl.textContent = icon;
     }
     const labelEl = btn.querySelector(".theme-label, #themeLabel");
     if (labelEl) {

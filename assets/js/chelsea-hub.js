@@ -383,7 +383,9 @@
     livePollingInterval: null,
     liveSyncCountdown: 12, // 10-15 seconds delay (12s default)
     lastLiveScoreKey: null,
-    isLivePollingActive: false
+    isLivePollingActive: false,
+    isLiveSimulation: false,
+    simulatedLiveMatch: null
   };
 
   // Safe API Fetch with Direct Token & Proxy Fallback
@@ -607,6 +609,17 @@
       return true;
     });
 
+    // If live simulation is running and matches status filter, prepend simulated match
+    if (HubState.isLiveSimulation && HubState.simulatedLiveMatch) {
+      if (status === 'all' || status === 'LIVE') {
+        const simMatch = HubState.simulatedLiveMatch;
+        const matchesComp = (competition === 'all' || simMatch.competition?.code === competition);
+        if (matchesComp) {
+          filtered = [simMatch, ...filtered.filter(m => m.id !== simMatch.id)];
+        }
+      }
+    }
+
     // เรียงลำดับตามไทม์ไลน์ (Timeline chronological sort)
     filtered.sort((a, b) => {
       const timeA = new Date(a.utcDate).getTime() || 0;
@@ -634,6 +647,8 @@
       const isFinished = m.status === 'FINISHED';
 
       let scoreBadgeHtml = '';
+      let goalscorersSnippet = '';
+
       if (isFinished) {
         const homeScore = m.score?.fullTime?.home ?? '-';
         const awayScore = m.score?.fullTime?.away ?? '-';
@@ -643,6 +658,18 @@
             ${homeScore} - ${awayScore}
           </span>
         `;
+      } else if (m.status === 'IN_PLAY' || m.status === 'PAUSED') {
+        const homeScore = m.score?.fullTime?.home ?? (m.score?.current?.home ?? 0);
+        const awayScore = m.score?.fullTime?.away ?? (m.score?.current?.away ?? 0);
+        scoreBadgeHtml = `
+          <span class="hub-score-badge" style="font-weight: 800; font-size: 0.95rem; border: 1px solid #ef4444; color: #ffffff; background: rgba(239, 68, 68, 0.28); display: inline-flex; align-items: center; gap: 5px;">
+            <span class="live-pulse-dot" style="width: 7px; height: 7px; margin: 0;"></span>${homeScore} - ${awayScore}
+          </span>
+        `;
+        if (m.goals && m.goals.length > 0) {
+          const scorersText = m.goals.map(g => `${g.player} ${g.minute}'`).join(', ');
+          goalscorersSnippet = `<div style="font-size: 0.72rem; color: #cbd5e1; margin-top: 4px; white-space: normal; line-height: 1.3;" title="${scorersText}">⚽ ${scorersText}</div>`;
+        }
       } else {
         const timeStr = new Date(m.utcDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
         scoreBadgeHtml = `<span class="hub-score-badge" style="color: #93c5fd; font-size: 0.82rem;">${timeStr}</span>`;
@@ -669,8 +696,8 @@
         `;
       } else if (m.status === 'IN_PLAY' || m.status === 'PAUSED') {
         statusClass = 'hub-status-live';
-        statusLabel = 'กำลังแข่งขัน';
-        rowAttrs = `class="${outcome === 'W' ? 'row-highlight' : ''}"`;
+        statusLabel = m.status === 'PAUSED' ? '⏸️ พักครึ่ง' : `🔴 กำลังแข่ง ${m.minute ? '(' + m.minute + "')" : ''}`;
+        rowAttrs = `class="row-highlight"`;
       } else {
         statusLabel = 'ยังไม่เริ่ม';
         rowAttrs = `class="${outcome === 'W' ? 'row-highlight' : ''}"`;
@@ -705,6 +732,7 @@
           </td>
           <td style="text-align: center;">
             ${scoreBadgeHtml}
+            ${goalscorersSnippet}
           </td>
           <td style="text-align: center;">
             <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
@@ -1065,6 +1093,21 @@
     const upcomingListContainer = document.getElementById('upcomingFixturesList');
     if (!HubState.matches.length) return;
 
+    // 0. Check if Live Simulation is active
+    if (HubState.isLiveSimulation && HubState.simulatedLiveMatch) {
+      if (HubState.countdownInterval) {
+        clearInterval(HubState.countdownInterval);
+        HubState.countdownInterval = null;
+      }
+      renderLiveSpotlight(HubState.simulatedLiveMatch);
+      startLiveScorePolling(HubState.simulatedLiveMatch);
+      if (upcomingListContainer) {
+        const restUpcoming = HubState.matches.filter(m => m.status !== 'FINISHED');
+        renderUpcomingList(upcomingListContainer, restUpcoming);
+      }
+      return;
+    }
+
     // 1. Check if there is an active LIVE match currently in progress
     const liveMatch = HubState.matches.find(m => isMatchLive(m));
 
@@ -1197,6 +1240,52 @@
     }
   }
 
+  function initSimulatedLiveMatch() {
+    return {
+      id: 999999,
+      status: 'IN_PLAY',
+      minute: 68,
+      utcDate: new Date().toISOString(),
+      competition: { name: 'Premier League', emblem: 'databases/logo/leagues/premier_league.svg', code: 'PL' },
+      homeTeam: { id: CHELSEA_TEAM_ID, name: 'Chelsea FC', shortName: 'Chelsea', crest: 'databases/logo/teams/england_chelsea.svg' },
+      awayTeam: { id: 57, name: 'Arsenal FC', shortName: 'Arsenal', crest: 'databases/logo/teams/england_arsenal.svg' },
+      score: {
+        fullTime: { home: 2, away: 1 },
+        halfTime: { home: 1, away: 0 }
+      },
+      goals: [
+        { team: 'home', player: 'Cole Palmer', minute: 24, type: 'regular' },
+        { team: 'away', player: 'B. Saka', minute: 41, type: 'regular' },
+        { team: 'home', player: 'N. Jackson', minute: 58, type: 'regular' }
+      ]
+    };
+  }
+
+  function toggleLiveDemo() {
+    HubState.isLiveSimulation = !HubState.isLiveSimulation;
+    const btn = document.getElementById('btnToggleLiveDemo');
+    const btnText = document.getElementById('btnToggleLiveDemoText');
+
+    if (HubState.isLiveSimulation) {
+      HubState.simulatedLiveMatch = initSimulatedLiveMatch();
+      if (btn) btn.classList.add('is-active');
+      if (btnText) btnText.textContent = '⏹️ สิ้นสุดการทดสอบ Live';
+      if (HubState.countdownInterval) {
+        clearInterval(HubState.countdownInterval);
+        HubState.countdownInterval = null;
+      }
+      renderLiveSpotlight(HubState.simulatedLiveMatch, true);
+      startLiveScorePolling(HubState.simulatedLiveMatch);
+    } else {
+      HubState.simulatedLiveMatch = null;
+      if (btn) btn.classList.remove('is-active');
+      if (btnText) btnText.textContent = 'ทดสอบระบบ Live Score 🔴';
+      stopLiveScorePolling();
+      updateDashboardFixtures();
+    }
+    renderMatchesTable();
+  }
+
   function renderLiveSpotlight(match, scoreChanged = false) {
     const spotlightContainer = document.getElementById('nextFixtureSpotlight');
     if (!spotlightContainer || !match) return;
@@ -1217,6 +1306,77 @@
     } else if (match.status === 'IN_PLAY') {
       liveStatusText = match.minute ? `⏱️ นาทีที่ ${match.minute}'` : '⚽ กำลังแข่งขันสด (In Play)';
     }
+
+    // Parse Goalscorers
+    const goalsList = match.goals || match.events?.filter(e => e.type === 'Goal' || e.type === 'goal') || [];
+    const homeGoals = [];
+    const awayGoals = [];
+
+    goalsList.forEach(g => {
+      const isHomeGoal = g.team === 'home' || g.team?.id === match.homeTeam.id || g.teamId === match.homeTeam.id;
+      const scorerObj = {
+        name: g.player?.name || g.player || g.scorer?.name || 'ผู้เล่น',
+        minute: g.minute || g.time || 0,
+        type: g.type || ''
+      };
+      if (isHomeGoal) {
+        homeGoals.push(scorerObj);
+      } else {
+        awayGoals.push(scorerObj);
+      }
+    });
+
+    const homeGoalsHtml = homeGoals.length > 0 
+      ? homeGoals.map(g => `<div class="scorer-item"><span>⚽ ${g.name}</span><span class="scorer-minute">${g.minute}'</span></div>`).join('')
+      : `<span class="scorer-empty">ยังไม่มีผู้ทำประตู</span>`;
+
+    const awayGoalsHtml = awayGoals.length > 0
+      ? awayGoals.map(g => `<div class="scorer-item"><span>⚽ ${g.name}</span><span class="scorer-minute">${g.minute}'</span></div>`).join('')
+      : `<span class="scorer-empty">ยังไม่มีผู้ทำประตู</span>`;
+
+    const goalscorersHtml = `
+      <div class="spotlight-goalscorers-box">
+        <div class="spotlight-goalscorers-title">
+          <span>⚽ ผู้ทำประตู (Goalscorers)</span>
+        </div>
+        <div class="spotlight-goalscorers-grid">
+          <div class="scorers-col home">
+            <div class="scorers-col-header">${match.homeTeam.shortName || match.homeTeam.name}</div>
+            ${homeGoalsHtml}
+          </div>
+          <div class="scorers-col away">
+            <div class="scorers-col-header">${match.awayTeam.shortName || match.awayTeam.name}</div>
+            ${awayGoalsHtml}
+          </div>
+        </div>
+      </div>
+    `;
+
+    const simControlsHtml = HubState.isLiveSimulation ? `
+      <div class="spotlight-sim-controls">
+        <div class="sim-controls-header">
+          <span>🎮 แผงควบคุมทดสอบระบบ Live Score (Simulation Active)</span>
+          <span style="font-size: 0.72rem; color: #93c5fd;">ทดสอบอัปเดตสกอร์และรายชื่อคนทำประตู</span>
+        </div>
+        <div class="sim-controls-buttons">
+          <button type="button" class="sim-btn sim-btn-goal-chelsea" id="simGoalChelseaBtn" title="เพิ่มสกอร์และผู้ทำประตูเชลซี">
+            ⚽ เชลซียิงเข้า (+1)
+          </button>
+          <button type="button" class="sim-btn sim-btn-goal-opp" id="simGoalOpponentBtn" title="เพิ่มสกอร์และผู้ทำประตูอาร์เซน่อล">
+            ⚽ อาร์เซน่อลยิง (+1)
+          </button>
+          <button type="button" class="sim-btn" id="simPlusMinuteBtn" title="เลื่อนนาทีการแข่งขัน">
+            ⏱️ +5 นาที
+          </button>
+          <button type="button" class="sim-btn" id="simToggleHtBtn" title="สลับพักครึ่ง/แข่งต่อ">
+            ⏸️ สลับสถานะ (พักครึ่ง / แข่งต่อ)
+          </button>
+          <button type="button" class="sim-btn sim-btn-close" id="simStopTestBtn" title="ออกจากโหมดจำลอง">
+            ⏹️ สิ้นสุดการทดสอบ
+          </button>
+        </div>
+      </div>
+    ` : '';
 
     spotlightContainer.innerHTML = `
       <div class="spotlight-card spotlight-live-card">
@@ -1253,7 +1413,9 @@
           </div>
         </div>
 
-        <div style="text-align: center; font-size: 0.85rem; color: #ffffff; font-weight: 600;">
+        ${goalscorersHtml}
+
+        <div style="text-align: center; font-size: 0.82rem; color: #cbd5e1; margin-top: 0.6rem;">
           📅 ${formatMatchDate(match.utcDate)} • 🏟️ ${venue}
         </div>
 
@@ -1267,8 +1429,70 @@
             ⚡ รีเฟรชทันที
           </button>
         </div>
+
+        ${simControlsHtml}
       </div>
     `;
+
+    // Bind simulation controls if simulation active
+    if (HubState.isLiveSimulation) {
+      const btnGoalChe = document.getElementById('simGoalChelseaBtn');
+      if (btnGoalChe) {
+        btnGoalChe.onclick = () => {
+          if (!HubState.simulatedLiveMatch) return;
+          const chelseaPool = ['Cole Palmer', 'N. Jackson', 'C. Nkunku', 'Enzo Fernández', 'Pedro Neto', 'N. Madueke', 'Jadon Sancho', 'Malo Gusto'];
+          const scorer = chelseaPool[Math.floor(Math.random() * chelseaPool.length)];
+          const curMin = Math.min(90, (HubState.simulatedLiveMatch.minute || 68) + 2);
+          HubState.simulatedLiveMatch.minute = curMin;
+          HubState.simulatedLiveMatch.score.fullTime.home = (HubState.simulatedLiveMatch.score.fullTime.home || 0) + 1;
+          if (!HubState.simulatedLiveMatch.goals) HubState.simulatedLiveMatch.goals = [];
+          HubState.simulatedLiveMatch.goals.push({ team: 'home', player: scorer, minute: curMin, type: 'regular' });
+          renderLiveSpotlight(HubState.simulatedLiveMatch, true);
+          renderMatchesTable();
+        };
+      }
+
+      const btnGoalOpp = document.getElementById('simGoalOpponentBtn');
+      if (btnGoalOpp) {
+        btnGoalOpp.onclick = () => {
+          if (!HubState.simulatedLiveMatch) return;
+          const arsenalPool = ['B. Saka', 'Kai Havertz', 'G. Martinelli', 'Declan Rice', 'L. Trossard', 'M. Ødegaard'];
+          const scorer = arsenalPool[Math.floor(Math.random() * arsenalPool.length)];
+          const curMin = Math.min(90, (HubState.simulatedLiveMatch.minute || 68) + 2);
+          HubState.simulatedLiveMatch.minute = curMin;
+          HubState.simulatedLiveMatch.score.fullTime.away = (HubState.simulatedLiveMatch.score.fullTime.away || 0) + 1;
+          if (!HubState.simulatedLiveMatch.goals) HubState.simulatedLiveMatch.goals = [];
+          HubState.simulatedLiveMatch.goals.push({ team: 'away', player: scorer, minute: curMin, type: 'regular' });
+          renderLiveSpotlight(HubState.simulatedLiveMatch, true);
+          renderMatchesTable();
+        };
+      }
+
+      const btnPlusMin = document.getElementById('simPlusMinuteBtn');
+      if (btnPlusMin) {
+        btnPlusMin.onclick = () => {
+          if (!HubState.simulatedLiveMatch) return;
+          HubState.simulatedLiveMatch.minute = Math.min(90, (HubState.simulatedLiveMatch.minute || 68) + 5);
+          renderLiveSpotlight(HubState.simulatedLiveMatch, false);
+          renderMatchesTable();
+        };
+      }
+
+      const btnToggleHt = document.getElementById('simToggleHtBtn');
+      if (btnToggleHt) {
+        btnToggleHt.onclick = () => {
+          if (!HubState.simulatedLiveMatch) return;
+          HubState.simulatedLiveMatch.status = (HubState.simulatedLiveMatch.status === 'IN_PLAY') ? 'PAUSED' : 'IN_PLAY';
+          renderLiveSpotlight(HubState.simulatedLiveMatch, false);
+          renderMatchesTable();
+        };
+      }
+
+      const btnStopTest = document.getElementById('simStopTestBtn');
+      if (btnStopTest) {
+        btnStopTest.onclick = toggleLiveDemo;
+      }
+    }
 
     // Bind manual refresh button
     const btnRefresh = document.getElementById('btnLiveManualRefresh');
@@ -1276,7 +1500,13 @@
       btnRefresh.addEventListener('click', async () => {
         btnRefresh.textContent = '⏳ กำลังดึง...';
         btnRefresh.disabled = true;
-        await refreshLiveScoreData(match);
+        if (HubState.isLiveSimulation) {
+          await new Promise(r => setTimeout(r, 400));
+          HubState.liveSyncCountdown = 12;
+          renderLiveSpotlight(HubState.simulatedLiveMatch, false);
+        } else {
+          await refreshLiveScoreData(match);
+        }
         btnRefresh.textContent = '⚡ รีเฟรชทันที';
         btnRefresh.disabled = false;
       });
@@ -1301,7 +1531,15 @@
 
       if (HubState.liveSyncCountdown <= 0) {
         HubState.liveSyncCountdown = 12; // Reset countdown
-        await refreshLiveScoreData(match);
+        if (HubState.isLiveSimulation) {
+          // In simulation mode, advance clock and trigger pulse
+          if (HubState.simulatedLiveMatch && HubState.simulatedLiveMatch.status === 'IN_PLAY') {
+            HubState.simulatedLiveMatch.minute = Math.min(90, (HubState.simulatedLiveMatch.minute || 68) + 1);
+            renderLiveSpotlight(HubState.simulatedLiveMatch, false);
+          }
+        } else {
+          await refreshLiveScoreData(match);
+        }
       }
     }, 1000);
   }
@@ -2229,6 +2467,12 @@
         closePlayerStatsModal();
       }
     });
+
+    // Live Demo Simulation Toggle
+    const btnToggleLiveDemo = document.getElementById('btnToggleLiveDemo');
+    if (btnToggleLiveDemo) {
+      btnToggleLiveDemo.addEventListener('click', toggleLiveDemo);
+    }
 
     // Initial Load Calls
     loadChelseaMatches();
