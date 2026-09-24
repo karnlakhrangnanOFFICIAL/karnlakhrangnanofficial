@@ -512,7 +512,39 @@ header.editorial-header,
   margin-top: 4px;
 }
 
-/* --- NEWS CAROUSEL RESPONSIVENESS --- */
+/* --- NEWS CAROUSEL RESPONSIVENESS & HOVER EFFECTS --- */
+.news-carousel-card {
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.28s ease, filter 0.28s ease;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.news-carousel-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  z-index: 2;
+}
+
+.news-carousel-card .card {
+  transition: border-color 0.28s ease, box-shadow 0.28s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.news-carousel-card:hover .card {
+  border-color: rgba(3, 70, 148, 0.35) !important;
+  box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(3, 70, 148, 0.1) !important;
+}
+
+.news-carousel-card .card img {
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.news-carousel-card:hover .card img {
+  transform: scale(1.05) !important;
+}
+
+.news-carousel-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
 #newsCarousel > .card-link,
 #newsCarousel > .news-carousel-card,
 #newsCarousel > .news-carousel-skeleton {
@@ -989,27 +1021,40 @@ footer.editorial-footer,
   background: var(--ink-muted);
 }
 
-.league-table tr.pos-ucl td:first-child {
+.league-table tr.pos-ucl td:first-child,
+.league-table tr.pos-first-tier td:first-child {
   border-left: 4px solid #0057b7;
 }
 
-.league-table tr.pos-uel td:first-child {
+.league-table tr.pos-uel td:first-child,
+.league-table tr.pos-second-tier td:first-child {
   border-left: 4px solid #f6851f;
 }
 
-.league-table tr.pos-uecl td:first-child {
+.league-table tr.pos-uecl td:first-child,
+.league-table tr.pos-third-tier td:first-child {
   border-left: 4px solid #10b981;
 }
 
-.league-table tr.pos-uwcl-qual td:first-child {
+.league-table tr.pos-promotion td:first-child {
+  border-left: 4px solid #22c55e;
+}
+
+.league-table tr.pos-uwcl-qual td:first-child,
+.league-table tr.pos-playoff td:first-child {
   border-left: 4px solid #00b4d8;
+}
+
+.league-table tr.pos-promo-po td:first-child {
+  border-left: 4px solid #8b5cf6;
 }
 
 .league-table tr.pos-rel-po td:first-child {
   border-left: 4px solid #f59e0b;
 }
 
-.league-table tr.pos-rel td:first-child {
+.league-table tr.pos-rel td:first-child,
+.league-table tr.pos-relegation td:first-child {
   border-left: 4px solid #e11d48;
 }
 
@@ -1095,27 +1140,40 @@ footer.editorial-footer,
   margin-top: 5px;
 }
 
-.legend-dot.ucl {
+.legend-dot.ucl,
+.legend-dot.first-tier {
   background-color: #0057b7;
   box-shadow: 0 0 6px rgba(0, 87, 183, 0.4);
 }
-.legend-dot.uel {
+.legend-dot.uel,
+.legend-dot.second-tier {
   background-color: #f6851f;
   box-shadow: 0 0 6px rgba(246, 133, 31, 0.4);
 }
-.legend-dot.uecl {
+.legend-dot.uecl,
+.legend-dot.third-tier {
   background-color: #10b981;
   box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
 }
-.legend-dot.uwcl-qual {
+.legend-dot.promotion {
+  background-color: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.4);
+}
+.legend-dot.uwcl-qual,
+.legend-dot.playoff {
   background-color: #00b4d8;
   box-shadow: 0 0 6px rgba(0, 180, 216, 0.4);
+}
+.legend-dot.promo-po {
+  background-color: #8b5cf6;
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.4);
 }
 .legend-dot.rel-po {
   background-color: #f59e0b;
   box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
 }
-.legend-dot.rel {
+.legend-dot.rel,
+.legend-dot.relegation {
   background-color: #e11d48;
   box-shadow: 0 0 6px rgba(225, 29, 72, 0.4);
 }

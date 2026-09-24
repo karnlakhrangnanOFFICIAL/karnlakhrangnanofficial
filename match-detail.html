@@ -1590,6 +1590,7 @@
         try {
           const params = new URLSearchParams(window.location.search);
           let matchId = params.get("id");
+          const teamParam = params.get("team") || "";
 
           // Load players data
           try {
@@ -1674,6 +1675,23 @@
             const res = await fetch("data/fixtures.json");
             if (res.ok) allMatches = await res.json();
           } catch (e) {}
+
+          if (teamParam === "women" || (matchId && matchId.startsWith("w"))) {
+            try {
+              const resW = await fetch("data/fixtures-women.json");
+              if (resW.ok) {
+                const womenMatches = await resW.json();
+                if (Array.isArray(womenMatches)) {
+                  // Merge women matches
+                  womenMatches.forEach(wm => {
+                    const idx = allMatches.findIndex(m => String(m.id) === String(wm.id));
+                    if (idx >= 0) allMatches[idx] = { ...allMatches[idx], ...wm };
+                    else allMatches.push(wm);
+                  });
+                }
+              }
+            } catch (e) {}
+          }
 
           let match = null;
           if (matchId) {
@@ -2244,6 +2262,9 @@
 
           const renderTimelineCard = (e) => {
             let eType = e.type;
+            if (e.type === "card") {
+              eType = (e.card === "red" || e.detail === "red") ? "red_card" : "yellow_card";
+            }
             if (
               e.type === "goal" &&
               (e.detail === "Own Goal" || (e.player && e.player.includes("(OG)")))
@@ -2410,6 +2431,36 @@
         }
 
         statsTabHtml = generateMatchStatsHTML(statsData, match.home_team, match.away_team, lang);
+
+        if (match.goalkeeper_stats && Array.isArray(match.goalkeeper_stats) && match.goalkeeper_stats.length > 0) {
+          const gkRows = match.goalkeeper_stats.map(gk => `
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.1rem;">🧤</span>
+                <div>
+                  <strong style="color: var(--ink);">${gk.name}</strong>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.team})</span>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-weight: 700; color: var(--gold); font-family: 'Space Mono', monospace;">${gk.saves} Saves</span>
+                ${gk.save_pct ? `<span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.save_pct})</span>` : ""}
+              </div>
+            </div>
+          `).join("");
+
+          statsTabHtml += `
+            <div class="stats-card" style="margin-top: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 700; color: var(--gold); font-size: 0.95rem;">
+                <span>🧤</span>
+                <span>${isTh ? "สถิติผู้รักษาประตู (Goalkeeper Stats)" : "Goalkeeper Stats"}</span>
+              </div>
+              <div style="background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+                ${gkRows}
+              </div>
+            </div>
+          `;
+        }
 
         // ---------- TAB 3: LINEUPS ----------
         let lineupsTabHtml = "";

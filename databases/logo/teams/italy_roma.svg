@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Roma Shield -->
+  <path d="M20 12 L80 12 L80 50 C80 75, 50 92, 50 92 C50 92, 20 75, 20 50 Z" fill="#8E1F2F" stroke="#F0BC42" stroke-width="3"/>
+  <path d="M20 45 L80 45 L80 50 C80 75, 50 92, 50 92 C50 92, 20 75, 20 50 Z" fill="#F0BC42"/>
+  <text x="50" y="36" font-family="'Arial Black', sans-serif" font-weight="900" font-size="14" fill="#F0BC42" text-anchor="middle">ASR</text>
+  <text x="50" y="72" font-family="'Arial Black', sans-serif" font-weight="900" font-size="12" fill="#8E1F2F" text-anchor="middle">ROMA</text>
+  <text x="50" y="84" font-family="'Arial Black', sans-serif" font-weight="700" font-size="6" fill="#8E1F2F" text-anchor="middle">1927</text>
+</svg>

@@ -91,6 +91,30 @@ app.get('/api/epl-standings', async (req, res) => {
   }
 });
 
+app.get('/api/uwcl-standings', async (req, res) => {
+  try {
+    const fs = await import('fs');
+    const localData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'tables-uwcl.json'), 'utf8'));
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json({ success: true, data: localData });
+  } catch (err) {
+    console.error('UWCL Standings API error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/wsl-standings', async (req, res) => {
+  try {
+    const fs = await import('fs');
+    const localData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'tables-women.json'), 'utf8'));
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json({ success: true, data: localData });
+  } catch (err) {
+    console.error('WSL Standings API error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // Start the server

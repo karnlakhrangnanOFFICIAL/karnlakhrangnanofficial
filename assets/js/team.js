@@ -382,7 +382,22 @@ function getLocalTeamLogo(teamName, fallbackLogo) {
   if (name.includes("west ham")) return "databases/logo/teams/england_west-ham.svg";
   if (name.includes("juventus")) return "databases/logo/teams/italy_juventus--white.svg";
   if (name.includes("milan")) return "databases/logo/teams/italy_milan.svg";
+  if (name.includes("barcelona")) return "databases/logo/teams/spain_barcelona.svg";
+  if (name.includes("lyon")) return "databases/logo/teams/france_lyon.svg";
+  if (name.includes("bayern")) return "databases/logo/teams/germany_bayern-munchen.svg";
+  if (name.includes("wolfsburg")) return "databases/logo/teams/germany_wolfsburg.svg";
+  if (name.includes("psg") || name.includes("paris saint-germain")) return "databases/logo/teams/france_psg.svg";
+  if (name.includes("roma")) return "databases/logo/teams/italy_roma.svg";
+  if (name.includes("benfica")) return "databases/logo/teams/portugal_benfica.svg";
+  if (name.includes("valerenga") || name.includes("vålerenga")) return "databases/logo/teams/norway_valerenga.svg";
+  if (name.includes("galatasaray")) return "databases/logo/teams/turkey_galatasaray.svg";
+  if (name.includes("polten") || name.includes("pölten")) return "databases/logo/teams/austria_st-polten.svg";
+  if (name.includes("servette")) return "databases/logo/teams/switzerland_servette.svg";
   if (name.includes("sociedad")) return "databases/logo/teams/spain_real-sociedad.svg";
+  if (name.includes("real madrid")) return "databases/logo/teams/spain_real-madrid.svg";
+  if (name.includes("celtic")) return "databases/logo/teams/scotland_celtic.svg";
+  if (name.includes("twente")) return "databases/logo/teams/netherlands_twente.svg";
+  if (name.includes("landhaus")) return "databases/logo/teams/austria_usc-landhaus.svg";
   if (name.includes("auckland")) return "databases/logo/teams/new-zealand_auckland-fc.svg";
   if (name.includes("wanderers")) return "databases/logo/teams/australia_western-sydney-wanderers.svg";
   if (name.includes("johor") || name.includes("tazim")) return "databases/logo/teams/malaysia_johor-darul-tazim.svg";
@@ -392,7 +407,7 @@ function getLocalTeamLogo(teamName, fallbackLogo) {
   return fallback || "databases/logo/teams/england_chelsea.svg";
 }
 
-function renderTable(container, table, highlightTeam, compLogo, compName) {
+function renderTable(container, table, highlightTeam, compLogo, compName, compKey = "wsl") {
   if (!table || table.length === 0) {
     container.innerHTML =
       '<div class="empty-state"><span class="empty-icon">🏆</span><p>No table data yet</p></div>';
@@ -401,8 +416,12 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
   const isWomenPage =
     window.location.pathname.includes("women") ||
     (compName && compName.toLowerCase().includes("women"));
+  const isUwcl =
+    compKey === "uwcl" ||
+    (compName && compName.toLowerCase().includes("champions league"));
+
   const logoHtml = compLogo
-    ? `<div class="table-comp-header" style="display:flex; align-items:center; gap:12px; margin-bottom:1rem; padding:10px 14px; background:var(--surface, rgba(255,255,255,0.04)); border:1px solid var(--border-color, rgba(255,255,255,0.08)); border-radius:8px;"><img src="${compLogo}" alt="${compName || ""}" onerror="this.style.display='none'" style="height:60px; width:60px; object-fit:contain;"><span style="font-weight:700; font-size:1.05rem; color:var(--ink);">${compName || ""}</span></div>`
+    ? `<div class="table-comp-header" style="display:flex; align-items:center; gap:12px; margin-bottom:1rem; padding:10px 14px; background:var(--surface, rgba(255,255,255,0.04)); border:1px solid var(--border-color, rgba(255,255,255,0.08)); border-radius:8px;"><img src="${compLogo}" alt="${compName || ""}" onerror="this.style.display='none'" style="height:60px; width:60px; object-fit:contain;"><div style="display:flex; flex-direction:column;"><span style="font-weight:700; font-size:1.05rem; color:var(--ink);">${compName || ""}</span><span style="font-size:0.8rem; color:var(--text-muted); font-family:'Space Mono',monospace;">${isUwcl ? "League Phase · Single Table (18 Teams)" : "2026/27 Season"}</span></div></div>`
     : "";
   container.innerHTML = `
     ${logoHtml}
@@ -424,7 +443,11 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
             let posClass = "";
             let teamLogo = getLocalTeamLogo(row.team, rawTeamLogo);
 
-            if (isWomenPage) {
+            if (isUwcl) {
+              if (posNum >= 1 && posNum <= 4) posClass = "pos-first-tier";
+              else if (posNum >= 5 && posNum <= 16) posClass = "pos-playoff";
+              else if (posNum >= 17) posClass = "pos-relegation";
+            } else if (isWomenPage) {
               if (posNum >= 1 && posNum <= 2) posClass = "pos-ucl";
               else if (posNum === 3) posClass = "pos-uwcl-qual";
               else if (posNum === table.length - 1 && table.length > 3) posClass = "pos-rel-po";
@@ -463,6 +486,119 @@ function renderTable(container, table, highlightTeam, compLogo, compName) {
           .join("")}
       </tbody>
     </table>`;
+}
+
+function renderWomenTableRules(compKey = "uwcl") {
+  const rulesCard = document.getElementById("womenTableRules");
+  if (!rulesCard) return;
+
+  const isTh = (window.currentLang || "th") === "th";
+  const isUwcl = compKey === "uwcl";
+
+  rulesCard.innerHTML = `
+    <div class="table-rules-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <span>📌 ${isTh ? "กฎระเบียบการแข่งขัน บันทึกคะแนน & คำอธิบายสัญลักษณ์ (League Notes & Rank Key)" : "Rules, Match Notes & Rank Key"}</span>
+      <a href="https://www.uefa.com/womenschampionsleague/standings/" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: var(--gold); text-decoration: underline; font-family: 'Space Mono', monospace;">
+        🔗 ${isTh ? "ตารางคะแนนทางการ (UEFA.com)" : "Official UEFA Standings"}
+      </a>
+    </div>
+
+    <div class="table-rules-grid">
+      <!-- Section 1: League Notes & Match Notes -->
+      <div class="table-rules-section">
+        <h3 class="table-rules-subtitle">📝 ${isTh ? "League Notes & Match Notes (บันทึกคะแนน)" : "League Notes & Match Notes"}</h3>
+        <ul class="table-rules-list">
+          <li class="table-rules-item">
+            <span style="font-size: 1.1rem; line-height: 1;">⚡</span>
+            <span><strong>3 points</strong> ${isTh ? "สำหรับการ win (3 คะแนนสำหรับการชนะ)" : "for a win"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span style="font-size: 1.1rem; line-height: 1;">⚖️</span>
+            <span><strong>1 point</strong> ${isTh ? "สำหรับการ draw (1 คะแนนสำหรับการเสมอ)" : "for a draw"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span style="font-size: 1.1rem; line-height: 1;">❌</span>
+            <span><strong>0 points</strong> ${isTh ? "สำหรับการ loss (0 คะแนนสำหรับการแพ้)" : "for a loss"}</span>
+          </li>
+        </ul>
+
+        ${
+          isUwcl
+            ? `
+          <div style="margin-top: 10px; padding: 10px 12px; background: rgba(0, 87, 183, 0.12); border: 1px solid rgba(0, 87, 183, 0.3); border-radius: 8px; font-size: 0.82rem; color: var(--ink);">
+            <strong style="color: var(--gold);">⭐ รูปแบบการแข่งขัน UEFA Women's Champions League (League phase):</strong><br>
+            • <strong>อันดับ 1 - 4:</strong> ผ่านเข้าสู่รอบ 16 ทีมสุดท้ายโดยตรง (Direct Round of 16 / First Tier Cup)<br>
+            • <strong>อันดับ 5 - 16:</strong> ผ่านเข้าสู่รอบเพลย์ออฟน็อคเอาท์ (Knockout phase play-offs)<br>
+            • <strong>อันดับ 17 - 18:</strong> ตกรอบการแข่งขัน (Eliminated)
+          </div>
+        `
+            : `
+          <div style="margin-top: 10px; padding: 10px 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; font-size: 0.82rem; color: var(--ink);">
+            <strong style="color: var(--gold);">🏆 โควต้าฟุตบอลยุโรป Barclays Women's Super League:</strong><br>
+            • <strong>อันดับ 1 - 2:</strong> ผ่านเข้าสู่ UEFA Women's Champions League รอบลีกโดยตรง<br>
+            • <strong>อันดับ 3:</strong> ได้สิทธิ์ไปเล่นรอบคัดเลือกรอบที่ 2 (UWCL Qualifiers)<br>
+            • <strong>อันดับ 14:</strong> ตกชั้นสู่ Women's Championship
+          </div>
+        `
+        }
+
+        <p style="font-size: 0.8rem; color: var(--ink-muted); margin-top: 8px; margin-bottom: 0;">
+          ${isTh ? "กรณีคะแนนเท่ากัน ตัดสินด้วย: 1. ผลต่างประตูได้-เสีย (Goal Difference) 2. ประตูที่ทำได้ (Goals Scored)" : "Tie-break criteria: 1. Goal difference 2. Goals scored"}
+        </p>
+      </div>
+
+      <!-- Section 2: Rank Key -->
+      <div class="table-rules-section">
+        <h3 class="table-rules-subtitle">🏷️ ${isTh ? "Rank Key (คำอธิบายสัญลักษณ์ระดับและสถานะอันดับ)" : "Rank Key (Rank Categories & Status)"}</h3>
+        <ul class="table-rules-list">
+          <li class="table-rules-item">
+            <span class="legend-dot first-tier"></span>
+            <span><strong>First Tier Cup:</strong> ${isTh ? "ได้สิทธิ์เข้าร่วม first tier cup (เช่น UEFA Champions League) หรืออยู่ใน qualification zone" : "Qualified for first tier cup (e.g. UEFA Champions League) or in qualification zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot second-tier"></span>
+            <span><strong>Second Tier Cup:</strong> ${isTh ? "ได้สิทธิ์เข้าร่วม second tier cup (เช่น UEFA Europa League) หรืออยู่ใน qualification zone" : "Qualified for second tier cup (e.g. UEFA Europa League) or in qualification zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot third-tier"></span>
+            <span><strong>Third Tier Cup:</strong> ${isTh ? "ได้สิทธิ์เข้าร่วม third tier cup (เช่น UEFA Europa Conference League) หรืออยู่ใน qualification zone" : "Qualified for third tier cup (e.g. UEFA Europa Conference League) or in qualification zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot playoff"></span>
+            <span><strong>Playoff:</strong> ${isTh ? "ได้สิทธิ์สำหรับการเล่น playoff หรืออยู่ใน qualification zone" : "Qualified for playoff or in qualification zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot promotion"></span>
+            <span><strong>Promotion:</strong> ${isTh ? "Squad ได้รับการ promoted หรืออยู่ใน promotion zone" : "Squad promoted or in promotion zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot promo-po"></span>
+            <span><strong>Promotion Playoff:</strong> ${isTh ? "ได้สิทธิ์สำหรับการเล่น promotion playoff หรืออยู่ใน qualification zone" : "Qualified for promotion playoff or in qualification zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot rel-po"></span>
+            <span><strong>Relegation Playoff:</strong> ${isTh ? "ได้สิทธิ์สำหรับการเล่น relegation playoff หรืออยู่ใน qualification zone" : "Qualified for relegation playoff or in qualification zone"}</span>
+          </li>
+          <li class="table-rules-item">
+            <span class="legend-dot relegation"></span>
+            <span><strong>Relegation:</strong> ${isTh ? "Squad ถูก relegated หรืออยู่ใน relegation zone" : "Squad relegated or in relegation zone"}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Abbreviations / Table Legend -->
+    <div class="table-abbr-grid">
+      <span class="table-abbr-item"><strong>P:</strong> <span>${isTh ? "จำนวนนัดที่แข่ง (Matches played)" : "Matches played"}</span></span>
+      <span class="table-abbr-item"><strong>W:</strong> <span>${isTh ? "ชนะ (Wins)" : "Wins"}</span></span>
+      <span class="table-abbr-item"><strong>D:</strong> <span>${isTh ? "เสมอ (Draws)" : "Draws"}</span></span>
+      <span class="table-abbr-item"><strong>L:</strong> <span>${isTh ? "แพ้ (Losses)" : "Losses"}</span></span>
+      <span class="table-abbr-item"><strong>GF:</strong> <span>${isTh ? "ได้ (Goals For)" : "Goals For"}</span></span>
+      <span class="table-abbr-item"><strong>GA:</strong> <span>${isTh ? "เสีย (Goals Against)" : "Goals Against"}</span></span>
+      <span class="table-abbr-item"><strong>DIFF / GD:</strong> <span>${isTh ? "ผลต่าง (Goal Difference)" : "Goal Difference"}</span></span>
+      <span class="table-abbr-item"><strong>Pts:</strong> <span>${isTh ? "คะแนน (Points)" : "Points"}</span></span>
+    </div>
+  `;
 }
 
 function renderPlayers(container, players, teamType) {
@@ -790,13 +926,16 @@ async function loadWomenFixtures() {
   const container = document.getElementById("womenFixturesContainer");
   if (!container) return;
   try {
-    let all = await safeFetchJson("data/fixtures.json");
+    let all = await safeFetchJson("data/fixtures-women.json");
+    if (!all || !Array.isArray(all) || all.length === 0) {
+      all = await safeFetchJson("data/fixtures.json");
+    }
     if (!all || !Array.isArray(all)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📅</span><p>No upcoming fixtures</p></div>';
       return;
     }
-    all = all.filter((m) => m.team_type === "W");
+    all = all.filter((m) => m.team_type === "W" || (m.id && m.id.startsWith("w")));
     const upcoming = all
       .filter((m) => m.status === "upcoming" || m.status === "live")
       .sort((a, b) => {
@@ -825,13 +964,16 @@ async function loadWomenResults() {
   const container = document.getElementById("womenResultsContainer");
   if (!container) return;
   try {
-    let all = await safeFetchJson("data/fixtures.json");
+    let all = await safeFetchJson("data/fixtures-women.json");
+    if (!all || !Array.isArray(all) || all.length === 0) {
+      all = await safeFetchJson("data/fixtures.json");
+    }
     if (!all || !Array.isArray(all)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📊</span><p>No results yet</p></div>';
       return;
     }
-    all = all.filter((m) => m.team_type === "W");
+    all = all.filter((m) => m.team_type === "W" || (m.id && m.id.startsWith("w")));
     const results = all
       .filter((m) => m.status === "completed")
       .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -850,30 +992,79 @@ async function loadWomenResults() {
   }
 }
 
-async function loadWomenTable() {
+async function loadWomenTable(compChoice = null) {
   const container = document.getElementById("womenTableContainer");
   if (!container) return;
-  try {
-    let data = await safeFetchJson("/api/wsl-standings");
-    if (data && data.success && data.data) {
-      data = data.data;
+  const filterSelect = document.getElementById("womenTableCompFilter");
+  const titleEl = document.getElementById("womenTableTitle");
+  const isTh = (window.currentLang || "th") === "th";
+
+  const compKey = compChoice || (filterSelect ? filterSelect.value : "uwcl") || "uwcl";
+
+  if (filterSelect && filterSelect.value !== compKey) {
+    filterSelect.value = compKey;
+  }
+
+  if (filterSelect && !filterSelect.dataset.listenerAttached) {
+    filterSelect.dataset.listenerAttached = "true";
+    filterSelect.addEventListener("change", (e) => {
+      loadWomenTable(e.target.value);
+    });
+  }
+
+  if (titleEl) {
+    if (compKey === "uwcl") {
+      titleEl.innerHTML = isTh
+        ? "⭐ ตารางคะแนน UEFA Women's Champions League (League phase)"
+        : "⭐ UEFA Women's Champions League Standings (League phase)";
     } else {
-      data = await safeFetchJson("data/tables-women.json");
+      titleEl.innerHTML = isTh
+        ? "🏆 ตารางคะแนน Barclays Women's Super League"
+        : "🏆 Barclays Women's Super League Standings";
     }
+  }
+
+  container.innerHTML = '<div class="loading"><div class="spinner"></div><p>' + (isTh ? "กำลังโหลดตารางคะแนน..." : "Loading standings...") + '</p></div>';
+
+  try {
+    let data = null;
+    if (compKey === "uwcl") {
+      data = await safeFetchJson("/api/uwcl-standings");
+      if (!data || !data.success || !data.data) {
+        data = await safeFetchJson("data/tables-uwcl.json");
+      } else {
+        data = data.data;
+      }
+    } else {
+      data = await safeFetchJson("/api/wsl-standings");
+      if (!data || !data.success || !data.data) {
+        data = await safeFetchJson("data/tables-women.json");
+      } else {
+        data = data.data;
+      }
+    }
+
     if (!data) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">🏆</span><p>No table data yet</p></div>';
       return;
     }
+
     const table = Array.isArray(data) ? data : data.standings || data.table || [];
-    const compLogo =
-      data?.competition_logo || "databases/logo/competitions/women/women_super_league.png";
-    const compName = data?.competition || "Barclays Women's Super League";
-    renderTable(container, table, "Chelsea Women", compLogo, compName);
+    let compLogo = data?.competition_logo;
+    if (!compLogo) {
+      compLogo = compKey === "uwcl"
+        ? "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg"
+        : "databases/logo/competitions/women/women_super_league.png";
+    }
+    const compName = data?.competition || (compKey === "uwcl" ? "UEFA Women's Champions League" : "Barclays Women's Super League");
+
+    renderTable(container, table, "Chelsea", compLogo, compName, compKey);
+    renderWomenTableRules(compKey);
   } catch (e) {
     container.innerHTML =
-      '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error</p></div>';
-    console.error(e);
+      '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading table</p></div>';
+    console.error("loadWomenTable error:", e);
   }
 }
 

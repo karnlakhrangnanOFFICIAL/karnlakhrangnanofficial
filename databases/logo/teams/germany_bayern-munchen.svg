@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <circle cx="50" cy="50" r="46" fill="#DC052D" stroke="#0066B2" stroke-width="4"/>
+  <circle cx="50" cy="50" r="38" fill="#FFFFFF"/>
+  <circle cx="50" cy="50" r="30" fill="#DC052D"/>
+  <!-- Bavarian Diamonds -->
+  <circle cx="50" cy="50" r="22" fill="#0066B2"/>
+  <polygon points="50,30 57,37 50,44 43,37" fill="#FFFFFF"/>
+  <polygon points="36,44 43,51 36,58 29,51" fill="#FFFFFF"/>
+  <polygon points="50,44 57,51 50,58 43,51" fill="#FFFFFF"/>
+  <polygon points="64,44 71,51 64,58 57,51" fill="#FFFFFF"/>
+  <polygon points="50,58 57,65 50,72 43,65" fill="#FFFFFF"/>
+  <text x="50" y="24" font-family="'Arial Black', sans-serif" font-weight="900" font-size="6.5" fill="#FFFFFF" text-anchor="middle">FC BAYERN</text>
+  <text x="50" y="82" font-family="'Arial Black', sans-serif" font-weight="900" font-size="6" fill="#FFFFFF" text-anchor="middle">MÜNCHEN</text>
+</svg>

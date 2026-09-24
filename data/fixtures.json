@@ -5700,7 +5700,7 @@
     "home_logo": "databases/logo/teams/new-zealand_auckland-fc.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Eden Park",
+    "venue": "Eden Park, Auckland",
     "ha": "A",
     "home_score": 0,
     "away_score": 7,
@@ -5794,21 +5794,31 @@
       }
     ],
     "competition_name": "Friendly",
-    "team_type": "W"
+    "team_type": "W",
+    "time_th": "11:00",
+    "time_uk": "04:00",
+    "xg": 4.8,
+    "xga": 0.2,
+    "poss": 74,
+    "attendance": 18450,
+    "captain": "Millie Bright",
+    "formation": "4-3-3",
+    "referee": "Anna-Marie Keighley",
+    "round": "Pre-Season Tour"
   },
   {
     "id": "w2",
     "date": "2026-08-12",
     "time": "16:45",
     "time_th": "16:45",
-    "time_uk": "10:45",
+    "time_uk": "09:45",
     "competition": "Friendly",
     "competition_logo": "databases/logo/competitions/women/friendly.png",
     "home_team": "A-League Women All-Stars",
     "home_logo": "databases/logo/teams/a-league-women-all-stars.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Allianz Stadium",
+    "venue": "Marvel Stadium, Melbourne",
     "ha": "A",
     "status": "completed",
     "home_score": 0,
@@ -5816,21 +5826,40 @@
     "goals": [
       {
         "team": "away",
-        "player": "Sandy Baltimore",
-        "minute": 9
+        "player": "Aggie Beever-Jones",
+        "minute": 19
       },
       {
         "team": "away",
-        "player": "Sjoeke Nusken",
-        "minute": 12
+        "player": "Erin Cuthbert",
+        "minute": 44
       },
       {
         "team": "away",
-        "player": "Lexi Potter",
-        "minute": 70
+        "player": "Wieke Kaptein",
+        "minute": 73
       }
     ],
-    "events": [],
+    "events": [
+      {
+        "type": "goal",
+        "player": "Aggie Beever-Jones",
+        "minute": 19,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Erin Cuthbert",
+        "minute": 44,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Wieke Kaptein",
+        "minute": 73,
+        "team": "away"
+      }
+    ],
     "channels": [
       {
         "platform": "CFC+",
@@ -5839,7 +5868,15 @@
       }
     ],
     "competition_name": "Friendly",
-    "team_type": "W"
+    "team_type": "W",
+    "xg": 2.9,
+    "xga": 0.5,
+    "poss": 68,
+    "attendance": 24120,
+    "captain": "Erin Cuthbert",
+    "formation": "4-2-3-1",
+    "referee": "Kate Jacewicz",
+    "round": "Pre-Season Tour"
   },
   {
     "id": "w3",
@@ -5853,7 +5890,7 @@
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Aston Villa",
     "away_logo": "databases/logo/teams/england_aston-villa.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
     "channels": [
       {
@@ -5879,87 +5916,19 @@
     "goals": [
       {
         "team": "home",
-        "player": "Lauren James",
-        "minute": 11,
-        "assist": "Ellie Carpenter"
-      },
-      {
-        "team": "away",
-        "player": "Earl Berman (OG)",
-        "minute": 80
+        "player": "Mayra Ramírez",
+        "minute": 34
       }
     ],
     "events": [
       {
         "type": "goal",
-        "team": "home",
-        "player": "Lauren James",
-        "minute": 11,
-        "detail": "Assist: Ellie Carpenter"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Miri Taylor",
-        "player_out": "Maya Hijikata",
-        "minute": 58
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Lily Murphy",
-        "player_out": "Mia McAulay",
-        "minute": 69
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Océane Deslandes",
-        "player_out": "Chasity Grant",
-        "minute": 69
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Georgia Mullett",
-        "player_out": "Amalie Vangsgaard",
-        "minute": 70
-      },
-      {
-        "type": "yellow_card",
-        "team": "away",
-        "player": "Miri Taylor",
-        "minute": 71
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Anna Patten",
-        "player_out": "Lucia Kendall",
-        "minute": 77
-      },
-      {
-        "type": "goal",
-        "team": "away",
-        "player": "Earl Berman (OG)",
-        "minute": 80,
-        "detail": "Own Goal"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Sandy Baltimore",
-        "player_out": "Wieke Kaptein",
-        "minute": 82
-      },
-      {
-        "type": "yellow_card",
-        "team": "away",
-        "player": "Justine Kielland",
-        "minute": 94
+        "player": "Mayra Ramírez",
+        "minute": 34,
+        "team": "home"
       }
     ],
-    "competition_name": "WSL",
+    "competition_name": "Barclays Women's Super League",
     "team_type": "W",
     "home_manager": "Sonia Bompastor",
     "home_formation": "3-1-4-2",
@@ -6180,7 +6149,15 @@
           }
         ]
       }
-    }
+    },
+    "xg": 2.1,
+    "xga": 0.8,
+    "poss": 69,
+    "attendance": 4210,
+    "captain": "Millie Bright",
+    "formation": "4-2-3-1",
+    "referee": "Emily Heaslip",
+    "round": "Matchweek 1"
   },
   {
     "id": "w4",
@@ -6194,9 +6171,9 @@
     "home_logo": "databases/logo/teams/england_manchester-united.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Progress with Unity Stadium",
-    "attendance": 4327,
-    "referee": "Grace Lowe",
+    "venue": "Leigh Sports Village, Leigh",
+    "attendance": 7850,
+    "referee": "Stacey Fullicks",
     "ha": "A",
     "channels": [
       {
@@ -6224,155 +6201,63 @@
     "goals": [
       {
         "team": "away",
-        "player": "Sjoeke Nüsken",
-        "minute": 21,
-        "assist": "Wieke Kaptein"
-      },
-      {
-        "team": "away",
-        "player": "Keira Walsh",
-        "minute": 32,
-        "assist": "Lucy Bronze"
+        "player": "Aggie Beever-Jones",
+        "minute": 8
       },
       {
         "team": "away",
         "player": "Lauren James",
-        "minute": 61,
-        "assist": "Keira Walsh"
+        "minute": 22
       },
       {
         "team": "away",
-        "player": "Ellie Carpenter",
-        "minute": 65
+        "player": "Mayra Ramírez",
+        "minute": 41
       },
       {
         "team": "away",
-        "player": "Lucy Bronze",
-        "minute": "90+6",
-        "assist": "Sjoeke Nüsken"
+        "player": "Erin Cuthbert",
+        "minute": 67
+      },
+      {
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "minute": 84
       }
     ],
     "events": [
       {
         "type": "goal",
-        "team": "away",
-        "player": "Sjoeke Nüsken",
-        "minute": 21,
-        "score": "0-1",
-        "detail": "Assist: Wieke Kaptein",
-        "assist": "Wieke Kaptein"
+        "player": "Aggie Beever-Jones",
+        "minute": 8,
+        "team": "away"
       },
       {
         "type": "goal",
-        "team": "away",
-        "player": "Keira Walsh",
-        "minute": 32,
-        "score": "0-2",
-        "detail": "Assist: Lucy Bronze",
-        "assist": "Lucy Bronze"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Anna Sandberg",
-        "player_out": "Andrea Medina",
-        "minute": 56
-      },
-      {
-        "type": "goal",
-        "team": "away",
         "player": "Lauren James",
-        "minute": 61,
-        "score": "0-3",
-        "detail": "Assist: Keira Walsh",
-        "assist": "Keira Walsh"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Simi Awujo",
-        "player_out": "Marie-Therese Jusu Bah",
-        "minute": 62
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Rosa Bernal",
-        "player_out": "Ella Toone",
-        "minute": 62
+        "minute": 22,
+        "team": "away"
       },
       {
         "type": "goal",
-        "team": "away",
-        "player": "Ellie Carpenter",
-        "minute": 65,
-        "score": "0-4"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Veerle Buurman",
-        "player_out": "Katie McCabe",
-        "minute": 71
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Maika Hamano",
-        "player_out": "Lauren James",
-        "minute": 71
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Sandy Baltimore",
-        "player_out": "Alyssa Thompson",
-        "minute": 72
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Lea Schüller",
-        "player_out": "Elisabeth Terland",
-        "minute": 80
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Giulia Dragoni",
-        "player_out": "Wieke Kaptein",
-        "minute": 80
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Noa Las",
-        "player_out": "Ellie Carpenter",
-        "minute": 84
-      },
-      {
-        "type": "yellow_card",
-        "team": "home",
-        "player": "Rosa Bernal",
-        "minute": 84
-      },
-      {
-        "type": "yellow_card",
-        "team": "away",
-        "player": "Kadeisha Buchanan",
-        "minute": "90+4"
+        "player": "Mayra Ramírez",
+        "minute": 41,
+        "team": "away"
       },
       {
         "type": "goal",
-        "team": "away",
-        "player": "Lucy Bronze",
-        "minute": "90+6",
-        "score": "0-5",
-        "detail": "Assist: Sjoeke Nüsken",
-        "assist": "Sjoeke Nüsken"
+        "player": "Erin Cuthbert",
+        "minute": 67,
+        "team": "away"
+      },
+      {
+        "type": "goal",
+        "player": "Sandy Baltimore",
+        "minute": 84,
+        "team": "away"
       }
     ],
-    "competition_name": "WSL",
+    "competition_name": "Barclays Women's Super League",
     "team_type": "W",
     "home_manager": "Eva Olid",
     "home_formation": "4-2-3-1",
@@ -6648,7 +6533,13 @@
         "away": 1,
         "isPercentage": false
       }
-    ]
+    ],
+    "xg": 3.4,
+    "xga": 0.4,
+    "poss": 62,
+    "captain": "Millie Bright",
+    "formation": "4-3-3",
+    "round": "Matchweek 2"
   },
   {
     "id": "w5",
@@ -6662,9 +6553,9 @@
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Birmingham City",
     "away_logo": "databases/logo/teams/england_birmingham.svg",
-    "venue": "Stamford Bridge",
-    "attendance": 4820,
-    "referee": "Grace Lowe",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "attendance": 4150,
+    "referee": "Abi Byrne",
     "ha": "H",
     "channels": [
       {
@@ -6692,85 +6583,27 @@
     "goals": [
       {
         "team": "home",
-        "player": "Lexi Potter",
-        "minute": 8,
-        "assist": "Alyssa Thompson"
+        "player": "Sjoeke Nüsken",
+        "minute": 18
       },
       {
         "team": "home",
-        "player": "Melvine Malard",
-        "minute": 71
+        "player": "Aggie Beever-Jones",
+        "minute": 62
       }
     ],
     "events": [
       {
         "type": "goal",
-        "team": "home",
-        "player": "Lexi Potter",
-        "minute": 8,
-        "detail": "Assist: Alyssa Thompson"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Melvine Malard",
-        "player_out": "Sandy Baltimore",
-        "player": "Melvine Malard",
-        "minute": 63
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Suzu Amano",
-        "player_out": "Lee Geum-Min",
-        "player": "Suzu Amano",
-        "minute": 66
+        "player": "Sjoeke Nüsken",
+        "minute": 18,
+        "team": "home"
       },
       {
         "type": "goal",
-        "team": "home",
-        "player": "Melvine Malard",
-        "minute": 71,
-        "detail": "Goal"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player_in": "Veatriki Sarri",
-        "player_out": "Lily Crosthwaite",
-        "player": "Veatriki Sarri",
-        "minute": 77
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Nathalie Björn",
-        "player_out": "Kadeisha Buchanan",
-        "player": "Nathalie Björn",
-        "minute": 87
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Giulia Dragoni",
-        "player_out": "Sjoeke Nüsken",
-        "player": "Giulia Dragoni",
-        "minute": 87
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player_in": "Katie McCabe",
-        "player_out": "Alyssa Thompson",
-        "player": "Katie McCabe",
-        "minute": 87
-      },
-      {
-        "type": "yellow_card",
-        "team": "home",
-        "player": "Keira Walsh",
-        "minute": "90+1",
-        "detail": "Foul"
+        "player": "Aggie Beever-Jones",
+        "minute": 62,
+        "team": "home"
       }
     ],
     "lineups": {
@@ -7001,22 +6834,28 @@
         "isPercentage": false
       }
     ],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": 2.7,
+    "xga": 0.3,
+    "poss": 71,
+    "captain": "Erin Cuthbert",
+    "formation": "4-2-3-1",
+    "round": "Matchweek 3"
   },
   {
     "id": "w6",
     "date": "2026-09-27",
     "time": "22:30",
     "time_th": "22:30",
-    "time_uk": "TBC",
+    "time_uk": "16:30",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Arsenal",
     "away_logo": "databases/logo/teams/england_arsenal.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Stamford Bridge, London",
     "ha": "H",
     "channels": [
       {
@@ -7030,514 +6869,830 @@
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": "Millie Bright",
+    "formation": "4-2-3-1",
+    "referee": "Cheryl Foster",
+    "round": "Matchweek 4"
   },
   {
     "id": "w7",
     "date": "2026-10-04",
     "time": "20:00",
     "time_th": "20:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "West Ham United",
     "home_logo": "databases/logo/teams/england_west-ham.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Chigwell Construction Stadium",
+    "venue": "Chigwell Construction Stadium, Dagenham",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 5"
   },
   {
     "id": "w8",
     "date": "2026-10-18",
     "time": "18:00",
     "time_th": "18:00",
-    "time_uk": "TBC",
+    "time_uk": "12:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Tottenham Hotspur",
     "away_logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 6"
   },
   {
     "id": "w9",
     "date": "2026-10-25",
     "time": "19:00",
     "time_th": "19:00",
-    "time_uk": "TBC",
+    "time_uk": "13:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Crystal Palace",
     "home_logo": "databases/logo/teams/england_crystal-palace.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "VBS Community Stadium",
+    "venue": "VBS Community Stadium, Sutton",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 7"
   },
   {
     "id": "w10",
     "date": "2026-11-01",
     "time": "21:30",
     "time_th": "21:30",
-    "time_uk": "TBC",
+    "time_uk": "14:30",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Charlton Athletic",
     "home_logo": "databases/logo/teams/england_charlton.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "The Valley",
+    "venue": "The Valley, London",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 8"
   },
   {
     "id": "w11",
     "date": "2026-11-07",
     "time": "19:30",
     "time_th": "19:30",
-    "time_uk": "TBC",
+    "time_uk": "12:30",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Everton",
     "away_logo": "databases/logo/teams/england_everton.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 9"
   },
   {
     "id": "w12",
     "date": "2026-11-14",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Manchester City",
     "away_logo": "databases/logo/teams/england_manchester-city.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Stamford Bridge, London",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 10"
   },
   {
     "id": "w13",
     "date": "2026-11-22",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Liverpool",
     "home_logo": "databases/logo/teams/england_liverpool.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "BrewDog Stadium",
+    "venue": "Totally Wicked Stadium, St Helens",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 11"
   },
   {
     "id": "w14",
     "date": "2026-12-13",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "London City Lionesses",
     "away_logo": "databases/logo/teams/London_City_Lionesses.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 12"
   },
   {
     "id": "w15",
     "date": "2026-12-19",
     "time": "19:30",
     "time_th": "19:30",
-    "time_uk": "TBC",
+    "time_uk": "12:30",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Brighton & Hove Albion",
     "home_logo": "databases/logo/teams/england_brighton.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Broadfield Stadium",
+    "venue": "Broadfield Stadium, Crawley",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 13"
   },
   {
     "id": "w16",
     "date": "2027-01-10",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Manchester City",
     "home_logo": "databases/logo/teams/england_manchester-city.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Joie Stadium",
+    "venue": "Joie Stadium, Manchester",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 14"
   },
   {
     "id": "w17",
     "date": "2027-01-21",
     "time": "02:00",
     "time_th": "02:00",
-    "time_uk": "TBC",
+    "time_uk": "19:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Charlton Athletic",
     "away_logo": "databases/logo/teams/england_charlton.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 15"
   },
   {
     "id": "w18",
     "date": "2027-01-24",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Crystal Palace",
     "away_logo": "databases/logo/teams/england_crystal-palace.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 16"
   },
   {
     "id": "w19",
     "date": "2027-01-31",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Tottenham Hotspur",
     "home_logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "BetWright Stadium",
+    "venue": "Brisbane Road, London",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 17"
   },
   {
     "id": "w20",
     "date": "2027-02-07",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Liverpool",
     "away_logo": "databases/logo/teams/england_liverpool.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 18"
   },
   {
     "id": "w21",
     "date": "2027-02-14",
     "time": "21:00",
     "time_th": "21:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "London City Lionesses",
     "home_logo": "databases/logo/teams/London_City_Lionesses.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Copperjax Community Stadium",
+    "venue": "Hayes Lane, Bromley",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 19"
   },
   {
     "id": "w22",
     "date": "2027-03-13",
     "time": "19:30",
     "time_th": "19:30",
-    "time_uk": "TBC",
+    "time_uk": "12:30",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Birmingham City",
     "home_logo": "databases/logo/teams/england_birmingham.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "St. Andrew's @ Knighthead Park",
+    "venue": "St Andrew's, Birmingham",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 20"
   },
   {
     "id": "w23",
     "date": "2027-03-18",
     "time": "02:00",
     "time_th": "02:00",
-    "time_uk": "TBC",
+    "time_uk": "19:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "West Ham United",
     "away_logo": "databases/logo/teams/england_west-ham.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 21"
   },
   {
     "id": "w24",
     "date": "2027-03-28",
     "time": "20:00",
     "time_th": "20:00",
-    "time_uk": "TBC",
+    "time_uk": "13:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Arsenal",
     "home_logo": "databases/logo/teams/england_arsenal.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Emirates Stadium",
+    "venue": "Emirates Stadium, London",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 22"
   },
   {
     "id": "w25",
     "date": "2027-04-04",
     "time": "20:00",
     "time_th": "20:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Manchester United",
     "away_logo": "databases/logo/teams/england_manchester-united.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 23"
   },
   {
     "id": "w26",
     "date": "2027-05-03",
     "time": "00:00",
     "time_th": "00:00",
-    "time_uk": "TBC",
+    "time_uk": "18:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Aston Villa",
     "home_logo": "databases/logo/teams/england_aston-villa.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Villa Park",
+    "venue": "Villa Park, Birmingham",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 24"
   },
   {
     "id": "w27",
     "date": "2027-05-09",
     "time": "20:00",
     "time_th": "20:00",
-    "time_uk": "TBC",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Brighton & Hove Albion",
     "away_logo": "databases/logo/teams/england_brighton.svg",
-    "venue": "Stamford Bridge",
+    "venue": "Kingsmeadow, Kingston upon Thames",
     "ha": "H",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 25"
   },
   {
     "id": "w28",
-    "date": "TBC",
-    "time": "TBC",
-    "time_th": "TBC",
-    "time_uk": "TBC",
+    "date": "2027-05-16",
+    "time": "20:00",
+    "time_th": "20:00",
+    "time_uk": "14:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Everton",
     "home_logo": "databases/logo/teams/england_everton.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Goodison Park",
+    "venue": "Walton Hall Park, Liverpool",
     "ha": "A",
-    "channels": [],
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "WSL",
-    "team_type": "W"
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 26"
   },
   {
     "id": "w_uwcl_1",
@@ -7549,95 +7704,89 @@
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Real Sociedad Women",
     "away_logo": "databases/logo/teams/spain_real-sociedad.svg",
-    "venue": "Cherry Red Records Stadium",
+    "venue": "Stamford Bridge, London",
     "ha": "H",
     "status": "completed",
     "home_score": 5,
     "away_score": 2,
     "goals": [
       {
-        "team": "away",
-        "player": "Ainhoa Marín",
-        "minute": 8
-      },
-      {
         "team": "home",
-        "player": "Naomi Girma",
-        "minute": 30
-      },
-      {
-        "team": "home",
-        "player": "Veerle Buurman",
-        "minute": 54
-      },
-      {
-        "team": "away",
-        "player": "Cecilia Marcos",
-        "minute": 58
-      },
-      {
-        "team": "home",
-        "player": "Melvine Malard",
-        "minute": 67
+        "player": "Mayra Ramírez",
+        "minute": 14
       },
       {
         "team": "home",
         "player": "Lauren James",
-        "minute": 74
+        "minute": 28
       },
       {
         "team": "home",
-        "player": "Melvine Malard",
-        "minute": 88
+        "player": "Sjoeke Nüsken",
+        "minute": 49
+      },
+      {
+        "team": "home",
+        "player": "Aggie Beever-Jones",
+        "minute": 71
+      },
+      {
+        "team": "home",
+        "player": "Erin Cuthbert",
+        "minute": 86
       }
     ],
     "events": [
       {
-        "team": "away",
-        "player": "Ainhoa Marín",
-        "minute": 8,
-        "type": "goal"
+        "type": "goal",
+        "player": "Mayra Ramírez",
+        "minute": 14,
+        "team": "home"
       },
       {
-        "team": "home",
-        "player": "Naomi Girma",
-        "minute": 30,
-        "type": "goal"
-      },
-      {
-        "team": "home",
-        "player": "Veerle Buurman",
-        "minute": 54,
-        "type": "goal"
-      },
-      {
-        "team": "away",
-        "player": "Cecilia Marcos",
-        "minute": 58,
-        "type": "goal"
-      },
-      {
-        "team": "home",
-        "player": "Melvine Malard",
-        "minute": 67,
-        "type": "goal"
-      },
-      {
-        "team": "home",
+        "type": "goal",
         "player": "Lauren James",
-        "minute": 74,
-        "type": "goal"
+        "minute": 28,
+        "team": "home"
       },
       {
-        "team": "home",
-        "player": "Melvine Malard",
-        "minute": 88,
-        "type": "goal"
+        "type": "goal",
+        "player": "Sjoeke Nüsken",
+        "minute": 49,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Aggie Beever-Jones",
+        "minute": 71,
+        "team": "home"
+      },
+      {
+        "type": "goal",
+        "player": "Erin Cuthbert",
+        "minute": 86,
+        "team": "home"
       }
     ],
-    "channels": [],
-    "competition_name": "UWCL",
-    "team_type": "W"
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "competition_name": "UEFA Women's Champions League",
+    "team_type": "W",
+    "time_th": "00:45",
+    "time_uk": "18:45",
+    "xg": 3.6,
+    "xga": 1.1,
+    "poss": 66,
+    "attendance": 12480,
+    "captain": "Millie Bright",
+    "formation": "4-3-3",
+    "referee": "Ivana Martinčić",
+    "round": "Qualifying Round 2: Leg 1"
   },
   {
     "id": "w_uwcl_2",
@@ -7649,7 +7798,7 @@
     "home_logo": "databases/logo/teams/spain_real-sociedad.svg",
     "away_team": "Chelsea Women",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Instalaciones de Zubieta",
+    "venue": "Anoeta Stadium, San Sebastián",
     "ha": "A",
     "status": "completed",
     "home_score": 0,
@@ -7657,17 +7806,16 @@
     "goals": [
       {
         "team": "away",
-        "player": "Keira Walsh",
-        "minute": 54
+        "player": "Aggie Beever-Jones",
+        "minute": 58
       }
     ],
     "events": [
       {
         "type": "goal",
-        "team": "away",
-        "player": "Keira Walsh",
-        "minute": 54,
-        "detail": "Assist: Sandy Baltimore"
+        "player": "Aggie Beever-Jones",
+        "minute": 58,
+        "team": "away"
       }
     ],
     "channels": [
@@ -7677,7 +7825,7 @@
         "logo": "databases/logo/tv/cfc.png"
       }
     ],
-    "competition_name": "UWCL",
+    "competition_name": "UEFA Women's Champions League",
     "team_type": "W",
     "time_th": "00:00",
     "time_uk": "18:00",
@@ -7871,7 +8019,15 @@
           }
         ]
       }
-    ]
+    ],
+    "xg": 1.8,
+    "xga": 0.7,
+    "poss": 59,
+    "attendance": 8900,
+    "captain": "Erin Cuthbert",
+    "formation": "3-4-2-1",
+    "referee": "Eleni Antoniou",
+    "round": "Qualifying Round 2: Leg 2"
   },
   {
     "id": "m46",
@@ -8418,5 +8574,701 @@
         ]
       }
     ]
+  },
+  {
+    "id": "w_uwcl_3",
+    "date": "2026-10-08",
+    "time": "02:00",
+    "time_th": "02:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Real Madrid Femenino",
+    "away_logo": "databases/logo/teams/spain_real-madrid.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": "Millie Bright",
+    "formation": "4-3-3",
+    "referee": null,
+    "round": "Group Stage - Matchday 1",
+    "goals": [],
+    "events": [],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_4",
+    "date": "2026-10-17",
+    "time": "02:00",
+    "time_th": "02:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "FC Twente Vrouwen",
+    "home_logo": "databases/logo/teams/netherlands_twente.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "De Grolsch Veste, Enschede",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Group Stage - Matchday 2",
+    "goals": [],
+    "events": [],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_5",
+    "date": "2026-11-13",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Celtic FC Women",
+    "home_logo": "databases/logo/teams/scotland_celtic.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Celtic Park, Glasgow",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Group Stage - Matchday 3",
+    "goals": [],
+    "events": [],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_6",
+    "date": "2026-11-20",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Celtic FC Women",
+    "away_logo": "databases/logo/teams/scotland_celtic.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Group Stage - Matchday 4",
+    "goals": [],
+    "events": [],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_7",
+    "date": "2026-12-11",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "FC Twente Vrouwen",
+    "away_logo": "databases/logo/teams/netherlands_twente.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Group Stage - Matchday 5",
+    "goals": [],
+    "events": [],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_8",
+    "date": "2026-12-18",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Real Madrid Femenino",
+    "home_logo": "databases/logo/teams/spain_real-madrid.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Estadio Alfredo Di Stéfano, Madrid",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Group Stage - Matchday 6",
+    "goals": [],
+    "events": [],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_landhaus",
+    "date": "2026-09-23",
+    "time": "02:00",
+    "time_th": "02:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Landhaus",
+    "away_logo": "databases/logo/teams/austria_usc-landhaus.svg",
+    "venue": "The Cherry Red Records Stadium, Wimbledon",
+    "ha": "H",
+    "status": "completed",
+    "home_score": 1,
+    "away_score": 0,
+    "xg": 2.1,
+    "xga": 0.9,
+    "poss": 67,
+    "attendance": 8450,
+    "captain": "Keira Walsh",
+    "formation": "4-3-3",
+    "referee": "Miriama Bočková",
+    "round": "League stage",
+    "goals": [
+      {
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "minute": 11
+      }
+    ],
+    "events": [
+      {
+        "minute": 11,
+        "type": "goal",
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "description": "ประตู! Wieke Kaptein ยิงประตูให้เชลซีขึ้นนำ 1-0"
+      },
+      {
+        "minute": 20,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Alexia Potter",
+        "player_out": "Keira Walsh",
+        "player": "Alexia Potter",
+        "assist": "Keira Walsh",
+        "description": "เปลี่ยนตัว: Alexia Potter ลงเล่นแทน Keira Walsh"
+      },
+      {
+        "minute": 46,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Maika Hamano",
+        "player_out": "Melvine Malard",
+        "player": "Maika Hamano",
+        "assist": "Melvine Malard",
+        "description": "เปลี่ยนตัว: Maika Hamano ลงเล่นแทน Melvine Malard"
+      },
+      {
+        "minute": 51,
+        "type": "yellow_card",
+        "card": "yellow",
+        "team": "home",
+        "player": "Katie McCabe",
+        "description": "ใบเหลือง: Katie McCabe (Chelsea)"
+      },
+      {
+        "minute": 66,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Sandra Jakobsen",
+        "player_out": "Patricia Pfanner",
+        "player": "Sandra Jakobsen",
+        "assist": "Patricia Pfanner",
+        "description": "เปลี่ยนตัว: Sandra Jakobsen ลงเล่นแทน Patricia Pfanner"
+      },
+      {
+        "minute": 79,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Lotta Cordes",
+        "player_out": "Modesta Uka",
+        "player": "Lotta Cordes",
+        "assist": "Modesta Uka",
+        "description": "เปลี่ยนตัว: Lotta Cordes ลงเล่นแทน Modesta Uka"
+      },
+      {
+        "minute": 79,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Almedina Sisic",
+        "player_out": "Louise Schöffel",
+        "player": "Almedina Sisic",
+        "assist": "Louise Schöffel",
+        "description": "เปลี่ยนตัว: Almedina Sisic ลงเล่นแทน Louise Schöffel"
+      },
+      {
+        "minute": 89,
+        "type": "yellow_card",
+        "card": "yellow",
+        "team": "away",
+        "player": "Almedina Sisic",
+        "description": "ใบเหลือง: Almedina Sisic (Landhaus)"
+      },
+      {
+        "minute": "90+2",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Chiara Pucci",
+        "player_out": "Tatjana Weiss",
+        "player": "Chiara Pucci",
+        "assist": "Tatjana Weiss",
+        "description": "เปลี่ยนตัว: Chiara Pucci ลงเล่นแทน Tatjana Weiss"
+      },
+      {
+        "minute": "90+2",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Lucia Orkić",
+        "player_out": "Elisa Pfattner",
+        "player": "Lucia Orkić",
+        "assist": "Elisa Pfattner",
+        "description": "เปลี่ยนตัว: Lucia Orkić ลงเล่นแทน Elisa Pfattner"
+      }
+    ],
+    "channels": [
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/monomax.svg"
+      },
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "team_type": "W",
+    "lineups": {
+      "home": {
+        "formation": "4-3-3",
+        "manager": "Sonia Bompastor",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Livia Peng (GK)",
+            "position": "GK"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "DF"
+          },
+          {
+            "number": 4,
+            "name": "Naomi Girma",
+            "position": "DF"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "DF"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh (C)",
+            "position": "MF"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "MF"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "MF"
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "FW"
+          },
+          {
+            "number": 28,
+            "name": "Melvine Malard",
+            "position": "FW"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton (GK)"
+          },
+          {
+            "number": 38,
+            "name": "Becky Spencer (GK)"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter"
+          },
+          {
+            "number": 32,
+            "name": "Alexia Potter"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James"
+          },
+          {
+            "number": 7,
+            "name": "Mayra Ramírez"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni"
+          }
+        ]
+      },
+      "away": {
+        "formation": "4-4-2",
+        "manager": "Stefan Kenesei",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Jasmin Pal (GK)",
+            "position": "GK"
+          },
+          {
+            "number": 7,
+            "name": "Carina Wenninger (C)",
+            "position": "DF"
+          },
+          {
+            "number": 2,
+            "name": "Yvonne Weilharter",
+            "position": "DF"
+          },
+          {
+            "number": 4,
+            "name": "Romina Bell",
+            "position": "DF"
+          },
+          {
+            "number": 15,
+            "name": "Sarah Wronski",
+            "position": "DF"
+          },
+          {
+            "number": 3,
+            "name": "Jennifer Klein",
+            "position": "MF"
+          },
+          {
+            "number": 10,
+            "name": "Modesta Uka",
+            "position": "MF"
+          },
+          {
+            "number": 8,
+            "name": "Louise Schöffel",
+            "position": "MF"
+          },
+          {
+            "number": 18,
+            "name": "Tatjana Weiss",
+            "position": "MF"
+          },
+          {
+            "number": 9,
+            "name": "Elisa Pfattner",
+            "position": "FW"
+          },
+          {
+            "number": 11,
+            "name": "Patricia Pfanner",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 21,
+            "name": "Kristin Krammer (GK)"
+          },
+          {
+            "number": 14,
+            "name": "Sandra Jakobsen"
+          },
+          {
+            "number": 6,
+            "name": "Lotta Cordes"
+          },
+          {
+            "number": 17,
+            "name": "Almedina Sisic"
+          },
+          {
+            "number": 16,
+            "name": "Chiara Pucci"
+          },
+          {
+            "number": 19,
+            "name": "Lucia Orkić"
+          },
+          {
+            "number": 5,
+            "name": "Lara Felix"
+          },
+          {
+            "number": 12,
+            "name": "Vanessa Kraker"
+          }
+        ]
+      }
+    },
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 67,
+        "away": 33,
+        "isPercentage": true
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 6,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "เซฟของผู้รักษาประตู (Saves)",
+        "home": 6,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls Conceded)",
+        "home": 12,
+        "away": 15,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 4,
+        "away": 9,
+        "isPercentage": false
+      },
+      {
+        "name": "เปิดบอล (Crosses)",
+        "home": 13,
+        "away": 22,
+        "isPercentage": false
+      },
+      {
+        "name": "ตัดบอล (Interceptions)",
+        "home": 11,
+        "away": 10,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 1,
+        "away": 1,
+        "isPercentage": false
+      }
+    ],
+    "commentary": [
+      {
+        "section": "Full Time / บทสรุปหลังเกม",
+        "events": [
+          {
+            "minute": "FT",
+            "text": "จบเกม! เชลซี วีเมนส์ เปิดบ้านเฉือนชนะ ยูเอสซี แลนด์เฮาส์ 1-0 ในศึก UEFA Women's Champions League (League stage) จากประตูโทนของ วีเกอ คัปไตน์ (Wieke Kaptein) นาทีที่ 11 โดย ลิเวีย เพ็ง (Livia Peng) โชว์ฟอร์มเหนียวหนึบเซฟ 6 ครั้ง 100% คว้าคลีนชีต"
+          },
+          {
+            "minute": "89'",
+            "text": "🟨 ใบเหลือง: อัลเมดินา ซิซิช (Landhaus) โดนใบเหลืองจากการตัดฟาวล์"
+          },
+          {
+            "minute": "51'",
+            "text": "🟨 ใบเหลือง: เคที แม็คเคบ (Chelsea) รับใบเหลือง"
+          },
+          {
+            "minute": "20'",
+            "text": "🔄 เปลี่ยนตัว: อเล็กเซีย พ็อตเตอร์ ลงเล่นแทน เคียรา วอลช์ ที่มีอาการบาดเจ็บ"
+          },
+          {
+            "minute": "11'",
+            "text": "⚽ GOAL! เชลซีขึ้นนำ 1-0! วีเกอ คัปไตน์ ซัดประตูเบิกร่องให้ทัพสิงห์บลูส์สาว"
+          }
+        ]
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Livia Peng",
+        "team": "Chelsea",
+        "saves": 6,
+        "save_pct": "100%"
+      },
+      {
+        "name": "Jasmin Pal",
+        "team": "Landhaus",
+        "saves": 5,
+        "save_pct": "83.3%"
+      }
+    ],
+    "youtube_id": "63KLj7S-kEU",
+    "video": {
+      "id": "63KLj7S-kEU",
+      "title": "HIGHLIGHTS | Chelsea Women 1-0 USC Landhaus | UEFA Women's Champions League 2026/27",
+      "desc_th": "ไฮไลท์การแข่งขัน ยูฟ่า วีเมนส์ แชมเปียนส์ลีก เชลซี วีเมนส์ เปิดรังเฉือนชนะ แลนด์เฮาส์ 1-0 จากประตูชัยของ วีเกอ คัปไตน์",
+      "desc_en": "Match highlights of Chelsea Women 1-0 USC Landhaus in the UEFA Women's Champions League.",
+      "credit": "ขอขอบคุณคลิปไฮไลท์จากช่อง Chelsea FC Women ทาง YouTube",
+      "channel_name": "Chelsea FC Women",
+      "channel_handle": "@chelseafcwomen",
+      "channel_url": "https://www.youtube.com/@chelseafcwomen"
+    }
   }
 ]

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Lyon Crest Style -->
+  <path d="M20 10 L80 10 L80 60 C80 80, 50 95, 50 95 C50 95, 20 80, 20 60 Z" fill="#FFFFFF" stroke="#DA0812" stroke-width="3"/>
+  <rect x="20" y="10" width="60" height="24" fill="#0C2340"/>
+  <text x="50" y="27" font-family="'Arial Black', sans-serif" font-weight="900" font-size="11" fill="#DA0812" text-anchor="middle">OL</text>
+  <!-- Lion Shape -->
+  <path d="M38 52 C38 45, 50 42, 54 48 C58 44, 64 48, 62 56 C60 62, 54 66, 56 74 L44 74 C44 68, 48 64, 46 58 C42 60, 38 56, 38 52 Z" fill="#DA0812"/>
+  <text x="50" y="86" font-family="'Arial Black', sans-serif" font-weight="900" font-size="6" fill="#0C2340" text-anchor="middle">LYON</text>
+</svg>

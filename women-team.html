@@ -97,8 +97,14 @@
 
     <!-- TABLES TAB -->
     <section id="tab-tables" class="tab-content">
-      <div class="section-header">
-        <h2 class="section-title" data-i18n="women.table_title" style="line-height: 40px; font-size: 20px;">🏆 WSL Table</h2>
+      <div class="section-header" style="flex-wrap: wrap; gap: 12px;">
+        <h2 class="section-title" id="womenTableTitle" data-i18n="women.table_title" style="line-height: 40px; font-size: 20px;">⭐ UEFA Women's Champions League (League phase)</h2>
+        <div class="tournament-select-container" style="min-width: 260px;">
+          <select id="womenTableCompFilter" class="tournament-filter-select" aria-label="Filter standings table">
+            <option value="uwcl">⭐ UEFA Women's Champions League (League phase)</option>
+            <option value="wsl">🏆 Barclays Women's Super League</option>
+          </select>
+        </div>
       </div>
       <div class="table-container" id="womenTableContainer">
         <div class="loading"><div class="spinner"></div><p data-i18n="common.loading">Loading...</p></div>
@@ -106,61 +112,7 @@
 
       <!-- RULES & LEGEND -->
       <div class="table-rules-card" id="womenTableRules">
-        <div class="table-rules-header">
-          <span data-lang-th="📌 Rules and legend" data-lang-en="📌 Rules and legend">📌 Rules and legend</span>
-        </div>
-
-        <div class="table-rules-grid">
-          <!-- European Qualification -->
-          <div class="table-rules-section">
-            <h3 class="table-rules-subtitle" data-lang-th="โควต้าฟุตบอลยุโรปของสโมสรอังกฤษหญิง (Women's Super League) :" data-lang-en="European Qualification (Women's Super League):">โควต้าฟุตบอลยุโรปของสโมสรอังกฤษหญิง (Women's Super League) :</h3>
-            <ul class="table-rules-list">
-              <li class="table-rules-item">
-                <span class="legend-dot ucl"></span>
-                <span data-lang-th="<strong>UEFA Women's Champions League (UWCL):</strong> อันดับ 1 และ 2 ของลีก ผ่านเข้ารอบลีก (League Stage) โดยอัตโนมัติ" data-lang-en="<strong>UEFA Women's Champions League (UWCL):</strong> Positions 1 &amp; 2 qualify automatically for the League Stage."><strong>UEFA Women's Champions League (UWCL):</strong> อันดับ 1 และ 2 ของลีก ผ่านเข้ารอบลีก (League Stage) โดยอัตโนมัติ</span>
-              </li>
-              <li class="table-rules-item">
-                <span class="legend-dot uwcl-qual"></span>
-                <span data-lang-th="<strong>UEFA Women's Champions League (Qualification):</strong> อันดับ 3 ของลีก ได้สิทธิ์ไปเล่นรอบคัดเลือก รอบที่ 2 เพื่อแย่งตั๋วเข้ารอบลีก" data-lang-en="<strong>UEFA Women's Champions League (Qualification):</strong> Position 3 qualifies for Round 2 of qualification."><strong>UEFA Women's Champions League (Qualification):</strong> อันดับ 3 ของลีก ได้สิทธิ์ไปเล่นรอบคัดเลือก รอบที่ 2 เพื่อแย่งตั๋วเข้ารอบลีก</span>
-              </li>
-              <li class="table-rules-item">
-                <span class="legend-dot uel"></span>
-                <span data-lang-th="<strong>UEFA Women's Europa League:</strong> ไม่ได้สิทธิ์แข่งโดยตรง เป็นถ้วยรองรับเฉพาะทีมอันดับ 3 ของลีกหากตกรอบคัดเลือกมาจากถ้วยใหญ่" data-lang-en="<strong>UEFA Women's Europa League:</strong> No direct entry; secondary tournament entry for 3rd place team if eliminated from UWCL qualifiers."><strong>UEFA Women's Europa League:</strong> ไม่ได้สิทธิ์แข่งโดยตรง เป็นถ้วยรองรับเฉพาะทีมอันดับ 3 ของลีกหากตกรอบคัดเลือกมาจากถ้วยใหญ่</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Relegation & Tie Break -->
-          <div class="table-rules-section">
-            <h3 class="table-rules-subtitle" data-lang-th="Relegation &amp; Tie-break" data-lang-en="Relegation &amp; Tie-break">Relegation &amp; Tie-break</h3>
-            <ul class="table-rules-list">
-              <li class="table-rules-item">
-                <span class="legend-dot rel-po"></span>
-                <span data-lang-th="<strong>Relegation Playoffs</strong>" data-lang-en="<strong>Relegation Playoffs</strong>"><strong>Relegation Playoffs</strong></span>
-              </li>
-              <li class="table-rules-item">
-                <span class="legend-dot rel"></span>
-                <span data-lang-th="<strong>Relegation</strong>" data-lang-en="<strong>Relegation</strong>"><strong>Relegation</strong></span>
-              </li>
-            </ul>
-            <p style="font-size: 0.82rem; color: var(--ink-muted); margin-top: 4px; margin-bottom: 0;" data-lang-th="In the event that two (or more) teams have an equal number of points, the following rules break the tie:" data-lang-en="In the event that two (or more) teams have an equal number of points, the following rules break the tie:">In the event that two (or more) teams have an equal number of points, the following rules break the tie:</p>
-            <ol class="table-rules-ordered">
-              <li><strong data-lang-th="1. Goal difference" data-lang-en="1. Goal difference">Goal difference</strong></li>
-              <li><strong data-lang-th="2. Goals scored" data-lang-en="2. Goals scored">Goals scored</strong></li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- Abbreviations / Table Legend -->
-        <div class="table-abbr-grid">
-          <span class="table-abbr-item"><strong>P:</strong> <span data-lang-th="Matches played" data-lang-en="Matches played">Matches played</span></span>
-          <span class="table-abbr-item"><strong>W:</strong> <span data-lang-th="Wins" data-lang-en="Wins">Wins</span></span>
-          <span class="table-abbr-item"><strong>D:</strong> <span data-lang-th="Draws" data-lang-en="Draws">Draws</span></span>
-          <span class="table-abbr-item"><strong>L:</strong> <span data-lang-th="Losses" data-lang-en="Losses">Losses</span></span>
-          <span class="table-abbr-item"><strong>DIFF:</strong> <span data-lang-th="Difference" data-lang-en="Difference">Difference</span></span>
-          <span class="table-abbr-item"><strong>GLS:</strong> <span data-lang-th="Goals" data-lang-en="Goals">Goals</span></span>
-          <span class="table-abbr-item"><strong>Pts:</strong> <span data-lang-th="Points" data-lang-en="Points">Points</span></span>
-        </div>
+        <!-- Will be populated dynamically based on selected tournament (UWCL / WSL) -->
       </div>
     </section>
 

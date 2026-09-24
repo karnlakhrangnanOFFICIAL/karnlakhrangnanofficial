@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <circle cx="50" cy="50" r="46" fill="#A90432" stroke="#FDB913" stroke-width="3"/>
+  <circle cx="50" cy="50" r="38" fill="#FFFFFF"/>
+  <text x="50" y="58" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="28" fill="#A90432" text-anchor="middle">GS</text>
+  <text x="50" y="76" font-family="'Arial Black', sans-serif" font-weight="900" font-size="6.5" fill="#FDB913" text-anchor="middle">1905</text>
+</svg>

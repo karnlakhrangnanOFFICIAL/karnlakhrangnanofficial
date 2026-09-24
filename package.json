@@ -7,6 +7,7 @@
     "build": "node scripts/build.js",
     "sync:standings": "node scripts/sync-football-data-table.mjs",
     "sync:wsl": "node scripts/sync-wsl-table.mjs",
+    "sync:fbref:women": "node scripts/import_fbref_women.mjs",
     "start": "node server.js"
   },
   "repository": {

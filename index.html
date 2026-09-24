@@ -262,10 +262,6 @@
                 <span>🗓️</span>
                 <span>โปรแกรมการแข่งขัน / Live Score</span>
               </h3>
-              <button type="button" id="btnToggleLiveDemo" class="live-demo-toggle-btn" title="คลิกเพื่อทดสอบระบบ Live Score จำลอง">
-                <span class="live-pulse-dot" style="width: 8px; height: 8px; margin: 0;"></span>
-                <span id="btnToggleLiveDemoText">ทดสอบระบบ Live Score 🔴</span>
-              </button>
             </div>
             <div id="nextFixtureSpotlight">
               <!-- Rendered with live ticking countdown timer -->
@@ -867,22 +863,160 @@
       }
     }
 
-    // ---------- LOAD ALL DATA ----------
+    // ---------- TEAM LOGO RESOLVER ----------
+    function resolveTeamLogo(teamName, fallback) {
+      if (!teamName) return fallback || 'databases/logo/teams/england_chelsea.svg';
+      const name = typeof teamName === 'string' ? teamName.toLowerCase() : (teamName?.name || '').toLowerCase();
+      if (name.includes('city lionesses') || name.includes('london city')) return 'databases/logo/teams/London_City_Lionesses.svg';
+      if (name.includes('manchester city') || name.includes('man city')) return 'databases/logo/teams/england_manchester-city.svg';
+      if (name.includes('manchester united') || name.includes('man utd')) return 'databases/logo/teams/england_manchester-united.svg';
+      if (name.includes('chelsea') || name === 'kanlakhrangnan') return 'databases/logo/teams/england_chelsea.svg';
+      if (name.includes('tottenham') || name.includes('spurs')) return 'databases/logo/teams/england_tottenham--2006-2013.svg';
+      if (name.includes('arsenal')) return 'databases/logo/teams/england_arsenal.svg';
+      if (name.includes('aston villa')) return 'databases/logo/teams/england_aston-villa.svg';
+      if (name.includes('birmingham')) return 'databases/logo/teams/england_birmingham.svg';
+      if (name.includes('bournemouth')) return 'databases/logo/teams/england_bournemouth.svg';
+      if (name.includes('brentford')) return 'databases/logo/teams/england_brentford.svg';
+      if (name.includes('brighton')) return 'databases/logo/teams/england_brighton.svg';
+      if (name.includes('crystal palace')) return 'databases/logo/teams/england_crystal-palace.svg';
+      if (name.includes('everton')) return 'databases/logo/teams/england_everton.svg';
+      if (name.includes('fulham')) return 'databases/logo/teams/england_fulham.svg';
+      if (name.includes('ipswich')) return 'databases/logo/teams/england_ipswich.svg';
+      if (name.includes('leicester')) return 'databases/logo/teams/england_leicester.svg';
+      if (name.includes('liverpool')) return 'databases/logo/teams/england_liverpool.svg';
+      if (name.includes('newcastle')) return 'databases/logo/teams/england_newcastle.svg';
+      if (name.includes('nottingham')) return 'databases/logo/teams/england_nottingham-forest.svg';
+      if (name.includes('southampton')) return 'databases/logo/teams/england_southampton.svg';
+      if (name.includes('west ham')) return 'databases/logo/teams/england_west-ham.svg';
+      if (name.includes('wolves') || name.includes('wolverhampton')) return 'databases/logo/teams/england_wolverhampton.svg';
+      if (name.includes('real madrid')) return 'databases/logo/teams/spain_real-madrid.svg';
+      if (name.includes('sociedad')) return 'databases/logo/teams/spain_real-sociedad.svg';
+      if (name.includes('celtic')) return 'databases/logo/teams/scotland_celtic.svg';
+      if (name.includes('twente')) return 'databases/logo/teams/netherlands_twente.svg';
+      if (name.includes('landhaus')) return 'databases/logo/teams/austria_usc-landhaus.svg';
+      if (fallback && fallback.startsWith('databases/logo/teams/')) return fallback;
+      return fallback || 'assets/images/placeholder-team.svg';
+    }
+
+    // ---------- API MATCHES FETCH & SYNC ----------
+    async function fetchMatchesFromAPI() {
+      const apiKey = 'fb73ad1df2194fdab3fe56614d1a953e';
+      const proxyUrl = '/api/football-data/teams/61/matches';
+      const directUrl = 'https://api.football-data.org/v4/teams/61/matches';
+
+      try {
+        let res = await fetch(proxyUrl);
+        if (!res.ok) {
+          res = await fetch(directUrl, { headers: { 'X-Auth-Token': apiKey } });
+        }
+        if (res.ok) {
+          const data = await res.json();
+          return Array.isArray(data.matches) ? data.matches : [];
+        }
+      } catch (e) {
+        console.warn('API matches fetch error, trying direct endpoint:', e);
+        try {
+          const directRes = await fetch(directUrl, { headers: { 'X-Auth-Token': apiKey } });
+          if (directRes.ok) {
+            const data = await directRes.json();
+            return Array.isArray(data.matches) ? data.matches : [];
+          }
+        } catch (err) {
+          console.warn('Direct API fetch also failed:', err);
+        }
+      }
+      return [];
+    }
+
+    // ---------- LOAD ALL DATA (API + LOCAL ENRICHMENT) ----------
     async function loadAllData() {
       try {
-        let fixtures = [];
-        let results = [];
+        let localFixtures = [];
+        let apiMatches = [];
+
+        const [localRes, apiData] = await Promise.allSettled([
+          fetch('data/fixtures.json').then(r => r.ok ? r.json() : []),
+          fetchMatchesFromAPI()
+        ]);
+
+        if (localRes.status === 'fulfilled' && Array.isArray(localRes.value)) {
+          localFixtures = localRes.value;
+        }
+        if (apiData.status === 'fulfilled' && Array.isArray(apiData.value)) {
+          apiMatches = apiData.value;
+        }
+
         let allMatches = [];
-        
-        try {
-          const res = await fetch('data/fixtures.json');
-          if (res.ok) {
-            allMatches = await res.json();
-            fixtures = allMatches.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a, b) => getMatchTimestamp(a) - getMatchTimestamp(b));
-            results = allMatches.filter(m => m.status === 'completed').sort((a, b) => getMatchTimestamp(b) - getMatchTimestamp(a));
-          }
-        } catch(err) {
-          console.error('Error loading fixtures data:', err);
+        const matchedLocalIds = new Set();
+
+        if (apiMatches.length > 0) {
+          apiMatches.forEach(am => {
+            const utcDate = new Date(am.utcDate);
+            // Convert to Thai Local Date & Time (UTC+7)
+            const thDateObj = new Date(utcDate.getTime() + (7 * 60 * 60 * 1000));
+            const dateStr = thDateObj.toISOString().split('T')[0];
+            const hours = String(thDateObj.getUTCHours()).padStart(2, '0');
+            const mins = String(thDateObj.getUTCMinutes()).padStart(2, '0');
+            const timeStr = `${hours}:${mins}`;
+
+            const homeName = am.homeTeam?.shortName || am.homeTeam?.name || 'Home';
+            const awayName = am.awayTeam?.shortName || am.awayTeam?.name || 'Away';
+
+            // Find matching fixture in local fixtures database
+            const localMatch = localFixtures.find(lf => {
+              const lfHome = (lf.home_team || '').toLowerCase();
+              const lfAway = (lf.away_team || '').toLowerCase();
+              const hMatch = lfHome.includes(homeName.toLowerCase().substring(0, 4)) || homeName.toLowerCase().includes(lfHome.substring(0, 4));
+              const aMatch = lfAway.includes(awayName.toLowerCase().substring(0, 4)) || awayName.toLowerCase().includes(lfAway.substring(0, 4));
+              return (lf.date === dateStr || (hMatch && aMatch));
+            });
+
+            let status = 'upcoming';
+            if (am.status === 'FINISHED') status = 'completed';
+            else if (am.status === 'IN_PLAY' || am.status === 'PAUSED' || am.status === 'LIVE' || am.status === 'HALFTIME') status = 'live';
+
+            if (localMatch) matchedLocalIds.add(localMatch.id);
+
+            const isChelseaHome = am.homeTeam?.id === 61 || homeName.toLowerCase().includes('chelsea');
+
+            allMatches.push({
+              id: localMatch ? localMatch.id : `api_${am.id}`,
+              apiId: am.id,
+              date: dateStr,
+              time: timeStr,
+              time_th: timeStr,
+              time_uk: am.utcDate ? am.utcDate.substring(11, 16) : '19:00',
+              utcDate: am.utcDate,
+              competition: localMatch?.competition || (am.competition?.code === 'PL' ? 'premier-league' : 'other'),
+              competition_name: am.competition?.name || localMatch?.competition_name || 'Premier League',
+              competition_logo: localMatch?.competition_logo || am.competition?.emblem || 'databases/logo/competitions/men/premier-league.png',
+              home_team: homeName,
+              home_logo: resolveTeamLogo(homeName, localMatch?.home_logo || am.homeTeam?.crest),
+              away_team: awayName,
+              away_logo: resolveTeamLogo(awayName, localMatch?.away_logo || am.awayTeam?.crest),
+              venue: localMatch?.venue || (isChelseaHome ? 'Stamford Bridge' : `${awayName} Stadium`),
+              channels: localMatch?.channels || [],
+              status: status,
+              home_score: am.score?.fullTime?.home ?? am.score?.current?.home ?? localMatch?.home_score ?? null,
+              away_score: am.score?.fullTime?.away ?? am.score?.current?.away ?? localMatch?.away_score ?? null,
+              home_half_score: am.score?.halfTime?.home ?? localMatch?.home_half_score ?? null,
+              away_half_score: am.score?.halfTime?.away ?? localMatch?.away_half_score ?? null,
+              goals: localMatch?.goals || [],
+              events: localMatch?.events || [],
+              team_type: 'M',
+              source: 'api'
+            });
+          });
+
+          // Add remaining local matches (Women's matches, non-API tournaments)
+          localFixtures.forEach(lf => {
+            if (!matchedLocalIds.has(lf.id)) {
+              allMatches.push(lf);
+            }
+          });
+        } else {
+          // Pure fallback to localFixtures
+          allMatches = localFixtures;
         }
 
         function getMatchTimestamp(match) {
@@ -895,7 +1029,10 @@
           return isNaN(t) ? (new Date(match.date).getTime() || 0) : t;
         }
 
+        const fixtures = allMatches.filter(m => m.status === 'upcoming' || m.status === 'live').sort((a, b) => getMatchTimestamp(a) - getMatchTimestamp(b));
+        const results = allMatches.filter(m => m.status === 'completed').sort((a, b) => getMatchTimestamp(b) - getMatchTimestamp(a));
         const liveMatches = allMatches.filter(m => m.status === 'live');
+
         window.allMatchesGlobal = allMatches;
         window.fixturesGlobal = fixtures;
         window.resultsGlobal = results;
@@ -906,8 +1043,15 @@
         initMatchFilters();
         applyMatchFilters();
 
+        // If there's an active live match, schedule background auto-refresh
+        if (liveMatches.length > 0 && !window.liveAutoRefreshTimer) {
+          window.liveAutoRefreshTimer = setInterval(() => {
+            loadAllData();
+          }, 15000);
+        }
+
       } catch (error) {
-        console.error(error);
+        console.error('Error in loadAllData:', error);
         document.getElementById('fixturesContainer').innerHTML = '<div class="empty-state">⚠️ โหลดไม่สำเร็จ</div>';
         document.getElementById('resultsContainer').innerHTML = '<div class="empty-state">⚠️ โหลดไม่สำเร็จ</div>';
       }
