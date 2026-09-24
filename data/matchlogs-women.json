@@ -577,6 +577,13 @@
         "channel_handle": "@chelseafcwomen",
         "channel_url": "https://www.youtube.com/@chelseafcwomen"
       },
+      "channels": [
+        {
+          "platform": "beIN",
+          "name": "beIN SPORTS",
+          "logo": "databases/logo/tv/bein_sports.svg"
+        }
+      ],
       "commentary": [
         {
           "section": "Full Time / บทสรุปหลังเกม",

@@ -334,6 +334,9 @@ const FBREF_RAW_MATCHLOGS = [
       channel_handle: "@chelseafcwomen",
       channel_url: "https://www.youtube.com/@chelseafcwomen"
     },
+    channels: [
+      { platform: "beIN", name: "beIN SPORTS", logo: "databases/logo/tv/bein_sports.svg" }
+    ],
     commentary: [
       {
         section: "Full Time / บทสรุปหลังเกม",
@@ -1246,9 +1249,14 @@ function runTransformation() {
         youtube_id: matchlog.youtube_id || item.youtube_id,
         video: matchlog.video || item.video,
         commentary: matchlog.commentary || item.commentary,
-        channels: item.channels && item.channels.length > 0 ? item.channels : [
+        channels: ((matchlog.comp && (matchlog.comp.includes('Champions League') || matchlog.comp.includes('UWCL'))) ||
+                   (item.competition && (item.competition.includes('Champions League') || item.competition.includes('UWCL'))) ||
+                   (item.competition_name && (item.competition_name.includes('Champions League') || item.competition_name.includes('UWCL'))) ||
+                   (item.id && item.id.includes('uwcl'))) ? [
+          { platform: "beIN", name: "beIN SPORTS", logo: "databases/logo/tv/bein_sports.svg" }
+        ] : ((matchlog.channels && matchlog.channels.length > 0) ? matchlog.channels : (item.channels && item.channels.length > 0 ? item.channels : [
           { platform: "CFC+", name: "CFC+ Live", logo: "databases/logo/tv/cfc.png" }
-        ],
+        ])),
         team_type: "W"
       };
     });
@@ -1263,7 +1271,8 @@ function runTransformation() {
         const awayLogo = isHome ? matchlog.opponent_crest : 'databases/logo/teams/england_chelsea.svg';
 
         let compLogo = 'databases/logo/competitions/women/women_super_league.png';
-        if (matchlog.comp.includes('Champions League') || matchlog.comp.includes('UWCL')) {
+        const isUwcl = matchlog.comp.includes('Champions League') || matchlog.comp.includes('UWCL') || matchlog.id.includes('uwcl');
+        if (isUwcl) {
           compLogo = 'databases/logo/competitions/women/women_uwcl_champions_league_logo.svg';
         } else if (matchlog.comp.includes('Friendly')) {
           compLogo = 'databases/logo/competitions/women/friendly.png';
@@ -1317,8 +1326,9 @@ function runTransformation() {
           lineups: matchlog.lineups,
           stats: matchlog.stats,
           commentary: matchlog.commentary,
-          channels: [
-            { platform: "DAZN", name: "DAZN Women's Football", logo: "databases/logo/tv/monomax.svg" },
+          channels: isUwcl ? [
+            { platform: "beIN", name: "beIN SPORTS", logo: "databases/logo/tv/bein_sports.svg" }
+          ] : [
             { platform: "CFC+", name: "CFC+ Live", logo: "databases/logo/tv/cfc.png" }
           ],
           team_type: "W"

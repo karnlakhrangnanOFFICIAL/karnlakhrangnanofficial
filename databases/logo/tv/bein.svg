@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="8" fill="#5c2d91"/>
+  <!-- beIN text -->
+  <text x="50" y="38" font-family="'Arial Black', -apple-system, sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">beIN</text>
+  <!-- SPORTS text in box -->
+  <rect x="95" y="14" width="95" height="32" rx="4" fill="#FFFFFF"/>
+  <text x="142" y="37" font-family="'Arial Black', -apple-system, sans-serif" font-weight="900" font-size="19" fill="#5c2d91" text-anchor="middle" letter-spacing="1">SPORTS</text>
+</svg>

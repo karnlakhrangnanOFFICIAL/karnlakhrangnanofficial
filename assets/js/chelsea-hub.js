@@ -1474,107 +1474,247 @@
         }
       }
 
-      // 2. Render Coach Profile (Xabi Alonso)
+      // 2. Render Coach Profiles (Xabi Alonso & Sonia Bompastor)
       if (coachContainer) {
-        coachContainer.innerHTML = `
-          <div class="coach-profile-card">
-            <div class="coach-header-row">
-              <div style="display: flex; align-items: center; gap: 1rem;">
-                <div class="coach-avatar-badge" title="Xabi Alonso">
-                  <img src="https://img.chelseafc.com/image/upload/f_auto,h_860,q_50/editorial/people/management/2026-27/Xabi_Alonso_2026-27_profile_avatar-removebg.png" alt="Xabi Alonso" class="coach-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <span class="coach-avatar-fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">XA</span>
+        const renderCoachCard = (coachType = 'women') => {
+          const isWomen = coachType === 'women';
+          
+          if (isWomen) {
+            coachContainer.innerHTML = `
+              <div class="coach-profile-card">
+                <div class="coach-switch-tabs" style="display: flex; gap: 8px; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px;">
+                  <button type="button" class="coach-tab-btn" id="coachTabMen" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #94a3b8; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: all 0.2s;">👔 Men's Team (Xabi Alonso)</button>
+                  <button type="button" class="coach-tab-btn active" id="coachTabWomen" style="background: linear-gradient(135deg, #C2185B 0%, #880E4F 100%); border: 1px solid #C2185B; color: #ffffff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: all 0.2s; box-shadow: 0 0 10px rgba(194,24,91,0.4);">👚 Women's Team (Sonia Bompastor)</button>
                 </div>
-                <div>
-                  <div style="font-size: 0.78rem; color: #38bdf8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
-                    <span>👔</span>
-                    <span>Manager / ผู้จัดการทีมชุดใหญ่</span>
+
+                <div class="coach-header-row">
+                  <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="coach-avatar-badge" title="Sonia Bompastor" style="border-color: #C2185B;">
+                      <img src="https://img.chelseafc.com/image/upload/f_auto,h_860,q_50/editorial/people/management/2026-27/Sonia_Bompastor_profile_2026-27_avatar-removebg.png" alt="Sonia Bompastor" class="coach-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                      <span class="coach-avatar-fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">SB</span>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.78rem; color: #f472b6; text-transform: uppercase; font-weight: 800; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
+                        <span>👚</span>
+                        <span>Head coach / โค้ชทีมหญิง</span>
+                      </div>
+                      <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
+                        Sonia Bompastor <span style="font-size: 0.95rem; font-weight: 600; color: #fbcfe8;">(โซเนีย บอมพาสเตอร์)</span>
+                      </div>
+                    </div>
                   </div>
-                  <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
-                    Xabi Alonso
+
+                  <div class="coach-meta-badges">
+                    <div class="coach-meta-chip">
+                      <img src="databases/logo/national/fr.svg" alt="France" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                      <span><strong>Nationality:</strong> French (ฝรั่งเศส)</span>
+                    </div>
+                    <div class="coach-meta-chip">
+                      <span>👚</span>
+                      <span><strong>Position:</strong> Head coach (โค้ช)</span>
+                    </div>
+                    <div class="coach-meta-chip">
+                      <span>📅</span>
+                      <span><strong>Contract:</strong> 2024 - 2030 (Extended)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Key Honours & Milestones -->
+                <div class="coach-highlights-row">
+                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🏆 Domestic Treble (2024/25)</span>
+                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🛡️ ไร้พ่ายประวัติศาสตร์ 22 นัด WSL Unbeaten</span>
+                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">⭐ UWCL แชมป์ทั้งฐานะนักเตะและผู้จัดการทีม</span>
+                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🏆 แชมป์ D1 Féminine 3 สมัยซ้อน</span>
+                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🥈 รองชนะเลิศ The Best FIFA Women’s Coach 2025</span>
+                </div>
+
+                <!-- Detailed Biography Box -->
+                <div class="coach-bio-box">
+                  <div class="coach-bio-header" id="coachBioToggle">
+                    <div class="coach-bio-title">
+                      <span>📖</span>
+                      <span>ประวัติทางการและผลงาน (Official Biography & Career)</span>
+                    </div>
+                    <button type="button" class="coach-bio-toggle-btn" id="coachBioToggleBtn">
+                      ย่อ/ขยายเนื้อหา ▼
+                    </button>
+                  </div>
+                  <div class="coach-bio-content" id="coachBioContent" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 8px; border-left: 3px solid #C2185B;">
+                      <strong style="color: #f472b6; font-size: 0.85rem;">🇹🇭 ข้อมูลประวัติภาษาไทย (Thai Bio):</strong>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #e2e8f0;">
+                        Sonia Bompastor เข้ารับตำแหน่ง <strong>head coach</strong> ของ <strong>women’s team</strong> ในช่วงเริ่มต้นของ <strong>season</strong> 2024/25 หลังจากคุม <strong>team</strong> Lyon ในบ้านเกิดที่ประเทศ France เป็นเวลา 3 <strong>seasons</strong> กุนซือวัย 43 ปีรายนี้ก็เริ่มงานใน <strong>role</strong> ใหม่เมื่อวันที่ 1 July 2024 หลังเซ็น <strong>contract</strong> เป็นเวลา 4 ปี
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        เธอเข้ามาทำหน้าที่แทน Emma Hayes ผู้คุม <strong>team</strong> มาอย่างยาวนาน ซึ่งอำลา Chelsea ไปหลังจบ <strong>season</strong> 2023/24 หลังจากกุมบังเหียน <strong>Blues</strong> มาเกือบ 12 ปี
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        Bompastor เคยติด <strong>French national team</strong> ถึง 156 ครั้ง ก่อนจะแขวนสตั๊ดในปี 2013 เพื่อผันตัวไปรับ <strong>position</strong> โค้ชใน <strong>academy</strong> ของ Lyon ต่อมาในเดือน April 2021 เธอได้รับการแต่งตั้งเป็น <strong>head coach</strong> ของ <strong>first team</strong> และประสบความสำเร็จอย่างมากตลอดช่วงเวลาที่อยู่ใน <strong>role</strong> นี้ โดยพาทีมคว้า <strong>title</strong> Division 1 Feminine ได้ตลอดทั้ง 3 <strong>seasons</strong> ก่อนที่เธอจะย้ายมาร่วม <strong>team</strong> Chelsea
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        เธอพา Lyon คว้า <strong>double</strong> แชมป์ ทั้ง <strong>league</strong> และการแข่งขันระดับ European ใน <strong>season</strong> แรกที่คุมทีมเต็มฤดูกาล ส่งผลให้เธอกลายเป็น <strong>person</strong> คนแรกที่คว้าแชมป์ UEFA Women’s Champions League ได้ทั้งในฐานะ <strong>player</strong> และ <strong>manager</strong>
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        การคุม <strong>team</strong> Chelsea ในเดือนแรกจบลงด้วยการที่เธอได้รับ <strong>award</strong> WSL Manager of the Month ประจำเดือน September และเดินหน้าสร้างประวัติศาสตร์เป็น <strong>coach</strong> คนแรกใน <strong>history</strong> ของ WSL ที่คว้าชัยชนะได้ตลอด 9 <strong>games</strong> แรกในรายการนี้
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        ช่วงปลายเดือน November 2024 เธอมี <strong>name</strong> ติดโผผู้เข้าชิง The Best FIFA Women's Coach และคว้ารางวัล WSL Manager of the Month ประจำเดือน November ไปครอง ตามด้วย <strong>award</strong> เดียวกันนี้อีกครั้งในเดือน January
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        กว่าที่ความพ่ายแพ้นัดแรกของ <strong>season</strong> รวมทุก <strong>competitions</strong> จะเกิดขึ้นใน <strong>first leg</strong> ของศึก Champions League ที่พบกับ Man City สถิติการไร้พ่ายใน <strong>league</strong> ของ Bompastor ก็พุ่งขึ้นไปถึง 16 นัด ซึ่งถือเป็นสถิติที่ดีที่สุดใน <strong>history</strong> ของ WSL นอกจากนี้เธอยังคว้า <strong>trophy</strong> แรกกับ Chelsea ได้สำเร็จ หลังเอาชนะ City ในรอบ <strong>final</strong> ของ League Cup
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        แม้จะมีช่วงสะดุดอยู่บ้างเมื่อ Barcelona เขี่ย <strong>Blues</strong> ตกรอบใน <strong>semi-final stage</strong> ของ Champions League แต่ <strong>side</strong> ของ Bompastor ก็เดินหน้าคว้า <strong>domestic treble</strong> มาครองได้อย่างยอดเยี่ยม พร้อมสร้างสถิติไร้พ่ายตลอด <strong>season</strong> 22 นัดใน WSL อย่างที่ไม่เคยมีใครทำได้มาก่อน รวมถึงการเอาชนะ Manchester United ไปแบบขาดลอย 3-0 ใน <strong>final</strong> ของ FA Cup
+                      </p>
+                      <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                        เธอมีชื่อติด <strong>shortlist</strong> ลุ้นรางวัล Best Coach ของงาน Ballon d'Or และจบลงด้วยอันดับ 2 จากผลโหวต The Best FIFA Women’s Coach ประจำปี 2025 ในเดือน February 2026 Bompastor ได้ต่อ <strong>contract</strong> กับ Chelsea ออกไปจนถึงปี 2030
+                      </p>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.02); padding: 12px 14px; border-radius: 8px; border-left: 3px solid #38bdf8;">
+                      <strong style="color: #38bdf8; font-size: 0.85rem;">🇬🇧 Official English Biography:</strong>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        Sonia Bompastor became head coach of the women’s team for the start of the 2024/25 season. Having spent three seasons in charge of Lyon in her native France, the 43-year-old began her new role on 1 July 2024 after signing a four-year contract.
+                      </p>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        She replaced the long-serving Emma Hayes who departed Chelsea upon the conclusion of the 2023/24 season after nearly 12 years in charge of the Blues.
+                      </p>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        Bompastor was capped 156 times by the French national team before retiring in 2013 to take up a coaching position with Lyon’s Academy. In April 2021, she became first team head coach and enjoyed much success during her time in the role, winning the Division 1 Feminine title in the three seasons prior to her joining Chelsea.
+                      </p>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        She led Lyon to a league and European double during her first full season in charge, becoming the first person to win the UEFA Women’s Champions League as both a player and a manager.
+                      </p>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        Her first month in charge of Chelsea ended with her awarded the WSL Manager of the Month for September and she went on to became the first coach in WSL history to win their first nine games in the competition. At the end of November 2024, she was included in The Best FIFA Women's Coach nominees and named WSL Manager of the Month for November, which was followed by the same award for January.
+                      </p>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        By the time a first defeat of the season in all competitions came in a Champions League first leg at Man City, Bompastor's unbeaten league run was up to 16, the best in WSL history. She had also collected her first trophy with Chelsea. City were defeated in the League Cup final. Although there was an isolated setback when Barcelona knocked the Blues out of the Champions League at the semi-final stage, Bompastor's side duly went on to complete a domestic treble, with an unprecedented unbeaten campaign for a 22-match WSL season, and a convincing 3-0 win over Manchester United in the FA Cup final.
+                      </p>
+                      <p style="margin-top: 6px; margin-bottom: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                        She was named on the shortlist for the Best Coach award at the Ballon d'Or and finished second in the voting for The Best FIFA Women’s Coach of 2025. In February 2026, Bompastor extended her contract at Chelsea to 2030.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
+            `;
+          } else {
+            coachContainer.innerHTML = `
+              <div class="coach-profile-card">
+                <div class="coach-switch-tabs" style="display: flex; gap: 8px; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px;">
+                  <button type="button" class="coach-tab-btn active" id="coachTabMen" style="background: var(--blue-primary, #0033a0); border: 1px solid #38bdf8; color: #ffffff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: all 0.2s; box-shadow: 0 0 10px rgba(56,189,248,0.4);">👔 Men's Team (Xabi Alonso)</button>
+                  <button type="button" class="coach-tab-btn" id="coachTabWomen" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #94a3b8; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: all 0.2s;">👚 Women's Team (Sonia Bompastor)</button>
+                </div>
 
-              <div class="coach-meta-badges">
-                <div class="coach-meta-chip">
-                  <span>🇪🇸</span>
-                  <span><strong>สัญชาติ:</strong> ESP 'Spanish'</span>
+                <div class="coach-header-row">
+                  <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="coach-avatar-badge" title="Xabi Alonso">
+                      <img src="https://img.chelseafc.com/image/upload/f_auto,h_860,q_50/editorial/people/management/2026-27/Xabi_Alonso_2026-27_profile_avatar-removebg.png" alt="Xabi Alonso" class="coach-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                      <span class="coach-avatar-fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">XA</span>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.78rem; color: #38bdf8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
+                        <span>👔</span>
+                        <span>Manager / ผู้จัดการทีมชุดใหญ่</span>
+                      </div>
+                      <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
+                        Xabi Alonso
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="coach-meta-badges">
+                    <div class="coach-meta-chip">
+                      <img src="databases/logo/national/es.svg" alt="Spain" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                      <span><strong>สัญชาติ:</strong> ESP 'Spanish'</span>
+                    </div>
+                    <div class="coach-meta-chip">
+                      <span>👔</span>
+                      <span><strong>ตำแหน่ง:</strong> Manager</span>
+                    </div>
+                    <div class="coach-meta-chip">
+                      <span>📅</span>
+                      <span><strong>เริ่มคุมทีม:</strong> 1 July 2026 (4-year contract)</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="coach-meta-chip">
-                  <span>👔</span>
-                  <span><strong>ตำแหน่ง:</strong> Manager</span>
+
+                <!-- Key Honours & Milestones -->
+                <div class="coach-highlights-row">
+                  <span class="coach-trophy-tag">🏆 ไร้พ่ายประวัติศาสตร์ บุนเดสลีกา (2023/24)</span>
+                  <span class="coach-trophy-tag">🛡️ สถิติยุโรป ไม่แพ้ติดต่อกัน 51 นัด</span>
+                  <span class="coach-trophy-tag">🏆 DFB-Pokal & German Super Cup</span>
+                  <span class="coach-trophy-tag">🌍 แชมป์ฟุตบอลโลก 2010 & ยูโร 2008, 2012</span>
+                  <span class="coach-trophy-tag">⭐ แชมป์ยูฟ่า แชมเปียนส์ ลีก 2 สมัย</span>
                 </div>
-                <div class="coach-meta-chip">
-                  <span>📅</span>
-                  <span><strong>เริ่มคุมทีม:</strong> 1 July 2026 (4-year contract)</span>
+
+                <!-- Detailed Biography Box -->
+                <div class="coach-bio-box">
+                  <div class="coach-bio-header" id="coachBioToggle">
+                    <div class="coach-bio-title">
+                      <span>📖</span>
+                      <span>ประวัติและบทสัมภาษณ์เปิดตัว (Official Biography)</span>
+                    </div>
+                    <button type="button" class="coach-bio-toggle-btn" id="coachBioToggleBtn">
+                      ย่อ/ขยายเนื้อหา ▼
+                    </button>
+                  </div>
+                  <div class="coach-bio-content" id="coachBioContent">
+                    <p>
+                      "One of the most respected figures in the modern game, Alonso arrived at Chelsea on a four‑year contract having already experienced coaching at the highest level of European football with Real Madrid and Bayer Leverkusen. He led the German club to the first league title in their history."
+                    </p>
+                    <p>
+                      "His appointment at Chelsea reflects the club’s belief in his broad set of experiences, coaching quality and game model, leadership attributes, character and integrity, which were key to the decision to ask him to help lead the next phase of Chelsea’s journey."
+                    </p>
+                    <p>
+                      "He is regarded not only as an outstanding football coach, but also as a proven leader and partner across a number of areas essential to the demands of driving the team."
+                    </p>
+                    <p>
+                      "At Bayer Leverkusen during the historic 2023/24 Bundesliga title-winning season, Alonso’s team were unbeaten throughout that campaign, contributing to setting a new European record for any club of 51 competitive matches without defeat in all competitions."
+                    </p>
+                    <p>
+                      "In the same season they won the DFB-Pokal, the main knockout cup competition in Germany, and that was followed up by the German Super Cup. Leverkusen were also runners-up in the UEFA Europa League. Naturally, Alonso won a host of individual manager honours that year."
+                    </p>
+                    <p>
+                      "As a player, Alonso was part of Spain’s golden generation that won the 2010 World Cup and two European Championships, in 2008 and 2012."
+                    </p>
+                    <p>
+                      "At club level, he won the Champions League with Liverpool and Real Madrid and domestic league titles with Real and Bayern Munich, as well as cup competitions with all three clubs."
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            `;
+          }
 
-            <!-- Key Honours & Milestones -->
-            <div class="coach-highlights-row">
-              <span class="coach-trophy-tag">🏆 ไร้พ่ายประวัติศาสตร์ บุนเดสลีกา (2023/24)</span>
-              <span class="coach-trophy-tag">🛡️ สถิติยุโรป ไม่แพ้ติดต่อกัน 51 นัด</span>
-              <span class="coach-trophy-tag">🏆 DFB-Pokal & German Super Cup</span>
-              <span class="coach-trophy-tag">🌍 แชมป์ฟุตบอลโลก 2010 & ยูโร 2008, 2012</span>
-              <span class="coach-trophy-tag">⭐ แชมป์ยูฟ่า แชมเปียนส์ ลีก 2 สมัย</span>
-            </div>
+          // Attach tab listeners
+          const tabMen = document.getElementById('coachTabMen');
+          const tabWomen = document.getElementById('coachTabWomen');
+          if (tabMen) tabMen.addEventListener('click', () => renderCoachCard('men'));
+          if (tabWomen) tabWomen.addEventListener('click', () => renderCoachCard('women'));
 
-            <!-- Detailed Biography Box -->
-            <div class="coach-bio-box">
-              <div class="coach-bio-header" id="coachBioToggle">
-                <div class="coach-bio-title">
-                  <span>📖</span>
-                  <span>ประวัติและบทสัมภาษณ์เปิดตัว (Official Biography)</span>
-                </div>
-                <button type="button" class="coach-bio-toggle-btn" id="coachBioToggleBtn">
-                  ย่อ/ขยายเนื้อหา ▼
-                </button>
-              </div>
-              <div class="coach-bio-content" id="coachBioContent">
-                <p>
-                  "One of the most respected figures in the modern game, Alonso arrived at Chelsea on a four‑year contract having already experienced coaching at the highest level of European football with Real Madrid and Bayer Leverkusen. He led the German club to the first league title in their history."
-                </p>
-                <p>
-                  "His appointment at Chelsea reflects the club’s belief in his broad set of experiences, coaching quality and game model, leadership attributes, character and integrity, which were key to the decision to ask him to help lead the next phase of Chelsea’s journey."
-                </p>
-                <p>
-                  "He is regarded not only as an outstanding football coach, but also as a proven leader and partner across a number of areas essential to the demands of driving the team."
-                </p>
-                <p>
-                  "At Bayer Leverkusen during the historic 2023/24 Bundesliga title-winning season, Alonso’s team were unbeaten throughout that campaign, contributing to setting a new European record for any club of 51 competitive matches without defeat in all competitions."
-                </p>
-                <p>
-                  "In the same season they won the DFB-Pokal, the main knockout cup competition in Germany, and that was followed up by the German Super Cup. Leverkusen were also runners-up in the UEFA Europa League. Naturally, Alonso won a host of individual manager honours that year."
-                </p>
-                <p>
-                  "As a player, Alonso was part of Spain’s golden generation that won the 2010 World Cup and two European Championships, in 2008 and 2012."
-                </p>
-                <p>
-                  "At club level, he won the Champions League with Liverpool and Real Madrid and domestic league titles with Real and Bayern Munich, as well as cup competitions with all three clubs."
-                </p>
-              </div>
-            </div>
-          </div>
-        `;
+          // Bind collapsible toggle listener
+          const toggleBtn = document.getElementById('coachBioToggleBtn');
+          const toggleHeader = document.getElementById('coachBioToggle');
+          const bioContent = document.getElementById('coachBioContent');
+          if (toggleBtn && bioContent) {
+            const handleToggle = () => {
+              if (bioContent.style.display === 'none') {
+                bioContent.style.display = 'flex';
+                toggleBtn.textContent = 'ย่อเนื้อหา ▲';
+              } else {
+                bioContent.style.display = 'none';
+                toggleBtn.textContent = 'ขยายอ่านทั้งหมด ▼';
+              }
+            };
+            toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); handleToggle(); });
+            if (toggleHeader) toggleHeader.addEventListener('click', handleToggle);
+          }
+        };
 
-        // Bind collapsible toggle listener
-        const toggleBtn = document.getElementById('coachBioToggleBtn');
-        const toggleHeader = document.getElementById('coachBioToggle');
-        const bioContent = document.getElementById('coachBioContent');
-        if (toggleBtn && bioContent) {
-          const handleToggle = () => {
-            if (bioContent.style.display === 'none') {
-              bioContent.style.display = 'flex';
-              toggleBtn.textContent = 'ย่อเนื้อหา ▲';
-            } else {
-              bioContent.style.display = 'none';
-              toggleBtn.textContent = 'ขยายอ่านทั้งหมด ▼';
-            }
-          };
-          toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); handleToggle(); });
-          if (toggleHeader) toggleHeader.addEventListener('click', handleToggle);
-        }
+        renderCoachCard('women');
       }
 
       renderSquadCards('ALL');

@@ -7770,9 +7770,9 @@
     ],
     "channels": [
       {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "competition_name": "UEFA Women's Champions League",
@@ -7820,9 +7820,9 @@
     ],
     "channels": [
       {
-        "platform": "CFC+",
-        "name": "CFC+",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "competition_name": "UEFA Women's Champions League",
@@ -8605,14 +8605,9 @@
     "events": [],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W"
@@ -8647,14 +8642,9 @@
     "events": [],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W"
@@ -8689,14 +8679,9 @@
     "events": [],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W"
@@ -8731,14 +8716,9 @@
     "events": [],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W"
@@ -8773,14 +8753,9 @@
     "events": [],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W"
@@ -8815,14 +8790,9 @@
     "events": [],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W"
@@ -8957,14 +8927,9 @@
     ],
     "channels": [
       {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/monomax.svg"
-      },
-      {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
     "team_type": "W",

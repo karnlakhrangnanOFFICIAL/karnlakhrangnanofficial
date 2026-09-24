@@ -1070,20 +1070,170 @@ async function loadWomenTable(compChoice = null) {
 
 async function loadWomenPlayers() {
   const container = document.getElementById("womenPlayersContainer");
+  const coachContainer = document.getElementById("womenCoachProfileContainer");
   if (!container) return;
-  try {
-    let players = await safeFetchJson("data/players-women.json");
+  const isTh = (window.currentLang || "th") === "th";
 
-    if (!Array.isArray(players) || players.length === 0) {
-      players = await safeFetchJson(API_PLAYERS_WOMEN);
+  try {
+    let allData = await safeFetchJson("data/players-women.json");
+
+    if (!Array.isArray(allData) || allData.length === 0) {
+      allData = await safeFetchJson(API_PLAYERS_WOMEN);
     }
 
-    if (!Array.isArray(players) || players.length === 0) {
+    if (!Array.isArray(allData) || allData.length === 0) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">👕</span><p>No players found</p></div>';
       return;
     }
-    renderPlayers(container, players, container.id.includes("women") ? "women" : "men");
+
+    // Render Sonia Bompastor Head Coach Card
+    if (coachContainer) {
+      coachContainer.innerHTML = `
+        <div class="coach-profile-card">
+          <div class="coach-header-row">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="coach-avatar-badge" title="Sonia Bompastor" style="border-color: #C2185B;">
+                <img src="https://img.chelseafc.com/image/upload/f_auto,h_860,q_50/editorial/people/management/2026-27/Sonia_Bompastor_profile_2026-27_avatar-removebg.png" alt="Sonia Bompastor" class="coach-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="coach-avatar-fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">SB</span>
+              </div>
+              <div>
+                <div style="font-size: 0.78rem; color: #f472b6; text-transform: uppercase; font-weight: 800; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>👚</span>
+                  <span>Head coach / โค้ชทีมหญิง</span>
+                </div>
+                <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
+                  Sonia Bompastor <span style="font-size: 0.95rem; font-weight: 600; color: #fbcfe8;">(${isTh ? "โซเนีย บอมพาสเตอร์" : "French"})</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="coach-meta-badges">
+              <div class="coach-meta-chip">
+                <img src="databases/logo/national/fr.svg" alt="France" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                <span><strong>Nationality:</strong> ${isTh ? "ฝรั่งเศส (French)" : "French"}</span>
+              </div>
+              <div class="coach-meta-chip">
+                <span>👚</span>
+                <span><strong>Position:</strong> Head coach (${isTh ? "โค้ช" : "Manager"})</span>
+              </div>
+              <div class="coach-meta-chip">
+                <span>📅</span>
+                <span><strong>Contract:</strong> 2024 - 2030 (Extended)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Honours & Milestones -->
+          <div class="coach-highlights-row">
+            <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🏆 Domestic Treble (2024/25)</span>
+            <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🛡️ ไร้พ่ายประวัติศาสตร์ 22 นัด WSL Unbeaten</span>
+            <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">⭐ UWCL แชมป์ทั้งฐานะนักเตะและผู้จัดการทีม</span>
+            <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🏆 แชมป์ D1 Féminine 3 สมัยซ้อน</span>
+            <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🥈 รองชนะเลิศ The Best FIFA Women’s Coach 2025</span>
+          </div>
+
+          <!-- Detailed Biography Box -->
+          <div class="coach-bio-box">
+            <div class="coach-bio-header" id="womenCoachBioToggle">
+              <div class="coach-bio-title">
+                <span>📖</span>
+                <span>${isTh ? "ประวัติและผลงานทางการ (Official Biography)" : "Official Biography & Career"}</span>
+              </div>
+              <button type="button" class="coach-bio-toggle-btn" id="womenCoachBioToggleBtn">
+                ${isTh ? "ย่อ/ขยายเนื้อหา ▼" : "Expand / Collapse ▼"}
+              </button>
+            </div>
+            <div class="coach-bio-content" id="womenCoachBioContent" style="display: flex; flex-direction: column; gap: 12px;">
+              ${
+                isTh
+                  ? `
+                <div style="background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 8px; border-left: 3px solid #C2185B;">
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #e2e8f0;">
+                    Sonia Bompastor เข้ารับตำแหน่ง <strong>head coach</strong> ของ <strong>women’s team</strong> ในช่วงเริ่มต้นของ <strong>season</strong> 2024/25 หลังจากคุม <strong>team</strong> Lyon ในบ้านเกิดที่ประเทศ France เป็นเวลา 3 <strong>seasons</strong> กุนซือวัย 43 ปีรายนี้ก็เริ่มงานใน <strong>role</strong> ใหม่เมื่อวันที่ 1 July 2024 หลังเซ็น <strong>contract</strong> เป็นเวลา 4 ปี
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    เธอเข้ามาทำหน้าที่แทน Emma Hayes ผู้คุม <strong>team</strong> มาอย่างยาวนาน ซึ่งอำลา Chelsea ไปหลังจบ <strong>season</strong> 2023/24 หลังจากกุมบังเหียน <strong>Blues</strong> มาเกือบ 12 ปี
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    Bompastor เคยติด <strong>French national team</strong> ถึง 156 ครั้ง ก่อนจะแขวนสตั๊ดในปี 2013 เพื่อผันตัวไปรับ <strong>position</strong> โค้ชใน <strong>academy</strong> ของ Lyon ต่อมาในเดือน April 2021 เธอได้รับการแต่งตั้งเป็น <strong>head coach</strong> ของ <strong>first team</strong> และประสบความสำเร็จอย่างมากตลอดช่วงเวลาที่อยู่ใน <strong>role</strong> นี้ โดยพาทีมคว้า <strong>title</strong> Division 1 Feminine ได้ตลอดทั้ง 3 <strong>seasons</strong> ก่อนที่เธอจะย้ายมาร่วม <strong>team</strong> Chelsea
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    เธอพา Lyon คว้า <strong>double</strong> แชมป์ ทั้ง <strong>league</strong> และการแข่งขันระดับ European ใน <strong>season</strong> แรกที่คุมทีมเต็มฤดูกาล ส่งผลให้เธอกลายเป็น <strong>person</strong> คนแรกที่คว้าแชมป์ UEFA Women’s Champions League ได้ทั้งในฐานะ <strong>player</strong> และ <strong>manager</strong>
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    การคุม <strong>team</strong> Chelsea ในเดือนแรกจบลงด้วยการที่เธอได้รับ <strong>award</strong> WSL Manager of the Month ประจำเดือน September และเดินหน้าสร้างประวัติศาสตร์เป็น <strong>coach</strong> คนแรกใน <strong>history</strong> ของ WSL ที่คว้าชัยชนะได้ตลอด 9 <strong>games</strong> แรกในรายการนี้
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    ช่วงปลายเดือน November 2024 เธอมี <strong>name</strong> ติดโผผู้เข้าชิง The Best FIFA Women's Coach และคว้ารางวัล WSL Manager of the Month ประจำเดือน November ไปครอง ตามด้วย <strong>award</strong> เดียวกันนี้อีกครั้งในเดือน January
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    กว่าที่ความพ่ายแพ้นัดแรกของ <strong>season</strong> รวมทุก <strong>competitions</strong> จะเกิดขึ้นใน <strong>first leg</strong> ของศึก Champions League ที่พบกับ Man City สถิติการไร้พ่ายใน <strong>league</strong> ของ Bompastor ก็พุ่งขึ้นไปถึง 16 นัด ซึ่งถือเป็นสถิติที่ดีที่สุดใน <strong>history</strong> ของ WSL นอกจากนี้เธอยังคว้า <strong>trophy</strong> แรกกับ Chelsea ได้สำเร็จ หลังเอาชนะ City ในรอบ <strong>final</strong> ของ League Cup
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    แม้จะมีช่วงสะดุดอยู่บ้างเมื่อ Barcelona เขี่ย <strong>Blues</strong> ตกรอบใน <strong>semi-final stage</strong> ของ Champions League แต่ <strong>side</strong> ของ Bompastor ก็เดินหน้าคว้า <strong>domestic treble</strong> มาครองได้อย่างยอดเยี่ยม พร้อมสร้างสถิติไร้พ่ายตลอด <strong>season</strong> 22 นัดใน WSL อย่างที่ไม่เคยมีใครทำได้มาก่อน รวมถึงการเอาชนะ Manchester United ไปแบบขาดลอย 3-0 ใน <strong>final</strong> ของ FA Cup
+                  </p>
+                  <p style="margin: 0; line-height: 1.6; font-size: 0.88rem; color: #cbd5e1;">
+                    เธอมีชื่อติด <strong>shortlist</strong> ลุ้นรางวัล Best Coach ของงาน Ballon d'Or และจบลงด้วยอันดับ 2 จากผลโหวต The Best FIFA Women’s Coach ประจำปี 2025 ในเดือน February 2026 Bompastor ได้ต่อ <strong>contract</strong> กับ Chelsea ออกไปจนถึงปี 2030
+                  </p>
+                </div>
+              `
+                  : `
+                <div style="background: rgba(255,255,255,0.02); padding: 12px 14px; border-radius: 8px; border-left: 3px solid #38bdf8;">
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    Sonia Bompastor became head coach of the women’s team for the start of the 2024/25 season. Having spent three seasons in charge of Lyon in her native France, the 43-year-old began her new role on 1 July 2024 after signing a four-year contract.
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    She replaced the long-serving Emma Hayes who departed Chelsea upon the conclusion of the 2023/24 season after nearly 12 years in charge of the Blues.
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    Bompastor was capped 156 times by the French national team before retiring in 2013 to take up a coaching position with Lyon’s Academy. In April 2021, she became first team head coach and enjoyed much success during her time in the role, winning the Division 1 Feminine title in the three seasons prior to her joining Chelsea.
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    She led Lyon to a league and European double during her first full season in charge, becoming the first person to win the UEFA Women’s Champions League as both a player and a manager.
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    Her first month in charge of Chelsea ended with her awarded the WSL Manager of the Month for September and she went on to became the first coach in WSL history to win their first nine games in the competition. At the end of November 2024, she was included in The Best FIFA Women's Coach nominees and named WSL Manager of the Month for November, which was followed by the same award for January.
+                  </p>
+                  <p style="margin: 0 0 8px 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    By the time a first defeat of the season in all competitions came in a Champions League first leg at Man City, Bompastor's unbeaten league run was up to 16, the best in WSL history. She had also collected her first trophy with Chelsea. City were defeated in the League Cup final. Although there was an isolated setback when Barcelona knocked the Blues out of the Champions League at the semi-final stage, Bompastor's side duly went on to complete a domestic treble, with an unprecedented unbeaten campaign for a 22-match WSL season, and a convincing 3-0 win over Manchester United in the FA Cup final.
+                  </p>
+                  <p style="margin: 0; line-height: 1.6; font-size: 0.85rem; color: #94a3b8;">
+                    She was named on the shortlist for the Best Coach award at the Ballon d'Or and finished second in the voting for The Best FIFA Women’s Coach of 2025. In February 2026, Bompastor extended her contract at Chelsea to 2030.
+                  </p>
+                </div>
+              `
+              }
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Bind collapsible toggle listener
+      const toggleBtn = document.getElementById("womenCoachBioToggleBtn");
+      const toggleHeader = document.getElementById("womenCoachBioToggle");
+      const bioContent = document.getElementById("womenCoachBioContent");
+      if (toggleBtn && bioContent) {
+        const handleToggle = () => {
+          if (bioContent.style.display === "none") {
+            bioContent.style.display = "flex";
+            toggleBtn.textContent = isTh ? "ย่อเนื้อหา ▲" : "Collapse ▲";
+          } else {
+            bioContent.style.display = "none";
+            toggleBtn.textContent = isTh ? "ขยายอ่านทั้งหมด ▼" : "Expand ▼";
+          }
+        };
+        toggleBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          handleToggle();
+        });
+        if (toggleHeader) toggleHeader.addEventListener("click", handleToggle);
+      }
+    }
+
+    // Filter out coach from the players grid list
+    const squadPlayers = allData.filter((p) => p.id !== "sonia-bompastor" && (p.position || "").toLowerCase() !== "head coach");
+    renderPlayers(container, squadPlayers, "women");
   } catch (e) {
     container.innerHTML =
       '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading players</p></div>';
