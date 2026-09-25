@@ -48,6 +48,21 @@
     "tables": "🏆 ตารางคะแนน",
     "players": "👕 นักเตะ"
   },
+  "tactical": {
+    "title": "แผนการเล่นและ Heatmap เชิงแท็กติก (D3.js Visualization)",
+    "subtitle": "ระบบจำลองผังแผนการเล่น วิเคราะห์พื้นที่ความหนาแน่น (Density Heatmap) และทิศทางการผ่านบอลของเฮดโค้ช",
+    "mode_heatmap": "Positional Heatmap",
+    "mode_attack": "Attacking Phase",
+    "mode_press": "Pressing & Rest Defense",
+    "mode_network": "Passing Network",
+    "formation_philosophy": "ปรัชญาและโครงสร้างแท็กติก",
+    "possession": "เปอร์เซ็นต์ครองบอลเฉลี่ย",
+    "ppda": "ความดุดันในการเพรสซิ่ง (PPDA)",
+    "halfspace": "การเจาะช่อง Half-Space",
+    "defline": "ความสูงแนวรับ (Defensive Line)",
+    "restdef": "โครงสร้างเกมรับขณะบุก (Rest Defense)",
+    "key_directives": "คำสั่งและแท็กติกหลักสำคัญ"
+  },
   "trophy": {
     "badge": "🏆 ตู้ถ้วยรางวัล",
     "title": "ตู้ถ้วยรางวัล",

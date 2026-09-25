@@ -3576,27 +3576,230 @@ main:nth-of-type(1)
   animation: fadeInCard 0.4s ease-out forwards;
 }
 
-/* GLOBAL TOOLTIP */
+/* GLOBAL TOOLTIP & FIXTURE HOVER CARD */
 .global-tooltip {
   position: absolute;
-  background: var(--card-bg, rgba(20, 20, 25, 0.95));
+  background: rgba(10, 22, 44, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--text-color, #ffffff);
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
   font-size: 0.85rem;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.1s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
   z-index: 99999;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  white-space: pre-wrap;
-  max-width: 250px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 16px rgba(56, 189, 248, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  max-width: 330px;
   font-family: "Space Grotesk", "Anakotmai", sans-serif;
-  text-align: center;
+  text-align: left;
 }
 .global-tooltip.show {
   opacity: 1;
+}
+
+/* Calendar Fixture Hover Tooltip */
+.cal-fixture-tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 260px;
+  max-width: 310px;
+  padding: 2px;
+}
+
+.cft-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cft-comp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.cft-comp-logo {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.cft-status {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: "Space Mono", monospace;
+  letter-spacing: 0.4px;
+}
+
+.cft-status.live {
+  background: rgba(220, 38, 38, 0.25);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+}
+
+.cft-status.completed {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid #22c55e;
+  color: #86efac;
+}
+
+.cft-status.upcoming {
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid #38bdf8;
+  color: #7dd3fc;
+}
+
+.cft-matchup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cft-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  text-align: center;
+}
+
+.cft-team-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.cft-team-name {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.2;
+}
+
+.cft-team-name.cft-chelsea {
+  color: #38bdf8;
+  font-weight: 800;
+}
+
+.cft-score-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cft-score-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: "Space Mono", monospace;
+  color: #ffffff;
+  background: rgba(0, 51, 160, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.cft-loc-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-top: 2px;
+}
+
+.cft-loc-tag.home {
+  background: rgba(0, 255, 0, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.cft-loc-tag.away {
+  background: rgba(255, 0, 0, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.cft-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.76rem;
+}
+
+.cft-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cft-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.cft-label {
+  color: #94a3b8;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.cft-val {
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cft-goals-summary {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 2px solid #38bdf8;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-top: 2px;
+}
+
+.cft-goals-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 2px;
+}
+
+.cft-goals-text {
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  line-height: 1.35;
+}
+
+.cft-footer {
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.7rem;
+  color: #38bdf8;
+  text-align: center;
+  font-weight: 600;
 }
 
 /* ==================== MATCH WEB CARD CSS ==================== */

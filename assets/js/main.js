@@ -126,6 +126,130 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ---------- CALENDAR MATCH TOOLTIP GENERATOR ----------
+window.generateCalendarMatchTooltipHTML = function(match, isTh) {
+  if (!match) return "";
+  const homeStr = (match.home_team || "").toLowerCase();
+  const awayStr = (match.away_team || "").toLowerCase();
+  const isChelseaHome = homeStr.includes("chelsea") || homeStr === "kanlakhrangnan";
+  const isHome = isChelseaHome;
+  const oppName = isHome ? (match.away_team || "Unknown") : (match.home_team || "Unknown");
+  const oppLogo = isHome ? (match.away_logo || "") : (match.home_logo || "");
+  const venue = match.venue || (isHome ? (isTh ? "สแตมฟอร์ด บริดจ์ (ลอนดอน)" : "Stamford Bridge, London") : "TBC");
+  const isWomen = (match.team_type || "").toUpperCase() === "W" || (match.id && String(match.id).startsWith("w"));
+
+  // Competition display name
+  const compKey = (match.competition || "").toLowerCase();
+  let compName = match.competition_name || match.competition || "Fixture";
+  if (compKey.includes("premier")) compName = isTh ? "🏴󠁧󠁢󠁥󠁮󠁧󠁿 พรีเมียร์ลีก" : "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League";
+  else if (compKey.includes("wsl") || compKey.includes("super league")) compName = isTh ? "🏆 บาร์เคลย์ส วีเมนส์ ซูเปอร์ลีก" : "🏆 Barclays WSL";
+  else if (compKey.includes("uwcl") || (compKey.includes("women") && compKey.includes("champions"))) compName = isTh ? "⭐ ยูฟ่า แชมเปียนส์ ลีก (หญิง)" : "⭐ UEFA Women's Champions League";
+  else if (compKey.includes("champions")) compName = isTh ? "⭐ ยูฟ่า แชมเปียนส์ ลีก" : "⭐ UEFA Champions League";
+  else if (compKey.includes("fa-cup") || compKey.includes("fa cup")) compName = isTh ? "🏆 เอฟเอ คัพ" : "🏆 FA Cup";
+  else if (compKey.includes("league-cup") || compKey.includes("carabao")) compName = isTh ? "🏆 คาราบาว คัพ" : "🏆 Carabao Cup";
+
+  const compLogo = match.competition_logo || "";
+
+  // Status text & class
+  let statusText = isTh ? "นัดแข่งขันที่กำหนด" : "Upcoming Fixture";
+  let statusClass = "upcoming";
+  let timeOrScore = match.time_th || match.time || "TBC";
+
+  if (match.status === "completed") {
+    statusText = isTh ? "จบการแข่งขัน (FT)" : "Full Time (FT)";
+    statusClass = "completed";
+    timeOrScore = `${match.home_score !== undefined ? match.home_score : 0} - ${match.away_score !== undefined ? match.away_score : 0}`;
+  } else if (match.status === "live") {
+    statusText = isTh ? "🔴 กำลังแข่งขัน (LIVE)" : "🔴 LIVE NOW";
+    statusClass = "live";
+    timeOrScore = `${match.home_score || 0} - ${match.away_score || 0}`;
+  }
+
+  // Channels
+  let channelText = "";
+  if (match.channels && match.channels.length > 0) {
+    channelText = match.channels.map(c => c.name || c.platform || "").filter(Boolean).join(", ");
+  }
+
+  // Goals summary
+  let goalsHtml = "";
+  if (match.goals && Array.isArray(match.goals) && match.goals.length > 0) {
+    const goalList = match.goals.map(g => `${g.player || "Goal"} (${g.minute}')`).join(", ");
+    goalsHtml = `
+      <div class="cft-goals-summary">
+        <div class="cft-goals-title">⚽ ${isTh ? "ผู้ทำประตู:" : "Goalscorers:"}</div>
+        <div class="cft-goals-text">${goalList}</div>
+      </div>
+    `;
+  }
+
+  const teamTypeBadge = isWomen 
+    ? (isTh ? "👚 เชลซีทีมหญิง (Women)" : "👚 Chelsea Women")
+    : (isTh ? "👕 เชลซีทีมชาย (Men)" : "👕 Chelsea Men");
+
+  return `
+    <div class="cal-fixture-tooltip">
+      <div class="cft-header">
+        <div class="cft-comp">
+          ${compLogo ? `<img src="${compLogo}" alt="" class="cft-comp-logo">` : ""}
+          <span>${compName}</span>
+        </div>
+        <span class="cft-status ${statusClass}">${statusText}</span>
+      </div>
+
+      <div class="cft-matchup">
+        <div class="cft-team home">
+          ${match.home_logo ? `<img src="${match.home_logo}" alt="${match.home_team}" class="cft-team-logo" onerror="this.style.display='none'">` : ""}
+          <span class="cft-team-name ${isChelseaHome ? "cft-chelsea" : ""}">${match.home_team || "Home"}</span>
+        </div>
+        <div class="cft-score-time">
+          <span class="cft-score-val">${timeOrScore}</span>
+          <span class="cft-loc-tag ${isHome ? "home" : "away"}">${isHome ? (isTh ? "เหย้า (Home)" : "Home Match") : (isTh ? "เยือน (Away)" : "Away Match")}</span>
+        </div>
+        <div class="cft-team away">
+          ${match.away_logo ? `<img src="${match.away_logo}" alt="${match.away_team}" class="cft-team-logo" onerror="this.style.display='none'">` : ""}
+          <span class="cft-team-name ${!isChelseaHome ? "cft-chelsea" : ""}">${match.away_team || "Away"}</span>
+        </div>
+      </div>
+
+      <div class="cft-details">
+        <div class="cft-detail-row">
+          <span class="cft-icon">⚔️</span>
+          <span class="cft-label">${isTh ? "คู่แข่ง:" : "Opponent:"}</span>
+          <span class="cft-val"><strong>${oppName}</strong></span>
+        </div>
+        <div class="cft-detail-row">
+          <span class="cft-icon">🏟️</span>
+          <span class="cft-label">${isTh ? "สนาม:" : "Venue:"}</span>
+          <span class="cft-val">${venue}</span>
+        </div>
+        <div class="cft-detail-row">
+          <span class="cft-icon">📅</span>
+          <span class="cft-label">${isTh ? "วัน-เวลา:" : "Kick-off:"}</span>
+          <span class="cft-val">${match.date} · ${match.time || "TBC"} น.</span>
+        </div>
+        <div class="cft-detail-row">
+          <span class="cft-icon">👥</span>
+          <span class="cft-label">${isTh ? "ทีม:" : "Squad:"}</span>
+          <span class="cft-val">${teamTypeBadge}</span>
+        </div>
+        ${channelText ? `
+          <div class="cft-detail-row">
+            <span class="cft-icon">📺</span>
+            <span class="cft-label">${isTh ? "ถ่ายทอดสด:" : "Broadcast:"}</span>
+            <span class="cft-val">${channelText}</span>
+          </div>
+        ` : ""}
+        ${goalsHtml}
+      </div>
+
+      <div class="cft-footer">
+        <span>👉 ${isTh ? "คลิกเพื่อดูรายละเอียดและสถิติการแข่งขัน" : "Click to view full match details & stats"}</span>
+      </div>
+    </div>
+  `;
+};
+
 // ---------- TEAMS DATA (id_team.json) INTEGRATION ----------
 let teamsDataMap = null;
 

@@ -244,6 +244,132 @@
           <div id="coachProfileContainer"></div>
           <div id="squadGridContainer"></div>
         </div>
+
+        <!-- Section 4: Tactical Analysis & Formation Heatmap (D3.js Visualization) -->
+        <div class="tactical-heatmap-card" id="tacticalHeatmapCard">
+          <div class="tactical-top-bar">
+            <div class="tactical-header-info">
+              <h3>
+                <span>🎯</span>
+                <span data-i18n="tactical.title">Tactical Heatmap & Formation Preference (D3.js)</span>
+              </h3>
+              <div class="tactical-subtitle" data-i18n="tactical.subtitle">
+                ระบบจำลองผังแผนการเล่น วิเคราะห์พื้นที่ความหนาแน่น (Density Heatmap) และทิศทางการผ่านบอลของเฮดโค้ช
+              </div>
+            </div>
+            <div class="tactical-manager-toggle">
+              <button type="button" class="tactical-manager-btn active" data-manager="xabi_alonso">
+                <img src="databases/logo/national/es.svg" alt="Spain" style="width:16px; height:11px; object-fit:cover; border-radius:2px;">
+                <span>Xabi Alonso (Men)</span>
+              </button>
+              <button type="button" class="tactical-manager-btn" data-manager="sonia_bompastor">
+                <img src="databases/logo/national/fr.svg" alt="France" style="width:16px; height:11px; object-fit:cover; border-radius:2px;">
+                <span>Sonia Bompastor (Women)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Controls Bar -->
+          <div class="tactical-controls-row">
+            <div class="tactical-mode-group">
+              <button type="button" class="tactical-mode-btn active" data-mode="heatmap">
+                <span>🌡️</span> <span data-i18n="tactical.mode_heatmap">Positional Heatmap</span>
+              </button>
+              <button type="button" class="tactical-mode-btn" data-mode="attack">
+                <span>⚡</span> <span data-i18n="tactical.mode_attack">Attacking Phase</span>
+              </button>
+              <button type="button" class="tactical-mode-btn" data-mode="press">
+                <span>🛡️</span> <span data-i18n="tactical.mode_press">Pressing & Rest Defense</span>
+              </button>
+              <button type="button" class="tactical-mode-btn" data-mode="network">
+                <span>🔄</span> <span data-i18n="tactical.mode_network">Passing Network</span>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <div class="tactical-formation-pills" id="tacticalFormationPills">
+                <button type="button" class="tactical-formation-pill active" data-formation="3-4-2-1">
+                  <span class="formation-name">3-4-2-1</span>
+                  <span class="formation-sub">Signature System</span>
+                </button>
+                <button type="button" class="tactical-formation-pill" data-formation="3-4-3">
+                  <span class="formation-name">3-4-3</span>
+                  <span class="formation-sub">Wide Attack</span>
+                </button>
+                <button type="button" class="tactical-formation-pill" data-formation="4-2-3-1">
+                  <span class="formation-name">4-2-3-1</span>
+                  <span class="formation-sub">Control</span>
+                </button>
+              </div>
+              <button type="button" class="tactical-tool-btn active" id="tacticalGridToggle">
+                <span>📐</span> <span>ซ่อน/แสดง Tactical Zones</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Tactical Visualizer Grid (D3 Pitch + Analytical Sidebar) -->
+          <div class="tactical-main-grid">
+            <!-- Left: D3.js Interactive Pitch -->
+            <div class="tactical-pitch-container">
+              <div id="tacticalHeatmapCanvasWrapper"></div>
+              <!-- Floating Player Inspector Under Pitch -->
+              <div class="tactical-inspector-wrap" id="tacticalPlayerInspector">
+                <div class="inspector-empty-state">
+                  <span>👆</span>
+                  <p>คลิกที่ตำแหน่งนักเตะในสนามเพื่อดูบทบาทและหน้าที่เชิงแท็กติกอย่างละเอียด (Click any player to inspect tactical role)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Tactical KPIs & Directive Breakdown -->
+            <div class="tactical-side-panel">
+              <div class="tactical-formation-desc-card">
+                <h4>
+                  <span>📋</span>
+                  <span data-i18n="tactical.formation_philosophy">Tactical Philosophy</span>
+                </h4>
+                <p id="tacticalFormationDesc">
+                  การเซ็ตบอลแบบ 3+2 ในแดนหลัง ดันวิงแบ็กสองฝั่งยืนชิดริมเส้น และใช้เพลย์เมกเกอร์คู่ (Double 10) เจาะช่อง Half-space
+                </p>
+              </div>
+
+              <!-- Key Metrics Grid -->
+              <div class="tactical-kpi-grid">
+                <div class="tactical-kpi-box">
+                  <div class="tactical-kpi-lbl" data-i18n="tactical.possession">Avg Possession</div>
+                  <div class="tactical-kpi-val" id="tactPossessionVal">66.4%</div>
+                </div>
+                <div class="tactical-kpi-box">
+                  <div class="tactical-kpi-lbl" data-i18n="tactical.ppda">Pressing (PPDA)</div>
+                  <div class="tactical-kpi-val" id="tactPpdaVal">7.8</div>
+                </div>
+                <div class="tactical-kpi-box">
+                  <div class="tactical-kpi-lbl" data-i18n="tactical.halfspace">Half-Space Index</div>
+                  <div class="tactical-kpi-val" id="tactHalfSpaceVal">92%</div>
+                </div>
+                <div class="tactical-kpi-box">
+                  <div class="tactical-kpi-lbl" data-i18n="tactical.defline">Defensive Line</div>
+                  <div class="tactical-kpi-val" id="tactDefLineVal">49.5m</div>
+                </div>
+                <div class="tactical-kpi-box full-width">
+                  <div class="tactical-kpi-lbl" data-i18n="tactical.restdef">Rest Defense Structure</div>
+                  <div class="tactical-kpi-val" id="tactRestDefVal" style="font-size: 0.95rem; color: #38bdf8;">3 + 2 Inverted Box</div>
+                </div>
+              </div>
+
+              <!-- Tactical Directives List -->
+              <div class="tactical-directives-card">
+                <h4>
+                  <span>⚡</span>
+                  <span data-i18n="tactical.key_directives">Key Tactical Directives</span>
+                </h4>
+                <div class="tactical-directives-list" id="tacticalDirectivesList">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- TAB 2: LIVE MATCH RESULTS AUTOMATIC HTML TABLE -->
@@ -1089,8 +1215,14 @@
           const mEl = document.createElement('a');
           mEl.href = `match-detail.html?id=${match.id}`;
           mEl.className = 'cal-match-item';
-          mEl.style.cssText = 'text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; background: rgba(255, 255, 255, 0.04); border-radius: var(--radius-sm); font-size: 0.74rem; border: 1px solid rgba(255,255,255,0.06); gap: 4px; transition: background 0.2s;';
+          mEl.style.cssText = 'text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; background: rgba(255, 255, 255, 0.04); border-radius: var(--radius-sm); font-size: 0.74rem; border: 1px solid rgba(255,255,255,0.06); gap: 4px; transition: background 0.2s, border-color 0.2s, transform 0.2s;';
           
+          // Attach Rich Match Tooltip (Opponent, Venue, Quick Fixture Summary)
+          if (window.generateCalendarMatchTooltipHTML) {
+            mEl.setAttribute('data-tooltip-th', window.generateCalendarMatchTooltipHTML(match, true));
+            mEl.setAttribute('data-tooltip-en', window.generateCalendarMatchTooltipHTML(match, false));
+          }
+
           mEl.innerHTML = `
             <div style="display: flex; align-items: center; gap: 4px; overflow: hidden;">
               <span style="width: 6px; height: 6px; border-radius: 50%; background-color: ${homeAwayDotColor}; flex-shrink: 0;" title="${isHome ? 'Home' : 'Away'}"></span>
@@ -1725,6 +1857,8 @@
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="assets/js/chelsea-hub.js"></script>
+  <script src="assets/js/tactical-heatmap.js"></script>
 </body>
 </html>

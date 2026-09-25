@@ -48,6 +48,21 @@
     "tables": "🏆 Tables",
     "players": "👕 Players"
   },
+  "tactical": {
+    "title": "Tactical Heatmap & Formation Preference (D3.js)",
+    "subtitle": "Formation simulation, density heatmaps, and passing networks of the manager",
+    "mode_heatmap": "Positional Heatmap",
+    "mode_attack": "Attacking Phase",
+    "mode_press": "Pressing & Rest Defense",
+    "mode_network": "Passing Network",
+    "formation_philosophy": "Tactical Philosophy",
+    "possession": "Avg Possession",
+    "ppda": "Pressing (PPDA)",
+    "halfspace": "Half-Space Index",
+    "defline": "Defensive Line",
+    "restdef": "Rest Defense Structure",
+    "key_directives": "Key Tactical Directives"
+  },
   "trophy": {
     "badge": "🏆 TROPHY CABINET",
     "title": "Trophy Cabinet",
