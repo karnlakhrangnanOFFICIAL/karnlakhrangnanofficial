@@ -33,14 +33,14 @@
     "all_results": "ผลการแข่งขันทั้งหมด",
     "all_fixtures": "โปรแกรมแข่งขันทั้งหมด",
     "table_title": "🏆 ตารางคะแนน พรีเมียร์ลีก",
-    "players_title": "👕 รายชื่อนักเตะ"
+    "players_title": "👕 รายชื่อนักเตะ & เฮดโค้ช (Manager)"
   },
   "women": {
     "badge": "⚽ ทีมหญิง",
     "title": "เชลซี ทีมหญิง",
     "season": "ทีมหญิง · ฤดูกาล 2026/27",
     "table_title": "🏆 ตารางคะแนน WSL",
-    "players_title": "👕 รายชื่อนักเตะ"
+    "players_title": "👕 รายชื่อนักเตะ & เฮดโค้ช (Manager)"
   },
   "tabs": {
     "results": "📊 ผลการแข่งขัน",

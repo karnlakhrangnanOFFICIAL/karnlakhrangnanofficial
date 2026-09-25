@@ -33,14 +33,14 @@
     "all_results": "All Results",
     "all_fixtures": "All Fixtures",
     "table_title": "🏆 Premier League Table",
-    "players_title": "👕 Players"
+    "players_title": "👕 Players & Head coach (Manager)"
   },
   "women": {
     "badge": "⚽ WOMEN'S TEAM",
     "title": "Chelsea Women",
     "season": "WOMEN'S TEAM · 2026/27",
     "table_title": "🏆 WSL Table",
-    "players_title": "👕 Players"
+    "players_title": "👕 Players & Head coach (Manager)"
   },
   "tabs": {
     "results": "📊 Results",

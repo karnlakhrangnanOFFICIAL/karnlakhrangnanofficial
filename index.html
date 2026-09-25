@@ -56,7 +56,9 @@
     <!-- LEFT: NEWS COLUMN -->
     <div class="news-column">
       <div class="news-featured">
-        <img id="editorialFeaturedImg" src="https://img.chelseafc.com/image/upload/v1790084013/editorial/news/2026/09/22/bompastor-press-conference-september-2026.jpg" alt="Featured News" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
+        <div class="news-featured-img-wrap">
+          <img id="editorialFeaturedImg" src="https://img.chelseafc.com/image/upload/v1790084013/editorial/news/2026/09/22/bompastor-press-conference-september-2026.jpg" alt="Featured News" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
+        </div>
         <div class="meta" style="color: var(--accent); margin-bottom: 6px;" id="editorialFeaturedMeta">Top Story · Press Briefing</div>
         <h2 id="editorialFeaturedTitle">Bompastor: An Injury Update on the Eve of Vienna</h2>
         <p id="editorialFeaturedDesc">The head coach speaks on the squad's tactical readiness, key squad rotations, and updates ahead of the European clash.</p>
@@ -893,7 +895,7 @@
       if (name.includes('sociedad')) return 'databases/logo/teams/spain_real-sociedad.svg';
       if (name.includes('celtic')) return 'databases/logo/teams/scotland_celtic.svg';
       if (name.includes('twente')) return 'databases/logo/teams/netherlands_twente.svg';
-      if (name.includes('landhaus')) return 'databases/logo/teams/austria_usc-landhaus.svg';
+      if (name.includes('landhaus')) return 'databases/logo/teams/austria_usc-landhaus.png';
       if (fallback && fallback.startsWith('databases/logo/teams/')) return fallback;
       return fallback || 'assets/images/placeholder-team.svg';
     }

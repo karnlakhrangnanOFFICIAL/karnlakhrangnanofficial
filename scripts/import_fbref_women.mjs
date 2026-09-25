@@ -144,7 +144,7 @@ const FBREF_RAW_MATCHLOGS = [
     gf: 1,
     ga: 0,
     opponent: "Landhaus",
-    opponent_crest: "databases/logo/teams/austria_usc-landhaus.svg",
+    opponent_crest: "databases/logo/teams/austria_usc-landhaus.png",
     stadium: "The Cherry Red Records Stadium, Wimbledon",
     xg: 2.1,
     xga: 0.9,

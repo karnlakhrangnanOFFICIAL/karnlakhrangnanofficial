@@ -443,15 +443,67 @@ header.editorial-header,
   padding: 1.5rem;
   box-shadow: var(--shadow);
   margin-bottom: 30px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.news-featured img {
+.news-featured:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.15);
+}
+
+.news-featured-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: #0f172a;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  isolation: isolate;
+}
+
+.news-featured-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Fallback if directly inside .news-featured without wrapper */
+.news-featured > img {
   width: 100%;
   height: 380px;
   object-fit: cover;
   margin-bottom: 18px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Subtle zoom-in animation on container hover */
+.news-featured:hover .news-featured-img-wrap img,
+.news-featured:hover > img {
+  transform: scale(1.045);
+}
+
+@media (max-width: 640px) {
+  .news-featured-img-wrap,
+  .news-featured > img {
+    height: 230px;
+  }
 }
 
 .news-featured h2 {

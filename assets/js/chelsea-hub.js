@@ -1498,22 +1498,23 @@
                         <span>👚</span>
                         <span>Head coach / โค้ชทีมหญิง</span>
                       </div>
-                      <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
-                        Sonia Bompastor <span style="font-size: 0.95rem; font-weight: 600; color: #fbcfe8;">(โซเนีย บอมพาสเตอร์)</span>
+                      <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span>Sonia Bompastor</span>
+                        <img src="databases/logo/national/fr.svg" alt="France" data-tooltip-th="ฝรั่งเศส (France) - สัญชาติ" data-tooltip-en="France (French) - Nationality" data-tooltip="France (ฝรั่งเศส)" class="coach-nat-flag" style="width: 24px; height: 16px; object-fit: cover; border-radius: 3px; display: inline-block; vertical-align: middle; box-shadow: 0 2px 5px rgba(0,0,0,0.4); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">
                       </div>
                     </div>
                   </div>
 
                   <div class="coach-meta-badges">
-                    <div class="coach-meta-chip">
-                      <img src="databases/logo/national/fr.svg" alt="France" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                    <div class="coach-meta-chip" data-tooltip-th="สัญชาติ: ฝรั่งเศส (French)" data-tooltip-en="Nationality: French" style="cursor: pointer;">
+                      <img src="databases/logo/national/fr.svg" alt="France" data-tooltip-th="ฝรั่งเศส (France)" data-tooltip-en="France" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
                       <span><strong>Nationality:</strong> French (ฝรั่งเศส)</span>
                     </div>
-                    <div class="coach-meta-chip">
+                    <div class="coach-meta-chip" data-tooltip-th="ตำแหน่ง: เฮดโค้ช (Head Coach / Manager)" data-tooltip-en="Position: Head Coach (Manager)" style="cursor: pointer;">
                       <span>👚</span>
                       <span><strong>Position:</strong> Head coach (โค้ช)</span>
                     </div>
-                    <div class="coach-meta-chip">
+                    <div class="coach-meta-chip" data-tooltip-th="สัญญา: 2024 - 2030 (ขยายสัญญา)" data-tooltip-en="Contract: 2024 - 2030 (Extended)" style="cursor: pointer;">
                       <span>📅</span>
                       <span><strong>Contract:</strong> 2024 - 2030 (Extended)</span>
                     </div>
@@ -1522,11 +1523,11 @@
 
                 <!-- Key Honours & Milestones -->
                 <div class="coach-highlights-row">
-                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🏆 Domestic Treble (2024/25)</span>
-                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🛡️ ไร้พ่ายประวัติศาสตร์ 22 นัด WSL Unbeaten</span>
-                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">⭐ UWCL แชมป์ทั้งฐานะนักเตะและผู้จัดการทีม</span>
-                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🏆 แชมป์ D1 Féminine 3 สมัยซ้อน</span>
-                  <span class="coach-trophy-tag" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8;">🥈 รองชนะเลิศ The Best FIFA Women’s Coach 2025</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="คว้า 3 แชมป์ในประเทศ (WSL, FA Cup, League Cup) ฤดูกาล 2024/25" data-tooltip-en="Won Domestic Treble (WSL, FA Cup, League Cup) in 2024/25" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8; cursor: pointer;">🏆 Domestic Treble (2024/25)</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="สถิติไร้พ่ายประวัติศาสตร์ 22 นัดรวดในลีก WSL" data-tooltip-en="Historic 22-match unbeaten run in WSL" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8; cursor: pointer;">🛡️ ไร้พ่ายประวัติศาสตร์ 22 นัด WSL Unbeaten</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="บุคคลแรกในประวัติศาสตร์ที่คว้าแชมป์ UEFA Women's Champions League ทั้งฐานะนักเตะและโค้ช" data-tooltip-en="First person to win UWCL as both player and manager" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8; cursor: pointer;">⭐ UWCL แชมป์ทั้งฐานะนักเตะและผู้จัดการทีม</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="คว้าแชมป์ดิวิชั่น 1 ฝรั่งเศส (D1 Féminine) 3 สมัยติดต่อกัน" data-tooltip-en="3 consecutive D1 Féminine league titles" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8; cursor: pointer;">🏆 แชมป์ D1 Féminine 3 สมัยซ้อน</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="รองชนะเลิศรางวัลโค้ชหญิงยอดเยี่ยมของโลก The Best FIFA Women’s Coach 2025" data-tooltip-en="Runner-up for The Best FIFA Women’s Coach Award 2025" style="border-color: rgba(244,114,182,0.4); background: rgba(194,24,91,0.15); color: #fbcfe8; cursor: pointer;">🥈 รองชนะเลิศ The Best FIFA Women’s Coach 2025</span>
                 </div>
 
                 <!-- Detailed Biography Box -->
@@ -1619,22 +1620,23 @@
                         <span>👔</span>
                         <span>Manager / ผู้จัดการทีมชุดใหญ่</span>
                       </div>
-                      <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px;">
-                        Xabi Alonso
+                      <div style="font-size: 1.45rem; font-weight: 900; color: #ffffff; letter-spacing: 0.3px; line-height: 1.2; margin-top: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span>Xabi Alonso</span>
+                        <img src="databases/logo/national/es.svg" alt="Spain" data-tooltip-th="สเปน (Spain) - สัญชาติ" data-tooltip-en="Spain (Spanish) - Nationality" data-tooltip="Spain (สเปน)" class="coach-nat-flag" style="width: 24px; height: 16px; object-fit: cover; border-radius: 3px; display: inline-block; vertical-align: middle; box-shadow: 0 2px 5px rgba(0,0,0,0.4); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">
                       </div>
                     </div>
                   </div>
 
                   <div class="coach-meta-badges">
-                    <div class="coach-meta-chip">
-                      <img src="databases/logo/national/es.svg" alt="Spain" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                    <div class="coach-meta-chip" data-tooltip-th="สัญชาติ: สเปน (Spanish)" data-tooltip-en="Nationality: Spanish" style="cursor: pointer;">
+                      <img src="databases/logo/national/es.svg" alt="Spain" data-tooltip-th="สเปน (Spain)" data-tooltip-en="Spain" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
                       <span><strong>สัญชาติ:</strong> ESP 'Spanish'</span>
                     </div>
-                    <div class="coach-meta-chip">
+                    <div class="coach-meta-chip" data-tooltip-th="ตำแหน่ง: ผู้จัดการทีมชุดใหญ่ (Manager / Head Coach)" data-tooltip-en="Position: First Team Manager (Head Coach)" style="cursor: pointer;">
                       <span>👔</span>
                       <span><strong>ตำแหน่ง:</strong> Manager</span>
                     </div>
-                    <div class="coach-meta-chip">
+                    <div class="coach-meta-chip" data-tooltip-th="เริ่มคุมทีม: 1 กรกฎาคม 2026 (สัญญา 4 ปี)" data-tooltip-en="Start Date: 1 July 2026 (4-year contract)" style="cursor: pointer;">
                       <span>📅</span>
                       <span><strong>เริ่มคุมทีม:</strong> 1 July 2026 (4-year contract)</span>
                     </div>
@@ -1643,11 +1645,11 @@
 
                 <!-- Key Honours & Milestones -->
                 <div class="coach-highlights-row">
-                  <span class="coach-trophy-tag">🏆 ไร้พ่ายประวัติศาสตร์ บุนเดสลีกา (2023/24)</span>
-                  <span class="coach-trophy-tag">🛡️ สถิติยุโรป ไม่แพ้ติดต่อกัน 51 นัด</span>
-                  <span class="coach-trophy-tag">🏆 DFB-Pokal & German Super Cup</span>
-                  <span class="coach-trophy-tag">🌍 แชมป์ฟุตบอลโลก 2010 & ยูโร 2008, 2012</span>
-                  <span class="coach-trophy-tag">⭐ แชมป์ยูฟ่า แชมเปียนส์ ลีก 2 สมัย</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="แชมป์บุนเดสลีกาแบบไร้พ่ายประวัติศาสตร์กับ ไบเออร์ เลเวอร์คูเซิน (2023/24)" data-tooltip-en="Historic undefeated Bundesliga Champion with Bayer Leverkusen (2023/24)" style="cursor: pointer;">🏆 ไร้พ่ายประวัติศาสตร์ บุนเดสลีกา (2023/24)</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="สถิติไร้พ่ายยาวนานที่สุดในประวัติศาสตร์ฟุตบอลยุโรป 51 นัดติดต่อกันทุกรายการ" data-tooltip-en="European record 51-match unbeaten streak across all competitions" style="cursor: pointer;">🛡️ สถิติยุโรป ไม่แพ้ติดต่อกัน 51 นัด</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="คว้าดับเบิ้ลแชมป์ DFB-Pokal & German Super Cup" data-tooltip-en="DFB-Pokal & German Super Cup double winners" style="cursor: pointer;">🏆 DFB-Pokal & German Super Cup</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="แชมป์ฟุตบอลโลก 2010 และแชมป์ยูโร 2 สมัย (2008, 2012) กับทีมชาติสเปน" data-tooltip-en="FIFA World Cup 2010 & UEFA Euro 2008, 2012 Champion with Spain" style="cursor: pointer;">🌍 แชมป์ฟุตบอลโลก 2010 & ยูโร 2008, 2012</span>
+                  <span class="coach-trophy-tag" data-tooltip-th="แชมป์ยูฟ่า แชมเปียนส์ ลีก 2 สมัย (2005 กับลิเวอร์พูล, 2014 กับเรอัล มาดริด)" data-tooltip-en="2-time UEFA Champions League Winner (2005, 2014)" style="cursor: pointer;">⭐ แชมป์ยูฟ่า แชมเปียนส์ ลีก 2 สมัย</span>
                 </div>
 
                 <!-- Detailed Biography Box -->
