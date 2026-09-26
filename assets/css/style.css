@@ -53,33 +53,33 @@ body.theme-editorial {
   /* Editorial Portfolio Identity */
   --bg: #f8f7f4;
   --bg-card: #ffffff;
-  --bg-card-hover: #f3f2ed;
+  --bg-card-hover: #f1efe9;
   --bg-header: #ffffff;
   --navbar-bg: #ffffff;
   --hero-bg: #f8f7f4;
   --table-header-bg: #f2f0ea;
   --card-bg: #ffffff;
-  --card-border: 1px solid rgba(26, 26, 26, 0.08);
-  --border-color: rgba(26, 26, 26, 0.08);
-  --ink: #1a1a1a;
-  --text-color: #1a1a1a;
-  --text-muted: #64748b;
-  --accent: #0033a0;
-  --accent-light: #1e60d5;
-  --accent-glow: rgba(0, 51, 160, 0.15);
-  --faint: rgba(26, 26, 26, 0.05);
-  --ink-faint: rgba(26, 26, 26, 0.06);
-  --ink-muted: #64748b;
+  --card-border: 1px solid rgba(15, 23, 42, 0.08);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --ink: #0f172a;
+  --text-color: #0f172a;
+  --text-muted: #475569;
+  --accent: #001489;
+  --accent-light: #1d4ed8;
+  --accent-glow: rgba(0, 20, 137, 0.12);
+  --faint: rgba(15, 23, 42, 0.04);
+  --ink-faint: rgba(15, 23, 42, 0.06);
+  --ink-muted: #475569;
   --blue-dark: #001489;
   --blue: #0033a0;
   --blue-light: #1e60d5;
-  --gold: #b38e1b;
-  --gold-light: #d4af37;
+  --gold: #b45309;
+  --gold-light: #d97706;
   --white: #ffffff;
   --gray-100: #f8f7f4;
   --gray-200: #eae8e1;
-  --gray-800: #1a1a1a;
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  --gray-800: #0f172a;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
   --radius: 8px;
   --radius-lg: 12px;
   --transition: 0.25s ease;
@@ -175,13 +175,118 @@ body {
   font-family: "Inter", "Anakotmai", "Sarabun", sans-serif;
   background-color: var(--bg);
   background-image: var(--body-gradient);
-  color: var(--ink);
+  color: var(--text-color, var(--ink));
   line-height: 1.5;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   transition:
     background-color var(--transition),
     color var(--transition);
+}
+
+/* ===================================================
+   EDITORIAL THEME TYPOGRAPHY & TEXT COLOR HARMONY
+   =================================================== */
+html[data-theme="editorial"],
+:root[data-theme="editorial"],
+body.theme-editorial {
+  color: #0f172a;
+}
+
+html[data-theme="editorial"] h1,
+html[data-theme="editorial"] h2,
+html[data-theme="editorial"] h3,
+html[data-theme="editorial"] h4,
+html[data-theme="editorial"] h5,
+html[data-theme="editorial"] h6 {
+  color: #0f172a;
+}
+
+html[data-theme="editorial"] .news-featured h2,
+html[data-theme="editorial"] .news-card h3,
+html[data-theme="editorial"] .hub-header h2 {
+  color: #0f172a !important;
+}
+
+html[data-theme="editorial"] .news-featured p,
+html[data-theme="editorial"] .news-card p,
+html[data-theme="editorial"] .tactical-subtitle {
+  color: #475569 !important;
+}
+
+html[data-theme="editorial"] .meta,
+html[data-theme="editorial"] .news-featured .meta,
+html[data-theme="editorial"] .news-card .meta {
+  color: #001489 !important;
+  font-weight: 600;
+}
+
+html[data-theme="editorial"] .match-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+html[data-theme="editorial"] .match-card-top,
+html[data-theme="editorial"] .match-card-date,
+html[data-theme="editorial"] .match-card-league,
+html[data-theme="editorial"] .match-card-venue {
+  color: #475569 !important;
+}
+
+html[data-theme="editorial"] .match-card-team-name,
+html[data-theme="editorial"] .match-card-team-name span,
+html[data-theme="editorial"] .match-card .team-name,
+html[data-theme="editorial"] .match-card .team-name span {
+  color: #000000 !important;
+  font-weight: 700;
+}
+
+html[data-theme="editorial"] .match-card-timebox {
+  background: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #000000 !important;
+}
+
+html[data-theme="editorial"] .match-card-footer {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme="editorial"] .card-goals-row {
+  color: #475569 !important;
+}
+
+html[data-theme="editorial"] .card-goal-item {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #000000 !important;
+}
+
+html[data-theme="editorial"] .goal-player-name,
+html[data-theme="editorial"] .card-goal-item span {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+html[data-theme="editorial"] .editorial-footer {
+  color: #475569;
+}
+
+html[data-theme="editorial"] .editorial-footer .meta {
+  color: #64748b !important;
+}
+
+html[data-theme="editorial"] .editorial-footer-center {
+  color: #1e293b !important;
+}
+
+html[data-theme="editorial"] .footer-nav-links a {
+  color: #1e293b !important;
+}
+
+html[data-theme="editorial"] .footer-nav-links a:hover {
+  color: #001489 !important;
 }
 
 a {
@@ -344,10 +449,11 @@ img {
 /* ---------- EDITORIAL PORTFOLIO (VARIATION 6) STYLES ---------- */
 header.editorial-header,
 .editorial-header {
-  padding: 35px 50px;
+  padding: 16px 40px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  gap: 24px;
   background: var(--navbar-bg);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
@@ -357,6 +463,45 @@ header.editorial-header,
 }
 
 .editorial-header .brand {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 160px;
+}
+
+.editorial-header .brand-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.editorial-header .brand-logo {
+  height: 60px;
+  max-height: 64px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+  transition: transform 0.25s ease, filter 0.25s ease;
+  display: block;
+}
+
+.editorial-header .brand-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.45));
+}
+
+.editorial-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.editorial-header .brand-text {
   display: flex;
   flex-direction: column;
 }
@@ -422,10 +567,20 @@ header.editorial-header,
 
   header.editorial-header,
   .editorial-header {
-    padding: 20px;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 14px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 16px;
+  }
+
+  .editorial-header .brand {
+    min-width: auto;
+  }
+
+  .editorial-header .brand-logo {
+    height: 48px;
+    max-height: 50px;
   }
 }
 
@@ -634,7 +789,45 @@ footer.editorial-footer,
   border-top: 1px solid var(--border-color);
   background: var(--navbar-bg);
   flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-nav-links {
+  display: flex;
+  align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-nav-links a {
+  color: var(--ink);
+  opacity: 0.85;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-nav-links a:hover {
+  color: var(--accent);
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-nav-dot {
+  color: var(--ink);
+  opacity: 0.35;
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+.editorial-footer-center {
+  display: flex;
+  align-items: center;
+  color: var(--ink);
+  font-size: 0.82rem;
+  opacity: 0.9;
 }
 
 /* ---------- HERO SECTION ---------- */
@@ -798,25 +991,35 @@ footer.editorial-footer,
 }
 
 .team-badge {
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-sans, "Inter", sans-serif);
   background: var(--accent, #001489);
-  color: var(--ink, #ffffff);
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-size: 0.65rem;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .team-badge.men,
 .team-badge.m {
-  background: var(--accent, #001489) !important;
-  color: var(--ink, #ffffff) !important;
+  background: linear-gradient(135deg, #001489 0%, #1e40af 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .team-badge.women,
 .team-badge.w {
-  background-color: #fe04f8 !important;
+  background: linear-gradient(135deg, #c026d3 0%, #db2777 100%) !important;
   color: #ffffff !important;
+  border: 1px solid rgba(244, 114, 182, 0.3);
 }
 
 .card-fixture,
@@ -3241,13 +3444,19 @@ html[lang="th"] .lang-en {
   top: calc(100% + 6px) !important;
   right: 0 !important; /* Align to the right side of the container */
   background-color: var(--bg-card, #121216) !important;
-  color: var(--ink, #ffffff) !important;
+  color: #ffffff !important;
+  text-shadow: 
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0px  1px 3px rgba(0, 0, 0, 0.9) !important;
   padding: 8px 12px !important;
   border: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.1)) !important;
   border-radius: 6px !important;
   font-family: "Space Grotesk", "Anakotmai", sans-serif !important;
   font-size: 0.75rem !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   text-transform: none !important;
   letter-spacing: normal !important;
   white-space: nowrap !important;
@@ -3582,10 +3791,18 @@ main:nth-of-type(1)
   background: rgba(10, 22, 44, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: var(--text-color, #ffffff);
+  color: #ffffff !important;
+  text-shadow: 
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0px  1px 3px rgba(0, 0, 0, 0.9);
+  -webkit-text-stroke: 0.35px #000000;
   padding: 8px 12px;
   border-radius: 10px;
   font-size: 0.85rem;
+  font-weight: 600;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease, transform 0.15s ease;
@@ -3595,6 +3812,18 @@ main:nth-of-type(1)
   max-width: 330px;
   font-family: "Space Grotesk", "Anakotmai", sans-serif;
   text-align: left;
+}
+.global-tooltip *,
+.global-tooltip span,
+.global-tooltip p,
+.global-tooltip strong {
+  color: #ffffff !important;
+  text-shadow: 
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0px  1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 .global-tooltip.show {
   opacity: 1;
@@ -3803,22 +4032,44 @@ main:nth-of-type(1)
 }
 
 /* ==================== MATCH WEB CARD CSS ==================== */
-/* Base Match Card Typography */
+/* 1. กรอบหลักของ Match Card */
 .match-card {
-  font-family: sans-serif;
-  font-size: 14pt;
+  font-family: var(--font-sans, "Inter", sans-serif); /* ใช้ฟอนต์หลักของธีม */
+  font-size: 1rem; /* เปลี่ยนจาก 14pt เป็น 1rem เพื่อการแสดงผลที่ยืดหยุ่น */
   background-color: var(--card-bg, #1a1a24);
-  border-radius: 12px;
+  border-radius: 16px; /* เพิ่มความโค้งมน (เดิม 12px) */
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* ปรับเงาให้ดูมีมิติและนุ่มขึ้น */
   transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
 }
+
+.match-card-badge-corner {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.match-card-badge-corner .team-badge {
+  font-size: 0.58rem !important;
+  font-weight: 700 !important;
+  padding: 1.5px 6px !important;
+  border-radius: 4px !important;
+  margin-left: 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
+  text-transform: uppercase;
+}
+
 .match-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px); /* เพิ่มระยะยกตัว */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* Images always keep aspect ratio */
@@ -3826,28 +4077,56 @@ main:nth-of-type(1)
   object-fit: contain;
 }
 
-/* Top Section (Vertical Flow) */
+/* 2. ส่วนหัว (วันที่และลีก) */
 .match-card-top {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-  padding: 0 20px;
-  gap: 14px;
+  margin-top: 28px; /* ลดระยะห่างด้านบนจาก 50px ให้กระชับขึ้น */
+  padding: 0 24px;
+  gap: 8px; /* ลดช่องว่างระหว่างวันที่และลีก */
 }
+
 .match-card-date {
-  color: #a0aec0;
-  font-size: 0.9em;
+  color: var(--text-muted, #a0aec0);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
+
 .match-card-league {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: bold;
 }
-.match-card-league img {
-  height: 24px;
+
+.match-card-league-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
+
+.comp-logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.match-card-league img,
+.comp-logo-container img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.comp-name-container {
+  display: inline-flex;
+  align-items: center;
+}
+
 .match-card-venue {
   color: #cbd5e1;
   font-size: 0.9em;
@@ -3856,50 +4135,61 @@ main:nth-of-type(1)
   gap: 6px;
 }
 
-/* Match Row (Team & Score) */
+/* 3. ส่วนกลาง (ทีมและเวลา/สกอร์) */
 .match-card-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 20px 30px;
+  padding: 16px 20px 22px;
   width: 100%;
+  gap: 16px;
 }
+
 .match-card-team {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex: 1;
 }
+
 .match-card-team.home {
-  justify-content: flex-start;
-}
-.match-card-team.away {
   justify-content: flex-end;
   text-align: right;
-  flex-direction: row-reverse;
 }
+
+.match-card-team.away {
+  justify-content: flex-start;
+  text-align: left;
+  flex-direction: row;
+}
+
 .match-card-team-logo {
-  width: 60px;
-  height: 60px;
+  width: 64px; /* ปรับขนาดจาก 60px ให้เด่นขึ้นเล็กน้อย */
+  height: 64px;
   flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2)); /* เพิ่มเงาใต้โลโก้ */
+  display: block;
 }
+
 .match-card-team-name {
-  font-weight: bold;
-  font-size: 1.1em;
-  display: none; /* Hidden on mobile by default */
+  display: none !important;
 }
+
 .match-card-timebox {
-  width: 90px;
-  height: 50px;
+  width: 80px; /* ปรับลดจาก 90px ไม่ให้แย่งจุดสนใจ */
+  height: 46px; /* ปรับลดจาก 50px */
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1.2em;
-  margin: 0 15px;
+  background-color: rgba(255, 255, 255, 0.08); /* ปรับความโปร่งแสงให้ดูแพงขึ้น */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin: 0 8px;
+  color: var(--text-color, #ffffff);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Goal scorers in Match Result Cards */
@@ -3907,7 +4197,7 @@ main:nth-of-type(1)
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding: 4px 20px 10px;
+  padding: 6px 20px 16px;
   font-size: 0.8rem;
   color: #cbd5e1;
 }
@@ -4009,27 +4299,42 @@ main:nth-of-type(1)
   }
 }
 
-/* Footer Section */
+/* 4. ส่วนท้าย (ช่องถ่ายทอดสด / ข้อมูลเพิ่มเติม) */
 .match-card-footer {
-  height: 70px;
-  width: 100%;
-  border-radius: 35px;
+  min-height: 64px;
+  height: auto;
+  width: calc(100% - 32px); /* ดันขอบเข้าด้านในเล็กน้อย */
+  margin: 0 auto 16px; /* เพิ่มระยะห่างด้านล่าง */
+  border-radius: 28px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 25px;
-  background-color: rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
+  padding: 6px 24px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .match-card-footer-text {
-  font-size: 0.9em;
-  color: #a0aec0;
+  display: none !important;
 }
 .match-card-providers {
   display: flex;
-  gap: 10px;
-  width: 120px; /* Fixed width for Provider Badges */
-  justify-content: flex-end;
+  gap: 12px;
+  width: 100px;
+  height: 60px;
+  padding-left: 0px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.match-card-providers img,
+.channel-icon {
+  width: 100px;
+  height: 60px;
+  aspect-ratio: 5 / 3;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 /* Tablet View (768px and up) */

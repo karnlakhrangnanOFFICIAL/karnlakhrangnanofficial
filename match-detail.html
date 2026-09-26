@@ -108,53 +108,252 @@
         object-fit: contain;
       }
 
+      /* ============================================
+         Scoreboard Grid Layout (เลย์เอาต์หลัก 3 คอลัมน์)
+         ============================================ */
       .scoreboard-grid {
         display: grid;
+        /* แบ่ง 3 คอลัมน์: 1fr (เจ้าบ้าน) | auto (สกอร์ตรงกลาง) | 1fr (ทีมเยือน) */
         grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        gap: 32px;
-        margin-top: 16px;
+        gap: 20px;
+        align-items: start; /* บังคับให้เนื้อหาเริ่มจากด้านบนตรงกัน */
+        width: 100%;
+        padding: 24px;
+        background-color: var(--card-bg, #1a1a24);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
+
+      /* ============================================
+         กล่องทีมซ้าย-ขวา (คอลัมน์ 1 และ 3)
+         ============================================ */
       .team-box {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
+        flex-direction: column; /* บังคับให้ โลโก้ -> ชื่อทีม -> คนยิง เรียงจากบนลงล่าง */
+        gap: 12px; /* ระยะห่างระหว่างบรรทัด 1, 2, และ 3 */
       }
-      .team-box img.team-logo {
-        width: 110px;
-        height: 110px;
+
+      /* ให้เนื้อหาในกล่องทีมอยู่กึ่งกลางของฝั่งตัวเอง */
+      .home-team-box,
+      .away-team-box {
+        align-items: center; 
+      }
+
+      /* --- บรรทัดที่ 1: โลโก้ และ สกอร์ --- */
+      .team-logo-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 72px; /* ล็อกความสูงไว้ เพื่อให้โลโก้ 2 ฝั่งตรงกับกล่องสกอร์ตรงกลางพอดี */
+      }
+
+      .team-logo {
+        width: 64px;
+        height: 64px;
         object-fit: contain;
-        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* เพิ่มเงาให้โลโก้ดูโดดเด่น */
         transition: transform 0.3s ease;
       }
-      .team-box img.team-logo:hover {
+
+      .team-logo:hover {
         transform: scale(1.05);
       }
-      .team-name-display {
-        font-family: "Syne", sans-serif;
-        font-size: 1.25rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        margin: 0;
-        text-align: center;
-        max-width: 240px;
-      }
+
       .score-center-box {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 72px; /* ความสูงเท่ากับโลโก้ ทำให้สกอร์อยู่บรรทัดเดียวกันเป๊ะ */
       }
+
       .score-main {
-        font-family: "Syne", sans-serif;
-        font-size: 5rem;
-        line-height: 0.9;
+        font-size: 2.2rem;
         font-weight: 800;
-        letter-spacing: -0.04em;
+        font-family: var(--font-mono, "Space Mono", monospace);
         color: var(--ink);
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 20px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        letter-spacing: 2px;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        line-height: 1.2;
+      }
+
+      #liveBadgeWrap {
+        margin-top: 8px; /* ระยะห่างของป้าย Live ใต้สกอร์ */
+      }
+
+      /* --- บรรทัดที่ 2: ชื่อทีม --- */
+      .team-name-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 28px; /* เผื่อชื่อทีมยาวจนต้องขึ้นบรรทัดใหม่ โครงสร้างจะได้ไม่เบี้ยว */
+      }
+
+      .team-name-display {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 0;
+        text-align: center;
+      }
+
+      html[data-theme="editorial"] .score-main,
+      html[data-theme="editorial"] #scoreMain,
+      html[data-theme="editorial"] .team-name-display,
+      html[data-theme="editorial"] .team-name-display span,
+      html[data-theme="editorial"] .timeline-player-name,
+      html[data-theme="editorial"] .timeline-player-name span,
+      html[data-theme="editorial"] .timeline-event-detail,
+      html[data-theme="editorial"] .timeline-event-card,
+      html[data-theme="editorial"] .stats-header-team span,
+      html[data-theme="editorial"] .stats-header-team span span,
+      html[data-theme="editorial"] .stat-value-home,
+      html[data-theme="editorial"] .stat-value-away,
+      html[data-theme="editorial"] .stat-name {
+        color: #000000 !important;
+      }
+
+      html[data-theme="editorial"] .score-main {
+        background: rgba(0, 0, 0, 0.05) !important;
+        border-color: rgba(0, 0, 0, 0.12) !important;
+      }
+
+      /* ============================================
+         สไตล์รายชื่อผู้ทำประตู (ล็อกคอลัมน์เป๊ะแบบตาราง)
+         ============================================ */
+      .goalscorers-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px; /* ระยะห่างระหว่างบรรทัด (ปรับลดลงให้ดูแน่นเหมือนตาราง) */
+        margin-top: 16px;
+        width: 100%;
+      }
+
+      /* ---------------------------------------------------
+         ทีมเหย้า (ซ้าย) 
+         ตีกรอบ 3 คอลัมน์: นาที(45px) | ชื่อ(1fr) | รูป(25px)
+      --------------------------------------------------- */
+      .home-scorers .goal-item {
+        display: grid;
+        grid-template-columns: 45px 1fr 25px; 
+        align-items: center;
+        width: 100%;
+      }
+
+      .home-scorers .goal-minute {
+        text-align: left; /* นาทีชิดซ้ายสุดขอบตาราง */
+      }
+
+      .home-scorers .goal-player {
+        text-align: right; /* ชื่อชิดขวาไปหาลูกบอล */
+        padding-right: 12px; /* เว้นระยะห่างระหว่างชื่อกับลูกบอล */
+      }
+
+      .home-scorers .goal-icon-wrap {
+        display: flex;
+        justify-content: flex-end; /* ลูกบอลชิดขวาสุดริมตารางกลาง */
+      }
+
+      /* ---------------------------------------------------
+         ทีมเยือน (ขวา)
+         ตีกรอบ 3 คอลัมน์: รูป(25px) | ชื่อ(1fr) | นาที(45px)
+      --------------------------------------------------- */
+      .away-scorers .goal-item {
+        display: grid;
+        grid-template-columns: 25px 1fr 45px;
+        align-items: center;
+        width: 100%;
+      }
+
+      .away-scorers .goal-icon-wrap {
+        display: flex;
+        justify-content: flex-start; /* ลูกบอลชิดซ้ายสุดริมตารางกลาง */
+      }
+
+      .away-scorers .goal-player {
+        text-align: left; /* ชื่อชิดซ้ายไปหาลูกบอล */
+        padding-left: 12px; /* เว้นระยะห่างระหว่างลูกบอลกับชื่อ */
+      }
+
+      .away-scorers .goal-minute {
+        text-align: right; /* นาทีชิดขวาสุดขอบตาราง */
+      }
+
+      /* ---------------------------------------------------
+         สไตล์ทั่วไป (ตัวอักษร ตัดคำ รูปภาพ)
+      --------------------------------------------------- */
+      .goal-player {
+        font-weight: 600;
+        color: var(--ink, #ffffff);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      html[data-theme="editorial"] .goal-player {
+        color: #000000 !important;
+      }
+
+      .goal-minute {
+        font-family: var(--font-mono, "Space Mono", monospace);
+        font-weight: 700;
+        color: #38bdf8;
+        font-size: 0.85rem;
+      }
+
+      .goal-icon {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+        display: block;
+      }
+
+      /* Global Tooltip: White text with black outline */
+      .global-tooltip {
+        position: absolute;
+        background: rgba(10, 22, 44, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: #ffffff !important;
+        text-shadow: 
+          -1px -1px 0 #000000,
+           1px -1px 0 #000000,
+          -1px  1px 0 #000000,
+           1px  1px 0 #000000,
+           0px  1px 3px rgba(0, 0, 0, 0.9);
+        -webkit-text-stroke: 0.35px #000000;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+        z-index: 99999;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 16px rgba(56, 189, 248, 0.25);
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        max-width: 330px;
+        font-family: "Space Grotesk", "Anakotmai", sans-serif;
+        text-align: left;
+      }
+      .global-tooltip *,
+      .global-tooltip span,
+      .global-tooltip p,
+      .global-tooltip strong {
+        color: #ffffff !important;
+        text-shadow: 
+          -1px -1px 0 #000000,
+           1px -1px 0 #000000,
+          -1px  1px 0 #000000,
+           1px  1px 0 #000000,
+           0px  1px 3px rgba(0, 0, 0, 0.9) !important;
+      }
+      .global-tooltip.show {
+        opacity: 1;
       }
       .match-status {
         font-family: "Space Mono", monospace;
@@ -1051,7 +1250,7 @@
         transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .stat-bar-away {
-        background: rgba(255, 255, 255, 0.35);
+        background: #ff0000;
         height: 100%;
         border-radius: 0 4px 4px 0;
         transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1250,11 +1449,6 @@
           <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
           <li><a href="men-team.html" data-i18n="nav.men_team">ทีมชาย</a></li>
           <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
-          <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
-          <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
-          <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
-          <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
-          <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
           <li>
             <a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a>
           </li>
@@ -1288,6 +1482,17 @@
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
       <div class="footer-content">
+        <div class="footer-nav-links" style="margin-bottom: 16px; justify-content: center;">
+          <a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="icons.html" data-i18n="nav.icons">i-Cons</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="transfers.html" data-i18n="nav.transfers">Transfers</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="about.html" data-i18n="nav.about">About Us</a>
+        </div>
         <div class="footer-logo">
           <img
             src="assets/images/karnlakhrangnan-logo.png"
@@ -2129,7 +2334,7 @@
           }
         };
 
-        const renderHeroScorerItem = (g, isChelsea) => {
+        const renderHeroScorerItem = (g, isChelsea, isHome) => {
           const playerName = g.player;
           let isOwnGoal = playerName.includes("(OG)");
           let isPenalty = playerName.includes("(Pen)");
@@ -2162,21 +2367,32 @@
 
           const nameDisplay =
             isChelsea && pId
-              ? `<a href="player-profile.html?id=${pId}&team=${pTeam}">${cleanName}${suffix}</a>`
-              : `<strong>${cleanName}${suffix}</strong>`;
+              ? `<a href="player-profile.html?id=${pId}&team=${pTeam}" style="color: inherit; text-decoration: none;">${cleanName}${suffix}</a>`
+              : `${cleanName}${suffix}`;
 
-          const assistDisplay = assist
-            ? `<span class="scorer-assist">(${isTh ? "แอสซิสต์: " : "ast: "}${assist})</span>`
-            : "";
+          const tooltipTh = `⚽ ${isOwnGoal ? "เข้าประตูตัวเอง" : isPenalty ? "จุดโทษ" : "ประตู"} นาทีที่ ${g.minute}' โดย ${cleanName}${suffix}${assist ? ` (แอสซิสต์: ${assist})` : ""}`;
+          const tooltipEn = `⚽ ${isOwnGoal ? "Own Goal" : isPenalty ? "Penalty Goal" : "Goal"} at ${g.minute}' by ${cleanName}${suffix}${assist ? ` (Assist: ${assist})` : ""}`;
 
-          return `
-          <div class="team-hero-scorer-item">
-            <span>⚽</span>
-            ${nameDisplay}
-            <span class="scorer-minute">${g.minute}'</span>
-            ${assistDisplay}
-          </div>
-        `;
+          const iconSrc = isOwnGoal ? "databases/logo/svg/own-goal.svg" : "databases/logo/svg/goal.svg";
+          const iconHtml = `<img src="${iconSrc}" alt="Goal" class="goal-icon" onerror="this.outerHTML='⚽'" data-tooltip-th="${isOwnGoal ? "ทำเข้าประตูตัวเอง" : isPenalty ? "ลูกจุดโทษ" : "ประตู"}" data-tooltip-en="${isOwnGoal ? "Own Goal" : isPenalty ? "Penalty Goal" : "Goal"}">`;
+
+          if (isHome) {
+            return `
+            <div class="goal-item" data-tooltip-th="${tooltipTh}" data-tooltip-en="${tooltipEn}">
+              <span class="goal-minute">${g.minute}'</span>
+              <span class="goal-player">${nameDisplay}</span>
+              <div class="goal-icon-wrap">${iconHtml}</div>
+            </div>
+          `;
+          } else {
+            return `
+            <div class="goal-item" data-tooltip-th="${tooltipTh}" data-tooltip-en="${tooltipEn}">
+              <div class="goal-icon-wrap">${iconHtml}</div>
+              <span class="goal-player">${nameDisplay}</span>
+              <span class="goal-minute">${g.minute}'</span>
+            </div>
+          `;
+          }
         };
 
         const homeGoals = safeGoals
@@ -2187,10 +2403,10 @@
           .sort((a, b) => (parseInt(a.minute) || 0) - (parseInt(b.minute) || 0));
 
         const homeHeroGoalsHtml = homeGoals
-          .map((g) => renderHeroScorerItem(g, isHomeChelsea))
+          .map((g) => renderHeroScorerItem(g, isHomeChelsea, true))
           .join("");
         const awayHeroGoalsHtml = awayGoals
-          .map((g) => renderHeroScorerItem(g, isAwayChelsea))
+          .map((g) => renderHeroScorerItem(g, isAwayChelsea, false))
           .join("");
 
         const homeGoalsList =
@@ -2763,23 +2979,33 @@
             ${compName}
           </span>
           <div class="scoreboard-grid">
-            <div class="team-box">
-              <img src="${match.home_logo}" alt="${match.home_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <h2 class="team-name-display" style="${isHomeChelsea ? "color: var(--gold);" : ""}">
-                ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}
-              </h2>
-              ${homeHeroGoalsHtml ? `<div class="team-hero-scorers">${homeHeroGoalsHtml}</div>` : ""}
+            <div class="team-box home-team-box">
+              <div class="team-logo-wrap">
+                <img src="${match.home_logo}" alt="${match.home_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+              </div>
+              <div class="team-name-wrap">
+                <h2 class="team-name-display" style="${isHomeChelsea ? "color: var(--gold);" : ""}">
+                  ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : match.home_team}
+                </h2>
+              </div>
+              ${homeHeroGoalsHtml ? `<div class="team-hero-scorers goalscorers-list home-scorers">${homeHeroGoalsHtml}</div>` : ""}
             </div>
             <div class="score-center-box">
-              <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
-              <div id="liveBadgeWrap">${statusBadge}</div>
+              <div class="score-inner-wrap">
+                <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
+                <div id="liveBadgeWrap">${statusBadge}</div>
+              </div>
             </div>
-            <div class="team-box">
-              <img src="${match.away_logo}" alt="${match.away_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <h2 class="team-name-display" style="${isAwayChelsea ? "color: var(--gold);" : ""}">
-                ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}
-              </h2>
-              ${awayHeroGoalsHtml ? `<div class="team-hero-scorers">${awayHeroGoalsHtml}</div>` : ""}
+            <div class="team-box away-team-box">
+              <div class="team-logo-wrap">
+                <img src="${match.away_logo}" alt="${match.away_team}" class="team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+              </div>
+              <div class="team-name-wrap">
+                <h2 class="team-name-display" style="${isAwayChelsea ? "color: var(--gold);" : ""}">
+                  ${window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : match.away_team}
+                </h2>
+              </div>
+              ${awayHeroGoalsHtml ? `<div class="team-hero-scorers goalscorers-list away-scorers">${awayHeroGoalsHtml}</div>` : ""}
             </div>
           </div>
         </header>

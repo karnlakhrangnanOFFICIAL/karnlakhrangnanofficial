@@ -196,5 +196,8 @@
     "no_fixtures_filter": "No upcoming fixtures found matching this filter.",
     "no_results_filter": "No match results found matching this filter.",
     "reset_filter_btn": "Reset Filters"
+  },
+  "player": {
+    "view_card": "Collectible Card"
   }
 }

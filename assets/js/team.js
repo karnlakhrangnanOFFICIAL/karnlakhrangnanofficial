@@ -129,7 +129,10 @@ function renderFixtures(container, fixtures, badgeClass) {
       const isLive = match.status === "live";
 
       return `
-    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card ${isLive ? "is-live" : ""}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card ${isLive ? "is-live" : ""}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block; position: relative;">
+      <div class="match-card-badge-corner">
+        <span class="team-badge ${teamBadgeClass}">${badgeClass}</span>
+      </div>
       <div class="match-card-top">
         <div class="match-card-date" style="display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap;">
           ${
@@ -145,11 +148,15 @@ function renderFixtures(container, fixtures, badgeClass) {
           `
               : ""
           }
-          <span>📅 ${formatDate(displayDate, lang)}</span>
+          <span style="display:inline-flex; align-items:center;"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, lang)}</span>
         </div>
         <div class="match-card-league">
-          ${compLogo ? `<img src="${compLogo}" alt="">` : ""}
-          <span>${compName} <span class="team-badge ${teamBadgeClass}">${badgeClass}</span></span>
+          <div class="match-card-league-badge">
+            ${compLogo ? `<div class="comp-logo-container"><img src="${compLogo}" alt=""></div>` : ""}
+            <div class="comp-name-container">
+              <span>${compName}</span>
+            </div>
+          </div>
         </div>
         <div class="match-card-venue">
           <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
@@ -160,7 +167,6 @@ function renderFixtures(container, fixtures, badgeClass) {
       <div class="match-card-row">
         <div class="match-card-team home">
           <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-          <span class="match-card-team-name" style="${homeNameStyle}">${typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
         </div>
         
         <div class="match-card-timebox">
@@ -169,26 +175,10 @@ function renderFixtures(container, fixtures, badgeClass) {
         
         <div class="match-card-team away">
           <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-          <span class="match-card-team-name" style="${awayNameStyle}">${typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
         </div>
       </div>
       
       <div class="match-card-footer team-page-footer">
-        <span class="match-card-footer-text team-page-hide-text">
-          ${
-            isLive
-              ? `
-            <span class="live-flashing-badge mini">
-              <span class="live-beacon">
-                <span class="live-dot-ping"></span>
-                <span class="live-dot-core"></span>
-              </span>
-              <span class="live-badge-text">LIVE ${match.time_live || "NOW"}</span>
-            </span>
-          `
-              : "UPCOMING MATCH"
-          }
-        </span>
         <div class="match-card-providers">
           ${channelsIcons}
         </div>
@@ -214,25 +204,9 @@ function renderResults(container, results, badgeClass) {
         ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk)
         : { date: match.date };
       const displayDate = localDT.date;
-      const homeWin = match.home_score > match.away_score;
-      const awayWin = match.away_score > match.home_score;
       const compName = formatCompetitionName(match.competition_name || match.competition);
       const compLogo = match.competition_logo || "";
       const teamBadgeClass = badgeClass.toLowerCase();
-
-      const homeStr = match.home_team.toLowerCase();
-      const awayStr = match.away_team.toLowerCase();
-      const isChelseaHome = homeStr.includes("chelsea") || homeStr === "kanlakhrangnan";
-      const isChelseaAway = awayStr.includes("chelsea") || awayStr === "kanlakhrangnan";
-
-      let homeNameStyle = "color: #ffffff;";
-      let awayNameStyle = "color: #ffffff;";
-      if (isChelseaHome)
-        homeNameStyle =
-          "color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);";
-      if (isChelseaAway)
-        awayNameStyle =
-          "color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);";
 
       let channelsIcons = "";
 
@@ -257,10 +231,10 @@ function renderResults(container, results, badgeClass) {
           const avatarUrl = window.getPlayerAvatarUrl
             ? window.getPlayerAvatarUrl(clean)
             : "assets/images/placeholder-player.svg";
+          const playerNameOnly = `${clean}${suffix}`;
           return `
-          <div class="card-goal-item home" title="${clean}${suffix} ${g.minute}'">
-            <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
-            <span class="goal-player-name">${clean}${suffix}</span>
+          <div class="card-goal-item home" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
+            <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
             <span class="goal-minute">${g.minute}'</span>
           </div>
         `;
@@ -278,11 +252,11 @@ function renderResults(container, results, badgeClass) {
           const avatarUrl = window.getPlayerAvatarUrl
             ? window.getPlayerAvatarUrl(clean)
             : "assets/images/placeholder-player.svg";
+          const playerNameOnly = `${clean}${suffix}`;
           return `
-          <div class="card-goal-item away" title="${clean}${suffix} ${g.minute}'">
+          <div class="card-goal-item away" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
             <span class="goal-minute">${g.minute}'</span>
-            <span class="goal-player-name">${clean}${suffix}</span>
-            <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+            <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
           </div>
         `;
         };
@@ -300,12 +274,19 @@ function renderResults(container, results, badgeClass) {
       }
 
       return `
-    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+    <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block; position: relative;">
+      <div class="match-card-badge-corner">
+        <span class="team-badge ${teamBadgeClass}">${badgeClass}</span>
+      </div>
       <div class="match-card-top">
-        <div class="match-card-date">📅 ${formatDate(displayDate, lang)}</div>
+        <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, lang)}</div>
         <div class="match-card-league">
-          ${compLogo ? `<img src="${compLogo}" alt="">` : ""}
-          <span>${compName} <span class="team-badge ${teamBadgeClass}">${badgeClass}</span></span>
+          <div class="match-card-league-badge">
+            ${compLogo ? `<div class="comp-logo-container"><img src="${compLogo}" alt=""></div>` : ""}
+            <div class="comp-name-container">
+              <span>${compName}</span>
+            </div>
+          </div>
         </div>
         <div class="match-card-venue">
           <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
@@ -316,27 +297,18 @@ function renderResults(container, results, badgeClass) {
       <div class="match-card-row">
         <div class="match-card-team home">
           <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-          <span class="match-card-team-name" style="${homeNameStyle}">${typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(match.home_team) : match.home_team}</span>
         </div>
         
-        <div class="match-card-timebox">
-          <span style="color:var(--primary-color);">${match.home_score} - ${match.away_score}</span>
+        <div class="match-card-timebox" style="background: rgba(255,255,255,0.05);">
+          <span>${match.home_score} - ${match.away_score}</span>
         </div>
         
         <div class="match-card-team away">
           <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-          <span class="match-card-team-name" style="${awayNameStyle}">${typeof renderTeamNameHTML === "function" ? renderTeamNameHTML(match.away_team) : match.away_team}</span>
         </div>
       </div>
       
       ${scorersHtml}
-      
-      <div class="match-card-footer team-page-footer">
-        <span class="match-card-footer-text team-page-hide-text">FULL TIME</span>
-        <div class="match-card-providers">
-          ${channelsIcons}
-        </div>
-      </div>
     </a>`;
     })
     .join("");
@@ -1701,6 +1673,11 @@ async function initPlayerProfile() {
         backLink.href = "women-team.html";
         backLink.innerHTML = isTh ? "← กลับหน้าทีมหญิง" : "← Back to Women's Team";
       }
+    }
+
+    const cardLink = document.getElementById("playerCardLink");
+    if (cardLink && player && player.id) {
+      cardLink.href = `player-card.html?id=${player.id}`;
     }
 
     const teamTitleText = isMen

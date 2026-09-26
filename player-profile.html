@@ -27,11 +27,6 @@
           <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
           <li><a href="men-team.html" class="active" data-i18n="nav.men_team">ทีมชาย</a></li>
           <li><a href="women-team.html" data-i18n="nav.women_team">ทีมหญิง</a></li>
-          <li><a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a></li>
-          <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
-          <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
-          <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
-          <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
           <li>
             <a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a>
           </li>
@@ -81,8 +76,12 @@
 
     <!-- ==================== MAIN CONTENT ==================== -->
     <main class="main-container player-profile-main">
-      <div style="margin-bottom: 1.25rem">
-        <a href="women-team.html" id="playerBackLink" class="back-link">← กลับหน้าทีม</a>
+      <div style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <a href="men-team.html" id="playerBackLink" class="back-link">← กลับหน้าทีม</a>
+        <a href="player-card.html" id="playerCardLink" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--accent-color, #38bdf8); color: var(--accent-light, #38bdf8); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+          <span>🎴</span>
+          <span data-i18n="player.view_card">การ์ดนักเตะ (Collectible Card)</span>
+        </a>
       </div>
 
       <div class="profile-grid">
@@ -224,6 +223,17 @@
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
       <div class="footer-content">
+        <div class="footer-nav-links" style="margin-bottom: 16px; justify-content: center;">
+          <a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="trophy.html" data-i18n="nav.trophy">ถ้วยรางวัล</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="icons.html" data-i18n="nav.icons">i-Cons</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="transfers.html" data-i18n="nav.transfers">Transfers</a>
+          <span class="footer-nav-dot">·</span>
+          <a href="about.html" data-i18n="nav.about">About Us</a>
+        </div>
         <div class="footer-logo">
           <img
             src="assets/images/karnlakhrangnan-logo.png"

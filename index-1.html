@@ -1469,23 +1469,6 @@
               <span class="match-card-team-name" style="${awayNameStyle}">${renderTeamNameHTML(match.away_team)}</span>
             </div>
           </div>
-          
-          <div class="match-card-footer">
-            <span class="match-card-footer-text" style="${isLive ? 'color:#ef4444; font-weight:700;' : ''}">
-              ${isLive ? `
-                <span class="live-flashing-badge mini">
-                  <span class="live-beacon">
-                    <span class="live-dot-ping"></span>
-                    <span class="live-dot-core"></span>
-                  </span>
-                  <span class="live-badge-text">LIVE ${match.time_live || 'NOW'}</span>
-                </span>
-              ` : ''}
-            </span>
-            <div class="match-card-providers">
-              ${channelsIcons}
-            </div>
-          </div>
         </a>`;
       }).join('');
     }

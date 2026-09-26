@@ -453,11 +453,6 @@
             <li><a href="index.html" data-i18n="nav.home">Home</a></li>
             <li><a href="men-team.html" data-i18n="nav.men_team">Men's Team</a></li>
             <li><a href="women-team.html" data-i18n="nav.women_team">Women's Team</a></li>
-            <li><a href="trophy.html" data-i18n="nav.trophy">Trophy</a></li>
-            <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
-            <li><a href="the-story-blue.html" data-i18n="nav.story">The Story Blue</a></li>
-            <li><a href="about.html" class="active" data-i18n="nav.about">About Us</a></li>
-            <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
           </ul>
           <div style="display: flex; gap: 8px; margin-top: 1.5rem">
             <a
@@ -628,14 +623,27 @@
       </main>
     </div>
 
-    <footer class="site-app-footer">
-      <span style="font-family: &quot;Space Mono&quot;, monospace; font-size: 0.7rem"
-        >VERSION 1.0.4-S26</span
-      >
-      <span style="font-size: 0.75rem; opacity: 0.7"
-        >© 2026 KARN LA KHRANg NAN Official. All Rights Reserved. Not affiliated with Chelsea
-        FC.</span
-      >
+    <footer class="site-app-footer" style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 20px;">
+      <div class="footer-nav-links" style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <a href="the-story-blue.html" data-i18n="nav.story" style="color: var(--ink); text-decoration: none; opacity: 0.85;">The Story Blue</a>
+        <span class="footer-nav-dot" style="opacity: 0.4;">·</span>
+        <a href="trophy.html" data-i18n="nav.trophy" style="color: var(--ink); text-decoration: none; opacity: 0.85;">Trophy</a>
+        <span class="footer-nav-dot" style="opacity: 0.4;">·</span>
+        <a href="icons.html" data-i18n="nav.icons" style="color: var(--ink); text-decoration: none; opacity: 0.85;">i-Cons</a>
+        <span class="footer-nav-dot" style="opacity: 0.4;">·</span>
+        <a href="transfers.html" data-i18n="nav.transfers" style="color: var(--ink); text-decoration: none; opacity: 0.85;">Transfers</a>
+        <span class="footer-nav-dot" style="opacity: 0.4;">·</span>
+        <a href="about.html" class="active" data-i18n="nav.about" style="color: var(--accent); font-weight: 700; text-decoration: none;">About Us</a>
+      </div>
+      <div style="display: flex; justify-content: space-between; width: 100%; max-width: 900px; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span style="font-family: &quot;Space Mono&quot;, monospace; font-size: 0.7rem"
+          >VERSION 1.0.4-S26</span
+        >
+        <span style="font-size: 0.75rem; opacity: 0.7"
+          >© 2026 KARN LA KHRANg NAN Official. All Rights Reserved. Not affiliated with Chelsea
+          FC.</span
+        >
+      </div>
     </footer>
 
     <!-- SCRIPTS -->

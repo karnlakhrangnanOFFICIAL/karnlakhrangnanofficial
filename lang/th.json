@@ -196,5 +196,8 @@
     "no_fixtures_filter": "ไม่พบโปรแกรมการแข่งขันที่ตรงกับตัวกรองนี้",
     "no_results_filter": "ไม่พบผลการแข่งขันที่ตรงกับตัวกรองนี้",
     "reset_filter_btn": "รีเซ็ตตัวกรอง"
+  },
+  "player": {
+    "view_card": "การ์ดนักเตะ (Collectible Card)"
   }
 }

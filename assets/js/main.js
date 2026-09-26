@@ -481,28 +481,36 @@ async function loadPlayersAvatarMap() {
     if (menRes && menRes.ok) {
       const pm = await menRes.json();
       pm.forEach((p) => {
+        const n = normalizePlayerName(p.name);
         if (p.image) {
-          const n = normalizePlayerName(p.name);
           playerAvatarMap[n] = p.image;
-          const parts = n.split(" ");
-          if (parts.length > 1) {
-            const last = parts[parts.length - 1];
-            if (!playerAvatarMap[last]) playerAvatarMap[last] = p.image;
-          }
+        }
+        if (p.number) {
+          playerShirtNumberMap[n] = p.number;
+        }
+        const parts = n.split(" ");
+        if (parts.length > 1) {
+          const last = parts[parts.length - 1];
+          if (!playerAvatarMap[last] && p.image) playerAvatarMap[last] = p.image;
+          if (!playerShirtNumberMap[last] && p.number) playerShirtNumberMap[last] = p.number;
         }
       });
     }
     if (womenRes && womenRes.ok) {
       const pw = await womenRes.json();
       pw.forEach((p) => {
+        const n = normalizePlayerName(p.name);
         if (p.image) {
-          const n = normalizePlayerName(p.name);
           playerAvatarMap[n] = p.image;
-          const parts = n.split(" ");
-          if (parts.length > 1) {
-            const last = parts[parts.length - 1];
-            if (!playerAvatarMap[last]) playerAvatarMap[last] = p.image;
-          }
+        }
+        if (p.number) {
+          playerShirtNumberMap[n] = p.number;
+        }
+        const parts = n.split(" ");
+        if (parts.length > 1) {
+          const last = parts[parts.length - 1];
+          if (!playerAvatarMap[last] && p.image) playerAvatarMap[last] = p.image;
+          if (!playerShirtNumberMap[last] && p.number) playerShirtNumberMap[last] = p.number;
         }
       });
     }
@@ -510,6 +518,29 @@ async function loadPlayersAvatarMap() {
     console.warn("Error fetching players JSON:", e);
   }
   return playerAvatarMap;
+}
+
+const playerShirtNumberMap = {};
+
+// Global function to get player shirt number
+function getPlayerShirtNumber(name) {
+  if (!name) return "";
+  const clean = name
+    .replace(/\s*\(OG\)/i, "")
+    .replace(/\s*\(Pen\)/i, "")
+    .trim();
+  const n = normalizePlayerName(clean);
+  if (playerShirtNumberMap && playerShirtNumberMap[n]) return playerShirtNumberMap[n];
+  if (playerShirtNumberMap) {
+    for (const [k, v] of Object.entries(playerShirtNumberMap)) {
+      if (k.length > 3 && (n.includes(k) || k.includes(n))) return v;
+    }
+    const parts = n.split(" ");
+    for (const part of parts) {
+      if (part.length > 3 && playerShirtNumberMap[part]) return playerShirtNumberMap[part];
+    }
+  }
+  return "";
 }
 
 // Global function to get avatar url
@@ -534,6 +565,7 @@ function getPlayerAvatarUrl(name) {
 }
 
 window.getPlayerAvatarUrl = getPlayerAvatarUrl;
+window.getPlayerShirtNumber = getPlayerShirtNumber;
 window.loadPlayersAvatarMap = loadPlayersAvatarMap;
 // Trigger pre-load
 loadPlayersAvatarMap();

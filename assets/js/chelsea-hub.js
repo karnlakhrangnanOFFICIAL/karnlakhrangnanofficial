@@ -1115,6 +1115,9 @@
         const isHome = isChelseaTeam(nextMatch.homeTeam);
         const venue = isHome ? 'Stamford Bridge (Home)' : 'Away Match';
 
+        const homeName = nextMatch.homeTeam.shortName || nextMatch.homeTeam.name;
+        const awayName = nextMatch.awayTeam.shortName || nextMatch.awayTeam.name;
+
         spotlightContainer.innerHTML = `
           <div class="spotlight-card">
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -1124,32 +1127,26 @@
 
             <div class="spotlight-match-teams">
               <div class="spotlight-team">
-                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
-                <div class="spotlight-team-name ${isChelseaTeam(nextMatch.homeTeam) ? 'hub-team-chelsea' : ''}">
-                  ${nextMatch.homeTeam.shortName || nextMatch.homeTeam.name}
-                </div>
+                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" title="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               </div>
 
               <div class="spotlight-vs">VS</div>
 
               <div class="spotlight-team">
-                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
-                <div class="spotlight-team-name ${isChelseaTeam(nextMatch.awayTeam) ? 'hub-team-chelsea' : ''}">
-                  ${nextMatch.awayTeam.shortName || nextMatch.awayTeam.name}
-                </div>
+                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" title="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               </div>
             </div>
 
-            <div style="text-align: center; font-size: 0.88rem; color: #ffffff; font-weight: 600;">
+            <div class="spotlight-match-info" style="text-align: center; font-size: 0.88rem; color: #ffffff; font-weight: 600; background-color: #000000; padding: 0.6rem 1rem; border-radius: 8px; margin: 0.75rem 0; border: 1px solid rgba(255, 255, 255, 0.12);">
               📅 ${formatMatchDate(nextMatch.utcDate)}
               <div style="font-size: 0.78rem; color: #93c5fd; margin-top: 0.2rem;">🏟️ ${venue}</div>
             </div>
 
             <div class="spotlight-countdown" id="spotlightCountdown">
-              <div class="countdown-box"><div class="countdown-val" id="cdDays">00</div><div class="countdown-unit">Days</div></div>
-              <div class="countdown-box"><div class="countdown-val" id="cdHours">00</div><div class="countdown-unit">Hours</div></div>
-              <div class="countdown-box"><div class="countdown-val" id="cdMins">00</div><div class="countdown-unit">Mins</div></div>
-              <div class="countdown-box"><div class="countdown-val" id="cdSecs">00</div><div class="countdown-unit">Secs</div></div>
+              <div class="countdown-box"><div class="countdown-val" id="cdDays">00</div><div class="countdown-unit" style="color: #ffffff;">Days</div></div>
+              <div class="countdown-box"><div class="countdown-val" id="cdHours">00</div><div class="countdown-unit" style="color: #ffffff;">Hours</div></div>
+              <div class="countdown-box"><div class="countdown-val" id="cdMins">00</div><div class="countdown-unit" style="color: #ffffff;">Mins</div></div>
+              <div class="countdown-box"><div class="countdown-val" id="cdSecs">00</div><div class="countdown-unit" style="color: #ffffff;">Secs</div></div>
             </div>
           </div>
         `;
@@ -1279,6 +1276,9 @@
       </div>
     `;
 
+    const homeName = match.homeTeam.shortName || match.homeTeam.name;
+    const awayName = match.awayTeam.shortName || match.awayTeam.name;
+
     spotlightContainer.innerHTML = `
       <div class="spotlight-card spotlight-live-card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -1290,10 +1290,7 @@
 
         <div class="spotlight-match-teams">
           <div class="spotlight-team">
-            <img src="${match.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${match.homeTeam.name}" />
-            <div class="spotlight-team-name ${match.homeTeam.id === CHELSEA_TEAM_ID ? 'hub-team-chelsea' : ''}">
-              ${match.homeTeam.shortName || match.homeTeam.name}
-            </div>
+            <img src="${match.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" title="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" />
           </div>
 
           <div class="spotlight-live-scorebox">
@@ -1307,10 +1304,7 @@
           </div>
 
           <div class="spotlight-team">
-            <img src="${match.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${match.awayTeam.name}" />
-            <div class="spotlight-team-name ${match.awayTeam.id === CHELSEA_TEAM_ID ? 'hub-team-chelsea' : ''}">
-              ${match.awayTeam.shortName || match.awayTeam.name}
-            </div>
+            <img src="${match.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" title="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" />
           </div>
         </div>
 

@@ -24,19 +24,14 @@
   <!-- ==================== EDITORIAL HEADER ==================== -->
   <header class="editorial-header">
     <div class="brand">
-      <div class="meta" data-i18n="home.established">est. 2026 · Season 2026/27</div>
-      <h1 data-i18n="home.title">Karn La Khrang Nan</h1>
+      <a href="index.html" class="nav-logo brand-logo-link" aria-label="KANLAKHRANGNAN Home">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KANLAKHRANGNAN Logo" class="brand-logo" />
+      </a>
     </div>
     <nav>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active" data-i18n="nav.the_club">The Club</a></li>
         <li><a href="men-team.html" data-i18n="nav.men_team">Men</a></li>
         <li><a href="women-team.html" data-i18n="nav.women_team">Women</a></li>
-        <li><a href="the-story-blue.html" data-i18n="nav.story">Story</a></li>
-        <li><a href="trophy.html" data-i18n="nav.trophy">Trophies</a></li>
-        <li><a href="icons.html" data-i18n="nav.icons">i-Cons</a></li>
-        <li><a href="transfers.html" data-i18n="nav.transfers">Transfers</a></li>
-        <li><a href="about.html" data-i18n="nav.about">About</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
         <li>
           <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
@@ -743,12 +738,22 @@
 
   <!-- ==================== EDITORIAL FOOTER ==================== -->
   <footer class="editorial-footer">
-    <div class="meta" data-i18n="home.season_sub">Season 2026/27 Edition</div>
+    <div class="footer-nav-links">
+      <a href="the-story-blue.html" data-i18n="nav.story">Story</a>
+      <span class="footer-nav-dot">·</span>
+      <a href="trophy.html" data-i18n="nav.trophy">Trophies</a>
+      <span class="footer-nav-dot">·</span>
+      <a href="icons.html" data-i18n="nav.icons">i-Cons</a>
+      <span class="footer-nav-dot">·</span>
+      <a href="transfers.html" data-i18n="nav.transfers">Transfers</a>
+      <span class="footer-nav-dot">·</span>
+      <a href="about.html" data-i18n="nav.about">About</a>
+    </div>
     <div class="editorial-footer-center">
       <img src="assets/images/karnlakhrangnan-logo.png" alt="Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
       <span>Karn La Khrang Nan · Chelsea FC Independent Archive</span>
     </div>
-    <div class="meta">Unofficial Fan Portfolio</div>
+    <div class="meta" data-i18n="home.season_sub">Season 2026/27 Edition · Unofficial Fan Portfolio</div>
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
@@ -774,6 +779,17 @@
       if (!name) return '';
       return name.replace(/-/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     }
+
+    function formatTeamBadgeHTML(teamType, customStyle = '') {
+      const lang = window.currentLang || 'th';
+      const isTh = lang === 'th';
+      const typeStr = String(teamType || 'M').toUpperCase();
+      const isWomen = typeStr === 'W' || typeStr.includes('WOMEN') || typeStr.includes('หญิง');
+      const label = isTh ? (isWomen ? 'ทีมหญิง' : 'ทีมชาย') : (isWomen ? "Women's Team" : "Men's Team");
+      const cls = isWomen ? 'w' : 'm';
+      return `<span class="team-badge ${cls}" style="${customStyle}" title="${label}">${label}</span>`;
+    }
+    window.formatTeamBadgeHTML = formatTeamBadgeHTML;
 
     // ---------- FILTERING STATE & LOGIC ----------
     let currentFilterTeam = 'all'; // 'all', 'M', 'W'
@@ -1294,7 +1310,7 @@
                 <div style="display: flex; align-items: center; gap: 4px;">
                   ${compLogo ? `<img src="${compLogo}" style="height:14px; object-fit: contain;">` : ''}
                   <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;">${compName}</span>
-                  <span class="team-badge ${teamBadgeClass}" style="padding: 1px 4px; font-size: 0.6rem;">${teamBadge}</span>
+                  ${formatTeamBadgeHTML(match.team_type, 'padding: 1px 6px; font-size: 0.6rem;')}
                 </div>
                 <span>${displayTime}</span>
               </div>
@@ -1430,7 +1446,7 @@
           mEl.innerHTML = `
             <div style="display: flex; align-items: center; gap: 4px; overflow: hidden;">
               <span style="width: 6px; height: 6px; border-radius: 50%; background-color: ${homeAwayDotColor}; flex-shrink: 0;" title="${isHome ? 'Home' : 'Away'}"></span>
-              <span class="team-badge ${teamBadgeClass}" style="padding: 1px 3px; font-size: 0.55rem; flex-shrink: 0;">${teamBadge}</span>
+              ${formatTeamBadgeHTML(match.team_type, 'padding: 1px 4px; font-size: 0.55rem; flex-shrink: 0;')}
               ${oppLogo ? `<img src="${oppLogo}" alt="" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 14px; height: 14px; object-fit: contain; flex-shrink: 0;">` : ''}
               <span class="cal-team-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55px; color: var(--text-color);">${window.renderTeamNameHTML ? window.renderTeamNameHTML(oppName) : oppName}</span>
             </div>
@@ -1528,7 +1544,7 @@
                 </div>
                 <div class="live-banner-league">
                   ${compLogo ? `<img src="${compLogo}" alt="${compName}">` : ''}
-                  <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
+                  <span>${compName} ${formatTeamBadgeHTML(match.team_type)}</span>
                 </div>
               </div>
 
@@ -1628,13 +1644,16 @@
         const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
         const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
         
-        let homeNameStyle = 'color: #ffffff;';
-        let awayNameStyle = 'color: #ffffff;';
-        if (isChelseaHome) homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
-        if (isChelseaAway) awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+        let homeNameStyle = 'color: var(--text-color);';
+        let awayNameStyle = 'color: var(--text-color);';
+        if (isChelseaHome) homeNameStyle = 'color: var(--gold, #d4af37); font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);';
+        if (isChelseaAway) awayNameStyle = 'color: var(--gold, #d4af37); font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);';
 
         return `
-        <a href="match-detail.html?id=${match.id}" class="card-link match-card ${isLive ? 'is-live' : ''}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+        <a href="match-detail.html?id=${match.id}" class="card-link match-card ${isLive ? 'is-live' : ''}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block; position: relative;">
+          <div class="match-card-badge-corner">
+            ${formatTeamBadgeHTML(match.team_type)}
+          </div>
           <div class="match-card-top">
             <div class="match-card-date" style="display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap;">
               ${isLive ? `
@@ -1649,8 +1668,12 @@
               <span style="display:inline-flex; align-items:center;"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</span>
             </div>
             <div class="match-card-league">
-              ${compLogo ? `<img src="${compLogo}" alt="">` : ''}
-              <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
+              <div class="match-card-league-badge">
+                ${compLogo ? `<div class="comp-logo-container"><img src="${compLogo}" alt=""></div>` : ''}
+                <div class="comp-name-container">
+                  <span>${compName}</span>
+                </div>
+              </div>
             </div>
             <div class="match-card-venue">
               <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
@@ -1661,7 +1684,6 @@
           <div class="match-card-row">
             <div class="match-card-team home">
               <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <span class="match-card-team-name" style="${homeNameStyle}">${renderTeamNameHTML(match.home_team)}</span>
             </div>
             
             <div class="match-card-timebox">
@@ -1670,22 +1692,10 @@
             
             <div class="match-card-team away">
               <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <span class="match-card-team-name" style="${awayNameStyle}">${renderTeamNameHTML(match.away_team)}</span>
             </div>
           </div>
           
           <div class="match-card-footer">
-            <span class="match-card-footer-text" style="${isLive ? 'color:#ef4444; font-weight:700;' : ''}">
-              ${isLive ? `
-                <span class="live-flashing-badge mini">
-                  <span class="live-beacon">
-                    <span class="live-dot-ping"></span>
-                    <span class="live-dot-core"></span>
-                  </span>
-                  <span class="live-badge-text">LIVE ${match.time_live || 'NOW'}</span>
-                </span>
-              ` : ''}
-            </span>
             <div class="match-card-providers">
               ${channelsIcons}
             </div>
@@ -1723,14 +1733,14 @@
         const isChelseaHome = homeStr.includes('chelsea') || homeStr === 'kanlakhrangnan';
         const isChelseaAway = awayStr.includes('chelsea') || awayStr === 'kanlakhrangnan';
         
-        let homeNameStyle = 'color: #ffffff;';
-        let awayNameStyle = 'color: #ffffff;';
+        let homeNameStyle = 'color: var(--text-color);';
+        let awayNameStyle = 'color: var(--text-color);';
         
         if (isChelseaHome) {
-            homeNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+            homeNameStyle = 'color: var(--gold, #d4af37); font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);';
         }
         if (isChelseaAway) {
-            awayNameStyle = 'color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);';
+            awayNameStyle = 'color: var(--gold, #d4af37); font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);';
         }
 
         let scorersHtml = '';
@@ -1745,10 +1755,10 @@
             const clean = rawName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
             const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
             const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
+            const playerNameOnly = `${clean}${suffix}`;
             return `
-              <div class="card-goal-item home" title="${clean}${suffix} ${g.minute}'">
-                <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
-                <span class="goal-player-name">${clean}${suffix}</span>
+              <div class="card-goal-item home" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
+                <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
                 <span class="goal-minute">${g.minute}'</span>
               </div>
             `;
@@ -1761,11 +1771,11 @@
             const clean = rawName.replace(/\s*\(OG\)/i, '').replace(/\s*\(Pen\)/i, '').trim();
             const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
             const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
+            const playerNameOnly = `${clean}${suffix}`;
             return `
-              <div class="card-goal-item away" title="${clean}${suffix} ${g.minute}'">
+              <div class="card-goal-item away" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
                 <span class="goal-minute">${g.minute}'</span>
-                <span class="goal-player-name">${clean}${suffix}</span>
-                <img src="${avatarUrl}" alt="${clean}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+                <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
               </div>
             `;
           };
@@ -1784,12 +1794,19 @@
 
         return `
         
-        <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block;">
+        <a href="match-detail.html?id=${match.id}" class="card-link match-card" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block; position: relative;">
+          <div class="match-card-badge-corner">
+            ${formatTeamBadgeHTML(match.team_type)}
+          </div>
           <div class="match-card-top">
             <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
             <div class="match-card-league">
-              ${match.competition_logo ? `<img src="${match.competition_logo}" alt="">` : ''}
-              <span>${compName} <span class="team-badge ${teamBadgeClass}">${teamBadge}</span></span>
+              <div class="match-card-league-badge">
+                ${match.competition_logo ? `<div class="comp-logo-container"><img src="${match.competition_logo}" alt=""></div>` : ''}
+                <div class="comp-name-container">
+                  <span>${compName}</span>
+                </div>
+              </div>
             </div>
             <div class="match-card-venue">
               <img src="databases/logo/svg/stadium.svg" alt="Stadium" style="width:14px; height:14px;">
@@ -1800,7 +1817,6 @@
           <div class="match-card-row">
             <div class="match-card-team home">
               <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <span class="match-card-team-name" style="${homeNameStyle}">${renderTeamNameHTML(match.home_team)}</span>
             </div>
             
             <div class="match-card-timebox" style="background: rgba(255,255,255,0.05);">
@@ -1809,18 +1825,10 @@
             
             <div class="match-card-team away">
               <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
-              <span class="match-card-team-name" style="${awayNameStyle}">${renderTeamNameHTML(match.away_team)}</span>
             </div>
           </div>
           
           ${scorersHtml}
-          
-          <div class="match-card-footer">
-            <span class="match-card-footer-text">FULL TIME</span>
-            <div class="match-card-providers">
-               <!-- Channels could go here if stored in result -->
-            </div>
-          </div>
         </a>`;
       }).join('');
     }

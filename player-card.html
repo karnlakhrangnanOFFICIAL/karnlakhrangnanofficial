@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chelsea FC Player Profile - Cole Palmer</title>
+    <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
+    <!-- นำเข้า Tailwind CSS เพื่อการจัดรูปแบบที่รวดเร็วและสวยงาม -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- นำเข้าฟอนต์ Poppins จาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* สีประจำสโมสรเชลซี */
+            --chelsea-blue: #034694;
+            --chelsea-dark: #022a59;
+            --chelsea-gold: #D6A848;
+            --chelsea-red: #DB0030;
+        }
+
+        body {
+            /* ตั้งค่าพื้นหลังของหน้าเว็บ */
+            font-family: 'Poppins', 'Prompt', sans-serif;
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* การจัดรูปแบบการ์ดหลัก */
+        .player-card {
+            background: linear-gradient(135deg, var(--chelsea-blue) 0%, var(--chelsea-dark) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(3, 70, 148, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 60px rgba(3, 70, 148, 0.5);
+        }
+
+        /* ลวดลายพื้นหลังของการ์ด (ลายเส้นทแยงมุม) */
+        .card-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 2px,
+                transparent 2px,
+                transparent 10px
+            );
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* ลายน้ำตัวอักษร CFC ขนาดใหญ่ด้านหลัง */
+        .watermark {
+            position: absolute;
+            font-size: 10rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            top: 10%;
+            left: -5%;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .image-container {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* ใส่เงาให้รูปภาพนักเตะดูมีมิติ */
+        .player-image {
+            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.6));
+        }
+        
+        /* ข้อความไล่สีทอง */
+        .gold-gradient-text {
+            background: linear-gradient(to right, #fef08a, var(--chelsea-gold), #ca8a04);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* เอฟเฟกต์กระจก (Glassmorphism) สำหรับกล่องข้อมูล */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- แถบนำทางกลับสู่หน้าหลัก / เลือกลิสต์นักเตะ -->
+    <div class="w-full max-w-[380px] mb-4 flex items-center justify-between px-2 text-xs">
+        <a href="men-team.html" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 px-3 py-1.5 rounded-full border border-white/10 transition-colors backdrop-blur-sm">
+            <span>←</span>
+            <span>กลับหน้าทีมชาย</span>
+        </a>
+        <div class="relative">
+            <select id="playerCardSelector" onchange="switchPlayerCard(this.value)" class="bg-slate-800/80 text-gray-200 border border-white/10 text-xs rounded-full px-3 py-1.5 outline-none hover:bg-slate-700/80 cursor-pointer">
+                <option value="20">Cole Palmer (#20)</option>
+                <!-- populated dynamically -->
+            </select>
+        </div>
+    </div>
+
+    <div class="player-card relative rounded-[2rem] overflow-hidden text-white mx-auto">
+        <!-- ลวดลายและลายน้ำ -->
+        <div class="card-pattern"></div>
+        <div class="watermark">CFC</div>
+        
+        <!-- ส่วนหัว: หมายเลข, ตำแหน่ง และ โลโก้ -->
+        <div class="relative pt-6 px-6 pb-0 flex justify-between items-start z-10">
+            <div class="flex flex-col">
+                <span id="cardPlayerNumber" class="text-5xl font-extrabold tracking-tighter gold-gradient-text">20</span>
+                <span id="cardPlayerPosition" class="text-xs font-semibold tracking-widest uppercase text-gray-300 mt-1">Midfielder</span>
+            </div>
+            
+            <!-- โลโก้สโมสรจำลอง (CFC) -->
+            <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-[var(--chelsea-gold)] p-1">
+                <svg viewBox="0 0 100 100" class="w-full h-full text-[var(--chelsea-blue)]" fill="currentColor">
+                    <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="5" fill="none"/>
+                    <text x="50" y="58" font-size="28" text-anchor="middle" font-family="Poppins" font-weight="bold" fill="currentColor">CFC</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- รูปภาพนักเตะ (.png) -->
+        <!-- คุณสามารถเปลี่ยนลิงก์ใน src เป็นรูปร่างนักเตะแบบไม่มีพื้นหลัง (.png) ของคุณเองได้ -->
+        <div class="image-container flex justify-center mt-[-30px] h-[320px]">
+            <img id="cardPlayerImage"
+                 src="https://cdn.pixabay.com/photo/2024/04/09/22/08/ai-generated-8686845_960_720.png" 
+                 alt="Player Portrait" 
+                 class="player-image object-contain object-bottom h-full w-auto"
+                 onerror="this.onerror=null; this.src='assets/images/players/men/cole-palmer.jpg';">
+        </div>
+
+        <!-- ส่วนข้อมูลนักเตะด้านล่าง -->
+        <div class="relative z-10 glass-panel rounded-t-3xl p-6 mt-2">
+            
+            <!-- ชื่อ - นามสกุล -->
+            <div class="text-center mb-6">
+                <h1 id="cardPlayerFirstName" class="text-3xl font-extrabold uppercase tracking-wide leading-tight text-white/90">Cole</h1>
+                <h2 id="cardPlayerLastName" class="text-4xl font-black uppercase tracking-wider gold-gradient-text leading-none mt-1">Palmer</h2>
+            </div>
+
+            <!-- กล่องรายละเอียดนักเตะ -->
+            <div class="space-y-3">
+                
+                <!-- วันเกิด (อายุ) -->
+                <div class="flex items-center justify-between bg-black/30 rounded-2xl p-3 border border-white/10 hover:bg-black/40 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-white/10 rounded-xl text-[var(--chelsea-gold)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">วันเกิด (อายุ)</span>
+                            <span id="cardPlayerDob" class="text-sm font-medium">6 พ.ค. 2002 <span id="cardPlayerAge" class="font-bold text-[var(--chelsea-gold)] ml-1">(24 ปี)</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- สัญชาติ + ไฟล์ธงชาติ (.svg) -->
+                <div class="flex items-center justify-between bg-black/30 rounded-2xl p-3 border border-white/10 hover:bg-black/40 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-white/10 rounded-xl text-[var(--chelsea-gold)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">สัญชาติ</span>
+                            <span id="cardPlayerNationality" class="text-sm font-medium">อังกฤษ (England)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ไฟล์ธงชาติ .svg (ธงชาติอังกฤษ) -->
+                    <!-- คุณสามารถแก้ไขส่วน <svg> นี้เป็นธงชาติอื่นได้ -->
+                    <div id="cardFlagContainer" class="w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--chelsea-gold)] shadow-[0_0_10px_rgba(214,168,72,0.3)] flex-shrink-0 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" class="w-full h-full object-cover">
+                            <rect width="60" height="60" fill="#ffffff" />
+                            <!-- กากบาทสีแดงของธงชาติอังกฤษ (St George's Cross) -->
+                            <rect x="25" y="0" width="10" height="60" fill="#ce1124" />
+                            <rect x="0" y="25" width="60" height="10" fill="#ce1124" />
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- เส้นตกแต่งด้านล่าง -->
+            <div class="mt-6 h-1 w-1/3 bg-gradient-to-r from-transparent via-[var(--chelsea-gold)] to-transparent mx-auto rounded-full opacity-70"></div>
+        </div>
+    </div>
+
+    <!-- Script สำหรับการโหลดข้อมูลนักเตะเสริมและเลือกผู้เล่น -->
+    <script>
+        let allMenPlayers = [];
+
+        async function initCardPage() {
+            try {
+                const res = await fetch('data/players-men.json');
+                if (res.ok) {
+                    allMenPlayers = await res.json();
+                    populateDropdown(allMenPlayers);
+                }
+            } catch (e) {
+                console.warn("Could not load players-men.json", e);
+            }
+
+            // อ่านค่า query param ?id= หรือ ?num=
+            const params = new URLSearchParams(window.location.search);
+            const playerId = params.get('id');
+            const playerNum = params.get('num');
+            
+            if (playerId && allMenPlayers.length > 0) {
+                const p = allMenPlayers.find(item => String(item.id) === String(playerId));
+                if (p) renderPlayer(p);
+            } else if (playerNum && allMenPlayers.length > 0) {
+                const p = allMenPlayers.find(item => String(item.number) === String(playerNum));
+                if (p) renderPlayer(p);
+            }
+        }
+
+        function populateDropdown(players) {
+            const sel = document.getElementById('playerCardSelector');
+            if (!sel || !players) return;
+            sel.innerHTML = '';
+            players.forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = `${p.name} (#${p.number || '?'})`;
+                if (p.name.includes("Palmer")) opt.selected = true;
+                sel.appendChild(opt);
+            });
+        }
+
+        function switchPlayerCard(selectedId) {
+            const p = allMenPlayers.find(item => String(item.id) === String(selectedId));
+            if (p) {
+                renderPlayer(p);
+                const url = new URL(window.location);
+                url.searchParams.set('id', p.id);
+                window.history.replaceState({}, '', url);
+            }
+        }
+
+        function renderPlayer(p) {
+            if (!p) return;
+            // แยกชื่อ-นามสกุล
+            const nameParts = p.name.trim().split(' ');
+            let first = nameParts[0] || '';
+            let last = nameParts.slice(1).join(' ') || first;
+            if (nameParts.length === 1) {
+                first = '';
+                last = nameParts[0];
+            }
+
+            document.getElementById('cardPlayerNumber').textContent = p.number || '0';
+            document.getElementById('cardPlayerPosition').textContent = p.position || 'Player';
+            document.getElementById('cardPlayerFirstName').textContent = first;
+            document.getElementById('cardPlayerLastName').textContent = last;
+
+            // รูปภาพ
+            const imgEl = document.getElementById('cardPlayerImage');
+            if (p.name.includes("Palmer")) {
+                imgEl.src = "https://cdn.pixabay.com/photo/2024/04/09/22/08/ai-generated-8686845_960_720.png";
+            } else if (p.image) {
+                imgEl.src = p.image;
+            }
+
+            // วันเกิด
+            if (p.date_of_birth) {
+                const d = new Date(p.date_of_birth);
+                const thMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+                const formattedDob = `${d.getDate()} ${thMonths[d.getMonth()]} ${d.getFullYear()}`;
+                document.getElementById('cardPlayerDob').innerHTML = `${formattedDob} <span id="cardPlayerAge" class="font-bold text-[var(--chelsea-gold)] ml-1">(${p.age || 24} ปี)</span>`;
+            }
+
+            // สัญชาติ
+            if (p.nationality) {
+                document.getElementById('cardPlayerNationality').textContent = p.nationality;
+                // โหลดธงชาติถ้ามีไฟล์
+                const natKey = p.nationality.toLowerCase();
+                let flagFile = 'gb-eng.svg';
+                if (natKey.includes('england')) flagFile = 'gb-eng.svg';
+                else if (natKey.includes('argentina')) flagFile = 'ar.svg';
+                else if (natKey.includes('france')) flagFile = 'fr.svg';
+                else if (natKey.includes('brazil')) flagFile = 'br.svg';
+                else if (natKey.includes('spain')) flagFile = 'es.svg';
+                else if (natKey.includes('portugal')) flagFile = 'pt.svg';
+                else if (natKey.includes('germany')) flagFile = 'de.svg';
+
+                document.getElementById('cardFlagContainer').innerHTML = `
+                    <img src="databases/logo/national/${flagFile}" alt="${p.nationality}" class="w-full h-full object-cover" onerror="this.src='databases/logo/national/gb-eng.svg'">
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initCardPage);
+    </script>
+</body>
+</html>
