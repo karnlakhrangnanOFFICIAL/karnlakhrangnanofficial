@@ -29,6 +29,8 @@ app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-te
 
 // Custom API route for news scraping (PRESERVED)
 import newsHandler from './api/news.js';
+import wslHandler from './api/wsl-standings.js';
+
 app.get('/api/news', (req, res) => {
   newsHandler(req, res);
 });
@@ -103,16 +105,8 @@ app.get('/api/uwcl-standings', async (req, res) => {
   }
 });
 
-app.get('/api/wsl-standings', async (req, res) => {
-  try {
-    const fs = await import('fs');
-    const localData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'tables-women.json'), 'utf8'));
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json({ success: true, data: localData });
-  } catch (err) {
-    console.error('WSL Standings API error:', err);
-    res.status(500).json({ success: false, error: err.message });
-  }
+app.get('/api/wsl-standings', (req, res) => {
+  wslHandler(req, res);
 });
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));

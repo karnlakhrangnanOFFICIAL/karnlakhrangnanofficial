@@ -92,8 +92,23 @@
       const isCompleted = f.status === 'completed' || f.status === 'FINISHED';
       const isLive = f.status === 'live' || f.status === 'IN_PLAY';
       const status = isCompleted ? 'FINISHED' : (isLive ? 'IN_PLAY' : 'SCHEDULED');
-      const timeStr = (f.time && f.time !== 'TBC') ? f.time : '19:00';
-      const utcDate = (f.date && f.date !== 'TBC') ? `${f.date}T${timeStr}:00Z` : '2027-05-31T19:00:00Z';
+      
+      const timeTh = (f.time_th || f.time || '').trim();
+      let utcDate;
+      if (!f.date || f.date === 'TBC') {
+        utcDate = '2027-05-31T19:00:00Z';
+      } else if (f.time_uk && f.time_uk !== 'TBC') {
+        utcDate = `${f.date}T${f.time_uk}:00Z`;
+      } else if (timeTh && timeTh !== 'TBC') {
+        try {
+          const d = new Date(`${f.date}T${timeTh.length === 5 ? timeTh : timeTh.substring(0,5)}:00+07:00`);
+          utcDate = !isNaN(d.getTime()) ? d.toISOString() : `${f.date}T${timeTh}:00+07:00`;
+        } catch (e) {
+          utcDate = `${f.date}T${timeTh}:00+07:00`;
+        }
+      } else {
+        utcDate = `${f.date}T19:00:00+07:00`;
+      }
 
       let compCode = 'PL';
       let compName = 'Premier League';
@@ -1118,6 +1133,23 @@
         const homeName = nextMatch.homeTeam.shortName || nextMatch.homeTeam.name;
         const awayName = nextMatch.awayTeam.shortName || nextMatch.awayTeam.name;
 
+        const isTh = (window.currentLang || 'th') === 'th';
+        let kickoffDateText = '-';
+        let kickoffTimeText = '-';
+        try {
+          const d = new Date(nextMatch.utcDate);
+          if (!isNaN(d.getTime())) {
+            if (isTh) {
+              const monthsTh = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+              kickoffDateText = `${d.getDate()} ${monthsTh[d.getMonth()]} ${d.getFullYear() + 543}`;
+              kickoffTimeText = `${d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Bangkok' })} น. (เวลาไทย)`;
+            } else {
+              kickoffDateText = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+              kickoffTimeText = `${d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })} (Local/UK)`;
+            }
+          }
+        } catch (e) {}
+
         spotlightContainer.innerHTML = `
           <div class="spotlight-card">
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -1137,9 +1169,10 @@
               </div>
             </div>
 
-            <div class="spotlight-match-info" style="text-align: center; font-size: 0.88rem; color: #ffffff; font-weight: 600; background-color: #000000; padding: 0.6rem 1rem; border-radius: 8px; margin: 0.75rem 0; border: 1px solid rgba(255, 255, 255, 0.12);">
-              📅 ${formatMatchDate(nextMatch.utcDate)}
-              <div style="font-size: 0.78rem; color: #93c5fd; margin-top: 0.2rem;">🏟️ ${venue}</div>
+            <div class="spotlight-match-info" style="text-align: center; font-size: 0.88rem; color: #ffffff; font-weight: 600; background-color: #000000; padding: 0.75rem 1rem; border-radius: 8px; margin: 0.75rem 0; border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 0.95rem; color: #ffffff;">📅 ${kickoffDateText}</div>
+              <div style="font-size: 0.86rem; color: #38bdf8; font-weight: 700;">⏰ ${isTh ? 'เวลาเริ่ม Kick-off:' : 'Kick-off Time:'} ${kickoffTimeText}</div>
+              <div style="font-size: 0.78rem; color: #93c5fd; margin-top: 0.1rem;">🏟️ ${venue}</div>
             </div>
 
             <div class="spotlight-countdown" id="spotlightCountdown">

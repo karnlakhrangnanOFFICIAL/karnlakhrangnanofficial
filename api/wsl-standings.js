@@ -3,22 +3,23 @@ import fs from "fs";
 import path from "path";
 
 export default async function handler(req, res) {
+  let tablesData = null;
   try {
-    const url = "https://www.wslfootball.com/standings/wsl";
-    const response = await fetch(url);
-    const html = await response.text();
-    const $ = cheerio.load(html);
-
-    // Read the current static tables for the logo mapping
-    // Assuming the server runs from root
-    let tablesData;
-    try {
-      const dataPath = path.join(process.cwd(), "data", "tables-women.json");
+    const dataPath = path.join(process.cwd(), "data", "tables-women.json");
+    if (fs.existsSync(dataPath)) {
       const fileData = fs.readFileSync(dataPath, "utf8");
       tablesData = JSON.parse(fileData);
-    } catch (e) {
-      console.error("Could not read tables-women.json for mapping", e);
     }
+  } catch (e) {
+    console.error("Could not read tables-women.json for mapping", e);
+  }
+
+  try {
+    const url = "https://www.wslfootball.com/standings/wsl";
+    const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+    const html = await response.text();
+    const $ = cheerio.load(html);
 
     // Map teams to logos based on our json
     const teamLogoMap = {};
@@ -71,19 +72,33 @@ export default async function handler(req, res) {
       }
     });
 
+    if (standings.length > 0) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
+      return res.status(200).json({
+        success: true,
+        data: {
+          competition: "FA Women's Super League",
+          competition_logo: "databases/logo/competitions/women/women_super_league.png",
+          season: "2026/27",
+          standings: standings,
+        },
+      });
+    }
+  } catch (err) {
+    console.error("WSL Live Scrape error, falling back to local dataset:", err.message);
+  }
+
+  // Fallback to local data
+  if (tablesData) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
-      data: {
-        competition: "FA Women's Super League",
-        competition_logo: "databases/logo/competitions/women/women_super_league.png",
-        season: "2026/27",
-        standings: standings,
-      },
+      data: tablesData,
     });
-  } catch (err) {
-    console.error("API Error:", err);
-    res.status(500).json({ success: false, error: err.message });
   }
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  return res.status(500).json({ success: false, error: "Unable to retrieve WSL standings" });
 }
