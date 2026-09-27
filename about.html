@@ -454,24 +454,31 @@
             <li><a href="men-team.html" data-i18n="nav.men_team">Men's Team</a></li>
             <li><a href="women-team.html" data-i18n="nav.women_team">Women's Team</a></li>
           </ul>
-          <div style="display: flex; gap: 8px; margin-top: 1.5rem">
-            <a
-              href="#"
-              class="nav-links lang-toggle"
-              id="langToggle"
-              data-i18n="nav.lang_toggle"
-              style="flex: 1; text-align: center"
-              >TH</a
-            >
-            <button
-              type="button"
-              class="theme-toggle-about theme-toggle"
-              id="themeToggle"
-              style="flex: 1; justify-content: center"
-              aria-label="Toggle Theme"
-            >
-              <span class="theme-icon" id="themeIcon">🔵</span>
-              <span class="theme-label" id="themeLabel">Classic Blue</span>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 1.5rem">
+            <div style="display: flex; gap: 8px;">
+              <a
+                href="#"
+                class="nav-links lang-toggle"
+                id="langToggle"
+                data-i18n="nav.lang_toggle"
+                style="flex: 1; text-align: center"
+                >TH</a
+              >
+              <button
+                type="button"
+                class="theme-toggle-about theme-toggle"
+                id="themeToggle"
+                style="flex: 1; justify-content: center"
+                aria-label="Toggle Theme"
+              >
+                <span class="theme-icon" id="themeIcon">🔵</span>
+                <span class="theme-label" id="themeLabel">Classic Blue</span>
+              </button>
+            </div>
+            <button type="button" class="notif-toggle-btn" id="goalNotifToggle" style="width: 100%; justify-content: center; padding: 8px 12px;" aria-label="Toggle Live Goal Notifications" data-tooltip-th="🔔 แจ้งเตือนประตูสด (คลิกเพื่อเปิด/ปิด)" data-tooltip-en="🔔 Live Goal Alerts (Click to toggle)">
+              <span class="notif-bell-icon">🔔</span>
+              <span class="notif-status-dot"></span>
+              <span class="notif-btn-label">Goal Alerts</span>
             </button>
           </div>
         </div>

@@ -12,7 +12,34 @@
     "lang_toggle": "TH",
     "theme_classic": "Classic Blue",
     "theme_dark": "Modern Dark",
-    "theme_toggle": "Theme"
+    "theme_toggle": "Theme",
+    "goal_notif": "Goal Alerts"
+  },
+  "notifications": {
+    "goal_alerts": "Goal Alerts",
+    "goal_alerts_on": "Goal Alerts: ON",
+    "goal_alerts_off": "Goal Alerts: OFF",
+    "permission_granted": "🔔 Live Goal Notifications Enabled!",
+    "permission_denied": "⚠️ Notifications blocked by browser. Please allow them in browser settings.",
+    "not_supported": "Browser notifications not supported. In-app goal alerts will be used.",
+    "test_alert": "⚡ Test Alert",
+    "goal_scored": "⚽ GOAL SCORED!",
+    "goal_toast_sub": "Live Match Update"
+  },
+  "news": {
+    "title": "Club News",
+    "latest_feed": "Latest Feed",
+    "archive_view": "News Archive",
+    "filter_year": "Year",
+    "filter_month": "Month",
+    "all_years": "All Years",
+    "all_months": "All Months",
+    "search_placeholder": "Search articles...",
+    "no_archive_match": "No articles found for the selected period",
+    "reset_archive": "↺ Reset Filters",
+    "read_article": "Read Article",
+    "articles_found": "articles found",
+    "view_archive_btn": "📂 Open Archive"
   },
   "home": {
     "title": "KARN LA KHRANg NAN Official",

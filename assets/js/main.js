@@ -2614,6 +2614,441 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
   updateThemeToggleUI();
+
+  // Initialize Live Goal Notifications
+  if (window.LiveGoalNotifier) {
+    window.LiveGoalNotifier.updateUI();
+  }
+
+  // Wire up all goal notification toggle buttons across pages
+  document.body.addEventListener("click", (e) => {
+    const notifBtn = e.target.closest(".notif-toggle-btn, #goalNotifToggle, .notif-pill-switch, #fixturesGoalNotifPill");
+    if (notifBtn) {
+      e.preventDefault();
+      if (window.LiveGoalNotifier) {
+        window.LiveGoalNotifier.toggle();
+      }
+    }
+
+    const testBtn = e.target.closest(".notif-test-btn, #testGoalAlertBtn");
+    if (testBtn) {
+      e.preventDefault();
+      if (window.LiveGoalNotifier) {
+        window.LiveGoalNotifier.triggerTestGoalAlert();
+      }
+    }
+  });
+});
+
+// ============================================================
+// LIVE GOAL NOTIFICATIONS ENGINE & BROWSER ALERT CONTROLLER
+// ============================================================
+const LiveGoalNotifier = {
+  STORAGE_KEY: "live_goal_alerts_enabled",
+  LAST_SCORES_KEY: "live_goal_last_scores",
+  audioCtx: null,
+
+  initAudio() {
+    if (!this.audioCtx) {
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtxClass) {
+        this.audioCtx = new AudioCtxClass();
+      }
+    }
+    if (this.audioCtx && this.audioCtx.state === "suspended") {
+      this.audioCtx.resume();
+    }
+  },
+
+  playGoalSound() {
+    try {
+      this.initAudio();
+      if (!this.audioCtx) return;
+      const now = this.audioCtx.currentTime;
+      // Arpeggiated stadium fanfare chime: C5 -> E5 -> G5 -> C6
+      const notes = [
+        { freq: 523.25, time: 0, dur: 0.18 },
+        { freq: 659.25, time: 0.12, dur: 0.18 },
+        { freq: 783.99, time: 0.24, dur: 0.22 },
+        { freq: 1046.5, time: 0.38, dur: 0.55 },
+      ];
+      notes.forEach(({ freq, time, dur }) => {
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, now + time);
+
+        gain.gain.setValueAtTime(0.01, now + time);
+        gain.gain.linearRampToValueAtTime(0.35, now + time + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + time + dur);
+
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+        osc.start(now + time);
+        osc.stop(now + time + dur);
+      });
+    } catch (e) {
+      console.warn("Audio playback not permitted yet", e);
+    }
+  },
+
+  playTestChime() {
+    try {
+      this.initAudio();
+      if (!this.audioCtx) return;
+      const now = this.audioCtx.currentTime;
+      [587.33, 880.0].forEach((freq, idx) => {
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+        gain.gain.setValueAtTime(0.2, now + idx * 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.35);
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+        osc.start(now + idx * 0.12);
+        osc.stop(now + idx * 0.12 + 0.35);
+      });
+    } catch (e) {}
+  },
+
+  isEnabled() {
+    const val = localStorage.getItem(this.STORAGE_KEY);
+    return val === "true";
+  },
+
+  async requestPermissionAndEnable() {
+    this.initAudio();
+    if (!("Notification" in window)) {
+      localStorage.setItem(this.STORAGE_KEY, "true");
+      this.updateUI();
+      const isTh = (window.currentLang || "th") === "th";
+      this.showToast({
+        title: isTh ? "🔔 เปิดการแจ้งเตือนแล้ว" : "🔔 Goal Alerts Enabled",
+        detail: isTh
+          ? "เบราว์เซอร์ไม่รองรับ System Notification แต่จะแสดงแบนเนอร์แจ้งเตือนในหน้าเว็บ"
+          : "System notifications not supported. In-app alerts will be shown.",
+        score: "",
+      });
+      this.playTestChime();
+      return true;
+    }
+
+    if (Notification.permission === "granted") {
+      localStorage.setItem(this.STORAGE_KEY, "true");
+      this.updateUI();
+      const isTh = (window.currentLang || "th") === "th";
+      this.showToast({
+        title: isTh ? "🔔 เปิดการแจ้งเตือนประตูสดแล้ว" : "🔔 Live Goal Alerts Enabled",
+        detail: isTh
+          ? "คุณจะได้รับการแจ้งเตือนทันทีเมื่อมีประตูเกิดขึ้นในแมตช์สด"
+          : "You will receive instant alerts whenever a goal is scored in live matches.",
+        score: "",
+      });
+      this.playTestChime();
+      return true;
+    }
+
+    if (Notification.permission === "denied") {
+      const isTh = (window.currentLang || "th") === "th";
+      alert(
+        isTh
+          ? "⚠️ การแจ้งเตือนถูกปิดกั้นในเบราว์เซอร์ของคุณ\nกรุณาคลิกไอคอนแม่กุญแจที่แถบ URL เพื่ออนุญาตการแจ้งเตือน (Notifications: Allow)"
+          : "⚠️ Notifications are blocked by your browser settings.\nPlease click the lock icon in the URL bar and allow Notifications."
+      );
+      return false;
+    }
+
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === "granted") {
+        localStorage.setItem(this.STORAGE_KEY, "true");
+        this.updateUI();
+        const isTh = (window.currentLang || "th") === "th";
+        this.showToast({
+          title: isTh ? "🔔 เปิดการแจ้งเตือนประตูสดสำเร็จ!" : "🔔 Goal Notifications Allowed!",
+          detail: isTh
+            ? "ระบบจะส่งเสียงและแจ้งเตือนเมื่อเชลซีหรือคู่แข่งทำประตู"
+            : "You'll receive alerts and sounds when Chelsea or opponents score.",
+          score: "",
+        });
+        this.playTestChime();
+        return true;
+      } else {
+        localStorage.setItem(this.STORAGE_KEY, "false");
+        this.updateUI();
+        return false;
+      }
+    } catch (err) {
+      console.error("Error requesting notification permission:", err);
+      return false;
+    }
+  },
+
+  disable() {
+    localStorage.setItem(this.STORAGE_KEY, "false");
+    this.updateUI();
+    const isTh = (window.currentLang || "th") === "th";
+    this.showToast({
+      title: isTh ? "🔕 ปิดการแจ้งเตือนประตูสดแล้ว" : "🔕 Live Goal Alerts Disabled",
+      detail: isTh ? "คุณจะไม่ได้รับการแจ้งเตือนประตูอัตโนมัติ" : "Automatic goal alerts turned off.",
+      score: "",
+    });
+  },
+
+  async toggle() {
+    if (this.isEnabled()) {
+      this.disable();
+    } else {
+      await this.requestPermissionAndEnable();
+    }
+  },
+
+  updateUI() {
+    const enabled = this.isEnabled();
+    const isTh = (window.currentLang || "th") === "th";
+
+    // Update main navbar toggle buttons
+    const navToggles = document.querySelectorAll(".notif-toggle-btn, #goalNotifToggle");
+    navToggles.forEach((btn) => {
+      if (enabled) {
+        btn.classList.add("is-active");
+        btn.setAttribute("title", isTh ? "แจ้งเตือนประตูสด: เปิด (คลิกเพื่อปิด)" : "Live Goal Alerts: ON (Click to turn off)");
+        btn.setAttribute("data-tooltip-th", "🔔 แจ้งเตือนประตูสด: เปิด (คลิกเพื่อปิด)");
+        btn.setAttribute("data-tooltip-en", "🔔 Live Goal Alerts: ON (Click to turn off)");
+        const label = btn.querySelector(".notif-btn-label");
+        if (label) label.textContent = isTh ? "แจ้งเตือน: เปิด" : "Alerts: ON";
+      } else {
+        btn.classList.remove("is-active");
+        btn.setAttribute("title", isTh ? "แจ้งเตือนประตูสด: ปิด (คลิกเพื่อเปิด)" : "Live Goal Alerts: OFF (Click to turn on)");
+        btn.setAttribute("data-tooltip-th", "🔔 แจ้งเตือนประตูสด: ปิด (คลิกเพื่อเปิด)");
+        btn.setAttribute("data-tooltip-en", "🔔 Live Goal Alerts: OFF (Click to turn on)");
+        const label = btn.querySelector(".notif-btn-label");
+        if (label) label.textContent = isTh ? "แจ้งเตือน: ปิด" : "Alerts: OFF";
+      }
+    });
+
+    // Update section pills
+    const pillToggles = document.querySelectorAll(".notif-pill-switch, #fixturesGoalNotifPill");
+    pillToggles.forEach((pill) => {
+      if (enabled) {
+        pill.classList.add("active");
+        pill.innerHTML = `<span>🔔</span> <span>${isTh ? "แจ้งเตือนประตู: เปิด" : "Goal Alerts: ON"}</span> <span class="notif-status-dot"></span>`;
+      } else {
+        pill.classList.remove("active");
+        pill.innerHTML = `<span>🔕</span> <span>${isTh ? "แจ้งเตือนประตู: ปิด" : "Goal Alerts: OFF"}</span> <span class="notif-status-dot"></span>`;
+      }
+    });
+  },
+
+  showToast({ title, detail, score, matchId }) {
+    let container = document.getElementById("liveGoalToastContainer");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "liveGoalToastContainer";
+      container.className = "live-goal-toast-container";
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement("div");
+    toast.className = "live-goal-toast";
+    toast.innerHTML = `
+      <div class="goal-toast-icon-wrap">⚽</div>
+      <div class="goal-toast-body">
+        <div class="goal-toast-title">
+          <span>${title}</span>
+        </div>
+        <div class="goal-toast-detail">${detail}</div>
+        ${score ? `<div class="goal-toast-score">📊 ${score}</div>` : ""}
+      </div>
+      <div class="goal-toast-actions">
+        ${matchId ? `<a href="match-detail.html?id=${matchId}" class="goal-toast-btn">${(window.currentLang || "th") === "th" ? "ดูแมตช์" : "View Match"}</a>` : ""}
+        <button type="button" class="goal-toast-close" aria-label="Close">&times;</button>
+      </div>
+    `;
+
+    const closeBtn = toast.querySelector(".goal-toast-close");
+    closeBtn.addEventListener("click", () => {
+      toast.classList.add("is-hiding");
+      setTimeout(() => toast.remove(), 350);
+    });
+
+    container.appendChild(toast);
+
+    // Auto remove after 6.5s
+    setTimeout(() => {
+      if (toast.isConnected) {
+        toast.classList.add("is-hiding");
+        setTimeout(() => toast.remove(), 350);
+      }
+    }, 6500);
+  },
+
+  notifyGoal({ match, player, minute, isChelsea, scoringTeam, homeScore, awayScore }) {
+    if (!this.isEnabled()) return;
+
+    this.playGoalSound();
+
+    const homeName = match.home_team || "Home";
+    const awayName = match.away_team || "Away";
+    const scoreText = `${homeName} ${homeScore} - ${awayScore} ${awayName}`;
+    const minText = minute ? `${minute}'` : "";
+    const isTh = (window.currentLang || "th") === "th";
+
+    const title = `⚽ GOAL! ${player || "Goal"} ${minText}`;
+    const body = `${scoringTeam || "Goal"} scored! ${scoreText} ${isChelsea ? "🔵 Come on Chelsea!" : ""}`;
+
+    // 1. Native Browser System Notification
+    if ("Notification" in window && Notification.permission === "granted") {
+      try {
+        const notif = new Notification(title, {
+          body: body,
+          icon: match.home_logo || "assets/images/karnlakhrangnan-logo.png",
+          badge: "assets/images/karnlakhrangnan-logo.png",
+          tag: `goal-${match.id}-${homeScore}-${awayScore}`,
+          vibrate: [250, 100, 250],
+          requireInteraction: false,
+        });
+
+        notif.onclick = function () {
+          window.focus();
+          if (match && match.id) {
+            window.location.href = `match-detail.html?id=${match.id}`;
+          }
+          notif.close();
+        };
+      } catch (e) {
+        console.warn("Could not dispatch native notification:", e);
+      }
+    }
+
+    // 2. In-App Floating Animated Goal Toast
+    this.showToast({
+      title: `⚽ ${isTh ? "ได้ประตู!" : "GOAL!"} ${player || ""} ${minText}`,
+      detail: `${scoringTeam || (isChelsea ? "Chelsea" : "Opponent")} scored!`,
+      score: scoreText,
+      matchId: match.id,
+    });
+  },
+
+  trackScores(matches) {
+    if (!matches || !Array.isArray(matches) || matches.length === 0) return;
+
+    let storedScores = {};
+    try {
+      const raw = sessionStorage.getItem(this.LAST_SCORES_KEY);
+      if (raw) storedScores = JSON.parse(raw);
+    } catch (e) {}
+
+    const isFirstRun = Object.keys(storedScores).length === 0;
+
+    matches.forEach((m) => {
+      if (m.status !== "live" && m.status !== "in_progress") return;
+
+      const currentHomeScore = parseInt(m.home_score, 10) || 0;
+      const currentAwayScore = parseInt(m.away_score, 10) || 0;
+      const goalsList = m.goals || [];
+      const currentGoalsCount = goalsList.length;
+
+      const prev = storedScores[m.id];
+
+      if (prev && !isFirstRun) {
+        const homeScoreIncreased = currentHomeScore > prev.home;
+        const awayScoreIncreased = currentAwayScore > prev.away;
+        const goalsIncreased = currentGoalsCount > prev.goalsCount;
+
+        if (homeScoreIncreased || awayScoreIncreased || goalsIncreased) {
+          // A goal occurred!
+          let scorerName = "Goal";
+          let scorerMinute = "";
+          let isChelsea = false;
+          let scoringTeam = "";
+
+          if (goalsList.length > 0) {
+            const latestGoal = goalsList[goalsList.length - 1];
+            scorerName = (latestGoal.player || "").replace(/\s*\(OG\)/i, " (OG)").replace(/\s*\(Pen\)/i, " (Pen)").trim();
+            scorerMinute = latestGoal.minute || "";
+            scoringTeam = latestGoal.team === "home" ? m.home_team : m.away_team;
+            const teamLower = (scoringTeam || "").toLowerCase();
+            isChelsea = teamLower.includes("chelsea") || teamLower.includes("kanlakhrangnan");
+          } else {
+            scoringTeam = homeScoreIncreased ? m.home_team : m.away_team;
+            const teamLower = (scoringTeam || "").toLowerCase();
+            isChelsea = teamLower.includes("chelsea") || teamLower.includes("kanlakhrangnan");
+          }
+
+          this.notifyGoal({
+            match: m,
+            player: scorerName,
+            minute: scorerMinute,
+            isChelsea: isChelsea,
+            scoringTeam: scoringTeam,
+            homeScore: currentHomeScore,
+            awayScore: currentAwayScore,
+          });
+        }
+      }
+
+      // Update state for next poll
+      storedScores[m.id] = {
+        home: currentHomeScore,
+        away: currentAwayScore,
+        goalsCount: currentGoalsCount,
+      };
+    });
+
+    try {
+      sessionStorage.setItem(this.LAST_SCORES_KEY, JSON.stringify(storedScores));
+    } catch (e) {}
+  },
+
+  triggerTestGoalAlert() {
+    this.playGoalSound();
+    const isTh = (window.currentLang || "th") === "th";
+
+    const demoMatch = {
+      id: "demo-live-1",
+      home_team: "Chelsea",
+      away_team: "Arsenal",
+      home_logo: "databases/logo/chelsea-logo.png",
+      away_logo: "databases/logo/arsenal.png",
+    };
+
+    const title = isTh ? "⚽ ได้ประตู! Cole Palmer 42'" : "⚽ GOAL! Cole Palmer 42'";
+    const body = isTh
+      ? "Cole Palmer ยิงประตูให้เชลซี! Chelsea 1 - 0 Arsenal 🔵"
+      : "Cole Palmer scored for Chelsea! Chelsea 1 - 0 Arsenal 🔵";
+
+    if ("Notification" in window && Notification.permission === "granted") {
+      try {
+        const notif = new Notification(title, {
+          body: body,
+          icon: "assets/images/karnlakhrangnan-logo.png",
+          badge: "assets/images/karnlakhrangnan-logo.png",
+          tag: "goal-test-" + Date.now(),
+          vibrate: [250, 100, 250],
+        });
+        notif.onclick = () => {
+          window.focus();
+          notif.close();
+        };
+      } catch (e) {}
+    }
+
+    this.showToast({
+      title: isTh ? "⚽ ได้ประตู! Cole Palmer 42'" : "⚽ GOAL! Cole Palmer 42'",
+      detail: isTh ? "Cole Palmer ยิงประตูให้เชลซี!" : "Cole Palmer scored for Chelsea!",
+      score: "Chelsea 1 - 0 Arsenal (Live 42')",
+      matchId: "demo-live-1",
+    });
+  },
+};
+
+window.LiveGoalNotifier = LiveGoalNotifier;
+window.addEventListener("languageChanged", () => {
+  if (window.LiveGoalNotifier) {
+    window.LiveGoalNotifier.updateUI();
+  }
 });
 
 window.getLocalMatchDateTime = function (dateStr, timeThStr, timeUkStr) {

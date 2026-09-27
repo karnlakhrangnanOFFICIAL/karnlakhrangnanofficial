@@ -119,9 +119,14 @@
         align-items: start; /* บังคับให้เนื้อหาเริ่มจากด้านบนตรงกัน */
         width: 100%;
         padding: 24px;
-        background-color: var(--card-bg, #1a1a24);
+        background-color: #caccfc;
         border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #03132e;
+      }
+
+      .scoreboard-grid .team-name-display {
+        color: #03132e;
       }
 
       /* ============================================
@@ -171,13 +176,43 @@
         font-size: 2.2rem;
         font-weight: 800;
         font-family: var(--font-mono, "Space Mono", monospace);
-        color: var(--ink);
-        background: rgba(255, 255, 255, 0.1);
+        color: #03132e;
+        background-color: #ffffff;
         padding: 4px 20px;
         border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.12);
         letter-spacing: 2px;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        line-height: 1.2;
+      }
+
+      .score-main.upcoming-kickoff-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 18px;
+        letter-spacing: 0.5px;
+        gap: 3px;
+        min-width: 140px;
+        background-color: #ffffff;
+      }
+
+      .kickoff-label-tag {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #0033a0;
+        letter-spacing: 0.8px;
+        font-family: var(--font-mono, "Space Mono", monospace);
+        line-height: 1;
+      }
+
+      .kickoff-time-text {
+        font-size: 1.65rem;
+        font-weight: 800;
+        color: #03132e;
+        font-family: var(--font-mono, "Space Mono", monospace);
         line-height: 1.2;
       }
 
@@ -1453,6 +1488,13 @@
             <a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a>
           </li>
           <li>
+            <button type="button" class="notif-toggle-btn" id="goalNotifToggle" aria-label="Toggle Live Goal Notifications" data-tooltip-th="🔔 แจ้งเตือนประตูสด (คลิกเพื่อเปิด/ปิด)" data-tooltip-en="🔔 Live Goal Alerts (Click to toggle)">
+              <span class="notif-bell-icon">🔔</span>
+              <span class="notif-status-dot"></span>
+              <span class="notif-btn-label">Goal Alerts</span>
+            </button>
+          </li>
+          <li>
             <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
               <span class="theme-icon" id="themeIcon">🔵</span>
               <span class="theme-label" id="themeLabel">Classic Blue</span>
@@ -2269,6 +2311,23 @@
           statusBadge = `<div class="match-status" style="background: rgba(255,255,255,0.1); color: var(--ink-muted);">UPCOMING</div>`;
         }
 
+        // Scoreboard Center Box HTML (Displays Kick-off Time for Upcoming Matches)
+        const isUpcoming = match.status === "upcoming" || (sHome === "-" && sAway === "-");
+        let scoreMainHtml = "";
+        if (isUpcoming) {
+          const timeFormatted = displayTime !== "TBC" ? displayTime + (isTh ? " น." : "") : "TBC";
+          scoreMainHtml = `
+            <div class="score-main upcoming-kickoff-box" id="scoreMain">
+              <span class="kickoff-label-tag">${isTh ? "เวลาเริ่ม Kick-off" : "Kick-off"}</span>
+              <span class="kickoff-time-text">${timeFormatted}</span>
+            </div>
+          `;
+        } else {
+          scoreMainHtml = `
+            <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
+          `;
+        }
+
         // Broadcaster Channels HTML
         let channelsHtml = "";
         if (match.channels && match.channels.length > 0) {
@@ -2992,8 +3051,7 @@
             </div>
             <div class="score-center-box">
               <div class="score-inner-wrap">
-                <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
-                <div id="liveBadgeWrap">${statusBadge}</div>
+                ${scoreMainHtml}
               </div>
             </div>
             <div class="team-box away-team-box">
@@ -3030,8 +3088,8 @@
                   <span class="sidebar-info-val">${formatDate(displayDate, lang)}</span>
                 </div>
                 <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">⏰ ${isTh ? "เวลาคิกออฟ" : "Kick Off"}</span>
-                  <span class="sidebar-info-val">${displayTime} ${isTh ? "น." : ""}</span>
+                  <span class="sidebar-info-label">⏰ ${isTh ? "เวลาเริ่ม Kick-off" : "Kick-off Time"}</span>
+                  <span class="sidebar-info-val">${displayTime !== "TBC" ? displayTime + (isTh ? " น." : "") : "TBC"}</span>
                 </div>
                 <div class="sidebar-info-row">
                   <span class="sidebar-info-label">🏟️ ${isTh ? "สนาม" : "Venue"}</span>

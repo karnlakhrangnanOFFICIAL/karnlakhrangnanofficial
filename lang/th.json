@@ -12,7 +12,34 @@
     "lang_toggle": "EN",
     "theme_classic": "คลาสสิคบลู",
     "theme_dark": "โมเดิร์นดาร์ก",
-    "theme_toggle": "เปลี่ยนธีม"
+    "theme_toggle": "เปลี่ยนธีม",
+    "goal_notif": "แจ้งเตือนประตูสด"
+  },
+  "notifications": {
+    "goal_alerts": "แจ้งเตือนประตูสด",
+    "goal_alerts_on": "แจ้งเตือนประตูสด: เปิด",
+    "goal_alerts_off": "แจ้งเตือนประตูสด: ปิด",
+    "permission_granted": "🔔 เปิดการแจ้งเตือนประตูสดแล้ว!",
+    "permission_denied": "⚠️ การแจ้งเตือนถูกปิดกั้นในเบราว์เซอร์ กรุณาอนุญาตในการตั้งค่า",
+    "not_supported": "เบราว์เซอร์นี้ไม่รองรับ Web Notification แต่ระบบจะแสดงแบนเนอร์แจ้งเตือนในหน้าเว็บ",
+    "test_alert": "⚡ ทดสอบแจ้งเตือน",
+    "goal_scored": "⚽ ได้ประตู!",
+    "goal_toast_sub": "กำลังแข่งขัน"
+  },
+  "news": {
+    "title": "ข่าวสารสโมสร",
+    "latest_feed": "ข่าวล่าสุด (Latest Feed)",
+    "archive_view": "คลังข่าวสาร (Archive)",
+    "filter_year": "ปี (Year)",
+    "filter_month": "เดือน (Month)",
+    "all_years": "ทุกปี (All Years)",
+    "all_months": "ทุกเดือน (All Months)",
+    "search_placeholder": "ค้นหาข่าว...",
+    "no_archive_match": "ไม่พบข่าวสารในช่วงเวลาที่เลือก",
+    "reset_archive": "↺ ล้างตัวกรอง",
+    "read_article": "อ่านข่าว",
+    "articles_found": "ข่าวที่พบ",
+    "view_archive_btn": "📂 เปิดคลังข่าวสาร"
   },
   "home": {
     "title": "กาลครั้งนั้น Official",

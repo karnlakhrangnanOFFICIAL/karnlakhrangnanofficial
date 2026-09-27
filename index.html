@@ -34,6 +34,13 @@
         <li><a href="women-team.html" data-i18n="nav.women_team">Women</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
         <li>
+          <button type="button" class="notif-toggle-btn" id="goalNotifToggle" aria-label="Toggle Live Goal Notifications" data-tooltip-th="🔔 แจ้งเตือนประตูสด (คลิกเพื่อเปิด/ปิด)" data-tooltip-en="🔔 Live Goal Alerts (Click to toggle)">
+            <span class="notif-bell-icon">🔔</span>
+            <span class="notif-status-dot"></span>
+            <span class="notif-btn-label">Goal Alerts</span>
+          </button>
+        </li>
+        <li>
           <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
             <span class="theme-icon" id="themeIcon">📰</span>
             <span class="theme-label" id="themeLabel">Editorial</span>
@@ -72,11 +79,23 @@
         </div>
       </div>
 
-      <!-- Live News Carousel Feed -->
+      <!-- Live News Feed & Archive Section -->
       <div id="newsCarouselContainer" style="margin-top: 2rem; position: relative;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-          <h2 style="font-size: 1.15rem; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; margin: 0; color: var(--ink);" data-i18n="nav.news">Live News Feed</h2>
-          <div class="carousel-nav-controls" style="display: flex; gap: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <h2 style="font-size: 1.15rem; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; margin: 0; color: var(--ink);" data-i18n="news.title">Club News & Feed</h2>
+            <div class="news-view-tabs" role="tablist" aria-label="News View Toggle">
+              <button type="button" class="news-tab-btn active" id="btnNewsLatest" data-view="latest" role="tab" aria-selected="true">
+                <span>📰</span>
+                <span data-i18n="news.latest_feed">Latest Feed</span>
+              </button>
+              <button type="button" class="news-tab-btn" id="btnNewsArchive" data-view="archive" role="tab" aria-selected="false">
+                <span>🗄️</span>
+                <span data-i18n="news.archive_view">Archive</span>
+              </button>
+            </div>
+          </div>
+          <div class="carousel-nav-controls" id="newsCarouselNavControls" style="display: flex; gap: 8px;">
             <button id="newsScrollLeft" class="carousel-nav-btn" aria-label="Previous News" style="background: var(--card-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             </button>
@@ -85,67 +104,115 @@
             </button>
           </div>
         </div>
-        <div id="newsCarousel" style="display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; cursor: grab;">
-          <style>
-            #newsCarousel::-webkit-scrollbar { display: none; }
-            #newsCarousel > .card-link,
-            #newsCarousel > .news-carousel-card,
-            #newsCarousel > .news-carousel-skeleton {
-              flex: 0 0 280px;
-              max-width: 280px;
-              min-width: 0;
-            }
-            @media (max-width: 768px) {
+
+        <!-- VIEW 1: LATEST NEWS CAROUSEL -->
+        <div id="newsCarouselView">
+          <div id="newsCarousel" style="display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; cursor: grab;">
+            <style>
+              #newsCarousel::-webkit-scrollbar { display: none; }
               #newsCarousel > .card-link,
               #newsCarousel > .news-carousel-card,
               #newsCarousel > .news-carousel-skeleton {
-                /* Dynamically set to show ~1.5 cards across medium screens */
-                flex: 0 0 clamp(210px, calc(64% - 0.75rem), 260px) !important;
-                max-width: clamp(210px, calc(64% - 0.75rem), 260px) !important;
+                flex: 0 0 280px;
+                max-width: 280px;
+                min-width: 0;
               }
-            }
-            @media (max-width: 540px) {
-              #newsCarousel > .card-link,
-              #newsCarousel > .news-carousel-card,
-              #newsCarousel > .news-carousel-skeleton {
-                /* Dynamically sized to show at least 1.5 cards on mobile for content peek/affordance */
-                flex: 0 0 calc(65% - 0.75rem) !important;
-                max-width: calc(65% - 0.75rem) !important;
-                min-width: 180px;
+              @media (max-width: 768px) {
+                #newsCarousel > .card-link,
+                #newsCarousel > .news-carousel-card,
+                #newsCarousel > .news-carousel-skeleton {
+                  /* Dynamically set to show ~1.5 cards across medium screens */
+                  flex: 0 0 clamp(210px, calc(64% - 0.75rem), 260px) !important;
+                  max-width: clamp(210px, calc(64% - 0.75rem), 260px) !important;
+                }
               }
-            }
-            .carousel-nav-btn:hover {
-              background: var(--primary-color) !important;
-              color: #fff !important;
-              border-color: var(--primary-color) !important;
-              transform: scale(1.05);
-            }
-            .carousel-nav-btn:active {
-              transform: scale(0.95);
-            }
-            .carousel-nav-btn:disabled {
-              opacity: 0.35;
-              cursor: not-allowed;
-              transform: none !important;
-            }
-            @keyframes shimmer {
-              0% { background-position: 200% 0; }
-              100% { background-position: -200% 0; }
-            }
-            .skeleton-bg {
-              background: linear-gradient(90deg, var(--border-color) 25%, rgba(128,128,128,0.2) 50%, var(--border-color) 75%);
-              background-size: 400% 100%;
-              animation: shimmer 1.5s ease-in-out infinite;
-            }
-          </style>
-          <!-- Skeleton Items -->
-          <div class="news-carousel-skeleton" style="flex: 0 0 280px; scroll-snap-align: start; height: 260px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
-            <div class="skeleton-bg" style="height: 150px; width: 100%;"></div>
-            <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
-              <div>
-                <div class="skeleton-bg" style="height: 16px; width: 90%; margin-bottom: 8px; border-radius: 4px;"></div>
-                <div class="skeleton-bg" style="height: 16px; width: 70%; margin-bottom: 8px; border-radius: 4px;"></div>
+              @media (max-width: 540px) {
+                #newsCarousel > .card-link,
+                #newsCarousel > .news-carousel-card,
+                #newsCarousel > .news-carousel-skeleton {
+                  /* Dynamically sized to show at least 1.5 cards on mobile for content peek/affordance */
+                  flex: 0 0 calc(65% - 0.75rem) !important;
+                  max-width: calc(65% - 0.75rem) !important;
+                  min-width: 180px;
+                }
+              }
+              .carousel-nav-btn:hover {
+                background: var(--primary-color) !important;
+                color: #fff !important;
+                border-color: var(--primary-color) !important;
+                transform: scale(1.05);
+              }
+              .carousel-nav-btn:active {
+                transform: scale(0.95);
+              }
+              .carousel-nav-btn:disabled {
+                opacity: 0.35;
+                cursor: not-allowed;
+                transform: none !important;
+              }
+              @keyframes shimmer {
+                0% { background-position: 200% 0; }
+                100% { background-position: -200% 0; }
+              }
+              .skeleton-bg {
+                background: linear-gradient(90deg, var(--border-color) 25%, rgba(128,128,128,0.2) 50%, var(--border-color) 75%);
+                background-size: 400% 100%;
+                animation: shimmer 1.5s ease-in-out infinite;
+              }
+            </style>
+            <!-- Skeleton Items -->
+            <div class="news-carousel-skeleton" style="flex: 0 0 280px; scroll-snap-align: start; height: 260px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
+              <div class="skeleton-bg" style="height: 150px; width: 100%;"></div>
+              <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+                <div>
+                  <div class="skeleton-bg" style="height: 16px; width: 90%; margin-bottom: 8px; border-radius: 4px;"></div>
+                  <div class="skeleton-bg" style="height: 16px; width: 70%; margin-bottom: 8px; border-radius: 4px;"></div>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 2: NEWS ARCHIVE PANEL (Month & Year Filter) -->
+        <div id="newsArchiveView" class="news-archive-panel" style="display: none;">
+          <!-- Dropdown Filter Bar -->
+          <div class="news-archive-filter-bar">
+            <div class="news-archive-filter-group">
+              <label for="newsArchiveYearSelect" class="news-archive-filter-label">
+                <span>📅</span>
+                <span data-i18n="news.filter_year">ปี (Year)</span>:
+              </label>
+              <select id="newsArchiveYearSelect" class="news-archive-select" aria-label="Filter news by year">
+                <option value="all" data-i18n="news.all_years">ทุกปี (All Years)</option>
+              </select>
+            </div>
+
+            <div class="news-archive-filter-group">
+              <label for="newsArchiveMonthSelect" class="news-archive-filter-label">
+                <span>🗓️</span>
+                <span data-i18n="news.filter_month">เดือน (Month)</span>:
+              </label>
+              <select id="newsArchiveMonthSelect" class="news-archive-select" aria-label="Filter news by month">
+                <option value="all" data-i18n="news.all_months">ทุกเดือน (All Months)</option>
+              </select>
+            </div>
+
+            <div class="news-archive-count-badge" id="newsArchiveCountBadge">
+              <span>📚</span>
+              <span id="newsArchiveCountText">0 ข่าว</span>
+            </div>
+
+            <button type="button" id="newsArchiveResetBtn" class="news-archive-reset-btn" data-i18n="news.reset_archive">
+              <span>↺</span>
+              <span>รีเซ็ตตัวกรอง</span>
+            </button>
+          </div>
+
+          <!-- Archive Cards Grid -->
+          <div id="newsArchiveGrid" class="news-archive-grid">
+            <div class="loading">
+              <div class="spinner"></div>
+              <p data-i18n="common.loading">กำลังโหลดคลังข่าวสาร...</p>
             </div>
           </div>
         </div>
@@ -267,26 +334,6 @@
               <!-- Rendered list of other upcoming fixtures -->
             </div>
           </div>
-        </div>
-
-        <!-- Section 3: Current Squad & Positions -->
-        <div style="margin-top: 2rem;">
-          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-            <h3 style="font-size: 1.1rem; color: var(--text-color); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-              <span>👕</span>
-              <span>รายชื่อนักเตะและตำแหน่งทีมชุดปัจจุบัน (Current Squad)</span>
-            </h3>
-            <div class="squad-filters-bar">
-              <button type="button" class="squad-filter-btn active" data-pos="ALL">ทั้งหมด (All)</button>
-              <button type="button" class="squad-filter-btn" data-pos="GK">🧤 ผู้รักษาประตู (GK)</button>
-              <button type="button" class="squad-filter-btn" data-pos="DF">🛡️ กองหลัง (DF)</button>
-              <button type="button" class="squad-filter-btn" data-pos="MF">⚙️ กองกลาง (MF)</button>
-              <button type="button" class="squad-filter-btn" data-pos="FW">⚡ กองหน้า (FW)</button>
-            </div>
-          </div>
-
-          <div id="coachProfileContainer"></div>
-          <div id="squadGridContainer"></div>
         </div>
 
         <!-- Section 4: Tactical Analysis & Formation Heatmap (D3.js Visualization) -->
@@ -576,15 +623,7 @@
         </div>
       </section>
 
-      <!-- SQUAD PLAYER STATS & RECENT FORM MODAL -->
-      <div id="playerStatsModal" class="hub-modal-backdrop" aria-hidden="true">
-        <div class="hub-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalPlayerName">
-          <button type="button" class="hub-modal-close-btn" id="btnClosePlayerModal" aria-label="Close modal">✕</button>
-          <div id="playerStatsModalContent">
-            <!-- Rendered dynamically by openPlayerStatsModal() in chelsea-hub.js -->
-          </div>
-        </div>
-      </div>
+      <!-- SQUAD PLAYER STATS & RECENT FORM MODAL REMOVED FOR INDEX -->
         </div> <!-- /.hub-editorial-body -->
       </div> <!-- /#chelseaHub -->
     </div> <!-- /.hub-editorial-column -->
@@ -685,7 +724,17 @@
             <span class="live-badge-text">LIVE</span>
           </span>
         </h2>
-        <a href="men-team.html" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
+        <div class="fixtures-goal-notif-bar">
+          <button type="button" class="notif-pill-switch" id="fixturesGoalNotifPill" title="Toggle Live Goal Notifications" data-tooltip-th="🔔 เปิด/ปิด การแจ้งเตือนประตูสด" data-tooltip-en="🔔 Toggle Live Goal Alerts">
+            <span>🔔</span>
+            <span>แจ้งเตือนประตู: ปิด</span>
+            <span class="notif-status-dot"></span>
+          </button>
+          <button type="button" class="notif-test-btn" id="testGoalAlertBtn" title="Test Goal Alert Notification" data-tooltip-th="⚡ ทดสอบเสียงและการแจ้งเตือนประตู" data-tooltip-en="⚡ Test Goal Alert & Sound">
+            <span>⚡ ทดสอบแจ้งเตือน</span>
+          </button>
+          <a href="men-team.html" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
+        </div>
       </div>
 
       <!-- LIVE Spotlight Component for in-progress matches at the top of Fixtures -->
@@ -1182,6 +1231,11 @@
         window.resultsGlobal = results;
         window.liveMatchesGlobal = liveMatches;
         
+        // Track live scores for real-time goal alerts
+        if (window.LiveGoalNotifier) {
+          window.LiveGoalNotifier.trackScores(allMatches);
+        }
+
         initCalendarToggle();
         populateFilterControls();
         initMatchFilters();
@@ -2083,6 +2137,249 @@
       }
     }
 
+    // ============================================================
+    // NEWS ARCHIVE SYSTEM (MONTH & YEAR DROPDOWN FILTER)
+    // ============================================================
+    window.newsArchiveAll = [];
+    let currentArchiveYear = 'all';
+    let currentArchiveMonth = 'all';
+
+    const THAI_MONTHS = [
+      'มกราคม (Jan)', 'กุมภาพันธ์ (Feb)', 'มีนาคม (Mar)', 'เมษายน (Apr)',
+      'พฤษภาคม (May)', 'มิถุนายน (Jun)', 'กรกฎาคม (Jul)', 'สิงหาคม (Aug)',
+      'กันยายน (Sep)', 'ตุลาคม (Oct)', 'พฤศจิกายน (Nov)', 'ธันวาคม (Dec)'
+    ];
+
+    const ENGLISH_MONTHS = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ];
+
+    async function fetchNewsArchive() {
+      try {
+        let historicalItems = [];
+        try {
+          const res = await fetch('databases/news_archive.json');
+          if (res.ok) {
+            historicalItems = await res.json();
+          }
+        } catch (e) {
+          console.warn('Could not load databases/news_archive.json', e);
+        }
+
+        const liveItems = window.newsItemsGlobal || [];
+        const combined = [...liveItems, ...historicalItems];
+
+        const seenUrls = new Set();
+        const seenTitles = new Set();
+        const deduped = [];
+
+        combined.forEach(item => {
+          if (!item) return;
+          const urlKey = item.link || '';
+          const titleKey = (item.title || '').trim().toLowerCase();
+          if ((urlKey && seenUrls.has(urlKey)) || (titleKey && seenTitles.has(titleKey))) return;
+          if (urlKey) seenUrls.add(urlKey);
+          if (titleKey) seenTitles.add(titleKey);
+
+          deduped.push(item);
+        });
+
+        // Sort latest first
+        deduped.sort((a, b) => new Date(b.pubDate || 0) - new Date(a.pubDate || 0));
+
+        window.newsArchiveAll = deduped;
+        populateNewsArchiveDropdowns();
+        applyNewsArchiveFilter();
+      } catch (err) {
+        console.error('Error in fetchNewsArchive:', err);
+      }
+    }
+
+    function populateNewsArchiveDropdowns() {
+      const yearSelect = document.getElementById('newsArchiveYearSelect');
+      const monthSelect = document.getElementById('newsArchiveMonthSelect');
+      if (!yearSelect || !monthSelect) return;
+
+      const isTh = (window.currentLang || 'th') === 'th';
+      const monthsList = isTh ? THAI_MONTHS : ENGLISH_MONTHS;
+
+      // Extract distinct years from articles
+      const yearsSet = new Set();
+      window.newsArchiveAll.forEach(item => {
+        if (item.pubDate) {
+          const d = new Date(item.pubDate);
+          if (!isNaN(d.getFullYear())) {
+            yearsSet.add(d.getFullYear());
+          }
+        }
+      });
+
+      // Include standard recent years if needed
+      [2026, 2025, 2024].forEach(y => yearsSet.add(y));
+      const sortedYears = Array.from(yearsSet).sort((a, b) => b - a);
+
+      // Populate Year Select
+      const prevYear = yearSelect.value || currentArchiveYear;
+      yearSelect.innerHTML = `<option value="all">${isTh ? 'ทุกปี (All Years)' : 'All Years'}</option>` +
+        sortedYears.map(y => `<option value="${y}" ${String(y) === String(prevYear) ? 'selected' : ''}>${y}</option>`).join('');
+
+      // Populate Month Select
+      const prevMonth = monthSelect.value || currentArchiveMonth;
+      let monthOptions = `<option value="all">${isTh ? 'ทุกเดือน (All Months)' : 'All Months'}</option>`;
+      monthsList.forEach((mName, idx) => {
+        const mVal = String(idx + 1).padStart(2, '0');
+        monthOptions += `<option value="${mVal}" ${mVal === String(prevMonth) ? 'selected' : ''}>${mName}</option>`;
+      });
+      monthSelect.innerHTML = monthOptions;
+    }
+
+    function applyNewsArchiveFilter() {
+      const grid = document.getElementById('newsArchiveGrid');
+      const countText = document.getElementById('newsArchiveCountText');
+      if (!grid) return;
+
+      const yearSelect = document.getElementById('newsArchiveYearSelect');
+      const monthSelect = document.getElementById('newsArchiveMonthSelect');
+
+      currentArchiveYear = yearSelect ? yearSelect.value : 'all';
+      currentArchiveMonth = monthSelect ? monthSelect.value : 'all';
+
+      const isTh = (window.currentLang || 'th') === 'th';
+
+      const filtered = window.newsArchiveAll.filter(item => {
+        if (!item.pubDate) return true;
+        const d = new Date(item.pubDate);
+        if (isNaN(d.getTime())) return true;
+
+        const itemYear = String(d.getFullYear());
+        const itemMonth = String(d.getMonth() + 1).padStart(2, '0');
+
+        if (currentArchiveYear !== 'all' && itemYear !== currentArchiveYear) {
+          return false;
+        }
+        if (currentArchiveMonth !== 'all' && itemMonth !== currentArchiveMonth) {
+          return false;
+        }
+        return true;
+      });
+
+      // Update count text
+      if (countText) {
+        countText.textContent = `${filtered.length} ${isTh ? 'ข่าว' : (filtered.length === 1 ? 'article' : 'articles')}`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 3rem 1rem; text-align: center; color: var(--text-muted); background: var(--card-bg); border-radius: var(--radius-lg); border: 1px dashed var(--border-color);">
+            <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🗄️</div>
+            <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem;">${isTh ? 'ไม่พบข่าวสารในช่วงเวลาที่เลือก' : 'No articles found for this period.'}</p>
+            <button type="button" class="news-archive-reset-btn" style="margin: 0 auto;" onclick="window.resetNewsArchiveFilters()">
+              <span>↺</span> <span>${isTh ? 'รีเซ็ตตัวกรองเพื่อดูข่าวทั้งหมด' : 'Reset Filters to View All'}</span>
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((item, idx) => {
+        const thumb = item.thumbnail || 'assets/images/placeholder-team.svg';
+        const category = item.category || 'News';
+        
+        let displayDate = '';
+        try {
+          if (item.pubDate) {
+            const d = new Date(item.pubDate);
+            if (!isNaN(d.getTime())) {
+              displayDate = d.toLocaleDateString(isTh ? 'th-TH' : 'en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              });
+            }
+          }
+        } catch (e) {}
+        if (!displayDate) displayDate = isTh ? 'ล่าสุด' : 'Recent';
+
+        return `
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-archive-card" style="animation-delay: ${idx * 0.03}s;">
+            <div class="news-archive-card-thumb">
+              <img src="${thumb}" alt="${item.title}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
+              <span class="news-archive-card-category">${category}</span>
+            </div>
+            <div class="news-archive-card-body">
+              <h3 class="news-archive-card-title" title="${item.title}">${item.title}</h3>
+              <div class="news-archive-card-footer">
+                <span class="news-archive-card-date">
+                  <img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 14px; height: 14px; opacity: 0.8;">
+                  <span>${displayDate}</span>
+                </span>
+                <span class="news-archive-card-link-text">${isTh ? 'อ่านข่าว' : 'Read'} &rarr;</span>
+              </div>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    window.resetNewsArchiveFilters = function() {
+      const yearSelect = document.getElementById('newsArchiveYearSelect');
+      const monthSelect = document.getElementById('newsArchiveMonthSelect');
+      if (yearSelect) yearSelect.value = 'all';
+      if (monthSelect) monthSelect.value = 'all';
+      applyNewsArchiveFilter();
+    };
+
+    function initNewsArchive() {
+      const btnLatest = document.getElementById('btnNewsLatest');
+      const btnArchive = document.getElementById('btnNewsArchive');
+      const carouselView = document.getElementById('newsCarouselView');
+      const archiveView = document.getElementById('newsArchiveView');
+      const carouselControls = document.getElementById('newsCarouselNavControls');
+      const yearSelect = document.getElementById('newsArchiveYearSelect');
+      const monthSelect = document.getElementById('newsArchiveMonthSelect');
+      const resetBtn = document.getElementById('newsArchiveResetBtn');
+
+      if (btnLatest && btnArchive && carouselView && archiveView) {
+        btnLatest.addEventListener('click', () => {
+          btnLatest.classList.add('active');
+          btnLatest.setAttribute('aria-selected', 'true');
+          btnArchive.classList.remove('active');
+          btnArchive.setAttribute('aria-selected', 'false');
+          carouselView.style.display = 'block';
+          archiveView.style.display = 'none';
+          if (carouselControls) carouselControls.style.display = 'flex';
+        });
+
+        btnArchive.addEventListener('click', () => {
+          btnArchive.classList.add('active');
+          btnArchive.setAttribute('aria-selected', 'true');
+          btnLatest.classList.remove('active');
+          btnLatest.setAttribute('aria-selected', 'false');
+          carouselView.style.display = 'none';
+          archiveView.style.display = 'block';
+          if (carouselControls) carouselControls.style.display = 'none';
+
+          if (window.newsArchiveAll.length === 0) {
+            fetchNewsArchive();
+          } else {
+            applyNewsArchiveFilter();
+          }
+        });
+      }
+
+      if (yearSelect) {
+        yearSelect.addEventListener('change', () => applyNewsArchiveFilter());
+      }
+      if (monthSelect) {
+        monthSelect.addEventListener('change', () => applyNewsArchiveFilter());
+      }
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => window.resetNewsArchiveFilters());
+      }
+    }
+
     async function fetchChelseaNews() {
       const carousel = document.getElementById('newsCarousel');
       if (!carousel) return;
@@ -2101,10 +2398,14 @@
         console.error('Error loading news:', err);
         carousel.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">Failed to load news.</div>';
       }
+
+      // Populate archive in background
+      fetchNewsArchive();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       loadAllData();
+      initNewsArchive();
       fetchChelseaNews();
     });
 
@@ -2114,6 +2415,8 @@
       if (window.newsItemsGlobal && window.newsItemsGlobal.length > 0) {
         renderChelseaNewsCards(window.newsItemsGlobal);
       }
+      populateNewsArchiveDropdowns();
+      applyNewsArchiveFilter();
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
