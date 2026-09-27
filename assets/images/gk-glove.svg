@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <!-- สีที่ใช้ในภาพ -->
+    <style>
+      .bg { fill: #f4f5f7; }
+      .border { fill: none; stroke: #122c54; stroke-width: 8; }
+      .navy { fill: #122c54; }
+      .gold { fill: #d3af37; }
+      .white { fill: #ffffff; }
+      .gray { fill: #e0e4eb; }
+      .navy-stroke { stroke: #122c54; stroke-width: 6; fill: none; }
+      .gold-stroke { stroke: #d3af37; stroke-width: 5; fill: none; }
+      .text-title { font-family: 'Arial Black', Impact, sans-serif; font-size: 46px; font-weight: 900; fill: #111; text-anchor: middle; }
+      .text-thai { font-family: 'Tahoma', sans-serif; font-size: 34px; font-weight: bold; fill: #111; text-anchor: middle; }
+      .text-gk { font-family: 'Arial Black', sans-serif; font-size: 65px; font-weight: 900; fill: #d3af37; text-anchor: middle; stroke: #122c54; stroke-width: 3; }
+      .text-strap { font-family: 'Arial', sans-serif; font-size: 28px; font-weight: bold; fill: #ffffff; text-anchor: middle; letter-spacing: 2px; }
+      .text-strap-gold { font-family: 'Arial', sans-serif; font-size: 28px; font-weight: bold; fill: #d3af37; text-anchor: middle; letter-spacing: 2px; }
+      .text-pils { font-family: 'Arial', sans-serif; font-size: 20px; font-weight: bold; fill: #ffffff; text-anchor: middle; letter-spacing: 1px; }
+      .text-c { font-family: 'Arial Black', sans-serif; font-size: 40px; font-weight: 900; fill: #122c54; text-anchor: middle; }
+    </style>
+    
+    <!-- ลายหกเหลี่ยมแบบง่าย (แทนพื้นผิวจับของถุงมือ) -->
+    <pattern id="hexPattern" width="20" height="34" patternUnits="userSpaceOnUse" patternTransform="scale(0.8)">
+      <path d="M 10 0 L 20 5 L 20 15 L 10 20 L 0 15 L 0 5 Z" fill="none" stroke="#c0c8d4" stroke-width="1.5" />
+    </pattern>
+  </defs>
+
+  <!-- พื้นหลังและกรอบสี่เหลี่ยมมน -->
+  <rect x="0" y="0" width="1000" height="1000" fill="#ffffff" />
+  <rect x="20" y="20" width="960" height="960" rx="40" ry="40" class="bg" />
+  <rect x="20" y="20" width="960" height="960" rx="40" ry="40" class="border" />
+
+  <!-- ==================== ถุงมือซ้าย (ด้านหลังมือ) ==================== -->
+  <g id="left-glove">
+    <!-- ฐานข้อมือและสายรัด -->
+    <rect x="180" y="680" width="220" height="110" rx="20" class="navy" />
+    <rect x="190" y="690" width="200" height="90" rx="15" fill="none" stroke="#d3af37" stroke-width="4" />
+    <text x="290" y="745" class="text-strap">GUARDIAN</text>
+    <!-- ดาว 3 ดวงเล็กๆ บนสายรัด -->
+    <polygon points="375,735 380,745 390,745 382,752 385,762 375,755 365,762 368,752 360,745 370,745" class="gold" />
+    <polygon points="375,755 380,765 390,765 382,772 385,782 375,775 365,782 368,772 360,765 370,765" class="gold" />
+    
+    <!-- ตัวถุงมือหลัก (ด้านหลัง) -->
+    <path d="M 170 680 L 150 500 Q 140 400 160 300 L 190 200 Q 200 170 220 170 L 230 170 Q 250 170 250 200 L 250 350 L 270 350 L 270 180 Q 280 150 300 150 L 310 150 Q 330 150 330 180 L 330 350 L 350 350 L 350 190 Q 360 160 380 160 L 390 160 Q 410 160 410 190 L 410 380 L 430 400 L 460 420 Q 490 440 490 470 L 490 550 Q 490 600 440 650 L 410 680 Z" class="navy" />
+    
+    <!-- ลายเส้นสีขาวและทองบนถุงมือ -->
+    <path d="M 170 500 L 410 500" stroke="#ffffff" stroke-width="15" fill="none" opacity="0.8" />
+    <path d="M 170 520 L 410 520" stroke="#d3af37" stroke-width="8" fill="none" opacity="0.9" />
+    <path d="M 190 300 L 410 300" stroke="#ffffff" stroke-width="10" fill="none" opacity="0.6" />
+    <path d="M 200 320 L 410 320" stroke="#d3af37" stroke-width="5" fill="none" opacity="0.8" />
+    
+    <!-- พื้นที่สีขาวตรงกลางสำหรับใส่โลโก้ GK -->
+    <path d="M 220 430 L 420 430 L 400 580 L 320 620 L 240 580 Z" class="white" stroke="#d3af37" stroke-width="6" stroke-linejoin="round" />
+    <path d="M 235 445 L 405 445 L 385 570 L 320 605 L 255 570 Z" fill="none" stroke="#122c54" stroke-width="4" stroke-linejoin="round" />
+    
+    <!-- ตัวอักษร GK -->
+    <text x="320" y="545" class="text-gk">GK</text>
+    
+    <!-- ข้อความ PILS บนนิ้วโป้ง -->
+    <g transform="translate(450, 400) rotate(15)">
+      <rect x="-30" y="-20" width="60" height="80" rx="10" class="white" />
+      <text x="0" y="20" class="text-pils" fill="#122c54" transform="rotate(-90)">PILS</text>
+    </g>
+    
+    <!-- โลโก้ฟุตบอลเล็กๆ ด้านล่าง -->
+    <circle cx="320" cy="640" r="25" class="white" stroke="#d3af37" stroke-width="4" />
+    <path d="M 320 620 L 325 630 L 335 630 L 328 638 L 330 648 L 320 642 L 310 648 L 312 638 L 305 630 L 315 630 Z" class="navy" />
+  </g>
+
+  <!-- ==================== ถุงมือขวา (ด้านฝ่ามือ) ==================== -->
+  <g id="right-glove">
+    <!-- ฐานข้อมือและสายรัด -->
+    <rect x="600" y="680" width="220" height="110" rx="20" class="navy" />
+    <rect x="610" y="690" width="200" height="90" rx="15" fill="none" stroke="#d3af37" stroke-width="4" />
+    <text x="710" y="745" class="text-strap-gold">★ PRO ★</text>
+    <!-- ดาว 3 ดวงเล็กๆ ด้านซ้าย -->
+    <polygon points="625,735 630,745 640,745 632,752 635,762 625,755 615,762 618,752 610,745 620,745" class="gold" />
+    <polygon points="625,755 630,765 640,765 632,772 635,782 625,775 615,782 618,772 610,765 620,765" class="gold" />
+
+    <!-- ตัวถุงมือหลัก (ด้านฝ่ามือ) -->
+    <path d="M 830 680 L 850 500 Q 860 400 840 300 L 810 200 Q 800 170 780 170 L 770 170 Q 750 170 750 200 L 750 350 L 730 350 L 730 180 Q 720 150 700 150 L 690 150 Q 670 150 670 180 L 670 350 L 650 350 L 650 190 Q 640 160 620 160 L 610 160 Q 590 160 590 190 L 590 380 L 570 400 L 540 420 Q 510 440 510 470 L 510 550 Q 510 600 560 650 L 590 680 Z" class="white" stroke="#122c54" stroke-width="6" stroke-linejoin="round" />
+    
+    <!-- ลายหกเหลี่ยมบนฝ่ามือ -->
+    <path d="M 660 250 L 740 250 L 740 400 L 660 400 Z" fill="url(#hexPattern)" />
+    <path d="M 620 450 L 760 450 L 720 600 L 600 600 Z" fill="url(#hexPattern)" />
+
+    <!-- แถบสีน้ำเงินและทองด้านข้าง -->
+    <path d="M 590 380 L 610 450 L 590 550 L 560 650 L 590 680 L 610 620 L 620 500 L 600 400 Z" class="navy" />
+    <path d="M 810 200 L 780 350 L 750 450 L 750 550 L 700 650 L 680 680 L 720 600 L 760 480 L 790 380 Z" class="navy" opacity="0.8" />
+    
+    <!-- ดีไซน์สีน้ำเงินรูปตัว V บริเวณข้อมือ -->
+    <path d="M 580 550 L 710 550 L 680 620 L 620 620 Z" class="navy" />
+    <path d="M 580 550 L 710 550 L 680 620 L 620 620 Z" fill="none" stroke="#d3af37" stroke-width="4" />
+    <!-- โลโก้โล่เล็กๆ บนข้อมือ -->
+    <path d="M 645 560 L 655 560 L 655 580 L 645 590 L 635 580 L 635 560 Z" class="navy" stroke="#d3af37" stroke-width="2" />
+
+    <!-- ตัวอักษร C บนนิ้วโป้ง -->
+    <g transform="translate(530, 400)">
+      <rect x="-25" y="-25" width="50" height="60" rx="10" class="white" stroke="#122c54" stroke-width="4" />
+      <text x="0" y="15" class="text-c">C</text>
+    </g>
+
+    <!-- โลโก้ฟุตบอลเล็กๆ ด้านล่าง -->
+    <path d="M 710 790 L 720 800 L 710 820 L 700 800 Z" class="navy" stroke="#d3af37" stroke-width="2" />
+    <circle cx="710" cy="805" r="6" class="white" />
+  </g>
+
+  <!-- ==================== ข้อความตรงกลาง ==================== -->
+  <g id="center-text">
+    <!-- GOALKEEPER -->
+    <text x="500" y="650" class="text-title">GOALKEEPER</text>
+    <!-- ภาษาไทย -->
+    <text x="500" y="700" class="text-thai">GK</text>
+  </g>
+
+</svg>

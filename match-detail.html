@@ -1390,6 +1390,69 @@
         color: var(--ink);
         font-weight: 500;
       }
+      .captain-armband-badge {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 8px;
+        vertical-align: middle;
+        flex-shrink: 0;
+        cursor: default;
+        transition: transform 0.2s ease, filter 0.2s ease;
+      }
+      .captain-armband-badge:hover {
+        transform: scale(1.1);
+      }
+      .captain-armband-img {
+        height: 18px;
+        width: auto;
+        max-width: 38px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        border-radius: 2px;
+        display: block;
+      }
+      .gk-badge {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 6px;
+        vertical-align: middle;
+        flex-shrink: 0;
+        cursor: default;
+        transition: transform 0.2s ease, filter 0.2s ease;
+      }
+      .gk-badge:hover {
+        transform: scale(1.15);
+      }
+      .gk-badge-img {
+        height: 20px;
+        width: 20px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+        border-radius: 4px;
+        display: block;
+      }
+      .sub-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 700;
+        vertical-align: middle;
+      }
+      .sub-indicator.sub-in {
+        color: #12b359;
+      }
+      .sub-indicator.sub-out {
+        color: #da3330;
+      }
+      .sub-arrow-icon {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+        vertical-align: middle;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        display: inline-block;
+      }
 
       /* Video Tab */
       .video-card {
@@ -2570,7 +2633,7 @@
             if (e.type === "substitution") {
               const inPlayer = getPlayerLink(e.player_in || e.player);
               const outPlayer = getPlayerLink(e.player_out);
-              playerHtml = `<span style="color: var(--success); font-weight: 700;">⬆️ In:</span> ${inPlayer} <span style="color: var(--ink-muted); margin: 0 4px;">•</span> <span style="color: var(--danger); font-weight: 700;">⬇️ Out:</span> ${outPlayer}`;
+              playerHtml = `<span class="sub-indicator sub-in"><img src="databases/logo/svg/substitution_in.svg" alt="In" class="sub-arrow-icon" /> In:</span> ${inPlayer} <span style="color: var(--ink-muted); margin: 0 6px;">•</span> <span class="sub-indicator sub-out"><img src="databases/logo/svg/substitution_out.svg" alt="Out" class="sub-arrow-icon" /> Out:</span> ${outPlayer}`;
             }
 
             let detailText = e.detail || "";
@@ -2744,16 +2807,36 @@
           const awayL = match.lineups.away || { starting: [], substitutes: [], manager: "-" };
 
           const renderPlayerRow = (p, isChelsea) => {
-            let pNameDisplay = `<span class="non-link">${p.name}</span>`;
+            const rawName = p.name || "";
+            const isCaptain = /\(C\)/i.test(rawName) || p.captain === true || p.isCaptain === true;
+            const isGK = /\(GK\)/i.test(rawName) || p.position === "GK" || p.pos === "GK";
+            const displayName = rawName
+              .replace(/\s*\(C\)/gi, "")
+              .replace(/\s*\(GK\)/gi, "")
+              .trim();
+            const cleanName = rawName
+              .replace(/\s*\(GK\)/gi, "")
+              .replace(/\s*\(C\)/gi, "")
+              .trim();
+
+            const gkBadge = isGK
+              ? `<span class="gk-badge" title="${isTh ? 'ผู้รักษาประตู (Goalkeeper)' : 'Goalkeeper'}" aria-label="Goalkeeper">
+                  <img src="assets/images/gk-glove.svg" alt="GK" class="gk-badge-img" />
+                </span>`
+              : "";
+
+            const armbandBadge = isCaptain
+              ? `<span class="captain-armband-badge" title="${isTh ? 'กัปตันทีม (Captain)' : 'Team Captain'}" aria-label="Captain">
+                  <img src="assets/images/captain-armband.svg" alt="Captain" class="captain-armband-img" />
+                </span>`
+              : "";
+
+            let pNameDisplay = `<span class="non-link">${displayName}</span>${gkBadge}${armbandBadge}`;
             if (isChelsea) {
-              const cleanName = p.name
-                .replace(/\s*\(GK\)/i, "")
-                .replace(/\s*\(C\)/i, "")
-                .trim();
               const pId = getPlayerIdByName(cleanName, p.number, teamType);
               const pTeam = getPlayerTeamByName(cleanName, teamType);
               if (pId) {
-                pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${p.name}</a>`;
+                pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${displayName}</a>${gkBadge}${armbandBadge}`;
               }
             }
             return `
