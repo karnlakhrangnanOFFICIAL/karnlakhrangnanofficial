@@ -1047,13 +1047,14 @@
         const isChelsea = isChelseaTeam(row.team);
         const teamCrest = resolveLocalTeamLogo(row.team?.name || row.team?.shortName, row.team?.crest);
 
+        const teamName = row.team?.shortName || row.team?.name || '';
+
         return `
           <tr class="${isChelsea ? 'row-highlight' : ''}">
             <td style="font-weight: 700; width: 28px; text-align: center;">${row.position}</td>
-            <td>
-              <div class="hub-team-cell">
-                <img src="${teamCrest}" class="hub-team-crest" alt="" loading="lazy" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
-                <span class="${isChelsea ? 'hub-team-chelsea' : ''}">${row.team.shortName || row.team.name}</span>
+            <td style="text-align: center;">
+              <div class="hub-team-cell" style="justify-content: center;">
+                <img src="${teamCrest}" class="hub-team-crest" alt="${teamName}" title="${teamName}" loading="lazy" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
               </div>
             </td>
             <td style="text-align: center;">${row.playedGames}</td>
