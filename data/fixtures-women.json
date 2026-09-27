@@ -1155,9 +1155,9 @@
   {
     "id": "w6",
     "date": "2026-09-27",
-    "time": "22:30",
-    "time_th": "22:30",
-    "time_uk": "16:30",
+    "time": "23:30",
+    "time_th": "23:30",
+    "time_uk": "17:30",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
@@ -1178,15 +1178,253 @@
     "away_score": null,
     "goals": [],
     "events": [],
+    "home_lineup": [
+      "Hannah Hampton",
+      "Katie McCabe",
+      "Kadeisha Buchanan",
+      "Lucy Bronze",
+      "Ellie Carpenter",
+      "Wieke Kaptein",
+      "Keira Walsh",
+      "Lexi Potter",
+      "Melvine Malard",
+      "Lauren James",
+      "Alyssa Thompson"
+    ],
+    "home_subs": [
+      "Sandy Baltimore",
+      "Aggie Beever-Jones",
+      "Nathalie Björn",
+      "Veerle Buurman",
+      "Giulia Dragoni",
+      "Naomi Girma",
+      "Maika Hamano",
+      "Sjoeke Nüsken",
+      "Livia Peng"
+    ],
+    "away_lineup": [
+      "Anneke Borbe",
+      "Steph Catley",
+      "Ona Batlle",
+      "Leah Williamson",
+      "Emily Fox",
+      "Georgia Stanway",
+      "Kyra Cooney-Cross",
+      "Kim Little",
+      "Mariona Caldentey",
+      "Lisa Baum",
+      "Alessia Russo"
+    ],
+    "away_subs": [
+      "Stina Blackstenius",
+      "Selina Cerci",
+      "Caitlin Foord",
+      "Smilla Holmberg",
+      "Chloe Kelly",
+      "Géraldine Reuteler",
+      "Misa Rodríguez",
+      "Olivia Smith",
+      "Lotte Wubben-Moy"
+    ],
+    "lineups": {
+      "home": {
+        "manager": "Sonia Bompastor",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton (GK)",
+            "position": "GK"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze (C)",
+            "captain": true
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh"
+          },
+          {
+            "number": 32,
+            "name": "Lexi Potter"
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 11,
+            "name": "Sandy Baltimore"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni"
+          },
+          {
+            "number": 4,
+            "name": "Naomi Girma"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken"
+          },
+          {
+            "number": 1,
+            "name": "Livia Peng (GK)",
+            "position": "GK"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Renée Slegers",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": 28,
+            "name": "Anneke Borbe (GK)",
+            "position": "GK"
+          },
+          {
+            "number": 7,
+            "name": "Steph Catley"
+          },
+          {
+            "number": 22,
+            "name": "Ona Batlle"
+          },
+          {
+            "number": 6,
+            "name": "Leah Williamson"
+          },
+          {
+            "number": 2,
+            "name": "Emily Fox"
+          },
+          {
+            "number": 4,
+            "name": "Georgia Stanway"
+          },
+          {
+            "number": 32,
+            "name": "Kyra Cooney-Cross"
+          },
+          {
+            "number": 10,
+            "name": "Kim Little (C)",
+            "captain": true
+          },
+          {
+            "number": 8,
+            "name": "Mariona Caldentey"
+          },
+          {
+            "number": 19,
+            "name": "Lisa Baum"
+          },
+          {
+            "number": 23,
+            "name": "Alessia Russo"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 25,
+            "name": "Stina Blackstenius"
+          },
+          {
+            "number": 29,
+            "name": "Selina Cerci"
+          },
+          {
+            "number": 9,
+            "name": "Caitlin Foord"
+          },
+          {
+            "number": 31,
+            "name": "Smilla Holmberg"
+          },
+          {
+            "number": 18,
+            "name": "Chloe Kelly"
+          },
+          {
+            "number": 14,
+            "name": "Géraldine Reuteler"
+          },
+          {
+            "number": 16,
+            "name": "Misa Rodríguez (GK)",
+            "position": "GK"
+          },
+          {
+            "number": 11,
+            "name": "Olivia Smith"
+          },
+          {
+            "number": 3,
+            "name": "Lotte Wubben-Moy"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "Referee",
+          "name": "Emily Heaslip"
+        }
+      ]
+    },
     "competition_name": "Barclays Women's Super League",
     "team_type": "W",
     "xg": null,
     "xga": null,
     "poss": null,
     "attendance": null,
-    "captain": "Millie Bright",
+    "captain": "Lucy Bronze",
     "formation": "4-2-3-1",
-    "referee": "Cheryl Foster",
+    "referee": "Emily Heaslip",
     "round": "Matchweek 4"
   },
   {
