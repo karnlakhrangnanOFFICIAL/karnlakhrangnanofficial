@@ -422,12 +422,12 @@ function renderTable(container, table, highlightTeam, compLogo, compName, compKe
             } else if (isWomenPage) {
               if (posNum >= 1 && posNum <= 2) posClass = "pos-ucl";
               else if (posNum === 3) posClass = "pos-uwcl-qual";
-              else if (posNum === table.length - 1 && table.length > 3) posClass = "pos-rel-po";
-              else if (posNum === table.length && table.length > 2) posClass = "pos-rel";
+              else if (posNum === table.length) posClass = "pos-rel";
             } else {
               if (posNum >= 1 && posNum <= 4) posClass = "pos-ucl";
               else if (posNum === 5) posClass = "pos-uel";
-              else if (posNum >= 18) posClass = "pos-rel";
+              else if (posNum === 6) posClass = "pos-uecl";
+              else if (posNum >= table.length - 2 && table.length >= 18) posClass = "pos-rel";
             }
 
             const p = row.p ?? row.playedGames ?? 0;
@@ -467,11 +467,79 @@ function renderWomenTableRules(compKey = "uwcl") {
   const isTh = (window.currentLang || "th") === "th";
   const isUwcl = compKey === "uwcl";
 
+  const officialLink = isUwcl
+    ? "https://www.uefa.com/womenschampionsleague/standings/"
+    : "https://www.thefa.com/womens-girls-football/leagues-and-competitions/barclays-womens-super-league";
+  const officialLinkText = isUwcl
+    ? (isTh ? "ตารางคะแนนทางการ (UEFA.com)" : "Official UEFA Standings")
+    : (isTh ? "ตารางคะแนนทางการ (TheFA.com)" : "Official WSL Standings");
+
+  let formatHtml = "";
+  let rankKeyHtml = "";
+
+  if (isUwcl) {
+    formatHtml = `
+      <div style="margin-top: 10px; padding: 12px 14px; background: rgba(0, 87, 183, 0.12); border: 1px solid rgba(0, 87, 183, 0.35); border-radius: 8px; font-size: 0.82rem; color: var(--ink);">
+        <strong style="color: var(--gold); display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <span>⭐</span> ${isTh ? "กฎการแข่งขัน UEFA Women's Champions League (League phase · 18 ทีม):" : "UEFA Women's Champions League Format (League phase · 18 teams):"}
+        </strong>
+        <div style="display: flex; flex-direction: column; gap: 4px; line-height: 1.5;">
+          <div>• <strong>${isTh ? "อันดับ 1 - 4:" : "1st - 4th Place:"}</strong> <span style="color: #93c5fd;">${isTh ? "ผ่านเข้าสู่รอบ 16 ทีมสุดท้ายโดยตรง (Direct Round of 16)" : "Advance directly to the Round of 16"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 5 - 16:" : "5th - 16th Place:"}</strong> <span style="color: #67e8f9;">${isTh ? "ผ่านเข้าสู่รอบเพลย์ออฟน็อคเอาท์ (Knockout phase play-offs)" : "Advance to the Knockout phase play-offs"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 17 - 18:" : "17th - 18th Place:"}</strong> <span style="color: #fca5a5;">${isTh ? "ตกรอบการแข่งขันในฤดูกาลนี้ (Eliminated)" : "Eliminated from European competition"}</span></div>
+        </div>
+      </div>
+    `;
+
+    rankKeyHtml = `
+      <li class="table-rules-item">
+        <span class="legend-dot first-tier"></span>
+        <span><strong>${isTh ? "ผ่านเข้ารอบ 16 ทีมสุดท้ายโดยตรง (อันดับ 1 - 4):" : "Direct Round of 16 (Rank 1 - 4):"}</strong> ${isTh ? "ได้สิทธิ์เข้าสู่รอบน็อคเอาท์ 16 ทีมสุดท้ายของ UWCL ทันที" : "Qualifies directly for the UEFA Women's Champions League Round of 16"}</span>
+      </li>
+      <li class="table-rules-item">
+        <span class="legend-dot playoff"></span>
+        <span><strong>${isTh ? "รอบเพลย์ออฟน็อคเอาท์ (อันดับ 5 - 16):" : "Knockout Play-offs (Rank 5 - 16):"}</strong> ${isTh ? "ผ่านเข้าสู่รอบเพลย์ออฟประกบคู่เหย้า-เยือน เพื่อหาทีมเข้าสู่รอบ 16 ทีม" : "Qualifies for the 2-legged knockout phase play-offs"}</span>
+      </li>
+      <li class="table-rules-item">
+        <span class="legend-dot relegation"></span>
+        <span><strong>${isTh ? "ตกรอบการแข่งขัน (อันดับ 17 - 18):" : "Eliminated (Rank 17 - 18):"}</strong> ${isTh ? "สิ้นสุดการแข่งขันฟุตบอลยุโรปในฤดูกาลปัจจุบัน" : "Eliminated from the competition for the current season"}</span>
+      </li>
+    `;
+  } else {
+    formatHtml = `
+      <div style="margin-top: 10px; padding: 12px 14px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; font-size: 0.82rem; color: var(--ink);">
+        <strong style="color: var(--gold); display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <span>🏆</span> ${isTh ? "โควต้าฟุตบอลยุโรปและการตกชั้น Barclays Women's Super League (12 ทีม):" : "European Qualification & Relegation (12 teams):"}
+        </strong>
+        <div style="display: flex; flex-direction: column; gap: 4px; line-height: 1.5;">
+          <div>• <strong>${isTh ? "อันดับ 1 - 2:" : "1st - 2nd Place:"}</strong> <span style="color: #93c5fd;">${isTh ? "ผ่านเข้าสู่ UEFA Women's Champions League รอบ League Phase โดยตรง" : "Qualifies directly for UWCL League Phase"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 3:" : "3rd Place:"}</strong> <span style="color: #67e8f9;">${isTh ? "ได้สิทธิ์ไปเล่นรอบคัดเลือก UWCL รอบที่ 2 (UWCL Qualifiers Round 2)" : "Qualifies for UWCL Qualifiers Round 2"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 12:" : "12th Place (Last):"}</strong> <span style="color: #fca5a5;">${isTh ? "ตกชั้นสู่ลีก Barclays Women's Championship" : "Relegated to Barclays Women's Championship"}</span></div>
+        </div>
+      </div>
+    `;
+
+    rankKeyHtml = `
+      <li class="table-rules-item">
+        <span class="legend-dot first-tier"></span>
+        <span><strong>${isTh ? "UWCL League Phase (อันดับ 1 - 2):" : "UWCL League Phase (Rank 1 - 2):"}</strong> ${isTh ? "โควต้าเข้าร่วมแข่งขัน UEFA Women's Champions League รอบลีกโดยตรง" : "Direct qualification for UEFA Women's Champions League League Phase"}</span>
+      </li>
+      <li class="table-rules-item">
+        <span class="legend-dot uwcl-qual"></span>
+        <span><strong>${isTh ? "UWCL Qualifiers Round 2 (อันดับ 3):" : "UWCL Qualifiers Round 2 (Rank 3):"}</strong> ${isTh ? "ได้สิทธิ์เข้าสู่รอบคัดเลือก UWCL รอบที่ 2" : "Qualifies for UEFA Women's Champions League Qualifying Round 2"}</span>
+      </li>
+      <li class="table-rules-item">
+        <span class="legend-dot relegation"></span>
+        <span><strong>${isTh ? "ตกชั้น (อันดับ 12):" : "Relegation (Rank 12):"}</strong> ${isTh ? "ตกชั้นสู่การแข่งขันระดับสอง (Barclays Women's Championship)" : "Relegation to Barclays Women's Championship"}</span>
+      </li>
+    `;
+  }
+
   rulesCard.innerHTML = `
     <div class="table-rules-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
       <span>📌 ${isTh ? "กฎระเบียบการแข่งขัน บันทึกคะแนน & คำอธิบายสัญลักษณ์ (League Notes & Rank Key)" : "Rules, Match Notes & Rank Key"}</span>
-      <a href="https://www.uefa.com/womenschampionsleague/standings/" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: var(--gold); text-decoration: underline; font-family: 'Space Mono', monospace;">
-        🔗 ${isTh ? "ตารางคะแนนทางการ (UEFA.com)" : "Official UEFA Standings"}
+      <a href="${officialLink}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: var(--gold); text-decoration: underline; font-family: 'Space Mono', monospace;">
+        🔗 ${officialLinkText}
       </a>
     </div>
 
@@ -494,25 +562,7 @@ function renderWomenTableRules(compKey = "uwcl") {
           </li>
         </ul>
 
-        ${
-          isUwcl
-            ? `
-          <div style="margin-top: 10px; padding: 10px 12px; background: rgba(0, 87, 183, 0.12); border: 1px solid rgba(0, 87, 183, 0.3); border-radius: 8px; font-size: 0.82rem; color: var(--ink);">
-            <strong style="color: var(--gold);">⭐ รูปแบบการแข่งขัน UEFA Women's Champions League (League phase):</strong><br>
-            • <strong>อันดับ 1 - 4:</strong> ผ่านเข้าสู่รอบ 16 ทีมสุดท้ายโดยตรง (Direct Round of 16 / First Tier Cup)<br>
-            • <strong>อันดับ 5 - 16:</strong> ผ่านเข้าสู่รอบเพลย์ออฟน็อคเอาท์ (Knockout phase play-offs)<br>
-            • <strong>อันดับ 17 - 18:</strong> ตกรอบการแข่งขัน (Eliminated)
-          </div>
-        `
-            : `
-          <div style="margin-top: 10px; padding: 10px 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; font-size: 0.82rem; color: var(--ink);">
-            <strong style="color: var(--gold);">🏆 โควต้าฟุตบอลยุโรป Barclays Women's Super League:</strong><br>
-            • <strong>อันดับ 1 - 2:</strong> ผ่านเข้าสู่ UEFA Women's Champions League รอบลีกโดยตรง<br>
-            • <strong>อันดับ 3:</strong> ได้สิทธิ์ไปเล่นรอบคัดเลือกรอบที่ 2 (UWCL Qualifiers)<br>
-            • <strong>อันดับ 14:</strong> ตกชั้นสู่ Women's Championship
-          </div>
-        `
-        }
+        ${formatHtml}
 
         <p style="font-size: 0.8rem; color: var(--ink-muted); margin-top: 8px; margin-bottom: 0;">
           ${isTh ? "กรณีคะแนนเท่ากัน ตัดสินด้วย: 1. ผลต่างประตูได้-เสีย (Goal Difference) 2. ประตูที่ทำได้ (Goals Scored)" : "Tie-break criteria: 1. Goal difference 2. Goals scored"}
@@ -523,38 +573,7 @@ function renderWomenTableRules(compKey = "uwcl") {
       <div class="table-rules-section">
         <h3 class="table-rules-subtitle">🏷️ ${isTh ? "Rank Key (คำอธิบายสัญลักษณ์ระดับและสถานะอันดับ)" : "Rank Key (Rank Categories & Status)"}</h3>
         <ul class="table-rules-list">
-          <li class="table-rules-item">
-            <span class="legend-dot first-tier"></span>
-            <span><strong>First Tier Cup:</strong> ${isTh ? "ได้สิทธิ์เข้าร่วม first tier cup (เช่น UEFA Champions League) หรืออยู่ใน qualification zone" : "Qualified for first tier cup (e.g. UEFA Champions League) or in qualification zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot second-tier"></span>
-            <span><strong>Second Tier Cup:</strong> ${isTh ? "ได้สิทธิ์เข้าร่วม second tier cup (เช่น UEFA Europa League) หรืออยู่ใน qualification zone" : "Qualified for second tier cup (e.g. UEFA Europa League) or in qualification zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot third-tier"></span>
-            <span><strong>Third Tier Cup:</strong> ${isTh ? "ได้สิทธิ์เข้าร่วม third tier cup (เช่น UEFA Europa Conference League) หรืออยู่ใน qualification zone" : "Qualified for third tier cup (e.g. UEFA Europa Conference League) or in qualification zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot playoff"></span>
-            <span><strong>Playoff:</strong> ${isTh ? "ได้สิทธิ์สำหรับการเล่น playoff หรืออยู่ใน qualification zone" : "Qualified for playoff or in qualification zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot promotion"></span>
-            <span><strong>Promotion:</strong> ${isTh ? "Squad ได้รับการ promoted หรืออยู่ใน promotion zone" : "Squad promoted or in promotion zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot promo-po"></span>
-            <span><strong>Promotion Playoff:</strong> ${isTh ? "ได้สิทธิ์สำหรับการเล่น promotion playoff หรืออยู่ใน qualification zone" : "Qualified for promotion playoff or in qualification zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot rel-po"></span>
-            <span><strong>Relegation Playoff:</strong> ${isTh ? "ได้สิทธิ์สำหรับการเล่น relegation playoff หรืออยู่ใน qualification zone" : "Qualified for relegation playoff or in qualification zone"}</span>
-          </li>
-          <li class="table-rules-item">
-            <span class="legend-dot relegation"></span>
-            <span><strong>Relegation:</strong> ${isTh ? "Squad ถูก relegated หรืออยู่ใน relegation zone" : "Squad relegated or in relegation zone"}</span>
-          </li>
+          ${rankKeyHtml}
         </ul>
       </div>
     </div>

@@ -3,8 +3,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import newsHandler from './api/news.js';
 import wslHandler from './api/wsl-standings.js';
+import uwclHandler from './api/uwcl-standings.js';
+import eplHandler from './api/epl-standings.js';
 import plMatchHandler from './api/pl-match.js';
 import eflMatchHandler from './api/efl-match.js';
+import matchesHandler from './api/football-data/teams/61/matches.js';
 import footballDataHandler from './api/football-data/[...path].js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -12,7 +15,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
-const FOOTBALL_DATA_TOKEN = process.env.FOOTBALL_DATA_TOKEN || process.env.FOOTBALL_DATA_API_KEY || 'fb73ad1df2194fdab3fe56614d1a953e';
 
 // Serve static files
 app.use(express.static(__dirname, { extensions: ['html'] }));
@@ -34,56 +36,18 @@ app.get('/trophy', (req, res) => res.sendFile(path.join(__dirname, 'trophy.html'
 app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-team.html')));
 
 // Custom API route handlers
-app.get('/api/news', (req, res) => {
-  newsHandler(req, res);
-});
+app.all('/api/news', (req, res) => newsHandler(req, res));
+app.all('/api/pl-match', (req, res) => plMatchHandler(req, res));
+app.all('/api/efl-match', (req, res) => eflMatchHandler(req, res));
+app.all('/api/epl-standings', (req, res) => eplHandler(req, res));
+app.all('/api/wsl-standings', (req, res) => wslHandler(req, res));
+app.all('/api/uwcl-standings', (req, res) => uwclHandler(req, res));
 
-app.get('/api/pl-match', (req, res) => {
-  plMatchHandler(req, res);
-});
-
-app.get('/api/efl-match', (req, res) => {
-  eflMatchHandler(req, res);
-});
+// Dedicated Chelsea Matches Endpoint
+app.all('/api/football-data/teams/61/matches', (req, res) => matchesHandler(req, res));
 
 // Football-Data.org API Proxy with Token & CORS support
-app.all('/api/football-data*', (req, res) => {
-  footballDataHandler(req, res);
-});
-
-app.get('/api/epl-standings', async (req, res) => {
-  try {
-    const targetUrl = 'https://api.football-data.org/v4/competitions/PL/standings';
-    const response = await fetch(targetUrl, {
-      headers: {
-        'X-Auth-Token': FOOTBALL_DATA_TOKEN,
-        'User-Agent': 'Mozilla/5.0'
-      }
-    });
-    const data = await response.json();
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json({ success: true, data: data.standings?.[0]?.table || [] });
-  } catch (err) {
-    console.error('EPL Standings proxy error:', err);
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-app.get('/api/uwcl-standings', async (req, res) => {
-  try {
-    const fs = await import('fs');
-    const localData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'tables-uwcl.json'), 'utf8'));
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json({ success: true, data: localData });
-  } catch (err) {
-    console.error('UWCL Standings API error:', err);
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-app.get('/api/wsl-standings', (req, res) => {
-  wslHandler(req, res);
-});
+app.all('/api/football-data*', (req, res) => footballDataHandler(req, res));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 

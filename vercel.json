@@ -7,11 +7,20 @@
     "api/**/*.js": {
       "includeFiles": "data/**",
       "maxDuration": 15
+    },
+    "api/*.js": {
+      "includeFiles": "data/**",
+      "maxDuration": 15
     }
   },
   "rewrites": [
-    { "source": "/api/football-data/teams/61/matches", "destination": "/api/football-data/teams/61/matches" },
-    { "source": "/api/football-data/:path*", "destination": "/api/football-data/[...path]" },
-    { "source": "/api/news", "destination": "/api/news" }
+    { "source": "/api/football-data/teams/61/matches", "destination": "/api/football-data/teams/61/matches.js" },
+    { "source": "/api/football-data/:path*", "destination": "/api/football-data/[...path].js" },
+    { "source": "/api/news", "destination": "/api/news.js" },
+    { "source": "/api/pl-match", "destination": "/api/pl-match.js" },
+    { "source": "/api/efl-match", "destination": "/api/efl-match.js" },
+    { "source": "/api/epl-standings", "destination": "/api/epl-standings.js" },
+    { "source": "/api/wsl-standings", "destination": "/api/wsl-standings.js" },
+    { "source": "/api/uwcl-standings", "destination": "/api/uwcl-standings.js" }
   ]
 }
