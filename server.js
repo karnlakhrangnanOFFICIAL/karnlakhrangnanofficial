@@ -30,9 +30,24 @@ app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-te
 // Custom API route for news scraping (PRESERVED)
 import newsHandler from './api/news.js';
 import wslHandler from './api/wsl-standings.js';
+import plMatchHandler from './api/pl-match.js';
+import eflMatchHandler from './api/efl-match.js';
+import wslMatchHandler from './api/wsl-match.js';
 
 app.get('/api/news', (req, res) => {
   newsHandler(req, res);
+});
+
+app.get('/api/pl-match', (req, res) => {
+  plMatchHandler(req, res);
+});
+
+app.get('/api/efl-match', (req, res) => {
+  eflMatchHandler(req, res);
+});
+
+app.get('/api/wsl-match', (req, res) => {
+  wslMatchHandler(req, res);
 });
 
 // Football-Data.org API Proxy with Token & CORS support

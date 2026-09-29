@@ -3,15 +3,15 @@
   "team": "Chelsea Women",
   "season": "2026-2027",
   "total_matches": 37,
-  "completed_matches": 8,
-  "upcoming_matches": 29,
+  "completed_matches": 9,
+  "upcoming_matches": 28,
   "summary": {
-    "wins": 7,
+    "wins": 8,
     "draws": 1,
     "losses": 0,
-    "goals_for": 25,
+    "goals_for": 26,
     "goals_against": 3,
-    "clean_sheets": 6
+    "clean_sheets": 7
   },
   "matchlogs": [
     {
@@ -866,26 +866,31 @@
     {
       "id": "w6",
       "date": "2026-09-27",
-      "time_uk": "17:30",
-      "time_th": "23:30",
+      "time_uk": "16:30",
+      "time_th": "22:30",
       "comp": "Barclays Women's Super League",
       "round": "Matchweek 4",
       "day": "Sun",
       "venue": "Home",
-      "result": null,
-      "gf": null,
-      "ga": null,
+      "result": "W",
+      "gf": 1,
+      "ga": 0,
       "opponent": "Arsenal",
       "opponent_crest": "databases/logo/teams/england_arsenal.svg",
       "stadium": "Stamford Bridge, London",
       "xg": null,
       "xga": null,
-      "poss": null,
-      "attendance": null,
+      "poss": 56,
+      "attendance": 19349,
       "captain": "Lucy Bronze",
-      "formation": "4-2-3-1",
+      "formation": "4-4-2",
       "referee": "Emily Heaslip",
-      "scorers": []
+      "scorers": [
+        {
+          "player": "Alyssa Thompson",
+          "minute": 39
+        }
+      ]
     },
     {
       "id": "w7",

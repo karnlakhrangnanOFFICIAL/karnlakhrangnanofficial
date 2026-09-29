@@ -1107,13 +1107,28 @@
       // Stop live polling if running
       stopLiveScorePolling();
 
-      // Find upcoming matches (TIMED or SCHEDULED)
-      const upcoming = HubState.matches.filter(m => m.status !== 'FINISHED').sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+      const now = Date.now();
+      // Find upcoming matches (future matches that are not completed)
+      const upcoming = HubState.matches
+        .filter(m => m.status !== 'FINISHED' && new Date(m.utcDate).getTime() > now)
+        .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
 
       if (upcoming.length === 0) {
+        // Fallback: check if there's any unfinished match that is live right now
+        const anyUnfinished = HubState.matches
+          .filter(m => m.status !== 'FINISHED')
+          .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+
+        if (anyUnfinished.length > 0 && isMatchLive(anyUnfinished[0])) {
+          renderLiveSpotlight(anyUnfinished[0]);
+          startLiveScorePolling(anyUnfinished[0]);
+          return;
+        }
+
         if (spotlightContainer) {
           spotlightContainer.innerHTML = `<div class="hub-state-box">ไม่มีโปรแกรมแข่งขันถัดไปในขณะนี้</div>`;
         }
+        if (upcomingListContainer) upcomingListContainer.innerHTML = '';
         return;
       }
 
@@ -1437,17 +1452,45 @@
   }
 
   function startCountdown(targetTime, nextMatch) {
-    if (HubState.countdownInterval) clearInterval(HubState.countdownInterval);
+    if (HubState.countdownInterval) {
+      clearInterval(HubState.countdownInterval);
+      HubState.countdownInterval = null;
+    }
+
+    const now = Date.now();
+    if (targetTime <= now) {
+      const dEl = document.getElementById('cdDays');
+      const hEl = document.getElementById('cdHours');
+      const mEl = document.getElementById('cdMins');
+      const sEl = document.getElementById('cdSecs');
+      if (dEl) dEl.textContent = '00';
+      if (hEl) hEl.textContent = '00';
+      if (mEl) mEl.textContent = '00';
+      if (sEl) sEl.textContent = '00';
+      return;
+    }
 
     function update() {
-      const now = new Date().getTime();
-      const diff = targetTime - now;
+      const currentTime = Date.now();
+      const diff = targetTime - currentTime;
 
       if (diff <= 0) {
-        clearInterval(HubState.countdownInterval);
-        HubState.countdownInterval = null;
-        // Kickoff reached! Immediately transition to real-time live score
-        updateDashboardFixtures();
+        if (HubState.countdownInterval) {
+          clearInterval(HubState.countdownInterval);
+          HubState.countdownInterval = null;
+        }
+        const dEl = document.getElementById('cdDays');
+        const hEl = document.getElementById('cdHours');
+        const mEl = document.getElementById('cdMins');
+        const sEl = document.getElementById('cdSecs');
+        if (dEl) dEl.textContent = '00';
+        if (hEl) hEl.textContent = '00';
+        if (mEl) mEl.textContent = '00';
+        if (sEl) sEl.textContent = '00';
+        // Kickoff reached! Asynchronously transition to real-time live score
+        setTimeout(() => {
+          updateDashboardFixtures();
+        }, 1000);
         return;
       }
 

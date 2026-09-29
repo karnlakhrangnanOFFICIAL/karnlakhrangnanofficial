@@ -18,6 +18,19 @@
     },
     {
       "pos": 2,
+      "team": "Chelsea",
+      "logo": "databases/logo/teams/england_chelsea.svg",
+      "p": 4,
+      "w": 3,
+      "d": 1,
+      "l": 0,
+      "gf": 9,
+      "ga": 1,
+      "gd": 8,
+      "pts": 10
+    },
+    {
+      "pos": 3,
       "team": "London City Lionesses",
       "logo": "databases/logo/teams/London_City_Lionesses.svg",
       "p": 4,
@@ -30,7 +43,7 @@
       "pts": 9
     },
     {
-      "pos": 3,
+      "pos": 4,
       "team": "Tottenham Hotspur",
       "logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
       "p": 4,
@@ -41,19 +54,6 @@
       "ga": 2,
       "gd": 9,
       "pts": 8
-    },
-    {
-      "pos": 4,
-      "team": "Chelsea",
-      "logo": "databases/logo/teams/england_chelsea.svg",
-      "p": 3,
-      "w": 2,
-      "d": 1,
-      "l": 0,
-      "gf": 8,
-      "ga": 1,
-      "gd": 7,
-      "pts": 7
     },
     {
       "pos": 5,
@@ -85,13 +85,13 @@
       "pos": 7,
       "team": "Arsenal",
       "logo": "databases/logo/teams/england_arsenal.svg",
-      "p": 3,
+      "p": 4,
       "w": 1,
       "d": 2,
-      "l": 0,
+      "l": 1,
       "gf": 2,
-      "ga": 1,
-      "gd": 1,
+      "ga": 2,
+      "gd": 0,
       "pts": 5
     },
     {

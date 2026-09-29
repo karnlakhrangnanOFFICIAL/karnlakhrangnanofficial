@@ -2610,7 +2610,9 @@
               eType = "own_goal";
             const icon = getEventIcon(eType);
             const title = getEventTitle(eType);
-            const time = e.minute + "'";
+            const time = e.display_minute
+              ? (e.display_minute.endsWith("'") ? e.display_minute : e.display_minute + "'")
+              : (e.minute != null ? e.minute + "'" : "-");
             const teamLogo =
               e.team === "home" ? match.home_logo : e.team === "away" ? match.away_logo : "";
             const teamName =
@@ -2634,6 +2636,8 @@
               const inPlayer = getPlayerLink(e.player_in || e.player);
               const outPlayer = getPlayerLink(e.player_out);
               playerHtml = `<span class="sub-indicator sub-in"><img src="databases/logo/svg/substitution_in.svg" alt="In" class="sub-arrow-icon" /> In:</span> ${inPlayer} <span style="color: var(--ink-muted); margin: 0 6px;">•</span> <span class="sub-indicator sub-out"><img src="databases/logo/svg/substitution_out.svg" alt="Out" class="sub-arrow-icon" /> Out:</span> ${outPlayer}`;
+            } else if (!e.player) {
+              playerHtml = "";
             }
 
             let detailText = e.detail || "";
@@ -2675,7 +2679,7 @@
                   </div>
                   ${eType === "goal" && e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ""}
                 </div>
-                <div class="timeline-player-name">${playerHtml}</div>
+                ${playerHtml ? `<div class="timeline-player-name">${playerHtml}</div>` : ""}
                 ${detailText ? `<div class="timeline-event-detail">${detailText}</div>` : ""}
               </div>
             </div>
@@ -2781,7 +2785,7 @@
                 </div>
               </div>
               <div style="text-align: right;">
-                <span style="font-weight: 700; color: var(--gold); font-family: 'Space Mono', monospace;">${gk.saves} Saves</span>
+                <span style="font-weight: 700; color: var(--gold); font-family: 'Space Mono', monospace;">${gk.saves != null ? gk.saves + " Saves" : "-"}</span>
                 ${gk.save_pct ? `<span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.save_pct})</span>` : ""}
               </div>
             </div>

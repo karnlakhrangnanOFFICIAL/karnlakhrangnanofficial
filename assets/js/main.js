@@ -3084,3 +3084,140 @@ window.getLocalMatchDateTime = function (dateStr, timeThStr, timeUkStr) {
     return { date: dateStr, time: fallbackTime === "00:00" ? "00:00" : fallbackTime };
   }
 };
+
+// ============================================================
+// WSL MATCH CENTRE REAL-TIME SYNC & BACKGROUND AUTO-REFRESH
+// ============================================================
+const WslMatchSync = {
+  activePollInterval: null,
+  isFetching: false,
+  lastData: null,
+  listeners: new Set(),
+
+  // Fetch from /api/wsl-match with sub-endpoint support
+  // sub can be: 'all' | 'main' | 'events' | 'stats_club' | 'lineups' | 'info'
+  async fetch(matchId = "e41e9112d45845d8906deb66c4b8cd73", sub = "all", options = {}) {
+    try {
+      this.isFetching = true;
+      const force = options.force ? "&force=true" : "";
+      const subQuery = sub && sub !== "all" ? `&sub=${encodeURIComponent(sub)}` : "";
+      const url = `/api/wsl-match?matchId=${encodeURIComponent(matchId)}${subQuery}${force}&_t=${Date.now()}`;
+
+      const res = await fetch(url, {
+        headers: { "Cache-Control": "no-cache" },
+      });
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+
+      if (data && data.success) {
+        this.lastData = data;
+
+        // Notify Goal Notifier if live scores changed
+        if (window.LiveGoalNotifier && data.status === "live") {
+          window.LiveGoalNotifier.trackScores([
+            {
+              id: matchId === "e41e9112d45845d8906deb66c4b8cd73" ? "w6" : matchId,
+              home_team: data.home_team || "Chelsea Women",
+              away_team: data.away_team || "Arsenal",
+              home_score: data.score ? data.score.home : 0,
+              away_score: data.score ? data.score.away : 0,
+              status: data.status,
+              goals: data.events ? data.events.filter((e) => e.type === "goal") : [],
+            },
+          ]);
+        }
+
+        // Dispatch Custom Event for reactive UI components
+        window.dispatchEvent(new CustomEvent("wslMatchUpdated", { detail: data }));
+        this.listeners.forEach((fn) => {
+          try {
+            fn(data);
+          } catch (e) {}
+        });
+      }
+      return data;
+    } catch (err) {
+      console.warn("[WSL Sync] Fetch failed:", err);
+      return null;
+    } finally {
+      this.isFetching = false;
+    }
+  },
+
+  // Fetch all 5 official WSL endpoints specifically or in batch
+  async fetchAllEndpoints(matchId = "e41e9112d45845d8906deb66c4b8cd73") {
+    try {
+      const [mainData, eventsData, statsData, lineupsData, infoData] = await Promise.all([
+        this.fetch(matchId, "all"),
+        this.fetch(matchId, "events"),
+        this.fetch(matchId, "stats_club"),
+        this.fetch(matchId, "lineups"),
+        this.fetch(matchId, "info"),
+      ]);
+      return {
+        main: mainData,
+        events: eventsData,
+        stats: statsData,
+        lineups: lineupsData,
+        info: infoData,
+      };
+    } catch (e) {
+      console.warn("[WSL Sync] Error fetching all 5 endpoints:", e);
+      return null;
+    }
+  },
+
+  // Subscribe to real-time WSL updates
+  subscribe(callback) {
+    if (typeof callback === "function") {
+      this.listeners.add(callback);
+    }
+  },
+
+  unsubscribe(callback) {
+    this.listeners.delete(callback);
+  },
+
+  // Start background auto-refresh interval
+  startBackgroundSync(intervalMs = 20000, matchId = "e41e9112d45845d8906deb66c4b8cd73") {
+    if (this.activePollInterval) {
+      clearInterval(this.activePollInterval);
+    }
+    // Initial fetch
+    this.fetch(matchId, "all");
+
+    // Continuous interval
+    this.activePollInterval = setInterval(() => {
+      this.fetch(matchId, "all");
+    }, intervalMs);
+  },
+
+  stopBackgroundSync() {
+    if (this.activePollInterval) {
+      clearInterval(this.activePollInterval);
+      this.activePollInterval = null;
+    }
+  },
+};
+
+window.WslMatchSync = WslMatchSync;
+window.fetchWslMatchData = function (matchId, sub, options) {
+  return WslMatchSync.fetch(matchId, sub, options);
+};
+
+// Auto-start WSL Background Sync on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+  const isMatchDetail = window.location.pathname.includes("match-detail");
+  const isWomenPage =
+    window.location.pathname.includes("women") || window.location.search.includes("women");
+  const isIndex =
+    window.location.pathname === "/" ||
+    window.location.pathname.endsWith("index.html") ||
+    window.location.pathname === "";
+
+  // Start background sync if relevant page
+  if (isMatchDetail || isWomenPage || isIndex) {
+    WslMatchSync.startBackgroundSync(20000, "e41e9112d45845d8906deb66c4b8cd73");
+  }
+});
+

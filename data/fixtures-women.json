@@ -1155,17 +1155,27 @@
   {
     "id": "w6",
     "date": "2026-09-27",
-    "time": "23:30",
-    "time_th": "23:30",
-    "time_uk": "17:30",
+    "time": "22:30",
+    "time_th": "22:30",
+    "time_uk": "16:30",
     "competition": "Barclays Women's Super League",
+    "competition_name": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "team_type": "W",
+    "round": "Matchweek 4",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
-    "away_team": "Arsenal",
+    "away_team": "Arsenal Women",
     "away_logo": "databases/logo/teams/england_arsenal.svg",
     "venue": "Stamford Bridge, London",
     "ha": "H",
+    "attendance": 19349,
+    "referee": "Emily Heaslip",
+    "status": "completed",
+    "home_score": 1,
+    "away_score": 0,
+    "home_half_score": 1,
+    "away_half_score": 0,
     "channels": [
       {
         "platform": "Sky Sports",
@@ -1173,148 +1183,298 @@
         "logo": "databases/logo/tv/sky_sports.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
-    "home_lineup": [
-      "Hannah Hampton",
-      "Katie McCabe",
-      "Kadeisha Buchanan",
-      "Lucy Bronze",
-      "Ellie Carpenter",
-      "Wieke Kaptein",
-      "Keira Walsh",
-      "Lexi Potter",
-      "Melvine Malard",
-      "Lauren James",
-      "Alyssa Thompson"
+    "goals": [
+      {
+        "team": "home",
+        "player": "Alyssa Thompson",
+        "minute": 39
+      }
     ],
-    "home_subs": [
-      "Sandy Baltimore",
-      "Aggie Beever-Jones",
-      "Nathalie Björn",
-      "Veerle Buurman",
-      "Giulia Dragoni",
-      "Naomi Girma",
-      "Maika Hamano",
-      "Sjoeke Nüsken",
-      "Livia Peng"
+    "events": [
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Alyssa Thompson",
+        "minute": 39,
+        "detail": "Rebound after Keira Walsh's shot was saved; no official assist"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Katie McCabe",
+        "minute": 45,
+        "detail": "Yellow Card"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Lucy Bronze",
+        "minute": 45,
+        "added_minute": 3,
+        "display_minute": "45+3",
+        "detail": "Yellow Card"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Stina Blackstenius",
+        "player_in": "Stina Blackstenius",
+        "player_out": "Georgia Stanway",
+        "minute": 61
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Chloe Kelly",
+        "player_in": "Chloe Kelly",
+        "player_out": "Lisa Baum",
+        "minute": 61
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Caitlin Foord",
+        "player_in": "Caitlin Foord",
+        "player_out": "Mariona Caldentey",
+        "minute": 61
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "player_in": "Sjoeke Nüsken",
+        "player_out": "Lauren James",
+        "minute": 68
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Aggie Beever-Jones",
+        "player_in": "Aggie Beever-Jones",
+        "player_out": "Melvine Malard",
+        "minute": 80
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Selina Cerci",
+        "player_in": "Selina Cerci",
+        "player_out": "Ona Batlle",
+        "minute": 81
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Géraldine Reuteler",
+        "player_in": "Géraldine Reuteler",
+        "player_out": "Kim Little",
+        "minute": 82
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Sandy Baltimore",
+        "player_in": "Sandy Baltimore",
+        "player_out": "Alyssa Thompson",
+        "minute": 89
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Veerle Buurman",
+        "player_in": "Veerle Buurman",
+        "player_out": "Katie McCabe",
+        "minute": 89
+      },
+      {
+        "type": "var",
+        "team": "away",
+        "player": null,
+        "minute": null,
+        "detail": "No decisive VAR intervention; no penalty awarded"
+      }
     ],
-    "away_lineup": [
-      "Anneke Borbe",
-      "Steph Catley",
-      "Ona Batlle",
-      "Leah Williamson",
-      "Emily Fox",
-      "Georgia Stanway",
-      "Kyra Cooney-Cross",
-      "Kim Little",
-      "Mariona Caldentey",
-      "Lisa Baum",
-      "Alessia Russo"
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 56,
+        "away": 44,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 13,
+        "away": 18,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 7,
+        "away": 2,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงไม่เข้ากรอบ (Shots Off Target)",
+        "home": 6,
+        "away": 16,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corner Kicks)",
+        "home": 3,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 9,
+        "away": 8,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 2,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      }
     ],
-    "away_subs": [
-      "Stina Blackstenius",
-      "Selina Cerci",
-      "Caitlin Foord",
-      "Smilla Holmberg",
-      "Chloe Kelly",
-      "Géraldine Reuteler",
-      "Misa Rodríguez",
-      "Olivia Smith",
-      "Lotte Wubben-Moy"
+    "goalkeeper_stats": [
+      {
+        "name": "Hannah Hampton",
+        "team": "Chelsea Women",
+        "saves": null,
+        "punches": null,
+        "high_claims": null,
+        "saves_inside_box": null
+      },
+      {
+        "name": "Anneke Borbe",
+        "team": "Arsenal Women",
+        "saves": null,
+        "punches": null,
+        "high_claims": null,
+        "saves_inside_box": null
+      }
     ],
     "lineups": {
       "home": {
         "manager": "Sonia Bompastor",
-        "formation": "4-2-3-1",
+        "formation": "4-4-2",
         "starting": [
           {
             "number": 24,
-            "name": "Hannah Hampton (GK)",
-            "position": "GK"
-          },
-          {
-            "number": 15,
-            "name": "Katie McCabe"
-          },
-          {
-            "number": 26,
-            "name": "Kadeisha Buchanan"
-          },
-          {
-            "number": 22,
-            "name": "Lucy Bronze (C)",
-            "captain": true
+            "name": "Hannah Hampton",
+            "position": "GK",
+            "pos": "GK",
+            "captain": false
           },
           {
             "number": 2,
-            "name": "Ellie Carpenter"
+            "name": "Ellie Carpenter",
+            "position": "DF"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "DF",
+            "captain": true
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "DF"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "DF"
           },
           {
             "number": 19,
-            "name": "Wieke Kaptein"
-          },
-          {
-            "number": 21,
-            "name": "Keira Walsh"
+            "name": "Wieke Kaptein",
+            "position": "MF"
           },
           {
             "number": 32,
-            "name": "Lexi Potter"
+            "name": "Lexi Potter",
+            "position": "MF"
           },
           {
-            "number": 9,
-            "name": "Melvine Malard"
-          },
-          {
-            "number": 10,
-            "name": "Lauren James"
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": "MF"
           },
           {
             "number": 12,
-            "name": "Alyssa Thompson"
+            "name": "Alyssa Thompson",
+            "position": "FW"
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": "FW"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James",
+            "position": "FW"
           }
         ],
         "substitutes": [
           {
-            "number": 11,
-            "name": "Sandy Baltimore"
-          },
-          {
-            "number": 33,
-            "name": "Aggie Beever-Jones"
-          },
-          {
-            "number": 14,
-            "name": "Nathalie Björn"
-          },
-          {
-            "number": 5,
-            "name": "Veerle Buurman"
-          },
-          {
-            "number": 16,
-            "name": "Giulia Dragoni"
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK"
           },
           {
             "number": 4,
-            "name": "Naomi Girma"
+            "name": "Naomi Girma",
+            "position": "DF"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn",
+            "position": "DF"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "MF"
           },
           {
             "number": 23,
-            "name": "Maika Hamano"
+            "name": "Maika Hamano",
+            "position": "MF/FW"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones",
+            "position": "FW",
+            "minute_in": 80
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "DF",
+            "minute_in": 89
           },
           {
             "number": 6,
-            "name": "Sjoeke Nüsken"
+            "name": "Sjoeke Nüsken",
+            "position": "MF",
+            "minute_in": 68
           },
           {
-            "number": 1,
-            "name": "Livia Peng (GK)",
-            "position": "GK"
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "FW",
+            "minute_in": 89
           }
         ]
       },
@@ -1324,88 +1484,112 @@
         "starting": [
           {
             "number": 28,
-            "name": "Anneke Borbe (GK)",
-            "position": "GK"
-          },
-          {
-            "number": 7,
-            "name": "Steph Catley"
-          },
-          {
-            "number": 22,
-            "name": "Ona Batlle"
-          },
-          {
-            "number": 6,
-            "name": "Leah Williamson"
+            "name": "Anneke Borbe",
+            "position": "GK",
+            "pos": "GK"
           },
           {
             "number": 2,
-            "name": "Emily Fox"
+            "name": "Emily Fox",
+            "position": "DF"
           },
           {
-            "number": 4,
-            "name": "Georgia Stanway"
+            "number": 6,
+            "name": "Leah Williamson",
+            "position": "DF"
+          },
+          {
+            "number": 7,
+            "name": "Steph Catley",
+            "position": "DF"
+          },
+          {
+            "number": 22,
+            "name": "Ona Batlle",
+            "position": "DF"
           },
           {
             "number": 32,
-            "name": "Kyra Cooney-Cross"
+            "name": "Kyra Cooney-Cross",
+            "position": "MF"
+          },
+          {
+            "number": 4,
+            "name": "Georgia Stanway",
+            "position": "MF"
+          },
+          {
+            "number": 19,
+            "name": "Lisa Baum",
+            "position": "MF"
           },
           {
             "number": 10,
-            "name": "Kim Little (C)",
+            "name": "Kim Little",
+            "position": "MF",
             "captain": true
           },
           {
             "number": 8,
-            "name": "Mariona Caldentey"
-          },
-          {
-            "number": 19,
-            "name": "Lisa Baum"
+            "name": "Mariona Caldentey",
+            "position": "MF"
           },
           {
             "number": 23,
-            "name": "Alessia Russo"
+            "name": "Alessia Russo",
+            "position": "FW"
           }
         ],
         "substitutes": [
           {
-            "number": 25,
-            "name": "Stina Blackstenius"
-          },
-          {
-            "number": 29,
-            "name": "Selina Cerci"
-          },
-          {
-            "number": 9,
-            "name": "Caitlin Foord"
-          },
-          {
-            "number": 31,
-            "name": "Smilla Holmberg"
-          },
-          {
-            "number": 18,
-            "name": "Chloe Kelly"
-          },
-          {
-            "number": 14,
-            "name": "Géraldine Reuteler"
-          },
-          {
             "number": 16,
-            "name": "Misa Rodríguez (GK)",
+            "name": "Misa Rodríguez",
             "position": "GK"
           },
           {
-            "number": 11,
-            "name": "Olivia Smith"
+            "number": 3,
+            "name": "Lotte Wubben-Moy",
+            "position": "DF"
           },
           {
-            "number": 3,
-            "name": "Lotte Wubben-Moy"
+            "number": 9,
+            "name": "Caitlin Foord",
+            "position": "FW",
+            "minute_in": 61
+          },
+          {
+            "number": 11,
+            "name": "Olivia Smith",
+            "position": "FW"
+          },
+          {
+            "number": 14,
+            "name": "Géraldine Reuteler",
+            "position": "MF",
+            "minute_in": 82
+          },
+          {
+            "number": 18,
+            "name": "Chloe Kelly",
+            "position": "FW",
+            "minute_in": 61
+          },
+          {
+            "number": 25,
+            "name": "Stina Blackstenius",
+            "position": "FW",
+            "minute_in": 61
+          },
+          {
+            "number": 29,
+            "name": "Selina Cerci",
+            "position": "FW",
+            "minute_in": 81
+          },
+          {
+            "number": 31,
+            "name": "Smilla Holmberg",
+            "position": "DF"
           }
         ]
       },
@@ -1416,16 +1600,140 @@
         }
       ]
     },
-    "competition_name": "Barclays Women's Super League",
-    "team_type": "W",
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": "Lucy Bronze",
-    "formation": "4-2-3-1",
-    "referee": "Emily Heaslip",
-    "round": "Matchweek 4"
+    "commentary": {
+      "summary": "เชลซี วีเมน เปิดบ้านเอาชนะ อาร์เซนอล 1-0 ที่ Stamford Bridge จากประตูของ Alyssa Thompson ในนาทีที่ 39",
+      "takeaways": [
+        "Alyssa Thompson ยิงประตูชัยให้ Chelsea ในนาทีที่ 39",
+        "Chelsea ยิงเข้ากรอบ 7 ครั้ง ขณะที่ Arsenal ยิงเข้ากรอบ 2 ครั้ง",
+        "Arsenal มีจำนวนการยิงรวมมากกว่า Chelsea 18-13 แต่ไม่สามารถทำประตูได้",
+        "Chelsea มีการเปลี่ยนตัว 4 คน และ Arsenal มีการเปลี่ยนตัว 5 คน",
+        "ไม่มีใบแดงและไม่มี Own Goal",
+        "ไม่พบ Decisive VAR Intervention หรือการให้จุดโทษจาก VAR"
+      ]
+    },
+    "live_commentary": [
+      {
+        "id": 1,
+        "time": "",
+        "type": "start",
+        "text": "เริ่มการแข่งขันที่ Stamford Bridge",
+        "team": null,
+        "isKey": false
+      },
+      {
+        "id": 2,
+        "time": "39'",
+        "type": "goal",
+        "text": "GOAL! Chelsea ขึ้นนำ 1-0 จาก Alyssa Thompson ยิงซ้ำหลังลูกยิงของ Keira Walsh ถูกผู้รักษาประตู Arsenal เซฟ",
+        "team": "home",
+        "isKey": true
+      },
+      {
+        "id": 3,
+        "time": "45'",
+        "type": "yellow_card",
+        "text": "Katie McCabe รับใบเหลือง",
+        "team": "home",
+        "isKey": true
+      },
+      {
+        "id": 4,
+        "time": "45+3'",
+        "type": "yellow_card",
+        "text": "Lucy Bronze รับใบเหลือง",
+        "team": "home",
+        "isKey": true
+      },
+      {
+        "id": 5,
+        "time": "45+3'",
+        "type": "halftime",
+        "text": "หมดครึ่งแรก: Chelsea Women 1-0 Arsenal Women",
+        "team": null,
+        "isKey": false
+      },
+      {
+        "id": 6,
+        "time": "46'",
+        "type": "start",
+        "text": "เริ่มการแข่งขันครึ่งหลัง",
+        "team": null,
+        "isKey": false
+      },
+      {
+        "id": 7,
+        "time": "61'",
+        "type": "substitution",
+        "text": "Arsenal เปลี่ยนตัว 3 คน: Stina Blackstenius แทน Georgia Stanway, Chloe Kelly แทน Lisa Baum และ Caitlin Foord แทน Mariona Caldentey",
+        "team": "away",
+        "isKey": false
+      },
+      {
+        "id": 8,
+        "time": "68'",
+        "type": "substitution",
+        "text": "Chelsea เปลี่ยนตัว: Sjoeke Nüsken ลงแทน Lauren James",
+        "team": "home",
+        "isKey": false
+      },
+      {
+        "id": 9,
+        "time": "80'",
+        "type": "substitution",
+        "text": "Chelsea เปลี่ยนตัว: Aggie Beever-Jones ลงแทน Melvine Malard",
+        "team": "home",
+        "isKey": false
+      },
+      {
+        "id": 10,
+        "time": "81'",
+        "type": "substitution",
+        "text": "Arsenal เปลี่ยนตัว: Selina Cerci ลงแทน Ona Batlle",
+        "team": "away",
+        "isKey": false
+      },
+      {
+        "id": 11,
+        "time": "82'",
+        "type": "substitution",
+        "text": "Arsenal เปลี่ยนตัว: Géraldine Reuteler ลงแทน Kim Little",
+        "team": "away",
+        "isKey": false
+      },
+      {
+        "id": 12,
+        "time": "89'",
+        "type": "substitution",
+        "text": "Chelsea เปลี่ยนตัว 2 คน: Sandy Baltimore ลงแทน Alyssa Thompson และ Veerle Buurman ลงแทน Katie McCabe",
+        "team": "home",
+        "isKey": false
+      },
+      {
+        "id": 13,
+        "time": "90+5'",
+        "type": "end",
+        "text": "จบเกม! Chelsea Women 1-0 Arsenal Women",
+        "team": null,
+        "isKey": true
+      }
+    ],
+    "youtube_id": "VX3mB06lDIw",
+    "video": {
+      "id": "VX3mB06lDIw",
+      "title": "Chelsea 1-0 Arsenal | WSL Highlights",
+      "desc_th": "ไฮไลท์การแข่งขัน Barclays Women's Super League: เชลซี วีเมน ชนะ อาร์เซนอล 1-0",
+      "desc_en": "WSL Highlights: Chelsea Women 1-0 Arsenal Women",
+      "channel_name": "Barclays Women's Super League",
+      "channel_handle": "@barclayswsl",
+      "channel_url": "https://www.youtube.com/@barclayswsl",
+      "credit": "ขอบคุณคลิปไฮไลท์จากช่องทางทางการ Barclays Women's Super League",
+      "highlight": {
+        "youtube_id": "VX3mB06lDIw",
+        "channel": "@barclayswsl",
+        "title": "Chelsea 1-0 Arsenal | WSL Highlights",
+        "url": "https://youtu.be/VX3mB06lDIw"
+      }
+    }
   },
   {
     "id": "w7",
