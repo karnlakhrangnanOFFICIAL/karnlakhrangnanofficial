@@ -253,20 +253,6 @@
         <div class="hub-editorial-body" style="padding: 24px;">
           <!-- TAB 1: DASHBOARD -->
           <section class="hub-panel active" id="panel-dashboard">
-        <div class="hub-header-card">
-          <div class="hub-header-title">
-            <span class="hub-icon">🔵</span>
-            <div>
-              <h2>Chelsea Performance Dashboard</h2>
-              <div class="hub-header-subtitle">ติดตามตารางคะแนนพรีเมียร์ลีก โปรแกรมการแข่งขัน และรายชื่อขุมกำลังชุดปัจจุบัน</div>
-            </div>
-          </div>
-          <button type="button" class="hub-btn hub-btn-primary" onclick="window.ChelseaHub?.loadDashboardData()">
-            <span>🔄</span>
-            <span>รีเฟรชข้อมูล</span>
-          </button>
-        </div>
-
         <!-- Top Grid: Next Fixture Spotlight -->
         <div class="dashboard-grid-top" style="grid-template-columns: 1fr;">
           <!-- Section 2: Next Fixtures Spotlight -->
@@ -415,20 +401,6 @@
 
       <!-- TAB 2: LIVE MATCH RESULTS AUTOMATIC HTML TABLE -->
       <section class="hub-panel" id="panel-matches">
-        <div class="hub-header-card">
-          <div class="hub-header-title">
-            <span class="hub-icon">⚡</span>
-            <div>
-              <h2>ระบบอัปเดต Data ผลการแข่งขันอัตโนมัติ (Live Match Table)</h2>
-              <div class="hub-header-subtitle">ดึงข้อมูล JSON จาก football-data.org แบบ Real-time แปลงเป็นตารางผลสกอร์บนเว็บไซต์ทันที</div>
-            </div>
-          </div>
-          <button type="button" class="hub-btn hub-btn-primary" id="btnRefreshMatches">
-            <span>🔄</span>
-            <span>รีเฟรชตารางแมตช์</span>
-          </button>
-        </div>
-
         <!-- Filter & Search Bar -->
         <div class="hub-filters-bar">
           <div class="hub-filter-inputs">
@@ -482,20 +454,10 @@
 
       <!-- TAB 3: MANAGER TIMELINE & STATS FILTER -->
       <section class="hub-panel" id="panel-manager">
-        <div class="hub-header-card">
-          <div class="hub-header-title">
-            <span class="hub-icon">👔</span>
-            <div>
-              <h2>Filter สถิติและ Timeline ของ Manager</h2>
-              <div class="hub-header-subtitle">กรองแมตช์ตามช่วงเวลาเพื่อเปรียบเทียบผลงานผู้จัดการทีม คำนวณสรุป W / D / L, Win Rate และ PPM</div>
-            </div>
-          </div>
-        </div>
-
         <!-- Manager Preset Buttons -->
         <div style="margin-bottom: 0.75rem;">
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 600;">
-            เลือก Timeline ผู้จัดการทีมแบบด่วน:
+            เลือก Timeline ผู้จัดการทีม:
           </div>
           <div class="manager-presets-bar" id="managerPresetsContainer">
             <!-- Rendered by chelsea-hub.js -->
@@ -551,16 +513,13 @@
 
       <!-- TAB 4: HEAD-TO-HEAD (H2H) STATS -->
       <section class="hub-panel" id="panel-h2h">
-        <div class="hub-header-card">
-          <div class="hub-header-title">
-            <span class="hub-icon">⚔️</span>
-            <div>
-              <h2>Component สำหรับจัดเก็บและวิเคราะห์สถิติ Head-to-Head</h2>
-              <div class="hub-header-subtitle">เปรียบเทียบสถิติการพบกันระหว่าง Chelsea FC กับทีมคู่แข่งชั้นนำในพรีเมียร์ลีกและยุโรป</div>
-            </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="font-weight: 600; color: var(--text-color); font-size: 1rem; display: flex; align-items: center; gap: 6px;">
+            <span>⚔️</span>
+            <span>เปรียบเทียบสถิติ Head-to-Head</span>
           </div>
           <div class="hub-input-group">
-            <label for="h2hOpponentSelect" style="color: #ffffff; font-weight: 600;">เลือกทีมคู่แข่ง:</label>
+            <label for="h2hOpponentSelect" style="color: var(--text-color); font-weight: 600;">เลือกทีมคู่แข่ง:</label>
             <select id="h2hOpponentSelect" style="min-width: 200px; font-weight: 600;">
               <!-- Rendered with top rivals -->
             </select>

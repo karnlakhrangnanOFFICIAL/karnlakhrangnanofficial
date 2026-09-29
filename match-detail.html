@@ -2400,8 +2400,7 @@
               .map(
                 (ch) => `
               <span class="channel-badge-item" title="${ch.name}">
-                ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" onerror="this.style.display='none'">` : ""}
-                <span style="font-size: 0.8rem; font-weight: 500;">${ch.name}</span>
+                ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" onerror="this.style.display='none'">` : (ch.name || "")}
               </span>
             `
               )
