@@ -233,7 +233,7 @@ window.generateCalendarMatchTooltipHTML = function(match, isTh) {
           <span class="cft-val">${venue}</span>
         </div>
         <div class="cft-detail-row">
-          <span class="cft-icon">📅</span>
+          <span class="cft-icon"><svg class="component-icon" width="16" height="16" role="img" style="vertical-align: middle;"><use xlink:href="/img/match-page/icons.svg?v=1.1501.0#KICK_OFF_DARK"></use></svg></span>
           <span class="cft-label">${isTh ? "วัน-เวลา:" : "Kick-off:"}</span>
           <span class="cft-val">${match.date} · ${match.time || "TBC"} น.</span>
         </div>

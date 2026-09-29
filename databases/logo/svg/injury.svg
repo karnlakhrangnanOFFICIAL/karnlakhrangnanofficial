@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke-width="2">
-  <rect x="3" y="5" width="18" height="14" rx="2" stroke="#111827"/>
-  <path d="M12 8v8M8 12h8" stroke="#EF4444" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-</svg>
+<svg fill="#ff0000" viewBox="0 0 32.00 32.00" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000" stroke-width="0.00032"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><rect x="0" y="0" width="32.00" height="32.00" rx="4.8" fill="#ffffff" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.256"></g><g id="SVGRepo_iconCarrier"> <title>medical-pack</title> <path d="M4.75 2.875c-2.078 0-3.75 1.672-3.75 3.75v18.75c0 2.078 1.672 3.75 3.75 3.75h22.5c2.078 0 3.75-1.672 3.75-3.75v-18.75c0-2.078-1.672-3.75-3.75-3.75h-22.5zM4.75 6.625h22.5v18.75h-22.5v-18.75zM14.125 10.375v3.75h-3.75v3.75h3.75v3.75h3.75v-3.75h3.75v-3.75h-3.75v-3.75h-3.75z"></path> </g></svg>

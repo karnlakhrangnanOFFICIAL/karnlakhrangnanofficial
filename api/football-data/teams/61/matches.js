@@ -4,7 +4,15 @@ import path from "path";
 const FOOTBALL_DATA_TOKEN =
   process.env.FOOTBALL_DATA_TOKEN ||
   process.env.FOOTBALL_DATA_API_KEY ||
+  process.env.NEXT_PUBLIC_FOOTBALL_DATA_TOKEN ||
   "fb73ad1df2194fdab3fe56614d1a953e";
+
+// In-memory cache to prevent upstream rate-limits and eliminate latency
+let memoryCache = {
+  data: null,
+  timestamp: 0,
+  key: "",
+};
 
 /**
  * Fallback static fixtures generator from local database or memory
@@ -47,7 +55,7 @@ function getLocalMatchesFallback() {
       return { count: matches.length, matches };
     }
   } catch (err) {
-    console.warn("Local fixtures file read warning:", err.message);
+    // Silent fallback
   }
 
   // Hardcoded emergency fallback match
@@ -96,20 +104,35 @@ export default async function handler(req, res) {
     }
 
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : "";
+    const cacheKey = queryString;
+    const now = Date.now();
+
+    // Check memory cache (Valid for 60 seconds)
+    if (memoryCache.data && memoryCache.key === cacheKey && now - memoryCache.timestamp < 60000) {
+      res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
+      return res.status(200).json(memoryCache.data);
+    }
+
     const targetUrl = `https://api.football-data.org/v4/teams/61/matches${queryString}`;
 
-    // Fetch from Football-Data.org API with timeout
+    // Fast-fail fetch with 2500ms timeout
     try {
       const response = await fetch(targetUrl, {
         headers: {
           "X-Auth-Token": FOOTBALL_DATA_TOKEN,
           "User-Agent": "Mozilla/5.0 (ChelseaHub/2.0)",
         },
-        signal: AbortSignal.timeout(7000),
+        signal: AbortSignal.timeout(2500),
       });
 
       if (response.ok) {
         const data = await response.json();
+        memoryCache = {
+          data,
+          timestamp: now,
+          key: cacheKey,
+        };
+
         const isLiveOrFresh =
           queryString.includes("_t=") ||
           queryString.includes("live=true") ||
@@ -122,21 +145,27 @@ export default async function handler(req, res) {
         }
         return res.status(200).json(data);
       }
-
-      console.warn(
-        `Football-data API returned status ${response.status} for /teams/61/matches. Using fallback fixtures.`
-      );
     } catch (fetchErr) {
-      console.warn("Upstream fetch error for /teams/61/matches:", fetchErr.message);
+      // Fast fallback on timeout or connection error without noisy logs
+    }
+
+    // If cached data exists (even if stale), serve it
+    if (memoryCache.data) {
+      res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=180");
+      return res.status(200).json(memoryCache.data);
     }
 
     // Graceful fallback to local dataset
     const fallbackData = getLocalMatchesFallback();
+    memoryCache = {
+      data: fallbackData,
+      timestamp: now,
+      key: cacheKey,
+    };
+
     res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=180");
     return res.status(200).json(fallbackData);
   } catch (error) {
-    console.error("Unhandled error in /api/football-data/teams/61/matches:", error);
-    // Never return 500 error to user interface
     const emergencyData = getLocalMatchesFallback();
     return res.status(200).json(emergencyData);
   }

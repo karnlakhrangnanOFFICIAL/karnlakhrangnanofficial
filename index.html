@@ -1719,8 +1719,10 @@
             const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
             const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
             const playerNameOnly = `${clean}${suffix}`;
+            const assistTh = g.assist ? ` (👟 แอสซิสต์: ${g.assist})` : '';
+            const assistEn = g.assist ? ` (👟 Assist: ${g.assist})` : '';
             return `
-              <div class="card-goal-item home" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
+              <div class="card-goal-item home" data-tooltip="${playerNameOnly}${assistTh}" data-tooltip-th="${playerNameOnly}${assistTh}" data-tooltip-en="${playerNameOnly}${assistEn}">
                 <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
                 <span class="goal-minute">${g.minute}'</span>
               </div>
@@ -1735,8 +1737,10 @@
             const suffix = isOG ? ' (OG)' : (isPen ? ' (Pen)' : '');
             const avatarUrl = window.getPlayerAvatarUrl ? window.getPlayerAvatarUrl(clean) : 'assets/images/placeholder-player.svg';
             const playerNameOnly = `${clean}${suffix}`;
+            const assistTh = g.assist ? ` (👟 แอสซิสต์: ${g.assist})` : '';
+            const assistEn = g.assist ? ` (👟 Assist: ${g.assist})` : '';
             return `
-              <div class="card-goal-item away" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
+              <div class="card-goal-item away" data-tooltip="${playerNameOnly}${assistTh}" data-tooltip-th="${playerNameOnly}${assistTh}" data-tooltip-en="${playerNameOnly}${assistEn}">
                 <span class="goal-minute">${g.minute}'</span>
                 <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
               </div>

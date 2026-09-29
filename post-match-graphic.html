@@ -199,8 +199,11 @@
         if (match.goals && match.goals.length > 0) {
           match.goals.forEach((g) => {
             const el = document.createElement("div");
-            const text = `${g.player} ${g.minute}'`;
-            el.textContent = text;
+            el.style.display = "flex";
+            el.style.alignItems = "center";
+            el.style.gap = "8px";
+            const assistHtml = g.assist ? `<span style="font-size: 0.78em; color: #a5b4fc; display: inline-flex; align-items: center; gap: 4px;"><img src="databases/logo/svg/assist.svg" alt="Assist" style="width: 18px; height: 18px; object-fit: contain; vertical-align: middle;" /> ${g.assist}</span>` : "";
+            el.innerHTML = `<span>⚽ ${g.player} ${g.minute}'</span>${assistHtml}`;
             if (g.team === "home") homeGoalsEl.appendChild(el);
             else awayGoalsEl.appendChild(el);
           });

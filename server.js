@@ -20,6 +20,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static(__dirname, { extensions: ['html'] }));
 app.use('/databases', express.static(path.join(__dirname, 'databases')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
 // Explicit routes for each page (Hardcoded strings are REQUIRED for Vercel's nft static analysis)

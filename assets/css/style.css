@@ -5394,4 +5394,15 @@ html[data-theme="editorial"] .news-archive-card-title {
   display: inline-block;
 }
 
+/* Match Page Component Icons (SVG Sprites) */
+.component-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+
 

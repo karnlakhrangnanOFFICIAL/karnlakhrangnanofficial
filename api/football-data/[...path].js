@@ -7,6 +7,9 @@ const FOOTBALL_DATA_TOKEN =
   process.env.NEXT_PUBLIC_FOOTBALL_DATA_TOKEN ||
   "fb73ad1df2194fdab3fe56614d1a953e";
 
+// Memory cache dictionary for subpaths
+const pathCache = new Map();
+
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -45,6 +48,16 @@ export default async function handler(req, res) {
     }
 
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : "";
+    const cacheKey = `${subPath}${queryString}`;
+    const now = Date.now();
+
+    // Check memory cache (Valid for 60 seconds)
+    const cached = pathCache.get(cacheKey);
+    if (cached && now - cached.timestamp < 60000) {
+      res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
+      return res.status(200).json(cached.data);
+    }
+
     const targetUrl = `https://api.football-data.org/v4/${subPath}${queryString}`;
 
     try {
@@ -53,11 +66,13 @@ export default async function handler(req, res) {
           "X-Auth-Token": FOOTBALL_DATA_TOKEN,
           "User-Agent": "Mozilla/5.0 (ChelseaHub/2.0)",
         },
-        signal: AbortSignal.timeout(7000),
+        signal: AbortSignal.timeout(2500),
       });
 
       if (response.ok) {
         const data = await response.json();
+        pathCache.set(cacheKey, { data, timestamp: now });
+
         if (
           queryString.includes("_t=") ||
           queryString.includes("live=true") ||
@@ -69,10 +84,14 @@ export default async function handler(req, res) {
         }
         return res.status(200).json(data);
       }
-
-      console.warn(`Football-data.org returned status ${response.status} for ${subPath}`);
     } catch (fetchErr) {
-      console.warn("Upstream fetch error for football-data:", fetchErr.message);
+      // Fast fallback on timeout without noisy logs
+    }
+
+    // If cached data exists (even if stale), serve it
+    if (cached && cached.data) {
+      res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=180");
+      return res.status(200).json(cached.data);
     }
 
     // Local Fallback for matches (/teams/61/matches)
@@ -98,12 +117,12 @@ export default async function handler(req, res) {
               competition: { id: 2021, name: m.competition_name || m.competition || "Premier League", code: "PL" },
             }));
 
+          const responseData = { count: matches.length, matches };
+          pathCache.set(cacheKey, { data: responseData, timestamp: now });
           res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=120");
-          return res.status(200).json({ count: matches.length, matches });
+          return res.status(200).json(responseData);
         }
-      } catch (err) {
-        console.error("Local matches fallback error:", err.message);
-      }
+      } catch (err) {}
     }
 
     // Local Fallback for standings (/competitions/PL/standings)
@@ -112,12 +131,11 @@ export default async function handler(req, res) {
         const tablesFile = path.join(process.cwd(), "data", "tables-men.json");
         if (fs.existsSync(tablesFile)) {
           const tableData = JSON.parse(fs.readFileSync(tablesFile, "utf8"));
+          pathCache.set(cacheKey, { data: tableData, timestamp: now });
           res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
           return res.status(200).json(tableData);
         }
-      } catch (err) {
-        console.error("Local standings fallback error:", err.message);
-      }
+      } catch (err) {}
     }
 
     // Fallback for general squad or team info (/teams/61)
@@ -126,8 +144,7 @@ export default async function handler(req, res) {
         const playersFile = path.join(process.cwd(), "data", "players-men.json");
         if (fs.existsSync(playersFile)) {
           const squad = JSON.parse(fs.readFileSync(playersFile, "utf8"));
-          res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
-          return res.status(200).json({
+          const squadData = {
             id: 61,
             name: "Chelsea FC",
             shortName: "Chelsea",
@@ -135,16 +152,16 @@ export default async function handler(req, res) {
             crest: "databases/logo/teams/england_chelsea.svg",
             squad: squad,
             coach: { name: "Xabi Alonso", nationality: "Spanish" },
-          });
+          };
+          pathCache.set(cacheKey, { data: squadData, timestamp: now });
+          res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
+          return res.status(200).json(squadData);
         }
-      } catch (err) {
-        console.error("Local squad fallback error:", err.message);
-      }
+      } catch (err) {}
     }
 
     return res.status(200).json({ success: true, message: "Fallback response", subPath });
   } catch (error) {
-    console.error("Football-Data handler error:", error.message);
     return res.status(200).json({ success: false, error: error.message });
   }
 }

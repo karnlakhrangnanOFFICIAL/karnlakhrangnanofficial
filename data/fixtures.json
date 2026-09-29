@@ -2311,21 +2311,32 @@
         "player": "Morgan Rogers",
         "assist": "João Pedro",
         "team": "home",
-        "score": "1-0"
+        "score": "1:0",
+        "type": "regular"
       },
       {
         "minute": 28,
         "player": "Mohamed Belloumi",
-        "assist": "Ryan Giles with a cross",
+        "assist": "Ryan John Giles",
         "team": "away",
-        "score": "1-1"
+        "score": "1:1",
+        "type": "regular"
       },
       {
         "minute": 34,
         "player": "Mohamed Belloumi",
         "assist": "Oliver McBurnie",
         "team": "away",
-        "score": "1-2"
+        "score": "1:2",
+        "type": "regular"
+      },
+      {
+        "minute": 66,
+        "player": "João Pedro",
+        "assist": "Cole Palmer",
+        "team": "home",
+        "score": "2:2",
+        "type": "regular"
       }
     ],
     "events": [
@@ -2349,8 +2360,8 @@
         "type": "goal",
         "team": "away",
         "player": "Mohamed Belloumi",
-        "assist": "Ryan Giles with a cross",
-        "detail": "Goal! Chelsea 1, Hull City 1. Mohamed Belloumi (Hull City) left footed shot from the centre of the box to the bottom right corner. Assisted by Ryan Giles with a cross."
+        "assist": "Ryan John Giles",
+        "detail": "Goal! Chelsea 1, Hull City 1. Mohamed Belloumi (Hull City) left footed shot from the centre of the box to the bottom right corner. Assisted by Ryan John Giles with a cross."
       },
       {
         "minute": 34,
@@ -2365,7 +2376,9 @@
         "type": "substitution",
         "team": "home",
         "player": "Pep Chavarría",
-        "player_out": "Jorrel Hato"
+        "player_in": "Pep Chavarría",
+        "player_out": "Jorrel Hato",
+        "detail": "Substitution, Chelsea. Pep Chavarría replaces Jorrel Hato."
       },
       {
         "minute": 50,
@@ -2386,198 +2399,257 @@
         "type": "substitution",
         "team": "away",
         "player": "Lucas Herrington",
-        "player_out": "Nobel Mendy because of an injury"
+        "player_in": "Lucas Herrington",
+        "player_out": "Nobel Mendy",
+        "injury": true,
+        "detail": "Substitution, Hull City. Lucas Herrington replaces Nobel Mendy because of an injury."
       },
       {
         "minute": 60,
         "type": "substitution",
         "team": "away",
         "player": "Sorba Thomas",
-        "player_out": "Elliot Stroud"
+        "player_in": "Sorba Thomas",
+        "player_out": "Elliot Stroud",
+        "detail": "Substitution, Hull City. Sorba Thomas replaces Elliot Stroud."
+      },
+      {
+        "minute": 66,
+        "type": "goal",
+        "team": "home",
+        "player": "João Pedro",
+        "assist": "Cole Palmer",
+        "detail": "Goal! Chelsea 2, Hull City 2. João Pedro (Chelsea) right footed shot from the centre of the box to the bottom right corner. Assisted by Cole Palmer."
       }
     ],
-    "competition_name": "premier-league",
+    "competition_name": "Premier League",
     "team_type": "M",
     "lineups": {
       "home": {
         "manager": "Xabi Alonso",
-        "formation": "3-4-3",
+        "formation": "3-4-2-1",
         "starting": [
           {
             "number": 1,
-            "name": "Emiliano Martinez"
-          },
-          {
-            "number": 7,
-            "name": "Pedro Neto"
-          },
-          {
-            "number": 27,
-            "name": "Malo Gusto"
-          },
-          {
-            "number": 21,
-            "name": "Jorrel Hato"
+            "name": "Emiliano Martínez",
+            "position": "GK"
           },
           {
             "number": 6,
-            "name": "Levi Colwill"
+            "name": "Levi Colwill",
+            "position": "CB"
           },
           {
             "number": 3,
-            "name": "Wesley Fofana"
+            "name": "Wesley Fofana",
+            "position": "CB"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato",
+            "position": "CB"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto",
+            "position": "RWB"
           },
           {
             "number": 24,
-            "name": "Reece James"
+            "name": "Reece James",
+            "position": "CM"
           },
           {
             "number": 45,
-            "name": "Romeo Lavia"
-          },
-          {
-            "number": 9,
-            "name": "Joao Pedro"
-          },
-          {
-            "number": 10,
-            "name": "Cole Palmer"
+            "name": "Roméo Lavia",
+            "position": "CM"
           },
           {
             "number": 17,
-            "name": "Morgan Rogers"
+            "name": "Morgan Rogers",
+            "position": "AM"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer",
+            "position": "AM"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto",
+            "position": "LW"
+          },
+          {
+            "number": 9,
+            "name": "João Pedro",
+            "position": "ST"
           }
         ],
         "substitutes": [
           {
-            "number": 11,
-            "name": "Jamie Gittens"
-          },
-          {
-            "number": 18,
-            "name": "Danny Welbeck"
-          },
-          {
-            "number": 5,
-            "name": "Maxence Lacroix"
-          },
-          {
-            "number": 29,
-            "name": "Pep Chavarria"
-          },
-          {
-            "number": 4,
-            "name": "Valentin Barco"
-          },
-          {
             "number": 39,
-            "name": "Mike Penders"
+            "name": "Mike Penders",
+            "position": "GK"
           },
           {
             "number": 34,
-            "name": "Josh Acheampong"
+            "name": "Josh Acheampong",
+            "position": "DF"
           },
           {
-            "number": 23,
-            "name": "Geovany Quenda"
+            "number": 29,
+            "name": "Pep Chavarría",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix",
+            "position": "DF"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco",
+            "position": "DF"
           },
           {
             "number": 41,
-            "name": "Estevao Willian"
+            "name": "Estêvão",
+            "position": "FW"
+          },
+          {
+            "number": 11,
+            "name": "Jamie Bynoe-Gittens",
+            "position": "FW"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck",
+            "position": "FW"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda",
+            "position": "FW"
           }
         ]
       },
       "away": {
-        "manager": "Sergej Jakirovic",
+        "manager": "Sergej Jakirović",
         "formation": "5-4-1",
         "starting": [
           {
             "number": 19,
-            "name": "Konstantinos Tzolakis"
-          },
-          {
-            "number": 2,
-            "name": "Lewie Coyle"
-          },
-          {
-            "number": 3,
-            "name": "Ryan Giles"
+            "name": "Konstantinos Tzolakis",
+            "position": "GK"
           },
           {
             "number": 32,
-            "name": "Nobel Mendy"
+            "name": "Nobel Mendy",
+            "position": "CB"
           },
           {
             "number": 15,
-            "name": "John Egan"
+            "name": "John Egan",
+            "position": "CB"
           },
           {
             "number": 6,
-            "name": "Semi Ajayi"
+            "name": "Semi Ajayi",
+            "position": "CB"
           },
           {
-            "number": 10,
-            "name": "Mohamed Belloumi"
+            "number": 3,
+            "name": "Ryan John Giles",
+            "position": "LWB"
           },
           {
-            "number": 25,
-            "name": "Matt Crooks"
-          },
-          {
-            "number": 9,
-            "name": "Oliver McBurnie"
+            "number": 2,
+            "name": "Lewie Coyle",
+            "position": "RWB"
           },
           {
             "number": 27,
-            "name": "Regan Slater"
+            "name": "Regan Slater",
+            "position": "CM"
+          },
+          {
+            "number": 25,
+            "name": "Matt Crooks",
+            "position": "CM"
           },
           {
             "number": 21,
-            "name": "Elliot Stroud"
+            "name": "Elliot Stroud",
+            "position": "LM"
+          },
+          {
+            "number": 10,
+            "name": "Mohamed Belloumi",
+            "position": "RM"
+          },
+          {
+            "number": 9,
+            "name": "Oliver McBurnie",
+            "position": "ST"
           }
         ],
         "substitutes": [
           {
-            "number": 47,
-            "name": "Robinio Vaz"
+            "number": 12,
+            "name": "Dillon Phillips",
+            "position": "GK"
           },
           {
             "number": 22,
-            "name": "Lucas Herrington"
+            "name": "Lucas Herrington",
+            "position": "DF"
           },
           {
             "number": 18,
-            "name": "Brooke Norton-Cuffy"
-          },
-          {
-            "number": 50,
-            "name": "Mohamed-Ali Cho"
-          },
-          {
-            "number": 42,
-            "name": "Tim Iroegbunam"
-          },
-          {
-            "number": 7,
-            "name": "Sorba Thomas"
+            "name": "Brooke Norton-Cuffy",
+            "position": "DF"
           },
           {
             "number": 23,
-            "name": "Matt Targett"
-          },
-          {
-            "number": 12,
-            "name": "Dillon Phillips"
+            "name": "Matt Targett",
+            "position": "DF"
           },
           {
             "number": 29,
-            "name": "Lucas Gourna-Douath"
+            "name": "Lucas Gourna-Douath",
+            "position": "MF"
+          },
+          {
+            "number": 42,
+            "name": "Tim Iroegbunam",
+            "position": "MF"
+          },
+          {
+            "number": 50,
+            "name": "Mohamed-Ali Cho",
+            "position": "FW"
+          },
+          {
+            "number": 7,
+            "name": "Sorba Thomas",
+            "position": "FW"
+          },
+          {
+            "number": 47,
+            "name": "Robinio Vaz",
+            "position": "FW"
           }
         ]
-      }
+      },
+      "officials": [
+        {
+          "role": "ผู้ตัดสินหลัก (Referee)",
+          "name": "Farai Hallam"
+        }
+      ]
     },
     "period": "FullTime",
-    "clock": "97'",
+    "clock": "90+7'",
     "stats": [
       {
         "name": "การครองบอล (Possession)",
@@ -3299,8 +3371,71 @@
         "timestamp": "2026-09-12 16:18:13"
       }
     ],
-    "last_synced": "2026-09-29T14:55:04.516Z",
-    "pl_match_id": "2645227"
+    "last_synced": "2026-09-29T19:06:21.288Z",
+    "pl_match_id": "2645227",
+    "native_stats_id": "560581",
+    "native_stats_url": "https://native-stats.org/match/560581",
+    "home_half_score": 1,
+    "away_half_score": 2,
+    "score": "2:2",
+    "half_time_score": "1:2",
+    "time_uk": "15:00",
+    "time_th": "21:00",
+    "valuations": {
+      "home": {
+        "starting_lineup_value": "415.0 Mio. €",
+        "bench_value": "26.0 Mio. €"
+      },
+      "away": {
+        "bench_value": "10.0 Mio. €"
+      }
+    },
+    "lineup_changes": {
+      "home": {
+        "in": [
+          {
+            "number": 6,
+            "name": "Levi Colwill",
+            "position": "Defence"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto",
+            "position": "Defence"
+          }
+        ],
+        "out": [
+          {
+            "number": 5,
+            "name": "Maxence Lacroix",
+            "position": "Defence"
+          },
+          {
+            "number": 34,
+            "name": "Josh Acheampong",
+            "position": "Defence"
+          }
+        ]
+      },
+      "away": {
+        "in": [
+          {
+            "number": 25,
+            "name": "Matt Crooks",
+            "position": "Midfield"
+          }
+        ],
+        "out": [
+          {
+            "number": 29,
+            "name": "Lucas Gourna-Douath",
+            "position": "Midfield"
+          }
+        ]
+      }
+    },
+    "referee": "Farai Hallam",
+    "attendance": 39824
   },
   {
     "id": "m11",
