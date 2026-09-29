@@ -726,8 +726,8 @@
           </td>
           <td style="text-align: center;">
             <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
-              <div class="hub-logo-tooltip-wrap ${isChelseaHome ? 'is-chelsea' : ''}" data-tooltip="${homeName}">
-                <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" title="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+              <div class="hub-logo-tooltip-wrap ${isChelseaHome ? 'is-chelsea' : ''}">
+                <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
                 <span class="hub-logo-tooltip">${homeName}</span>
               </div>
             </div>
@@ -738,8 +738,8 @@
           </td>
           <td style="text-align: center;">
             <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
-              <div class="hub-logo-tooltip-wrap ${isChelseaAway ? 'is-chelsea' : ''}" data-tooltip="${awayName}">
-                <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" title="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+              <div class="hub-logo-tooltip-wrap ${isChelseaAway ? 'is-chelsea' : ''}">
+                <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
                 <span class="hub-logo-tooltip">${awayName}</span>
               </div>
             </div>
@@ -931,8 +931,8 @@
             <td style="font-size: 0.82rem;">${m.competition?.name || 'Tournament'}</td>
             <td style="text-align: center;">
               <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
-                <div class="hub-logo-tooltip-wrap ${isChelseaHome ? 'is-chelsea' : ''}" data-tooltip="${homeName}">
-                  <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" title="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                <div class="hub-logo-tooltip-wrap ${isChelseaHome ? 'is-chelsea' : ''}">
+                  <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
                   <span class="hub-logo-tooltip">${homeName}</span>
                 </div>
               </div>
@@ -942,8 +942,8 @@
             </td>
             <td style="text-align: center;">
               <div class="hub-team-cell-tooltip-only" style="display: flex; justify-content: center; align-items: center;">
-                <div class="hub-logo-tooltip-wrap ${isChelseaAway ? 'is-chelsea' : ''}" data-tooltip="${awayName}">
-                  <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" title="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                <div class="hub-logo-tooltip-wrap ${isChelseaAway ? 'is-chelsea' : ''}">
+                  <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
                   <span class="hub-logo-tooltip">${awayName}</span>
                 </div>
               </div>
@@ -1175,13 +1175,13 @@
 
             <div class="spotlight-match-teams">
               <div class="spotlight-team">
-                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" title="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               </div>
 
               <div class="spotlight-vs">VS</div>
 
               <div class="spotlight-team">
-                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" title="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               </div>
             </div>
 
@@ -1219,7 +1219,7 @@
 
       upcomingListContainer.innerHTML = `
         <div style="margin-top: 1rem;">
-          <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #93c5fd;">🗓️ โปรแกรมแข่งขันล่วงหน้า (5 นัดถัดไป)</h4>
+          <h4 style="font-size: 0.92rem; margin-bottom: 0.6rem; color: #93c5fd; font-weight: 600;">โปรแกรมแข่งขันล่วงหน้า (5 นัดถัดไป)</h4>
           <div class="hub-table-wrapper">
             <table class="hub-table">
               <tbody>
@@ -1236,13 +1236,13 @@
                       <td style="font-size: 0.82rem; color: #93c5fd; width: 140px;">${formatMatchDate(m.utcDate)}</td>
                       <td>
                         <div class="hub-fixture-logos-cell">
-                          <div class="hub-logo-tooltip-wrap ${isHomeChe ? 'is-chelsea' : ''}" data-tooltip="${homeName}">
-                            <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" title="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                          <div class="hub-logo-tooltip-wrap ${isHomeChe ? 'is-chelsea' : ''}">
+                            <img src="${homeLogo}" class="hub-fixture-logo-only" alt="${homeName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
                             <span class="hub-logo-tooltip">${homeName}</span>
                           </div>
                           <span class="hub-fixture-vs-badge">VS</span>
-                          <div class="hub-logo-tooltip-wrap ${isAwayChe ? 'is-chelsea' : ''}" data-tooltip="${awayName}">
-                            <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" title="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
+                          <div class="hub-logo-tooltip-wrap ${isAwayChe ? 'is-chelsea' : ''}">
+                            <img src="${awayLogo}" class="hub-fixture-logo-only" alt="${awayName}" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';" />
                             <span class="hub-logo-tooltip">${awayName}</span>
                           </div>
                         </div>

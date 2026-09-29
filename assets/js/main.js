@@ -59,6 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
       "[data-tooltip-th], [data-tooltip-en], [data-tooltip], [title], [data-original-title], a, button, img, .tab-btn, .lang-toggle, .flag-icon"
     );
     if (target) {
+      // Ignore elements that already have a dedicated CSS tooltip (e.g. hub-logo-tooltip-wrap)
+      if (
+        target.closest(".hub-logo-tooltip-wrap") ||
+        target.classList.contains("hub-fixture-logo-only") ||
+        target.closest(".no-global-tooltip")
+      ) {
+        tooltip.classList.remove("show");
+        return;
+      }
       // Ignore some structural wrappers
       if (
         target.tagName === "A" &&
