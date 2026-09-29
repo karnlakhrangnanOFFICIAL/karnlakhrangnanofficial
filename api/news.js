@@ -9,7 +9,10 @@ export default async function handler(req, res) {
 
     const responses = await Promise.all(
       urls.map((u) =>
-        fetch(u, { headers: { "User-Agent": "Mozilla/5.0" } })
+        fetch(u, {
+          headers: { "User-Agent": "Mozilla/5.0" },
+          signal: AbortSignal.timeout(6000),
+        })
           .then((r) => r.text())
           .catch(() => "")
       )

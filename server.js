@@ -5,6 +5,7 @@ import newsHandler from './api/news.js';
 import wslHandler from './api/wsl-standings.js';
 import plMatchHandler from './api/pl-match.js';
 import eflMatchHandler from './api/efl-match.js';
+import footballDataHandler from './api/football-data/[...path].js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,43 +46,8 @@ app.get('/api/efl-match', (req, res) => {
 });
 
 // Football-Data.org API Proxy with Token & CORS support
-const FOOTBALL_DATA_TOKEN = process.env.FOOTBALL_DATA_TOKEN || 'fb73ad1df2194fdab3fe56614d1a953e';
-
-app.options('/api/football-data/*', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token');
-  res.sendStatus(204);
-});
-
-app.get('/api/football-data/*', async (req, res) => {
-  try {
-    const apiPath = req.params[0] || '';
-    const queryIndex = req.url.indexOf('?');
-    const queryString = queryIndex !== -1 ? req.url.substring(queryIndex) : '';
-    const targetUrl = `https://api.football-data.org/v4/${apiPath}${queryString}`;
-
-    const response = await fetch(targetUrl, {
-      headers: {
-        'X-Auth-Token': FOOTBALL_DATA_TOKEN,
-        'User-Agent': 'Mozilla/5.0'
-      }
-    });
-
-    const data = await response.json();
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token');
-    if (queryString.includes('_t=') || queryString.includes('live=true') || req.headers['cache-control'] === 'no-cache') {
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
-    } else {
-      res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=300');
-    }
-    res.status(response.status).json(data);
-  } catch (err) {
-    console.error('Football-data proxy error:', err);
-    res.status(500).json({ error: err.message });
-  }
+app.all('/api/football-data*', (req, res) => {
+  footballDataHandler(req, res);
 });
 
 app.get('/api/epl-standings', async (req, res) => {
