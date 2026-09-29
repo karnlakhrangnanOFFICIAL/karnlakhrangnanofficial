@@ -1,6 +1,10 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import newsHandler from './api/news.js';
+import wslHandler from './api/wsl-standings.js';
+import plMatchHandler from './api/pl-match.js';
+import eflMatchHandler from './api/efl-match.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,13 +31,7 @@ app.get('/transfers', (req, res) => res.sendFile(path.join(__dirname, 'transfers
 app.get('/trophy', (req, res) => res.sendFile(path.join(__dirname, 'trophy.html')));
 app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-team.html')));
 
-// Custom API route for news scraping (PRESERVED)
-import newsHandler from './api/news.js';
-import wslHandler from './api/wsl-standings.js';
-import plMatchHandler from './api/pl-match.js';
-import eflMatchHandler from './api/efl-match.js';
-import wslMatchHandler from './api/wsl-match.js';
-
+// Custom API route handlers
 app.get('/api/news', (req, res) => {
   newsHandler(req, res);
 });
@@ -44,10 +42,6 @@ app.get('/api/pl-match', (req, res) => {
 
 app.get('/api/efl-match', (req, res) => {
   eflMatchHandler(req, res);
-});
-
-app.get('/api/wsl-match', (req, res) => {
-  wslMatchHandler(req, res);
 });
 
 // Football-Data.org API Proxy with Token & CORS support
