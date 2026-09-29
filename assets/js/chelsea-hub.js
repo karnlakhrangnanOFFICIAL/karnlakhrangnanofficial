@@ -19,7 +19,8 @@
     teamId: 61,
     apiKey: 'fb73ad1df2194fdab3fe56614d1a953e',
     // ใช้ผ่าน Proxy ของเซิร์ฟเวอร์ในโปรเจกต์เพื่อเลี่ยงปัญหา CORS
-    proxyBase: '/api/football-data'
+    proxyBase: '/api/football-data',
+    matchesEndpoint: '/api/football-data/teams/61/matches'
   };
 
   const FOOTBALL_DATA_TOKEN = CHELSEA_MEN_CONFIG.apiKey;
@@ -167,18 +168,18 @@
     });
   }
 
-  // 1. ดึงผลการแข่งขันและโปรแกรมแข่งทั้งหมดของทีมชาย (พร้อม Fallback สำหรับ Vercel)
+  // 1. ดึงผลการแข่งขันและโปรแกรมแข่งทั้งหมดของทีมชาย (ผ่าน /api/football-data/teams/61/matches)
   async function getChelseaMenMatches(status = 'SCHEDULED,LIVE,IN_PLAY,PAUSED,FINISHED') {
     try {
       const statusQuery = status ? `?status=${status}` : '';
       let res;
       try {
-        res = await fetch(`${CHELSEA_MEN_CONFIG.proxyBase}/teams/${CHELSEA_MEN_CONFIG.teamId}/matches${statusQuery}`);
+        res = await fetch(`/api/football-data/teams/61/matches${statusQuery}`);
       } catch (e) {
         // Proxy unavailable (e.g. on Vercel static)
       }
       if (!res || !res.ok) {
-        res = await fetch(`https://api.football-data.org/v4/teams/${CHELSEA_MEN_CONFIG.teamId}/matches${statusQuery}`, {
+        res = await fetch(`https://api.football-data.org/v4/teams/61/matches${statusQuery}`, {
           headers: { 'X-Auth-Token': CHELSEA_MEN_CONFIG.apiKey }
         });
       }

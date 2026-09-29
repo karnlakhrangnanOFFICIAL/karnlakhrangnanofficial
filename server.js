@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
+const FOOTBALL_DATA_TOKEN = process.env.FOOTBALL_DATA_TOKEN || process.env.FOOTBALL_DATA_API_KEY || 'fb73ad1df2194fdab3fe56614d1a953e';
 
 // Serve static files
 app.use(express.static(__dirname, { extensions: ['html'] }));

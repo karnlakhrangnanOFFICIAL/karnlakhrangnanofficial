@@ -315,8 +315,15 @@
   vertical-align: middle;
 }
 
+.hub-table tbody tr {
+  position: relative;
+  transition: background 0.15s ease;
+}
+
 .hub-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  z-index: 100;
 }
 
 .hub-table tbody tr.row-highlight {
@@ -657,6 +664,19 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 10;
+}
+
+.hub-logo-tooltip-wrap:hover {
+  z-index: 9999;
+}
+
+.hub-team-cell-tooltip-only {
+  position: relative;
+}
+
+.hub-team-cell-tooltip-only:hover {
+  z-index: 9999;
 }
 
 .hub-fixture-logo-only {
@@ -713,7 +733,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-  z-index: 60;
+  z-index: 99999;
   line-height: 1.3;
 }
 

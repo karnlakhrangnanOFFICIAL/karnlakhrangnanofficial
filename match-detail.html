@@ -2003,14 +2003,93 @@
             } catch (e) {}
           }
 
+          // Helper to find match by ID or alias (m01, m1, m2, etc.)
+          function findMatchByIdOrAlias(fixturesList, targetId) {
+            if (!targetId || !Array.isArray(fixturesList)) return null;
+            const tid = String(targetId).toLowerCase().trim();
+            // 1. Exact string match
+            let found = fixturesList.find(m => String(m.id).toLowerCase() === tid);
+            if (found) return found;
+
+            // 2. Normalize leading zeroes: m01 <-> m1, m02 <-> m2, w01 <-> w1
+            if (tid.startsWith("m") || tid.startsWith("w")) {
+              const prefix = tid[0];
+              const numPart = parseInt(tid.slice(1), 10);
+              if (!isNaN(numPart)) {
+                found = fixturesList.find(m => {
+                  const mid = String(m.id).toLowerCase();
+                  if (mid.startsWith(prefix)) {
+                    const mNum = parseInt(mid.slice(1), 10);
+                    return mNum === numPart;
+                  }
+                  return false;
+                });
+                if (found) return found;
+              }
+            }
+
+            // 3. Numeric ID (e.g. Football-Data match ID)
+            const numId = parseInt(tid, 10);
+            if (!isNaN(numId)) {
+              found = fixturesList.find(m => m.id === numId || m.fd_id === numId);
+              if (found) return found;
+            }
+            return null;
+          }
+
           let match = null;
           if (matchId) {
-            match = allMatches.find((m) => String(m.id) === String(matchId));
+            match = findMatchByIdOrAlias(allMatches, matchId);
+          }
+
+          // Check if this is a men's match
+          const isWomenMatch =
+            teamParam === "women" ||
+            (matchId && String(matchId).toLowerCase().startsWith("w")) ||
+            (match && (match.team_type === "women" || match.team_type === "W"));
+
+          let footballDataMatches = [];
+
+          // ALWAYS load /api/football-data/teams/61/matches for men's team matches
+          if (!isWomenMatch) {
+            try {
+              const fdRes = await fetch(`/api/football-data/teams/61/matches?_t=${Date.now()}`);
+              if (fdRes.ok) {
+                const fdJson = await fdRes.json();
+                if (fdJson && Array.isArray(fdJson.matches)) {
+                  footballDataMatches = fdJson.matches;
+                  window.footballDataMatches = footballDataMatches;
+
+                  // If match wasn't found in fixtures.json, find or construct it from Football-Data
+                  if (!match) {
+                    const matchedFd = findFootballDataMatch(footballDataMatches, null, matchId);
+                    if (matchedFd) {
+                      match = convertFdMatchToLocalFormat(matchedFd, matchId);
+                      allMatches.push(match);
+                    }
+                  }
+
+                  // Apply latest Football-Data live info if matched
+                  if (match) {
+                    const matchedFd = findFootballDataMatch(footballDataMatches, match, matchId);
+                    if (matchedFd) {
+                      applyFootballDataLive(match, matchedFd);
+                    }
+                  }
+                }
+              }
+            } catch (fdErr) {
+              console.warn("Football-data live fetch error:", fdErr);
+            }
           }
 
           // Fallback to match with commentary/lineups (e.g. m9 or first match) if none found or no ID
           if (!match && allMatches.length > 0) {
             match = allMatches.find((m) => m.id === "m9") || allMatches[0];
+            if (match && !isWomenMatch && footballDataMatches.length > 0) {
+              const matchedFd = findFootballDataMatch(footballDataMatches, match, match.id);
+              if (matchedFd) applyFootballDataLive(match, matchedFd);
+            }
           }
 
           if (!match) {
@@ -2060,6 +2139,201 @@
           container.innerHTML =
             '<div class="empty-tab-box"><p>⚠️ ไม่สามารถโหลดข้อมูลได้ในขณะนี้</p></div>';
         }
+      }
+
+      // Helper: Find Football-Data Match for a given local match / ID
+      function findFootballDataMatch(fdMatches, localMatch, matchId) {
+        if (!Array.isArray(fdMatches) || fdMatches.length === 0) return null;
+        const normId = matchId ? String(matchId).toLowerCase().trim() : "";
+        const mNum = parseInt(normId.replace(/\D/g, ""), 10);
+
+        // 1. Direct numeric ID check
+        if (normId && !isNaN(normId)) {
+          const targetNum = parseInt(normId, 10);
+          const found = fdMatches.find(m => m.id === targetNum);
+          if (found) return found;
+        }
+
+        // 2. Exact match on localMatch.fd_id
+        if (localMatch && localMatch.fd_id) {
+          const found = fdMatches.find(m => m.id === localMatch.fd_id);
+          if (found) return found;
+        }
+
+        // 3. Exact date + opponent matching
+        if (localMatch && localMatch.date) {
+          const matchDateStr = localMatch.date;
+          const locH = (localMatch.home_team || "").toLowerCase();
+          const locA = (localMatch.away_team || "").toLowerCase();
+
+          const foundByDate = fdMatches.find(m => {
+            const fdDate = m.utcDate ? m.utcDate.split("T")[0] : "";
+            if (fdDate !== matchDateStr) return false;
+            const hName = (m.homeTeam?.name || m.homeTeam?.shortName || "").toLowerCase();
+            const aName = (m.awayTeam?.name || m.awayTeam?.shortName || "").toLowerCase();
+            return (
+              (locH.includes(hName.substring(0, 4)) || hName.includes(locH.substring(0, 4))) ||
+              (locA.includes(aName.substring(0, 4)) || aName.includes(locA.substring(0, 4)))
+            );
+          });
+          if (foundByDate) return foundByDate;
+        }
+
+        // 4. Matchday round number matching for PL
+        if (localMatch && localMatch.round) {
+          const roundNum = parseInt(String(localMatch.round).replace(/\D/g, ""), 10);
+          if (roundNum) {
+            const foundByRound = fdMatches.find(m => m.matchday === roundNum && m.competition?.code === "PL");
+            if (foundByRound) return foundByRound;
+          }
+        }
+
+        // 5. If matchId is m1..m38 (standard Premier League fixture matchdays)
+        if (normId.startsWith("m") && mNum >= 1 && mNum <= 38) {
+          const foundByMatchday = fdMatches.find(m => m.matchday === mNum);
+          if (foundByMatchday) return foundByMatchday;
+        }
+
+        // 6. Opponent Name matching
+        if (localMatch) {
+          const locH = (localMatch.home_team || "").toLowerCase();
+          const locA = (localMatch.away_team || "").toLowerCase();
+          const isHomeChe = locH.includes("chelsea");
+          const oppKey = (isHomeChe ? locA : locH).replace(/fc|chelsea/g, "").trim();
+
+          if (oppKey.length >= 3) {
+            const foundByOpp = fdMatches.find(m => {
+              const hName = (m.homeTeam?.name || m.homeTeam?.shortName || "").toLowerCase();
+              const aName = (m.awayTeam?.name || m.awayTeam?.shortName || "").toLowerCase();
+              return hName.includes(oppKey.substring(0, 4)) || aName.includes(oppKey.substring(0, 4));
+            });
+            if (foundByOpp) return foundByOpp;
+          }
+        }
+
+        return null;
+      }
+
+      // Convert Football-Data Match to Local Schema if not already in fixtures.json
+      function convertFdMatchToLocalFormat(fdMatch, reqId) {
+        const isChelseaHome = fdMatch.homeTeam?.id === 61 || (fdMatch.homeTeam?.name || "").includes("Chelsea");
+        const matchDate = fdMatch.utcDate ? fdMatch.utcDate.split("T")[0] : new Date().toISOString().split("T")[0];
+        const matchTime = fdMatch.utcDate ? fdMatch.utcDate.split("T")[1]?.substring(0, 5) || "19:00" : "19:00";
+
+        let status = "upcoming";
+        if (fdMatch.status === "FINISHED") status = "completed";
+        else if (fdMatch.status === "IN_PLAY") status = "live";
+        else if (fdMatch.status === "PAUSED") status = "halftime";
+
+        return {
+          id: reqId || `m${fdMatch.matchday || fdMatch.id}`,
+          fd_id: fdMatch.id,
+          team_type: "men",
+          date: matchDate,
+          time: matchTime,
+          time_uk: matchTime,
+          competition: "premier-league",
+          competition_name: fdMatch.competition?.name || "Premier League",
+          competition_logo: fdMatch.competition?.emblem || "databases/logo/competitions/men/premier-league.png",
+          round: fdMatch.matchday ? `Matchday ${fdMatch.matchday}` : "Premier League",
+          matchday: fdMatch.matchday,
+          venue: isChelseaHome ? "Stamford Bridge" : `${fdMatch.homeTeam?.shortName || fdMatch.homeTeam?.name || "Opponent"} Stadium`,
+          home_team: fdMatch.homeTeam?.shortName || fdMatch.homeTeam?.name || "Chelsea FC",
+          home_logo: isChelseaHome ? "databases/logo/teams/england_chelsea.svg" : (fdMatch.homeTeam?.crest || ""),
+          away_team: fdMatch.awayTeam?.shortName || fdMatch.awayTeam?.name || "Opponent",
+          away_logo: !isChelseaHome ? "databases/logo/teams/england_chelsea.svg" : (fdMatch.awayTeam?.crest || ""),
+          home_score: fdMatch.score?.fullTime?.home ?? null,
+          away_score: fdMatch.score?.fullTime?.away ?? null,
+          home_half_score: fdMatch.score?.halfTime?.home ?? null,
+          away_half_score: fdMatch.score?.halfTime?.away ?? null,
+          status: status,
+          period: fdMatch.status === "FINISHED" ? "FullTime" : fdMatch.status === "PAUSED" ? "HalfTime" : "",
+          referee: fdMatch.referees?.[0]?.name || "",
+          goals: [],
+          events: [],
+          stats: null,
+          channels: [{ name: "MONOMAX SPORTS TV", logo: "databases/logo/tv/monomax.svg" }]
+        };
+      }
+
+      // Apply live attributes from Football-Data Match to Local Match object
+      function applyFootballDataLive(match, fdMatch) {
+        if (!match || !fdMatch) return false;
+        let changed = false;
+
+        // Status mapping
+        let newStatus = match.status;
+        if (fdMatch.status === "FINISHED") {
+          newStatus = "completed";
+          match.period = "FullTime";
+        } else if (fdMatch.status === "IN_PLAY") {
+          newStatus = "live";
+        } else if (fdMatch.status === "PAUSED") {
+          newStatus = "halftime";
+          match.period = "HalfTime";
+        } else if (fdMatch.status === "TIMED" || fdMatch.status === "SCHEDULED") {
+          newStatus = "upcoming";
+        }
+
+        if (match.status !== newStatus) {
+          match.status = newStatus;
+          changed = true;
+        }
+
+        // Score mapping with team alignment check
+        if (fdMatch.score && fdMatch.score.fullTime) {
+          const isChelseaHome = fdMatch.homeTeam?.id === 61 || (fdMatch.homeTeam?.name || "").includes("Chelsea");
+          const localHomeChelsea = (match.home_team || "").toLowerCase().includes("chelsea");
+
+          let fdHomeScore = fdMatch.score.fullTime.home;
+          let fdAwayScore = fdMatch.score.fullTime.away;
+
+          // Swap if local home/away orientation differs from Football-Data
+          if (isChelseaHome !== localHomeChelsea) {
+            const tmp = fdHomeScore;
+            fdHomeScore = fdAwayScore;
+            fdAwayScore = tmp;
+          }
+
+          if (fdHomeScore !== null && fdHomeScore !== undefined && match.home_score !== fdHomeScore) {
+            match.home_score = fdHomeScore;
+            changed = true;
+          }
+          if (fdAwayScore !== null && fdAwayScore !== undefined && match.away_score !== fdAwayScore) {
+            match.away_score = fdAwayScore;
+            changed = true;
+          }
+
+          if (fdMatch.score.halfTime) {
+            match.home_half_score = fdMatch.score.halfTime.home;
+            match.away_half_score = fdMatch.score.halfTime.away;
+          }
+        }
+
+        // Referee info
+        if (fdMatch.referees && fdMatch.referees.length > 0 && !match.referee) {
+          match.referee = fdMatch.referees[0].name;
+        }
+
+        // Competition details
+        if (fdMatch.competition) {
+          if (!match.competition_name) match.competition_name = fdMatch.competition.name;
+          match.competition_code = fdMatch.competition.code;
+          if (fdMatch.competition.emblem && !match.competition_logo) {
+            match.competition_logo = fdMatch.competition.emblem;
+          }
+        }
+
+        // Matchday
+        if (fdMatch.matchday) {
+          match.matchday = fdMatch.matchday;
+          if (!match.round) match.round = `Matchday ${fdMatch.matchday}`;
+        }
+
+        match.fd_id = fdMatch.id;
+        match.last_synced = new Date().toISOString();
+
+        return changed;
       }
 
       function applyEflLiveData(match, live) {
@@ -2116,6 +2390,9 @@
         if (icon) icon.classList.add("spinning");
 
         try {
+          let updated = false;
+
+          // 1. Check Premier League live proxy
           if (currentMatch.pl_match_id) {
             const plId = currentMatch.pl_match_id;
             const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
@@ -2123,39 +2400,56 @@
               const json = await res.json();
               if (json.success) {
                 applyPlLiveData(currentMatch, json);
-                const container = document.getElementById("matchContent");
-                if (container) {
-                  const activeBtn = document.querySelector(".tab-btn.active");
-                  const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
-                  renderMatchDetail(currentMatch, container);
-                  if (activeTarget) {
-                    const newBtn = document.querySelector(
-                      `.tab-btn[data-target="${activeTarget}"]`
-                    );
-                    if (newBtn) newBtn.click();
-                  }
-                }
+                updated = true;
               }
             }
-          } else if (currentMatch.id === "m46" || currentMatch.efl_id) {
+          }
+
+          // 2. Check EFL live proxy
+          if (currentMatch.id === "m46" || currentMatch.efl_id) {
             const fixtureId = currentMatch.efl_id || "g2685176";
             const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
             if (res.ok) {
               const json = await res.json();
               if (json.success && json.data) {
                 applyEflLiveData(currentMatch, json.data);
-                const container = document.getElementById("matchContent");
-                if (container) {
-                  const activeBtn = document.querySelector(".tab-btn.active");
-                  const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
-                  renderMatchDetail(currentMatch, container);
-                  if (activeTarget) {
-                    const newBtn = document.querySelector(
-                      `.tab-btn[data-target="${activeTarget}"]`
-                    );
-                    if (newBtn) newBtn.click();
+                updated = true;
+              }
+            }
+          }
+
+          // 3. Check Football-Data endpoint for Men's team matches
+          const isMen = currentMatch.team_type !== "women" && currentMatch.team_type !== "W" && !String(currentMatch.id).toLowerCase().startsWith("w");
+          if (isMen) {
+            try {
+              const fdRes = await fetch(`/api/football-data/teams/61/matches?_t=${Date.now()}`);
+              if (fdRes.ok) {
+                const fdJson = await fdRes.json();
+                if (fdJson && Array.isArray(fdJson.matches)) {
+                  window.footballDataMatches = fdJson.matches;
+                  const matchedFd = findFootballDataMatch(fdJson.matches, currentMatch, currentMatch.id);
+                  if (matchedFd) {
+                    applyFootballDataLive(currentMatch, matchedFd);
+                    updated = true;
                   }
                 }
+              }
+            } catch (e) {
+              console.warn("Football-data manual sync error:", e);
+            }
+          }
+
+          if (updated) {
+            const container = document.getElementById("matchContent");
+            if (container) {
+              const activeBtn = document.querySelector(".tab-btn.active");
+              const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
+              renderMatchDetail(currentMatch, container);
+              if (activeTarget) {
+                const newBtn = document.querySelector(
+                  `.tab-btn[data-target="${activeTarget}"]`
+                );
+                if (newBtn) newBtn.click();
               }
             }
           }
@@ -2172,134 +2466,126 @@
           clearInterval(livePollInterval);
           livePollInterval = null;
         }
+        const isMen = match && match.team_type !== "women" && match.team_type !== "W" && !String(match.id).toLowerCase().startsWith("w");
         const isEfl = match && (match.id === "m46" || match.efl_id);
         const isPl = match && match.pl_match_id;
-        if (!isEfl && !isPl) return;
-        if (
-          match.status !== "live" &&
-          match.status !== "halftime" &&
-          match.period !== "FirstHalf" &&
-          match.period !== "SecondHalf"
-        )
-          return;
 
-        const fixtureId = match.efl_id || "g2685176";
-        const plId = match.pl_match_id;
+        // Auto-poll if match is live or scheduled today
+        const isToday = match && match.date === new Date().toISOString().split("T")[0];
+        const isLive = match && (
+          match.status === "live" ||
+          match.status === "halftime" ||
+          match.period === "FirstHalf" ||
+          match.period === "SecondHalf" ||
+          match.period === "HalfTime"
+        );
+
+        if (!isEfl && !isPl && (!isMen || (!isLive && !isToday))) return;
+
+        const fixtureId = match ? (match.efl_id || "g2685176") : "";
+        const plId = match ? match.pl_match_id : "";
 
         livePollInterval = setInterval(async () => {
           try {
+            let scoreChanged = false;
+            let shouldRefresh = false;
+
             if (isPl) {
               const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
-              if (!res.ok) return;
-              const json = await res.json();
-              if (!json.success) return;
-
-              const oldScore = `${match.home_score}-${match.away_score}`;
-              const newScore = `${json.score.home}-${json.score.away}`;
-              const scoreChanged = oldScore !== newScore;
-              const oldEventsCount = (match.events || []).length;
-              const newEventsCount = (json.events || []).length;
-              const oldCommentsCount = (match.live_commentary || []).length;
-              const newCommentsCount = (json.live_commentary || []).length;
-
-              applyPlLiveData(match, json);
-
-              // Update Scoreboard Header
-              const scoreMainEl = document.getElementById("scoreMain");
-              if (scoreMainEl) {
-                scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
-              }
-              const liveBadgeWrapEl = document.getElementById("liveBadgeWrap");
-              if (liveBadgeWrapEl) {
-                const liveText = match.period === "HalfTime" ? "HT" : match.clock || "LIVE";
-                liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${liveText}</div>`;
-              }
-
-              // Update Timestamp
-              const timeEl = document.getElementById("liveSyncTimestamp");
-              if (timeEl) {
-                timeEl.textContent = `อัปเดตล่าสุด: ${new Date().toLocaleTimeString("th-TH")}`;
-              }
-
-              // Update Stats Tab if active
-              const statsTabEl = document.getElementById("tab-stats");
-              if (statsTabEl && match.stats) {
-                statsTabEl.innerHTML = generateMatchStatsHTML(
-                  match.stats,
-                  match.home_team,
-                  match.away_team,
-                  window.currentLang || "th"
-                );
-              }
-
-              // If score or events or commentary changed, refresh match view
-              if (
-                scoreChanged ||
-                newEventsCount !== oldEventsCount ||
-                newCommentsCount !== oldCommentsCount
-              ) {
-                const container = document.getElementById("matchContent");
-                if (container) {
-                  const activeBtn = document.querySelector(".tab-btn.active");
-                  const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
-                  renderMatchDetail(match, container);
-                  if (activeTarget) {
-                    const newBtn = document.querySelector(
-                      `.tab-btn[data-target="${activeTarget}"]`
-                    );
-                    if (newBtn) newBtn.click();
-                  }
+              if (res.ok) {
+                const json = await res.json();
+                if (json.success) {
+                  const oldScore = `${match.home_score}-${match.away_score}`;
+                  const newScore = `${json.score?.home}-${json.score?.away}`;
+                  if (oldScore !== newScore) scoreChanged = true;
+                  applyPlLiveData(match, json);
+                  shouldRefresh = true;
                 }
               }
             } else if (isEfl) {
               const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
-              if (!res.ok) return;
-              const json = await res.json();
-              if (!json.success || !json.data) return;
-              const live = json.data;
-
-              const oldScore = `${match.home_score}-${match.away_score}`;
-              const newScore = `${live.home_score}-${live.away_score}`;
-              const scoreChanged = oldScore !== newScore;
-              const oldEventsCount = (match.events || []).length;
-              const newEventsCount = (live.events || []).length;
-
-              applyEflLiveData(match, live);
-
-              // Update Scoreboard Header
-              const scoreMainEl = document.getElementById("scoreMain");
-              if (scoreMainEl) {
-                scoreMainEl.textContent = `${match.home_score} - ${match.away_score}`;
+              if (res.ok) {
+                const json = await res.json();
+                if (json.success && json.data) {
+                  const live = json.data;
+                  const oldScore = `${match.home_score}-${match.away_score}`;
+                  const newScore = `${live.home_score}-${live.away_score}`;
+                  if (oldScore !== newScore) scoreChanged = true;
+                  applyEflLiveData(match, live);
+                  shouldRefresh = true;
+                }
               }
-              const liveBadgeWrapEl = document.getElementById("liveBadgeWrap");
-              if (liveBadgeWrapEl) {
-                liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${match.time_live || "LIVE"}</div>`;
-              }
+            }
 
-              // Update Stats Tab
-              const statsTabEl = document.getElementById("tab-stats");
-              if (statsTabEl && match.stats) {
-                statsTabEl.innerHTML = generateMatchStatsHTML(
-                  match.stats,
-                  match.home_team,
-                  match.away_team,
-                  window.currentLang || "th"
-                );
-              }
-
-              // If score changed or new events, re-render full details to refresh timeline and goalscorers
-              if (scoreChanged || newEventsCount !== oldEventsCount) {
-                const container = document.getElementById("matchContent");
-                if (container) {
-                  const activeBtn = document.querySelector(".tab-btn.active");
-                  const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
-                  renderMatchDetail(match, container);
-                  if (activeTarget) {
-                    const newBtn = document.querySelector(
-                      `.tab-btn[data-target="${activeTarget}"]`
-                    );
-                    if (newBtn) newBtn.click();
+            // Sync from Football-Data for Men matches
+            if (isMen) {
+              try {
+                const fdRes = await fetch(`/api/football-data/teams/61/matches?_t=${Date.now()}`);
+                if (fdRes.ok) {
+                  const fdJson = await fdRes.json();
+                  if (fdJson && Array.isArray(fdJson.matches)) {
+                    window.footballDataMatches = fdJson.matches;
+                    const matchedFd = findFootballDataMatch(fdJson.matches, match, match.id);
+                    if (matchedFd) {
+                      const oldScore = `${match.home_score}-${match.away_score}`;
+                      const changed = applyFootballDataLive(match, matchedFd);
+                      const newScore = `${match.home_score}-${match.away_score}`;
+                      if (oldScore !== newScore) scoreChanged = true;
+                      if (changed) shouldRefresh = true;
+                    }
                   }
+                }
+              } catch (e) {}
+            }
+
+            // Update Scoreboard Header
+            const scoreMainEl = document.getElementById("scoreMain");
+            if (scoreMainEl) {
+              const sHome = match.home_score != null ? match.home_score : "-";
+              const sAway = match.away_score != null ? match.away_score : "-";
+              if (match.status === "upcoming" || (sHome === "-" && sAway === "-")) {
+                const localDT = window.getLocalMatchDateTime
+                  ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk)
+                  : { time: match.time || "TBC" };
+                const tStr = localDT.time !== "TBC" ? localDT.time + " น." : "TBC";
+                scoreMainEl.innerHTML = `
+                  <span class="kickoff-label-tag">เวลาเริ่ม Kick-off</span>
+                  <span class="kickoff-time-text">${tStr}</span>
+                `;
+              } else {
+                scoreMainEl.textContent = `${sHome} - ${sAway}`;
+              }
+            }
+
+            const liveBadgeWrapEl = document.getElementById("liveBadgeWrap");
+            if (liveBadgeWrapEl) {
+              if (match.status === "live") {
+                const liveText = match.clock || match.time_live || "LIVE";
+                liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${liveText}</div>`;
+              } else if (match.status === "halftime" || match.period === "HalfTime") {
+                liveBadgeWrapEl.innerHTML = `<div class="match-status live" style="background: #e65100; color: #fff;"><span class="live-dot"></span> HT</div>`;
+              } else if (match.status === "completed" || match.period === "FullTime") {
+                liveBadgeWrapEl.innerHTML = `<div class="match-status">FULL TIME</div>`;
+              }
+            }
+
+            // Update Timestamp
+            const timeEl = document.getElementById("liveSyncTimestamp");
+            if (timeEl) {
+              timeEl.textContent = `อัปเดตล่าสุด: ${new Date().toLocaleTimeString("th-TH")}`;
+            }
+
+            if (scoreChanged || shouldRefresh) {
+              const container = document.getElementById("matchContent");
+              if (container) {
+                const activeBtn = document.querySelector(".tab-btn.active");
+                const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
+                renderMatchDetail(match, container);
+                if (activeTarget) {
+                  const newBtn = document.querySelector(
+                    `.tab-btn[data-target="${activeTarget}"]`
+                  );
+                  if (newBtn) newBtn.click();
                 }
               }
             }

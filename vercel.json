@@ -2,5 +2,16 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "data/**",
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    { "source": "/api/football-data/teams/61/matches", "destination": "/api/football-data/teams/61/matches" },
+    { "source": "/api/football-data/:path*", "destination": "/api/football-data/[...path]" },
+    { "source": "/api/news", "destination": "/api/news" }
+  ]
 }
