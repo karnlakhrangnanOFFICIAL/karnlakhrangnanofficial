@@ -1042,13 +1042,53 @@
       .goal-assist-group .assist-player-name a:hover {
         text-decoration: underline;
       }
+      @keyframes eventEntrance {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       .event-detail-group {
         display: flex;
         align-items: center;
         width: 100%;
         gap: 10px;
         box-sizing: border-box;
+        animation: eventEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        animation-delay: calc(var(--event-index, 0) * 0.05s);
       }
+
+      /* Cascading animation delays for match events */
+      .timeline-events-list > .timeline-event-card:nth-child(1) .event-detail-group { animation-delay: 0.04s; }
+      .timeline-events-list > .timeline-event-card:nth-child(2) .event-detail-group { animation-delay: 0.08s; }
+      .timeline-events-list > .timeline-event-card:nth-child(3) .event-detail-group { animation-delay: 0.12s; }
+      .timeline-events-list > .timeline-event-card:nth-child(4) .event-detail-group { animation-delay: 0.16s; }
+      .timeline-events-list > .timeline-event-card:nth-child(5) .event-detail-group { animation-delay: 0.20s; }
+      .timeline-events-list > .timeline-event-card:nth-child(6) .event-detail-group { animation-delay: 0.24s; }
+      .timeline-events-list > .timeline-event-card:nth-child(7) .event-detail-group { animation-delay: 0.28s; }
+      .timeline-events-list > .timeline-event-card:nth-child(8) .event-detail-group { animation-delay: 0.32s; }
+      .timeline-events-list > .timeline-event-card:nth-child(9) .event-detail-group { animation-delay: 0.36s; }
+      .timeline-events-list > .timeline-event-card:nth-child(10) .event-detail-group { animation-delay: 0.40s; }
+      .timeline-events-list > .timeline-event-card:nth-child(11) .event-detail-group { animation-delay: 0.44s; }
+      .timeline-events-list > .timeline-event-card:nth-child(12) .event-detail-group { animation-delay: 0.48s; }
+      .timeline-events-list > .timeline-event-card:nth-child(13) .event-detail-group { animation-delay: 0.52s; }
+      .timeline-events-list > .timeline-event-card:nth-child(14) .event-detail-group { animation-delay: 0.56s; }
+      .timeline-events-list > .timeline-event-card:nth-child(15) .event-detail-group { animation-delay: 0.60s; }
+      .timeline-events-list > .timeline-event-card:nth-child(n+16) .event-detail-group { animation-delay: 0.64s; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .event-detail-group {
+          animation: none !important;
+          transform: none !important;
+          opacity: 1 !important;
+        }
+      }
+
       .event-detail-group.home-layout {
         justify-content: flex-end;
       }
@@ -3301,7 +3341,7 @@
             return type.charAt(0).toUpperCase() + type.slice(1).replace("_", " ");
           };
 
-          const renderTimelineCard = (e) => {
+          const renderTimelineCard = (e, index = 0) => {
             let eType = e.type;
             if (e.type === "card") {
               eType = (e.card === "red" || e.detail === "red") ? "red_card" : "yellow_card";
@@ -3497,7 +3537,7 @@
     <span class="timeline-time-pill">${time}</span>
   </div>
   <div class="timeline-side away-side">
-    <div class="event-detail-group away-layout">
+    <div class="event-detail-group away-layout" style="--event-index: ${index};">
       <div class="event-icon-col justify-start">
         <img src="databases/logo/svg/kick-off.svg" alt="Kick-off" class="event-icon" style="width: 20px; height: 20px;">
       </div>
@@ -3520,7 +3560,7 @@
               return `
 <div class="timeline-event-card ${cardClass}">
   <div class="timeline-side home-side">
-    <div class="event-detail-group home-layout">
+    <div class="event-detail-group home-layout" style="--event-index: ${index};">
       <div class="event-logo-col">
         ${teamLogoImg}
       </div>
@@ -3546,7 +3586,7 @@
     <span class="timeline-time-pill">${time}</span>
   </div>
   <div class="timeline-side away-side">
-    <div class="event-detail-group away-layout">
+    <div class="event-detail-group away-layout" style="--event-index: ${index};">
       <div class="event-icon-col justify-start">
         ${iconHtml}
       </div>
@@ -3573,7 +3613,7 @@
               <span>${isTh ? "ครึ่งแรก (First Half)" : "First Half"}</span>
             </div>
             <div class="timeline-events-list">
-              ${sortedEvents.map((e) => renderTimelineCard(e)).join("")}
+              ${sortedEvents.map((e, idx) => renderTimelineCard(e, idx)).join("")}
             </div>
           </div>
         `;
