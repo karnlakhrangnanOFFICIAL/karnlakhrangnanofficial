@@ -9163,11 +9163,6 @@
         "platform": "beIN",
         "name": "beIN SPORTS",
         "logo": "databases/logo/tv/bein_sports.svg"
-      },
-      {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/dazn.svg"
       }
     ],
     "team_type": "W",
@@ -9337,9 +9332,10 @@
           },
           {
             "number": 22,
-            "name": "Lucy Bronze",
+            "name": "Lucy Bronze (C)",
             "position": "DF",
-            "pos": "CB"
+            "pos": "CB",
+            "captain": true
           },
           {
             "number": 26,
@@ -9726,10 +9722,10 @@
       "title": "OL Lyonnes 0-0 Chelsea Women | HIGHLIGHTS | UWCL 2026/27",
       "desc_th": "ไฮไลท์การแข่งขัน ยูฟ่า วีเมนส์ แชมเปียนส์ลีก รอบลีกเฟส นัดที่ 2 โอแอล ลียงเนส เสมอกับ เชลซี วีเมน 0-0 ณ สนาม OL Stadium",
       "desc_en": "Match highlights of OL Lyonnes 0-0 Chelsea Women in the UEFA Women's Champions League 2026/27.",
-      "credit": "ขอขอบคุณคลิปไฮไลท์จากช่อง DAZN Women's Football / Chelsea FC Women ทาง YouTube",
-      "channel_name": "DAZN Women's Football",
-      "channel_handle": "@daznwsoccer",
-      "channel_url": "https://www.youtube.com/@daznwsoccer"
+      "credit": "ขอขอบคุณคลิปไฮไลท์จากช่อง Chelsea FC Women / Chelsea FC Women ทาง YouTube",
+      "channel_name": "Chelsea FC Women",
+      "channel_handle": "@chelseafcwomen",
+      "channel_url": "https://www.youtube.com/@chelseafcwomen"
     }
   },
   {
@@ -9756,11 +9752,6 @@
         "platform": "beIN",
         "name": "beIN SPORTS",
         "logo": "databases/logo/tv/bein_sports.svg"
-      },
-      {
-        "platform": "DAZN",
-        "name": "DAZN Women's Football",
-        "logo": "databases/logo/tv/dazn.svg"
       }
     ],
     "team_type": "W"

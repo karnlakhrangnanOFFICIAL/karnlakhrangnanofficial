@@ -8,7 +8,7 @@
   "standings": [
     {
       "pos": 1,
-      "team": "Barcelona",
+      "team": "FC Barcelona",
       "p": 1,
       "w": 1,
       "d": 0,
@@ -22,7 +22,7 @@
     },
     {
       "pos": 2,
-      "team": "Lyon",
+      "team": "Lyonnes",
       "p": 1,
       "w": 1,
       "d": 0,
@@ -36,7 +36,7 @@
     },
     {
       "pos": 3,
-      "team": "Bayern München",
+      "team": "Bayern",
       "p": 1,
       "w": 1,
       "d": 0,
@@ -50,7 +50,7 @@
     },
     {
       "pos": 4,
-      "team": "Chelsea Women",
+      "team": "Chelsea",
       "p": 1,
       "w": 1,
       "d": 0,
@@ -78,7 +78,7 @@
     },
     {
       "pos": 6,
-      "team": "VfL Wolfsburg",
+      "team": "Inter",
       "p": 1,
       "w": 1,
       "d": 0,
@@ -87,7 +87,7 @@
       "ga": 1,
       "gd": 1,
       "pts": 3,
-      "logo": "databases/logo/teams/germany_wolfsburg.svg",
+      "logo": "databases/logo/teams/italy_inter.football-logos.cc.svg",
       "status": "playoff"
     },
     {
@@ -106,7 +106,7 @@
     },
     {
       "pos": 8,
-      "team": "Paris Saint-Germain",
+      "team": "PSG",
       "p": 1,
       "w": 0,
       "d": 1,
@@ -162,7 +162,7 @@
     },
     {
       "pos": 12,
-      "team": "Twente",
+      "team": "HB Køge",
       "p": 1,
       "w": 0,
       "d": 1,
@@ -171,12 +171,12 @@
       "ga": 0,
       "gd": 0,
       "pts": 1,
-      "logo": "databases/logo/teams/netherlands_twente.svg",
+      "logo": "databases/logo/teams/denmark_hb_koge.football-logos.cc.svg",
       "status": "playoff"
     },
     {
       "pos": 13,
-      "team": "Celtic",
+      "team": "Man City",
       "p": 1,
       "w": 0,
       "d": 0,
@@ -185,12 +185,12 @@
       "ga": 2,
       "gd": -1,
       "pts": 0,
-      "logo": "databases/logo/teams/scotland_celtic.svg",
+      "logo": "databases/logo/teams/england_manchester-city.svg",
       "status": "playoff"
     },
     {
       "pos": 14,
-      "team": "USC Landhaus",
+      "team": "OH Leuven",
       "p": 1,
       "w": 0,
       "d": 0,
@@ -199,7 +199,7 @@
       "ga": 1,
       "gd": -1,
       "pts": 0,
-      "logo": "databases/logo/teams/austria_usc-landhaus.png",
+      "logo": "databases/logo/teams/belgium_ohl-oud-heverlee-leuven.football-logos.cc.svg",
       "status": "playoff"
     },
     {
@@ -218,7 +218,7 @@
     },
     {
       "pos": 16,
-      "team": "Vålerenga",
+      "team": "Austria Wien",
       "p": 1,
       "w": 0,
       "d": 0,
@@ -227,12 +227,12 @@
       "ga": 3,
       "gd": -2,
       "pts": 0,
-      "logo": "databases/logo/teams/norway_valerenga.svg",
+      "logo": "databases/logo/teams/austria_austria-wien.football-logos.cc.svg",
       "status": "playoff"
     },
     {
       "pos": 17,
-      "team": "St. Pölten",
+      "team": "Paris",
       "p": 1,
       "w": 0,
       "d": 0,
@@ -241,12 +241,12 @@
       "ga": 3,
       "gd": -3,
       "pts": 0,
-      "logo": "databases/logo/teams/austria_st-polten.svg",
+      "logo": "databases/logo/teams/france_paris-fc.football-logos.cc.svg",
       "status": "elimination"
     },
     {
       "pos": 18,
-      "team": "Galatasaray",
+      "team": "Häcken",
       "p": 1,
       "w": 0,
       "d": 0,
@@ -255,7 +255,7 @@
       "ga": 4,
       "gd": -4,
       "pts": 0,
-      "logo": "databases/logo/teams/turkey_galatasaray.svg",
+      "logo": "databases/logo/teams/sweden_hacken.football-logos.cc.svg",
       "status": "elimination"
     }
   ]
