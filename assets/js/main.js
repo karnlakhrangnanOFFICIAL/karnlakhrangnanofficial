@@ -4,7 +4,469 @@
 
 let currentLang = localStorage.getItem("lang") || "th";
 window.currentLang = currentLang;
-let translations = {};
+const FALLBACK_TRANSLATIONS = {
+  th: {
+  "nav": {
+    "home": "หน้าแรก",
+    "men_team": "ทีมชาย",
+    "women_team": "ทีมหญิง",
+    "trophy": "ถ้วยรางวัล",
+    "icons": "i-Cons",
+    "story": "The Story Blue",
+    "about": "เกี่ยวกับเรา",
+    "transfers": "ตลาดซื้อขาย",
+    "news": "ข่าวสาร",
+    "lang_toggle": "EN",
+    "theme_classic": "คลาสสิคบลู",
+    "theme_dark": "โมเดิร์นดาร์ก",
+    "theme_toggle": "เปลี่ยนธีม",
+    "goal_notif": "แจ้งเตือนประตูสด"
+  },
+  "notifications": {
+    "goal_alerts": "แจ้งเตือนประตูสด",
+    "goal_alerts_on": "แจ้งเตือนประตูสด: เปิด",
+    "goal_alerts_off": "แจ้งเตือนประตูสด: ปิด",
+    "permission_granted": "🔔 เปิดการแจ้งเตือนประตูสดแล้ว!",
+    "permission_denied": "⚠️ การแจ้งเตือนถูกปิดกั้นในเบราว์เซอร์ กรุณาอนุญาตในการตั้งค่า",
+    "not_supported": "เบราว์เซอร์นี้ไม่รองรับ Web Notification แต่ระบบจะแสดงแบนเนอร์แจ้งเตือนในหน้าเว็บ",
+    "test_alert": "⚡ ทดสอบแจ้งเตือน",
+    "goal_scored": "⚽ ได้ประตู!",
+    "goal_toast_sub": "กำลังแข่งขัน"
+  },
+  "news": {
+    "title": "ข่าวสารสโมสร",
+    "latest_feed": "ข่าวล่าสุด (Latest Feed)",
+    "archive_view": "คลังข่าวสาร (Archive)",
+    "filter_year": "ปี (Year)",
+    "filter_month": "เดือน (Month)",
+    "all_years": "ทุกปี (All Years)",
+    "all_months": "ทุกเดือน (All Months)",
+    "search_placeholder": "ค้นหาข่าว...",
+    "no_archive_match": "ไม่พบข่าวสารในช่วงเวลาที่เลือก",
+    "reset_archive": "↺ ล้างตัวกรอง",
+    "read_article": "อ่านข่าว",
+    "articles_found": "ข่าวที่พบ",
+    "view_archive_btn": "📂 เปิดคลังข่าวสาร"
+  },
+  "home": {
+    "title": "กาลครั้งนั้น Official",
+    "fixtures": "โปรแกรมแข่งขัน",
+    "results": "ผลการแข่งขัน",
+    "no_fixtures": "ไม่มีโปรแกรมแข่งขันในขณะนี้",
+    "no_results": "ยังไม่มีผลการแข่งขัน",
+    "quick_links": "ลิงก์ด่วน",
+    "official_badge": "⚽ เว็บไซต์ทางการ",
+    "season_sub": "โดยแฟนบอลเชลซี เพื่อแฟนบอลเชลซี · ฤดูกาล 2026/27",
+    "list_view": "มุมมองรายการ",
+    "calendar_view": "มุมมองปฏิทิน"
+  },
+  "men": {
+    "badge": "⚽ ทีมชาย",
+    "title": "เชลซี ทีมชาย",
+    "season": "ทีมชาย · ฤดูกาล 2026/27",
+    "all_results": "ผลการแข่งขันทั้งหมด",
+    "all_fixtures": "โปรแกรมแข่งขันทั้งหมด",
+    "table_title": "🏆 ตารางคะแนน พรีเมียร์ลีก",
+    "players_title": "👕 รายชื่อนักเตะ & เฮดโค้ช (Manager)"
+  },
+  "women": {
+    "badge": "⚽ ทีมหญิง",
+    "title": "เชลซี ทีมหญิง",
+    "season": "ทีมหญิง · ฤดูกาล 2026/27",
+    "table_title": "🏆 ตารางคะแนน WSL",
+    "players_title": "👕 รายชื่อนักเตะ & เฮดโค้ช (Manager)"
+  },
+  "tabs": {
+    "results": "📊 ผลการแข่งขัน",
+    "fixtures": "โปรแกรมแข่งขัน",
+    "tables": "🏆 ตารางคะแนน",
+    "players": "👕 นักเตะ"
+  },
+  "tactical": {
+    "title": "แผนการเล่นและ Heatmap เชิงแท็กติก (D3.js Visualization)",
+    "subtitle": "ระบบจำลองผังแผนการเล่น วิเคราะห์พื้นที่ความหนาแน่น (Density Heatmap) และทิศทางการผ่านบอลของเฮดโค้ช",
+    "mode_heatmap": "Positional Heatmap",
+    "mode_attack": "Attacking Phase",
+    "mode_press": "Pressing & Rest Defense",
+    "mode_network": "Passing Network",
+    "formation_philosophy": "ปรัชญาและโครงสร้างแท็กติก",
+    "possession": "เปอร์เซ็นต์ครองบอลเฉลี่ย",
+    "ppda": "ความดุดันในการเพรสซิ่ง (PPDA)",
+    "halfspace": "การเจาะช่อง Half-Space",
+    "defline": "ความสูงแนวรับ (Defensive Line)",
+    "restdef": "โครงสร้างเกมรับขณะบุก (Rest Defense)",
+    "key_directives": "คำสั่งและแท็กติกหลักสำคัญ"
+  },
+  "trophy": {
+    "badge": "🏆 ตู้ถ้วยรางวัล",
+    "title": "ตู้ถ้วยรางวัล",
+    "season": "KARN LA KHRANg NAN (กาลครั้งนั้น) · ถ้วยรางวัลทั้งหมด",
+    "all_trophies": "🏆 ถ้วยรางวัลทั้งหมด",
+    "filter_all": "ทั้งหมด",
+    "filter_men": "👨 ทีมชาย",
+    "filter_women": "👩 ทีมหญิง",
+    "men_tag": "👨 ทีมชาย",
+    "women_tag": "👩 ทีมหญิง"
+  },
+  "icons": {
+    "badge": "🤴 ตำนานสโมสร",
+    "title": "i-Cons",
+    "subtitle": "ตำนานตลอดกาลของ เชลซี เอฟซี",
+    "filter_label": "🔍 ตัวกรอง:",
+    "filter_all": "ทั้งหมด",
+    "filter_defender": "🛡️ กองหลัง",
+    "filter_midfielder": "🎯 กองกลาง",
+    "filter_forward": "⚽ กองหน้า",
+    "filter_goalkeeper": "🧤 ผู้รักษาประตู",
+    "loading": "กำลังโหลดตำนาน...",
+    "error": "ไม่สามารถโหลดข้อมูลตำนานได้",
+    "empty": "ไม่พบตำนานตามตัวกรองนี้",
+    "apps": "นัด",
+    "goals": "ประตู",
+    "pos_defender": "กองหลัง",
+    "pos_midfielder": "กองกลาง",
+    "pos_forward": "กองหน้า",
+    "pos_goalkeeper": "ผู้รักษาประตู"
+  },
+  "story": {
+    "title": "The Story Blue (กาลครั้งนั้น)",
+    "history_heading": "ประวัติศาสตร์สโมสร",
+    "history_sub": "กาลครั้งนั้น... ค้นพบเรื่องราวความเป็นมา ความรุ่งโรจน์ และตำนานของสโมสรฟุตบอลเชลซี ผ่านบันทึกแห่งสีน้ำเงิน",
+    "ch1_num": "บทที่ ๑",
+    "ch1_title": "จุดเริ่มต้น",
+    "ch2_num": "บทที่ ๒",
+    "ch2_title": "สแตมฟอร์ด บริดจ์: บ้านของเรา",
+    "ch3_num": "บทที่ ๓",
+    "ch3_title": "หว่านเมล็ดพันธุ์แห่งความสำเร็จ",
+    "ch4_num": "บทที่ ๔",
+    "ch4_title": "ลอนดอนยุคสวิงกิ้ง",
+    "ch5_num": "บทที่ ๕",
+    "ch5_title": "ขึ้นลงบนรถไฟเหาะแห่ง Fulham Road",
+    "ch6_num": "บทที่ ๖",
+    "ch6_title": "ไม้กวาดด้ามใหม่และความรุ่งโรจน์ครั้งใหม่",
+    "ch7_num": "บทที่ ๗",
+    "ch7_title": "ยุคแห่งการปฏิวัติ",
+    "ch8_num": "บทที่ ๘",
+    "ch8_title": "ราชาแห่งยุโรป",
+    "ch9_num": "บทที่ ๙",
+    "ch9_title": "อนาคตสีน้ำเงิน",
+    "author": "ผู้เขียน: อิอิแอแอ",
+    "hub_title": "The Story Blue Hub",
+    "read_btn": "🇬🇧 Read in English"
+  },
+  "about": {
+    "badge": "ℹ️ เกี่ยวกับเรา",
+    "title": "เกี่ยวกับเรา",
+    "subtitle": "KARN LA KHRANg NAN (กาลครั้งนั้น) Official",
+    "h_about": "🏠 เกี่ยวกับเรา",
+    "p1": "KARN LA KHRANg NAN (กาลครั้งนั้น) Official คือเว็บไซต์ที่สร้างขึ้นโดยแฟนบอล Chelsea ด้วยความรักและความหลงใหลในสโมสรฟุตบอล Chelsea Football Club เรารวบรวมข้อมูลที่เป็นประโยชน์สำหรับแฟนบอลเลือดน้ำเงินทุกคน ตั้งแต่โปรแกรมการแข่งขัน ผลการแข่งขัน ตารางคะแนน รายชื่อนักเตะ คลังถ้วยรางวัล ตำนานสโมสร และเรื่องราวประวัติศาสตร์ของสโมสร",
+    "p2": "เราไม่ใช่นักพัฒนาเว็บไซต์มืออาชีพ แต่เราคือแฟนบอลที่ต้องการสร้างพื้นที่สำหรับแฟนบอลด้วยกัน ทุกอย่างบนเว็บไซต์นี้เกิดจากความตั้งใจและเวลาที่ทุ่มเทให้กับสิ่งที่เรารัก",
+    "inspiration_label": "💙 แรงบันดาลใจ:",
+    "inspiration_text": "เราเชื่อว่าทุกสโมสรควรมีพื้นที่ที่แฟนบอลสามารถเข้าถึงข้อมูลได้ง่าย สวยงาม และครบถ้วน โดยไม่ต้องพึ่งพาเว็บไซต์ทางการเพียงอย่างเดียว KARN LA KHRANg NAN (กาลครั้งนั้น) คือของขวัญจากแฟนบอล สู่แฟนบอล",
+    "h_disclaimer": "⚠️ ข้อจำกัดความรับผิดชอบ (Disclaimer)",
+    "disclaimer_bold": "KARN LA KHRANg NAN Official เป็นเว็บไซต์ที่ไม่เป็นทางการ (Unofficial Fan Site)",
+    "disclaimer_p2": "เราไม่มีส่วนเกี่ยวข้องใด ๆ กับ Chelsea Football Club, Premier League, FA, UEFA, FIFA หรือองค์กรพันธมิตรใด ๆ ทั้งสิ้น",
+    "disclaimer_p3": "โลโก้, เครื่องหมายการค้า, และทรัพย์สินทางปัญญาทั้งหมดที่ปรากฏบนเว็บไซต์นี้ เป็นกรรมสิทธิ์ของเจ้าของที่เกี่ยวข้อง",
+    "disclaimer_p4": "ข้อมูลบนเว็บไซต์นี้รวบรวมจากแหล่งข้อมูลสาธารณะ และอาจมีความคลาดเคลื่อนจากข้อมูลอย่างเป็นทางการ เราไม่รับประกันความถูกต้อง 100% ของข้อมูลทั้งหมด และขอแนะนำให้ตรวจสอบข้อมูลสำคัญกับเว็บไซต์ทางการของสโมสรก่อนการอ้างอิง",
+    "h_sources": "📡 แหล่งข้อมูล",
+    "s1_label": "ข้อมูลนักเตะ:",
+    "s2_label": "โปรแกรมการแข่งขัน:",
+    "s3_label": "ข้อมูลประวัติศาสตร์:",
+    "s4_label": "ข้อมูลถ้วยรางวัล:",
+    "s5_label": "โลโก้ทีมและรายการ:",
+    "s6_label": "ภาพธงชาติ:",
+    "h_contact": "📬 ติดต่อเรา",
+    "contact_p": "มีคำถาม ข้อเสนอแนะ หรือต้องการแจ้งข้อมูลที่คลาดเคลื่อน? เรายินดีรับฟังทุกความคิดเห็น เพราะเราต้องการพัฒนาเว็บไซต์นี้ให้ดีที่สุดสำหรับแฟนบอลทุกคน",
+    "email_title": "📧 อีเมลติดต่อ",
+    "email_sub": "เราจะพยายามตอบกลับภายใน 48 ชั่วโมง",
+    "social_p": "นอกจากอีเมลแล้ว คุณสามารถติดตามความเคลื่อนไหวของเว็บไซต์ และพูดคุยกับแฟนบอลคนอื่น ๆ ได้ผ่านช่องทางโซเชียลมีเดีย (จะประกาศให้ทราบเร็ว ๆ นี้)",
+    "footer_note": "สร้างขึ้นด้วย 💙 โดยแฟนบอลเชลซี เพื่อแฟนบอลเชลซี"
+  },
+  "match": {
+    "back_fixtures": "← กลับหน้าโปรแกรม",
+    "watch": "📺 ช่องทางการรับชม",
+    "goals": "⚽ ผู้ทำประตู",
+    "not_found_id": "⚠️ ไม่พบรหัสการแข่งขัน",
+    "not_found_match": "⚠️ ไม่พบข้อมูลการแข่งขันนี้",
+    "load_error": "⚠️ ไม่สามารถโหลดข้อมูลได้",
+    "live_badge": "สด (LIVE)",
+    "view_live": "ดูการแข่งขันสด & สถิติ"
+  },
+  "common": {
+    "date": "วันที่",
+    "time": "เวลา",
+    "competition": "รายการ",
+    "home": "เจ้าบ้าน",
+    "away": "ทีมเยือน",
+    "venue": "สนาม",
+    "score": "สกอร์",
+    "view_all": "ดูทั้งหมด",
+    "loading": "กำลังโหลด...",
+    "disclaimer": "เว็บไซต์นี้เป็นแฟนไซต์ที่ไม่เป็นทางการ ไม่มีความเกี่ยวข้องกับสโมสรฟุตบอลเชลซี",
+    "rights": "สงวนลิขสิทธิ์"
+  },
+  "calendar": {
+    "legend_men": "ทีมชาย",
+    "legend_women": "ทีมหญิง",
+    "legend_home": "เหย้า",
+    "legend_away": "เยือน"
+  },
+  "filters": {
+    "filter_title": "ตัวกรอง",
+    "team_label": "ทีม",
+    "all_teams": "ทุกทีม",
+    "men_team": "ทีมชาย",
+    "women_team": "ทีมหญิง",
+    "tournament_label": "รายการแข่งขัน",
+    "all_tournaments": "ทุกรายการแข่งขัน",
+    "premier_league": "พรีเมียร์ลีก",
+    "wsl": "บาร์เคลย์ส วีเมนส์ ซูเปอร์ลีก",
+    "uwcl": "ยูฟ่า แชมเปียนส์ลีก (หญิง)",
+    "carabao_cup": "คาราบาว คัพ",
+    "friendly": "นัดกระชับมิตร",
+    "fa_cup": "เอฟเอ คัพ",
+    "clear_filters": "ล้างตัวกรอง",
+    "no_matches_found": "ไม่พบนัดการแข่งขันที่ตรงกับตัวกรองที่เลือก",
+    "no_fixtures_filter": "ไม่พบโปรแกรมการแข่งขันที่ตรงกับตัวกรองนี้",
+    "no_results_filter": "ไม่พบผลการแข่งขันที่ตรงกับตัวกรองนี้",
+    "reset_filter_btn": "รีเซ็ตตัวกรอง"
+  },
+  "player": {
+    "view_card": "การ์ดนักเตะ (Collectible Card)"
+  }
+},
+  en: {
+  "nav": {
+    "home": "Home",
+    "men_team": "Men's Team",
+    "women_team": "Women's Team",
+    "trophy": "Trophy",
+    "icons": "i-Cons",
+    "story": "The Story Blue",
+    "about": "About Us",
+    "transfers": "Transfers",
+    "news": "News",
+    "lang_toggle": "TH",
+    "theme_classic": "Classic Blue",
+    "theme_dark": "Modern Dark",
+    "theme_toggle": "Theme",
+    "goal_notif": "Goal Alerts"
+  },
+  "notifications": {
+    "goal_alerts": "Goal Alerts",
+    "goal_alerts_on": "Goal Alerts: ON",
+    "goal_alerts_off": "Goal Alerts: OFF",
+    "permission_granted": "🔔 Live Goal Notifications Enabled!",
+    "permission_denied": "⚠️ Notifications blocked by browser. Please allow them in browser settings.",
+    "not_supported": "Browser notifications not supported. In-app goal alerts will be used.",
+    "test_alert": "⚡ Test Alert",
+    "goal_scored": "⚽ GOAL SCORED!",
+    "goal_toast_sub": "Live Match Update"
+  },
+  "news": {
+    "title": "Club News",
+    "latest_feed": "Latest Feed",
+    "archive_view": "News Archive",
+    "filter_year": "Year",
+    "filter_month": "Month",
+    "all_years": "All Years",
+    "all_months": "All Months",
+    "search_placeholder": "Search articles...",
+    "no_archive_match": "No articles found for the selected period",
+    "reset_archive": "↺ Reset Filters",
+    "read_article": "Read Article",
+    "articles_found": "articles found",
+    "view_archive_btn": "📂 Open Archive"
+  },
+  "home": {
+    "title": "KARN LA KHRANg NAN Official",
+    "fixtures": "Fixtures",
+    "results": "Results",
+    "no_fixtures": "No fixtures at the moment",
+    "no_results": "No results yet",
+    "quick_links": "Quick Links",
+    "official_badge": "⚽ OFFICIAL WEBSITE",
+    "season_sub": "By Chelsea Fans, For Chelsea Fans · SEASON 2026 / 27",
+    "list_view": "List View",
+    "calendar_view": "Calendar View"
+  },
+  "men": {
+    "badge": "⚽ MEN'S TEAM",
+    "title": "Chelsea Men's Team",
+    "season": "MEN'S TEAM · 2026/27",
+    "all_results": "All Results",
+    "all_fixtures": "All Fixtures",
+    "table_title": "🏆 Premier League Table",
+    "players_title": "👕 Players & Head coach (Manager)"
+  },
+  "women": {
+    "badge": "⚽ WOMEN'S TEAM",
+    "title": "Chelsea Women",
+    "season": "WOMEN'S TEAM · 2026/27",
+    "table_title": "🏆 WSL Table",
+    "players_title": "👕 Players & Head coach (Manager)"
+  },
+  "tabs": {
+    "results": "📊 Results",
+    "fixtures": "Fixtures",
+    "tables": "🏆 Tables",
+    "players": "👕 Players"
+  },
+  "tactical": {
+    "title": "Tactical Heatmap & Formation Preference (D3.js)",
+    "subtitle": "Formation simulation, density heatmaps, and passing networks of the manager",
+    "mode_heatmap": "Positional Heatmap",
+    "mode_attack": "Attacking Phase",
+    "mode_press": "Pressing & Rest Defense",
+    "mode_network": "Passing Network",
+    "formation_philosophy": "Tactical Philosophy",
+    "possession": "Avg Possession",
+    "ppda": "Pressing (PPDA)",
+    "halfspace": "Half-Space Index",
+    "defline": "Defensive Line",
+    "restdef": "Rest Defense Structure",
+    "key_directives": "Key Tactical Directives"
+  },
+  "trophy": {
+    "badge": "🏆 TROPHY CABINET",
+    "title": "Trophy Cabinet",
+    "season": "KARN LA KHRANg NAN · ALL TROPHIES",
+    "all_trophies": "🏆 All Trophies",
+    "filter_all": "All",
+    "filter_men": "👨 Men's",
+    "filter_women": "👩 Women's",
+    "men_tag": "👨 Men's",
+    "women_tag": "👩 Women's"
+  },
+  "icons": {
+    "badge": "🤴 CLUB LEGENDS",
+    "title": "i-Cons",
+    "subtitle": "All-time Legends of Chelsea FC",
+    "filter_label": "🔍 Filter:",
+    "filter_all": "All",
+    "filter_defender": "🛡️ Defenders",
+    "filter_midfielder": "🎯 Midfielders",
+    "filter_forward": "⚽ Forwards",
+    "filter_goalkeeper": "🧤 Goalkeepers",
+    "loading": "Loading legends...",
+    "error": "Failed to load legends data",
+    "empty": "No legends found for this filter",
+    "apps": "apps",
+    "goals": "goals",
+    "pos_defender": "Defender",
+    "pos_midfielder": "Midfielder",
+    "pos_forward": "Forward",
+    "pos_goalkeeper": "Goalkeeper"
+  },
+  "story": {
+    "title": "The Story Blue",
+    "history_heading": "Club History",
+    "history_sub": "Once upon a time... Discover the origins, glories, and legends of Chelsea Football Club through the blue chronicles.",
+    "ch1_num": "CHAPTER 1",
+    "ch1_title": "The Beginning",
+    "ch2_num": "CHAPTER 2",
+    "ch2_title": "Stamford Bridge: Our Home",
+    "ch3_num": "CHAPTER 3",
+    "ch3_title": "Sowing the seeds of success",
+    "ch4_num": "CHAPTER 4",
+    "ch4_title": "Swinging London",
+    "ch5_num": "CHAPTER 5",
+    "ch5_title": "The Fulham Road Rollercoaster",
+    "ch6_num": "CHAPTER 6",
+    "ch6_title": "A new broom and a new boom",
+    "ch7_num": "CHAPTER 7",
+    "ch7_title": "The Revolution Era",
+    "ch8_num": "CHAPTER 8",
+    "ch8_title": "Kings of Europe",
+    "ch9_num": "CHAPTER 9",
+    "ch9_title": "The Blue Future",
+    "author": "Author: EiEiAeAe",
+    "hub_title": "The Story Blue Hub",
+    "read_btn": "🇹🇭 อ่านเป็นภาษาไทย"
+  },
+  "about": {
+    "badge": "ℹ️ ABOUT US",
+    "title": "About Us",
+    "subtitle": "KARN LA KHRANg NAN Official",
+    "h_about": "🏠 About Us",
+    "p1": "KARN LA KHRANg NAN Official is a website created by Chelsea fans out of love and passion for Chelsea Football Club. We gather useful information for all Blues fans, including fixtures, results, league tables, squad lists, trophy cabinet, club legends, and the history of the club.",
+    "p2": "We are not professional web developers, but fans who want to create a space for fellow fans. Everything on this website comes from dedication and time devoted to what we love.",
+    "inspiration_label": "💙 Inspiration:",
+    "inspiration_text": "We believe every club should have a space where fans can easily access information cleanly and fully without depending solely on official sites. KARN LA KHRANg NAN is a gift from fans to fans.",
+    "h_disclaimer": "⚠️ Disclaimer",
+    "disclaimer_bold": "KARN LA KHRANg NAN Official is an Unofficial Fan Site.",
+    "disclaimer_p2": "We have no official affiliation with Chelsea Football Club, Premier League, FA, UEFA, FIFA, or any partner organizations.",
+    "disclaimer_p3": "All logos, trademarks, and intellectual property displayed on this website belong to their respective owners.",
+    "disclaimer_p4": "The information on this website is compiled from public sources and may differ from official records. We do not guarantee 100% accuracy and recommend checking official club sites for verification.",
+    "h_sources": "📡 Data Sources",
+    "s1_label": "Player Data:",
+    "s2_label": "Fixtures:",
+    "s3_label": "History:",
+    "s4_label": "Trophy Data:",
+    "s5_label": "Logos:",
+    "s6_label": "Country Flags:",
+    "h_contact": "📬 Contact Us",
+    "contact_p": "Have questions, suggestions, or corrections? We welcome all feedback to make this site the best it can be for all fans.",
+    "email_title": "📧 Contact Email",
+    "email_sub": "We try to respond within 48 hours.",
+    "social_p": "In addition to email, you can follow updates and chat with other fans via our social media channels (to be announced soon).",
+    "footer_note": "Made with 💙 by Chelsea Fans, for Chelsea Fans."
+  },
+  "match": {
+    "back_fixtures": "← Back to Fixtures",
+    "watch": "📺 Where to Watch",
+    "goals": "⚽ Goalscorers",
+    "not_found_id": "⚠️ Match ID not found",
+    "not_found_match": "⚠️ Match information not found",
+    "load_error": "⚠️ Failed to load match data",
+    "live_badge": "LIVE",
+    "view_live": "View Live Match & Stats"
+  },
+  "common": {
+    "date": "Date",
+    "time": "Time",
+    "competition": "Competition",
+    "home": "Home",
+    "away": "Away",
+    "venue": "Venue",
+    "score": "Score",
+    "view_all": "View All",
+    "loading": "Loading...",
+    "disclaimer": "This is an unofficial fan website. Not affiliated with Chelsea FC.",
+    "rights": "All Rights Reserved."
+  },
+  "calendar": {
+    "legend_men": "Men's Team",
+    "legend_women": "Women's Team",
+    "legend_home": "Home Match",
+    "legend_away": "Away Match"
+  },
+  "filters": {
+    "filter_title": "Filters",
+    "team_label": "Team",
+    "all_teams": "All Teams",
+    "men_team": "Men's Team",
+    "women_team": "Women's Team",
+    "tournament_label": "Tournament",
+    "all_tournaments": "All Tournaments",
+    "premier_league": "Premier League",
+    "wsl": "Barclays WSL",
+    "uwcl": "UEFA Women's Champions League",
+    "carabao_cup": "Carabao Cup",
+    "friendly": "Club Friendly",
+    "fa_cup": "FA Cup",
+    "clear_filters": "Clear Filters",
+    "no_matches_found": "No matches found matching the selected filters.",
+    "no_fixtures_filter": "No upcoming fixtures found matching this filter.",
+    "no_results_filter": "No match results found matching this filter.",
+    "reset_filter_btn": "Reset Filters"
+  },
+  "player": {
+    "view_card": "Collectible Card"
+  }
+}
+};
+let translations = FALLBACK_TRANSLATIONS[currentLang] || FALLBACK_TRANSLATIONS.th;
 
 // ---------- GLOBAL TOOLTIP ----------
 document.addEventListener("DOMContentLoaded", () => {
@@ -2404,11 +2866,29 @@ window.renderTeamNameHTML = renderTeamNameHTML;
 
 async function loadLanguage(lang) {
   try {
-    const res = await fetch(`lang/${lang}.json`);
-    if (!res.ok) return;
-    const ct = res.headers.get("content-type");
-    if (ct && !ct.includes("json") && !ct.includes("javascript")) return;
-    translations = await res.json();
+    const urls = [`/lang/${lang}.json`, `lang/${lang}.json`, `./lang/${lang}.json`];
+    let loaded = false;
+    for (const url of urls) {
+      try {
+        const res = await fetch(url);
+        if (res && res.ok) {
+          const ct = res.headers.get("content-type");
+          if (!ct || ct.includes("json") || ct.includes("javascript")) {
+            const data = await res.json();
+            if (data && typeof data === "object") {
+              translations = data;
+              loaded = true;
+              break;
+            }
+          }
+        }
+      } catch (err) {
+        // Fallback gracefully without unhandled errors
+      }
+    }
+    if (!loaded && FALLBACK_TRANSLATIONS && FALLBACK_TRANSLATIONS[lang]) {
+      translations = FALLBACK_TRANSLATIONS[lang];
+    }
     currentLang = lang;
     window.currentLang = lang;
     document.documentElement.setAttribute("lang", lang);
@@ -2416,7 +2896,13 @@ async function loadLanguage(lang) {
     localStorage.setItem("lang", lang);
     window.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang } }));
   } catch (e) {
-    console.error("Failed to load language:", e);
+    if (FALLBACK_TRANSLATIONS && FALLBACK_TRANSLATIONS[lang]) {
+      translations = FALLBACK_TRANSLATIONS[lang];
+    }
+    currentLang = lang;
+    window.currentLang = lang;
+    document.documentElement.setAttribute("lang", lang);
+    updateUIText();
   }
 }
 

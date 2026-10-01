@@ -22,6 +22,7 @@ app.use('/databases', express.static(path.join(__dirname, 'databases')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
+app.use('/lang', express.static(path.join(__dirname, 'lang')));
 
 // Explicit routes for each page (Hardcoded strings are REQUIRED for Vercel's nft static analysis)
 app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));

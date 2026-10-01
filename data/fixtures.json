@@ -5269,6 +5269,552 @@
     "team_type": "M"
   },
   {
+    "id": "m46",
+    "date": "2026-09-10",
+    "time": "02:00",
+    "competition": "league-cup",
+    "competition_logo": "databases/logo/competitions/men/england_efl-cup.svg",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Leeds United",
+    "away_logo": "databases/logo/teams/england_leeds-united.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "completed",
+    "time_live": "82'",
+    "home_score": 6,
+    "away_score": 3,
+    "efl_id": "g2685176",
+    "youtube_id": "7tYEgY-rbZc",
+    "video": {
+      "id": "7tYEgY-rbZc",
+      "title": "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
+      "desc_th": "ไฮไลท์การแข่งขัน เชลซี 6-3 ลีดส์ ยูไนเต็ด | คาราบาว คัพ 2026/27",
+      "desc_en": "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
+      "credit": "Thank you to the Chelsea Football Club channel for the excellent match highlights content.",
+      "channel_name": "Chelsea Football Club",
+      "channel_handle": "@chelseafc",
+      "channel_url": "https://www.youtube.com/@chelseafc"
+    },
+    "goals": [
+      {
+        "team": "away",
+        "player": "Tarik Muharemovic",
+        "minute": 23
+      },
+      {
+        "team": "away",
+        "player": "Brenden Aaronson",
+        "minute": 48
+      },
+      {
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 53
+      },
+      {
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 55
+      },
+      {
+        "team": "home",
+        "player": "Pedro Neto",
+        "minute": 60
+      },
+      {
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 65
+      },
+      {
+        "team": "away",
+        "player": "Dominic Calvert-Lewin",
+        "minute": 75
+      },
+      {
+        "team": "home",
+        "player": "Valentín Barco",
+        "minute": 80
+      },
+      {
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 90
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Tarik Muharemovic",
+        "minute": 23,
+        "detail": "Goal (0-1)"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Reece James",
+        "player_in": "Reece James",
+        "player_out": "Ronnie Watson",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "player_in": "Morgan Rogers",
+        "player_out": "Malo Gusto",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Cole Palmer",
+        "player_in": "Cole Palmer",
+        "player_out": "Jamie Gittens",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Pedro Neto",
+        "player_in": "Pedro Neto",
+        "player_out": "Estêvão Willian",
+        "minute": 45,
+        "detail": "Tactical"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Ronnie Watson",
+        "minute": 46,
+        "detail": "Foul (45'+1')"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Brenden Aaronson",
+        "minute": 48,
+        "detail": "Goal (0-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 53,
+        "detail": "Penalty (1-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 55,
+        "detail": "Goal (2-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Pedro Neto",
+        "minute": 60,
+        "detail": "Goal (3-2)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 65,
+        "detail": "Goal (4-2)"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Anton Stach",
+        "player_in": "Anton Stach",
+        "player_out": "Daniel James",
+        "minute": 66,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Dominic Calvert-Lewin",
+        "player_in": "Dominic Calvert-Lewin",
+        "player_out": "Lukas Nmecha",
+        "minute": 66,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Noah Okafor",
+        "player_in": "Noah Okafor",
+        "player_out": "Brenden Aaronson",
+        "minute": 67,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Ao Tanaka",
+        "player_in": "Ao Tanaka",
+        "player_out": "Sean Longstaff",
+        "minute": 67,
+        "detail": "Tactical"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Dominic Calvert-Lewin",
+        "minute": 75,
+        "detail": "Goal (4-3)"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "player_in": "Wesley Fofana",
+        "player_out": "Levi Colwill",
+        "minute": 76,
+        "detail": "Tactical"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Gabriel Gudmundsson",
+        "player_in": "Gabriel Gudmundsson",
+        "player_out": "Melvin Bard",
+        "minute": 78,
+        "detail": "Tactical"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Valentín Barco",
+        "minute": 80,
+        "detail": "Goal (5-3)"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "MANAGER: Xabi Alonso",
+        "minute": 82,
+        "detail": "Dissent"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Danny Welbeck",
+        "minute": 90,
+        "detail": "Goal (6-3, 90'+4')"
+      }
+    ],
+    "competition_name": "league-cup",
+    "team_type": "M",
+    "lineups": {
+      "home": {
+        "manager": "Xabi Alonso",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 39,
+            "name": "Mike Penders (GK)"
+          },
+          {
+            "number": 34,
+            "name": "Josh-Kofi Acheampong"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto"
+          },
+          {
+            "number": 31,
+            "name": "Ronnie Watson"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco"
+          },
+          {
+            "number": 29,
+            "name": "Pep Chavarría"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão Willian"
+          },
+          {
+            "number": 11,
+            "name": "Jamie Gittens"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Emiliano Martínez (GK)"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana"
+          },
+          {
+            "number": 24,
+            "name": "Reece James"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda"
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers"
+          },
+          {
+            "number": 9,
+            "name": "João Pedro"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Daniel Farke",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 16,
+            "name": "Michael Zetterer (GK)"
+          },
+          {
+            "number": 5,
+            "name": "Tarik Muharemovic"
+          },
+          {
+            "number": 15,
+            "name": "Jaka Bijol"
+          },
+          {
+            "number": 24,
+            "name": "James Justin"
+          },
+          {
+            "number": 26,
+            "name": "Mitchel Bard"
+          },
+          {
+            "number": 8,
+            "name": "Sean Longstaff"
+          },
+          {
+            "number": 4,
+            "name": "Ethan Ampadu"
+          },
+          {
+            "number": 7,
+            "name": "Daniel James"
+          },
+          {
+            "number": 11,
+            "name": "Brenden Aaronson"
+          },
+          {
+            "number": 10,
+            "name": "Harry Wilson"
+          },
+          {
+            "number": 14,
+            "name": "Lukas Nmecha"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "James Trafford (GK)"
+          },
+          {
+            "number": 3,
+            "name": "Gabriel Gudmundsson"
+          },
+          {
+            "number": 30,
+            "name": "Nico Elvedi"
+          },
+          {
+            "number": 2,
+            "name": "Jayden Bogle"
+          },
+          {
+            "number": 22,
+            "name": "Ao Tanaka"
+          },
+          {
+            "number": 18,
+            "name": "Anton Stach"
+          },
+          {
+            "number": 19,
+            "name": "Noah Okafor"
+          },
+          {
+            "number": 9,
+            "name": "Dominic Calvert-Lewin"
+          },
+          {
+            "number": 23,
+            "name": "Jean-Matteo Bahoya"
+          }
+        ]
+      }
+    },
+    "stats": [
+      {
+        "name": "ครองบอล (Possession)",
+        "home": 49.4,
+        "away": 50.6,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสยิง (Shots)",
+        "home": 16,
+        "away": 18,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 8,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 3,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 6,
+        "away": 10,
+        "isPercentage": false
+      }
+    ],
+    "commentary": [
+      {
+        "section": "⏱️ ลำดับเหตุการณ์สด (Live Match Timeline)",
+        "events": [
+          {
+            "minute": "23'",
+            "text": "⚽ <strong>ประตู! (0-1):</strong> Tarik Muharemovic ยิงให้ ลีดส์ ยูไนเต็ด ขึ้นนำ เชลซี 0-1"
+          },
+          {
+            "minute": "45'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (เชลซี):</strong> เชลซีแก้เกมเปลี่ยน 4 คนรวด! Reece James, Morgan Rogers, Cole Palmer, Pedro Neto ลงสนามแทน Ronnie Watson, Malo Gusto, Jamie Gittens, Estêvão"
+          },
+          {
+            "minute": "45'+1'",
+            "text": "🟨 <strong>ใบเหลือง:</strong> Ronnie Watson (เชลซี) ได้รับใบเหลืองจากการตัดฟาวล์"
+          },
+          {
+            "minute": "HT",
+            "text": "⏸️ <strong>จบครึ่งแรก (Half-Time):</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด"
+          },
+          {
+            "minute": "48'",
+            "text": "⚽ <strong>ประตู! (0-2):</strong> Brenden Aaronson ทำประตูให้ ลีดส์ ยูไนเต็ด หนีห่างเป็น 0-2"
+          },
+          {
+            "minute": "53'",
+            "text": "⚽ <strong>ประตู! จุดโทษ (1-2):</strong> Cole Palmer สังหารจุดโทษเข้าไปอย่างเฉียบขาด เชลซีไล่มาเป็น 1-2!"
+          },
+          {
+            "minute": "55'",
+            "text": "⚽ <strong>ประตูตีเสมอสุดดราม่า! (2-2):</strong> Cole Palmer ยิงเบิ้ลลูกที่สองในรอบ 2 นาที! เชลซีตามตีเสมอ ลีดส์ ยูไนเต็ด 2-2 สำเร็จ!"
+          },
+          {
+            "minute": "60'",
+            "text": "⚽ <strong>แซงนำเหลือเชื่อ! (3-2):</strong> Pedro Neto ซัดประตูช่วยให้ เชลซี พลิกกลับมาแซงนำ 3-2 จากตามหลัง 0-2!"
+          },
+          {
+            "minute": "65'",
+            "text": "⚽ <strong>ประตูฉีกหนี! (4-2):</strong> Danny Welbeck ซัดประตูที่ 4 ให้ เชลซี ทะยานนำ ลีดส์ ยูไนเต็ด เป็น 4-2! รัว 4 ประตูรวดใน 12 นาที!"
+          },
+          {
+            "minute": "66'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Anton Stach และ Dominic Calvert-Lewin ลงสนามแทน Daniel James และ Lukas Nmecha"
+          },
+          {
+            "minute": "67'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Noah Okafor และ Ao Tanaka ลงสนามแทน Brenden Aaronson และ Sean Longstaff"
+          },
+          {
+            "minute": "75'",
+            "text": "⚽ <strong>ลีดส์ไล่จี้มา! (4-3):</strong> Dominic Calvert-Lewin ตัวสำรองยิงประตูให้ ลีดส์ ยูไนเต็ด ไล่ตามมาเป็น 4-3!"
+          },
+          {
+            "minute": "76'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (เชลซี):</strong> Wesley Fofana ลงสนามขันเกมรับแทน Levi Colwill"
+          },
+          {
+            "minute": "78'",
+            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Gabriel Gudmundsson ลงสนามแทน Melvin Bard"
+          },
+          {
+            "minute": "80'",
+            "text": "⚽ <strong>ประตูตอกย้ำชัยชนะ! (5-3):</strong> Valentín Barco ยิงประตูที่ 5 ให้ เชลซี ฉีกหนี ลีดส์ ยูไนเต็ด เป็น 5-3!"
+          },
+          {
+            "minute": "82'",
+            "text": "🟨 <strong>ใบเหลือง (เชลซี):</strong> MANAGER: Xabi Alonso ได้รับใบเหลืองจากการประท้วงผู้ตัดสิน (Dissent)"
+          },
+          {
+            "minute": "90'+4'",
+            "text": "⚽ <strong>เชตซียิงปิดกล่อง! (6-3):</strong> Danny Welbeck ซัดประตูที่สองของตัวเองในเกมนี้ในช่วงทดเวลาบาดเจ็บ! เชลซีหนีห่างเป็น 6-3!"
+          },
+          {
+            "minute": "90'+",
+            "text": "⏰ <strong>เข้าสู่ช่วงทดเวลาบาดเจ็บ:</strong> เกมกำลังจะจบลงด้วยชัยชนะอันท่วมท้นของเชลซี"
+          },
+          {
+            "minute": "FT",
+            "text": "🏁 <strong>จบการแข่งขัน (Full-Time):</strong> เชลซี เปิดบ้านเอาชนะ ลีดส์ ยูไนเต็ด ไปด้วยสกอร์สุดมันส์ 6-3!"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "w1",
     "date": "2026-08-08",
     "time": "11:00",
@@ -7783,10 +8329,10 @@
   },
   {
     "id": "w28",
-    "date": "2027-05-16",
-    "time": "20:00",
-    "time_th": "20:00",
-    "time_uk": "14:00",
+    "date": "2027-05-22",
+    "time": "23:00",
+    "time_th": "23:00",
+    "time_uk": "17:00",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Everton",
@@ -8154,554 +8700,8 @@
     "round": "Qualifying Round 2: Leg 2"
   },
   {
-    "id": "m46",
-    "date": "2026-09-10",
-    "time": "02:00",
-    "competition": "league-cup",
-    "competition_logo": "databases/logo/competitions/men/england_efl-cup.svg",
-    "home_team": "Chelsea",
-    "home_logo": "databases/logo/teams/england_chelsea.svg",
-    "away_team": "Leeds United",
-    "away_logo": "databases/logo/teams/england_leeds-united.svg",
-    "venue": "Stamford Bridge",
-    "channels": [
-      {
-        "platform": "www.monomax.me",
-        "name": "MONOMAX SPORTS TV",
-        "logo": "databases/logo/tv/monomax.svg"
-      }
-    ],
-    "status": "completed",
-    "time_live": "82'",
-    "home_score": 6,
-    "away_score": 3,
-    "efl_id": "g2685176",
-    "youtube_id": "7tYEgY-rbZc",
-    "video": {
-      "id": "7tYEgY-rbZc",
-      "title": "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
-      "desc_th": "ไฮไลท์การแข่งขัน เชลซี 6-3 ลีดส์ ยูไนเต็ด | คาราบาว คัพ 2026/27",
-      "desc_en": "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
-      "credit": "Thank you to the Chelsea Football Club channel for the excellent match highlights content.",
-      "channel_name": "Chelsea Football Club",
-      "channel_handle": "@chelseafc",
-      "channel_url": "https://www.youtube.com/@chelseafc"
-    },
-    "goals": [
-      {
-        "team": "away",
-        "player": "Tarik Muharemovic",
-        "minute": 23
-      },
-      {
-        "team": "away",
-        "player": "Brenden Aaronson",
-        "minute": 48
-      },
-      {
-        "team": "home",
-        "player": "Cole Palmer",
-        "minute": 53
-      },
-      {
-        "team": "home",
-        "player": "Cole Palmer",
-        "minute": 55
-      },
-      {
-        "team": "home",
-        "player": "Pedro Neto",
-        "minute": 60
-      },
-      {
-        "team": "home",
-        "player": "Danny Welbeck",
-        "minute": 65
-      },
-      {
-        "team": "away",
-        "player": "Dominic Calvert-Lewin",
-        "minute": 75
-      },
-      {
-        "team": "home",
-        "player": "Valentín Barco",
-        "minute": 80
-      },
-      {
-        "team": "home",
-        "player": "Danny Welbeck",
-        "minute": 90
-      }
-    ],
-    "events": [
-      {
-        "type": "goal",
-        "team": "away",
-        "player": "Tarik Muharemovic",
-        "minute": 23,
-        "detail": "Goal (0-1)"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player": "Reece James",
-        "player_in": "Reece James",
-        "player_out": "Ronnie Watson",
-        "minute": 45,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player": "Morgan Rogers",
-        "player_in": "Morgan Rogers",
-        "player_out": "Malo Gusto",
-        "minute": 45,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player": "Cole Palmer",
-        "player_in": "Cole Palmer",
-        "player_out": "Jamie Gittens",
-        "minute": 45,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player": "Pedro Neto",
-        "player_in": "Pedro Neto",
-        "player_out": "Estêvão Willian",
-        "minute": 45,
-        "detail": "Tactical"
-      },
-      {
-        "type": "yellow_card",
-        "team": "home",
-        "player": "Ronnie Watson",
-        "minute": 46,
-        "detail": "Foul (45'+1')"
-      },
-      {
-        "type": "goal",
-        "team": "away",
-        "player": "Brenden Aaronson",
-        "minute": 48,
-        "detail": "Goal (0-2)"
-      },
-      {
-        "type": "goal",
-        "team": "home",
-        "player": "Cole Palmer",
-        "minute": 53,
-        "detail": "Penalty (1-2)"
-      },
-      {
-        "type": "goal",
-        "team": "home",
-        "player": "Cole Palmer",
-        "minute": 55,
-        "detail": "Goal (2-2)"
-      },
-      {
-        "type": "goal",
-        "team": "home",
-        "player": "Pedro Neto",
-        "minute": 60,
-        "detail": "Goal (3-2)"
-      },
-      {
-        "type": "goal",
-        "team": "home",
-        "player": "Danny Welbeck",
-        "minute": 65,
-        "detail": "Goal (4-2)"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player": "Anton Stach",
-        "player_in": "Anton Stach",
-        "player_out": "Daniel James",
-        "minute": 66,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player": "Dominic Calvert-Lewin",
-        "player_in": "Dominic Calvert-Lewin",
-        "player_out": "Lukas Nmecha",
-        "minute": 66,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player": "Noah Okafor",
-        "player_in": "Noah Okafor",
-        "player_out": "Brenden Aaronson",
-        "minute": 67,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player": "Ao Tanaka",
-        "player_in": "Ao Tanaka",
-        "player_out": "Sean Longstaff",
-        "minute": 67,
-        "detail": "Tactical"
-      },
-      {
-        "type": "goal",
-        "team": "away",
-        "player": "Dominic Calvert-Lewin",
-        "minute": 75,
-        "detail": "Goal (4-3)"
-      },
-      {
-        "type": "substitution",
-        "team": "home",
-        "player": "Wesley Fofana",
-        "player_in": "Wesley Fofana",
-        "player_out": "Levi Colwill",
-        "minute": 76,
-        "detail": "Tactical"
-      },
-      {
-        "type": "substitution",
-        "team": "away",
-        "player": "Gabriel Gudmundsson",
-        "player_in": "Gabriel Gudmundsson",
-        "player_out": "Melvin Bard",
-        "minute": 78,
-        "detail": "Tactical"
-      },
-      {
-        "type": "goal",
-        "team": "home",
-        "player": "Valentín Barco",
-        "minute": 80,
-        "detail": "Goal (5-3)"
-      },
-      {
-        "type": "yellow_card",
-        "team": "home",
-        "player": "MANAGER: Xabi Alonso",
-        "minute": 82,
-        "detail": "Dissent"
-      },
-      {
-        "type": "goal",
-        "team": "home",
-        "player": "Danny Welbeck",
-        "minute": 90,
-        "detail": "Goal (6-3, 90'+4')"
-      }
-    ],
-    "competition_name": "league-cup",
-    "team_type": "M",
-    "lineups": {
-      "home": {
-        "manager": "Xabi Alonso",
-        "formation": "3-4-2-1",
-        "starting": [
-          {
-            "number": 39,
-            "name": "Mike Penders (GK)"
-          },
-          {
-            "number": 34,
-            "name": "Josh-Kofi Acheampong"
-          },
-          {
-            "number": 5,
-            "name": "Maxence Lacroix"
-          },
-          {
-            "number": 6,
-            "name": "Levi Colwill"
-          },
-          {
-            "number": 27,
-            "name": "Malo Gusto"
-          },
-          {
-            "number": 31,
-            "name": "Ronnie Watson"
-          },
-          {
-            "number": 4,
-            "name": "Valentín Barco"
-          },
-          {
-            "number": 29,
-            "name": "Pep Chavarría"
-          },
-          {
-            "number": 41,
-            "name": "Estêvão Willian"
-          },
-          {
-            "number": 11,
-            "name": "Jamie Gittens"
-          },
-          {
-            "number": 18,
-            "name": "Danny Welbeck"
-          }
-        ],
-        "substitutes": [
-          {
-            "number": 1,
-            "name": "Emiliano Martínez (GK)"
-          },
-          {
-            "number": 21,
-            "name": "Jorrel Hato"
-          },
-          {
-            "number": 3,
-            "name": "Wesley Fofana"
-          },
-          {
-            "number": 24,
-            "name": "Reece James"
-          },
-          {
-            "number": 7,
-            "name": "Pedro Neto"
-          },
-          {
-            "number": 10,
-            "name": "Cole Palmer"
-          },
-          {
-            "number": 23,
-            "name": "Geovany Quenda"
-          },
-          {
-            "number": 17,
-            "name": "Morgan Rogers"
-          },
-          {
-            "number": 9,
-            "name": "João Pedro"
-          }
-        ]
-      },
-      "away": {
-        "manager": "Daniel Farke",
-        "formation": "3-4-2-1",
-        "starting": [
-          {
-            "number": 16,
-            "name": "Michael Zetterer (GK)"
-          },
-          {
-            "number": 5,
-            "name": "Tarik Muharemovic"
-          },
-          {
-            "number": 15,
-            "name": "Jaka Bijol"
-          },
-          {
-            "number": 24,
-            "name": "James Justin"
-          },
-          {
-            "number": 26,
-            "name": "Mitchel Bard"
-          },
-          {
-            "number": 8,
-            "name": "Sean Longstaff"
-          },
-          {
-            "number": 4,
-            "name": "Ethan Ampadu"
-          },
-          {
-            "number": 7,
-            "name": "Daniel James"
-          },
-          {
-            "number": 11,
-            "name": "Brenden Aaronson"
-          },
-          {
-            "number": 10,
-            "name": "Harry Wilson"
-          },
-          {
-            "number": 14,
-            "name": "Lukas Nmecha"
-          }
-        ],
-        "substitutes": [
-          {
-            "number": 1,
-            "name": "James Trafford (GK)"
-          },
-          {
-            "number": 3,
-            "name": "Gabriel Gudmundsson"
-          },
-          {
-            "number": 30,
-            "name": "Nico Elvedi"
-          },
-          {
-            "number": 2,
-            "name": "Jayden Bogle"
-          },
-          {
-            "number": 22,
-            "name": "Ao Tanaka"
-          },
-          {
-            "number": 18,
-            "name": "Anton Stach"
-          },
-          {
-            "number": 19,
-            "name": "Noah Okafor"
-          },
-          {
-            "number": 9,
-            "name": "Dominic Calvert-Lewin"
-          },
-          {
-            "number": 23,
-            "name": "Jean-Matteo Bahoya"
-          }
-        ]
-      }
-    },
-    "stats": [
-      {
-        "name": "ครองบอล (Possession)",
-        "home": 49.4,
-        "away": 50.6,
-        "isPercentage": true
-      },
-      {
-        "name": "โอกาสยิง (Shots)",
-        "home": 16,
-        "away": 18,
-        "isPercentage": false
-      },
-      {
-        "name": "ยิงตรงกรอบ (Shots on Target)",
-        "home": 8,
-        "away": 6,
-        "isPercentage": false
-      },
-      {
-        "name": "เตะมุม (Corners)",
-        "home": 3,
-        "away": 5,
-        "isPercentage": false
-      },
-      {
-        "name": "ทำฟาวล์ (Fouls)",
-        "home": 6,
-        "away": 10,
-        "isPercentage": false
-      }
-    ],
-    "commentary": [
-      {
-        "section": "⏱️ ลำดับเหตุการณ์สด (Live Match Timeline)",
-        "events": [
-          {
-            "minute": "23'",
-            "text": "⚽ <strong>ประตู! (0-1):</strong> Tarik Muharemovic ยิงให้ ลีดส์ ยูไนเต็ด ขึ้นนำ เชลซี 0-1"
-          },
-          {
-            "minute": "45'",
-            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (เชลซี):</strong> เชลซีแก้เกมเปลี่ยน 4 คนรวด! Reece James, Morgan Rogers, Cole Palmer, Pedro Neto ลงสนามแทน Ronnie Watson, Malo Gusto, Jamie Gittens, Estêvão"
-          },
-          {
-            "minute": "45'+1'",
-            "text": "🟨 <strong>ใบเหลือง:</strong> Ronnie Watson (เชลซี) ได้รับใบเหลืองจากการตัดฟาวล์"
-          },
-          {
-            "minute": "HT",
-            "text": "⏸️ <strong>จบครึ่งแรก (Half-Time):</strong> เชลซี 0 - 1 ลีดส์ ยูไนเต็ด"
-          },
-          {
-            "minute": "48'",
-            "text": "⚽ <strong>ประตู! (0-2):</strong> Brenden Aaronson ทำประตูให้ ลีดส์ ยูไนเต็ด หนีห่างเป็น 0-2"
-          },
-          {
-            "minute": "53'",
-            "text": "⚽ <strong>ประตู! จุดโทษ (1-2):</strong> Cole Palmer สังหารจุดโทษเข้าไปอย่างเฉียบขาด เชลซีไล่มาเป็น 1-2!"
-          },
-          {
-            "minute": "55'",
-            "text": "⚽ <strong>ประตูตีเสมอสุดดราม่า! (2-2):</strong> Cole Palmer ยิงเบิ้ลลูกที่สองในรอบ 2 นาที! เชลซีตามตีเสมอ ลีดส์ ยูไนเต็ด 2-2 สำเร็จ!"
-          },
-          {
-            "minute": "60'",
-            "text": "⚽ <strong>แซงนำเหลือเชื่อ! (3-2):</strong> Pedro Neto ซัดประตูช่วยให้ เชลซี พลิกกลับมาแซงนำ 3-2 จากตามหลัง 0-2!"
-          },
-          {
-            "minute": "65'",
-            "text": "⚽ <strong>ประตูฉีกหนี! (4-2):</strong> Danny Welbeck ซัดประตูที่ 4 ให้ เชลซี ทะยานนำ ลีดส์ ยูไนเต็ด เป็น 4-2! รัว 4 ประตูรวดใน 12 นาที!"
-          },
-          {
-            "minute": "66'",
-            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Anton Stach และ Dominic Calvert-Lewin ลงสนามแทน Daniel James และ Lukas Nmecha"
-          },
-          {
-            "minute": "67'",
-            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Noah Okafor และ Ao Tanaka ลงสนามแทน Brenden Aaronson และ Sean Longstaff"
-          },
-          {
-            "minute": "75'",
-            "text": "⚽ <strong>ลีดส์ไล่จี้มา! (4-3):</strong> Dominic Calvert-Lewin ตัวสำรองยิงประตูให้ ลีดส์ ยูไนเต็ด ไล่ตามมาเป็น 4-3!"
-          },
-          {
-            "minute": "76'",
-            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (เชลซี):</strong> Wesley Fofana ลงสนามขันเกมรับแทน Levi Colwill"
-          },
-          {
-            "minute": "78'",
-            "text": "🔄 <strong>เปลี่ยนตัวผู้เล่น (ลีดส์):</strong> Gabriel Gudmundsson ลงสนามแทน Melvin Bard"
-          },
-          {
-            "minute": "80'",
-            "text": "⚽ <strong>ประตูตอกย้ำชัยชนะ! (5-3):</strong> Valentín Barco ยิงประตูที่ 5 ให้ เชลซี ฉีกหนี ลีดส์ ยูไนเต็ด เป็น 5-3!"
-          },
-          {
-            "minute": "82'",
-            "text": "🟨 <strong>ใบเหลือง (เชลซี):</strong> MANAGER: Xabi Alonso ได้รับใบเหลืองจากการประท้วงผู้ตัดสิน (Dissent)"
-          },
-          {
-            "minute": "90'+4'",
-            "text": "⚽ <strong>เชตซียิงปิดกล่อง! (6-3):</strong> Danny Welbeck ซัดประตูที่สองของตัวเองในเกมนี้ในช่วงทดเวลาบาดเจ็บ! เชลซีหนีห่างเป็น 6-3!"
-          },
-          {
-            "minute": "90'+",
-            "text": "⏰ <strong>เข้าสู่ช่วงทดเวลาบาดเจ็บ:</strong> เกมกำลังจะจบลงด้วยชัยชนะอันท่วมท้นของเชลซี"
-          },
-          {
-            "minute": "FT",
-            "text": "🏁 <strong>จบการแข่งขัน (Full-Time):</strong> เชลซี เปิดบ้านเอาชนะ ลีดส์ ยูไนเต็ด ไปด้วยสกอร์สุดมันส์ 6-3!"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "w_uwcl_3",
-    "date": "2026-10-08",
+    "date": "2026-09-24",
     "time": "02:00",
     "time_th": "02:00",
     "time_uk": "20:00",
@@ -8710,229 +8710,7 @@
     "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
-    "away_team": "Real Madrid Femenino",
-    "away_logo": "databases/logo/teams/spain_real-madrid.svg",
-    "venue": "Stamford Bridge, London",
-    "ha": "H",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": "Millie Bright",
-    "formation": "4-3-3",
-    "referee": null,
-    "round": "Group Stage - Matchday 1",
-    "goals": [],
-    "events": [],
-    "channels": [
-      {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
-      }
-    ],
-    "team_type": "W"
-  },
-  {
-    "id": "w_uwcl_4",
-    "date": "2026-10-17",
-    "time": "02:00",
-    "time_th": "02:00",
-    "time_uk": "20:00",
-    "competition": "UEFA Women's Champions League",
-    "competition_name": "UEFA Women's Champions League",
-    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-    "home_team": "FC Twente Vrouwen",
-    "home_logo": "databases/logo/teams/netherlands_twente.svg",
-    "away_team": "Chelsea Women",
-    "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "De Grolsch Veste, Enschede",
-    "ha": "A",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Group Stage - Matchday 2",
-    "goals": [],
-    "events": [],
-    "channels": [
-      {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
-      }
-    ],
-    "team_type": "W"
-  },
-  {
-    "id": "w_uwcl_5",
-    "date": "2026-11-13",
-    "time": "03:00",
-    "time_th": "03:00",
-    "time_uk": "20:00",
-    "competition": "UEFA Women's Champions League",
-    "competition_name": "UEFA Women's Champions League",
-    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-    "home_team": "Celtic FC Women",
-    "home_logo": "databases/logo/teams/scotland_celtic.svg",
-    "away_team": "Chelsea Women",
-    "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Celtic Park, Glasgow",
-    "ha": "A",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Group Stage - Matchday 3",
-    "goals": [],
-    "events": [],
-    "channels": [
-      {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
-      }
-    ],
-    "team_type": "W"
-  },
-  {
-    "id": "w_uwcl_6",
-    "date": "2026-11-20",
-    "time": "03:00",
-    "time_th": "03:00",
-    "time_uk": "20:00",
-    "competition": "UEFA Women's Champions League",
-    "competition_name": "UEFA Women's Champions League",
-    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-    "home_team": "Chelsea Women",
-    "home_logo": "databases/logo/teams/england_chelsea.svg",
-    "away_team": "Celtic FC Women",
-    "away_logo": "databases/logo/teams/scotland_celtic.svg",
-    "venue": "Stamford Bridge, London",
-    "ha": "H",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Group Stage - Matchday 4",
-    "goals": [],
-    "events": [],
-    "channels": [
-      {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
-      }
-    ],
-    "team_type": "W"
-  },
-  {
-    "id": "w_uwcl_7",
-    "date": "2026-12-11",
-    "time": "03:00",
-    "time_th": "03:00",
-    "time_uk": "20:00",
-    "competition": "UEFA Women's Champions League",
-    "competition_name": "UEFA Women's Champions League",
-    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-    "home_team": "Chelsea Women",
-    "home_logo": "databases/logo/teams/england_chelsea.svg",
-    "away_team": "FC Twente Vrouwen",
-    "away_logo": "databases/logo/teams/netherlands_twente.svg",
-    "venue": "Stamford Bridge, London",
-    "ha": "H",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Group Stage - Matchday 5",
-    "goals": [],
-    "events": [],
-    "channels": [
-      {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
-      }
-    ],
-    "team_type": "W"
-  },
-  {
-    "id": "w_uwcl_8",
-    "date": "2026-12-18",
-    "time": "03:00",
-    "time_th": "03:00",
-    "time_uk": "20:00",
-    "competition": "UEFA Women's Champions League",
-    "competition_name": "UEFA Women's Champions League",
-    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-    "home_team": "Real Madrid Femenino",
-    "home_logo": "databases/logo/teams/spain_real-madrid.svg",
-    "away_team": "Chelsea Women",
-    "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Estadio Alfredo Di Stéfano, Madrid",
-    "ha": "A",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Group Stage - Matchday 6",
-    "goals": [],
-    "events": [],
-    "channels": [
-      {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
-      }
-    ],
-    "team_type": "W"
-  },
-  {
-    "id": "w_uwcl_landhaus",
-    "date": "2026-09-23",
-    "time": "02:00",
-    "time_th": "02:00",
-    "time_uk": "20:00",
-    "competition": "UEFA Women's Champions League",
-    "competition_name": "UEFA Women's Champions League",
-    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-    "home_team": "Chelsea Women",
-    "home_logo": "databases/logo/teams/england_chelsea.svg",
-    "away_team": "Landhaus",
+    "away_team": "Austria Wien",
     "away_logo": "databases/logo/teams/austria_usc-landhaus.png",
     "venue": "The Cherry Red Records Stadium, Wimbledon",
     "ha": "H",
@@ -8946,7 +8724,7 @@
     "captain": "Keira Walsh",
     "formation": "4-3-3",
     "referee": "Miriama Bočková",
-    "round": "League stage",
+    "round": "League Phase 1",
     "goals": [
       {
         "team": "home",
@@ -9358,6 +9136,732 @@
       "channel_name": "Chelsea FC Women",
       "channel_handle": "@chelseafcwomen",
       "channel_url": "https://www.youtube.com/@chelseafcwomen"
+    },
+    "alias_id": "w_uwcl_landhaus"
+  },
+  {
+    "id": "w_uwcl_4",
+    "date": "2026-10-01",
+    "time": "02:00",
+    "time_th": "02:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "OL Lyonnes",
+    "home_logo": "databases/logo/teams/france_lyon.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "OL Stadium - Décines",
+    "ha": "A",
+    "status": "completed",
+    "home_score": 0,
+    "away_score": 0,
+    "round": "Matchday 2",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W",
+    "lineups": {
+      "home": {
+        "manager": "Jonatan Giráldez",
+        "formation": "4-3-3",
+        "starting": [
+          {
+            "number": 25,
+            "name": "Maria-Luisa Grohs",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 4,
+            "name": "Selma Bacha (C)",
+            "position": "DF",
+            "pos": "LB",
+            "captain": true
+          },
+          {
+            "number": 33,
+            "name": "Tarciane",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 15,
+            "name": "Ingrid Engen",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 20,
+            "name": "Lily Yohannes",
+            "position": "MF",
+            "pos": "CM"
+          },
+          {
+            "number": 13,
+            "name": "Damaris Egurrola",
+            "position": "MF",
+            "pos": "DM"
+          },
+          {
+            "number": 23,
+            "name": "Caroline Weir",
+            "position": "MF",
+            "pos": "AM"
+          },
+          {
+            "number": 6,
+            "name": "Melchie Dumornay",
+            "position": "FW",
+            "pos": "RW"
+          },
+          {
+            "number": 29,
+            "name": "Jule Brand",
+            "position": "FW",
+            "pos": "LW"
+          },
+          {
+            "number": 77,
+            "name": "Salma Paralluelo",
+            "position": "FW",
+            "pos": "LW"
+          },
+          {
+            "number": 9,
+            "name": "Marie-Antoinette Katoto",
+            "position": "FW",
+            "pos": "ST"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Christiane Endler",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 16,
+            "name": "Féérine Belhadj",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 3,
+            "name": "Wendie Renard",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 7,
+            "name": "Vicki Becho",
+            "position": "FW",
+            "pos": "RW"
+          },
+          {
+            "number": 8,
+            "name": "Korbin Shrader",
+            "position": "MF",
+            "pos": "CM"
+          },
+          {
+            "number": 10,
+            "name": "Ines Benyahia",
+            "position": "MF",
+            "pos": "AM"
+          },
+          {
+            "number": 11,
+            "name": "Tabitha Chawinga",
+            "position": "FW",
+            "pos": "LW"
+          },
+          {
+            "number": 12,
+            "name": "Ashley Lawrence",
+            "position": "DF",
+            "pos": "RB"
+          },
+          {
+            "number": 14,
+            "name": "Ada Hegerberg",
+            "position": "FW",
+            "pos": "ST"
+          },
+          {
+            "number": 24,
+            "name": "Julie Swierot",
+            "position": "MF",
+            "pos": "CM"
+          },
+          {
+            "number": 26,
+            "name": "Wassa Sangaré",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 31,
+            "name": "Liana Joseph",
+            "position": "FW",
+            "pos": "ST"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Sonia Bompastor",
+        "formation": "4-3-3",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": "DF",
+            "pos": "RB"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "DF",
+            "pos": "LB"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": "MF",
+            "pos": "DM"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "MF",
+            "pos": "CM"
+          },
+          {
+            "number": 32,
+            "name": "Alexia Potter",
+            "position": "MF",
+            "pos": "CM"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "MF",
+            "pos": "AM"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "FW",
+            "pos": "RW"
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": "FW",
+            "pos": "ST"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 30,
+            "name": "Victoria Rudz",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 38,
+            "name": "Rebecca Spencer",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James",
+            "position": "FW",
+            "pos": "FW"
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "FW",
+            "pos": "LW"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn",
+            "position": "DF",
+            "pos": "CB"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "MF",
+            "pos": "CM"
+          },
+          {
+            "number": 17,
+            "name": "Nelly Las",
+            "position": "DF",
+            "pos": "DF"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "MF",
+            "pos": "MF"
+          },
+          {
+            "number": 25,
+            "name": "Lola Brown",
+            "position": "MF",
+            "pos": "MF"
+          },
+          {
+            "number": 33,
+            "name": "Agnes Beever-Jones",
+            "position": "FW",
+            "pos": "FW"
+          }
+        ]
+      }
+    },
+    "match_preview": "บิ๊กแมตช์ศึกยูฟ่า วีเมนส์ แชมเปียนส์ ลีก รอบลีกเฟส นัดที่ 2 เชลซี วีเมนส์ ภายใต้การนำทัพของ โซเนีย บอมพาสตอร์ มีคิวบุกเยือนถิ่น กรูปามา สเตเดียม พบกับยอดทีมแชมป์ยุโรป 8 สมัยอย่าง โอลิมปิก ลียงเนส์ ซึ่งถือเป็นเกมสุดพิเศษสำหรับ บอมพาสตอร์ ในการกลับมาเยือนถิ่นเก่าที่เธอเคยสร้างความยิ่งใหญ่ทั้งในฐานะนักเตะและกุนซือ",
+    "referee": "Marta Huerta de Aza (ESP)",
+    "stadium_capacity": "59,186",
+    "live_commentary": [
+      {
+        "time": "Pre-Match",
+        "minute": 0,
+        "type": "Match Period",
+        "team": "all",
+        "isKey": true,
+        "text": "ยินดีต้อนรับสู่การรายงานสดศึก UEFA Women's Champions League 2026/27 รอบลีกเฟส นัดที่ 2 การโคจรมาพบกันของสองยักษ์ใหญ่ลูกหนังหญิงยุโรป: โอลิมปิก ลียงเนส์ เปิดถิ่นกรูปามา สเตเดียม ต้อนรับการมาเยือนของ เชลซี วีเมนส์"
+      },
+      {
+        "time": "Pre-Match",
+        "minute": 0,
+        "type": "Tactical",
+        "team": "away",
+        "isKey": true,
+        "text": "ไฮไลท์สำคัญของเกมนี้คือการหวนคืนสู่สโมสรเก่าของ โซเนีย บอมพาสตอร์ กุนซือเชลซี ที่เคยคว้าแชมป์ UWCL กับลียงทั้งในฐานะนักเตะและผู้จัดการทีม โดยเชลซีจัดทัพชุดใหญ่สามประสานแดนหน้า ลอเรน เจมส์, แซม เคอร์ และ แซนดี้ บัลติมอร์ ล่าตาข่าย"
+      },
+      {
+        "time": "Pre-Match",
+        "minute": 0,
+        "type": "Tactical",
+        "team": "home",
+        "isKey": false,
+        "text": "ทางฝั่งเจ้าถิ่น ลียงเนส์ นำทัพโดยกัปตัน เวนดี้ เรอนาร์ด คุมแนวรับ พร้อม อดา เฮเกอร์เบิร์ก ดาวซัลโวตลอดกาล UWCL และ คาดิดิอาตู ดิยานี ป่วนริมเส้น"
+      },
+      {
+        "time": "Countdown",
+        "minute": 0,
+        "type": "Broadcast",
+        "team": "all",
+        "isKey": true,
+        "text": "ถ่ายทอดสดผ่าน beIN SPORTS และ DAZN Women's Football เริ่มคิกออฟเวลา 02:00 น. (คืนวันที่ 30 ก.ย. เข้าสู่เช้ามืด 1 ต.ค. เวลาไทย)"
+      }
+    ],
+    "stadium": "OL Stadium - Décines",
+    "period": "FullTime",
+    "home_half_score": 0,
+    "away_half_score": 0,
+    "attendance": 7324,
+    "weather": "Cloudy Night, Temperature 20°C, Humidity 78%",
+    "officials": {
+      "referee": "Marta Huerta de Aza (ESP)",
+      "assistant_referees": [
+        "Guadalupe Porras Ayuso (ESP)",
+        "Eliana Fernández González (ESP)"
+      ],
+      "fourth_official": "Elisabet Calvo Valentín (ESP)",
+      "var": "Javier Iglesias Villanueva (ESP)",
+      "assistant_var": "Judit Romano Garcia (ESP)"
+    },
+    "goals": [],
+    "events": [
+      {
+        "minute": 27,
+        "team": "away",
+        "type": "yellow_card",
+        "player": "Alexia Potter",
+        "detail": "Foul"
+      },
+      {
+        "minute": 50,
+        "team": "home",
+        "type": "yellow_card",
+        "player": "Jule Brand",
+        "detail": "Foul"
+      },
+      {
+        "minute": 52,
+        "team": "away",
+        "type": "var",
+        "player": "Sjoeke Nüsken",
+        "detail": "VAR Decision: No penalty confirmed"
+      },
+      {
+        "minute": 54,
+        "team": "home",
+        "type": "yellow_card",
+        "player": "Tarciane",
+        "detail": "Foul"
+      },
+      {
+        "minute": 58,
+        "team": "away",
+        "type": "substitution",
+        "player_in": "Lauren James",
+        "player_out": "Melvine Malard",
+        "detail": "Tactical substitution"
+      },
+      {
+        "minute": 63,
+        "team": "home",
+        "type": "substitution",
+        "player_in": "Ada Hegerberg",
+        "player_out": "Marie-Antoinette Katoto",
+        "detail": "Tactical substitution"
+      },
+      {
+        "minute": 70,
+        "team": "away",
+        "type": "substitution",
+        "player_in": "Maika Hamano",
+        "player_out": "Sjoeke Nüsken",
+        "detail": "Tactical substitution"
+      },
+      {
+        "minute": 75,
+        "team": "away",
+        "type": "var",
+        "player": "Lauren James",
+        "detail": "VAR Decision: Penalty cancelled"
+      },
+      {
+        "minute": 76,
+        "team": "home",
+        "type": "substitution",
+        "player_in": "Tabitha Chawinga",
+        "player_out": "Salma Paralluelo",
+        "detail": "Tactical substitution"
+      },
+      {
+        "minute": 76,
+        "team": "home",
+        "type": "substitution",
+        "player_in": "Wendie Renard",
+        "player_out": "Tarciane",
+        "detail": "Tactical substitution"
+      },
+      {
+        "minute": 76,
+        "team": "home",
+        "type": "substitution",
+        "player_in": "Vicki Becho",
+        "player_out": "Caroline Weir",
+        "detail": "Tactical substitution"
+      }
+    ],
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 44,
+        "away": 56,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Attempts)",
+        "home": 9,
+        "away": 9,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Attempts on Target)",
+        "home": 4,
+        "away": 2,
+        "isPercentage": false
+      },
+      {
+        "name": "การเซฟประตู (Saves)",
+        "home": 2,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 2,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 1,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls Committed)",
+        "home": 10,
+        "away": 12,
+        "isPercentage": false
+      },
+      {
+        "name": "ถูกทำฟาวล์ (Fouls Suffered)",
+        "home": 12,
+        "away": 10,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 2,
+        "away": 1,
+        "isPercentage": false
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Hannah Hampton",
+        "team": "Chelsea",
+        "saves": 4,
+        "save_pct": "100%"
+      },
+      {
+        "name": "Maria-Luisa Grohs",
+        "team": "OL Lyonnes",
+        "saves": 2,
+        "save_pct": "100%"
+      }
+    ],
+    "commentary": [
+      {
+        "section": "Full Time / สรุปผลการแข่งขัน",
+        "events": [
+          {
+            "minute": "FT",
+            "text": "จบเกม 90 นาที! OL Lyonnes เปิดบ้านเสมอ Chelsea FC Women 0-0 ในศึก UEFA Women's Champions League รอบ Matchday 2 โดย ฮันนาห์ แฮมป์ตัน โชว์ฟอร์มเหนียวหนึบเซฟ 4 ครั้ง ช่วยให้สิงห์บลูส์สาวแบ่ง 1 แต้มสำคัญกลับลอนดอน"
+          },
+          {
+            "minute": "76'",
+            "text": "🔄 ลียงเนสเปลี่ยนตัวรวด 3 คน: ชาแวงก้า, เรอนาร์ และ เบโช ลงสนาม"
+          },
+          {
+            "minute": "75'",
+            "text": "📺 VAR Decision: ผู้ตัดสินเช็ก VAR ยกเลิกการให้จุดโทษกับ ลอเรน เจมส์ (Chelsea)"
+          },
+          {
+            "minute": "70'",
+            "text": "🔄 เปลี่ยนตัว: ไมกะ ฮามาโนะ ลงสนามแทน โชเก้ นึสเคน"
+          },
+          {
+            "minute": "58'",
+            "text": "🔄 เปลี่ยนตัว: ลอเรน เจมส์ ลงสนามแทน เมลวีน มาลาร์ด"
+          },
+          {
+            "minute": "54'",
+            "text": "🟨 ใบเหลือง: ทาร์เซียเน่ (OL Lyonnes) โดนใบเหลืองจากการทำฟาวล์"
+          },
+          {
+            "minute": "52'",
+            "text": "📺 VAR Decision: ผู้ตัดสินยืนยันไม่มีจุดโทษในจังหวะของ โชเก้ นึสเคน"
+          },
+          {
+            "minute": "50'",
+            "text": "🟨 ใบเหลือง: ยูเลอ บรันด์ (OL Lyonnes) โดนใบเหลืองจากการตัดฟาวล์"
+          },
+          {
+            "minute": "HT",
+            "text": "⏱️ พักครึ่งเวลาแรก: สกอร์ยังเสมอกันอยู่ที่ 0-0"
+          },
+          {
+            "minute": "27'",
+            "text": "🟨 ใบเหลือง: อเล็กเซีย พ็อตเตอร์ (Chelsea) ได้รับใบเหลืองแรกของเกม"
+          },
+          {
+            "minute": "0'",
+            "text": "⏱️ เริ่มต้นการแข่งขันที่ OL Stadium - Décines"
+          }
+        ]
+      }
+    ],
+    "youtube_id": "GZefWhxw0qA",
+    "video": {
+      "id": "GZefWhxw0qA",
+      "title": "OL Lyonnes 0-0 Chelsea Women | HIGHLIGHTS | UWCL 2026/27",
+      "desc_th": "ไฮไลท์การแข่งขัน ยูฟ่า วีเมนส์ แชมเปียนส์ลีก รอบลีกเฟส นัดที่ 2 โอแอล ลียงเนส เสมอกับ เชลซี วีเมน 0-0 ณ สนาม OL Stadium",
+      "desc_en": "Match highlights of OL Lyonnes 0-0 Chelsea Women in the UEFA Women's Champions League 2026/27.",
+      "credit": "ขอขอบคุณคลิปไฮไลท์จากช่อง DAZN Women's Football / Chelsea FC Women ทาง YouTube",
+      "channel_name": "DAZN Women's Football",
+      "channel_handle": "@daznwsoccer",
+      "channel_url": "https://www.youtube.com/@daznwsoccer"
     }
+  },
+  {
+    "id": "w_uwcl_5",
+    "date": "2026-10-29",
+    "time": "00:45",
+    "time_th": "00:45",
+    "time_uk": "17:45",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Roma",
+    "away_logo": "databases/logo/teams/italy_roma.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 3",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_6",
+    "date": "2026-11-11",
+    "time": "00:45",
+    "time_th": "00:45",
+    "time_uk": "17:45",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Häcken",
+    "home_logo": "databases/logo/teams/sweden_hacken.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Bravida Arena, Gothenburg",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 4",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_7",
+    "date": "2026-11-19",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "PSG",
+    "away_logo": "databases/logo/teams/france_psg.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 5",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w_uwcl_8",
+    "date": "2026-12-17",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "OH Leuven",
+    "home_logo": "databases/logo/teams/belgium_oh-leuven.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "King Power at Den Dreef Stadion, Leuven",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 6",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
   }
 ]

@@ -7,7 +7,7 @@
     "position": "Forward",
     "appearances": 367,
     "goals": 150,
-    "image": "assets/images/players/roy-bentley/profile.webp",
+    "image": "icon/profile/roy-bentley.jpg",
     "link": "icon/roy-bentley-eng.html"
   },
   {
@@ -18,7 +18,7 @@
     "position": "Forward",
     "appearances": 169,
     "goals": 132,
-    "image": "assets/images/players/jimmy-greaves/profile.webp",
+    "image": "icon/profile/jimmy-greaves.jpg",
     "link": "icon/jimmy-greaves-eng.html"
   },
   {
@@ -29,7 +29,7 @@
     "position": "Goalkeeper",
     "appearances": 729,
     "goals": 0,
-    "image": "assets/images/players/peter-bonetti/profile.webp",
+    "image": "icon/profile/peter-bonetti.jpg",
     "link": "icon/peter-bonetti-eng.html"
   },
   {
@@ -40,7 +40,7 @@
     "position": "Defender",
     "appearances": 795,
     "goals": 14,
-    "image": "assets/images/players/ron-harris/profile.webp",
+    "image": "icon/profile/ron-harris.jpg",
     "link": "icon/ron-harris-eng.html"
   },
   {
@@ -51,7 +51,7 @@
     "position": "Forward",
     "appearances": 370,
     "goals": 202,
-    "image": "assets/images/players/bobby-tambling/profile.webp",
+    "image": "icon/profile/bobby-tambling.jpg",
     "link": "icon/bobby-tambling-eng.html"
   },
   {
@@ -62,7 +62,7 @@
     "position": "Midfielder",
     "appearances": 592,
     "goals": 64,
-    "image": "assets/images/players/john-hollins/profile.webp",
+    "image": "icon/profile/john-hollins.jpg",
     "link": "icon/john-hollins-eng.html"
   },
   {
@@ -73,7 +73,7 @@
     "position": "Midfielder",
     "appearances": 373,
     "goals": 30,
-    "image": "assets/images/players/charlie-cooke/profile.webp",
+    "image": "icon/profile/charlie-cooke.jpg",
     "link": "icon/charlie-cooke-sco.html"
   },
   {
@@ -84,7 +84,7 @@
     "position": "Midfielder",
     "appearances": 189,
     "goals": 14,
-    "image": "assets/images/players/alan-hudson/profile.webp",
+    "image": "icon/profile/alan-hudson.jpg",
     "link": "icon/alan-hudson-eng.html"
   },
   {
@@ -95,7 +95,7 @@
     "position": "Forward",
     "appearances": 380,
     "goals": 150,
-    "image": "assets/images/players/peter-osgood/profile.webp",
+    "image": "icon/profile/peter-osgood.jpg",
     "link": "icon/peter-osgood-eng.html"
   },
   {
@@ -106,7 +106,7 @@
     "position": "Midfielder",
     "appearances": 198,
     "goals": 34,
-    "image": "assets/images/players/ray-wilkins/profile.webp",
+    "image": "icon/profile/ray-wilkins.jpg",
     "link": "icon/ray-wilkins-eng.html"
   },
   {
@@ -117,7 +117,7 @@
     "position": "Midfielder",
     "appearances": 242,
     "goals": 45,
-    "image": "assets/images/players/pat-nevin/profile.webp",
+    "image": "icon/profile/pat-nevin.jpg",
     "link": "icon/pat-nevin-sco.html"
   },
   {
@@ -128,7 +128,7 @@
     "position": "Forward",
     "appearances": 420,
     "goals": 193,
-    "image": "assets/images/players/kerry-dixon/profile.webp",
+    "image": "icon/profile/kerry-dixon.jpg",
     "link": "icon/kerry-dixon-eng.html"
   },
   {
@@ -139,7 +139,7 @@
     "position": "Defender",
     "appearances": 421,
     "goals": 10,
-    "image": "assets/images/players/steve-clarke/profile.webp",
+    "image": "icon/profile/steve-clarke.jpg",
     "link": "icon/steve-clarke-sco.html"
   },
   {
@@ -150,7 +150,7 @@
     "position": "Midfielder",
     "appearances": 445,
     "goals": 76,
-    "image": "assets/images/players/dennis-wise/profile.webp",
+    "image": "icon/profile/dennis-wise.jpg",
     "link": "icon/dennis-wise-eng.html"
   },
   {
@@ -161,7 +161,7 @@
     "position": "Midfielder",
     "appearances": 64,
     "goals": 7,
-    "image": "assets/images/players/ruud-gullit/profile.webp",
+    "image": "icon/profile/ruud-gullit.jpg",
     "link": "icon/ruud-gullit-ned.html"
   },
   {
@@ -172,7 +172,7 @@
     "position": "Forward",
     "appearances": 123,
     "goals": 39,
-    "image": "assets/images/players/mark-hughes/profile.webp",
+    "image": "icon/profile/mark-hughes.jpg",
     "link": "icon/mark-hughes-wal.html"
   },
   {
@@ -183,7 +183,7 @@
     "position": "Forward",
     "appearances": 88,
     "goals": 40,
-    "image": "assets/images/players/gianluca-vialli/profile.webp",
+    "image": "icon/profile/gianluca-vialli.jpg",
     "link": "icon/gianluca-vialli-ita.html"
   },
   {
@@ -194,7 +194,7 @@
     "position": "Forward",
     "appearances": 312,
     "goals": 80,
-    "image": "assets/images/players/gianfranco-zola/profile.webp",
+    "image": "icon/profile/gianfranco-zola.jpg",
     "link": "icon/gianfranco-zola-ita.html"
   },
   {
@@ -205,7 +205,7 @@
     "position": "Midfielder",
     "appearances": 175,
     "goals": 26,
-    "image": "assets/images/players/roberto-di-matteo/profile.webp",
+    "image": "icon/profile/roberto-di-matteo.jpg",
     "link": "icon/roberto-di-matteo-ita.html"
   },
   {
@@ -216,7 +216,7 @@
     "position": "Forward",
     "appearances": 163,
     "goals": 50,
-    "image": "assets/images/players/tore-andre-flo/profile.webp",
+    "image": "icon/profile/tore-andre-flo.jpg",
     "link": "icon/tore-andre-flo-nor.html"
   },
   {
@@ -227,7 +227,7 @@
     "position": "Defender",
     "appearances": 222,
     "goals": 7,
-    "image": "assets/images/players/marcel-desailly/profile.webp",
+    "image": "icon/profile/marcel-desailly.jpg",
     "link": "icon/marcel-desailly-fra.html"
   },
   {
@@ -238,7 +238,7 @@
     "position": "Forward",
     "appearances": 263,
     "goals": 78,
-    "image": "assets/images/players/eidur-gudjohnsen/profile.webp",
+    "image": "icon/profile/eidur-gudjohnsen.jpg",
     "link": "icon/eidur-gudjohnsen-isl.html"
   },
   {
@@ -249,7 +249,7 @@
     "position": "Forward",
     "appearances": 177,
     "goals": 88,
-    "image": "assets/images/players/jimmy-floyd-hasselbaink/profile.webp",
+    "image": "icon/profile/jimmy-floyd-hasselbaink.jpg",
     "link": "icon/jimmy-floyd-hasselbaink-ned.html"
   },
   {
@@ -260,7 +260,7 @@
     "position": "Goalkeeper",
     "appearances": 216,
     "goals": 0,
-    "image": "assets/images/players/carlo-cudicini/profile.webp",
+    "image": "icon/profile/carlo-cudicini.jpg",
     "link": "icon/carlo-cudicini-ita.html"
   },
   {
@@ -271,7 +271,7 @@
     "position": "Defender",
     "appearances": 717,
     "goals": 67,
-    "image": "assets/images/players/john-terry/profile.webp",
+    "image": "icon/profile/john-terry.png",
     "link": "icon/john-terry-eng.html"
   },
   {
@@ -282,7 +282,7 @@
     "position": "Midfielder",
     "appearances": 648,
     "goals": 211,
-    "image": "assets/images/players/frank-lampard/profile.webp",
+    "image": "icon/profile/frank-lampard.jpg",
     "link": "icon/frank-lampard-eng.html"
   },
   {
@@ -293,7 +293,7 @@
     "position": "Goalkeeper",
     "appearances": 494,
     "goals": 0,
-    "image": "assets/images/players/petr-cech/profile.webp",
+    "image": "icon/profile/petr-ech.jpg",
     "link": "icon/petr-cech-cze.html"
   },
   {
@@ -304,7 +304,7 @@
     "position": "Forward",
     "appearances": 381,
     "goals": 164,
-    "image": "assets/images/players/didier-drogba/profile.webp",
+    "image": "icon/profile/didier-drogba.jpg",
     "link": "icon/didier-drogba-civ.html"
   },
   {
@@ -315,7 +315,7 @@
     "position": "Midfielder",
     "appearances": 217,
     "goals": 2,
-    "image": "assets/images/players/claude-makelele/profile.webp",
+    "image": "icon/profile/claude-mak-l-l.jpg",
     "link": "icon/claude-makelele-fra.html"
   },
   {
@@ -326,7 +326,7 @@
     "position": "Defender",
     "appearances": 210,
     "goals": 11,
-    "image": "assets/images/players/ricardo-carvalho/profile.webp",
+    "image": "icon/profile/ricardo-carvalho.jpg",
     "link": "icon/ricardo-carvalho-por.html"
   },
   {
@@ -337,7 +337,7 @@
     "position": "Defender",
     "appearances": 338,
     "goals": 7,
-    "image": "assets/images/players/ashley-cole/profile.webp",
+    "image": "icon/profile/ashley-cole.jpg",
     "link": "icon/ashley-cole-eng.html"
   },
   {
@@ -348,7 +348,7 @@
     "position": "Midfielder",
     "appearances": 256,
     "goals": 25,
-    "image": "assets/images/players/michael-essien/profile.webp",
+    "image": "icon/profile/michael-essien.jpg",
     "link": "icon/michael-essien-gha.html"
   },
   {
@@ -359,7 +359,7 @@
     "position": "Midfielder",
     "appearances": 168,
     "goals": 25,
-    "image": "assets/images/players/michael-ballack/profile.webp",
+    "image": "icon/profile/michael-ballack.jpg",
     "link": "icon/michael-ballack-ger.html"
   },
   {
@@ -370,7 +370,7 @@
     "position": "Midfielder",
     "appearances": 372,
     "goals": 6,
-    "image": "assets/images/players/john-obi-mikel/profile.webp",
+    "image": "icon/profile/john-obi-mikel.jpg",
     "link": "icon/john-obi-mikel-nga.html"
   },
   {
@@ -381,7 +381,7 @@
     "position": "Defender",
     "appearances": 377,
     "goals": 34,
-    "image": "assets/images/players/branislav-ivanovic/profile.webp",
+    "image": "icon/profile/branislav-ivanovi.jpg",
     "link": "icon/branislav-ivanovic-srb.html"
   },
   {
@@ -392,7 +392,7 @@
     "position": "Midfielder",
     "appearances": 251,
     "goals": 34,
-    "image": "assets/images/players/ramires/profile.webp",
+    "image": "icon/profile/ramires.jpg",
     "link": "icon/ramires-bra.html"
   },
   {
@@ -403,7 +403,7 @@
     "position": "Defender",
     "appearances": 290,
     "goals": 25,
-    "image": "assets/images/players/gary-cahill/profile.webp",
+    "image": "icon/profile/gary-cahill.jpg",
     "link": "icon/gary-cahill-eng.html"
   },
   {
@@ -414,7 +414,7 @@
     "position": "Forward",
     "appearances": 352,
     "goals": 110,
-    "image": "assets/images/players/eden-hazard/profile.webp",
+    "image": "icon/profile/eden-hazard.jpg",
     "link": "icon/eden-hazard-bel.html"
   },
   {
@@ -425,7 +425,7 @@
     "position": "Defender",
     "appearances": 508,
     "goals": 17,
-    "image": "assets/images/players/cesar-azpilicueta/profile.webp",
+    "image": "icon/profile/c-sar-azpilicueta.jpg",
     "link": "icon/cesar-azpilicueta-esp.html"
   },
   {
@@ -436,7 +436,7 @@
     "position": "Forward",
     "appearances": 339,
     "goals": 63,
-    "image": "assets/images/players/willian/profile.webp",
+    "image": "icon/profile/willian.jpg",
     "link": "icon/willian-bra.html"
   },
   {
@@ -447,7 +447,59 @@
     "position": "Midfielder",
     "appearances": 269,
     "goals": 13,
-    "image": "assets/images/players/ngolo-kante/profile.webp",
+    "image": "icon/profile/n-golo-kant.jpg",
     "link": "icon/ngolo-kante-fra.html"
+  },
+  {
+    "id": "icon-w-01",
+    "name": "Fran Kirby",
+    "name_th": "แฟรน เคอร์บี",
+    "nationality": "eng",
+    "period": "2015-2024",
+    "position": "Forward / Attacking Midfielder",
+    "team_type": "women",
+    "appearances": 208,
+    "goals": 115,
+    "image": "icon/profile/fran_kirby.png",
+    "link": "icon/fran-kirby.html"
+  },
+  {
+    "id": "icon-w-02",
+    "name": "Ji So-yun",
+    "name_th": "จี โซ-ยุน",
+    "nationality": "kor",
+    "period": "2014-2022",
+    "position": "Midfielder",
+    "team_type": "women",
+    "appearances": 210,
+    "goals": 68,
+    "image": "icon/profile/ji_so-yun.png",
+    "link": "icon/ji-so-yun.html"
+  },
+  {
+    "id": "icon-w-03",
+    "name": "Magdalena Eriksson",
+    "name_th": "มักดาเลนา เอริกส์สัน",
+    "nationality": "swe",
+    "period": "2017-2023",
+    "position": "Defender",
+    "team_type": "women",
+    "appearances": 185,
+    "goals": 11,
+    "image": "icon/profile/magdalena_eriksson.png",
+    "link": "icon/magdalena-eriksson.html"
+  },
+  {
+    "id": "icon-w-gr",
+    "name": "Guro Reiten",
+    "name_th": "กูโร ไรเทน",
+    "period": "2019-2026",
+    "position": "Midfielder",
+    "appearances": 207,
+    "goals": 59,
+    "nationality": "norway",
+    "image": "assets/images/icons/guro_reiten.png",
+    "link": "icon/Guro-Reiten.html",
+    "team_type": "women"
   }
 ]

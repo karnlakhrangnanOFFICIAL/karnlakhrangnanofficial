@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magdalena Eriksson (มักดาเลนา เอริกส์สัน) - i-Cons Women's · Chelsea FC</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="icon" href="../assets/images/karnlakhrangnan-logo.png" type="image/svg+xml" />
+    <style>
+      .icon-hero {
+        background: linear-gradient(135deg, #04172f 0%, #0a3a78 100%);
+        padding: 5.5rem 2rem 3rem;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .icon-hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("../databases/logo/national/se.svg") no-repeat center;
+        background-size: 40%;
+        opacity: 0.05;
+        z-index: 0;
+      }
+      .icon-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .icon-image-wrapper {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 1.5rem;
+        border: 4px solid var(--gold);
+        background: #04172f;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .icon-name {
+        font-size: 2.5rem;
+        font-family: var(--font-heading);
+        margin-bottom: 0.4rem;
+        font-weight: 800;
+        color: #ffffff;
+      }
+      .icon-subtitle {
+        font-size: 1.15rem;
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+      }
+      .icon-stats-bar {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        margin-top: 1.5rem;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+        padding: 1.2rem 2rem;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .stat-value {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--gold);
+        font-family: "Space Mono", monospace;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        opacity: 0.85;
+      }
+      .bio-container {
+        max-width: 860px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+      .meta-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        border: 1px solid rgba(0,0,0,0.06);
+        margin-bottom: 2.5rem;
+      }
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+      }
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .meta-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #888;
+        font-weight: 700;
+      }
+      .meta-val {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #04172f;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .meta-val img.flag {
+        width: 20px;
+        height: auto;
+        border-radius: 2px;
+      }
+      .bio-article {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        border: 1px solid rgba(0,0,0,0.06);
+        line-height: 1.9;
+        font-size: 1.05rem;
+        color: #333;
+      }
+      .bio-article h3 {
+        color: #04172f;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--gold);
+        padding-left: 12px;
+      }
+      .bio-article p {
+        margin-bottom: 1.5rem;
+      }
+      .honours-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .honour-badge {
+        background: #f8faff;
+        border: 1px solid #e2e8f0;
+        padding: 1rem;
+        border-radius: 12px;
+        text-align: center;
+      }
+      .honour-badge strong {
+        display: block;
+        color: #04172f;
+        font-size: 1.1rem;
+      }
+      .honour-badge span {
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <img src="../assets/images/karnlakhrangnan-logo.png" alt="Logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="../index.html">หน้าแรก</a></li>
+          <li><a href="../icons.html" class="active">i-Cons</a></li>
+          <li><a href="../women-team.html">ทีมหญิง</a></li>
+          <li><a href="magdalena-eriksson-eng.html" class="lang-toggle">EN</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="icon-hero">
+      <div class="icon-hero-content">
+        <div class="icon-image-wrapper">
+          <img src="profile/magdalena_eriksson.png" alt="Magdalena Eriksson" onerror="this.src='/icon/profile/magdalena_eriksson.png'; this.onerror=null;" />
+        </div>
+        <h1 class="icon-name">Magdalena Eriksson</h1>
+        <div class="icon-subtitle">มักดาเลนา เอริกส์สัน · กัปตันทีมผู้พาทีมสู่ยุคทอง</div>
+        
+        <div class="icon-stats-bar">
+          <div class="stat-item">
+            <span class="stat-value">185</span>
+            <span class="stat-label">ลงเล่น (นัด)</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">11</span>
+            <span class="stat-label">ประตู</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">2017–2023</span>
+            <span class="stat-label">ช่วงเวลาที่อยู่กับเชลซี</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="bio-container">
+      <div class="meta-card">
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">ชื่อเต็ม</span>
+            <span class="meta-val">Magdalena Lilly Eriksson</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">วันเกิด</span>
+            <span class="meta-val">8 กันยายน 1993</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">สัญชาติ</span>
+            <span class="meta-val"><img src="../databases/logo/national/se.svg" alt="Sweden" class="flag" /> สวีเดน (Sweden)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">ตำแหน่ง</span>
+            <span class="meta-val">เซ็นเตอร์แบ็ก / แบ็กซ้าย</span>
+          </div>
+        </div>
+      </div>
+
+      <article class="bio-article">
+        <h3>ประวัติและผลงานเด่น</h3>
+        <p>
+          <strong>มักดาเลนา เอริกส์สัน (Magdalena Eriksson)</strong> เซ็นเตอร์แบ็กเท้าซ้ายผู้รับปลอกแขนกัปตันทีมต่อจาก Karen Carney ในปี 2019 เธอคือผู้นำตัวจริงในสนามที่มีภาวะผู้นำสูง การอ่านเกมและจ่ายบอลขึ้นหน้ายอดเยี่ยม
+        </p>
+        <p>
+          เธอเป็นหัวใจในแนวรับที่พาทีมคว้าดับเบิลแชมป์และทริปเปิลแชมป์ในประเทศอย่างต่อเนื่อง พร้อมนำทัพสิงห์บลูส์สาวเข้าสู่รอบชิงชนะเลิศ <strong>UEFA Women's Champions League ในปี 2021</strong> ก่อนจะย้ายไปร่วมทีม Bayern Munich ในปี 2023 ท่ามกลางความทรงจำอันยิ่งใหญ่
+        </p>
+
+        <h3 style="margin-top: 2rem;">เกียรติประวัติกับสโมสร</h3>
+        <div class="honours-grid">
+          <div class="honour-badge">
+            <strong>🏆 5 สมัย</strong>
+            <span>FA Women's Super League</span>
+          </div>
+          <div class="honour-badge">
+            <strong>🏆 4 สมัย</strong>
+            <span>Women's FA Cup</span>
+          </div>
+          <div class="honour-badge">
+            <strong>🏆 2 สมัย</strong>
+            <span>FA Women's League Cup</span>
+          </div>
+          <div class="honour-badge">
+            <strong>🥈 รองแชมป์</strong>
+            <span>UEFA Women's Champions League (2021)</span>
+          </div>
+        </div>
+      </article>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="../icons.html" class="btn" style="background: var(--blue-dark); color: white; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 700;">← กลับไปหน้ารวม i-Cons</a>
+      </div>
+    </main>
+  </body>
+</html>

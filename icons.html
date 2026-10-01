@@ -274,6 +274,10 @@
           <span data-i18n="icons.filter_all">ทั้งหมด</span>
           <span class="count" id="countAll">0</span>
         </button>
+        <button class="filter-btn" data-filter="women">
+          <span>👩 i-Cons Women's</span>
+          <span class="count" id="countWomen">3</span>
+        </button>
         <button class="filter-btn" data-filter="defender" data-i18n="icons.filter_defender">
           🛡️ กองหลัง
         </button>
@@ -375,30 +379,39 @@
             const positionLower = (icon.position || "").toLowerCase();
 
             let posText = icon.position;
-            if (positionLower.includes("defender")) posText = isTh ? "กองหลัง" : "Defender";
-            else if (positionLower.includes("midfielder"))
+            if (positionLower.includes("forward / attacking midfielder") || positionLower.includes("second striker")) {
+              posText = isTh ? "กองหน้าตัวต่ำ / มิดฟิลด์ตัวรุก" : "Forward / Attacking Midfielder";
+            } else if (positionLower.includes("defender")) {
+              posText = isTh ? "กองหลัง" : "Defender";
+            } else if (positionLower.includes("midfielder")) {
               posText = isTh ? "กองกลาง" : "Midfielder";
-            else if (
+            } else if (
               positionLower.includes("forward") ||
               positionLower.includes("striker") ||
               positionLower.includes("winger")
-            )
+            ) {
               posText = isTh ? "กองหน้า" : "Forward";
-            else if (positionLower.includes("goalkeeper") || positionLower.includes("keeper"))
+            } else if (positionLower.includes("goalkeeper") || positionLower.includes("keeper")) {
               posText = isTh ? "ผู้รักษาประตู" : "Goalkeeper";
+            }
+
+            const displayName = isTh && icon.name_th ? `${icon.name} (${icon.name_th})` : icon.name;
+            const isWomen = icon.team_type === "women" || (icon.id && icon.id.startsWith("icon-w"));
+            const badgeHtml = isWomen
+              ? `<span class="card-badge" style="background: linear-gradient(135deg, #034694 0%, #1e88e5 100%); color: white;">i-Cons Women's</span>`
+              : "";
 
             const appsLabel = isTh ? "นัด" : "apps";
             const goalsLabel = isTh ? "ประตู" : "goals";
 
             return `
           <a href="${icon.link}" class="icon-card">
+            ${badgeHtml}
             <img src="${icon.image}" 
                  alt="${icon.name}" 
                  class="icon-avatar" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                  loading="lazy">
-            <div class="icon-avatar-fallback" style="display: none;">${initials}</div>
-            <h3 class="icon-name">${icon.name}</h3>
+            <h3 class="icon-name">${displayName}</h3>
             <div class="icon-period">${icon.period}</div>
             <div class="icon-position">${posText}</div>
             <div class="icon-stats">
@@ -413,8 +426,15 @@
       }
 
       function updateCounts() {
-        const el = document.getElementById("countAll");
-        if (el) el.textContent = allIcons.length;
+        const elAll = document.getElementById("countAll");
+        if (elAll) elAll.textContent = allIcons.length;
+        const elWomen = document.getElementById("countWomen");
+        if (elWomen) {
+          const womenCount = allIcons.filter(
+            (i) => i.team_type === "women" || (i.id && i.id.startsWith("icon-w"))
+          ).length;
+          elWomen.textContent = womenCount;
+        }
       }
 
       function filterIcons(filter) {
@@ -427,6 +447,14 @@
 
         if (filter === "all") {
           displayIcons(allIcons);
+          return;
+        }
+
+        if (filter === "women") {
+          const filtered = allIcons.filter(
+            (icon) => icon.team_type === "women" || (icon.id && icon.id.startsWith("icon-w"))
+          );
+          displayIcons(filtered);
           return;
         }
 

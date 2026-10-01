@@ -810,29 +810,66 @@
       }
       .timeline-event-card {
         display: flex;
-        align-items: flex-start;
-        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
         background: var(--card-bg);
         border: 1px solid var(--ink-faint);
         border-radius: 8px;
-        padding: 14px 18px;
+        padding: 12px 16px;
         transition: all 0.2s ease;
+        width: 100%;
+        box-sizing: border-box;
       }
       .timeline-event-card:hover {
         background: rgba(255, 255, 255, 0.035);
         border-color: rgba(255, 255, 255, 0.12);
       }
+      .timeline-side {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+      }
+      .timeline-side.home-side {
+        justify-content: flex-end;
+      }
+      .timeline-side.away-side {
+        justify-content: flex-start;
+      }
       .timeline-event-card.is-goal {
         border-left: 4px solid var(--gold);
         background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), var(--card-bg));
       }
-      .timeline-event-card.is-card {
+      .timeline-event-card.is-own-goal {
+        border-left: 4px solid #ef4444;
+        background: linear-gradient(90deg, rgba(239, 68, 68, 0.08), var(--card-bg));
+      }
+      .timeline-event-card.is-card,
+      .timeline-event-card.is-yellow-card {
         border-left: 4px solid #ffc107;
         background: linear-gradient(90deg, rgba(255, 193, 7, 0.06), var(--card-bg));
       }
-      .timeline-event-card.is-red {
+      .timeline-event-card.is-second-yellow {
+        border-left: 4px solid #f97316;
+        background: linear-gradient(90deg, rgba(249, 115, 22, 0.08), var(--card-bg));
+      }
+      .timeline-event-card.is-red,
+      .timeline-event-card.is-red-card {
         border-left: 4px solid #ef4444;
         background: linear-gradient(90deg, rgba(239, 68, 68, 0.08), var(--card-bg));
+      }
+      .timeline-event-card.is-injury {
+        border-left: 4px solid #ec4899;
+        background: linear-gradient(90deg, rgba(236, 72, 153, 0.08), var(--card-bg));
+      }
+      .timeline-event-card.is-var {
+        border-left: 4px solid #8b5cf6;
+        background: linear-gradient(90deg, rgba(139, 92, 246, 0.08), var(--card-bg));
+      }
+      .timeline-event-card.is-kick-off {
+        border-left: 4px solid #10b981;
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.08), var(--card-bg));
       }
       .timeline-event-card.is-sub {
         border-left: 4px solid #3b82f6;
@@ -843,8 +880,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-width: 48px;
-        padding-top: 2px;
+        min-width: 56px;
+        flex-shrink: 0;
+        padding: 0 4px;
       }
       .timeline-time-pill {
         font-family: "Space Mono", monospace;
@@ -923,6 +961,204 @@
       }
       .timeline-player-name a:hover {
         text-decoration: underline;
+      }
+      .sub-flow-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.95rem;
+      }
+      .sub-flow-row .sub-name-in,
+      .sub-flow-row .sub-name-out {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .sub-flow-row .sub-tag-in {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: #00e676;
+        font-weight: 700;
+        font-family: "Space Mono", monospace;
+        font-size: 0.85rem;
+      }
+      .sub-flow-row .sub-tag-out {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: #ef4444;
+        font-weight: 700;
+        font-family: "Space Mono", monospace;
+        font-size: 0.85rem;
+      }
+      .sub-flow-row .sub-dot {
+        color: var(--ink-muted);
+        margin: 0 4px;
+        font-size: 0.85rem;
+      }
+      .timeline-event-card.is-goal .timeline-card-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .goal-scorer-group {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .goal-scorer-group .goal-scorer-name {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .goal-scorer-group .goal-scorer-name a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+      .goal-scorer-group .goal-scorer-name a:hover {
+        text-decoration: underline;
+      }
+      .goal-assist-group {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+      .goal-assist-group .assist-player-name {
+        font-weight: 600;
+        color: var(--ink-muted);
+      }
+      .goal-assist-group .assist-player-name a {
+        color: var(--ink-muted);
+        text-decoration: none;
+      }
+      .goal-assist-group .assist-player-name a:hover {
+        text-decoration: underline;
+      }
+      .event-detail-group {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        box-sizing: border-box;
+      }
+      .event-detail-group.home-layout {
+        justify-content: flex-end;
+      }
+      .event-detail-group.away-layout {
+        justify-content: flex-start;
+      }
+      .event-logo-col {
+        width: 32px;
+        min-width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .event-logo-col img,
+      .event-logo-col .team-logo {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+      .event-name-col {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .event-name-col.text-right {
+        text-align: right;
+      }
+      .event-name-col.text-left {
+        text-align: left;
+      }
+      .event-name-col a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+      .event-name-col a:hover {
+        text-decoration: underline;
+      }
+      .event-icon-col {
+        width: 78px;
+        min-width: 78px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .event-icon-col.justify-end {
+        justify-content: flex-end;
+      }
+      .event-icon-col.justify-start {
+        justify-content: flex-start;
+      }
+      .event-icon-col img,
+      .event-icon-col .event-icon {
+        object-fit: contain;
+        vertical-align: middle;
+      }
+      .event-name-col .event-description {
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 0.95rem;
+      }
+      .goal-assist-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+        font-weight: 600;
+      }
+      .goal-assist-inline a {
+        color: var(--ink-muted);
+        text-decoration: none;
+      }
+      .goal-assist-inline a:hover {
+        text-decoration: underline;
+        color: var(--gold);
+      }
+      @media (max-width: 768px) {
+        .event-icon-col {
+          width: 58px;
+          min-width: 58px;
+          gap: 4px;
+        }
+        .event-logo-col {
+          width: 26px;
+          min-width: 26px;
+        }
+        .event-logo-col img,
+        .event-logo-col .team-logo {
+          width: 18px;
+          height: 18px;
+        }
+        .timeline-time-col {
+          min-width: 48px;
+        }
+        .timeline-time-pill {
+          font-size: 0.92rem;
+        }
+        .event-name-col {
+          font-size: 0.85rem;
+        }
+        .sub-flow-row {
+          font-size: 0.82rem;
+        }
       }
       .timeline-event-detail {
         font-size: 0.88rem;
@@ -1877,16 +2113,8 @@
           defaultTargetId = "tab-timeline";
         } else if (activeIdx === "4" || tabParam === "video") {
           defaultTargetId = "tab-video";
-        } else if (activeIdx === "5" || tabParam === "commentary") {
-          defaultTargetId = "tab-commentary";
         } else if (!tabParam && !activeIdx && currentMatch) {
-          if (
-            (currentMatch.status === "live" || currentMatch.status === "halftime") &&
-            currentMatch.live_commentary &&
-            currentMatch.live_commentary.length > 0
-          ) {
-            defaultTargetId = "tab-commentary";
-          } else if (currentMatch.status === "upcoming" && currentMatch.lineups) {
+          if (currentMatch.status === "upcoming" && currentMatch.lineups) {
             defaultTargetId = "tab-lineups";
           }
         }
@@ -2109,8 +2337,12 @@
           function findMatchByIdOrAlias(fixturesList, targetId) {
             if (!targetId || !Array.isArray(fixturesList)) return null;
             const tid = String(targetId).toLowerCase().trim();
-            // 1. Exact string match
-            let found = fixturesList.find(m => String(m.id).toLowerCase() === tid);
+            // 1. Exact string match or alias match
+            let found = fixturesList.find(m => 
+              String(m.id).toLowerCase() === tid || 
+              (m.alias_id && String(m.alias_id).toLowerCase() === tid) ||
+              (tid === "w_uwcl_landhaus" && String(m.id).toLowerCase() === "w_uwcl_3")
+            );
             if (found) return found;
 
             // 2. Normalize leading zeroes: m01 <-> m1, m02 <-> m2, w01 <-> w1
@@ -2702,6 +2934,40 @@
 
       // ---------- Render Match Detail ----------
       function renderMatchDetail(match, container) {
+        if (window.isDetailSimulatedLive) {
+          match = {
+            ...match,
+            status: "live",
+            clock: "68'",
+            time_live: "68'",
+            period: "SecondHalf",
+            home_score: 1,
+            away_score: 2,
+            goals: [
+              { player: "Ada Hegerberg", team: "home", minute: 24, number: 14, assist: "Selma Bacha" },
+              { player: "Lauren James", team: "away", minute: 38, number: 10, assist: "Guro Reiten" },
+              { player: "Sam Kerr", team: "away", minute: 63, number: 20, assist: "Lucy Bronze" }
+            ],
+            events: [
+              { minute: 24, team: "home", type: "goal", player: "Ada Hegerberg", assist: "Selma Bacha", score: "1 - 0" },
+              { minute: 31, team: "away", type: "yellow_card", player: "Sjoeke Nüsken", detail: "Foul" },
+              { minute: 38, team: "away", type: "goal", player: "Lauren James", assist: "Guro Reiten", score: "1 - 1" },
+              { minute: 55, team: "home", type: "yellow_card", player: "Damaris Egurrola", detail: "Tactical foul" },
+              { minute: 63, team: "away", type: "goal", player: "Sam Kerr", assist: "Lucy Bronze", score: "1 - 2" },
+              { minute: 66, team: "home", type: "substitution", player_in: "Tabitha Chawinga", player_out: "Kadidiatou Diani" }
+            ],
+            stats: [
+              { name: (window.currentLang || "th") === "th" ? "ครองบอล (Possession)" : "Possession", home: "48%", away: "52%", isPercentage: true },
+              { name: (window.currentLang || "th") === "th" ? "โอกาสยิงทั้งหมด (Total Shots)" : "Total Shots", home: 9, away: 12, isPercentage: false },
+              { name: (window.currentLang || "th") === "th" ? "ยิงตรงกรอบ (Shots on Target)" : "Shots on Target", home: 4, away: 6, isPercentage: false },
+              { name: (window.currentLang || "th") === "th" ? "ค่า xG (Expected Goals)" : "Expected Goals (xG)", home: 1.12, away: 1.58, isPercentage: false },
+              { name: (window.currentLang || "th") === "th" ? "เตะมุม (Corner Kicks)" : "Corners", home: 4, away: 5, isPercentage: false },
+              { name: (window.currentLang || "th") === "th" ? "ทำฟาวล์ (Fouls)" : "Fouls", home: 8, away: 9, isPercentage: false },
+              { name: (window.currentLang || "th") === "th" ? "ใบเหลือง (Yellow Cards)" : "Yellow Cards", home: 1, away: 1, isPercentage: false }
+            ]
+          };
+        }
+
         currentMatch = match;
         const lang = window.currentLang || "th";
         const isTh = lang === "th";
@@ -2778,10 +3044,24 @@
               </span>
               <span class="kickoff-time-text">${timeFormatted}</span>
             </div>
+            <div style="margin-top: 10px; display: flex; justify-content: center; gap: 8px;">
+              <button type="button" id="btnDetailSimulateLive" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s;" title="ทดลองดูการทำงานของระบบ Live Score สด">
+                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ef4444;"></span>
+                <span>${isTh ? "เปิดโหมด Live Score จำลอง" : "Simulate Live"}</span>
+              </button>
+            </div>
           `;
         } else {
           scoreMainHtml = `
             <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
+            ${window.isDetailSimulatedLive ? `
+              <div style="margin-top: 10px; display: flex; justify-content: center; gap: 8px;">
+                <button type="button" id="btnDetailExitSimulate" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(255, 255, 255, 0.1); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer;">
+                  <span>⬅️</span>
+                  <span>${isTh ? "ปิดโหมดจำลอง (กลับสู่นับถอยหลัง)" : "Exit Simulation"}</span>
+                </button>
+              </div>
+            ` : ""}
           `;
         }
 
@@ -3029,8 +3309,9 @@
             if (
               e.type === "goal" &&
               (e.detail === "Own Goal" || (e.player && e.player.includes("(OG)")))
-            )
+            ) {
               eType = "own_goal";
+            }
             const icon = getEventIcon(eType);
             const title = getEventTitle(eType);
             const time = e.display_minute
@@ -3054,74 +3335,232 @@
               return pName;
             };
 
-            let playerHtml = getPlayerLink(e.player);
-            if (e.type === "substitution") {
+            const isHome = e.team === "home";
+            const teamLogoImg = teamLogo ? `<img src="${teamLogo}" alt="${teamName}" class="team-logo">` : "";
+
+            let nameHtml = "";
+            let iconHtml = "";
+            let cardClass = "";
+
+            if (eType === "goal") {
+              cardClass = "is-goal";
+              const isPenalty = (e.player && e.player.includes("(Pen)")) || e.detail === "Penalty";
+              let cleanGoalPlayer = (e.player || "").replace(/\s*\(Pen\)/i, "").trim();
+              let goalPlayerDisplay = getPlayerLink(cleanGoalPlayer);
+              if (isPenalty) goalPlayerDisplay += " (Pen)";
+
+              let goalAssist = e.assist || "";
+              if (!goalAssist && e.detail) {
+                if (e.detail.startsWith("Assist: ")) goalAssist = e.detail.substring(8);
+                else if (e.detail.toLowerCase().includes("assist")) {
+                  const m = e.detail.match(/assist(?:ed)?\s+(?:by\s+)?([^,\.]+)/i);
+                  if (m) goalAssist = m[1];
+                }
+              }
+              if (!goalAssist && match.goals && Array.isArray(match.goals)) {
+                const gMatch = match.goals.find(g => (g.player === e.player || g.player === cleanGoalPlayer) && parseInt(g.minute) === parseInt(e.minute));
+                if (gMatch && gMatch.assist) goalAssist = gMatch.assist;
+              }
+
+              let assistLink = "";
+              if (goalAssist) {
+                const cleanAssist = goalAssist.replace(/\s*with a cross/gi, "").trim();
+                assistLink = getPlayerLink(cleanAssist);
+              }
+
+              const assistBadgeHome = assistLink ? `
+                <span class="goal-assist-inline" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
+                  <span class="assist-player-name">${assistLink}</span>
+                  <img src="databases/logo/svg/assist.svg" alt="Assist" class="event-icon" style="width: 16px; height: 16px;">
+                </span>
+              ` : "";
+
+              const assistBadgeAway = assistLink ? `
+                <span class="goal-assist-inline" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
+                  <img src="databases/logo/svg/assist.svg" alt="Assist" class="event-icon" style="width: 16px; height: 16px;">
+                  <span class="assist-player-name">${assistLink}</span>
+                </span>
+              ` : "";
+
+              if (isHome) {
+                nameHtml = `${assistBadgeHome}<span class="player-name goal-scorer-name">${goalPlayerDisplay}</span>`;
+                iconHtml = `
+                  <img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">
+                  ${e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ""}
+                `;
+              } else {
+                nameHtml = `<span class="player-name goal-scorer-name">${goalPlayerDisplay}</span>${assistBadgeAway}`;
+                iconHtml = `
+                  ${e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ""}
+                  <img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">
+                `;
+              }
+            } else if (eType === "own_goal") {
+              cardClass = "is-own-goal";
+              let cleanGoalPlayer = (e.player || "").replace(/\s*\(OG\)/i, "").trim();
+              let goalPlayerDisplay = getPlayerLink(cleanGoalPlayer);
+              const scoreProg = e.score ? `${e.score} (OG)` : "(OG)";
+              nameHtml = `<span class="player-name">${goalPlayerDisplay}</span>`;
+              if (isHome) {
+                iconHtml = `
+                  <img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">
+                  <span class="timeline-score-progress">${scoreProg}</span>
+                `;
+              } else {
+                iconHtml = `
+                  <span class="timeline-score-progress">${scoreProg}</span>
+                  <img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">
+                `;
+              }
+            } else if (eType === "substitution") {
+              cardClass = "is-sub";
               const inPlayer = getPlayerLink(e.player_in || e.player);
               let rawOut = e.player_out || "";
               const isInjured = e.injury === true || /injury|injured|เจ็บ/i.test(rawOut) || /injury|injured|เจ็บ/i.test(e.detail || "");
               const cleanOut = rawOut.replace(/\s*because of an injury/gi, "").replace(/\s*\(injury\)/gi, "").replace(/\s*\(injured\)/gi, "").trim();
               const outPlayer = getPlayerLink(cleanOut);
-              const injuryBadge = isInjured ? `<span class="sub-injury-badge" title="${isTh ? 'เปลี่ยนตัวเนื่องจากได้รับบาดเจ็บ' : 'Substitution due to injury'}" style="display: inline-flex; align-items: center; gap: 4px; margin-left: 6px; vertical-align: middle;"><img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 16px; height: 16px; object-fit: contain; vertical-align: middle;" /></span>` : "";
-              playerHtml = `<span class="sub-indicator sub-in"><img src="databases/logo/svg/substitution_in.svg" alt="In" class="sub-arrow-icon" /> In:</span> ${inPlayer} <span style="color: var(--ink-muted); margin: 0 6px;">•</span> <span class="sub-indicator sub-out"><img src="databases/logo/svg/substitution_out.svg" alt="Out" class="sub-arrow-icon" /> Out:</span> ${outPlayer}${injuryBadge}`;
-            } else if (!e.player) {
-              playerHtml = "";
-            }
+              const injuryBadge = isInjured ? `<span class="sub-injury-badge" title="${isTh ? 'เปลี่ยนตัวเนื่องจากได้รับบาดเจ็บ' : 'Substitution due to injury'}" style="display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;"><img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 15px; height: 15px; object-fit: contain; vertical-align: middle;" /></span>` : "";
 
-            let detailText = e.detail || "";
-            const goalAssist = e.assist || (e.detail && e.detail.startsWith("Assist: ") ? e.detail.substring(8) : "");
-            if (eType === "goal" && goalAssist) {
-              const cleanAssist = goalAssist.replace(/\s*with a cross/gi, "").trim();
-              const assistPlayerLink = getPlayerLink(cleanAssist);
-              detailText = `
-                <div class="timeline-assist-line" style="display: inline-flex; align-items: center; gap: 5px; color: var(--ink-muted); font-size: 0.85rem; margin-top: 3px;">
-                  <img src="databases/logo/svg/assist.svg" alt="Assist" style="width: 15px; height: 15px; object-fit: contain; vertical-align: middle;" onerror="this.outerHTML='👟'" />
-                  <span>${isTh ? "แอสซิสต์:" : "Assist:"}</span>
-                  <strong>${assistPlayerLink}</strong>
-                </div>
-              `;
-            } else if (e.detail && e.detail.startsWith("Assist: ")) {
-              const assistPlayer = e.detail.substring(8);
-              detailText = `<span style="color: var(--ink-muted); font-size: 0.85rem;"><img src="databases/logo/svg/assist.svg" alt="Assist" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle; display: inline-block; margin-right: 4px;" onerror="this.outerHTML='👟'" /> ${isTh ? "แอสซิสต์:" : "Assist:"} <strong>${assistPlayer}</strong></span>`;
-            }
-
-            let cardClass = "";
-            let badgeClass = "";
-            if (eType === "goal" || eType === "own_goal") {
-              cardClass = "is-goal";
-              badgeClass = "goal";
-            } else if (eType === "yellow_card") {
-              cardClass = "is-card";
-              badgeClass = "yellow";
-            } else if (eType === "red_card") {
-              cardClass = "is-red";
-              badgeClass = "red";
-            } else if (eType === "substitution") {
-              cardClass = "is-sub";
-              badgeClass = "";
-            }
-
-            return `
-            <div class="timeline-event-card ${cardClass}">
-              <div class="timeline-time-col">
-                <span class="timeline-time-pill">${time}</span>
-              </div>
-              <div class="timeline-card-content">
-                <div class="timeline-card-header">
-                  <span class="timeline-badge ${badgeClass}">
-                    ${icon}
-                    <span>${title}</span>
-                  </span>
-                  <div class="timeline-team-tag">
-                    ${teamLogo ? `<img src="${teamLogo}" alt="${teamName}">` : ""}
-                    <span>${window.renderTeamNameHTML ? window.renderTeamNameHTML(teamName) : teamName}</span>
+              if (isHome) {
+                nameHtml = `
+                  <div class="sub-flow-row">
+                    <span class="sub-name-in">${inPlayer}</span>
+                    <span class="sub-tag-in">
+                      <span>:IN</span>
+                      <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 15px; height: 15px;">
+                    </span>
+                    <span class="sub-dot">●</span>
+                    <span class="sub-tag-out">
+                      <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 15px; height: 15px;">
+                      <span>OUT:</span>
+                    </span>
+                    <span class="sub-name-out">${outPlayer}</span>${injuryBadge}
                   </div>
-                  ${eType === "goal" && e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ""}
-                </div>
-                ${playerHtml ? `<div class="timeline-player-name">${playerHtml}</div>` : ""}
-                ${detailText ? `<div class="timeline-event-detail">${detailText}</div>` : ""}
-              </div>
-            </div>
-          `;
+                `;
+                iconHtml = `
+                  <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 18px; height: 18px;">
+                  <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 18px; height: 18px;">
+                `;
+              } else {
+                nameHtml = `
+                  <div class="sub-flow-row">
+                    ${injuryBadge}<span class="sub-name-out">${outPlayer}</span>
+                    <span class="sub-tag-out">
+                      <span>:OUT</span>
+                      <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 15px; height: 15px;">
+                    </span>
+                    <span class="sub-dot">●</span>
+                    <span class="sub-tag-in">
+                      <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 15px; height: 15px;">
+                      <span>IN:</span>
+                    </span>
+                    <span class="sub-name-in">${inPlayer}</span>
+                  </div>
+                `;
+                iconHtml = `
+                  <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 18px; height: 18px;">
+                  <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 18px; height: 18px;">
+                `;
+              }
+            } else if (eType === "second_yellow" || (eType === "red_card" && (e.card === "second_yellow" || /second yellow|เหลืองที่สอง/i.test(e.detail || "")))) {
+              cardClass = "is-second-yellow";
+              const pDisplay = getPlayerLink(e.player);
+              nameHtml = `<span class="player-name">${pDisplay}</span>`;
+              iconHtml = `<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow to Red" class="event-icon" style="width: 24px; height: 22px;">`;
+            } else if (eType === "yellow_card") {
+              cardClass = "is-yellow-card";
+              const pDisplay = getPlayerLink(e.player);
+              nameHtml = `<span class="player-name">${pDisplay}</span>`;
+              iconHtml = `<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" class="event-icon" style="width: 16px; height: 22px;">`;
+            } else if (eType === "red_card") {
+              cardClass = "is-red-card";
+              const pDisplay = getPlayerLink(e.player);
+              nameHtml = `<span class="player-name">${pDisplay}</span>`;
+              iconHtml = `<img src="databases/logo/svg/red_card.svg" alt="Red Card" class="event-icon" style="width: 16px; height: 22px;">`;
+            } else if (eType === "injury") {
+              cardClass = "is-injury";
+              const pDisplay = getPlayerLink(e.player);
+              nameHtml = `<span class="player-name">${pDisplay}</span>`;
+              iconHtml = `<img src="databases/logo/svg/injury.svg" alt="Injury" class="event-icon" style="width: 20px; height: 20px;">`;
+            } else if (eType === "var") {
+              cardClass = "is-var";
+              let varText = e.detail || (e.player ? `${e.player} - ` : "") + "VAR Decision";
+              varText = varText.replace(/^VAR Decision:\s*/i, "");
+              nameHtml = `<span class="event-description">${varText}</span>`;
+              iconHtml = `<img src="databases/logo/svg/var.svg" alt="VAR" class="event-icon" style="width: 20px; height: 20px;">`;
+            } else if (eType === "kick_off" || eType === "kickoff" || (e.type === "period" && (e.minute === 0 || e.minute === "0"))) {
+              const koText = e.detail || (isTh ? "เริ่มต้นการแข่งขัน (First Half Begins)" : "First Half Begins");
+              return `
+<div class="timeline-event-card is-kick-off">
+  <div class="timeline-side home-side"></div>
+  <div class="timeline-time-col">
+    <span class="timeline-time-pill">${time}</span>
+  </div>
+  <div class="timeline-side away-side">
+    <div class="event-detail-group away-layout">
+      <div class="event-icon-col justify-start">
+        <img src="databases/logo/svg/kick-off.svg" alt="Kick-off" class="event-icon" style="width: 20px; height: 20px;">
+      </div>
+      <div class="event-name-col text-left">
+        <span class="event-description">${koText}</span>
+      </div>
+      <div class="event-logo-col"></div>
+    </div>
+  </div>
+</div>
+              `;
+            } else {
+              cardClass = "is-generic";
+              const pDisplay = getPlayerLink(e.player);
+              nameHtml = `<span class="player-name">${pDisplay || title}</span>${e.detail ? ` <span class="event-description">(${e.detail})</span>` : ""}`;
+              iconHtml = icon;
+            }
+
+            if (isHome) {
+              return `
+<div class="timeline-event-card ${cardClass}">
+  <div class="timeline-side home-side">
+    <div class="event-detail-group home-layout">
+      <div class="event-logo-col">
+        ${teamLogoImg}
+      </div>
+      <div class="event-name-col text-right">
+        ${nameHtml}
+      </div>
+      <div class="event-icon-col justify-end">
+        ${iconHtml}
+      </div>
+    </div>
+  </div>
+  <div class="timeline-time-col">
+    <span class="timeline-time-pill">${time}</span>
+  </div>
+  <div class="timeline-side away-side"></div>
+</div>
+              `;
+            } else {
+              return `
+<div class="timeline-event-card ${cardClass}">
+  <div class="timeline-side home-side"></div>
+  <div class="timeline-time-col">
+    <span class="timeline-time-pill">${time}</span>
+  </div>
+  <div class="timeline-side away-side">
+    <div class="event-detail-group away-layout">
+      <div class="event-icon-col justify-start">
+        ${iconHtml}
+      </div>
+      <div class="event-name-col text-left">
+        ${nameHtml}
+      </div>
+      <div class="event-logo-col">
+        ${teamLogoImg}
+      </div>
+    </div>
+  </div>
+</div>
+              `;
+            }
           };
 
           timelineTabHtml = `
@@ -3691,9 +4130,6 @@
               <button class="tab-btn" data-target="tab-lineups">
                 <span>📋</span> <span>${isTh ? "รายชื่อผู้เล่น" : "Lineups"}</span>
               </button>
-              <button class="tab-btn" data-target="tab-commentary">
-                <span>💬</span> <span>${isTh ? "บรรยายสด" : "Commentary"}</span>
-              </button>
               <button class="tab-btn" data-target="tab-video">
                 <span>🎥</span> <span>${isTh ? "ไฮไลท์" : "Video"}</span>
               </button>
@@ -3716,12 +4152,7 @@
                 ${lineupsTabHtml}
               </div>
 
-              <!-- Tab 4: Commentary -->
-              <div id="tab-commentary" class="tab-pane">
-                ${commentaryTabHtml}
-              </div>
-
-              <!-- Tab 5: Video -->
+              <!-- Tab 4: Video -->
               <div id="tab-video" class="tab-pane">
                 ${videoTabHtml}
               </div>
@@ -3730,10 +4161,25 @@
         </div>
       `;
 
-        // Activate Tabs
+        // Activate Tabs & Simulation Buttons
         setTimeout(() => {
           initTabs();
           if (typeof updateUIText === "function") updateUIText();
+
+          const btnSim = document.getElementById("btnDetailSimulateLive");
+          if (btnSim) {
+            btnSim.addEventListener("click", () => {
+              window.isDetailSimulatedLive = true;
+              renderMatchDetail(currentMatch, container);
+            });
+          }
+          const btnExit = document.getElementById("btnDetailExitSimulate");
+          if (btnExit) {
+            btnExit.addEventListener("click", () => {
+              window.isDetailSimulatedLive = false;
+              renderMatchDetail(currentMatch, container);
+            });
+          }
         }, 30);
       }
 

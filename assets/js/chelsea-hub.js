@@ -63,6 +63,12 @@
     if (name.includes("wanderers")) return "databases/logo/teams/australia_western-sydney-wanderers.svg";
     if (name.includes("johor") || name.includes("tazim")) return "databases/logo/teams/malaysia_johor-darul-tazim.svg";
     if (name.includes("all stars") || name.includes("all-stars")) return "databases/logo/teams/a-league-women-all-stars.svg";
+    if (name.includes("lyon") || name.includes("lyonnes")) return "databases/logo/teams/france_lyon.svg";
+    if (name.includes("hacken") || name.includes("häcken")) return "databases/logo/teams/sweden_hacken.svg";
+    if (name.includes("leuven")) return "databases/logo/teams/belgium_oh-leuven.svg";
+    if (name.includes("roma")) return "databases/logo/teams/italy_roma.svg";
+    if (name.includes("paris") || name.includes("psg")) return "databases/logo/teams/france_paris-saint-germain.svg";
+    if (name.includes("austria wien") || name.includes("landhaus")) return "databases/logo/teams/austria_austria-wien.svg";
     
     if (fallbackLogo && fallbackLogo.startsWith("databases/logo/teams/")) return fallbackLogo;
     return fallbackLogo || "databases/logo/teams/england_chelsea.svg";
@@ -98,8 +104,6 @@
       let utcDate;
       if (!f.date || f.date === 'TBC') {
         utcDate = '2027-05-31T19:00:00Z';
-      } else if (f.time_uk && f.time_uk !== 'TBC') {
-        utcDate = `${f.date}T${f.time_uk}:00Z`;
       } else if (timeTh && timeTh !== 'TBC') {
         try {
           const d = new Date(`${f.date}T${timeTh.length === 5 ? timeTh : timeTh.substring(0,5)}:00+07:00`);
@@ -107,6 +111,8 @@
         } catch (e) {
           utcDate = `${f.date}T${timeTh}:00+07:00`;
         }
+      } else if (f.time_uk && f.time_uk !== 'TBC') {
+        utcDate = `${f.date}T${f.time_uk}:00Z`;
       } else {
         utcDate = `${f.date}T19:00:00+07:00`;
       }
@@ -114,7 +120,10 @@
       let compCode = 'PL';
       let compName = 'Premier League';
       const compLower = (f.competition || '').toLowerCase();
-      if (compLower.includes('women') || compLower.includes('wsl') || isWomen) {
+      if (compLower.includes('champions') || compLower.includes('uwcl')) {
+        compCode = 'UWCL';
+        compName = f.competition_name || f.competition || "UEFA Women's Champions League";
+      } else if (compLower.includes('women') || compLower.includes('wsl') || isWomen) {
         compCode = 'WSL';
         compName = f.competition_name || f.competition || "Women's Super League";
       } else if (compLower.includes('league-cup') || compLower.includes('carabao')) {
@@ -134,6 +143,15 @@
         status: status,
         teamType: isWomen ? 'W' : 'M',
         matchday: f.matchday || f.round || null,
+        round: f.round || f.matchday || null,
+        venue: f.venue || (isHome ? 'Stamford Bridge (Home)' : 'Away Match'),
+        channels: f.channels || [],
+        time_th: f.time_th || f.time,
+        time_uk: f.time_uk,
+        goals: f.goals || [],
+        events: f.events || [],
+        lineups: f.lineups || null,
+        live_commentary: f.live_commentary || [],
         competition: {
           id: isWomen ? 2022 : 2021,
           name: f.competition_name || f.competition || compName,
@@ -144,13 +162,13 @@
           id: isHome ? CHELSEA_MEN_CONFIG.teamId : (f.home_id || 9999),
           name: f.home_team,
           shortName: f.home_team,
-          crest: f.home_logo || 'assets/images/placeholder-team.svg'
+          crest: resolveLocalTeamLogo(f.home_team, f.home_logo)
         },
         awayTeam: {
           id: !isHome ? CHELSEA_MEN_CONFIG.teamId : (f.away_id || 9999),
           name: f.away_team,
           shortName: f.away_team,
-          crest: f.away_logo || 'assets/images/placeholder-team.svg'
+          crest: resolveLocalTeamLogo(f.away_team, f.away_logo)
         },
         score: {
           winner: isCompleted ? (f.home_score > f.away_score ? 'HOME_TEAM' : (f.home_score < f.away_score ? 'AWAY_TEAM' : 'DRAW')) : null,
@@ -163,7 +181,8 @@
             home: f.home_half_score ?? null,
             away: f.away_half_score ?? null
           }
-        }
+        },
+        rawFixture: f
       };
     });
   }
@@ -399,7 +418,8 @@
     livePollingInterval: null,
     liveSyncCountdown: 12, // 10-15 seconds delay (12s default)
     lastLiveScoreKey: null,
-    isLivePollingActive: false
+    isLivePollingActive: false,
+    simulatedLiveMatchId: null
   };
 
   // Safe API Fetch with Direct Token & Proxy Fallback
@@ -1080,6 +1100,9 @@
   // ==========================================================================
   function isMatchLive(match) {
     if (!match) return false;
+    if (HubState.simulatedLiveMatchId && HubState.simulatedLiveMatchId === match.id) {
+      return true;
+    }
     const status = (match.status || '').toUpperCase();
     if (['IN_PLAY', 'PAUSED', 'LIVE', 'HALFTIME'].includes(status)) {
       return true;
@@ -1145,10 +1168,11 @@
       // Render Spotlight Pre-Match Card with countdown timer
       if (spotlightContainer) {
         const isHome = isChelseaTeam(nextMatch.homeTeam);
-        const venue = isHome ? 'Stamford Bridge (Home)' : 'Away Match';
+        const venue = nextMatch.venue || (isHome ? 'Stamford Bridge (Home)' : 'Away Match');
 
         const homeName = nextMatch.homeTeam.shortName || nextMatch.homeTeam.name;
         const awayName = nextMatch.awayTeam.shortName || nextMatch.awayTeam.name;
+        const compDisplay = `${nextMatch.competition?.name || 'Premier League'}${nextMatch.round ? ' • ' + nextMatch.round : ''}`;
 
         const isTh = (window.currentLang || 'th') === 'th';
         let kickoffDateText = '-';
@@ -1167,11 +1191,28 @@
           }
         } catch (e) {}
 
+        let channelsHtml = '';
+        if (nextMatch.channels && nextMatch.channels.length > 0) {
+          channelsHtml = `
+            <div style="display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;">
+              <span style="font-size: 0.76rem; color: #94a3b8;">📺 ถ่ายทอดสด:</span>
+              ${nextMatch.channels.map(ch => `
+                <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 6px; font-size: 0.78rem; border: 1px solid rgba(255,255,255,0.12);">
+                  ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" style="height: 14px; max-width: 48px; object-fit: contain;">` : ''}
+                  <span style="color: #f8fafc; font-weight: 600;">${ch.name}</span>
+                </span>
+              `).join('')}
+            </div>
+          `;
+        }
+
+        const matchDetailUrl = `match-detail.html?id=${nextMatch.id}&team=${nextMatch.teamType === 'W' ? 'women' : 'men'}`;
+
         spotlightContainer.innerHTML = `
           <div class="spotlight-card">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
               <span class="hub-status-pill hub-status-scheduled">🔥 นัดถัดไป / NEXT MATCH</span>
-              <span style="font-size: 0.8rem; color: #93c5fd;">${nextMatch.competition?.name || 'Premier League'}</span>
+              <span style="font-size: 0.82rem; color: #93c5fd; font-weight: 600;">${compDisplay}</span>
             </div>
 
             <div class="spotlight-match-teams">
@@ -1188,8 +1229,9 @@
 
             <div class="spotlight-match-info" style="text-align: center; font-size: 0.88rem; color: #ffffff; font-weight: 600; background-color: #000000; padding: 0.75rem 1rem; border-radius: 8px; margin: 0.75rem 0; border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; gap: 4px;">
               <div style="font-size: 0.95rem; color: #ffffff;">📅 ${kickoffDateText}</div>
-              <div style="font-size: 0.86rem; color: #38bdf8; font-weight: 700;">⏰ ${isTh ? 'เวลาเริ่ม Kick-off:' : 'Kick-off Time:'} ${kickoffTimeText}</div>
+              <div style="font-size: 0.88rem; color: #38bdf8; font-weight: 700;">⏰ ${isTh ? 'เวลาเริ่ม Kick-off:' : 'Kick-off Time:'} ${kickoffTimeText}</div>
               <div style="font-size: 0.78rem; color: #93c5fd; margin-top: 0.1rem;">🏟️ ${venue}</div>
+              ${channelsHtml}
             </div>
 
             <div class="spotlight-countdown" id="spotlightCountdown">
@@ -1198,8 +1240,31 @@
               <div class="countdown-box"><div class="countdown-val" id="cdMins">00</div><div class="countdown-unit" style="color: #ffffff;">Mins</div></div>
               <div class="countdown-box"><div class="countdown-val" id="cdSecs">00</div><div class="countdown-unit" style="color: #ffffff;">Secs</div></div>
             </div>
+
+            <div style="display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap;">
+              <a href="${matchDetailUrl}" style="display: inline-flex; align-items: center; gap: 6px; background: #0033a0; color: #ffffff; padding: 8px 16px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.2s;" onmouseover="this.style.background='#1a56db'" onmouseout="this.style.background='#0033a0'">
+                <span>📊</span>
+                <span>ดูรายละเอียดแมตช์ & Live Center</span>
+              </a>
+              <button type="button" id="btnToggleSimulateLive" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 8px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.35); cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.25)'" onmouseout="this.style.background='rgba(239, 68, 68, 0.15)'">
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+                <span>เปิดโหมด Live Score จำลอง</span>
+              </button>
+              <a href="pre-match-graphic.html" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); color: #cbd5e1; padding: 8px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.12);" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+                <span>🎨</span>
+                <span>กราฟิกก่อนเกม</span>
+              </a>
+            </div>
           </div>
         `;
+
+        const btnSim = document.getElementById('btnToggleSimulateLive');
+        if (btnSim) {
+          btnSim.addEventListener('click', () => {
+            HubState.simulatedLiveMatchId = nextMatch.id;
+            updateDashboardFixtures();
+          });
+        }
 
         // Start Countdown Timer
         startCountdown(new Date(nextMatch.utcDate).getTime(), nextMatch);
@@ -1265,7 +1330,23 @@
     if (!spotlightContainer || !match) return;
 
     const isHome = isChelseaTeam(match.homeTeam);
-    const venue = isHome ? 'Stamford Bridge (Home)' : 'Away Match';
+    const venue = match.venue || (isHome ? 'Stamford Bridge (Home)' : 'Away Match');
+    const compDisplay = `${match.competition?.name || 'Premier League'}${match.round ? ' • ' + match.round : ''}`;
+
+    if (HubState.simulatedLiveMatchId === match.id) {
+      if (!match.minute) match.minute = 68;
+      if (!match.score) match.score = {};
+      if (!match.score.fullTime) match.score.fullTime = { home: 1, away: 2 };
+      if (!match.score.halfTime) match.score.halfTime = { home: 1, away: 1 };
+      match.status = 'IN_PLAY';
+      if (!match.goals || match.goals.length === 0) {
+        match.goals = [
+          { team: 'home', player: 'Ada Hegerberg', minute: 24, type: 'Goal' },
+          { team: 'away', player: 'Lauren James', minute: 38, type: 'Goal' },
+          { team: 'away', player: 'Sam Kerr', minute: 63, type: 'Goal' }
+        ];
+      }
+    }
 
     // Get real-time scores
     const homeScore = match.score?.fullTime?.home ?? (match.score?.current?.home ?? 0);
@@ -1329,13 +1410,16 @@
     const homeName = match.homeTeam.shortName || match.homeTeam.name;
     const awayName = match.awayTeam.shortName || match.awayTeam.name;
 
+    const matchDetailUrl = `match-detail.html?id=${match.id}&team=${match.teamType === 'W' ? 'women' : 'men'}`;
+    const isSimulated = HubState.simulatedLiveMatchId === match.id;
+
     spotlightContainer.innerHTML = `
       <div class="spotlight-card spotlight-live-card">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
           <span class="hub-status-pill hub-status-live">
-            <span class="live-pulse-dot"></span>🔴 กำลังแข่งขันสด / LIVE NOW
+            <span class="live-pulse-dot"></span>🔴 ${isSimulated ? 'โหมดจำลอง LIVE SCORE' : 'กำลังแข่งขันสด / LIVE NOW'}
           </span>
-          <span style="font-size: 0.82rem; color: #38bdf8; font-weight: 700;">${match.competition?.name || 'Premier League'}</span>
+          <span style="font-size: 0.82rem; color: #38bdf8; font-weight: 700;">${compDisplay}</span>
         </div>
 
         <div class="spotlight-match-teams">
@@ -1367,15 +1451,36 @@
         <div class="spotlight-live-status-bar">
           <div class="live-sync-progress">
             <span class="live-pulse-dot"></span>
-            <span>ดีเลย์ 10-15s (Real-Time API)</span>
+            <span>${isSimulated ? 'ระบบจำลองการแข่งขันสด' : 'ดีเลย์ 10-15s (Real-Time API)'}</span>
             <span>• อัปเดตใน <strong id="liveSyncCountdownSecs" style="color: #38bdf8;">${HubState.liveSyncCountdown}s</strong></span>
           </div>
           <button type="button" class="live-refresh-mini-btn" id="btnLiveManualRefresh" title="ดึงสกอร์ล่าสุดทันที">
             ⚡ รีเฟรชทันที
           </button>
         </div>
+
+        <div style="display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap;">
+          <a href="${matchDetailUrl}" style="display: inline-flex; align-items: center; gap: 6px; background: #0033a0; color: #ffffff; padding: 7px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s;" onmouseover="this.style.background='#1a56db'" onmouseout="this.style.background='#0033a0'">
+            <span>📊</span>
+            <span>ดูรายงานสด & Match Center</span>
+          </a>
+          ${isSimulated ? `
+            <button type="button" id="btnExitSimulateLive" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); color: #f1f5f9; padding: 7px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s;">
+              <span>⬅️</span>
+              <span>ปิดโหมดจำลอง (กลับสู่นับถอยหลัง)</span>
+            </button>
+          ` : ''}
+        </div>
       </div>
     `;
+
+    const btnExit = document.getElementById('btnExitSimulateLive');
+    if (btnExit) {
+      btnExit.addEventListener('click', () => {
+        HubState.simulatedLiveMatchId = null;
+        updateDashboardFixtures();
+      });
+    }
 
     // Bind manual refresh button
     const btnRefresh = document.getElementById('btnLiveManualRefresh');
