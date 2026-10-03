@@ -1751,9 +1751,19 @@
     "ha": "A",
     "channels": [
       {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "Sky Sports",
+        "name": "Sky Sports Premier League",
+        "logo": "databases/logo/tv/sky_sports-premier-league.png"
+      },
+      {
+        "platform": "Sky Sports",
+        "name": "Sky Sports Main Event",
+        "logo": "databases/logo/tv/Sky_Sports-Main-Event.png"
+      },
+      {
+        "platform": "Sky Sports",
+        "name": "Sky Sports Ultra HDR",
+        "logo": "databases/logo/tv/Sky_Sport-UHD.png"
       }
     ],
     "status": "upcoming",

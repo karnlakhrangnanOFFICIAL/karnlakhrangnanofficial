@@ -1193,9 +1193,8 @@
             <div style="display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;">
               <span style="font-size: 0.76rem; color: #94a3b8;">📺 ถ่ายทอดสด:</span>
               ${nextMatch.channels.map(ch => `
-                <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 6px; font-size: 0.78rem; border: 1px solid rgba(255,255,255,0.12);">
-                  ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" style="height: 14px; max-width: 48px; object-fit: contain;">` : ''}
-                  <span style="color: #f8fafc; font-weight: 600;">${ch.name}</span>
+                <span style="display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 6px; font-size: 0.78rem; border: 1px solid rgba(255,255,255,0.12);" title="${ch.name || ''}">
+                  ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" style="height: 16px; max-width: 56px; object-fit: contain;">` : (ch.name || '')}
                 </span>
               `).join('')}
             </div>
