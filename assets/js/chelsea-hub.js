@@ -418,8 +418,7 @@
     livePollingInterval: null,
     liveSyncCountdown: 12, // 10-15 seconds delay (12s default)
     lastLiveScoreKey: null,
-    isLivePollingActive: false,
-    simulatedLiveMatchId: null
+    isLivePollingActive: false
   };
 
   // Safe API Fetch with Direct Token & Proxy Fallback
@@ -1100,9 +1099,6 @@
   // ==========================================================================
   function isMatchLive(match) {
     if (!match) return false;
-    if (HubState.simulatedLiveMatchId && HubState.simulatedLiveMatchId === match.id) {
-      return true;
-    }
     const status = (match.status || '').toUpperCase();
     if (['IN_PLAY', 'PAUSED', 'LIVE', 'HALFTIME'].includes(status)) {
       return true;
@@ -1246,10 +1242,6 @@
                 <span>📊</span>
                 <span>ดูรายละเอียดแมตช์ & Live Center</span>
               </a>
-              <button type="button" id="btnToggleSimulateLive" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 8px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.35); cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.25)'" onmouseout="this.style.background='rgba(239, 68, 68, 0.15)'">
-                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
-                <span>เปิดโหมด Live Score จำลอง</span>
-              </button>
               <a href="pre-match-graphic.html" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); color: #cbd5e1; padding: 8px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.12);" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
                 <span>🎨</span>
                 <span>กราฟิกก่อนเกม</span>
@@ -1257,14 +1249,6 @@
             </div>
           </div>
         `;
-
-        const btnSim = document.getElementById('btnToggleSimulateLive');
-        if (btnSim) {
-          btnSim.addEventListener('click', () => {
-            HubState.simulatedLiveMatchId = nextMatch.id;
-            updateDashboardFixtures();
-          });
-        }
 
         // Start Countdown Timer
         startCountdown(new Date(nextMatch.utcDate).getTime(), nextMatch);
@@ -1333,21 +1317,6 @@
     const venue = match.venue || (isHome ? 'Stamford Bridge (Home)' : 'Away Match');
     const compDisplay = `${match.competition?.name || 'Premier League'}${match.round ? ' • ' + match.round : ''}`;
 
-    if (HubState.simulatedLiveMatchId === match.id) {
-      if (!match.minute) match.minute = 68;
-      if (!match.score) match.score = {};
-      if (!match.score.fullTime) match.score.fullTime = { home: 1, away: 2 };
-      if (!match.score.halfTime) match.score.halfTime = { home: 1, away: 1 };
-      match.status = 'IN_PLAY';
-      if (!match.goals || match.goals.length === 0) {
-        match.goals = [
-          { team: 'home', player: 'Ada Hegerberg', minute: 24, type: 'Goal' },
-          { team: 'away', player: 'Lauren James', minute: 38, type: 'Goal' },
-          { team: 'away', player: 'Sam Kerr', minute: 63, type: 'Goal' }
-        ];
-      }
-    }
-
     // Get real-time scores
     const homeScore = match.score?.fullTime?.home ?? (match.score?.current?.home ?? 0);
     const awayScore = match.score?.fullTime?.away ?? (match.score?.current?.away ?? 0);
@@ -1411,13 +1380,12 @@
     const awayName = match.awayTeam.shortName || match.awayTeam.name;
 
     const matchDetailUrl = `match-detail.html?id=${match.id}&team=${match.teamType === 'W' ? 'women' : 'men'}`;
-    const isSimulated = HubState.simulatedLiveMatchId === match.id;
 
     spotlightContainer.innerHTML = `
       <div class="spotlight-card spotlight-live-card">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
           <span class="hub-status-pill hub-status-live">
-            <span class="live-pulse-dot"></span>🔴 ${isSimulated ? 'โหมดจำลอง LIVE SCORE' : 'กำลังแข่งขันสด / LIVE NOW'}
+            <span class="live-pulse-dot"></span>🔴 กำลังแข่งขันสด / LIVE NOW
           </span>
           <span style="font-size: 0.82rem; color: #38bdf8; font-weight: 700;">${compDisplay}</span>
         </div>
@@ -1451,7 +1419,7 @@
         <div class="spotlight-live-status-bar">
           <div class="live-sync-progress">
             <span class="live-pulse-dot"></span>
-            <span>${isSimulated ? 'ระบบจำลองการแข่งขันสด' : 'ดีเลย์ 10-15s (Real-Time API)'}</span>
+            <span>ดีเลย์ 10-15s (Real-Time API)</span>
             <span>• อัปเดตใน <strong id="liveSyncCountdownSecs" style="color: #38bdf8;">${HubState.liveSyncCountdown}s</strong></span>
           </div>
           <button type="button" class="live-refresh-mini-btn" id="btnLiveManualRefresh" title="ดึงสกอร์ล่าสุดทันที">
@@ -1464,23 +1432,9 @@
             <span>📊</span>
             <span>ดูรายงานสด & Match Center</span>
           </a>
-          ${isSimulated ? `
-            <button type="button" id="btnExitSimulateLive" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); color: #f1f5f9; padding: 7px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s;">
-              <span>⬅️</span>
-              <span>ปิดโหมดจำลอง (กลับสู่นับถอยหลัง)</span>
-            </button>
-          ` : ''}
         </div>
       </div>
     `;
-
-    const btnExit = document.getElementById('btnExitSimulateLive');
-    if (btnExit) {
-      btnExit.addEventListener('click', () => {
-        HubState.simulatedLiveMatchId = null;
-        updateDashboardFixtures();
-      });
-    }
 
     // Bind manual refresh button
     const btnRefresh = document.getElementById('btnLiveManualRefresh');

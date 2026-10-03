@@ -524,12 +524,10 @@
 
       /* Details Grid Layout */
       .details-grid {
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 40px;
-        align-items: start;
+        display: block;
+        width: 100%;
       }
-      @media (max-width: 880px) {
+      @media (max-width: 960px) {
         .scoreboard-grid {
           grid-template-columns: 1fr;
           gap: 20px;
@@ -537,30 +535,73 @@
         .score-main {
           font-size: 4rem;
         }
-        .details-grid {
-          grid-template-columns: 1fr !important;
-          gap: 28px;
-        }
-        .sidebar-meta {
-          padding-bottom: 8px;
-        }
       }
 
-      /* Sidebar Meta & Cards */
-      .sidebar-meta {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+      /* Integrated Collapsible Details Section Cards */
+      .section-details-wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        margin-top: 36px;
+        width: 100%;
       }
-      .sidebar-card {
+      .sidebar-card,
+      details.sidebar-card {
         background: var(--card-bg, #0b1528);
         border: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.08));
         border-radius: 10px;
-        padding: 18px 20px;
+        padding: 16px 20px;
         display: flex;
         flex-direction: column;
         gap: 14px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        transition: all 0.25s ease;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      details.sidebar-card > summary.sidebar-card-title {
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: "Space Mono", monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+        font-weight: 700;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--ink-faint, rgba(255, 255, 255, 0.08));
+        transition: color 0.2s ease;
+      }
+      details.sidebar-card > summary::-webkit-details-marker {
+        display: none;
+      }
+      details.sidebar-card > summary .collapse-toggle-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink-muted);
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+      }
+      details.sidebar-card[open] > summary .collapse-toggle-icon {
+        transform: rotate(180deg);
+        color: var(--gold);
+      }
+      details.sidebar-card:not([open]) {
+        padding-bottom: 16px;
+      }
+      details.sidebar-card:not([open]) > summary.sidebar-card-title {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      details.sidebar-card > summary:hover {
+        color: #ffffff;
+      }
+      details.sidebar-card > summary:hover .collapse-toggle-icon {
+        color: #ffffff;
       }
       .sidebar-card-title {
         font-family: "Space Mono", monospace;
@@ -1096,8 +1137,9 @@
         justify-content: flex-start;
       }
       .event-logo-col {
-        width: 32px;
-        min-width: 32px;
+        width: 100px;
+        min-width: 100px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1105,8 +1147,8 @@
       }
       .event-logo-col img,
       .event-logo-col .team-logo {
-        width: 22px;
-        height: 22px;
+        width: 90px;
+        height: 50px;
         object-fit: contain;
       }
       .event-name-col {
@@ -1133,12 +1175,21 @@
         text-decoration: underline;
       }
       .event-icon-col {
-        width: 78px;
-        min-width: 78px;
+        width: 28px;
+        min-width: 28px;
         display: flex;
         align-items: center;
-        gap: 6px;
+        margin-right: 0px;
+        padding-top: 0px;
+        padding-left: 0px;
+        gap: 4px;
         flex-shrink: 0;
+      }
+      .event-icon-col:empty,
+      .timeline-event-card.is-sub .event-icon-col {
+        display: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
       }
       .event-icon-col.justify-end {
         justify-content: flex-end;
@@ -1172,11 +1223,139 @@
         text-decoration: underline;
         color: var(--gold);
       }
+      .goal-lines-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1.3;
+        gap: 2px;
+      }
+      .goal-scorer-line {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .goal-assist-line {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.83rem;
+        color: var(--ink-muted);
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .event-name-col.text-right .goal-assist-line {
+        justify-content: flex-end;
+      }
+      .event-name-col.text-left .goal-assist-line {
+        justify-content: flex-start;
+      }
+      .goal-assist-line .assist-player-name {
+        color: var(--ink-muted);
+      }
+      .goal-assist-line a {
+        color: var(--ink-muted);
+        text-decoration: none;
+      }
+      .goal-assist-line a:hover {
+        text-decoration: underline;
+        color: var(--gold);
+      }
+      .sub-lines-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1.3;
+        gap: 2px;
+      }
+      .sub-line-in {
+        font-size: 0.94rem;
+        font-weight: 700;
+        color: var(--ink);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .sub-line-out {
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--ink-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .event-name-col.text-right .sub-line-in,
+      .event-name-col.text-right .sub-line-out {
+        justify-content: flex-end;
+      }
+      .event-name-col.text-left .sub-line-in,
+      .event-name-col.text-left .sub-line-out {
+        justify-content: flex-start;
+      }
+      .event-name-col.text-right .sub-lines-container,
+      .event-name-col.text-right .goal-lines-container {
+        align-items: flex-end;
+      }
+      .event-name-col.text-left .sub-lines-container,
+      .event-name-col.text-left .goal-lines-container {
+        align-items: flex-start;
+      }
+      .sub-tag-in-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        color: #10b981;
+        font-weight: 700;
+        font-family: "Space Mono", monospace;
+        font-size: 0.74rem;
+        background: rgba(16, 185, 129, 0.12);
+        padding: 1px 5px;
+        border-radius: 4px;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        flex-shrink: 0;
+      }
+      .sub-tag-out-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        color: #ef4444;
+        font-weight: 700;
+        font-family: "Space Mono", monospace;
+        font-size: 0.74rem;
+        background: rgba(239, 68, 68, 0.12);
+        padding: 1px 5px;
+        border-radius: 4px;
+        border: 1px solid rgba(239, 68, 68, 0.25);
+        flex-shrink: 0;
+      }
+      .sub-line-in a,
+      .sub-line-out a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .sub-line-in a:hover,
+      .sub-line-out a:hover {
+        text-decoration: underline;
+        color: var(--gold);
+      }
       @media (max-width: 768px) {
         .event-icon-col {
-          width: 58px;
-          min-width: 58px;
-          gap: 4px;
+          width: 24px;
+          min-width: 24px;
+          gap: 2px;
+          margin-right: 0px;
+          padding-top: 0px;
+          padding-left: 0px;
         }
         .event-logo-col {
           width: 26px;
@@ -2974,40 +3153,6 @@
 
       // ---------- Render Match Detail ----------
       function renderMatchDetail(match, container) {
-        if (window.isDetailSimulatedLive) {
-          match = {
-            ...match,
-            status: "live",
-            clock: "68'",
-            time_live: "68'",
-            period: "SecondHalf",
-            home_score: 1,
-            away_score: 2,
-            goals: [
-              { player: "Ada Hegerberg", team: "home", minute: 24, number: 14, assist: "Selma Bacha" },
-              { player: "Lauren James", team: "away", minute: 38, number: 10, assist: "Guro Reiten" },
-              { player: "Sam Kerr", team: "away", minute: 63, number: 20, assist: "Lucy Bronze" }
-            ],
-            events: [
-              { minute: 24, team: "home", type: "goal", player: "Ada Hegerberg", assist: "Selma Bacha", score: "1 - 0" },
-              { minute: 31, team: "away", type: "yellow_card", player: "Sjoeke Nüsken", detail: "Foul" },
-              { minute: 38, team: "away", type: "goal", player: "Lauren James", assist: "Guro Reiten", score: "1 - 1" },
-              { minute: 55, team: "home", type: "yellow_card", player: "Damaris Egurrola", detail: "Tactical foul" },
-              { minute: 63, team: "away", type: "goal", player: "Sam Kerr", assist: "Lucy Bronze", score: "1 - 2" },
-              { minute: 66, team: "home", type: "substitution", player_in: "Tabitha Chawinga", player_out: "Kadidiatou Diani" }
-            ],
-            stats: [
-              { name: (window.currentLang || "th") === "th" ? "ครองบอล (Possession)" : "Possession", home: "48%", away: "52%", isPercentage: true },
-              { name: (window.currentLang || "th") === "th" ? "โอกาสยิงทั้งหมด (Total Shots)" : "Total Shots", home: 9, away: 12, isPercentage: false },
-              { name: (window.currentLang || "th") === "th" ? "ยิงตรงกรอบ (Shots on Target)" : "Shots on Target", home: 4, away: 6, isPercentage: false },
-              { name: (window.currentLang || "th") === "th" ? "ค่า xG (Expected Goals)" : "Expected Goals (xG)", home: 1.12, away: 1.58, isPercentage: false },
-              { name: (window.currentLang || "th") === "th" ? "เตะมุม (Corner Kicks)" : "Corners", home: 4, away: 5, isPercentage: false },
-              { name: (window.currentLang || "th") === "th" ? "ทำฟาวล์ (Fouls)" : "Fouls", home: 8, away: 9, isPercentage: false },
-              { name: (window.currentLang || "th") === "th" ? "ใบเหลือง (Yellow Cards)" : "Yellow Cards", home: 1, away: 1, isPercentage: false }
-            ]
-          };
-        }
-
         currentMatch = match;
         const lang = window.currentLang || "th";
         const isTh = lang === "th";
@@ -3084,24 +3229,10 @@
               </span>
               <span class="kickoff-time-text">${timeFormatted}</span>
             </div>
-            <div style="margin-top: 10px; display: flex; justify-content: center; gap: 8px;">
-              <button type="button" id="btnDetailSimulateLive" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s;" title="ทดลองดูการทำงานของระบบ Live Score สด">
-                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ef4444;"></span>
-                <span>${isTh ? "เปิดโหมด Live Score จำลอง" : "Simulate Live"}</span>
-              </button>
-            </div>
           `;
         } else {
           scoreMainHtml = `
             <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
-            ${window.isDetailSimulatedLive ? `
-              <div style="margin-top: 10px; display: flex; justify-content: center; gap: 8px;">
-                <button type="button" id="btnDetailExitSimulate" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(255, 255, 255, 0.1); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer;">
-                  <span>⬅️</span>
-                  <span>${isTh ? "ปิดโหมดจำลอง (กลับสู่นับถอยหลัง)" : "Exit Simulation"}</span>
-                </button>
-              </div>
-            ` : ""}
           `;
         }
 
@@ -3408,49 +3539,50 @@
                 assistLink = getPlayerLink(cleanAssist);
               }
 
-              const assistBadgeHome = assistLink ? `
-                <span class="goal-assist-inline" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
-                  <span class="assist-player-name">${assistLink}</span>
-                  <img src="databases/logo/svg/assist.svg" alt="Assist" class="event-icon" style="width: 16px; height: 16px;">
-                </span>
-              ` : "";
-
-              const assistBadgeAway = assistLink ? `
-                <span class="goal-assist-inline" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
-                  <img src="databases/logo/svg/assist.svg" alt="Assist" class="event-icon" style="width: 16px; height: 16px;">
-                  <span class="assist-player-name">${assistLink}</span>
-                </span>
-              ` : "";
-
               if (isHome) {
-                nameHtml = `${assistBadgeHome}<span class="player-name goal-scorer-name">${goalPlayerDisplay}</span>`;
-                iconHtml = `
-                  <img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">
-                  ${e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ""}
+                const assistRowHome = assistLink ? `
+                  <div class="goal-assist-line" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
+                    <span class="assist-player-name">${assistLink}</span>
+                    <img src="databases/logo/svg/assist.svg" alt="Assist" class="event-icon" style="width: 14px; height: 14px; margin-left: 4px;">
+                  </div>
+                ` : "";
+
+                nameHtml = `
+                  <div class="goal-lines-container">
+                    <div class="goal-scorer-line">
+                      <span class="player-name goal-scorer-name">${goalPlayerDisplay}</span>
+                    </div>
+                    ${assistRowHome}
+                  </div>
                 `;
+                iconHtml = `<img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">`;
               } else {
-                nameHtml = `<span class="player-name goal-scorer-name">${goalPlayerDisplay}</span>${assistBadgeAway}`;
-                iconHtml = `
-                  ${e.score ? `<span class="timeline-score-progress">${e.score}</span>` : ""}
-                  <img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">
+                const assistRowAway = assistLink ? `
+                  <div class="goal-assist-line" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
+                    <img src="databases/logo/svg/assist.svg" alt="Assist" class="event-icon" style="width: 14px; height: 14px; margin-right: 4px;">
+                    <span class="assist-player-name">${assistLink}</span>
+                  </div>
+                ` : "";
+
+                nameHtml = `
+                  <div class="goal-lines-container">
+                    <div class="goal-scorer-line">
+                      <span class="player-name goal-scorer-name">${goalPlayerDisplay}</span>
+                    </div>
+                    ${assistRowAway}
+                  </div>
                 `;
+                iconHtml = `<img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">`;
               }
             } else if (eType === "own_goal") {
               cardClass = "is-own-goal";
               let cleanGoalPlayer = (e.player || "").replace(/\s*\(OG\)/i, "").trim();
               let goalPlayerDisplay = getPlayerLink(cleanGoalPlayer);
-              const scoreProg = e.score ? `${e.score} (OG)` : "(OG)";
               nameHtml = `<span class="player-name">${goalPlayerDisplay}</span>`;
               if (isHome) {
-                iconHtml = `
-                  <img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">
-                  <span class="timeline-score-progress">${scoreProg}</span>
-                `;
+                iconHtml = `<img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">`;
               } else {
-                iconHtml = `
-                  <span class="timeline-score-progress">${scoreProg}</span>
-                  <img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">
-                `;
+                iconHtml = `<img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">`;
               }
             } else if (eType === "substitution") {
               cardClass = "is-sub";
@@ -3459,48 +3591,48 @@
               const isInjured = e.injury === true || /injury|injured|เจ็บ/i.test(rawOut) || /injury|injured|เจ็บ/i.test(e.detail || "");
               const cleanOut = rawOut.replace(/\s*because of an injury/gi, "").replace(/\s*\(injury\)/gi, "").replace(/\s*\(injured\)/gi, "").trim();
               const outPlayer = getPlayerLink(cleanOut);
-              const injuryBadge = isInjured ? `<span class="sub-injury-badge" title="${isTh ? 'เปลี่ยนตัวเนื่องจากได้รับบาดเจ็บ' : 'Substitution due to injury'}" style="display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;"><img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 15px; height: 15px; object-fit: contain; vertical-align: middle;" /></span>` : "";
+              const injuryBadge = isInjured ? `<span class="sub-injury-badge" title="${isTh ? 'เปลี่ยนตัวเนื่องจากได้รับบาดเจ็บ' : 'Substitution due to injury'}" style="display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;"><img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle;" /></span>` : "";
 
               if (isHome) {
                 nameHtml = `
-                  <div class="sub-flow-row">
-                    <span class="sub-name-in">${inPlayer}</span>
-                    <span class="sub-tag-in">
-                      <span>:IN</span>
-                      <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 15px; height: 15px;">
-                    </span>
-                    <span class="sub-dot">●</span>
-                    <span class="sub-tag-out">
-                      <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 15px; height: 15px;">
-                      <span>OUT:</span>
-                    </span>
-                    <span class="sub-name-out">${outPlayer}</span>${injuryBadge}
+                  <div class="sub-lines-container">
+                    <div class="sub-line-in">
+                      <span class="sub-name-in">${inPlayer}</span>
+                      <span class="sub-tag-in-badge">
+                        <span>IN</span>
+                        <img src="databases/logo/svg/substitution_in.svg" alt="IN" style="width: 13px; height: 13px;">
+                      </span>
+                    </div>
+                    <div class="sub-line-out">
+                      <span class="sub-name-out">${outPlayer}</span>${injuryBadge}
+                      <span class="sub-tag-out-badge">
+                        <span>OUT</span>
+                        <img src="databases/logo/svg/substitution_out.svg" alt="OUT" style="width: 13px; height: 13px;">
+                      </span>
+                    </div>
                   </div>
                 `;
-                iconHtml = `
-                  <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 18px; height: 18px;">
-                  <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 18px; height: 18px;">
-                `;
+                iconHtml = "";
               } else {
                 nameHtml = `
-                  <div class="sub-flow-row">
-                    ${injuryBadge}<span class="sub-name-out">${outPlayer}</span>
-                    <span class="sub-tag-out">
-                      <span>:OUT</span>
-                      <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 15px; height: 15px;">
-                    </span>
-                    <span class="sub-dot">●</span>
-                    <span class="sub-tag-in">
-                      <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 15px; height: 15px;">
-                      <span>IN:</span>
-                    </span>
-                    <span class="sub-name-in">${inPlayer}</span>
+                  <div class="sub-lines-container">
+                    <div class="sub-line-in">
+                      <span class="sub-tag-in-badge">
+                        <img src="databases/logo/svg/substitution_in.svg" alt="IN" style="width: 13px; height: 13px;">
+                        <span>IN</span>
+                      </span>
+                      <span class="sub-name-in">${inPlayer}</span>
+                    </div>
+                    <div class="sub-line-out">
+                      <span class="sub-tag-out-badge">
+                        <img src="databases/logo/svg/substitution_out.svg" alt="OUT" style="width: 13px; height: 13px;">
+                        <span>OUT</span>
+                      </span>
+                      <span class="sub-name-out">${outPlayer}</span>${injuryBadge}
+                    </div>
                   </div>
                 `;
-                iconHtml = `
-                  <img src="databases/logo/svg/substitution_out.svg" alt="OUT" class="event-icon" style="width: 18px; height: 18px;">
-                  <img src="databases/logo/svg/substitution_in.svg" alt="IN" class="event-icon" style="width: 18px; height: 18px;">
-                `;
+                iconHtml = "";
               }
             } else if (eType === "second_yellow" || (eType === "red_card" && (e.card === "second_yellow" || /second yellow|เหลืองที่สอง/i.test(e.detail || "")))) {
               cardClass = "is-second-yellow";
@@ -3556,6 +3688,9 @@
               iconHtml = icon;
             }
 
+            const iconColHome = iconHtml ? `<div class="event-icon-col justify-end">${iconHtml}</div>` : "";
+            const iconColAway = iconHtml ? `<div class="event-icon-col justify-start">${iconHtml}</div>` : "";
+
             if (isHome) {
               return `
 <div class="timeline-event-card ${cardClass}">
@@ -3567,9 +3702,7 @@
       <div class="event-name-col text-right">
         ${nameHtml}
       </div>
-      <div class="event-icon-col justify-end">
-        ${iconHtml}
-      </div>
+      ${iconColHome}
     </div>
   </div>
   <div class="timeline-time-col">
@@ -3587,9 +3720,7 @@
   </div>
   <div class="timeline-side away-side">
     <div class="event-detail-group away-layout" style="--event-index: ${index};">
-      <div class="event-icon-col justify-start">
-        ${iconHtml}
-      </div>
+      ${iconColAway}
       <div class="event-name-col text-left">
         ${nameHtml}
       </div>
@@ -4074,90 +4205,7 @@
 
         <!-- Main Content & Sidebar Grid -->
         <div class="details-grid">
-          <!-- Left Sidebar Meta -->
-          <aside class="sidebar-meta">
-            <!-- Card 1: Match Info -->
-            <div class="sidebar-card">
-              <div class="sidebar-card-title">
-                <span>📌</span>
-                <span>${isTh ? "ข้อมูลการแข่งขัน" : "Match Details"}</span>
-              </div>
-              <div class="sidebar-card-list">
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">🏆 ${isTh ? "การแข่งขัน" : "Comp"}</span>
-                  <span class="sidebar-info-val">${compName}</span>
-                </div>
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">📅 ${isTh ? "วันที่" : "Date"}</span>
-                  <span class="sidebar-info-val">${formatDate(displayDate, lang)}</span>
-                </div>
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label" style="display:inline-flex; align-items:center; gap:6px;">
-                    <svg class="component-icon" width="16" height="16" role="img"><use xlink:href="/img/match-page/icons.svg?v=1.1501.0#KICK_OFF_DARK"></use></svg>
-                    <span>${isTh ? "เวลาเริ่ม Kick-off" : "Kick-off Time"}</span>
-                  </span>
-                  <span class="sidebar-info-val">${displayTime !== "TBC" ? displayTime + (isTh ? " น." : "") : "TBC"}</span>
-                </div>
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">🏟️ ${isTh ? "สนาม" : "Venue"}</span>
-                  <span class="sidebar-info-val">${match.venue || "Stamford Bridge"}</span>
-                </div>
-                ${
-                  match.attendance
-                    ? `
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">👥 ${isTh ? "จำนวนผู้ชม" : "Attendance"}</span>
-                  <span class="sidebar-info-val">${typeof match.attendance === "number" ? match.attendance.toLocaleString() : match.attendance} ${isTh ? "คน" : ""}</span>
-                </div>
-                `
-                    : ""
-                }
-                ${
-                  match.referee
-                    ? `
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">⚖️ ${isTh ? "ผู้ตัดสิน" : "Referee"}</span>
-                  <span class="sidebar-info-val">${match.referee}</span>
-                </div>
-                `
-                    : ""
-                }
-                <div class="sidebar-info-row">
-                  <span class="sidebar-info-label">⚡ ${isTh ? "สถานะ" : "Status"}</span>
-                  <span class="sidebar-info-val" style="color: ${match.status === "live" ? "#00e676" : "var(--gold)"}; font-weight: 700;">
-                    ${match.status === "live" ? (isTh ? `กำลังแข่งขัน (${match.clock || "LIVE"})` : `In Progress (${match.clock || "LIVE"})`) : match.status === "halftime" ? (isTh ? "พักครึ่ง (HT)" : "Half Time") : match.status === "completed" ? (isTh ? "จบการแข่งขัน" : "Full Time") : isTh ? "ยังไม่เริ่มแข่งขัน" : "Upcoming"}
-                  </span>
-                </div>
-                ${
-                  channelsHtml
-                    ? `
-                  <div class="sidebar-info-row" style="flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 4px;">
-                    <span class="sidebar-info-label">📺 ${isTh ? "ถ่ายทอดสด" : "Broadcaster"}</span>
-                    ${channelsHtml}
-                  </div>
-                `
-                    : ""
-                }
-              </div>
-            </div>
-
-            <!-- Card 2: Goalscorers in Sidebar -->
-            ${
-              safeGoals.length > 0
-                ? `
-              <div class="sidebar-card">
-                <div class="sidebar-card-title">
-                  <span>⚽</span>
-                  <span>${isTh ? "ผู้ทำประตู" : "Goalscorers"}</span>
-                </div>
-                ${goalsHtml}
-              </div>
-            `
-                : ""
-            }
-          </aside>
-
-          <!-- Right Content Tabs -->
+          <!-- Main Content Tabs (Directly after Header) -->
           <section class="events-log">
             <!-- Tab Buttons -->
             <div class="match-tabs">
@@ -4197,29 +4245,109 @@
                 ${videoTabHtml}
               </div>
             </div>
+
+            <!-- Integrated Details Cards within Section (Collapsible) -->
+            <div class="section-details-wrap">
+              <!-- Card 1: Match Info (Collapsible) -->
+              <details class="sidebar-card" open>
+                <summary class="sidebar-card-title">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>📌</span>
+                    <span>${isTh ? "ข้อมูลการแข่งขัน" : "Match Details"}</span>
+                  </div>
+                  <span class="collapse-toggle-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </summary>
+                <div class="sidebar-card-list">
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label">🏆 ${isTh ? "การแข่งขัน" : "Comp"}</span>
+                    <span class="sidebar-info-val">${compName}</span>
+                  </div>
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label">📅 ${isTh ? "วันที่" : "Date"}</span>
+                    <span class="sidebar-info-val">${formatDate(displayDate, lang)}</span>
+                  </div>
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label" style="display:inline-flex; align-items:center; gap:6px;">
+                      <svg class="component-icon" width="16" height="16" role="img"><use xlink:href="/img/match-page/icons.svg?v=1.1501.0#KICK_OFF_DARK"></use></svg>
+                      <span>${isTh ? "เวลาเริ่ม Kick-off" : "Kick-off Time"}</span>
+                    </span>
+                    <span class="sidebar-info-val">${displayTime !== "TBC" ? displayTime + (isTh ? " น." : "") : "TBC"}</span>
+                  </div>
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label">🏟️ ${isTh ? "สนาม" : "Venue"}</span>
+                    <span class="sidebar-info-val">${match.venue || "Stamford Bridge"}</span>
+                  </div>
+                  ${
+                    match.attendance
+                      ? `
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label">👥 ${isTh ? "จำนวนผู้ชม" : "Attendance"}</span>
+                    <span class="sidebar-info-val">${typeof match.attendance === "number" ? match.attendance.toLocaleString() : match.attendance} ${isTh ? "คน" : ""}</span>
+                  </div>
+                  `
+                      : ""
+                  }
+                  ${
+                    match.referee
+                      ? `
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label">⚖️ ${isTh ? "ผู้ตัดสิน" : "Referee"}</span>
+                    <span class="sidebar-info-val">${match.referee}</span>
+                  </div>
+                  `
+                      : ""
+                  }
+                  <div class="sidebar-info-row">
+                    <span class="sidebar-info-label">⚡ ${isTh ? "สถานะ" : "Status"}</span>
+                    <span class="sidebar-info-val" style="color: ${match.status === "live" ? "#00e676" : "var(--gold)"}; font-weight: 700;">
+                      ${match.status === "live" ? (isTh ? `กำลังแข่งขัน (${match.clock || "LIVE"})` : `In Progress (${match.clock || "LIVE"})`) : match.status === "halftime" ? (isTh ? "พักครึ่ง (HT)" : "Half Time") : match.status === "completed" ? (isTh ? "จบการแข่งขัน" : "Full Time") : isTh ? "ยังไม่เริ่มแข่งขัน" : "Upcoming"}
+                    </span>
+                  </div>
+                  ${
+                    channelsHtml
+                      ? `
+                    <div class="sidebar-info-row" style="flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 4px;">
+                      <span class="sidebar-info-label">📺 ${isTh ? "ถ่ายทอดสด" : "Broadcaster"}</span>
+                      ${channelsHtml}
+                    </div>
+                  `
+                      : ""
+                  }
+                </div>
+              </details>
+
+              <!-- Card 2: Goalscorers (Collapsible) -->
+              ${
+                safeGoals.length > 0
+                  ? `
+                <details class="sidebar-card" open>
+                  <summary class="sidebar-card-title">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span>⚽</span>
+                      <span>${isTh ? "ผู้ทำประตู" : "Goalscorers"}</span>
+                    </div>
+                    <span class="collapse-toggle-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                  </summary>
+                  <div class="sidebar-card-list">
+                    ${goalsHtml}
+                  </div>
+                </details>
+              `
+                  : ""
+              }
+            </div>
           </section>
         </div>
       `;
 
-        // Activate Tabs & Simulation Buttons
+        // Activate Tabs
         setTimeout(() => {
           initTabs();
           if (typeof updateUIText === "function") updateUIText();
-
-          const btnSim = document.getElementById("btnDetailSimulateLive");
-          if (btnSim) {
-            btnSim.addEventListener("click", () => {
-              window.isDetailSimulatedLive = true;
-              renderMatchDetail(currentMatch, container);
-            });
-          }
-          const btnExit = document.getElementById("btnDetailExitSimulate");
-          if (btnExit) {
-            btnExit.addEventListener("click", () => {
-              window.isDetailSimulatedLive = false;
-              renderMatchDetail(currentMatch, container);
-            });
-          }
         }, 30);
       }
 
