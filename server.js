@@ -17,33 +17,22 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files
-app.use(express.static(__dirname, { extensions: ['html'] }));
-app.use('/databases', express.static(path.join(__dirname, 'databases')));
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/img', express.static(path.join(__dirname, 'img')));
-app.use('/data', express.static(path.join(__dirname, 'data')));
-app.use('/lang', express.static(path.join(__dirname, 'lang')));
-app.use('/icon', express.static(path.join(__dirname, 'icon'), { extensions: ['html'] }));
-app.use('/trophy', express.static(path.join(__dirname, 'trophy'), { extensions: ['html'] }));
-app.use('/the-story-blue', express.static(path.join(__dirname, 'the-story-blue'), { extensions: ['html'] }));
-
-// Explicit routes for each page (Hardcoded strings are REQUIRED for Vercel's nft static analysis)
-app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
-app.get('/icons', (req, res) => res.sendFile(path.join(__dirname, 'icons.html')));
-app.get('/match-detail', (req, res) => res.sendFile(path.join(__dirname, 'match-detail.html')));
-app.get('/match-detail-women', (req, res) => res.sendFile(path.join(__dirname, 'match-detail-women.html')));
-app.get('/men-team', (req, res) => res.sendFile(path.join(__dirname, 'men-team.html')));
-app.get('/player-card', (req, res) => res.sendFile(path.join(__dirname, 'player-card.html')));
-app.get('/player-profile', (req, res) => res.sendFile(path.join(__dirname, 'player-profile.html')));
-app.get('/post-match-graphic', (req, res) => res.sendFile(path.join(__dirname, 'post-match-graphic.html')));
-app.get('/pre-match-graphic', (req, res) => res.sendFile(path.join(__dirname, 'pre-match-graphic.html')));
-app.get('/the-story-blue', (req, res) => res.sendFile(path.join(__dirname, 'the-story-blue.html')));
-app.get('/transfers', (req, res) => res.sendFile(path.join(__dirname, 'transfers.html')));
-app.get('/trophy', (req, res) => res.sendFile(path.join(__dirname, 'trophy.html')));
-app.get('/women-team', (req, res) => res.sendFile(path.join(__dirname, 'women-team.html')));
-app.get('/chelsea', (req, res) => res.sendFile(path.join(__dirname, 'chelsea.html')));
-app.get('/epl', (req, res) => res.sendFile(path.join(__dirname, 'epl.html')));
+// Explicit page routes BEFORE static middlewares (Prevents folder-name redirect loops)
+app.get(['/about', '/about/'], (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
+app.get(['/icons', '/icons/'], (req, res) => res.sendFile(path.join(__dirname, 'icons.html')));
+app.get(['/match-detail', '/match-detail/'], (req, res) => res.sendFile(path.join(__dirname, 'match-detail.html')));
+app.get(['/match-detail-women', '/match-detail-women/'], (req, res) => res.sendFile(path.join(__dirname, 'match-detail-women.html')));
+app.get(['/men-team', '/men-team/'], (req, res) => res.sendFile(path.join(__dirname, 'men-team.html')));
+app.get(['/player-card', '/player-card/'], (req, res) => res.sendFile(path.join(__dirname, 'player-card.html')));
+app.get(['/player-profile', '/player-profile/'], (req, res) => res.sendFile(path.join(__dirname, 'player-profile.html')));
+app.get(['/post-match-graphic', '/post-match-graphic/'], (req, res) => res.sendFile(path.join(__dirname, 'post-match-graphic.html')));
+app.get(['/pre-match-graphic', '/pre-match-graphic/'], (req, res) => res.sendFile(path.join(__dirname, 'pre-match-graphic.html')));
+app.get(['/the-story-blue', '/the-story-blue/'], (req, res) => res.sendFile(path.join(__dirname, 'the-story-blue.html')));
+app.get(['/transfers', '/transfers/'], (req, res) => res.sendFile(path.join(__dirname, 'transfers.html')));
+app.get(['/trophy', '/trophy/'], (req, res) => res.sendFile(path.join(__dirname, 'trophy.html')));
+app.get(['/women-team', '/women-team/'], (req, res) => res.sendFile(path.join(__dirname, 'women-team.html')));
+app.get(['/chelsea', '/chelsea/'], (req, res) => res.sendFile(path.join(__dirname, 'chelsea.html')));
+app.get(['/epl', '/epl/'], (req, res) => res.sendFile(path.join(__dirname, 'epl.html')));
 
 // Subfolder route handlers for clean URLs
 app.get('/trophy/:id', (req, res, next) => {
@@ -72,6 +61,17 @@ app.get('/icon/:name', (req, res, next) => {
   }
   next();
 });
+
+// Serve static assets with redirect: false to prevent redirect loops
+app.use(express.static(__dirname, { extensions: ['html'], redirect: false }));
+app.use('/databases', express.static(path.join(__dirname, 'databases'), { redirect: false }));
+app.use('/assets', express.static(path.join(__dirname, 'assets'), { redirect: false }));
+app.use('/img', express.static(path.join(__dirname, 'img'), { redirect: false }));
+app.use('/data', express.static(path.join(__dirname, 'data'), { redirect: false }));
+app.use('/lang', express.static(path.join(__dirname, 'lang'), { redirect: false }));
+app.use('/icon', express.static(path.join(__dirname, 'icon'), { extensions: ['html'], redirect: false }));
+app.use('/trophy', express.static(path.join(__dirname, 'trophy'), { extensions: ['html'], redirect: false }));
+app.use('/the-story-blue', express.static(path.join(__dirname, 'the-story-blue'), { extensions: ['html'], redirect: false }));
 
 // Custom API route handlers
 app.all('/api/news', (req, res) => newsHandler(req, res));

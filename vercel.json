@@ -22,6 +22,9 @@
     { "source": "/api/epl-standings", "destination": "/api/epl-standings.js" },
     { "source": "/api/wsl-standings", "destination": "/api/wsl-standings.js" },
     { "source": "/api/uwcl-standings", "destination": "/api/uwcl-standings.js" },
+    { "source": "/trophy", "destination": "/trophy.html" },
+    { "source": "/the-story-blue", "destination": "/the-story-blue.html" },
+    { "source": "/icons", "destination": "/icons.html" },
     { "source": "/trophy/:id", "destination": "/trophy/:id.html" },
     { "source": "/the-story-blue/:chapter", "destination": "/the-story-blue/:chapter.html" },
     { "source": "/icon/:name", "destination": "/icon/:name.html" }
