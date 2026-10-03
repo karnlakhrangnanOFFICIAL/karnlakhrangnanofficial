@@ -33,29 +33,19 @@
         letter-spacing: 2px;
         margin-bottom: 2rem;
       }
-      .article-image-placeholder {
+      .article-image {
         width: 100%;
         height: auto;
-        aspect-ratio: 16/9;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: var(--radius-lg);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-muted);
-        font-size: 1rem;
-        margin: 3rem 0;
-        text-align: center;
-        padding: 2rem;
+        margin: 3rem 0 1rem 0;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: block;
       }
-      .article-image-placeholder svg {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 1rem;
-        opacity: 0.5;
+      .article-image-caption {
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 3rem;
       }
       .article-content p {
         margin-bottom: 1.5rem;
@@ -79,6 +69,47 @@
         padding: 0 2rem;
         border-left: 4px solid var(--primary-color);
         border-right: 4px solid var(--primary-color);
+      }
+      .video-wrapper {
+        margin: 2rem 0 2.5rem 0;
+      }
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+        border-radius: var(--radius-lg, 12px);
+        background: #000;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .video-credit-box {
+        margin-top: 12px;
+        padding: 12px 16px;
+        background: rgba(0, 51, 160, 0.05);
+        border: 1px solid rgba(0, 51, 160, 0.18);
+        border-left: 4px solid var(--primary-color, #0033a0);
+        border-radius: 8px;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+      .video-credit-box a {
+        color: var(--primary-color, #0033a0);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .video-credit-box a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -124,27 +155,38 @@
       </div>
 
       <div class="article-content">
-        <div class="article-image-placeholder">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            ></path>
-          </svg>
-          <span
-            ><span class="lang-en"
-              >📍 ตำแหน่งภาพประกอบที่ 1: ภาพบรรยากาศการแข่งขัน Women's FA Cup 2015</span
-            ><span class="lang-th"
-              >📍 ตำแหน่งภาพประกอบที่ 1: ภาพบรรยากาศการแข่งขัน Women's FA Cup 2015</span
-            ></span
-          >
+        <!-- ภาพประกอบที่ 1 -->
+        <img src="../assets/images/camera/GettyImages-482655924-women-fa-cup-2015.webp" alt="Match atmosphere of the 2015 Women's FA Cup" class="article-image" />
+        <div class="article-image-caption">
+          <span class="lang-en">Match atmosphere of the 2015 Women's FA Cup</span>
+          <span class="lang-th">ภาพบรรยากาศการแข่งขัน Women's FA Cup 2015</span>
+        </div>
+
+        <!-- วิดีโอ Full Match / บรรยากาศการแข่งขัน -->
+        <div class="video-wrapper">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/bmEv02QLFsY"
+              title="2015 Women's FA Cup Final - Chelsea Ladies vs Notts County (Full Match)"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-credit-box">
+            <div>
+              <span class="lang-th">🎥 <strong>[Full-Match] วิดีโอบันทึกการแข่งขันเต็มแมตช์:</strong> 2015 Women's FA Cup Final (Chelsea Ladies vs Notts County)</span>
+              <span class="lang-en">🎥 <strong>[Full-Match] Full Match Broadcast:</strong> 2015 Women's FA Cup Final (Chelsea Ladies vs Notts County)</span>
+            </div>
+            <div style="margin-top: 6px; color: var(--text-muted); display: flex; align-items: center; flex-wrap: wrap; gap: 6px;">
+              <span class="lang-th">🙏 ขอขอบคุณแหล่ง VIDEO ช่องยูทูป:</span>
+              <span class="lang-en">🙏 Special thanks for video source to YouTube Channel:</span>
+              <strong>"The Women's Football Archive"</strong>
+              <a href="https://youtu.be/bmEv02QLFsY?si=g6DsALMc1Ngj1MwF" target="_blank" rel="noopener noreferrer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color: #ff0000; vertical-align: -2px;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                @thewomensfootballarchive165
+              </a>
+            </div>
+          </div>
         </div>
 
         <p>
@@ -152,9 +194,7 @@
             >Chelsea Ladies secured the first major piece of silverware in the club's history with a
             historic 1-0 victory over Notts County in the FA Women’s Cup final at Wembley.</span
           ><span class="lang-th"
-            >เชลซี
-            ทีมหญิงคว้าถ้วยรางวัลสำคัญชิ้นแรกในประวัติศาสตร์ของสโมสรด้วยชัยชนะเหนือน็อตต์สเคาน์ตี้
-            1-0 ในรอบชิงชนะเลิศเอฟเอ วีเมนส์ คัพ ที่ เวมบลีย์</span
+            >เชลซี ทีมหญิงคว้าถ้วยรางวัลสำคัญชิ้นแรกในประวัติศาสตร์ของสโมสรด้วยชัยชนะเหนือน็อตต์สเคาน์ตี้ 1-0 ในรอบชิงชนะเลิศเอฟเอ วีเมนส์ คัพ ที่ เวมบลีย์</span
           >
         </p>
 
@@ -224,33 +264,11 @@
           >
         </p>
 
-        <div class="article-image-placeholder">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-            ></path>
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-            ></path>
-          </svg>
-          <span
-            ><span class="lang-en"
-              >📍 ตำแหน่งภาพประกอบที่ 2: ภาพ Gemma Davison ในนัดชิงชนะเลิศ FA Cup 2015</span
-            ><span class="lang-th"
-              >📍 ตำแหน่งภาพประกอบที่ 2: ภาพ Gemma Davison ในนัดชิงชนะเลิศ FA Cup 2015</span
-            ></span
-          >
+        <!-- ภาพประกอบที่ 2 -->
+        <img src="../assets/images/camera/Davison_2015_FA_Cup_final_GettyImages-482717594.webp" alt="Gemma Davison in the 2015 FA Cup Final" class="article-image" />
+        <div class="article-image-caption">
+          <span class="lang-en">Gemma Davison in the 2015 FA Cup Final</span>
+          <span class="lang-th">ภาพ Gemma Davison ในนัดชิงชนะเลิศ FA Cup 2015</span>
         </div>
 
         <p>
@@ -296,24 +314,11 @@
           >
         </p>
 
-        <div class="article-image-placeholder">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            ></path>
-          </svg>
-          <span
-            ><span class="lang-en">📍 ตำแหน่งภาพประกอบที่ 3: ภาพ Ji So-Yun ในปี 2015</span
-            ><span class="lang-th">📍 ตำแหน่งภาพประกอบที่ 3: ภาพ Ji So-Yun ในปี 2015</span></span
-          >
+        <!-- ภาพประกอบที่ 3 -->
+        <img src="../assets/images/camera/ji_2015-611576054.webp" alt="Ji So-Yun in 2015" class="article-image" />
+        <div class="article-image-caption">
+          <span class="lang-en">Ji So-Yun in 2015</span>
+          <span class="lang-th">ภาพ Ji So-Yun ในปี 2015</span>
         </div>
 
         <p>
@@ -355,27 +360,11 @@
           >
         </p>
 
-        <div class="article-image-placeholder">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            ></path>
-          </svg>
-          <span
-            ><span class="lang-en"
-              >📍 ตำแหน่งภาพประกอบที่ 4: ภาพ Eni Aluko ในนัดชิงชนะเลิศ FA Cup 2015</span
-            ><span class="lang-th"
-              >📍 ตำแหน่งภาพประกอบที่ 4: ภาพ Eni Aluko ในนัดชิงชนะเลิศ FA Cup 2015</span
-            ></span
-          >
+        <!-- ภาพประกอบที่ 4 -->
+        <img src="../assets/images/camera/Aluko_2015_FA_Cup_final_GettyImages-611560858.webp" alt="Eni Aluko in the 2015 FA Cup Final" class="article-image" />
+        <div class="article-image-caption">
+          <span class="lang-en">Eni Aluko in the 2015 FA Cup Final</span>
+          <span class="lang-th">ภาพ Eni Aluko ในนัดชิงชนะเลิศ FA Cup 2015</span>
         </div>
 
         <p>
@@ -439,3 +428,4 @@
     <script src="../assets/js/main.js"></script>
   </body>
 </html>
+```<FollowUp>
