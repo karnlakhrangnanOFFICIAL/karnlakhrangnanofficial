@@ -5,6 +5,19 @@
   "standings": [
     {
       "pos": 1,
+      "team": "Chelsea",
+      "logo": "databases/logo/teams/england_chelsea.svg",
+      "p": 5,
+      "w": 4,
+      "d": 1,
+      "l": 0,
+      "gf": 12,
+      "ga": 1,
+      "gd": 11,
+      "pts": 13
+    },
+    {
+      "pos": 2,
       "team": "Manchester City",
       "logo": "databases/logo/teams/england_manchester-city.svg",
       "p": 4,
@@ -15,19 +28,6 @@
       "ga": 4,
       "gd": 8,
       "pts": 12
-    },
-    {
-      "pos": 2,
-      "team": "Chelsea",
-      "logo": "databases/logo/teams/england_chelsea.svg",
-      "p": 4,
-      "w": 3,
-      "d": 1,
-      "l": 0,
-      "gf": 9,
-      "ga": 1,
-      "gd": 8,
-      "pts": 10
     },
     {
       "pos": 3,
@@ -135,19 +135,6 @@
     },
     {
       "pos": 11,
-      "team": "West Ham United",
-      "logo": "databases/logo/teams/england_west-ham.svg",
-      "p": 4,
-      "w": 1,
-      "d": 0,
-      "l": 3,
-      "gf": 3,
-      "ga": 6,
-      "gd": -3,
-      "pts": 3
-    },
-    {
-      "pos": 12,
       "team": "Aston Villa",
       "logo": "databases/logo/teams/england_aston-villa.svg",
       "p": 4,
@@ -157,6 +144,19 @@
       "gf": 3,
       "ga": 6,
       "gd": -3,
+      "pts": 3
+    },
+    {
+      "pos": 12,
+      "team": "West Ham United",
+      "logo": "databases/logo/teams/england_west-ham.svg",
+      "p": 5,
+      "w": 1,
+      "d": 0,
+      "l": 4,
+      "gf": 3,
+      "ga": 9,
+      "gd": -6,
       "pts": 3
     },
     {

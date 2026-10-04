@@ -3457,6 +3457,20 @@
                 return '<img src="databases/logo/svg/substitution_in.svg" alt="Sub" style="width: 20px; height: 20px;">';
               case "var":
                 return '<img src="databases/logo/svg/var.svg" alt="VAR" style="width: 22px; height: 22px;">';
+              case "corner":
+                return '<span style="font-size: 16px; line-height: 1;">🚩</span>';
+              case "foul":
+                return '<span style="font-size: 15px; line-height: 1;">⚠️</span>';
+              case "shot":
+                return '<span style="font-size: 15px; line-height: 1;">🎯</span>';
+              case "save":
+                return '<span style="font-size: 15px; line-height: 1;">🧤</span>';
+              case "injury":
+                return '<img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 18px; height: 18px;">';
+              case "kick_off":
+              case "kickoff":
+              case "period":
+                return '<img src="databases/logo/svg/kick-off.svg" alt="Period" style="width: 18px; height: 18px;">';
               default:
                 return "⚽";
             }
@@ -3469,6 +3483,12 @@
             if (type === "red_card") return isTh ? "ใบแดง" : "Red Card";
             if (type === "substitution") return isTh ? "เปลี่ยนตัว" : "Substitution";
             if (type === "var") return "VAR";
+            if (type === "corner") return isTh ? "เตะมุม" : "Corner";
+            if (type === "foul") return isTh ? "ทำฟาวล์" : "Foul";
+            if (type === "shot") return isTh ? "โอกาสยิง" : "Shot";
+            if (type === "save") return isTh ? "เซฟลูกยิง" : "Save";
+            if (type === "injury") return isTh ? "ได้รับบาดเจ็บ" : "Injury";
+            if (type === "period") return isTh ? "สัญญาณเวลา" : "Period";
             return type.charAt(0).toUpperCase() + type.slice(1).replace("_", " ");
           };
 
@@ -3681,10 +3701,35 @@
   </div>
 </div>
               `;
+            } else if (eType === "period") {
+              const pText = e.detail || (e.display_minute === "HT" ? (isTh ? "จบครึ่งแรก (Half Time)" : "Half Time") : (isTh ? "จบการแข่งขัน (Full Time)" : "Full Time"));
+              return `
+<div class="timeline-event-card is-period-card">
+  <div class="timeline-side home-side"></div>
+  <div class="timeline-time-col">
+    <span class="timeline-time-pill" style="font-weight: 700;">${time}</span>
+  </div>
+  <div class="timeline-side away-side">
+    <div class="event-detail-group away-layout" style="--event-index: ${index};">
+      <div class="event-icon-col justify-start">
+        <img src="databases/logo/svg/kick-off.svg" alt="Whistle" class="event-icon" style="width: 18px; height: 18px;">
+      </div>
+      <div class="event-name-col text-left">
+        <span class="event-description" style="font-weight: 700; color: var(--gold);">${pText}</span>
+      </div>
+      <div class="event-logo-col"></div>
+    </div>
+  </div>
+</div>
+              `;
             } else {
-              cardClass = "is-generic";
+              cardClass = `is-${eType}`;
               const pDisplay = getPlayerLink(e.player);
-              nameHtml = `<span class="player-name">${pDisplay || title}</span>${e.detail ? ` <span class="event-description">(${e.detail})</span>` : ""}`;
+              if (pDisplay && e.detail) {
+                nameHtml = `<span class="player-name">${pDisplay}</span> <span class="event-description" style="color: var(--ink-muted); font-size: 0.84rem;">${e.detail}</span>`;
+              } else {
+                nameHtml = `<span class="player-name">${pDisplay || title}</span>${e.detail ? ` <span class="event-description">(${e.detail})</span>` : ""}`;
+              }
               iconHtml = icon;
             }
 

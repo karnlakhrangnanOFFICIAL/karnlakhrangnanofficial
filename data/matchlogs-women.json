@@ -782,19 +782,32 @@
       "day": "Sun",
       "venue": "Away",
       "result": "W",
-      "gf": 1,
+      "gf": 3,
       "ga": 0,
       "opponent": "West Ham United",
       "opponent_crest": "databases/logo/teams/england_west-ham.svg",
       "stadium": "Chigwell Construction Stadium, Dagenham",
       "xg": null,
       "xga": null,
-      "poss": null,
+      "poss": 66,
       "attendance": null,
       "captain": "Lucy Bronze",
       "formation": "3-4-2-1",
       "referee": "Sophie Dennington",
-      "scorers": []
+      "scorers": [
+        {
+          "player": "Melvine Malard",
+          "minute": 38
+        },
+        {
+          "player": "Keira Walsh",
+          "minute": 80
+        },
+        {
+          "player": "Maika Hamano",
+          "minute": 87
+        }
+      ]
     },
     {
       "id": "w8",
