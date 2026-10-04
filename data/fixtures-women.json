@@ -1766,9 +1766,9 @@
         "logo": "databases/logo/tv/Sky_Sport-UHD.png"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
+    "status": "completed",
+    "home_score": 0,
+    "away_score": 1,
     "goals": [],
     "events": [],
     "competition_name": "Barclays Women's Super League",
@@ -1777,10 +1777,236 @@
     "xga": null,
     "poss": null,
     "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Matchweek 5"
+    "captain": "Lucy Bronze",
+    "formation": "3-4-2-1",
+    "referee": "Sophie Dennington",
+    "round": "Matchweek 5",
+    "lineups": {
+      "home": {
+        "manager": "Rita Guarino",
+        "formation": "3-5-2",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Constance Picaud",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 22,
+            "name": "Nadine Riesen",
+            "position": "DF"
+          },
+          {
+            "number": 3,
+            "name": "Laia Codina",
+            "position": "DF"
+          },
+          {
+            "number": 8,
+            "name": "Saki Kumagai",
+            "position": "DF"
+          },
+          {
+            "number": 28,
+            "name": "Estelle Cascarino",
+            "position": "DF"
+          },
+          {
+            "number": 77,
+            "name": "Seraina Piubel",
+            "position": "MF"
+          },
+          {
+            "number": 10,
+            "name": "Katie Zelem",
+            "position": "MF",
+            "captain": true
+          },
+          {
+            "number": 4,
+            "name": "Oona Siren",
+            "position": "MF"
+          },
+          {
+            "number": 7,
+            "name": "Inès Belloumou",
+            "position": "MF"
+          },
+          {
+            "number": 20,
+            "name": "Viviane Asseyi",
+            "position": "FW"
+          },
+          {
+            "number": 11,
+            "name": "Kelly Gago",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 25,
+            "name": "Megan Walsh",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 45,
+            "name": "Rebekah Dowsett",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 26,
+            "name": "Niamh Lucy Peacock",
+            "position": "DF"
+          },
+          {
+            "number": 2,
+            "name": "Yu Endo",
+            "position": "DF"
+          },
+          {
+            "number": 23,
+            "name": "Ffion Morgan",
+            "position": "MF"
+          },
+          {
+            "number": 15,
+            "name": "Ylinn Tennebø",
+            "position": "MF"
+          },
+          {
+            "number": 27,
+            "name": "Leila Wandeler",
+            "position": "FW"
+          },
+          {
+            "number": 19,
+            "name": "Sienna Wareing",
+            "position": "FW"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Sonia Bompastor",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "DF",
+            "captain": true
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "DF"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": "MF"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": "MF"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "MF"
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "MF"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "FW"
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": "FW"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "DF"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn",
+            "position": "DF"
+          },
+          {
+            "number": 32,
+            "name": "Alexia Potter",
+            "position": "MF"
+          },
+          {
+            "number": 8,
+            "name": "Erin Cuthbert",
+            "position": "MF"
+          },
+          {
+            "number": 33,
+            "name": "Agnes Beever-Jones",
+            "position": "FW"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "FW"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "MF"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James",
+            "position": "FW"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "Referee",
+          "name": "Sophie Dennington"
+        }
+      ]
+    }
   },
   {
     "id": "w8",
