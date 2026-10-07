@@ -1,0 +1,364 @@
+[
+  {
+    "team": "Arsenal Women",
+    "total_players": 10,
+    "players": [
+      {
+        "name": "Caitlin Foord",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Chloe Kelly",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Georgia Stanway",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Géraldine Reuteler",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Kim Little",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Lisa Baum",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Mariona Caldentey",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Ona Batlle",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Selina Cerci",
+        "team": "Arsenal Women"
+      },
+      {
+        "name": "Stina Blackstenius",
+        "team": "Arsenal Women"
+      }
+    ]
+  },
+  {
+    "team": "Aston Villa",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Oriane Jean-François",
+        "team": "Aston Villa"
+      }
+    ]
+  },
+  {
+    "team": "Austria Wien",
+    "total_players": 10,
+    "players": [
+      {
+        "name": "Almedina Sisic",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Chiara Pucci",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Elisa Pfattner",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Lotta Cordes",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Louise Schöffel",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Lucia Orkić",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Modesta Uka",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Patricia Pfanner",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Sandra Jakobsen",
+        "team": "Austria Wien"
+      },
+      {
+        "name": "Tatjana Weiss",
+        "team": "Austria Wien"
+      }
+    ]
+  },
+  {
+    "team": "Birmingham City",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Ashanti Akpan",
+        "team": "Birmingham City"
+      }
+    ]
+  },
+  {
+    "team": "Bristol City",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Brooke Aspin",
+        "team": "Bristol City"
+      },
+      {
+        "name": "Greta Humphries",
+        "team": "Bristol City"
+      }
+    ]
+  },
+  {
+    "team": "Durham",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Aimee Claypole",
+        "team": "Durham"
+      }
+    ]
+  },
+  {
+    "team": "Ipswich Town",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Jorja Fox",
+        "team": "Ipswich Town"
+      }
+    ]
+  },
+  {
+    "team": "Juventus",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Julia Bartel",
+        "team": "Juventus"
+      }
+    ]
+  },
+  {
+    "team": "Manchester City",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Niamh Charles",
+        "team": "Manchester City"
+      }
+    ]
+  },
+  {
+    "team": "NJ/NY Gotham FC",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Guro Reiten",
+        "team": "NJ/NY Gotham FC"
+      },
+      {
+        "name": "Sam Kerr",
+        "team": "NJ/NY Gotham FC"
+      }
+    ]
+  },
+  {
+    "team": "Newcastle United",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Ashanti Akpa",
+        "team": "Newcastle United"
+      }
+    ]
+  },
+  {
+    "team": "Nottingham Forest",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Katie Cox",
+        "team": "Nottingham Forest"
+      },
+      {
+        "name": "Lois Shooter",
+        "team": "Nottingham Forest"
+      }
+    ]
+  },
+  {
+    "team": "OL Lyonnes",
+    "total_players": 10,
+    "players": [
+      {
+        "name": "Ada Hegerberg",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Caroline Weir",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Johanna Rytting Kaneryd",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Jule Brand",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Marie-Antoinette Katoto",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Salma Paralluelo",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Tabitha Chawinga",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Tarciane",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Vicki Becho",
+        "team": "OL Lyonnes"
+      },
+      {
+        "name": "Wendie Renard",
+        "team": "OL Lyonnes"
+      }
+    ]
+  },
+  {
+    "team": "Southampton",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Lucy Watson",
+        "team": "Southampton"
+      }
+    ]
+  },
+  {
+    "team": "Tottenham Hotspur",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Maika Hamano",
+        "team": "Tottenham Hotspur"
+      }
+    ]
+  },
+  {
+    "team": "VfL Wolfsburg",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Mara Alber",
+        "team": "VfL Wolfsburg"
+      }
+    ]
+  },
+  {
+    "team": "Watford",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Cerys Brown",
+        "team": "Watford"
+      },
+      {
+        "name": "Vera Jones",
+        "team": "Watford"
+      }
+    ]
+  },
+  {
+    "team": "Werder Bremen",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Mara Alber",
+        "team": "Werder Bremen"
+      }
+    ]
+  },
+  {
+    "team": "West Ham United",
+    "total_players": 13,
+    "players": [
+      {
+        "name": "Estelle Cascarino",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Inès Belloumou",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Katie Zelem",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Kelly Gago",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Laia Codina",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Leila Wandeler",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Nadine Riesen",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Oona Siren",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Saki Kumagai",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Seraina Piubel",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Viviane Asseyi",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Ylinn Tennebø",
+        "team": "West Ham United"
+      },
+      {
+        "name": "Yu Endo",
+        "team": "West Ham United"
+      }
+    ]
+  }
+]

@@ -195,7 +195,7 @@
     "ชื่อย่อ": "CHE",
     "ชื่อสนามเหย้า (Home Stadium)": "Kingsmeadow",
     "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Stamford Bridge",
-    "logo": ""
+    "logo": "databases/logo/teams/england_chelsea.svg"
   },
   {
     "ลีก": "FA Women's Super League",
@@ -385,5 +385,221 @@
     "ชื่อสนามเหย้า (Home Stadium)": "Kenilworth Road",
     "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
     "logo": "databases/logo/teams/england_luton.svg"
+  },
+  {
+    "ลีก": "FA Women's Super League",
+    "สโมสร": "Arsenal Women",
+    "ชื่อสโมสร (ภาษาไทย)": "อาร์เซนอล ทีมหญิง",
+    "ชื่อย่อ": "ARS",
+    "ชื่อสนามเหย้า (Home Stadium)": "Emirates Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Meadow Park",
+    "logo": "databases/logo/teams/england_arsenal.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "FC Barcelona",
+    "ชื่อสโมสร (ภาษาไทย)": "บาร์เซโลนา",
+    "ชื่อย่อ": "BAR",
+    "ชื่อสนามเหย้า (Home Stadium)": "Estadi Johan Cruyff",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Estadi Olímpic Lluís Companys",
+    "logo": "databases/logo/teams/spain_barcelona.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Bayern",
+    "ชื่อสโมสร (ภาษาไทย)": "บาเยิร์น มิวนิค",
+    "ชื่อย่อ": "BAY",
+    "ชื่อสนามเหย้า (Home Stadium)": "FC Bayern Campus",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Allianz Arena",
+    "logo": "databases/logo/teams/germany_bayern-munchen.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Lyonnes",
+    "ชื่อสโมสร (ภาษาไทย)": "โอลิมปิก ลียง",
+    "ชื่อย่อ": "LYO",
+    "ชื่อสนามเหย้า (Home Stadium)": "Groupama OL Training Center",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Groupama Stadium",
+    "logo": "databases/logo/teams/france_lyon.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "OL Lyonnes",
+    "ชื่อสโมสร (ภาษาไทย)": "โอแอล ลียงเนสส์",
+    "ชื่อย่อ": "OLL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Groupama OL Training Center",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Groupama Stadium",
+    "logo": "databases/logo/teams/france_ol-lyonnes.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Real Madrid",
+    "ชื่อสโมสร (ภาษาไทย)": "เรอัล มาดริด",
+    "ชื่อย่อ": "RMA",
+    "ชื่อสนามเหย้า (Home Stadium)": "Estadio Alfredo Di Stéfano",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Santiago Bernabéu",
+    "logo": "databases/logo/teams/spain_real-madrid.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Real Sociedad Women",
+    "ชื่อสโมสร (ภาษาไทย)": "เรอัล โซเซียดาด (หญิง)",
+    "ชื่อย่อ": "RSO",
+    "ชื่อสนามเหย้า (Home Stadium)": "Zubieta Ground",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Reale Arena",
+    "logo": "databases/logo/teams/spain_real-sociedad.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "PSG",
+    "ชื่อสโมสร (ภาษาไทย)": "ปารีส แซงต์-แชร์กแมง",
+    "ชื่อย่อ": "PSG",
+    "ชื่อสนามเหย้า (Home Stadium)": "Campus PSG",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Parc des Princes",
+    "logo": "databases/logo/teams/france_psg.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "HB Køge",
+    "ชื่อสโมสร (ภาษาไทย)": "เอชบี โคเก้",
+    "ชื่อย่อ": "HBK",
+    "ชื่อสนามเหย้า (Home Stadium)": "Capelli Sport Stadion",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/denmark_hb_koge.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Inter",
+    "ชื่อสโมสร (ภาษาไทย)": "อินเตอร์ มิลาน",
+    "ชื่อย่อ": "INT",
+    "ชื่อสนามเหย้า (Home Stadium)": "Arena Civica",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "San Siro",
+    "logo": "databases/logo/teams/italy_inter.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Roma",
+    "ชื่อสโมสร (ภาษาไทย)": "โรม่า",
+    "ชื่อย่อ": "ROM",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stadio Tre Fontane",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Stadio Olimpico",
+    "logo": "databases/logo/teams/italy_roma.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Benfica",
+    "ชื่อสโมสร (ภาษาไทย)": "เบนฟิก้า",
+    "ชื่อย่อ": "BEN",
+    "ชื่อสนามเหย้า (Home Stadium)": "Benfica Campus",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Estádio da Luz",
+    "logo": "databases/logo/teams/portugal_benfica.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "OH Leuven",
+    "ชื่อสโมสร (ภาษาไทย)": "โอเอช ลูเวิน",
+    "ชื่อย่อ": "OHL",
+    "ชื่อสนามเหย้า (Home Stadium)": "King Power at Den Dreef",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/belgium_ohl-oud-heverlee-leuven.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Servette FCCF",
+    "ชื่อสโมสร (ภาษาไทย)": "เซอร์เวตต์ เอฟซีซีเอฟ",
+    "ชื่อย่อ": "SFC",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stade de Genève",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/switzerland_servette.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Austria Wien",
+    "ชื่อสโมสร (ภาษาไทย)": "ออสเตรีย เวียนนา",
+    "ชื่อย่อ": "FAW",
+    "ชื่อสนามเหย้า (Home Stadium)": "Generali Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/austria_austria-wien.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Paris",
+    "ชื่อสโมสร (ภาษาไทย)": "ปารีส เอฟซี",
+    "ชื่อย่อ": "PFC",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stade Charléty",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Stade Robert-Bobin",
+    "logo": "databases/logo/teams/france_paris-fc.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Häcken",
+    "ชื่อสโมสร (ภาษาไทย)": "ฮัคเค่น",
+    "ชื่อย่อ": "BKH",
+    "ชื่อสนามเหย้า (Home Stadium)": "Bravida Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/sweden_hacken.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "VfL Wolfsburg",
+    "ชื่อสโมสร (ภาษาไทย)": "เฟาเอ็ฟเอ็ล ว็อลฟส์บวร์ค",
+    "ชื่อย่อ": "WOB",
+    "ชื่อสนามเหย้า (Home Stadium)": "AOK Stadion",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Volkswagen Arena",
+    "logo": "databases/logo/teams/germany_wolfsburg.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "FC Twente",
+    "ชื่อสโมสร (ภาษาไทย)": "เอฟซี ทเวนเต้",
+    "ชื่อย่อ": "TWE",
+    "ชื่อสนามเหย้า (Home Stadium)": "De Grolsch Veste",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Sportpark Schreurserve",
+    "logo": "databases/logo/teams/netherlands_twente.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Vålerenga",
+    "ชื่อสโมสร (ภาษาไทย)": "วาเลเรนก้า",
+    "ชื่อย่อ": "VAL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Intility Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/norway_valerenga.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Celtic",
+    "ชื่อสโมสร (ภาษาไทย)": "เซลติก",
+    "ชื่อย่อ": "CEL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Celtic Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Excelsior Stadium",
+    "logo": "databases/logo/teams/scotland_celtic.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Galatasaray",
+    "ชื่อสโมสร (ภาษาไทย)": "กาลาตาซาราย",
+    "ชื่อย่อ": "GAL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Rams Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/turkey_galatasaray.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "St. Pölten",
+    "ชื่อสโมสร (ภาษาไทย)": "เซนต์ โพลเทน",
+    "ชื่อย่อ": "STP",
+    "ชื่อสนามเหย้า (Home Stadium)": "NV Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/austria_st-polten.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Man City",
+    "ชื่อสโมสร (ภาษาไทย)": "แมนเชสเตอร์ ซิตี้",
+    "ชื่อย่อ": "MCI",
+    "ชื่อสนามเหย้า (Home Stadium)": "Joie Stadium (Academy Stadium)",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Etihad Stadium",
+    "logo": "databases/logo/teams/england_manchester-city.svg"
   }
 ]

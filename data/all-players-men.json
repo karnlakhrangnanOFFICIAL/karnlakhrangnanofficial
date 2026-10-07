@@ -1,0 +1,610 @@
+[
+  {
+    "team": "AC Horsens",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Jimi Tauriainen",
+        "team": "AC Horsens"
+      }
+    ]
+  },
+  {
+    "team": "AFC Wimbledon",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Dujuan Richards",
+        "team": "AFC Wimbledon"
+      },
+      {
+        "name": "Ollie Harrison",
+        "team": "AFC Wimbledon"
+      }
+    ]
+  },
+  {
+    "team": "Arsenal",
+    "total_players": 12,
+    "players": [
+      {
+        "name": "Bukayo Saka",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Christos Tzolis",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Declan Rice",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Kai Havertz",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Martin Ødegaard",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Martín Zubimendi",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Mikel Merino",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Myles Lewis-Skelly",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Noni Madueke",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Piero Hincapié",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Riccardo Calafiori",
+        "team": "Arsenal"
+      },
+      {
+        "name": "Viktor Gyökeres",
+        "team": "Arsenal"
+      }
+    ]
+  },
+  {
+    "team": "Aston Villa",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Alejandro Garnacho",
+        "team": "Aston Villa"
+      },
+      {
+        "name": "Nicolas Jackson",
+        "team": "Aston Villa"
+      }
+    ]
+  },
+  {
+    "team": "Brentford",
+    "total_players": 13,
+    "players": [
+      {
+        "name": "Aaron Hickey",
+        "team": "Brentford"
+      },
+      {
+        "name": "Dango Ouattara",
+        "team": "Brentford"
+      },
+      {
+        "name": "El Hadji Malick Diouf",
+        "team": "Brentford"
+      },
+      {
+        "name": "Fábio Carvalho",
+        "team": "Brentford"
+      },
+      {
+        "name": "Igor Thiago",
+        "team": "Brentford"
+      },
+      {
+        "name": "Jaidon Anthony",
+        "team": "Brentford"
+      },
+      {
+        "name": "Joseph Wheeler-Henry",
+        "team": "Brentford"
+      },
+      {
+        "name": "Keane Lewis-Potter",
+        "team": "Brentford"
+      },
+      {
+        "name": "Kevin Schade",
+        "team": "Brentford"
+      },
+      {
+        "name": "Mamadou Sangaré",
+        "team": "Brentford"
+      },
+      {
+        "name": "Michael Kayode",
+        "team": "Brentford"
+      },
+      {
+        "name": "Mikkel Damsgaard",
+        "team": "Brentford"
+      },
+      {
+        "name": "Yehor Yarmoliuk",
+        "team": "Brentford"
+      }
+    ]
+  },
+  {
+    "team": "Brighton & Hove Albion",
+    "total_players": 10,
+    "players": [
+      {
+        "name": "Charalampos Kostoulas",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Costinha",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Ibrahim Osman",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Joao Pedro",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Lewis Dunk",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Malick Yalcouyé",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Mats Wieffer",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Olivier Boscagli",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Pascal Groß",
+        "team": "Brighton & Hove Albion"
+      },
+      {
+        "name": "Promise David",
+        "team": "Brighton & Hove Albion"
+      }
+    ]
+  },
+  {
+    "team": "Burnley",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Dastan Satpaev",
+        "team": "Burnley"
+      }
+    ]
+  },
+  {
+    "team": "Celtic",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Landon Emenalo",
+        "team": "Celtic"
+      },
+      {
+        "name": "Shim Mheuka",
+        "team": "Celtic"
+      }
+    ]
+  },
+  {
+    "team": "Como",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Robert Sánchez",
+        "team": "Como"
+      },
+      {
+        "name": "Trevoh Chalobah",
+        "team": "Como"
+      }
+    ]
+  },
+  {
+    "team": "Crystal Palace",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Axel Disasi",
+        "team": "Crystal Palace"
+      },
+      {
+        "name": "Honest Ahanor",
+        "team": "Crystal Palace"
+      }
+    ]
+  },
+  {
+    "team": "Dulwich Hamlet",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Hudson Sands",
+        "team": "Dulwich Hamlet"
+      }
+    ]
+  },
+  {
+    "team": "Everton",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Tyrique George",
+        "team": "Everton"
+      }
+    ]
+  },
+  {
+    "team": "Fulham",
+    "total_players": 3,
+    "players": [
+      {
+        "name": "Calvin Bassey",
+        "team": "Fulham"
+      },
+      {
+        "name": "Gonzalo García",
+        "team": "Fulham"
+      },
+      {
+        "name": "Josh King",
+        "team": "Fulham"
+      }
+    ]
+  },
+  {
+    "team": "Hartlepool United",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Max Merrick",
+        "team": "Hartlepool United"
+      }
+    ]
+  },
+  {
+    "team": "Hull City",
+    "total_players": 9,
+    "players": [
+      {
+        "name": "Elliot Stroud",
+        "team": "Hull City"
+      },
+      {
+        "name": "John Egan",
+        "team": "Hull City"
+      },
+      {
+        "name": "Lucas Herrington",
+        "team": "Hull City"
+      },
+      {
+        "name": "Matt Crooks",
+        "team": "Hull City"
+      },
+      {
+        "name": "Mohamed Belloumi",
+        "team": "Hull City"
+      },
+      {
+        "name": "Nobel Mendy",
+        "team": "Hull City"
+      },
+      {
+        "name": "Oliver McBurnie",
+        "team": "Hull City"
+      },
+      {
+        "name": "Ryan John Giles",
+        "team": "Hull City"
+      },
+      {
+        "name": "Sorba Thomas",
+        "team": "Hull City"
+      }
+    ]
+  },
+  {
+    "team": "Ipswich Town",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Frankie Runham",
+        "team": "Ipswich Town"
+      }
+    ]
+  },
+  {
+    "team": "KV Kortrijk",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Harrison Murray-Campbell",
+        "team": "KV Kortrijk"
+      }
+    ]
+  },
+  {
+    "team": "Leeds United",
+    "total_players": 11,
+    "players": [
+      {
+        "name": "Anton Stach",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Ao Tanaka",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Brenden Aaronson",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Daniel James",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Dominic Calvert-Lewin",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Gabriel Gudmundsson",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Lukas Nmecha",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Melvin Bard",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Noah Okafor",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Sean Longstaff",
+        "team": "Leeds United"
+      },
+      {
+        "name": "Tarik Muharemovic",
+        "team": "Leeds United"
+      }
+    ]
+  },
+  {
+    "team": "Luton Town",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Hakeem Odoffin",
+        "team": "Luton Town"
+      }
+    ]
+  },
+  {
+    "team": "Manchester City",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Enzo Fernández",
+        "team": "Manchester City"
+      }
+    ]
+  },
+  {
+    "team": "Manchester United",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Andrey Santos",
+        "team": "Manchester United"
+      }
+    ]
+  },
+  {
+    "team": "Napoli",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Benoît Badiashile",
+        "team": "Napoli"
+      }
+    ]
+  },
+  {
+    "team": "Nottingham Forest",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Liam Delap",
+        "team": "Nottingham Forest"
+      }
+    ]
+  },
+  {
+    "team": "Notts County",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Ishe Samuels-Smith",
+        "team": "Notts County"
+      }
+    ]
+  },
+  {
+    "team": "Portsmouth",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Ryan Kavuma-McQueen",
+        "team": "Portsmouth"
+      }
+    ]
+  },
+  {
+    "team": "Preston North End",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Caleb Wiley",
+        "team": "Preston North End"
+      }
+    ]
+  },
+  {
+    "team": "RB Leipzig",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Marc Guiu",
+        "team": "RB Leipzig"
+      }
+    ]
+  },
+  {
+    "team": "Real Madrid",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Marc Cucurella",
+        "team": "Real Madrid"
+      }
+    ]
+  },
+  {
+    "team": "Real Sociedad",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Mamadou Sarr",
+        "team": "Real Sociedad"
+      }
+    ]
+  },
+  {
+    "team": "Rochdale",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Kaiden Wilson",
+        "team": "Rochdale"
+      }
+    ]
+  },
+  {
+    "team": "Servette",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "David Datro Fofana",
+        "team": "Servette"
+      }
+    ]
+  },
+  {
+    "team": "Sporting CP",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Jesse Derry",
+        "team": "Sporting CP"
+      }
+    ]
+  },
+  {
+    "team": "Strasbourg",
+    "total_players": 5,
+    "players": [
+      {
+        "name": "Deivid Washington",
+        "team": "Strasbourg"
+      },
+      {
+        "name": "Dário Essugo",
+        "team": "Strasbourg"
+      },
+      {
+        "name": "Filip Jørgensen",
+        "team": "Strasbourg"
+      },
+      {
+        "name": "Genesis Antwi",
+        "team": "Strasbourg"
+      },
+      {
+        "name": "Omari Kellyman",
+        "team": "Strasbourg"
+      }
+    ]
+  },
+  {
+    "team": "Tottenham Hotspur",
+    "total_players": 2,
+    "players": [
+      {
+        "name": "Mykhailo Mudryk",
+        "team": "Tottenham Hotspur"
+      },
+      {
+        "name": "Tosin Adarabioyo",
+        "team": "Tottenham Hotspur"
+      }
+    ]
+  },
+  {
+    "team": "West Bromwich Albion",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Jimmy-Jay Morgan",
+        "team": "West Bromwich Albion"
+      }
+    ]
+  },
+  {
+    "team": "Wigan Athletic",
+    "total_players": 1,
+    "players": [
+      {
+        "name": "Reggie Walsh",
+        "team": "Wigan Athletic"
+      }
+    ]
+  }
+]
