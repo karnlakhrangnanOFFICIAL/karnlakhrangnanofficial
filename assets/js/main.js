@@ -2,7 +2,7 @@
 // KARN LA KHRANg NAN Official - Main JS
 // ============================================
 
-let currentLang = localStorage.getItem("lang") || "th";
+var currentLang = window.currentLang || localStorage.getItem("lang") || "th";
 window.currentLang = currentLang;
 const FALLBACK_TRANSLATIONS = {
   th: {

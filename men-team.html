@@ -274,6 +274,17 @@
           <h2 class="section-title" data-i18n="men.players_title">👕 Players & Head coach (Manager)</h2>
         </div>
         <div id="menCoachProfileContainer" style="margin-bottom: 2rem;"></div>
+
+        <!-- Squad Position Filter -->
+        <div class="squad-filters-bar" id="menSquadFilterBar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          <button class="squad-filter-btn active" data-filter="all" data-lang-th="ทั้งหมด (All Squad)" data-lang-en="All Squad">ทั้งหมด (All Squad)</button>
+          <button class="squad-filter-btn" data-filter="Goalkeeper" data-lang-th="ผู้รักษาประตู (GK)" data-lang-en="Goalkeepers">ผู้รักษาประตู (GK)</button>
+          <button class="squad-filter-btn" data-filter="Defender" data-lang-th="กองหลัง (DF)" data-lang-en="Defenders">กองหลัง (DF)</button>
+          <button class="squad-filter-btn" data-filter="Midfielder" data-lang-th="กองกลาง (MF)" data-lang-en="Midfielders">กองกลาง (MF)</button>
+          <button class="squad-filter-btn" data-filter="Forward" data-lang-th="กองหน้า (FW)" data-lang-en="Forwards">กองหน้า (FW)</button>
+          <button class="squad-filter-btn" data-filter="loaned_out" data-lang-th="ยืมตัว (On Loan)" data-lang-en="On Loan">ยืมตัว (On Loan)</button>
+        </div>
+
         <div class="players-grid" id="menPlayersContainer">
           <div class="loading">
             <div class="spinner"></div>

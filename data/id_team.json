@@ -601,5 +601,140 @@
     "ชื่อสนามเหย้า (Home Stadium)": "Joie Stadium (Academy Stadium)",
     "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Etihad Stadium",
     "logo": "databases/logo/teams/england_manchester-city.svg"
+  },
+  {
+    "ลีก": "Danish 1st Division",
+    "สโมสร": "AC Horsens",
+    "ชื่อสโมสร (ภาษาไทย)": "เอซี ฮอร์เซนส์",
+    "ชื่อย่อ": "ACH",
+    "ชื่อสนามเหย้า (Home Stadium)": "CASA Arena Horsens",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/denmark_horsens.svg"
+  },
+  {
+    "ลีก": "EFL League Two",
+    "สโมสร": "AFC Wimbledon",
+    "ชื่อสโมสร (ภาษาไทย)": "เอเอฟซี วิมเบิลดัน",
+    "ชื่อย่อ": "WIM",
+    "ชื่อสนามเหย้า (Home Stadium)": "Cherry Red Records Stadium (Plough Lane)",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_afc-wimbledon.svg"
+  },
+  {
+    "ลีก": "EFL Championship",
+    "สโมสร": "Burnley",
+    "ชื่อสโมสร (ภาษาไทย)": "เบิร์นลีย์",
+    "ชื่อย่อ": "BUR",
+    "ชื่อสนามเหย้า (Home Stadium)": "Turf Moor",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_burnley.svg"
+  },
+  {
+    "ลีก": "Isthmian League",
+    "สโมสร": "Dulwich Hamlet",
+    "ชื่อสโมสร (ภาษาไทย)": "ดัลวิช แฮมเล็ต",
+    "ชื่อย่อ": "DUL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Champion Hill",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_dulwich-hamlet.svg"
+  },
+  {
+    "ลีก": "National League",
+    "สโมสร": "Hartlepool United",
+    "ชื่อสโมสร (ภาษาไทย)": "ฮาร์ตลีพูล ยูไนเต็ด",
+    "ชื่อย่อ": "HAR",
+    "ชื่อสนามเหย้า (Home Stadium)": "Victoria Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_hartlepool.svg"
+  },
+  {
+    "ลีก": "Belgian Pro League",
+    "สโมสร": "KV Kortrijk",
+    "ชื่อสโมสร (ภาษาไทย)": "เควี คอร์ทไรค์",
+    "ชื่อย่อ": "KVK",
+    "ชื่อสนามเหย้า (Home Stadium)": "Guldensporen Stadion",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/belgium_kortrijk.svg"
+  },
+  {
+    "ลีก": "EFL League Two",
+    "สโมสร": "Notts County",
+    "ชื่อสโมสร (ภาษาไทย)": "นอตส์ เคาน์ตี",
+    "ชื่อย่อ": "NTC",
+    "ชื่อสนามเหย้า (Home Stadium)": "Meadow Lane",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_notts-county.svg"
+  },
+  {
+    "ลีก": "EFL Championship",
+    "สโมสร": "Portsmouth",
+    "ชื่อสโมสร (ภาษาไทย)": "พอร์ตสมัธ",
+    "ชื่อย่อ": "POR",
+    "ชื่อสนามเหย้า (Home Stadium)": "Fratton Park",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_portsmouth.svg"
+  },
+  {
+    "ลีก": "EFL Championship",
+    "สโมสร": "Preston North End",
+    "ชื่อสโมสร (ภาษาไทย)": "เปรสตัน นอร์ท เอนด์",
+    "ชื่อย่อ": "PNE",
+    "ชื่อสนามเหย้า (Home Stadium)": "Deepdale",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_preston.svg"
+  },
+  {
+    "ลีก": "National League",
+    "สโมสร": "Rochdale",
+    "ชื่อสโมสร (ภาษาไทย)": "รอชเดล",
+    "ชื่อย่อ": "ROC",
+    "ชื่อสนามเหย้า (Home Stadium)": "Crown Oil Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_rochdale.svg"
+  },
+  {
+    "ลีก": "Swiss Super League",
+    "สโมสร": "Servette",
+    "ชื่อสโมสร (ภาษาไทย)": "เซอร์เวตต์ เอฟซี",
+    "ชื่อย่อ": "SER",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stade de Genève",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/switzerland_servette.svg"
+  },
+  {
+    "ลีก": "Primeira Liga",
+    "สโมสร": "Sporting CP",
+    "ชื่อสโมสร (ภาษาไทย)": "สปอร์ติง ลิสบอน",
+    "ชื่อย่อ": "SCP",
+    "ชื่อสนามเหย้า (Home Stadium)": "Estádio José Alvalade",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/portugal_sporting.svg"
+  },
+  {
+    "ลีก": "Ligue 1",
+    "สโมสร": "Strasbourg",
+    "ชื่อสโมสร (ภาษาไทย)": "สตราส์บูร์ก",
+    "ชื่อย่อ": "STR",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stade de la Meinau",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/france_strasbourg.svg"
+  },
+  {
+    "ลีก": "EFL Championship",
+    "สโมสร": "West Bromwich Albion",
+    "ชื่อสโมสร (ภาษาไทย)": "เวสต์บรอมวิช อัลเบียน",
+    "ชื่อย่อ": "WBA",
+    "ชื่อสนามเหย้า (Home Stadium)": "The Hawthorns",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_west-brom.svg"
+  },
+  {
+    "ลีก": "EFL League One",
+    "สโมสร": "Wigan Athletic",
+    "ชื่อสโมสร (ภาษาไทย)": "วีแกน แอธเลติก",
+    "ชื่อย่อ": "WIG",
+    "ชื่อสนามเหย้า (Home Stadium)": "Brick Community Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/england_wigan.svg"
   }
 ]

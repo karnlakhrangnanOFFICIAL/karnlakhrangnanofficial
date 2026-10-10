@@ -598,7 +598,23 @@ function renderPlayers(container, players, teamType) {
   const assistsText = isTh ? "แอสซิสต์" : "assists";
   const appsText = isTh ? "นัด" : "apps";
 
-  container.innerHTML = players
+  // Sort players: active/new_signing by shirt number, then no number, then loaned_out, then sold
+  const sortedPlayers = [...players].sort((a, b) => {
+    const statusPriority = (s) => (s === "sold" ? 3 : s === "loaned_out" ? 2 : 1);
+    const pDiff = statusPriority(a.status) - statusPriority(b.status);
+    if (pDiff !== 0) return pDiff;
+
+    const parseNum = (n) => {
+      if (typeof n === "number") return n;
+      const parsed = parseInt(n, 10);
+      return isNaN(parsed) ? 9999 : parsed;
+    };
+    const diffNum = parseNum(a.number) - parseNum(b.number);
+    if (diffNum !== 0) return diffNum;
+    return (a.name || "").localeCompare(b.name || "");
+  });
+
+  container.innerHTML = sortedPlayers
     .map((p) => {
       let pos = p.position || "";
       pos = formatPlayerPosition(p.position, isTh);
@@ -1005,7 +1021,45 @@ async function loadMenPlayers() {
       }
     }
 
-    renderPlayers(container, players, container.id.includes("women") ? "women" : "men");
+    const allMenPlayers = players;
+    function applyMenFilter(filterVal) {
+      let filtered = allMenPlayers;
+      if (filterVal === "Goalkeeper") {
+        filtered = allMenPlayers.filter((p) => {
+          const pos = (p.position || "").toLowerCase();
+          return (p.status !== "loaned_out" && p.status !== "sold") && (pos.includes("goalkeeper") || pos === "gk");
+        });
+      } else if (filterVal === "Defender") {
+        filtered = allMenPlayers.filter((p) => {
+          const pos = (p.position || "").toLowerCase();
+          return (p.status !== "loaned_out" && p.status !== "sold") && (pos.includes("defender") || pos.includes("back") || pos.includes("cb") || pos.includes("lb") || pos.includes("rb"));
+        });
+      } else if (filterVal === "Midfielder") {
+        filtered = allMenPlayers.filter((p) => {
+          const pos = (p.position || "").toLowerCase();
+          return (p.status !== "loaned_out" && p.status !== "sold") && (pos.includes("midfield") || pos.includes("cm") || pos.includes("dm") || pos.includes("am"));
+        });
+      } else if (filterVal === "Forward") {
+        filtered = allMenPlayers.filter((p) => {
+          const pos = (p.position || "").toLowerCase();
+          return (p.status !== "loaned_out" && p.status !== "sold") && (pos.includes("forward") || pos.includes("striker") || pos.includes("winger") || pos.includes("st") || pos.includes("lw") || pos.includes("rw"));
+        });
+      } else if (filterVal === "loaned_out") {
+        filtered = allMenPlayers.filter((p) => p.status === "loaned_out");
+      }
+      renderPlayers(container, filtered, "men");
+    }
+
+    const filterBtns = document.querySelectorAll("#menSquadFilterBar .squad-filter-btn");
+    filterBtns.forEach((btn) => {
+      btn.onclick = () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        applyMenFilter(btn.getAttribute("data-filter"));
+      };
+    });
+
+    renderPlayers(container, players, "men");
   } catch (e) {
     container.innerHTML =
       '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading players</p></div>';

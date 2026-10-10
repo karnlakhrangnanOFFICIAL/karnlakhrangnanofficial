@@ -78,20 +78,6 @@
     ]
   },
   {
-    "team": "Aston Villa",
-    "total_players": 2,
-    "players": [
-      {
-        "name": "Alejandro Garnacho",
-        "team": "Aston Villa"
-      },
-      {
-        "name": "Nicolas Jackson",
-        "team": "Aston Villa"
-      }
-    ]
-  },
-  {
     "team": "Brentford",
     "total_players": 13,
     "players": [
@@ -220,20 +206,6 @@
     ]
   },
   {
-    "team": "Como",
-    "total_players": 2,
-    "players": [
-      {
-        "name": "Robert Sánchez",
-        "team": "Como"
-      },
-      {
-        "name": "Trevoh Chalobah",
-        "team": "Como"
-      }
-    ]
-  },
-  {
     "team": "Crystal Palace",
     "total_players": 2,
     "players": [
@@ -254,16 +226,6 @@
       {
         "name": "Hudson Sands",
         "team": "Dulwich Hamlet"
-      }
-    ]
-  },
-  {
-    "team": "Everton",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Tyrique George",
-        "team": "Everton"
       }
     ]
   },
@@ -418,46 +380,6 @@
     ]
   },
   {
-    "team": "Manchester City",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Enzo Fernández",
-        "team": "Manchester City"
-      }
-    ]
-  },
-  {
-    "team": "Manchester United",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Andrey Santos",
-        "team": "Manchester United"
-      }
-    ]
-  },
-  {
-    "team": "Napoli",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Benoît Badiashile",
-        "team": "Napoli"
-      }
-    ]
-  },
-  {
-    "team": "Nottingham Forest",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Liam Delap",
-        "team": "Nottingham Forest"
-      }
-    ]
-  },
-  {
     "team": "Notts County",
     "total_players": 1,
     "players": [
@@ -488,32 +410,12 @@
     ]
   },
   {
-    "team": "RB Leipzig",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Marc Guiu",
-        "team": "RB Leipzig"
-      }
-    ]
-  },
-  {
     "team": "Real Madrid",
     "total_players": 1,
     "players": [
       {
         "name": "Marc Cucurella",
         "team": "Real Madrid"
-      }
-    ]
-  },
-  {
-    "team": "Real Sociedad",
-    "total_players": 1,
-    "players": [
-      {
-        "name": "Mamadou Sarr",
-        "team": "Real Sociedad"
       }
     ]
   },
@@ -549,18 +451,10 @@
   },
   {
     "team": "Strasbourg",
-    "total_players": 5,
+    "total_players": 3,
     "players": [
       {
         "name": "Deivid Washington",
-        "team": "Strasbourg"
-      },
-      {
-        "name": "Dário Essugo",
-        "team": "Strasbourg"
-      },
-      {
-        "name": "Filip Jørgensen",
         "team": "Strasbourg"
       },
       {
@@ -575,14 +469,10 @@
   },
   {
     "team": "Tottenham Hotspur",
-    "total_players": 2,
+    "total_players": 1,
     "players": [
       {
         "name": "Mykhailo Mudryk",
-        "team": "Tottenham Hotspur"
-      },
-      {
-        "name": "Tosin Adarabioyo",
         "team": "Tottenham Hotspur"
       }
     ]
