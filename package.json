@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "node scripts/build.js",
+    "lint": "node --check server.js && node --check scripts/build.js && node --check api/news.js",
     "sync:standings": "node scripts/sync-football-data-table.mjs",
     "sync:wsl": "node scripts/sync-wsl-table.mjs",
     "sync:fbref:women": "node scripts/import_fbref_women.mjs",
