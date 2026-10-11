@@ -3618,7 +3618,15 @@ section:nth-of-type(1)
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Focus Mode Overrides (Match Card Competition Logos) */
+/* Focus Mode Overrides (Match Card Competition Logos & Fixtures Section) */
+section#fixtures,
+section:nth-of-type(1) > div#listViewWrapper:nth-of-type(3) > section#fixtures:nth-of-type(2) {
+  position: relative;
+}
+
+section#fixtures > div#fixturesContainer > a > div > div > div > img,
+section:nth-of-type(1) > div#listViewWrapper:nth-of-type(3) > section#fixtures:nth-of-type(2) > div#fixturesContainer > a > div > div > div > img,
+div#listViewWrapper > section#fixtures > div#fixturesContainer > a > div > div > div > img,
 main > div#listViewWrapper > section#fixtures > div#fixturesContainer > a > div > div > div > img,
 .match-card .card-competition img {
   height: 55px !important;

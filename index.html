@@ -621,7 +621,7 @@
     <section class="section" id="fixtures">
       <div class="section-header">
         <h2 class="section-title">
-          <span class="icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span>
+          <span class="icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 22px; height: 22px; vertical-align: middle; object-fit: contain;"></span>
           <span data-i18n="home.fixtures">โปรแกรมแข่งขัน</span>
           <span class="count-badge" id="fixturesCount">0</span>
           <!-- LIVE Flashing Badge Component at the top of the Fixtures section -->
@@ -1573,7 +1573,7 @@
           ? (lang === 'th' ? 'ไม่พบโปรแกรมการแข่งขันที่ตรงกับตัวกรองนี้' : 'No upcoming fixtures match this filter.')
           : (lang === 'th' ? 'ยังไม่มีโปรแกรมการแข่งขัน' : 'No upcoming fixtures at the moment.');
         const resetBtnHtml = isFiltered ? `<button type="button" class="empty-state-reset-btn" onclick="window.resetMatchFilters()">${lang === 'th' ? '↺ รีเซ็ตตัวกรอง' : '↺ Reset Filters'}</button>` : '';
-        container.innerHTML = `<div class="empty-state"><span class="empty-icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"></span><p>${msg}</p>${resetBtnHtml}</div>`;
+        container.innerHTML = `<div class="empty-state"><span class="empty-icon"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 28px; height: 28px; object-fit: contain; vertical-align: middle;"></span><p>${msg}</p>${resetBtnHtml}</div>`;
         return;
       }
       
@@ -1628,7 +1628,7 @@
                   <span class="live-badge-text">LIVE ${match.time_live || ''}</span>
                 </span>
               ` : ''}
-              <span style="display:inline-flex; align-items:center;"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</span>
+              <span style="display:inline-flex; align-items:center; gap:5px;"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle;"> ${formatDate(displayDate, window.currentLang||'th')}</span>
             </div>
             <div class="match-card-league">
               <div class="match-card-league-badge">
@@ -1766,7 +1766,7 @@
             ${formatTeamBadgeHTML(match.team_type)}
           </div>
           <div class="match-card-top">
-            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 100px; height: 20px; margin: 0; padding-right: 0;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
+            <div class="match-card-date"><img src="databases/logo/svg/calendar-news.svg" alt="calendar" style="width: 14px; height: 14px; object-fit: contain; vertical-align: middle; margin-right: 4px;"> ${formatDate(displayDate, window.currentLang||'th')}</div>
             <div class="match-card-league">
               <div class="match-card-league-badge">
                 ${match.competition_logo ? `<div class="comp-logo-container"><img src="${match.competition_logo}" alt=""></div>` : ''}
