@@ -3,14 +3,14 @@
   "team": "Chelsea Women",
   "season": "2026-2027",
   "total_matches": 37,
-  "completed_matches": 9,
-  "upcoming_matches": 28,
+  "completed_matches": 10,
+  "upcoming_matches": 27,
   "summary": {
-    "wins": 8,
+    "wins": 9,
     "draws": 1,
     "losses": 0,
-    "goals_for": 26,
-    "goals_against": 3,
+    "goals_for": 32,
+    "goals_against": 5,
     "clean_sheets": 7
   },
   "matchlogs": [
@@ -818,20 +818,45 @@
       "round": "Matchweek 6",
       "day": "Sun",
       "venue": "Home",
-      "result": null,
-      "gf": null,
-      "ga": null,
+      "result": "W",
+      "gf": 6,
+      "ga": 2,
       "opponent": "Tottenham Hotspur",
       "opponent_crest": "databases/logo/teams/england_tottenham--2006-2013.svg",
       "stadium": "Kingsmeadow, Kingston upon Thames",
-      "xg": null,
-      "xga": null,
-      "poss": null,
+      "xg": 2.22,
+      "xga": 1.1,
+      "poss": 54,
       "attendance": null,
-      "captain": null,
-      "formation": null,
-      "referee": null,
-      "scorers": []
+      "captain": "Lucy Bronze",
+      "formation": "4-3-1-2",
+      "referee": "Kirsty Dowle",
+      "scorers": [
+        {
+          "player": "Lauren James",
+          "minute": 25
+        },
+        {
+          "player": "Ellie Carpenter",
+          "minute": 58
+        },
+        {
+          "player": "Lauren James",
+          "minute": 62
+        },
+        {
+          "player": "Sjoeke Nüsken",
+          "minute": 67
+        },
+        {
+          "player": "Maika Hamano",
+          "minute": 86
+        },
+        {
+          "player": "Ellie Carpenter",
+          "minute": 92
+        }
+      ]
     },
     {
       "id": "w9",

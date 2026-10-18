@@ -1,20 +1,20 @@
 {
   "season": "2026/2027",
   "competition": "Barclays Women's Super League",
-  "last_updated": "2026-09-27T13:25:09.637Z",
+  "last_updated": "2026-10-18T18:00:00.000Z",
   "standings": [
     {
       "pos": 1,
       "team": "Chelsea",
       "logo": "databases/logo/teams/england_chelsea.svg",
-      "p": 5,
-      "w": 4,
+      "p": 6,
+      "w": 5,
       "d": 1,
       "l": 0,
-      "gf": 12,
-      "ga": 1,
-      "gd": 11,
-      "pts": 13
+      "gf": 18,
+      "ga": 3,
+      "gd": 15,
+      "pts": 16
     },
     {
       "pos": 2,
@@ -46,13 +46,13 @@
       "pos": 4,
       "team": "Tottenham Hotspur",
       "logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
-      "p": 4,
+      "p": 5,
       "w": 2,
       "d": 2,
-      "l": 0,
-      "gf": 11,
-      "ga": 2,
-      "gd": 9,
+      "l": 1,
+      "gf": 13,
+      "ga": 8,
+      "gd": 5,
       "pts": 8
     },
     {
