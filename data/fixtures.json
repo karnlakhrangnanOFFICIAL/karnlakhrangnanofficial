@@ -5104,12 +5104,23 @@
     "time_th": "18:30",
     "time_uk": "12:30",
     "competition": "premier-league",
+    "competition_name": "premier-league",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "round": "Matchweek 8",
+    "ha": "A",
     "home_team": "Everton",
     "home_logo": "databases/logo/teams/england_everton.svg",
     "away_team": "Chelsea",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
     "venue": "Hill Dickinson Stadium",
+    "attendance": 52271,
+    "referee": "Paul Tierney",
+    "status": "completed",
+    "period": "FullTime",
+    "home_score": 0,
+    "away_score": 2,
+    "home_half_score": 0,
+    "away_half_score": 0,
     "channels": [
       {
         "platform": "www.monomax.me",
@@ -5117,12 +5128,779 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
-    "competition_name": "premier-league",
+    "goals": [
+      {
+        "team": "away",
+        "player": "Pedro Neto",
+        "number": 7,
+        "minute": 46,
+        "assist": "Jorrel Hato",
+        "detail": "Goal! Everton 0, Chelsea 1. Pedro Neto (Chelsea) clinical left-footed shot. Assisted by Jorrel Hato with a through ball."
+      },
+      {
+        "team": "away",
+        "player": "Pedro Neto",
+        "number": 7,
+        "minute": 90,
+        "assist": "Cole Palmer",
+        "detail": "Goal! Everton 0, Chelsea 2. Pedro Neto (Chelsea) finishes low into the bottom right corner after Cole Palmer's free kick rebound."
+      }
+    ],
+    "events": [
+      {
+        "type": "injury",
+        "team": "away",
+        "player": "João Pedro",
+        "minute": 7,
+        "detail": "João Pedro (Chelsea) receives medical treatment for a bleeding mouth after a collision before returning to play."
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Cole Palmer",
+        "minute": 15,
+        "detail": "Cole Palmer (Chelsea) left footed shot from outside the box is saved by Jordan Pickford in the centre of the goal."
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Jordan Henderson",
+        "minute": 21,
+        "detail": "Jordan Henderson (Chelsea) right footed shot from the edge of the box is blocked. Assisted by Pedro Neto."
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Harrison Armstrong",
+        "minute": 23,
+        "detail": "Harrison Armstrong (Everton) is shown the yellow card for a high tackle on Josh Acheampong."
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Merlin Röhl",
+        "minute": 26,
+        "detail": "Merlin Röhl (Everton) right footed shot from long range is saved by Emiliano Martínez."
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Pedro Neto",
+        "minute": 26,
+        "detail": "Pedro Neto (Chelsea) is shown the yellow card for dissent."
+      },
+      {
+        "type": "save",
+        "team": "away",
+        "player": "Emiliano Martínez",
+        "minute": 27,
+        "detail": "Emiliano Martínez (Chelsea) makes a brilliant reflex save from a Thierno Barry header from 6 yards. Assisted by Jack Grealish with a cross."
+      },
+      {
+        "type": "save",
+        "team": "away",
+        "player": "Emiliano Martínez",
+        "minute": 30,
+        "detail": "Emiliano Martínez (Chelsea) tips a dipping free kick from Jack Grealish over the crossbar."
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Josh Acheampong",
+        "minute": 32,
+        "detail": "Josh Acheampong (Chelsea) is shown the yellow card for a foul on the wing."
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "James Tarkowski",
+        "minute": 34,
+        "detail": "James Tarkowski (Everton) is shown the yellow card for an altercation."
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "minute": 34,
+        "detail": "Morgan Rogers (Chelsea) is shown the yellow card for an altercation."
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Moisés Caicedo",
+        "minute": 44,
+        "detail": "Moisés Caicedo (Chelsea) right footed volley from outside the box hits the crossbar. Assisted by Jordan Henderson with a cross following a corner."
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Pedro Neto",
+        "minute": 46,
+        "assist": "Jorrel Hato",
+        "detail": "Goal! Everton 0, Chelsea 1. Pedro Neto (Chelsea) strikes clinical left-footed finish 44 seconds into the 2nd half. Assisted by Jorrel Hato."
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Tyrique George",
+        "player_out": "Ainsley Maitland-Niles",
+        "player": "Tyrique George",
+        "minute": 55,
+        "detail": "Substitution, Everton. Tyrique George replaces Ainsley Maitland-Niles."
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Cole Palmer",
+        "minute": 65,
+        "detail": "Cole Palmer (Chelsea) is shown the yellow card for a foul."
+      },
+      {
+        "type": "injury",
+        "team": "away",
+        "player": "Emiliano Martínez",
+        "minute": 67,
+        "detail": "Emiliano Martínez (Chelsea) suffers a severe head and jaw collision defending a free kick and is stretchered off."
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Mike Penders",
+        "player_out": "Emiliano Martínez",
+        "player": "Mike Penders",
+        "injury": true,
+        "minute": 75,
+        "detail": "Substitution, Chelsea. Mike Penders replaces Emiliano Martínez because of an injury."
+      },
+      {
+        "type": "save",
+        "team": "away",
+        "player": "Mike Penders",
+        "minute": 84,
+        "detail": "Mike Penders (Chelsea) punches clear a dangerous cross from James Garner."
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Brennan Johnson",
+        "player_out": "Jack Grealish",
+        "player": "Brennan Johnson",
+        "minute": 85,
+        "detail": "Substitution, Everton. Brennan Johnson replaces Jack Grealish."
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Christian Nørgaard",
+        "player_out": "Harrison Armstrong",
+        "player": "Christian Nørgaard",
+        "minute": 85,
+        "detail": "Substitution, Everton. Christian Nørgaard replaces Harrison Armstrong."
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "João Pedro",
+        "minute": 86,
+        "detail": "João Pedro (Chelsea) right footed shot from a difficult angle on the right is saved by Jordan Pickford."
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Christian Nørgaard",
+        "minute": 89,
+        "detail": "Christian Nørgaard (Everton) is shown the yellow card for pulling Cole Palmer's shirt."
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Pedro Neto",
+        "minute": 90,
+        "assist": "Cole Palmer",
+        "detail": "Goal! Everton 0, Chelsea 2. Pedro Neto (Chelsea) finishes low into the bottom right corner after Cole Palmer's free kick rebound."
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Danny Welbeck",
+        "player_out": "João Pedro",
+        "player": "Danny Welbeck",
+        "minute": "90+2",
+        "detail": "Substitution, Chelsea. Danny Welbeck replaces João Pedro."
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Marco Palestra",
+        "player_out": "Jorrel Hato",
+        "player": "Marco Palestra",
+        "minute": "90+2",
+        "detail": "Substitution, Chelsea. Marco Palestra replaces Jorrel Hato."
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Roméo Lavia",
+        "player_out": "Moisés Caicedo",
+        "player": "Roméo Lavia",
+        "minute": "90+2",
+        "detail": "Substitution, Chelsea. Roméo Lavia replaces Moisés Caicedo."
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Geovany Quenda",
+        "player_out": "Pedro Neto",
+        "player": "Geovany Quenda",
+        "minute": "90+12",
+        "detail": "Substitution, Chelsea. Geovany Quenda replaces Pedro Neto."
+      }
+    ],
+    "lineups": {
+      "home": {
+        "manager": "David Moyes",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Jordan Pickford",
+            "position": "GK"
+          },
+          {
+            "number": 2,
+            "name": "Ainsley Maitland-Niles",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "James Tarkowski",
+            "position": "DF",
+            "captain": true
+          },
+          {
+            "number": 4,
+            "name": "Jarrad Branthwaite",
+            "position": "DF"
+          },
+          {
+            "number": 16,
+            "name": "Vitalii Mykolenko",
+            "position": "DF"
+          },
+          {
+            "number": 37,
+            "name": "James Garner",
+            "position": "MF"
+          },
+          {
+            "number": 45,
+            "name": "Harrison Armstrong",
+            "position": "MF"
+          },
+          {
+            "number": 34,
+            "name": "Merlin Röhl",
+            "position": "MF"
+          },
+          {
+            "number": 8,
+            "name": "Kiernan Dewsbury-Hall",
+            "position": "MF"
+          },
+          {
+            "number": 10,
+            "name": "Jack Grealish",
+            "position": "MF"
+          },
+          {
+            "number": 11,
+            "name": "Thierno Barry",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 12,
+            "name": "Mark Travers",
+            "position": "GK"
+          },
+          {
+            "number": 15,
+            "name": "Jake O'Brien",
+            "position": "DF"
+          },
+          {
+            "number": 19,
+            "name": "Tyrique George",
+            "position": "FW"
+          },
+          {
+            "number": 20,
+            "name": "Tyler Dibling",
+            "position": "FW"
+          },
+          {
+            "number": 22,
+            "name": "Brennan Johnson",
+            "position": "FW"
+          },
+          {
+            "number": 23,
+            "name": "Christian Nørgaard",
+            "position": "MF"
+          },
+          {
+            "number": 24,
+            "name": "Carlos Alcaraz",
+            "position": "MF"
+          },
+          {
+            "number": 30,
+            "name": "Hayden Hackney",
+            "position": "MF"
+          },
+          {
+            "number": 58,
+            "name": "Billy Graham",
+            "position": "FW"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Xabi Alonso",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Emiliano Martínez",
+            "position": "GK"
+          },
+          {
+            "number": 34,
+            "name": "Josh Acheampong",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill",
+            "position": "DF"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato",
+            "position": "DF"
+          },
+          {
+            "number": 25,
+            "name": "Moisés Caicedo",
+            "position": "MF",
+            "captain": true
+          },
+          {
+            "number": 14,
+            "name": "Jordan Henderson",
+            "position": "MF"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto",
+            "position": "FW"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer",
+            "position": "MF"
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers",
+            "position": "FW"
+          },
+          {
+            "number": 9,
+            "name": "João Pedro",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 39,
+            "name": "Mike Penders",
+            "position": "GK"
+          },
+          {
+            "number": 2,
+            "name": "Marco Palestra",
+            "position": "DF"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana",
+            "position": "DF"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco",
+            "position": "DF"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck",
+            "position": "FW"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda",
+            "position": "FW"
+          },
+          {
+            "number": 32,
+            "name": "Mahdi Nicoll-Jazuli",
+            "position": "FW"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão",
+            "position": "FW"
+          },
+          {
+            "number": 45,
+            "name": "Roméo Lavia",
+            "position": "MF"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "ผู้ตัดสิน (Referee)",
+          "name": "Paul Tierney"
+        },
+        {
+          "role": "ผู้ตัดสินที่ 4 (Fourth Official)",
+          "name": "Michael Salisbury"
+        },
+        {
+          "role": "ผู้ตัดสิน VAR (Video Assistant Referee)",
+          "name": "Nicholas Hopton"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน VAR (Assistant VAR)",
+          "name": "Lee Betts"
+        }
+      ]
+    },
+    "officials": {
+      "referee": "Paul Tierney",
+      "fourth_official": "Michael Salisbury",
+      "var": "Nicholas Hopton",
+      "assistant_var": "Lee Betts"
+    },
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 46,
+        "away": 54,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 11,
+        "away": 13,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 4,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corner Kicks)",
+        "home": 6,
+        "away": 5,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 12,
+        "away": 14,
+        "isPercentage": false
+      },
+      {
+        "name": "การเซฟ (Saves)",
+        "home": 3,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 3,
+        "away": 4,
+        "isPercentage": false
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Jordan Pickford",
+        "team": "Everton",
+        "saves": 3,
+        "save_pct": "60%"
+      },
+      {
+        "name": "Emiliano Martínez",
+        "team": "Chelsea",
+        "saves": 3,
+        "save_pct": "100%"
+      },
+      {
+        "name": "Mike Penders",
+        "team": "Chelsea",
+        "saves": 1,
+        "save_pct": "100%"
+      }
+    ],
+    "commentary": [
+      {
+        "section": "📌 ประเด็นสำคัญจากการแข่งขัน (Key Takeaways)",
+        "events": [
+          {
+            "text": "<strong>Pedro Neto คือผู้สร้างความแตกต่าง:</strong> เหมาคนเดียว 2 ประตูในนาทีที่ 46 (เริ่มครึ่งหลังเพียง 44 วินาที) และนาทีที่ 90 พาทีมเก็บ 3 แต้มสำคัญ"
+          },
+          {
+            "text": "<strong>แนวรับและผู้รักษาประตูช่วยคลีนชีต:</strong> Emiliano Martínez โชว์ 3 ซูเปอร์เซฟครึ่งแรก ก่อนได้รับบาดเจ็บรุนแรงที่ขากรรไกรและศีรษะ ถูกส่งโรงพยาบาล"
+          },
+          {
+            "text": "<strong>Mike Penders ลงมาเซฟสำคัญ:</strong> นายด่านดาวรุ่งลงเฝ้าเสาแทนในนาที 75 ชกบอลและป้องกันลูกอันตรายช่วยให้ทีมรักษาสกอร์นำจนจบเกม"
+          },
+          {
+            "text": "<strong>แท็กติก 4-2-3-1 ของ Xabi Alonso:</strong> จัดการพื้นที่แดนกลางได้เหนียวแน่น คุมจังหวะเกมหลังได้ประตูนำ และปิดเกมได้อย่างเด็ดขาดที่สนาม Hill Dickinson Stadium"
+          }
+        ]
+      }
+    ],
+    "live_commentary": [
+      {
+        "time": "FT",
+        "type": "end 2nd half",
+        "text": "Full Time. Everton 0, Chelsea 2. จบเกมการแข่งขัน เชลซี บุกชนะ เอฟเวอร์ตัน 2-0 เก็บ 3 คะแนนเต็ม และรักษาคลีนชีตได้สำเร็จ",
+        "team": "away",
+        "category": "key",
+        "isKey": true
+      },
+      {
+        "time": "90+12'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Geovany Quenda replaces Pedro Neto.",
+        "team": "away",
+        "category": "sub",
+        "isKey": true
+      },
+      {
+        "time": "90+4'",
+        "type": "attempt",
+        "text": "Miss! Brennan Johnson (Everton) close range effort misses the target after a dangerous cross from Kiernan Dewsbury-Hall.",
+        "team": "home",
+        "category": "attempt",
+        "isKey": false
+      },
+      {
+        "time": "90+2'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Triple change: Danny Welbeck replaces João Pedro, Marco Palestra replaces Jorrel Hato, and Roméo Lavia replaces Moisés Caicedo.",
+        "team": "away",
+        "category": "sub",
+        "isKey": true
+      },
+      {
+        "time": "90+1'",
+        "type": "announcement",
+        "text": "Fourth Official announces a minimum of 11 minutes of added time due to the lengthy stoppage for Emiliano Martínez's injury.",
+        "team": "neutral",
+        "category": "general",
+        "isKey": false
+      },
+      {
+        "time": "90'",
+        "type": "goal",
+        "text": "GOAL! Everton 0, Chelsea 2. Pedro Neto (Chelsea) finishes low into the bottom right corner after Cole Palmer's free kick was blocked by the wall.",
+        "team": "away",
+        "category": "key",
+        "isKey": true
+      },
+      {
+        "time": "89'",
+        "type": "yellow_card",
+        "text": "Yellow Card. Christian Nørgaard (Everton) is shown the yellow card for pulling Cole Palmer's shirt.",
+        "team": "home",
+        "category": "card",
+        "isKey": false
+      },
+      {
+        "time": "86'",
+        "type": "attempt",
+        "text": "Attempt saved. João Pedro (Chelsea) right footed shot from a tight angle on the right is saved by Jordan Pickford following a swift counter-attack.",
+        "team": "away",
+        "category": "attempt",
+        "isKey": false
+      },
+      {
+        "time": "85'",
+        "type": "substitution",
+        "text": "Substitution, Everton. Brennan Johnson replaces Jack Grealish, and Christian Nørgaard replaces Harrison Armstrong.",
+        "team": "home",
+        "category": "sub",
+        "isKey": true
+      },
+      {
+        "time": "84'",
+        "type": "save",
+        "text": "Punch! Mike Penders (Chelsea) punches clear a curling cross from James Garner under intense pressure.",
+        "team": "away",
+        "category": "save",
+        "isKey": false
+      },
+      {
+        "time": "75'",
+        "type": "substitution",
+        "text": "Substitution, Chelsea. Mike Penders replaces Emiliano Martínez due to a severe collision injury.",
+        "team": "away",
+        "category": "sub",
+        "isKey": true
+      },
+      {
+        "time": "67'",
+        "type": "injury",
+        "text": "Injury Stoppage. Emiliano Martínez is down after a sickening collision with Branthwaite and Barry defending a free kick. Stretchered off after medical assessment.",
+        "team": "away",
+        "category": "key",
+        "isKey": true
+      },
+      {
+        "time": "65'",
+        "type": "yellow_card",
+        "text": "Yellow Card. Cole Palmer (Chelsea) is shown the yellow card for a foul.",
+        "team": "away",
+        "category": "card",
+        "isKey": false
+      },
+      {
+        "time": "55'",
+        "type": "substitution",
+        "text": "Substitution, Everton. Tyrique George replaces Ainsley Maitland-Niles.",
+        "team": "home",
+        "category": "sub",
+        "isKey": true
+      },
+      {
+        "time": "46'",
+        "type": "goal",
+        "text": "GOAL! Everton 0, Chelsea 1. Pedro Neto (Chelsea) strikes clinical left-footed finish just 44 seconds into the second half! Assisted by Jorrel Hato.",
+        "team": "away",
+        "category": "key",
+        "isKey": true
+      },
+      {
+        "time": "HT",
+        "type": "period",
+        "text": "Half Time. Everton 0, Chelsea 0. ทั้งสองทีมยังเสมอกัน 0-0 หลังผ่าน 45 นาทีแรกที่เข้มข้น",
+        "team": "neutral",
+        "category": "general",
+        "isKey": true
+      },
+      {
+        "time": "44'",
+        "type": "attempt",
+        "text": "Crossbar! Moisés Caicedo (Chelsea) unleashes a stunning volley from outside the box that crashes against the woodwork!",
+        "team": "away",
+        "category": "attempt",
+        "isKey": true
+      },
+      {
+        "time": "34'",
+        "type": "yellow_card",
+        "text": "Yellow Cards. James Tarkowski (Everton) and Morgan Rogers (Chelsea) are both booked following an on-pitch altercation.",
+        "team": "neutral",
+        "category": "card",
+        "isKey": false
+      },
+      {
+        "time": "32'",
+        "type": "yellow_card",
+        "text": "Yellow Card. Josh Acheampong (Chelsea) is booked for a foul on the wing.",
+        "team": "away",
+        "category": "card",
+        "isKey": false
+      },
+      {
+        "time": "30'",
+        "type": "save",
+        "text": "Brilliant Save! Emiliano Martínez (Chelsea) tips a vicious bouncing free kick from Jack Grealish over the bar.",
+        "team": "away",
+        "category": "save",
+        "isKey": true
+      },
+      {
+        "time": "27'",
+        "type": "save",
+        "text": "Huge Save! Thierno Barry's (Everton) close-range header from 6 yards is denied by an instinctive reflex stop from Emiliano Martínez.",
+        "team": "away",
+        "category": "save",
+        "isKey": true
+      },
+      {
+        "time": "26'",
+        "type": "yellow_card",
+        "text": "Yellow Card. Pedro Neto (Chelsea) is booked for dissent.",
+        "team": "away",
+        "category": "card",
+        "isKey": false
+      },
+      {
+        "time": "23'",
+        "type": "yellow_card",
+        "text": "Yellow Card. Harrison Armstrong (Everton) is shown the yellow card for a high challenge on Josh Acheampong.",
+        "team": "home",
+        "category": "card",
+        "isKey": false
+      },
+      {
+        "time": "21'",
+        "type": "attempt",
+        "text": "Attempt blocked. Jordan Henderson (Chelsea) right footed shot from the edge of the box is blocked by Everton's defence.",
+        "team": "away",
+        "category": "attempt",
+        "isKey": false
+      },
+      {
+        "time": "15'",
+        "type": "attempt",
+        "text": "Shot on target. Cole Palmer (Chelsea) tests Jordan Pickford with a low 20-yard effort.",
+        "team": "away",
+        "category": "attempt",
+        "isKey": false
+      },
+      {
+        "time": "7'",
+        "type": "injury",
+        "text": "Medical attention. João Pedro (Chelsea) receives treatment for a bleeding mouth before returning to the action.",
+        "team": "away",
+        "category": "general",
+        "isKey": false
+      },
+      {
+        "time": "0'",
+        "type": "start 1st half",
+        "text": "First Half begins. Kick-off at Hill Dickinson Stadium. Everton vs Chelsea.",
+        "team": "home",
+        "category": "general",
+        "isKey": false
+      }
+    ],
     "team_type": "M"
   },
   {

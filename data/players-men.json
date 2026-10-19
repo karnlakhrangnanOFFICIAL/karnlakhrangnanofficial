@@ -686,18 +686,18 @@
     "joined": "2024-08-11",
     "signed_from": "Wolverhampton Wanderers",
     "market_value": 55000000,
-    "appearances": 2,
-    "goals": 0,
+    "appearances": 3,
+    "goals": 2,
     "assists": 0,
     "biography_th": "ปีกชาวโปรตุเกส ย้ายจากวูล์ฟแฮมป์ตัน วันเดอเรอร์ส มาร่วมทีมเชลซีในปี 2024",
     "biography_en": "Portuguese winger who joined Chelsea in 2024 from Wolverhampton Wanderers.",
     "stats": {
       "Premier League": {
-        "appearances": 1,
-        "goals": 0,
+        "appearances": 2,
+        "goals": 2,
         "assists": 0,
         "clean_sheets": 0,
-        "yellow_cards": 0,
+        "yellow_cards": 1,
         "red_cards": 0
       },
       "Carabao Cup": {
@@ -1502,17 +1502,17 @@
     "joined": null,
     "signed_from": null,
     "market_value": null,
-    "appearances": 1,
+    "appearances": 2,
     "goals": 0,
     "assists": 0,
     "biography_th": "",
     "biography_en": "",
     "stats": {
       "Premier League": {
-        "appearances": 1,
+        "appearances": 2,
         "goals": 0,
         "assists": 0,
-        "clean_sheets": 0,
+        "clean_sheets": 1,
         "yellow_cards": 0,
         "red_cards": 0
       },

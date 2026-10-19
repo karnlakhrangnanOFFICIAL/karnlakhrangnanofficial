@@ -1,5 +1,11 @@
 # บันทึกการอัปเดตระบบ (Changelog)
 
+## [2026-10-19] - อัปเดตข้อมูลการแข่งขัน Everton 0-2 Chelsea (Matchweek 8)
+
+- **อัปเดตผลการแข่งขันและรายละเอียดแมตช์ `m13`:** อัปเดตไฟล์ `data/fixtures.json` สำหรับแมตช์ Everton vs Chelsea (17 ตุลาคม 2026) เป็นสถานะ `completed` ผลการแข่งขัน Everton 0-2 Chelsea จากการเหมาทำ 2 ประตูของ Pedro Neto (นาทีที่ 46 และ 90)
+- **เพิ่มข้อมูลอย่างละเอียด:** เพิ่มรายชื่อ 11 ตัวจริง (Starting XI), ตัวสำรอง (Substitutes) ทั้งสองทีม, คณะผู้ตัดสิน (Paul Tierney, Michael Salisbury, Nicholas Hopton, Lee Betts), สถิติเกมการแข่งขัน (Possession, Shots, Saves, Cards), สถิติผู้รักษาประตู, ประเด็นสำคัญ (Key Takeaways) และรายงานสดเหตุการณ์ตามนาที (Live Commentary) ครบถ้วน
+- **อัปเดตสถิตินักเตะ:** ปรับปรุงจำนวนนัดลงสนามและสถิติการทำประตูของ Pedro Neto (2 ประตู) และคลีนชีตของ Emiliano Martínez ใน `data/players-men.json`
+
 ## [2026-08-25] - สรุปการแก้ไขล่าสุด
 
 **1. ระบบข้อมูลตารางคะแนน (League Table)**
