@@ -24,12 +24,12 @@ function getLocalFixtureFallback(identifier) {
         return {
           success: true,
           matchId: identifier || match.pl_match_id || match.id,
-          clock: match.clock || "FT",
-          period: match.period || "FullTime",
-          status: match.status || "completed",
+          clock: match.clock !== undefined && match.clock !== null ? match.clock : (match.status === "upcoming" ? "" : "FT"),
+          period: match.period || (match.status === "upcoming" ? "PreMatch" : "FullTime"),
+          status: match.status || (match.home_score !== null ? "completed" : "upcoming"),
           score: {
-            home: match.home_score ?? 0,
-            away: match.away_score ?? 0,
+            home: match.home_score,
+            away: match.away_score,
           },
           goals: match.goals || [],
           events: match.events || [],

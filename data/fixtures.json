@@ -6101,12 +6101,15 @@
   },
   {
     "id": "m47",
-    "date": "2026-10-27",
-    "time": "23:00",
-    "time_th": "23:00",
-    "time_uk": "16:00",
+    "date": "2026-10-29",
+    "time": "03:00",
+    "time_th": "03:00 น.",
+    "time_uk": "20:00",
     "competition": "efl-cup",
+    "competition_name": "EFL Cup",
     "competition_logo": "databases/logo/competitions/men/england_efl-cup.svg",
+    "round": "รอบ 4 - เลกเดียว",
+    "ha": "A",
     "home_team": "Liverpool",
     "home_logo": "databases/logo/teams/england_liverpool.svg",
     "away_team": "Chelsea",
@@ -6114,17 +6117,18 @@
     "venue": "Anfield",
     "channels": [
       {
-        "platform": "www.monomax.me",
-        "name": "MONOMAX SPORTS TV",
-        "logo": "databases/logo/tv/monomax.svg"
+        "name": "MONOMAX",
+        "logo": "databases/logo/tv/monomax.svg",
+        "platform": "www.monomax.me"
       }
     ],
     "status": "upcoming",
+    "period": "PreMatch",
+    "clock": "",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "League Cup",
     "team_type": "M"
   },
   {
