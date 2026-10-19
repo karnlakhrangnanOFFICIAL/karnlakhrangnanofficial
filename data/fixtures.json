@@ -5602,45 +5602,213 @@
     },
     "stats": [
       {
+        "category": "ภาพรวม",
         "name": "การครองบอล (Possession)",
-        "home": 46,
-        "away": 54,
+        "home": "47.20%",
+        "away": "52.80%",
         "isPercentage": true
       },
       {
-        "name": "โอกาสยิงทั้งหมด (Total Shots)",
-        "home": 11,
-        "away": 13,
+        "category": "ภาพรวม",
+        "name": "ค่าคาดหวังการทำประตู (xG)",
+        "home": 0.43,
+        "away": 1.47,
         "isPercentage": false
       },
       {
-        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "category": "ภาพรวม",
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 6,
+        "away": 18,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "ยิงตรงกรอบ (Shots On Target)",
+        "home": 5,
+        "away": 7,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "เตะมุม (Corners)",
+        "home": 5,
+        "away": 7,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "การเซฟ (Saves)",
         "home": 4,
         "away": 5,
         "isPercentage": false
       },
       {
-        "name": "เตะมุม (Corner Kicks)",
-        "home": 6,
-        "away": 5,
+        "category": "ภาพรวม",
+        "name": "โอกาสทำประตูเหน่งๆ (Big Chances)",
+        "home": 0,
+        "away": 1,
         "isPercentage": false
       },
       {
-        "name": "ทำฟาวล์ (Fouls)",
-        "home": 12,
-        "away": 14,
+        "category": "เกมรุก",
+        "name": "ยิงหลุดกรอบ (Shots Off Target)",
+        "home": 1,
+        "away": 6,
         "isPercentage": false
       },
       {
-        "name": "การเซฟ (Saves)",
-        "home": 3,
+        "category": "เกมรุก",
+        "name": "ยิงในกรอบเขตโทษ (Shots Inside Box)",
+        "home": 5,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรุก",
+        "name": "ยิงนอกกรอบเขตโทษ (Shots Outside Box)",
+        "home": 0,
+        "away": 8,
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรุก",
+        "name": "ยิงชนเสา/คาน (Hit Woodwork)",
+        "home": 0,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรุก",
+        "name": "สร้างโอกาสทอง (Big Chances Created)",
+        "home": 2,
+        "away": 2,
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรุก",
+        "name": "การเปิดบอลทั้งหมด (Total Crosses)",
+        "home": "20 (15%)",
+        "away": "14 (21%)",
+        "isPercentage": false
+      },
+      {
+        "category": "การครองบอล",
+        "name": "การจ่ายบอลทั้งหมด (Total Passes)",
+        "home": "408 (81%)",
+        "away": "463 (84%)",
+        "isPercentage": false
+      },
+      {
+        "category": "การครองบอล",
+        "name": "บอลยาว (Long Passes)",
+        "home": "55 (44%)",
+        "away": "57 (40%)",
+        "isPercentage": false
+      },
+      {
+        "category": "การครองบอล",
+        "name": "จ่ายบอลทะลุช่อง (Through Balls)",
+        "home": "0 (0%)",
+        "away": "1 (0%)",
+        "isPercentage": false
+      },
+      {
+        "category": "การครองบอล",
+        "name": "สัมผัสบอลทั้งหมด (Touches)",
+        "home": 585,
+        "away": 651,
+        "isPercentage": false
+      },
+      {
+        "category": "การครองบอล",
+        "name": "สัมผัสบอลในกรอบเขตโทษคู่แข่ง (Touches in Opponent Box)",
+        "home": 17,
+        "away": 21,
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรับ",
+        "name": "เข้าสกัดชนะ (Tackles Won)",
+        "home": "4 (57%)",
+        "away": "8 (57%)",
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรับ",
+        "name": "บล็อกลูกยิง (Blocks)",
+        "home": 7,
+        "away": 7,
+        "isPercentage": false
+      },
+      {
+        "category": "เกมรับ",
+        "name": "ตัดบอล (Interceptions)",
+        "home": 7,
         "away": 4,
         "isPercentage": false
       },
       {
+        "category": "เกมรับ",
+        "name": "เคลียร์บอล (Clearances)",
+        "home": 23,
+        "away": 29,
+        "isPercentage": false
+      },
+      {
+        "category": "สภาพร่างกาย",
+        "name": "การเลี้ยงบอลทั้งหมด (Total Dribbles)",
+        "home": 12,
+        "away": 12,
+        "isPercentage": false
+      },
+      {
+        "category": "สภาพร่างกาย",
+        "name": "เลี้ยงบอลสำเร็จ (Successful Dribbles)",
+        "home": 5,
+        "away": 9,
+        "isPercentage": false
+      },
+      {
+        "category": "สภาพร่างกาย",
+        "name": "ดวลแย่งบอลชนะ (Duels Won)",
+        "home": 39,
+        "away": 51,
+        "isPercentage": false
+      },
+      {
+        "category": "สภาพร่างกาย",
+        "name": "ชนะดวลลูกกลางอากาศ (Aerial Duels)",
+        "home": 14,
+        "away": 21,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัย",
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัย",
         "name": "ใบเหลือง (Yellow Cards)",
         "home": 3,
         "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัย",
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 8,
+        "away": 15,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัย",
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 4,
+        "away": 1,
         "isPercentage": false
       }
     ],
@@ -5648,8 +5816,8 @@
       {
         "name": "Jordan Pickford",
         "team": "Everton",
-        "saves": 3,
-        "save_pct": "60%"
+        "saves": 4,
+        "save_pct": "67%"
       },
       {
         "name": "Emiliano Martínez",
@@ -5660,7 +5828,7 @@
       {
         "name": "Mike Penders",
         "team": "Chelsea",
-        "saves": 1,
+        "saves": 2,
         "save_pct": "100%"
       }
     ],

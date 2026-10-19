@@ -2382,8 +2382,17 @@
 
         const isHomeChelsea = homeTeamName && homeTeamName.toLowerCase().includes("chelsea");
         const isAwayChelsea = awayTeamName && awayTeamName.toLowerCase().includes("chelsea");
+        const isHomeEverton = homeTeamName && homeTeamName.toLowerCase().includes("everton");
+        const isAwayEverton = awayTeamName && awayTeamName.toLowerCase().includes("everton");
         const homeLogo = currentMatch ? currentMatch.home_logo : "";
         const awayLogo = currentMatch ? currentMatch.away_logo : "";
+
+        // Dynamic team colors for stat bars:
+        // Chelsea is represented by signature theme accent (blue)
+        // Everton is represented by Everton royal blue (#003399)
+        // General opponents get distinct contrast color
+        const homeBarColor = isHomeChelsea ? "var(--accent)" : (isHomeEverton ? "#003399" : "#475569");
+        const awayBarColor = isAwayChelsea ? "var(--accent)" : (isAwayEverton ? "#003399" : "#dc2626");
 
         let html = `
         <div class="stats-card">
@@ -2403,19 +2412,76 @@
             <span style="color: var(--ink-muted); font-size: 0.72rem;">Premier League</span>
           </div>
       `;
+        let lastCategory = null;
         statsArray.forEach((stat) => {
-          const homeVal = parseFloat(stat.home) || 0;
-          const awayVal = parseFloat(stat.away) || 0;
+          if (stat.category && stat.category !== lastCategory) {
+            lastCategory = stat.category;
+            const catMap = {
+              "ภาพรวม": { th: "ภาพรวม", en: "Overview", icon: "📊" },
+              "Overview": { th: "ภาพรวม", en: "Overview", icon: "📊" },
+              "เกมรุก": { th: "เกมรุก", en: "Attack", icon: "⚡" },
+              "Attack": { th: "เกมรุก", en: "Attack", icon: "⚡" },
+              "การครองบอล": { th: "การครองบอลและการจ่ายบอล", en: "Possession & Passing", icon: "🎯" },
+              "Possession": { th: "การครองบอลและการจ่ายบอล", en: "Possession & Passing", icon: "🎯" },
+              "เกมรับ": { th: "เกมรับ", en: "Defence", icon: "🛡️" },
+              "Defence": { th: "เกมรับ", en: "Defence", icon: "🛡️" },
+              "Defense": { th: "เกมรับ", en: "Defence", icon: "🛡️" },
+              "สภาพร่างกาย": { th: "สภาพร่างกายและการดวล", en: "Duels & Physical", icon: "💪" },
+              "Physical": { th: "สภาพร่างกายและการดวล", en: "Duels & Physical", icon: "💪" },
+              "Duels": { th: "สภาพร่างกายและการดวล", en: "Duels & Physical", icon: "💪" },
+              "วินัย": { th: "ระเบียบวินัย", en: "Discipline", icon: "⚖️" },
+              "Discipline": { th: "ระเบียบวินัย", en: "Discipline", icon: "⚖️" }
+            };
+            const catInfo = catMap[stat.category] || { th: stat.category, en: stat.category, icon: "📌" };
+            const catTitle = isTh ? `${catInfo.th} (${catInfo.en})` : catInfo.en;
+            html += `
+            <div class="stat-category-header" style="margin: 22px 0 14px; padding: 6px 12px; background: rgba(255,255,255,0.04); border-left: 3px solid var(--gold); border-radius: 4px; display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1rem;">${catInfo.icon}</span>
+              <span style="font-family: 'Space Mono', monospace; font-size: 0.82rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em;">${catTitle}</span>
+            </div>
+          `;
+          }
+
+          const parseStatVal = (val) => {
+            if (typeof val === "number") return val;
+            if (!val) return 0;
+            const str = String(val).trim();
+            const m = str.match(/^([0-9]+(?:\.[0-9]+)?)/);
+            return m ? parseFloat(m[1]) : 0;
+          };
+
+          const homeVal = parseStatVal(stat.home);
+          const awayVal = parseStatVal(stat.away);
           const total = homeVal + awayVal;
 
-          let homeWidth = total > 0 ? (homeVal / total) * 100 : 50;
-          let awayWidth = total > 0 ? (awayVal / total) * 100 : 50;
+          let homeWidth = 0;
+          let awayWidth = 0;
+          if (stat.isPercentage && total > 0 && Math.abs(total - 100) < 1) {
+            homeWidth = homeVal;
+            awayWidth = awayVal;
+          } else if (total > 0) {
+            homeWidth = (homeVal / total) * 100;
+            awayWidth = (awayVal / total) * 100;
+          }
 
-          const displayHome = stat.isPercentage ? `${stat.home}%` : stat.home;
-          const displayAway = stat.isPercentage ? `${stat.away}%` : stat.away;
+          const formatDisplay = (v) => {
+            if (v === null || v === undefined) return "-";
+            const s = String(v).trim();
+            if (stat.isPercentage && !s.includes("%")) return `${s}%`;
+            return s;
+          };
 
-          const homeLead = homeVal > awayVal;
-          const awayLead = awayVal > homeVal;
+          const displayHome = formatDisplay(stat.home);
+          const displayAway = formatDisplay(stat.away);
+
+          // For disciplinary or negative metrics (Fouls, Cards, Offsides), do not falsely highlight higher numbers
+          const isNegativeStat = stat.name.includes("ฟาวล์") || stat.name.includes("Fouls") ||
+                                 stat.name.includes("เหลือง") || stat.name.includes("Yellow") ||
+                                 stat.name.includes("แดง") || stat.name.includes("Red") ||
+                                 stat.name.includes("ล้ำหน้า") || stat.name.includes("Offside");
+
+          const homeLead = !isNegativeStat && (homeVal > awayVal);
+          const awayLead = !isNegativeStat && (awayVal > homeVal);
 
           let displayName = stat.name;
           if (!isTh && stat.name.includes("(") && stat.name.includes(")")) {
@@ -2431,8 +2497,8 @@
               <span class="stat-value-away ${awayLead ? "stat-highlight" : ""}">${displayAway}</span>
             </div>
             <div class="stat-bar-container">
-              <div class="stat-bar-home" style="width: ${homeWidth}%;"></div>
-              <div class="stat-bar-away" style="width: ${awayWidth}%;"></div>
+              <div class="stat-bar-home" style="width: ${homeWidth}%; background: ${homeBarColor};"></div>
+              <div class="stat-bar-away" style="width: ${awayWidth}%; background: ${awayBarColor};"></div>
             </div>
           </div>
         `;
@@ -3874,12 +3940,12 @@
                 <span style="font-size: 1.1rem;">🧤</span>
                 <div>
                   <strong style="color: var(--ink);">${gk.name}</strong>
-                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.team})</span>
+                  <span style="color: var(--ink-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.team})</span>
                 </div>
               </div>
               <div style="text-align: right;">
                 <span style="font-weight: 700; color: var(--gold); font-family: 'Space Mono', monospace;">${gk.saves != null ? gk.saves + " Saves" : "-"}</span>
-                ${gk.save_pct ? `<span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.save_pct})</span>` : ""}
+                ${gk.save_pct ? `<span style="color: var(--ink-muted); font-size: 0.75rem; margin-left: 6px;">(${gk.save_pct})</span>` : ""}
               </div>
             </div>
           `).join("");
