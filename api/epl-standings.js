@@ -51,9 +51,12 @@ export default async function handler(req, res) {
 
       const standings = [];
       $("table tbody tr").each((i, el) => {
-        const cols = $(el).find("td");
-        if (cols.length >= 10) {
+        try {
+          const cols = $(el).find("td");
+          if (!cols || cols.length < 10) return;
+
           let rawName = $(cols[1]).text().trim().replace(/\n/g, "").trim();
+          if (!rawName) return;
 
           let mappedName = rawName;
           if (rawName === "Man City") mappedName = "Manchester City";
@@ -77,19 +80,30 @@ export default async function handler(req, res) {
             }
           }
 
+          const parseColInt = (colIndex, fallback = 0) => {
+            try {
+              const val = parseInt($(cols[colIndex]).text().trim(), 10);
+              return isNaN(val) ? fallback : val;
+            } catch {
+              return fallback;
+            }
+          };
+
           standings.push({
-            pos: parseInt($(cols[0]).text().trim(), 10) || i + 1,
+            pos: parseColInt(0, i + 1),
             team: mappedName,
             logo: logo,
-            p: parseInt($(cols[2]).text().trim(), 10) || 0,
-            w: parseInt($(cols[3]).text().trim(), 10) || 0,
-            d: parseInt($(cols[4]).text().trim(), 10) || 0,
-            l: parseInt($(cols[5]).text().trim(), 10) || 0,
-            gf: parseInt($(cols[6]).text().trim(), 10) || 0,
-            ga: parseInt($(cols[7]).text().trim(), 10) || 0,
-            gd: parseInt($(cols[8]).text().trim(), 10) || 0,
-            pts: parseInt($(cols[9]).text().trim(), 10) || 0,
+            p: parseColInt(2, 0),
+            w: parseColInt(3, 0),
+            d: parseColInt(4, 0),
+            l: parseColInt(5, 0),
+            gf: parseColInt(6, 0),
+            ga: parseColInt(7, 0),
+            gd: parseColInt(8, 0),
+            pts: parseColInt(9, 0),
           });
+        } catch (rowErr) {
+          console.warn(`Error parsing EPL table row ${i}:`, rowErr.message);
         }
       });
 

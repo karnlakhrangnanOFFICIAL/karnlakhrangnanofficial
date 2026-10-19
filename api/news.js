@@ -65,67 +65,85 @@ export default async function handler(req, res) {
     const seenTitles = new Set();
 
     for (const rawHtml of responses) {
-      if (!rawHtml) continue;
-      const html = rawHtml.replace(/&quot;/g, '"');
-      const articles = html.split('"type":"Article"');
+      if (!rawHtml || typeof rawHtml !== "string") continue;
 
-      for (let i = 1; i < articles.length; i++) {
-        const segment = articles[i].substring(0, 1200);
-        const titleMatch = articles[i - 1].match(/"title":"([^"]+)",?$/);
-        const urlMatch = segment.match(/"url":"(\/en\/news\/article\/[^"]+)"/);
-        const imgMatch = segment.match(/"thumbnail":\{.+?"url":"([^"]+)"/);
+      try {
+        const html = rawHtml.replace(/&quot;/g, '"');
+        const articles = html.split('"type":"Article"');
+        if (!articles || articles.length <= 1) continue;
 
-        if (titleMatch && urlMatch && imgMatch) {
-          const articleUrl = "https://www.chelseafc.com" + urlMatch[1];
-          let rawTitle = titleMatch[1];
-
-          let cleanTitle = rawTitle;
+        for (let i = 1; i < articles.length; i++) {
           try {
-            cleanTitle = JSON.parse('"' + rawTitle.replace(/"/g, '\\"') + '"');
-          } catch (e) {
-            cleanTitle = rawTitle
-              .replace(/\\u2019/g, "’")
-              .replace(/\\u2018/g, "‘")
-              .replace(/\\u201c/g, "“")
-              .replace(/\\u201d/g, "”")
-              .replace(/\\u0027/g, "'")
-              .replace(/\\u2013/g, "–")
-              .replace(/\\u2014/g, "—")
-              .replace(/\\u2026/g, "...");
+            const segment = articles[i]?.substring(0, 1200) || "";
+            const prevSegment = articles[i - 1] || "";
+            const titleMatch = prevSegment.match(/"title":"([^"]+)",?$/);
+            const urlMatch = segment.match(/"url":"(\/en\/news\/article\/[^"]+)"/);
+            const imgMatch = segment.match(/"thumbnail":\{.+?"url":"([^"]+)"/);
+
+            if (titleMatch && urlMatch && imgMatch) {
+              const articleUrl = "https://www.chelseafc.com" + urlMatch[1];
+              let rawTitle = titleMatch[1];
+
+              let cleanTitle = rawTitle;
+              try {
+                cleanTitle = JSON.parse('"' + rawTitle.replace(/"/g, '\\"') + '"');
+              } catch (e) {
+                cleanTitle = rawTitle
+                  .replace(/\\u2019/g, "’")
+                  .replace(/\\u2018/g, "‘")
+                  .replace(/\\u201c/g, "“")
+                  .replace(/\\u201d/g, "”")
+                  .replace(/\\u0027/g, "'")
+                  .replace(/\\u2013/g, "–")
+                  .replace(/\\u2014/g, "—")
+                  .replace(/\\u2026/g, "...");
+              }
+
+              if (seenUrls.has(articleUrl) || seenTitles.has(cleanTitle.toLowerCase())) continue;
+              seenUrls.add(articleUrl);
+              seenTitles.add(cleanTitle.toLowerCase());
+
+              let img = imgMatch[1].replace("http://", "https://");
+
+              // Extract publication date / timestamp with error boundaries
+              let pubDate = null;
+              try {
+                const vMatch = img.match(/\/v(\d{10})\//);
+                const dMatch = img.match(/\/(\d{4})\/(\d{2})\/(\d{2})\//);
+
+                if (vMatch) {
+                  const timestamp = parseInt(vMatch[1], 10);
+                  pubDate = new Date(timestamp * 1000).toISOString();
+                } else if (dMatch) {
+                  pubDate = new Date(`${dMatch[1]}-${dMatch[2]}-${dMatch[3]}T12:00:00Z`).toISOString();
+                } else {
+                  pubDate = new Date().toISOString();
+                }
+              } catch {
+                pubDate = new Date().toISOString();
+              }
+
+              news.push({
+                title: cleanTitle,
+                link: articleUrl,
+                thumbnail: img,
+                pubDate: pubDate,
+              });
+            }
+          } catch (itemErr) {
+            // Skip corrupted article without breaking overall news collection
+            continue;
           }
-
-          if (seenUrls.has(articleUrl) || seenTitles.has(cleanTitle.toLowerCase())) continue;
-          seenUrls.add(articleUrl);
-          seenTitles.add(cleanTitle.toLowerCase());
-
-          let img = imgMatch[1].replace("http://", "https://");
-
-          // Extract publication date / timestamp
-          let pubDate = null;
-          const vMatch = img.match(/\/v(\d{10})\//);
-          const dMatch = img.match(/\/(\d{4})\/(\d{2})\/(\d{2})\//);
-
-          if (vMatch) {
-            const timestamp = parseInt(vMatch[1], 10);
-            pubDate = new Date(timestamp * 1000).toISOString();
-          } else if (dMatch) {
-            pubDate = new Date(`${dMatch[1]}-${dMatch[2]}-${dMatch[3]}T12:00:00Z`).toISOString();
-          } else {
-            pubDate = new Date().toISOString();
-          }
-
-          news.push({
-            title: cleanTitle,
-            link: articleUrl,
-            thumbnail: img,
-            pubDate: pubDate,
-          });
         }
+      } catch (parseErr) {
+        console.warn("Failed to parse article response block:", parseErr.message);
       }
     }
 
     // Sort newest first
-    news.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+    try {
+      news.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+    } catch {}
 
     const finalNews = news.length > 0 ? news : getFallbackNews();
 

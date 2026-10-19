@@ -34,8 +34,8 @@ https://karnlakhrangnanofficial.github.io/karnlakhrangnanofficial/
 │   └── images/              # รูปภาพประกอบ โลโก้ และภาพนักเตะ
 │
 └── data/                    # ไฟล์ข้อมูล JSON (Data Stores)
-    ├── fixtures.json    # โปรแกรมการแข่งขันทีมชาย
-    ├── fixtures.json  # โปรแกรมการแข่งขันทีมหญิง
+    ├── fixtures.json        # โปรแกรมการแข่งขันทีมชาย
+    ├── fixtures-women.json  # โปรแกรมการแข่งขันทีมหญิง
     ├── results-men.json     # ผลการแข่งขันทีมชาย
     ├── results-women.json   # ผลการแข่งขันทีมหญิง
     ├── tables-men.json      # ตารางคะแนนทีมชาย

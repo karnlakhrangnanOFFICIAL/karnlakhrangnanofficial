@@ -3479,124 +3479,71 @@ html[lang="th"] .lang-en {
   transform: scale(1.1) !important;
 }
 
-/* Focus Mode Overrides */
-main > div#matchContent > div:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1) {
+/* ==========================================================================
+   Focus Mode Overrides (Refactored to Semantic Class Names)
+   - Replaced deep, fragile pseudo-selectors (main > div#matchContent > ...)
+     with maintainable semantic classes for developers to apply in HTML.
+   ========================================================================== */
+
+/* Match Header & Team Logos */
+.focus-team-logo {
   width: 100px !important;
   height: 100px !important;
 }
 
-main > div#matchContent > div:nth-of-type(2) > div:nth-of-type(1) {
+.focus-team-logo-container {
   width: 100px !important;
   height: 100px !important;
   padding: 0 !important; /* adjust for explicit sizing */
   justify-content: center !important;
 }
 
-main > div#matchContent > div:nth-of-type(3) > div:nth-of-type(2) {
+/* Scoreboard Card & Main Containers */
+.focus-score-box {
   width: 100px !important;
   height: 25px !important;
 }
 
-main > div#matchContent > div:nth-of-type(3) {
+.focus-scoreboard-card {
   width: 500px !important;
   height: 200px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1)
-  > span:nth-of-type(1) {
+.focus-team-title {
   font-weight: bold !important;
 }
 
-/* Focus Mode Overrides (Scoreboard inner elements) */
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1) {
+/* Scoreboard inner elements */
+.focus-score-numbers-wrapper {
   width: 100px !important;
   height: 30px !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1)
-  > span:nth-of-type(3) {
+.focus-score-num-away {
   font-weight: bold !important;
   font-size: 30px !important;
   line-height: 15px !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1)
-  > span:nth-of-type(1) {
+.focus-score-num-home {
   font-size: 30px !important;
   line-height: 15px !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1)
-  > span:nth-of-type(2) {
+.focus-score-divider {
   font-size: 20px !important;
   line-height: 20px !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > span:nth-of-type(1) {
+.focus-score-subtext {
   line-height: 15px !important;
   font-size: 15px !important;
 }
 
-/* Focus Mode Overrides (Player Image 4:5) */
-main
-  > div#matchContent
-  > div:nth-of-type(4)
-  > div:nth-of-type(1)
-  > div:nth-of-type(2)
-  > ul
-  > li
-  > a
-  > span
-  > img,
-main
-  > div#matchContent
-  > div:nth-of-type(4)
-  > div:nth-of-type(1)
-  > div:nth-of-type(1)
-  > ul
-  > li
-  > span
-  > img,
-main
-  > div#matchContent
-  > div:nth-of-type(4)
-  > div:nth-of-type(1)
-  > div:nth-of-type(2)
-  > ul
-  > li
-  > span
-  > img,
+/* Player Image 4:5 */
+.focus-player-img,
 .goal-player-img {
   aspect-ratio: 4 / 5 !important;
   object-fit: cover !important;
@@ -3604,13 +3551,8 @@ main
   width: auto !important;
 }
 
-/* Focus Mode Overrides (Player Nationality Flag) */
-section:nth-of-type(1)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > span#playerNationality:nth-of-type(3)
-  > img:nth-of-type(1) {
+/* Player Nationality Flag */
+.focus-player-flag {
   width: 32px !important;
   height: 24px !important;
   object-fit: cover !important;
@@ -3618,16 +3560,12 @@ section:nth-of-type(1)
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Focus Mode Overrides (Match Card Competition Logos & Fixtures Section) */
-section#fixtures,
-section:nth-of-type(1) > div#listViewWrapper:nth-of-type(3) > section#fixtures:nth-of-type(2) {
+/* Match Card Competition Logos & Fixtures Section */
+.focus-fixtures-section {
   position: relative;
 }
 
-section#fixtures > div#fixturesContainer > a > div > div > div > img,
-section:nth-of-type(1) > div#listViewWrapper:nth-of-type(3) > section#fixtures:nth-of-type(2) > div#fixturesContainer > a > div > div > div > img,
-div#listViewWrapper > section#fixtures > div#fixturesContainer > a > div > div > div > img,
-main > div#listViewWrapper > section#fixtures > div#fixturesContainer > a > div > div > div > img,
+.focus-competition-logo,
 .match-card .card-competition img {
   height: 55px !important;
   width: auto !important;
@@ -3635,26 +3573,21 @@ main > div#listViewWrapper > section#fixtures > div#fixturesContainer > a > div 
   object-fit: contain !important;
 }
 
-/* Focus Mode Overrides (Match Detail Layout Adjustments) */
-main > div#matchContent > div:nth-of-type(2) > div:nth-of-type(1) {
+/* Match Detail Layout Adjustments */
+.focus-match-badge-container {
   width: 150px !important;
   margin-bottom: 0px !important;
   height: 60px !important;
 }
 
-main > div#matchContent > div:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1) {
+.focus-match-badge-img {
   width: auto !important;
   max-width: 130px !important;
   height: 50px !important;
   object-fit: contain !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1)
-  > span:nth-of-type(1) {
+.focus-match-crest-slot {
   width: 100px !important;
   height: 50px !important;
   display: flex !important;
@@ -3662,30 +3595,19 @@ main
   justify-content: center !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(1)
-  > span:nth-of-type(1)
-  > img:nth-of-type(1) {
+.focus-match-crest-img {
   width: auto !important;
   max-width: 80px !important;
   height: 45px !important;
   object-fit: contain !important;
 }
 
-main
-  > div#matchContent
-  > div:nth-of-type(3)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > span:nth-of-type(1) {
+.focus-match-status-label {
   font-weight: bold !important;
 }
 
-/* Focus Mode Overrides (Date Text inside Fixture Cards) */
-main > section#tab-fixtures > div > a > div > div > div.card-date > span:nth-of-type(2),
+/* Date Text inside Fixture Cards */
+.focus-fixture-date-num,
 .card-date span:nth-of-type(2) {
   text-align: center !important;
   line-height: 20px !important;
@@ -3694,20 +3616,7 @@ main > section#tab-fixtures > div > a > div > div > div.card-date > span:nth-of-
   font-family: "Inter", sans-serif !important;
 }
 
-main:nth-of-type(1)
-  > div#listViewWrapper:nth-of-type(2)
-  > section#results:nth-of-type(1)
-  > div#resultsContainer:nth-of-type(2)
-  > a:nth-of-type(1)
-  > div:nth-of-type(1)
-  > div:nth-of-type(2)
-  > div:nth-of-type(2)
-  > span:nth-of-type(2) {
-  font-weight: bold !important;
-  font-size: 40px !important;
-  width: 20px !important;
-}
-
+.focus-result-score-digit,
 .score-display .score {
   font-weight: bold !important;
   font-size: 40px !important;
@@ -3722,7 +3631,7 @@ main:nth-of-type(1)
   display: inline-block;
   text-align: center;
 }
--e .footer-logo {
+.footer-logo {
   display: flex;
   flex-direction: column;
   align-items: center;

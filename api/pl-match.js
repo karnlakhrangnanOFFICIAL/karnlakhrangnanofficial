@@ -8,22 +8,28 @@ const PL_HEADERS = {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 };
 
-function getLocalFixtureFallback(plMatchId) {
+function getLocalFixtureFallback(identifier) {
   try {
     const fixturesPath = path.join(process.cwd(), "data", "fixtures.json");
-    if (fs.existsSync(fixturesPath)) {
+    if (fs.existsSync(fixturesPath) && identifier) {
       const fixtures = JSON.parse(fs.readFileSync(fixturesPath, "utf8"));
-      const match = fixtures.find((m) => m.id === "m10" || m.pl_match_id === plMatchId) || fixtures.find(m => m.id === "m10");
+      const match = fixtures.find(
+        (m) =>
+          m.id === identifier ||
+          String(m.id) === String(identifier) ||
+          m.pl_match_id === identifier ||
+          String(m.pl_match_id) === String(identifier)
+      );
       if (match) {
         return {
           success: true,
-          matchId: plMatchId,
+          matchId: identifier || match.pl_match_id || match.id,
           clock: match.clock || "FT",
           period: match.period || "FullTime",
           status: match.status || "completed",
           score: {
-            home: match.home_score ?? 2,
-            away: match.away_score ?? 1,
+            home: match.home_score ?? 0,
+            away: match.away_score ?? 0,
           },
           goals: match.goals || [],
           events: match.events || [],
@@ -40,11 +46,11 @@ function getLocalFixtureFallback(plMatchId) {
 
   return {
     success: true,
-    matchId: plMatchId,
+    matchId: identifier || null,
     clock: "FT",
     period: "FullTime",
     status: "completed",
-    score: { home: 2, away: 1 },
+    score: { home: 0, away: 0 },
     goals: [],
     events: [],
     stats: [],
@@ -62,15 +68,24 @@ export default async function handler(req, res) {
     return res.status(204).end();
   }
 
-  const rawId = req.query?.matchId || req.query?.id || "2645227";
-  const plMatchId = rawId === "m10" ? "2645227" : rawId;
+  const plMatchId = req.query?.matchId || req.query?.plMatchId || req.query?.fixtureId || req.query?.id;
+
+  if (!plMatchId) {
+    return res.status(200).json(getLocalFixtureFallback(null));
+  }
 
   // If local fixture exists and is completed, return local curated data directly
   try {
     const fixturesPath = path.join(process.cwd(), "data", "fixtures.json");
     if (fs.existsSync(fixturesPath)) {
       const fixtures = JSON.parse(fs.readFileSync(fixturesPath, "utf8"));
-      const match = fixtures.find((m) => m.id === "m10" || m.pl_match_id === plMatchId);
+      const match = fixtures.find(
+        (m) =>
+          m.id === plMatchId ||
+          String(m.id) === String(plMatchId) ||
+          m.pl_match_id === plMatchId ||
+          String(m.pl_match_id) === String(plMatchId)
+      );
       if (match && match.status === "completed") {
         return res.status(200).json(getLocalFixtureFallback(plMatchId));
       }

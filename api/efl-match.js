@@ -4,37 +4,27 @@ import path from "path";
 function getLocalEflFallback(fixtureId) {
   try {
     const fixturesPath = path.join(process.cwd(), "data", "fixtures.json");
-    if (fs.existsSync(fixturesPath)) {
+    if (fs.existsSync(fixturesPath) && fixtureId) {
       const fixtures = JSON.parse(fs.readFileSync(fixturesPath, "utf8"));
-      const match = fixtures.find((m) => m.id === "m46" || m.efl_id === fixtureId) || fixtures.find(m => m.id === "m46");
+      const match = fixtures.find(
+        (m) =>
+          m.id === fixtureId ||
+          String(m.id) === String(fixtureId) ||
+          m.efl_id === fixtureId ||
+          String(m.efl_id) === String(fixtureId)
+      );
       if (match) {
         return {
           status: match.status || "completed",
-          period: "FullTime",
-          time_live: "FT",
-          home_score: match.home_score ?? 6,
-          away_score: match.away_score ?? 3,
+          period: match.period || "FullTime",
+          time_live: match.time_live || "FT",
+          home_score: match.home_score ?? 0,
+          away_score: match.away_score ?? 0,
           goals: match.goals || [],
           events: match.events || [],
-          stats: match.stats || [
-            { name: "ครองบอล (Possession)", home: 58.4, away: 41.6, isPercentage: true },
-            { name: "โอกาสยิง (Total Shots)", home: 18, away: 9, isPercentage: false },
-            { name: "ยิงตรงกรอบ (Shots on Target)", home: 10, away: 5, isPercentage: false },
-            { name: "เตะมุม (Corner Kicks)", home: 7, away: 3, isPercentage: false },
-            { name: "ทำฟาวล์ (Fouls)", home: 8, away: 11, isPercentage: false },
-            { name: "ใบเหลือง (Yellow Cards)", home: 1, away: 3, isPercentage: false },
-          ],
-          youtube_id: match.youtube_id || "7tYEgY-rbZc",
-          video: match.video || {
-            id: "7tYEgY-rbZc",
-            title: "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
-            desc_th: "ไฮไลท์การแข่งขัน เชลซี 6-3 ลีดส์ ยูไนเต็ด | คาราบาว คัพ 2026/27",
-            desc_en: "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
-            credit: "Thank you to the Chelsea Football Club channel for the excellent match highlights content.",
-            channel_name: "Chelsea Football Club",
-            channel_handle: "@chelseafc",
-            channel_url: "https://www.youtube.com/@chelseafc",
-          },
+          stats: match.stats || [],
+          youtube_id: match.youtube_id || "",
+          video: match.video || null,
         };
       }
     }
@@ -46,12 +36,12 @@ function getLocalEflFallback(fixtureId) {
     status: "completed",
     period: "FullTime",
     time_live: "FT",
-    home_score: 6,
-    away_score: 3,
+    home_score: 0,
+    away_score: 0,
     goals: [],
     events: [],
     stats: [],
-    youtube_id: "7tYEgY-rbZc",
+    youtube_id: "",
   };
 }
 
@@ -64,7 +54,16 @@ export default async function handler(req, res) {
     return res.status(204).end();
   }
 
-  const fixtureId = req.query?.fixtureId || req.query?.id || "g2685176";
+  const fixtureId = req.query?.fixtureId || req.query?.id;
+
+  if (!fixtureId) {
+    return res.status(200).json({
+      success: true,
+      timestamp: Date.now(),
+      fixtureId: null,
+      data: getLocalEflFallback(null),
+    });
+  }
 
   try {
     const matchUrl = `https://multi-club-matches.webapi.gc.eflservices.co.uk/v2/matches/${fixtureId}`;
@@ -277,17 +276,8 @@ export default async function handler(req, res) {
         goals,
         events,
         stats,
-        youtube_id: "7tYEgY-rbZc",
-        video: {
-          id: "7tYEgY-rbZc",
-          title: "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
-          desc_th: "ไฮไลท์การแข่งขัน เชลซี 6-3 ลีดส์ ยูไนเต็ด | คาราบาว คัพ 2026/27",
-          desc_en: "Chelsea 6-3 Leeds Utd | HIGHLIGHTS | Carabao Cup 2026/27",
-          credit: "Thank you to the Chelsea Football Club channel for the excellent match highlights content.",
-          channel_name: "Chelsea Football Club",
-          channel_handle: "@chelseafc",
-          channel_url: "https://www.youtube.com/@chelseafc",
-        },
+        youtube_id: getLocalEflFallback(fixtureId)?.youtube_id || "",
+        video: getLocalEflFallback(fixtureId)?.video || null,
       },
     });
   } catch (err) {
