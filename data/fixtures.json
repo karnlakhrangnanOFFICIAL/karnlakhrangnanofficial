@@ -6073,17 +6073,23 @@
   },
   {
     "id": "m14",
+    "fd_id": 560617,
+    "season": "2026/2027",
     "date": "2026-10-24",
     "time": "23:30",
     "time_th": "23:30",
     "time_uk": "17:30",
     "competition": "premier-league",
+    "competition_name": "Premier League",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "round": "Matchweek 8",
+    "ha": "H",
     "home_team": "Chelsea",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Tottenham Hotspur",
     "away_logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
     "venue": "Stamford Bridge",
+    "referee": "Chris Kavanagh",
     "channels": [
       {
         "platform": "www.monomax.me",
@@ -6092,11 +6098,268 @@
       }
     ],
     "status": "upcoming",
+    "period": "PreMatch",
+    "clock": "",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "premier-league",
+    "lineups": {
+      "home": {
+        "manager": "Xabi Alonso",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 39,
+            "name": "Mike Penders",
+            "position": "GK"
+          },
+          {
+            "number": 34,
+            "name": "Joshua Acheampong",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill",
+            "position": "DF"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto",
+            "position": "MF"
+          },
+          {
+            "number": 25,
+            "name": "Moisés Caicedo",
+            "position": "MF",
+            "captain": true
+          },
+          {
+            "number": 14,
+            "name": "Jordan Henderson",
+            "position": "MF"
+          },
+          {
+            "number": 21,
+            "name": "Jorrel Hato",
+            "position": "MF"
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer",
+            "position": "FW"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda",
+            "position": "FW"
+          },
+          {
+            "number": 22,
+            "name": "João Pedro",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 2,
+            "name": "Marco Palestra",
+            "position": "DF"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana",
+            "position": "DF"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco",
+            "position": "DF"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck",
+            "position": "FW"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto",
+            "position": "DF"
+          },
+          {
+            "number": 28,
+            "name": "Teddy Sharman-Low",
+            "position": "GK"
+          },
+          {
+            "number": 32,
+            "name": "Mahdi Jazuli",
+            "position": "MF"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão Willian",
+            "position": "FW"
+          },
+          {
+            "number": 45,
+            "name": "Roméo Lavia",
+            "position": "MF"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Roberto De Zerbi",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": 31,
+            "name": "Antonin Kinský",
+            "position": "GK"
+          },
+          {
+            "number": 14,
+            "name": "Archie Gray",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Jan Paul van Hecke",
+            "position": "DF"
+          },
+          {
+            "number": 37,
+            "name": "Micky van de Ven",
+            "position": "DF",
+            "captain": true
+          },
+          {
+            "number": 3,
+            "name": "Andrew Robertson",
+            "position": "DF"
+          },
+          {
+            "number": 18,
+            "name": "Manuel Fernandes",
+            "position": "MF"
+          },
+          {
+            "number": 16,
+            "name": "Sandro Tonali",
+            "position": "MF"
+          },
+          {
+            "number": 20,
+            "name": "Mohammed Kudus",
+            "position": "FW"
+          },
+          {
+            "number": 10,
+            "name": "James Maddison",
+            "position": "MF"
+          },
+          {
+            "number": 11,
+            "name": "Mathys Tel",
+            "position": "FW"
+          },
+          {
+            "number": 22,
+            "name": "Omar Marmoush",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 39,
+            "name": "Martin Dúbravka",
+            "position": "GK"
+          },
+          {
+            "number": 5,
+            "name": "Marcos Senesi",
+            "position": "DF"
+          },
+          {
+            "number": 23,
+            "name": "Pedro Porro",
+            "position": "DF"
+          },
+          {
+            "number": 33,
+            "name": "Ben Davies",
+            "position": "DF"
+          },
+          {
+            "number": 8,
+            "name": "Conor Gallagher",
+            "position": "MF"
+          },
+          {
+            "number": 21,
+            "name": "Dejan Kulusevski",
+            "position": "FW"
+          },
+          {
+            "number": 52,
+            "name": "Callum Olusesi",
+            "position": "MF"
+          },
+          {
+            "number": 68,
+            "name": "Luca Williams-Barnett",
+            "position": "MF"
+          },
+          {
+            "number": 19,
+            "name": "Dominic Solanke",
+            "position": "FW"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "กรรมการ / ผู้ตัดสิน (Referee)",
+          "name": "Chris Kavanagh"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน (Assistant Referee)",
+          "name": "Dan Cook"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน (Assistant Referee)",
+          "name": "Ian Hussin"
+        },
+        {
+          "role": "ผู้ตัดสินที่ 4 (Fourth Official)",
+          "name": "Farai Hallam"
+        },
+        {
+          "role": "ผู้ตัดสิน VAR (Video Assistant Referee)",
+          "name": "John Brooks"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน VAR (Assistant VAR)",
+          "name": "Richard West"
+        }
+      ]
+    },
+    "officials": {
+      "referee": "Chris Kavanagh",
+      "assistant_referees": [
+        "Dan Cook",
+        "Ian Hussin"
+      ],
+      "fourth_official": "Farai Hallam",
+      "var": "John Brooks",
+      "assistant_var": "Richard West"
+    },
     "team_type": "M"
   },
   {
