@@ -1077,6 +1077,10 @@
             if (am.status === 'FINISHED') status = 'completed';
             else if (am.status === 'IN_PLAY' || am.status === 'PAUSED' || am.status === 'LIVE' || am.status === 'HALFTIME') status = 'live';
 
+            const liveClock = (status === 'live' && window.computeLiveMatchMinute)
+              ? window.computeLiveMatchMinute(am.status, am.utcDate, am.minute, am.score?.halfTime, am.injuryTime)
+              : (am.status === 'PAUSED' || am.status === 'HALFTIME' ? 'HT' : '');
+
             if (localMatch) matchedLocalIds.add(localMatch.id);
 
             const isChelseaHome = am.homeTeam?.id === 61 || homeName.toLowerCase().includes('chelsea');
@@ -1089,6 +1093,8 @@
               time_th: timeStr,
               time_uk: am.utcDate ? am.utcDate.substring(11, 16) : '19:00',
               utcDate: am.utcDate,
+              time_live: liveClock || localMatch?.time_live || localMatch?.clock || '',
+              clock: liveClock || localMatch?.clock || localMatch?.time_live || '',
               competition: localMatch?.competition || (am.competition?.code === 'PL' ? 'premier-league' : 'other'),
               competition_name: am.competition?.name || localMatch?.competition_name || 'Premier League',
               competition_logo: localMatch?.competition_logo || am.competition?.emblem || 'databases/logo/competitions/men/premier-league.png',
@@ -1113,6 +1119,9 @@
           // Add remaining local matches (Women's matches, non-API tournaments)
           localFixtures.forEach(lf => {
             if (!matchedLocalIds.has(lf.id)) {
+              if ((lf.status === 'live' || lf.status === 'halftime') && !lf.time_live && lf.clock) {
+                lf.time_live = lf.clock;
+              }
               allMatches.push(lf);
             }
           });
@@ -1275,7 +1284,7 @@
                   <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;">${compName}</span>
                   ${formatTeamBadgeHTML(match.team_type, 'padding: 1px 6px; font-size: 0.6rem;')}
                 </div>
-                <span>${displayTime}</span>
+                <span>${match.status === 'live' ? `<strong style="color: #ef4444;">🔴 ${match.time_live || 'LIVE'}</strong>` : displayTime}</span>
               </div>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
                 <div style="display: flex; align-items: center; gap: 6px; flex: 1; justify-content: flex-end; text-align: right;">
@@ -1283,7 +1292,7 @@
                   <img src="${match.home_logo}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 24px; height: 24px; object-fit: contain;">
                 </div>
                 <div style="padding: 0 10px; font-weight: bold; font-size: 0.95rem; color: var(--primary-color); text-align: center; min-width: 50px;">
-                  ${match.status === 'completed' ? `${match.home_score !== undefined ? match.home_score : 0} - ${match.away_score !== undefined ? match.away_score : 0}` : (match.status === 'live' ? `<span style="color: #e74c3c;">${match.home_score || 0} - ${match.away_score || 0}</span>` : 'VS')}
+                  ${match.status === 'completed' ? `${match.home_score !== undefined && match.home_score !== null ? match.home_score : 0} - ${match.away_score !== undefined && match.away_score !== null ? match.away_score : 0}` : (match.status === 'live' ? `<span style="color: #e74c3c;">${match.home_score ?? 0} - ${match.away_score ?? 0}</span>` : 'VS')}
                 </div>
                 <div style="display: flex; align-items: center; gap: 6px; flex: 1; text-align: left;">
                   <img src="${match.away_logo}" onerror="this.src='assets/images/placeholder-team.svg'" style="width: 24px; height: 24px; object-fit: contain;">
@@ -1387,9 +1396,10 @@
 
           let timeOrScore = '';
           if (match.status === 'completed') {
-            timeOrScore = `${match.home_score !== undefined ? match.home_score : 0} - ${match.away_score !== undefined ? match.away_score : 0}`;
+            timeOrScore = `${match.home_score !== undefined && match.home_score !== null ? match.home_score : 0} - ${match.away_score !== undefined && match.away_score !== null ? match.away_score : 0}`;
           } else if (match.status === 'live') {
-            timeOrScore = `${match.home_score || 0} - ${match.away_score || 0}`;
+            const minTag = match.time_live ? ` ${match.time_live}` : '';
+            timeOrScore = `${match.home_score ?? 0}-${match.away_score ?? 0}${minTag}`;
           } else {
             const t = match.time_th || match.time || 'TBC';
             timeOrScore = t.length > 5 ? t.substring(0, 5) : t;
@@ -1528,7 +1538,7 @@
                       <span class="live-dot-ping"></span>
                       <span class="live-dot-core" style="width:4px; height:4px;"></span>
                     </span>
-                    <span>${match.time_live || 'IN PROGRESS'}</span>
+                    <span>${match.time_live === 'HT' ? (isTh ? 'พักครึ่ง (HT)' : 'HALF TIME (HT)') : (match.time_live ? (isTh ? `นาทีที่ ${match.time_live}` : match.time_live) : (isTh ? 'กำลังแข่งขัน' : 'IN PROGRESS'))}</span>
                   </div>
                 </div>
 

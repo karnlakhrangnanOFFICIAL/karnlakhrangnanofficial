@@ -597,6 +597,58 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ---------- LIVE MATCH MINUTE CALCULATOR ----------
+window.computeLiveMatchMinute = function(fdStatus, utcDateStr, apiMinute, halfTimeScore, injuryTime) {
+  if (apiMinute !== null && apiMinute !== undefined && apiMinute !== "") {
+    const strMin = String(apiMinute).trim();
+    if (strMin.toUpperCase() === "HT" || strMin.toUpperCase() === "FT") return strMin.toUpperCase();
+    if (strMin.includes("'")) return strMin;
+    if (injuryTime && Number(injuryTime) > 0) {
+      return `${strMin}+${injuryTime}'`;
+    }
+    return `${strMin}'`;
+  }
+
+  const st = String(fdStatus || "").toUpperCase();
+  if (st === "PAUSED" || st === "HALFTIME" || st === "HT") {
+    return "HT";
+  }
+  if (st === "FINISHED" || st === "FT" || st === "COMPLETED") {
+    return "FT";
+  }
+  if (st !== "IN_PLAY" && st !== "LIVE" && st !== "FIRSTHALF" && st !== "SECONDHALF") {
+    return "";
+  }
+
+  if (!utcDateStr) return "";
+  const kickOffMs = new Date(utcDateStr).getTime();
+  if (isNaN(kickOffMs)) return "";
+
+  const diffMin = Math.floor((Date.now() - kickOffMs) / 60000);
+  if (diffMin < 0) return "1'";
+
+  const elapsed = diffMin + 1;
+  const hasHalfTimeScore =
+    halfTimeScore &&
+    halfTimeScore.home !== null &&
+    halfTimeScore.home !== undefined;
+
+  if (hasHalfTimeScore || elapsed > 60) {
+    const secondHalfMin = Math.max(46, elapsed - 17);
+    if (secondHalfMin <= 90) {
+      return `${secondHalfMin}'`;
+    }
+    const extra2 = Math.min(15, secondHalfMin - 90);
+    return `90+${extra2}'`;
+  }
+
+  if (elapsed <= 45) {
+    return `${elapsed}'`;
+  }
+  const extra1 = Math.min(12, elapsed - 45);
+  return `45+${extra1}'`;
+};
+
 // ---------- CALENDAR MATCH TOOLTIP GENERATOR ----------
 window.generateCalendarMatchTooltipHTML = function(match, isTh) {
   if (!match) return "";
@@ -629,11 +681,18 @@ window.generateCalendarMatchTooltipHTML = function(match, isTh) {
   if (match.status === "completed") {
     statusText = isTh ? "จบการแข่งขัน (FT)" : "Full Time (FT)";
     statusClass = "completed";
-    timeOrScore = `${match.home_score !== undefined ? match.home_score : 0} - ${match.away_score !== undefined ? match.away_score : 0}`;
-  } else if (match.status === "live") {
-    statusText = isTh ? "🔴 กำลังแข่งขัน (LIVE)" : "🔴 LIVE NOW";
+    timeOrScore = `${match.home_score !== undefined && match.home_score !== null ? match.home_score : 0} - ${match.away_score !== undefined && match.away_score !== null ? match.away_score : 0}`;
+  } else if (match.status === "live" || match.status === "halftime") {
+    const liveMin = match.time_live || match.clock || (match.status === "halftime" ? "HT" : "");
+    if (match.status === "halftime" || liveMin === "HT") {
+      statusText = isTh ? "🟠 พักครึ่ง (HT)" : "🟠 HALF TIME (HT)";
+    } else {
+      statusText = isTh
+        ? `🔴 กำลังแข่งขัน${liveMin ? ` (${liveMin})` : " (LIVE)"}`
+        : `🔴 LIVE${liveMin ? ` · ${liveMin}` : " NOW"}`;
+    }
     statusClass = "live";
-    timeOrScore = `${match.home_score || 0} - ${match.away_score || 0}`;
+    timeOrScore = `${match.home_score ?? 0} - ${match.away_score ?? 0}`;
   }
 
   // Channels

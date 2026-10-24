@@ -126,7 +126,7 @@ function renderFixtures(container, fixtures, badgeClass) {
         awayNameStyle =
           "color: #D4AF37; font-weight: 800; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 15px rgba(212, 175, 55, 0.4);";
       const teamBadgeClass = badgeClass.toLowerCase();
-      const isLive = match.status === "live";
+      const isLive = match.status === "live" || match.status === "halftime";
 
       return `
     <a href="match-detail.html?id=${match.id}${teamParam}" class="card-link match-card ${isLive ? "is-live" : ""}" style="animation-delay: ${index * 0.05}s; text-decoration: none; display: block; position: relative;">
@@ -143,7 +143,7 @@ function renderFixtures(container, fixtures, badgeClass) {
                 <span class="live-dot-ping"></span>
                 <span class="live-dot-core"></span>
               </span>
-              <span class="live-badge-text">LIVE ${match.time_live || ""}</span>
+              <span class="live-badge-text">${match.time_live === "HT" ? "HT" : `LIVE ${match.time_live || ""}`}</span>
             </span>
           `
               : ""
@@ -772,19 +772,95 @@ function setupSelectCompFilter(selectId, matches, onFilterChange) {
 }
 
 // ---------- LOAD DATA ----------
+let _fdLiveCache = { ts: 0, promise: null };
+function fetchMenLiveApiCached() {
+  const now = Date.now();
+  if (_fdLiveCache.promise && now - _fdLiveCache.ts < 10000) {
+    return _fdLiveCache.promise;
+  }
+  _fdLiveCache.ts = now;
+  _fdLiveCache.promise = fetch(`/api/football-data/teams/61/matches?_t=${now}`)
+    .then((r) => (r.ok ? r.json() : null))
+    .catch(() => null);
+  return _fdLiveCache.promise;
+}
+
+function mergeMenLiveMatches(localMatches, apiData) {
+  if (!apiData || !Array.isArray(apiData.matches)) return localMatches;
+  return localMatches.map((m) => {
+    const am = apiData.matches.find((item) => {
+      if (m.fd_id && Number(m.fd_id) === Number(item.id)) return true;
+      const utcDate = item.utcDate ? item.utcDate.substring(0, 10) : "";
+      if (utcDate && utcDate === m.date) return true;
+      return false;
+    });
+    if (!am) return m;
+
+    const updated = { ...m, utcDate: am.utcDate || m.utcDate };
+    if (am.status === "FINISHED") {
+      updated.status = "completed";
+    } else if (
+      am.status === "IN_PLAY" ||
+      am.status === "PAUSED" ||
+      am.status === "LIVE" ||
+      am.status === "HALFTIME"
+    ) {
+      updated.status = am.status === "PAUSED" || am.status === "HALFTIME" ? "halftime" : "live";
+      const liveClock = window.computeLiveMatchMinute
+        ? window.computeLiveMatchMinute(
+            am.status,
+            am.utcDate,
+            am.minute,
+            am.score?.halfTime,
+            am.injuryTime
+          )
+        : am.status === "PAUSED"
+          ? "HT"
+          : "";
+      if (liveClock) {
+        updated.time_live = liveClock;
+        updated.clock = liveClock;
+      }
+    }
+
+    if (am.score && am.score.fullTime) {
+      const apiChelseaHome =
+        am.homeTeam?.id === 61 || (am.homeTeam?.name || "").toLowerCase().includes("chelsea");
+      const localChelseaHome = (m.home_team || "").toLowerCase().includes("chelsea");
+      let hs = am.score.fullTime.home;
+      let as = am.score.fullTime.away;
+      if (apiChelseaHome !== localChelseaHome) {
+        const tmp = hs;
+        hs = as;
+        as = tmp;
+      }
+      if (hs !== null && hs !== undefined) updated.home_score = hs;
+      if (as !== null && as !== undefined) updated.away_score = as;
+    }
+    return updated;
+  });
+}
+
 async function loadMenFixtures() {
   const container = document.getElementById("menFixturesContainer");
   if (!container) return;
   try {
-    let all = await safeFetchJson("data/fixtures.json");
+    const [rawAll, apiData] = await Promise.all([
+      safeFetchJson("data/fixtures.json"),
+      fetchMenLiveApiCached(),
+    ]);
+    let all = rawAll;
     if (!all || !Array.isArray(all)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📅</span><p>No upcoming fixtures</p></div>';
       return;
     }
-    all = all.filter((m) => m.team_type === "M");
+    all = mergeMenLiveMatches(
+      all.filter((m) => m.team_type === "M"),
+      apiData
+    );
     const upcoming = all
-      .filter((m) => m.status === "upcoming" || m.status === "live")
+      .filter((m) => m.status === "upcoming" || m.status === "live" || m.status === "halftime")
       .sort((a, b) => {
         let timeA = a.time || "00:00";
         if (timeA === "TBC") timeA = "00:00";
@@ -800,6 +876,14 @@ async function loadMenFixtures() {
     });
 
     renderFixtures(container, upcoming, "M");
+
+    const hasLive = upcoming.some((m) => m.status === "live" || m.status === "halftime");
+    if (hasLive && !window._menTeamLivePoll) {
+      window._menTeamLivePoll = setInterval(() => {
+        loadMenFixtures();
+        loadMenResults();
+      }, 15000);
+    }
   } catch (e) {
     container.innerHTML =
       '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading fixtures</p></div>';
@@ -811,13 +895,20 @@ async function loadMenResults() {
   const container = document.getElementById("menResultsContainer");
   if (!container) return;
   try {
-    let all = await safeFetchJson("data/fixtures.json");
+    const [rawAll, apiData] = await Promise.all([
+      safeFetchJson("data/fixtures.json"),
+      fetchMenLiveApiCached(),
+    ]);
+    let all = rawAll;
     if (!all || !Array.isArray(all)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📊</span><p>No results yet</p></div>';
       return;
     }
-    all = all.filter((m) => m.team_type === "M");
+    all = mergeMenLiveMatches(
+      all.filter((m) => m.team_type === "M"),
+      apiData
+    );
     const results = all
       .filter((m) => m.status === "completed")
       .sort((a, b) => new Date(b.date) - new Date(a.date));

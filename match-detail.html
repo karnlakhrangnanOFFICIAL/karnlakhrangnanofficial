@@ -169,7 +169,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 72px; /* ความสูงเท่ากับโลโก้ ทำให้สกอร์อยู่บรรทัดเดียวกันเป๊ะ */
+        min-height: 72px; /* ความสูงอย่างน้อยเท่ากับโลโก้ และขยายรองรับป้ายนาทีสด */
       }
 
       .score-main {
@@ -232,6 +232,17 @@
 
       #liveBadgeWrap {
         margin-top: 8px; /* ระยะห่างของป้าย Live ใต้สกอร์ */
+        display: flex;
+        justify-content: center;
+      }
+
+      #liveBadgeWrap:empty {
+        display: none;
+        margin-top: 0;
+      }
+
+      #liveBadgeWrap .match-status {
+        margin-top: 0;
       }
 
       /* --- บรรทัดที่ 2: ชื่อทีม --- */
@@ -2846,9 +2857,24 @@
         else if (fdMatch.status === "IN_PLAY") status = "live";
         else if (fdMatch.status === "PAUSED") status = "halftime";
 
+        const liveClock = window.computeLiveMatchMinute
+          ? window.computeLiveMatchMinute(
+              fdMatch.status,
+              fdMatch.utcDate,
+              fdMatch.minute,
+              fdMatch.score?.halfTime,
+              fdMatch.injuryTime
+            )
+          : fdMatch.status === "PAUSED"
+            ? "HT"
+            : "";
+
         return {
           id: reqId || `m${fdMatch.matchday || fdMatch.id}`,
           fd_id: fdMatch.id,
+          utcDate: fdMatch.utcDate || "",
+          clock: liveClock,
+          time_live: liveClock,
           team_type: "men",
           date: matchDate,
           time: matchTime,
@@ -2931,6 +2957,42 @@
           }
         }
 
+        if (fdMatch.utcDate) {
+          match.utcDate = fdMatch.utcDate;
+        }
+
+        // Live match minute calculation
+        const liveClock = window.computeLiveMatchMinute
+          ? window.computeLiveMatchMinute(
+              fdMatch.status,
+              fdMatch.utcDate || match.utcDate,
+              fdMatch.minute,
+              fdMatch.score?.halfTime,
+              fdMatch.injuryTime
+            )
+          : fdMatch.status === "PAUSED"
+            ? "HT"
+            : "";
+
+        if (newStatus === "live" || newStatus === "halftime") {
+          if (liveClock && match.clock !== liveClock) {
+            match.clock = liveClock;
+            match.time_live = liveClock;
+            changed = true;
+          }
+          if (match.home_score === null || match.home_score === undefined) {
+            match.home_score = 0;
+            changed = true;
+          }
+          if (match.away_score === null || match.away_score === undefined) {
+            match.away_score = 0;
+            changed = true;
+          }
+        } else if (newStatus === "completed") {
+          match.clock = "FT";
+          match.time_live = "FT";
+        }
+
         // Referee info
         if (fdMatch.referees && fdMatch.referees.length > 0 && !match.referee) {
           match.referee = fdMatch.referees[0].name;
@@ -2960,7 +3022,10 @@
       function applyEflLiveData(match, live) {
         if (!match || !live) return;
         if (live.status) match.status = live.status;
-        if (live.time_live) match.time_live = live.time_live;
+        if (live.time_live) {
+          match.time_live = live.time_live;
+          match.clock = live.time_live;
+        }
         if (live.home_score !== undefined && live.home_score !== null)
           match.home_score = live.home_score;
         if (live.away_score !== undefined && live.away_score !== null)
@@ -2978,7 +3043,10 @@
       function applyPlLiveData(match, live) {
         if (!match || !live) return;
         if (live.status) match.status = live.status;
-        if (live.clock) match.clock = live.clock;
+        if (live.clock) {
+          match.clock = live.clock;
+          match.time_live = live.clock;
+        }
         if (live.period) match.period = live.period;
         if (live.score) {
           if (live.score.home !== undefined) match.home_score = live.score.home;
@@ -3160,11 +3228,12 @@
             }
 
             // Update Scoreboard Header
+            const isNowLive = match.status === "live" || match.status === "halftime" || match.period === "HalfTime";
             const scoreMainEl = document.getElementById("scoreMain");
             if (scoreMainEl) {
-              const sHome = match.home_score != null ? match.home_score : "-";
-              const sAway = match.away_score != null ? match.away_score : "-";
-              if (match.status === "upcoming" || (sHome === "-" && sAway === "-")) {
+              const sHome = match.home_score != null ? match.home_score : isNowLive ? 0 : "-";
+              const sAway = match.away_score != null ? match.away_score : isNowLive ? 0 : "-";
+              if (match.status === "upcoming" || (!isNowLive && sHome === "-" && sAway === "-")) {
                 const localDT = window.getLocalMatchDateTime
                   ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk)
                   : { time: match.time || "TBC" };
@@ -3177,6 +3246,7 @@
                   <span class="kickoff-time-text">${tStr}</span>
                 `;
               } else {
+                scoreMainEl.classList.remove("upcoming-kickoff-box");
                 scoreMainEl.textContent = `${sHome} - ${sAway}`;
               }
             }
@@ -3184,12 +3254,39 @@
             const liveBadgeWrapEl = document.getElementById("liveBadgeWrap");
             if (liveBadgeWrapEl) {
               if (match.status === "live") {
-                const liveText = match.clock || match.time_live || "LIVE";
-                liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${liveText}</div>`;
+                const liveText =
+                  match.clock ||
+                  match.time_live ||
+                  (window.computeLiveMatchMinute && match.utcDate
+                    ? window.computeLiveMatchMinute("IN_PLAY", match.utcDate, null, {
+                        home: match.home_half_score,
+                        away: match.away_half_score,
+                      })
+                    : "");
+                const badgeLabel = liveText && liveText !== "LIVE" ? `LIVE · ${liveText}` : "LIVE";
+                liveBadgeWrapEl.innerHTML = `<div class="match-status live"><span class="live-dot"></span> ${badgeLabel}</div>`;
               } else if (match.status === "halftime" || match.period === "HalfTime") {
                 liveBadgeWrapEl.innerHTML = `<div class="match-status live" style="background: #e65100; color: #fff;"><span class="live-dot"></span> HT</div>`;
               } else if (match.status === "completed" || match.period === "FullTime") {
-                liveBadgeWrapEl.innerHTML = `<div class="match-status">FULL TIME</div>`;
+                liveBadgeWrapEl.innerHTML = "";
+              }
+            }
+
+            const sidebarStatusEl = document.getElementById("sidebarMatchStatus");
+            if (sidebarStatusEl) {
+              const isThNow = (window.currentLang || "th") === "th";
+              const liveText = match.clock || match.time_live || "LIVE";
+              if (match.status === "live") {
+                sidebarStatusEl.style.color = "#00e676";
+                sidebarStatusEl.textContent = isThNow
+                  ? `กำลังแข่งขัน (${liveText})`
+                  : `In Progress (${liveText})`;
+              } else if (match.status === "halftime" || match.period === "HalfTime") {
+                sidebarStatusEl.style.color = "#ff9800";
+                sidebarStatusEl.textContent = isThNow ? "พักครึ่ง (HT)" : "Half Time (HT)";
+              } else if (match.status === "completed") {
+                sidebarStatusEl.style.color = "var(--gold)";
+                sidebarStatusEl.textContent = isThNow ? "จบการแข่งขัน" : "Full Time";
               }
             }
 
@@ -3270,26 +3367,41 @@
 
         const isHomeChelsea = match.home_team && match.home_team.toLowerCase().includes("chelsea");
         const isAwayChelsea = match.away_team && match.away_team.toLowerCase().includes("chelsea");
+        const isMatchLive =
+          match.status === "live" || match.status === "halftime" || match.period === "HalfTime";
         const sHome =
-          match.home_score !== null && match.home_score !== undefined ? match.home_score : "-";
+          match.home_score !== null && match.home_score !== undefined
+            ? match.home_score
+            : isMatchLive
+              ? 0
+              : "-";
         const sAway =
-          match.away_score !== null && match.away_score !== undefined ? match.away_score : "-";
+          match.away_score !== null && match.away_score !== undefined
+            ? match.away_score
+            : isMatchLive
+              ? 0
+              : "-";
 
-        // Status Badge
-        let statusBadge = "";
+        // Live Minute Hero Badge (shown when match is live or half-time)
+        let liveHeroBadgeHtml = "";
         if (match.status === "live") {
-          const liveClock = match.clock || match.time_live || "LIVE";
-          statusBadge = `<div class="match-status live"><span class="live-dot"></span> ${liveClock}</div>`;
+          const liveClock =
+            match.clock ||
+            match.time_live ||
+            (window.computeLiveMatchMinute && match.utcDate
+              ? window.computeLiveMatchMinute("IN_PLAY", match.utcDate, null, {
+                  home: match.home_half_score,
+                  away: match.away_half_score,
+                })
+              : "");
+          const badgeLabel = liveClock && liveClock !== "LIVE" ? `LIVE · ${liveClock}` : "LIVE";
+          liveHeroBadgeHtml = `<div class="match-status live"><span class="live-dot"></span> ${badgeLabel}</div>`;
         } else if (match.status === "halftime" || match.period === "HalfTime") {
-          statusBadge = `<div class="match-status live" style="background: #e65100; color: #fff;"><span class="live-dot"></span> HT</div>`;
-        } else if (match.status === "completed" || match.period === "FullTime") {
-          statusBadge = `<div class="match-status">FULL TIME</div>`;
-        } else {
-          statusBadge = `<div class="match-status" style="background: rgba(255,255,255,0.1); color: var(--ink-muted);">UPCOMING</div>`;
+          liveHeroBadgeHtml = `<div class="match-status live" style="background: #e65100; color: #fff;"><span class="live-dot"></span> HT</div>`;
         }
 
         // Scoreboard Center Box HTML (Displays Kick-off Time for Upcoming Matches)
-        const isUpcoming = match.status === "upcoming" || (sHome === "-" && sAway === "-");
+        const isUpcoming = match.status === "upcoming" || (!isMatchLive && sHome === "-" && sAway === "-");
         let scoreMainHtml = "";
         if (isUpcoming) {
           const timeFormatted = displayTime !== "TBC" ? displayTime + (isTh ? " น." : "") : "TBC";
@@ -4287,7 +4399,7 @@
         <header class="match-hero-minimal">
           <span class="meta-label">
             ${compLogo ? `<img src="${compLogo}" alt="${compName}" onerror="this.style.display='none'">` : ""}
-            <span>${compName}${match.round ? ` · ${match.round}` : ""}</span>
+            <span>${compName}</span>
           </span>
           <div class="scoreboard-grid">
             <div class="team-box home-team-box">
@@ -4305,6 +4417,7 @@
               <div class="score-inner-wrap">
                 ${scoreMainHtml}
               </div>
+              <div id="liveBadgeWrap">${liveHeroBadgeHtml}</div>
             </div>
             <div class="team-box away-team-box">
               <div class="team-logo-wrap">
@@ -4428,8 +4541,8 @@
                   }
                   <div class="sidebar-info-row">
                     <span class="sidebar-info-label">⚡ ${isTh ? "สถานะ" : "Status"}</span>
-                    <span class="sidebar-info-val" style="color: ${match.status === "live" ? "#00e676" : "var(--gold)"}; font-weight: 700;">
-                      ${match.status === "live" ? (isTh ? `กำลังแข่งขัน (${match.clock || "LIVE"})` : `In Progress (${match.clock || "LIVE"})`) : match.status === "halftime" ? (isTh ? "พักครึ่ง (HT)" : "Half Time") : match.status === "completed" ? (isTh ? "จบการแข่งขัน" : "Full Time") : isTh ? "ยังไม่เริ่มแข่งขัน" : "Upcoming"}
+                    <span class="sidebar-info-val" id="sidebarMatchStatus" style="color: ${match.status === "live" ? "#00e676" : match.status === "halftime" ? "#ff9800" : "var(--gold)"}; font-weight: 700;">
+                      ${match.status === "live" ? (isTh ? `กำลังแข่งขัน (${match.clock || match.time_live || "LIVE"})` : `In Progress (${match.clock || match.time_live || "LIVE"})`) : match.status === "halftime" ? (isTh ? "พักครึ่ง (HT)" : "Half Time (HT)") : match.status === "completed" ? (isTh ? "จบการแข่งขัน" : "Full Time") : isTh ? "ยังไม่เริ่มแข่งขัน" : "Upcoming"}
                     </span>
                   </div>
                   ${
