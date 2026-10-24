@@ -6093,17 +6093,380 @@
     "channels": [
       {
         "platform": "www.monomax.me",
-        "name": "MONOMAX SPORTS TV",
+        "name": "MONOMAX",
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
-    "period": "PreMatch",
+    "status": "completed",
+    "period": "FullTime",
     "clock": "",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "home_score": 0,
+    "away_score": 2,
+    "home_half_score": 0,
+    "away_half_score": 0,
+    "goals": [
+      {
+        "team": "away",
+        "player": "Mathys Tel",
+        "minute": null
+      },
+      {
+        "team": "away",
+        "player": "Mike Penders",
+        "own_goal": true,
+        "detail": "Own Goal",
+        "minute": null
+      }
+    ],
+    "events": [
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Mathys Tel",
+        "minute": null
+      },
+      {
+        "type": "own_goal",
+        "team": "away",
+        "player": "Mike Penders",
+        "minute": null,
+        "detail": "Own Goal"
+      },
+      {
+        "type": "red_card",
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": null
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Pedro Neto",
+        "minute": null
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "minute": null
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Micky van de Ven",
+        "minute": null
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Mateus Fernandes",
+        "minute": null
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Conor Gallagher",
+        "minute": null
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Roberto De Zerbi",
+        "role_th": "ผู้จัดการทีม Tottenham Hotspur",
+        "role_en": "Tottenham Hotspur Manager",
+        "minute": null
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Conor Gallagher",
+        "player_in": "Conor Gallagher",
+        "player_out": "James Maddison",
+        "minute": 51
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Marco Palestra",
+        "player_in": "Marco Palestra",
+        "player_out": "Jorrel Hato",
+        "minute": 65
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Pedro Porro",
+        "player_in": "Pedro Porro",
+        "player_out": "Andy Robertson",
+        "minute": 65
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Dominic Solanke",
+        "player_in": "Dominic Solanke",
+        "player_out": "Omar Marmoush",
+        "minute": 65
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Estêvão",
+        "player_in": "Estêvão",
+        "player_out": "Geovany Quenda",
+        "minute": 72
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Danny Welbeck",
+        "player_in": "Danny Welbeck",
+        "player_out": "Pedro Neto",
+        "minute": 88
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Dejan Kulusevski",
+        "player_in": "Dejan Kulusevski",
+        "player_out": "Mohammed Kudus",
+        "minute": 89
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Ben Davies",
+        "player_in": "Ben Davies",
+        "player_out": "Mathys Tel",
+        "minute": 89
+      }
+    ],
+    "stats": [
+      {
+        "category": "สถิติภาพรวม",
+        "name": "การครองบอล (Possession)",
+        "home": 31.5,
+        "away": 68.5,
+        "isPercentage": true
+      },
+      {
+        "category": "สถิติภาพรวม",
+        "name": "ประตูที่คาดหวัง (Expected Goals)",
+        "home": 0.43,
+        "away": 0.74,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติภาพรวม",
+        "name": "ยิงรวม (Total Shots)",
+        "home": 7,
+        "away": 15,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติภาพรวม",
+        "name": "ยิงเข้ากรอบ (Shots On Target)",
+        "home": 4,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติภาพรวม",
+        "name": "เตะมุม (Corners)",
+        "home": 4,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติภาพรวม",
+        "name": "เซฟประตู (Saves)",
+        "home": 3,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "ยิงรวม (Total Shots)",
+        "home": 7,
+        "away": 15,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "ยิงเข้ากรอบ (Shots On Target)",
+        "home": 4,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "ยิงออกนอกกรอบ (Shots Off Target)",
+        "home": 1,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "ยิงในกรอบเขตโทษ (Inside the Box)",
+        "home": 3,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "ยิงนอกกรอบเขตโทษ (Outside the Box)",
+        "home": 7,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "ชนเสาหรือคาน (Hit Woodwork)",
+        "home": 0,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "โอกาสสำคัญที่สร้างขึ้น (Big Chances Created)",
+        "home": 1,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "การเปิดบอลและความแม่นยำ (Crosses and Accuracy)",
+        "home": "12 (8%)",
+        "away": "15 (20%)",
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "การผ่านบอลและความแม่นยำ (Passes and Accuracy)",
+        "home": "287 (75%)",
+        "away": "639 (87%)",
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "การวางบอลยาวและความแม่นยำ (Long Passes and Accuracy)",
+        "home": "45 (18%)",
+        "away": "59 (53%)",
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "การแทงบอลทะลุช่อง (Through Balls)",
+        "home": "3 (67%)",
+        "away": "0 (0%)",
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "การสัมผัสบอลรวม (Touches)",
+        "home": 474,
+        "away": 827,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรุก",
+        "name": "สัมผัสบอลในกรอบเขตโทษคู่แข่ง (Touches in Opposition Box)",
+        "home": 19,
+        "away": 27,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรับ",
+        "name": "เข้าปะทะสำเร็จ (Tackles Won)",
+        "home": "13 (59%)",
+        "away": "14 (67%)",
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรับ",
+        "name": "บล็อกลูกยิง (Blocks)",
+        "home": 9,
+        "away": 10,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรับ",
+        "name": "ตัดบอล (Interceptions)",
+        "home": 6,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรับ",
+        "name": "สกัดบอลพ้นอันตราย (Clearances)",
+        "home": 23,
+        "away": 13,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติเกมรับ",
+        "name": "เซฟประตู (Saves)",
+        "home": 3,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติร่างกายและการดวล",
+        "name": "เลี้ยงบอลรวม (Total Dribbles)",
+        "home": 15,
+        "away": 17,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติร่างกายและการดวล",
+        "name": "เลี้ยงผ่านสำเร็จ (Successful Dribbles)",
+        "home": 4,
+        "away": 12,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติร่างกายและการดวล",
+        "name": "ดวลชนะรวม (Duels Won)",
+        "home": 45,
+        "away": 64,
+        "isPercentage": false
+      },
+      {
+        "category": "สถิติร่างกายและการดวล",
+        "name": "ดวลลูกกลางอากาศชนะ (Aerial Duels Won)",
+        "home": 7,
+        "away": 17,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัยและระเบียบ",
+        "name": "ใบแดง (Red Cards)",
+        "home": 1,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัยและระเบียบ",
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 2,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัยและระเบียบ",
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 14,
+        "away": 14,
+        "isPercentage": false
+      },
+      {
+        "category": "วินัยและระเบียบ",
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 2,
+        "away": 1,
+        "isPercentage": false
+      }
+    ],
     "lineups": {
       "home": {
         "manager": "Xabi Alonso",
@@ -6112,105 +6475,105 @@
           {
             "number": 39,
             "name": "Mike Penders",
-            "position": "GK"
+            "position": "Goalkeeper"
           },
           {
             "number": 34,
-            "name": "Joshua Acheampong",
-            "position": "DF"
+            "name": "Josh Acheampong",
+            "position": "Defender"
           },
           {
             "number": 5,
             "name": "Maxence Lacroix",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 6,
             "name": "Levi Colwill",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 7,
             "name": "Pedro Neto",
-            "position": "MF"
+            "position": "Midfielder"
           },
           {
             "number": 25,
             "name": "Moisés Caicedo",
-            "position": "MF",
+            "position": "Midfielder",
             "captain": true
           },
           {
             "number": 14,
             "name": "Jordan Henderson",
-            "position": "MF"
+            "position": "Midfielder"
           },
           {
             "number": 21,
             "name": "Jorrel Hato",
-            "position": "MF"
+            "position": "Midfielder"
           },
           {
             "number": 10,
             "name": "Cole Palmer",
-            "position": "FW"
+            "position": "Forward"
           },
           {
             "number": 23,
             "name": "Geovany Quenda",
-            "position": "FW"
+            "position": "Forward"
           },
           {
-            "number": 22,
-            "name": "João Pedro",
-            "position": "FW"
+            "number": 17,
+            "name": "Morgan Rogers",
+            "position": "Forward"
           }
         ],
         "substitutes": [
           {
             "number": 2,
             "name": "Marco Palestra",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 3,
             "name": "Wesley Fofana",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 4,
             "name": "Valentín Barco",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 18,
             "name": "Danny Welbeck",
-            "position": "FW"
+            "position": "Forward"
           },
           {
             "number": 27,
             "name": "Malo Gusto",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 28,
-            "name": "Teddy Sharman-Low",
-            "position": "GK"
+            "name": "Teddy Sharman-Lowe",
+            "position": "Goalkeeper"
           },
           {
             "number": 32,
-            "name": "Mahdi Jazuli",
-            "position": "MF"
+            "name": "Mahdi Nicoll-Jazuli",
+            "position": "Midfielder"
           },
           {
             "number": 41,
-            "name": "Estêvão Willian",
-            "position": "FW"
+            "name": "Estêvão",
+            "position": "Forward"
           },
           {
             "number": 45,
             "name": "Roméo Lavia",
-            "position": "MF"
+            "position": "Midfielder"
           }
         ]
       },
@@ -6220,112 +6583,112 @@
         "starting": [
           {
             "number": 31,
-            "name": "Antonin Kinský",
-            "position": "GK"
+            "name": "Antonín Kinsky",
+            "position": "Goalkeeper"
           },
           {
             "number": 14,
             "name": "Archie Gray",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 6,
             "name": "Jan Paul van Hecke",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 37,
             "name": "Micky van de Ven",
-            "position": "DF",
+            "position": "Defender",
             "captain": true
           },
           {
             "number": 3,
-            "name": "Andrew Robertson",
-            "position": "DF"
+            "name": "Andy Robertson",
+            "position": "Defender"
           },
           {
             "number": 18,
-            "name": "Manuel Fernandes",
-            "position": "MF"
+            "name": "Mateus Fernandes",
+            "position": "Midfielder"
           },
           {
             "number": 16,
             "name": "Sandro Tonali",
-            "position": "MF"
+            "position": "Midfielder"
           },
           {
             "number": 20,
             "name": "Mohammed Kudus",
-            "position": "FW"
+            "position": "Forward"
           },
           {
             "number": 10,
             "name": "James Maddison",
-            "position": "MF"
+            "position": "Midfielder"
           },
           {
             "number": 11,
             "name": "Mathys Tel",
-            "position": "FW"
+            "position": "Forward"
           },
           {
             "number": 22,
             "name": "Omar Marmoush",
-            "position": "FW"
+            "position": "Forward"
           }
         ],
         "substitutes": [
           {
-            "number": 39,
-            "name": "Martin Dúbravka",
-            "position": "GK"
-          },
-          {
             "number": 5,
             "name": "Marcos Senesi",
-            "position": "DF"
-          },
-          {
-            "number": 23,
-            "name": "Pedro Porro",
-            "position": "DF"
-          },
-          {
-            "number": 33,
-            "name": "Ben Davies",
-            "position": "DF"
+            "position": "Defender"
           },
           {
             "number": 8,
             "name": "Conor Gallagher",
-            "position": "MF"
-          },
-          {
-            "number": 21,
-            "name": "Dejan Kulusevski",
-            "position": "FW"
-          },
-          {
-            "number": 52,
-            "name": "Callum Olusesi",
-            "position": "MF"
-          },
-          {
-            "number": 68,
-            "name": "Luca Williams-Barnett",
-            "position": "MF"
+            "position": "Midfielder"
           },
           {
             "number": 19,
             "name": "Dominic Solanke",
-            "position": "FW"
+            "position": "Forward"
+          },
+          {
+            "number": 21,
+            "name": "Dejan Kulusevski",
+            "position": "Forward"
+          },
+          {
+            "number": 23,
+            "name": "Pedro Porro",
+            "position": "Defender"
+          },
+          {
+            "number": 33,
+            "name": "Ben Davies",
+            "position": "Defender"
+          },
+          {
+            "number": 39,
+            "name": "Martin Dúbravka",
+            "position": "Goalkeeper"
+          },
+          {
+            "number": 52,
+            "name": "Callum Olusesi",
+            "position": "Midfielder"
+          },
+          {
+            "number": 68,
+            "name": "Luca Williams-Barnett",
+            "position": "Midfielder"
           }
         ]
       },
       "officials": [
         {
-          "role": "กรรมการ / ผู้ตัดสิน (Referee)",
+          "role": "กรรมการผู้ตัดสิน (Referee)",
           "name": "Chris Kavanagh"
         },
         {
@@ -6341,11 +6704,11 @@
           "name": "Farai Hallam"
         },
         {
-          "role": "ผู้ตัดสิน VAR (Video Assistant Referee)",
+          "role": "ผู้ตัดสินวิดีโอช่วยตัดสิน (Video Assistant Referee)",
           "name": "John Brooks"
         },
         {
-          "role": "ผู้ช่วยผู้ตัดสิน VAR (Assistant VAR)",
+          "role": "ผู้ช่วยผู้ตัดสินวิดีโอช่วยตัดสิน (Assistant Video Assistant Referee)",
           "name": "Richard West"
         }
       ]
@@ -6357,8 +6720,8 @@
         "Ian Hussin"
       ],
       "fourth_official": "Farai Hallam",
-      "var": "John Brooks",
-      "assistant_var": "Richard West"
+      "video_assistant_referee": "John Brooks",
+      "assistant_video_assistant_referee": "Richard West"
     },
     "team_type": "M"
   },

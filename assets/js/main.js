@@ -679,16 +679,16 @@ window.generateCalendarMatchTooltipHTML = function(match, isTh) {
   let timeOrScore = match.time_th || match.time || "TBC";
 
   if (match.status === "completed") {
-    statusText = isTh ? "จบการแข่งขัน (FT)" : "Full Time (FT)";
+    statusText = isTh ? "จบการแข่งขัน" : "Full Time";
     statusClass = "completed";
     timeOrScore = `${match.home_score !== undefined && match.home_score !== null ? match.home_score : 0} - ${match.away_score !== undefined && match.away_score !== null ? match.away_score : 0}`;
   } else if (match.status === "live" || match.status === "halftime") {
     const liveMin = match.time_live || match.clock || (match.status === "halftime" ? "HT" : "");
     if (match.status === "halftime" || liveMin === "HT") {
-      statusText = isTh ? "🟠 พักครึ่ง (HT)" : "🟠 HALF TIME (HT)";
+      statusText = isTh ? "🟠 พักครึ่งเวลา" : "🟠 Half Time";
     } else {
       statusText = isTh
-        ? `🔴 กำลังแข่งขัน${liveMin ? ` (${liveMin})` : " (LIVE)"}`
+        ? `🔴 กำลังแข่งขัน${liveMin ? ` (${liveMin})` : ""}`
         : `🔴 LIVE${liveMin ? ` · ${liveMin}` : " NOW"}`;
     }
     statusClass = "live";
@@ -704,7 +704,14 @@ window.generateCalendarMatchTooltipHTML = function(match, isTh) {
   // Goals summary
   let goalsHtml = "";
   if (match.goals && Array.isArray(match.goals) && match.goals.length > 0) {
-    const goalList = match.goals.map(g => `${g.player || "Goal"} (${g.minute}')`).join(", ");
+    const goalList = match.goals
+      .map(g => {
+        const rawP = (g.player || "Goal").replace(/\s*\((?:OG|Own Goal|ทำเข้าประตูตัวเอง)\)/gi, "").trim();
+        const isOG = g.own_goal === true || g.detail === "Own Goal" || /\(OG\)/i.test(g.player || "");
+        const ogTag = isOG ? (isTh ? " (ทำเข้าประตูตัวเอง)" : " (Own Goal)") : "";
+        return g.minute != null && g.minute !== "" ? `${rawP}${ogTag} (${g.minute}')` : `${rawP}${ogTag}`;
+      })
+      .join(", ");
     goalsHtml = `
       <div class="cft-goals-summary">
         <div class="cft-goals-title">⚽ ${isTh ? "ผู้ทำประตู:" : "Goalscorers:"}</div>

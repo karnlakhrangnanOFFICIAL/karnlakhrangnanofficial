@@ -221,42 +221,44 @@ function renderResults(container, results, badgeClass) {
 
         const renderHomeGoal = (g) => {
           const rawName = g.player || "";
-          const isOG = rawName.includes("(OG)");
-          const isPen = rawName.includes("(Pen)");
+          const isOG = g.own_goal === true || g.detail === "Own Goal" || rawName.includes("(OG)");
+          const isPen = g.penalty === true || g.detail === "Penalty" || rawName.includes("(Pen)");
           const clean = rawName
-            .replace(/\s*\(OG\)/i, "")
-            .replace(/\s*\(Pen\)/i, "")
+            .replace(/\s*\((?:OG|Own Goal|ทำเข้าประตูตัวเอง)\)/gi, "")
+            .replace(/\s*\((?:Pen|Penalty|จุดโทษ)\)/gi, "")
             .trim();
-          const suffix = isOG ? " (OG)" : isPen ? " (Pen)" : "";
+          const suffixTh = isOG ? " (ทำเข้าประตูตัวเอง)" : isPen ? " (จุดโทษ)" : "";
+          const suffixEn = isOG ? " (Own Goal)" : isPen ? " (Penalty)" : "";
           const avatarUrl = window.getPlayerAvatarUrl
             ? window.getPlayerAvatarUrl(clean)
             : "assets/images/placeholder-player.svg";
-          const playerNameOnly = `${clean}${suffix}`;
+          const minLabel = g.minute != null && g.minute !== "" ? `${g.minute}'` : "⚽";
           return `
-          <div class="card-goal-item home" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
-            <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
-            <span class="goal-minute">${g.minute}'</span>
+          <div class="card-goal-item home" data-tooltip="${clean}${suffixTh}" data-tooltip-th="${clean}${suffixTh}" data-tooltip-en="${clean}${suffixEn}">
+            <img src="${avatarUrl}" alt="${clean}${suffixTh}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+            <span class="goal-minute">${minLabel}</span>
           </div>
         `;
         };
 
         const renderAwayGoal = (g) => {
           const rawName = g.player || "";
-          const isOG = rawName.includes("(OG)");
-          const isPen = rawName.includes("(Pen)");
+          const isOG = g.own_goal === true || g.detail === "Own Goal" || rawName.includes("(OG)");
+          const isPen = g.penalty === true || g.detail === "Penalty" || rawName.includes("(Pen)");
           const clean = rawName
-            .replace(/\s*\(OG\)/i, "")
-            .replace(/\s*\(Pen\)/i, "")
+            .replace(/\s*\((?:OG|Own Goal|ทำเข้าประตูตัวเอง)\)/gi, "")
+            .replace(/\s*\((?:Pen|Penalty|จุดโทษ)\)/gi, "")
             .trim();
-          const suffix = isOG ? " (OG)" : isPen ? " (Pen)" : "";
+          const suffixTh = isOG ? " (ทำเข้าประตูตัวเอง)" : isPen ? " (จุดโทษ)" : "";
+          const suffixEn = isOG ? " (Own Goal)" : isPen ? " (Penalty)" : "";
           const avatarUrl = window.getPlayerAvatarUrl
             ? window.getPlayerAvatarUrl(clean)
             : "assets/images/placeholder-player.svg";
-          const playerNameOnly = `${clean}${suffix}`;
+          const minLabel = g.minute != null && g.minute !== "" ? `${g.minute}'` : "⚽";
           return `
-          <div class="card-goal-item away" data-tooltip="${playerNameOnly}" data-tooltip-th="${playerNameOnly}" data-tooltip-en="${playerNameOnly}">
-            <span class="goal-minute">${g.minute}'</span>
-            <img src="${avatarUrl}" alt="${playerNameOnly}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
+          <div class="card-goal-item away" data-tooltip="${clean}${suffixTh}" data-tooltip-th="${clean}${suffixTh}" data-tooltip-en="${clean}${suffixEn}">
+            <span class="goal-minute">${minLabel}</span>
+            <img src="${avatarUrl}" alt="${clean}${suffixTh}" class="goal-player-avatar" onerror="this.src='assets/images/placeholder-player.svg'">
           </div>
         `;
         };
