@@ -792,13 +792,38 @@ function mergeMenLiveMatches(localMatches, apiData) {
   return localMatches.map((m) => {
     const am = apiData.matches.find((item) => {
       if (m.fd_id && Number(m.fd_id) === Number(item.id)) return true;
+      const compCode = String(item.competition?.code || "").toUpperCase();
+      const localComp = String(m.competition || m.competition_name || "").toLowerCase();
+      if (compCode === "PL" && localComp && !localComp.includes("premier") && localComp !== "pl") {
+        return false;
+      }
+      if (compCode === "CL" && localComp && !localComp.includes("champions") && localComp !== "ucl" && localComp !== "cl") {
+        return false;
+      }
       const utcDate = item.utcDate ? item.utcDate.substring(0, 10) : "";
-      if (utcDate && utcDate === m.date) return true;
-      return false;
+      if (!utcDate || !m.date) return false;
+      const diffDays = Math.abs(Date.parse(`${utcDate}T00:00:00Z`) - Date.parse(`${m.date}T00:00:00Z`)) / 86400000;
+      if (isNaN(diffDays) || diffDays > 1.5) return false;
+      const apiChelseaHome =
+        item.homeTeam?.id === 61 || (item.homeTeam?.name || "").toLowerCase().includes("chelsea");
+      const localChelseaHome = (m.home_team || "").toLowerCase().includes("chelsea");
+      return apiChelseaHome === localChelseaHome;
     });
     if (!am) return m;
 
+    const kickoffMs = am.utcDate ? Date.parse(am.utcDate) : NaN;
+    const isFutureMatch = !isNaN(kickoffMs) && kickoffMs > Date.now() + 2 * 3600 * 1000;
+
     const updated = { ...m, utcDate: am.utcDate || m.utcDate };
+    if (isFutureMatch || am.status === "TIMED" || am.status === "SCHEDULED" || am.status === "POSTPONED") {
+      updated.status = "upcoming";
+      updated.home_score = null;
+      updated.away_score = null;
+      updated.time_live = "";
+      updated.clock = "";
+      return updated;
+    }
+
     if (am.status === "FINISHED") {
       updated.status = "completed";
     } else if (
@@ -1551,7 +1576,11 @@ async function fetchPlayersFromSheet(isMen = true) {
         let rawImg = row.image || row["link png"] || localMatch.image || "placeholder-player.svg";
         rawImg = String(rawImg).trim().split(" ")[0]; // Handle "reece-james.png (หรือ James.jpg)"
         let imagePath = rawImg;
-        if (!imagePath.startsWith("assets/") && !imagePath.startsWith("http")) {
+        if (
+          !imagePath.startsWith("assets/") &&
+          !imagePath.startsWith("src/") &&
+          !imagePath.startsWith("http")
+        ) {
           imagePath =
             (isMen ? "assets/images/players/men/" : "assets/images/players/women/") + imagePath;
         }

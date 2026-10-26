@@ -2533,7 +2533,7 @@
           </div>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--ink-faint); font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em;">
             <span>📊 ${isTh ? "สถิติการแข่งขันอย่างเป็นทางการ" : "Official Match Statistics"}</span>
-            <span style="color: var(--ink-muted); font-size: 0.72rem;">Premier League</span>
+            <span style="color: var(--ink-muted); font-size: 0.72rem;">${currentMatch ? formatCompetitionName(currentMatch.competition_name || currentMatch.competition) : "Premier League"}</span>
           </div>
       `;
         let lastCategory = null;
@@ -2890,74 +2890,117 @@
         }
       }
 
+      // Helper: Check whether a local fixture and a Football-Data API match belong to the same competition
+      function isCompatibleFdCompetition(localMatch, fdMatch) {
+        if (!localMatch || !fdMatch) return true;
+        const fdCode = String(fdMatch.competition?.code || "").toUpperCase();
+        const localComp = String(localMatch.competition || localMatch.competition_name || "").toLowerCase().trim();
+        if (!localComp || !fdCode) return true;
+
+        if (localComp.includes("premier") || localComp === "pl") {
+          return fdCode === "PL";
+        }
+        if (localComp.includes("efl") || localComp.includes("carabao") || localComp.includes("league-cup") || localComp.includes("league cup")) {
+          return fdCode === "ELC" || fdCode === "FLC";
+        }
+        if (localComp.includes("fa-cup") || localComp.includes("fa cup")) {
+          return fdCode === "FAC";
+        }
+        if (localComp.includes("champions") || localComp === "ucl" || localComp === "cl") {
+          return fdCode === "CL";
+        }
+        if (localComp.includes("europa")) {
+          return fdCode === "EL";
+        }
+        if (localComp.includes("conference")) {
+          return fdCode === "UCL" || fdCode === "UECL";
+        }
+        if (localComp.includes("friendly") || localComp.includes("wsl") || localComp.includes("uwcl")) {
+          return false;
+        }
+        return fdCode !== "PL";
+      }
+
+      // Helper: Normalize team name for reliable comparison
+      function normalizeTeamKey(name) {
+        const s = String(name || "")
+          .toLowerCase()
+          .replace(/\bfc\b|\bafc\b/g, "")
+          .replace(/[^a-z0-9]/g, "");
+        if (s.includes("manchesterunited") || s.includes("manunited") || s.includes("manutd")) return "manutd";
+        if (s.includes("manchestercity") || s.includes("mancity")) return "mancity";
+        if (s.includes("tottenham") || s.includes("spurs")) return "spurs";
+        if (s.includes("wolverhampton") || s.includes("wolves")) return "wolves";
+        if (s.includes("nottingham") || s.includes("forest")) return "forest";
+        if (s.includes("newcastle")) return "newcastle";
+        if (s.includes("westham")) return "westham";
+        if (s.includes("astonvilla") || s === "villa") return "astonvilla";
+        if (s.includes("crystalpalace") || s === "palace") return "crystalpalace";
+        if (s.includes("brighton")) return "brighton";
+        if (s.includes("bournemouth")) return "bournemouth";
+        return s;
+      }
+
+      function teamsAlignWithFd(localMatch, fdMatch) {
+        if (!localMatch || !fdMatch) return false;
+        const locH = normalizeTeamKey(localMatch.home_team);
+        const locA = normalizeTeamKey(localMatch.away_team);
+        const fdH = normalizeTeamKey(fdMatch.homeTeam?.shortName || fdMatch.homeTeam?.name);
+        const fdA = normalizeTeamKey(fdMatch.awayTeam?.shortName || fdMatch.awayTeam?.name);
+        if (!locH || !locA || !fdH || !fdA) return false;
+
+        const homeMatch = locH === fdH || locH.includes(fdH.slice(0, 5)) || fdH.includes(locH.slice(0, 5));
+        const awayMatch = locA === fdA || locA.includes(fdA.slice(0, 5)) || fdA.includes(locA.slice(0, 5));
+        return homeMatch && awayMatch;
+      }
+
       // Helper: Find Football-Data Match for a given local match / ID
       function findFootballDataMatch(fdMatches, localMatch, matchId) {
         if (!Array.isArray(fdMatches) || fdMatches.length === 0) return null;
         const normId = matchId ? String(matchId).toLowerCase().trim() : "";
+        const cleanNumericStr = normId.replace(/^api_/, "");
         const mNum = parseInt(normId.replace(/\D/g, ""), 10);
 
-        // 1. Direct numeric ID check
-        if (normId && !isNaN(normId)) {
-          const targetNum = parseInt(normId, 10);
-          const found = fdMatches.find(m => m.id === targetNum);
-          if (found) return found;
-        }
-
-        // 2. Exact match on localMatch.fd_id
-        if (localMatch && localMatch.fd_id) {
-          const found = fdMatches.find(m => m.id === localMatch.fd_id);
-          if (found) return found;
-        }
-
-        // 3. Exact date + opponent matching
-        if (localMatch && localMatch.date) {
-          const matchDateStr = localMatch.date;
-          const locH = (localMatch.home_team || "").toLowerCase();
-          const locA = (localMatch.away_team || "").toLowerCase();
-
-          const foundByDate = fdMatches.find(m => {
-            const fdDate = m.utcDate ? m.utcDate.split("T")[0] : "";
-            if (fdDate !== matchDateStr) return false;
-            const hName = (m.homeTeam?.name || m.homeTeam?.shortName || "").toLowerCase();
-            const aName = (m.awayTeam?.name || m.awayTeam?.shortName || "").toLowerCase();
-            return (
-              (locH.includes(hName.substring(0, 4)) || hName.includes(locH.substring(0, 4))) ||
-              (locA.includes(aName.substring(0, 4)) || aName.includes(locA.substring(0, 4)))
-            );
-          });
-          if (foundByDate) return foundByDate;
-        }
-
-        // 4. Matchday round number matching for PL
-        if (localMatch && localMatch.round) {
-          const roundNum = parseInt(String(localMatch.round).replace(/\D/g, ""), 10);
-          if (roundNum) {
-            const foundByRound = fdMatches.find(m => m.matchday === roundNum && m.competition?.code === "PL");
-            if (foundByRound) return foundByRound;
-          }
-        }
-
-        // 5. If matchId is m1..m38 (standard Premier League fixture matchdays)
-        if (normId.startsWith("m") && mNum >= 1 && mNum <= 38) {
-          const foundByMatchday = fdMatches.find(m => m.matchday === mNum);
-          if (foundByMatchday) return foundByMatchday;
-        }
-
-        // 6. Opponent Name matching
+        // If localMatch exists in fixtures.json, ONLY match the exact corresponding fixture
+        // (same competition + fd_id OR same competition + date within ±2 days + matching teams).
+        // Never cross-match EFL Cup / FA Cup / future return fixtures with finished PL matchdays.
         if (localMatch) {
-          const locH = (localMatch.home_team || "").toLowerCase();
-          const locA = (localMatch.away_team || "").toLowerCase();
-          const isHomeChe = locH.includes("chelsea");
-          const oppKey = (isHomeChe ? locA : locH).replace(/fc|chelsea/g, "").trim();
-
-          if (oppKey.length >= 3) {
-            const foundByOpp = fdMatches.find(m => {
-              const hName = (m.homeTeam?.name || m.homeTeam?.shortName || "").toLowerCase();
-              const aName = (m.awayTeam?.name || m.awayTeam?.shortName || "").toLowerCase();
-              return hName.includes(oppKey.substring(0, 4)) || aName.includes(oppKey.substring(0, 4));
-            });
-            if (foundByOpp) return foundByOpp;
+          if (localMatch.fd_id) {
+            const foundByFdId = fdMatches.find((m) => Number(m.id) === Number(localMatch.fd_id));
+            if (foundByFdId) return foundByFdId;
           }
+
+          if (localMatch.date) {
+            const locTime = Date.parse(`${localMatch.date}T00:00:00Z`);
+            if (!isNaN(locTime)) {
+              const foundByCompAndDate = fdMatches.find((m) => {
+                if (!isCompatibleFdCompetition(localMatch, m)) return false;
+                const fdDateStr = m.utcDate ? m.utcDate.split("T")[0] : "";
+                const fdTime = fdDateStr ? Date.parse(`${fdDateStr}T00:00:00Z`) : NaN;
+                if (isNaN(fdTime)) return false;
+                const diffDays = Math.abs(fdTime - locTime) / 86400000;
+                if (diffDays > 2) return false;
+                return teamsAlignWithFd(localMatch, m);
+              });
+              if (foundByCompAndDate) return foundByCompAndDate;
+            }
+          }
+
+          return null;
+        }
+
+        // Fallbacks ONLY when localMatch was NOT found in fixtures.json:
+        // 1. Direct numeric Football-Data ID (e.g. ?id=560581 or ?id=api_560581)
+        if (cleanNumericStr && /^\d+$/.test(cleanNumericStr)) {
+          const targetNum = parseInt(cleanNumericStr, 10);
+          const found = fdMatches.find((m) => Number(m.id) === targetNum);
+          if (found) return found;
+        }
+
+        // 2. Synthetic matchday lookup only when no local fixture exists for m1..m38
+        if (normId.startsWith("m") && mNum >= 1 && mNum <= 38) {
+          const foundByMatchday = fdMatches.find((m) => m.matchday === mNum && m.competition?.code === "PL");
+          if (foundByMatchday) return foundByMatchday;
         }
 
         return null;
@@ -3023,11 +3066,21 @@
       // Apply live attributes from Football-Data Match to Local Match object
       function applyFootballDataLive(match, fdMatch) {
         if (!match || !fdMatch) return false;
+        if (!isCompatibleFdCompetition(match, fdMatch)) return false;
         let changed = false;
+
+        // Guard: if scheduled kick-off is still in the future (> 2 hours from now),
+        // never mark the match as live or completed.
+        const kickoffIso = fdMatch.utcDate || (match.date ? `${match.date}T23:59:59+07:00` : "");
+        const kickoffMs = kickoffIso ? Date.parse(kickoffIso) : NaN;
+        const isFutureMatch = !isNaN(kickoffMs) && kickoffMs > Date.now() + 2 * 3600 * 1000;
 
         // Status mapping
         let newStatus = match.status;
-        if (fdMatch.status === "FINISHED") {
+        if (isFutureMatch || fdMatch.status === "TIMED" || fdMatch.status === "SCHEDULED" || fdMatch.status === "POSTPONED") {
+          newStatus = "upcoming";
+          match.period = "PreMatch";
+        } else if (fdMatch.status === "FINISHED") {
           newStatus = "completed";
           match.period = "FullTime";
         } else if (fdMatch.status === "IN_PLAY") {
@@ -3035,8 +3088,6 @@
         } else if (fdMatch.status === "PAUSED") {
           newStatus = "halftime";
           match.period = "HalfTime";
-        } else if (fdMatch.status === "TIMED" || fdMatch.status === "SCHEDULED") {
-          newStatus = "upcoming";
         }
 
         if (match.status !== newStatus) {
@@ -3044,8 +3095,16 @@
           changed = true;
         }
 
-        // Score mapping with team alignment check
-        if (fdMatch.score && fdMatch.score.fullTime) {
+        // Score mapping with team alignment check (only when match is NOT upcoming)
+        if (newStatus === "upcoming") {
+          if (match.home_score !== null || match.away_score !== null) {
+            match.home_score = null;
+            match.away_score = null;
+            changed = true;
+          }
+          match.clock = "";
+          match.time_live = "";
+        } else if (fdMatch.score && fdMatch.score.fullTime) {
           const isChelseaHome = fdMatch.homeTeam?.id === 61 || (fdMatch.homeTeam?.name || "").includes("Chelsea");
           const localHomeChelsea = (match.home_team || "").toLowerCase().includes("chelsea");
 
@@ -3076,6 +3135,20 @@
 
         if (fdMatch.utcDate) {
           match.utcDate = fdMatch.utcDate;
+          // Populate confirmed kick-off time if local fixture still had TBC
+          if (fdMatch.status === "TIMED" && (!match.time || match.time === "TBC")) {
+            const utcDt = new Date(fdMatch.utcDate);
+            if (!isNaN(utcDt.getTime())) {
+              const thDt = new Date(utcDt.getTime() + 7 * 3600 * 1000);
+              const thHH = String(thDt.getUTCHours()).padStart(2, "0");
+              const thMM = String(thDt.getUTCMinutes()).padStart(2, "0");
+              match.date = thDt.toISOString().split("T")[0];
+              match.time = `${thHH}:${thMM}`;
+              match.time_th = `${thHH}:${thMM}`;
+              match.time_uk = fdMatch.utcDate.substring(11, 16);
+              changed = true;
+            }
+          }
         }
 
         // Live match minute calculation
@@ -4030,7 +4103,7 @@
             } else if (eType === "injury") {
               cardClass += "is-injury";
               const pDisplay = getPlayerLink(e.player);
-              nameHtml = `<span class="player-name">${pDisplay}</span>`;
+              nameHtml = `<span class="player-name">${pDisplay}</span>${e.detail ? ` <span class="event-description" style="color: var(--ink-muted); font-size: 0.84rem;">${e.detail}</span>` : ""}`;
               iconHtml = `<img src="databases/logo/svg/injury.svg" alt="Injury" class="event-icon" style="width: 20px; height: 20px;">`;
             } else if (eType === "var") {
               cardClass += "is-var";
@@ -4180,8 +4253,8 @@
               </div>
             `;
           } else {
-            const firstHalfTimed = timedEvents.filter((e) => parseEventMinVal(e.minute) <= 45);
-            const secondHalfTimed = timedEvents.filter((e) => parseEventMinVal(e.minute) > 45);
+            const firstHalfTimed = timedEvents.filter((e) => parseEventMinVal(e.minute) <= 45.99);
+            const secondHalfTimed = timedEvents.filter((e) => parseEventMinVal(e.minute) > 45.99);
 
             if (firstHalfTimed.length > 0) {
               timelineSectionsHtml += `

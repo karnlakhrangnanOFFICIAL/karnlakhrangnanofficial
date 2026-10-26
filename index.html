@@ -1064,53 +1064,85 @@
             const homeName = am.homeTeam?.shortName || am.homeTeam?.name || 'Home';
             const awayName = am.awayTeam?.shortName || am.awayTeam?.name || 'Away';
 
-            // Find matching fixture in local fixtures database
+            // Find matching fixture in local fixtures database (same competition + date within ±2 days + teams)
+            const amCompCode = String(am.competition?.code || '').toUpperCase();
+            const amTimeMs = Date.parse(`${dateStr}T00:00:00Z`);
+            const normKey = (s) => {
+              const k = String(s || '').toLowerCase().replace(/\bfc\b|\bafc\b/g, '').replace(/[^a-z0-9]/g, '');
+              if (k.includes('manchesterunited') || k.includes('manunited') || k.includes('manutd')) return 'manutd';
+              if (k.includes('manchestercity') || k.includes('mancity')) return 'mancity';
+              if (k.includes('tottenham') || k.includes('spurs')) return 'spurs';
+              if (k.includes('wolverhampton') || k.includes('wolves')) return 'wolves';
+              if (k.includes('nottingham') || k.includes('forest')) return 'forest';
+              return k;
+            };
+            const hKey = normKey(homeName);
+            const aKey = normKey(awayName);
+
             const localMatch = localFixtures.find(lf => {
-              const lfHome = (lf.home_team || '').toLowerCase();
-              const lfAway = (lf.away_team || '').toLowerCase();
-              const hMatch = lfHome.includes(homeName.toLowerCase().substring(0, 4)) || homeName.toLowerCase().includes(lfHome.substring(0, 4));
-              const aMatch = lfAway.includes(awayName.toLowerCase().substring(0, 4)) || awayName.toLowerCase().includes(lfAway.substring(0, 4));
-              return (lf.date === dateStr || (hMatch && aMatch));
+              if (!lf || matchedLocalIds.has(lf.id)) return false;
+              if (lf.team_type === 'W' || lf.team_type === 'women' || String(lf.id || '').toLowerCase().startsWith('w')) return false;
+              if (lf.fd_id && Number(lf.fd_id) === Number(am.id)) return true;
+
+              const lfComp = String(lf.competition || lf.competition_name || '').toLowerCase();
+              if (amCompCode === 'PL' && lfComp && !lfComp.includes('premier') && lfComp !== 'pl') return false;
+              if (amCompCode === 'CL' && lfComp && !lfComp.includes('champions') && lfComp !== 'ucl' && lfComp !== 'cl') return false;
+
+              const lfTimeMs = lf.date ? Date.parse(`${lf.date}T00:00:00Z`) : NaN;
+              if (isNaN(lfTimeMs) || isNaN(amTimeMs)) return false;
+              const diffDays = Math.abs(lfTimeMs - amTimeMs) / 86400000;
+              if (diffDays > 2) return false;
+
+              const lfHome = normKey(lf.home_team);
+              const lfAway = normKey(lf.away_team);
+              const hMatch = lfHome === hKey || lfHome.includes(hKey.substring(0, 4)) || hKey.includes(lfHome.substring(0, 4));
+              const aMatch = lfAway === aKey || lfAway.includes(aKey.substring(0, 4)) || aKey.includes(lfAway.substring(0, 4));
+              return hMatch && aMatch;
             });
 
+            const isFutureKickoff = !isNaN(utcDate.getTime()) && utcDate.getTime() > Date.now() + 2 * 3600 * 1000;
             let status = 'upcoming';
-            if (am.status === 'FINISHED') status = 'completed';
-            else if (am.status === 'IN_PLAY' || am.status === 'PAUSED' || am.status === 'LIVE' || am.status === 'HALFTIME') status = 'live';
+            if (!isFutureKickoff) {
+              if (am.status === 'FINISHED') status = 'completed';
+              else if (am.status === 'IN_PLAY' || am.status === 'PAUSED' || am.status === 'LIVE' || am.status === 'HALFTIME') status = 'live';
+            }
 
             const liveClock = (status === 'live' && window.computeLiveMatchMinute)
               ? window.computeLiveMatchMinute(am.status, am.utcDate, am.minute, am.score?.halfTime, am.injuryTime)
-              : (am.status === 'PAUSED' || am.status === 'HALFTIME' ? 'HT' : '');
+              : (status === 'live' && (am.status === 'PAUSED' || am.status === 'HALFTIME') ? 'HT' : '');
 
             if (localMatch) matchedLocalIds.add(localMatch.id);
 
             const isChelseaHome = am.homeTeam?.id === 61 || homeName.toLowerCase().includes('chelsea');
+            const hasConfirmedTime = am.status === 'TIMED' || am.status === 'FINISHED' || status === 'live';
+            const useApiTime = !localMatch?.time || localMatch.time === 'TBC';
 
             allMatches.push({
               id: localMatch ? localMatch.id : `api_${am.id}`,
               apiId: am.id,
-              date: dateStr,
-              time: timeStr,
-              time_th: timeStr,
-              time_uk: am.utcDate ? am.utcDate.substring(11, 16) : '19:00',
+              date: (useApiTime && hasConfirmedTime) ? dateStr : (localMatch?.date || dateStr),
+              time: (useApiTime && hasConfirmedTime) ? timeStr : (localMatch?.time || timeStr),
+              time_th: (useApiTime && hasConfirmedTime) ? timeStr : (localMatch?.time_th || timeStr),
+              time_uk: am.utcDate ? am.utcDate.substring(11, 16) : (localMatch?.time_uk || '19:00'),
               utcDate: am.utcDate,
-              time_live: liveClock || localMatch?.time_live || localMatch?.clock || '',
-              clock: liveClock || localMatch?.clock || localMatch?.time_live || '',
+              time_live: status === 'upcoming' ? '' : (liveClock || localMatch?.time_live || localMatch?.clock || ''),
+              clock: status === 'upcoming' ? '' : (liveClock || localMatch?.clock || localMatch?.time_live || ''),
               competition: localMatch?.competition || (am.competition?.code === 'PL' ? 'premier-league' : 'other'),
               competition_name: am.competition?.name || localMatch?.competition_name || 'Premier League',
               competition_logo: localMatch?.competition_logo || am.competition?.emblem || 'databases/logo/competitions/men/premier-league.png',
-              home_team: homeName,
-              home_logo: resolveTeamLogo(homeName, localMatch?.home_logo || am.homeTeam?.crest),
-              away_team: awayName,
-              away_logo: resolveTeamLogo(awayName, localMatch?.away_logo || am.awayTeam?.crest),
+              home_team: localMatch?.home_team || homeName,
+              home_logo: resolveTeamLogo(localMatch?.home_team || homeName, localMatch?.home_logo || am.homeTeam?.crest),
+              away_team: localMatch?.away_team || awayName,
+              away_logo: resolveTeamLogo(localMatch?.away_team || awayName, localMatch?.away_logo || am.awayTeam?.crest),
               venue: localMatch?.venue || (isChelseaHome ? 'Stamford Bridge' : `${awayName} Stadium`),
               channels: localMatch?.channels || [],
               status: status,
-              home_score: am.score?.fullTime?.home ?? am.score?.current?.home ?? localMatch?.home_score ?? null,
-              away_score: am.score?.fullTime?.away ?? am.score?.current?.away ?? localMatch?.away_score ?? null,
-              home_half_score: am.score?.halfTime?.home ?? localMatch?.home_half_score ?? null,
-              away_half_score: am.score?.halfTime?.away ?? localMatch?.away_half_score ?? null,
-              goals: localMatch?.goals || [],
-              events: localMatch?.events || [],
+              home_score: status === 'upcoming' ? null : (am.score?.fullTime?.home ?? am.score?.current?.home ?? localMatch?.home_score ?? null),
+              away_score: status === 'upcoming' ? null : (am.score?.fullTime?.away ?? am.score?.current?.away ?? localMatch?.away_score ?? null),
+              home_half_score: status === 'upcoming' ? null : (am.score?.halfTime?.home ?? localMatch?.home_half_score ?? null),
+              away_half_score: status === 'upcoming' ? null : (am.score?.halfTime?.away ?? localMatch?.away_half_score ?? null),
+              goals: status === 'upcoming' ? [] : (localMatch?.goals || []),
+              events: status === 'upcoming' ? [] : (localMatch?.events || []),
               team_type: 'M',
               source: 'api'
             });

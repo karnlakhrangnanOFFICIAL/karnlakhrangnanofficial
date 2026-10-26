@@ -1,20 +1,20 @@
 {
   "season": "2026/2027",
   "competition": "Barclays Women's Super League",
-  "last_updated": "2026-10-18T18:00:00.000Z",
+  "last_updated": "2026-10-25T15:00:00.000Z",
   "standings": [
     {
       "pos": 1,
       "team": "Chelsea",
       "logo": "databases/logo/teams/england_chelsea.svg",
-      "p": 6,
-      "w": 5,
+      "p": 7,
+      "w": 6,
       "d": 1,
       "l": 0,
-      "gf": 18,
-      "ga": 3,
-      "gd": 15,
-      "pts": 16
+      "gf": 21,
+      "ga": 4,
+      "gd": 17,
+      "pts": 19
     },
     {
       "pos": 2,
@@ -124,13 +124,13 @@
       "pos": 10,
       "team": "Crystal Palace",
       "logo": "databases/logo/teams/england_crystal-palace.svg",
-      "p": 4,
+      "p": 5,
       "w": 1,
       "d": 1,
-      "l": 2,
-      "gf": 1,
-      "ga": 8,
-      "gd": -7,
+      "l": 3,
+      "gf": 2,
+      "ga": 11,
+      "gd": -9,
       "pts": 4
     },
     {

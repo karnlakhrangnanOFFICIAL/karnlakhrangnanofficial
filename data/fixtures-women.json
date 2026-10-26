@@ -4045,20 +4045,896 @@
         "logo": "databases/logo/tv/cfc.png"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "period": "FullTime",
+    "home_score": 1,
+    "away_score": 3,
+    "home_half_score": 1,
+    "away_half_score": 0,
+    "goals": [
+      {
+        "team": "home",
+        "player": "Molly Bartrip",
+        "minute": 20
+      },
+      {
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 51
+      },
+      {
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 75
+      },
+      {
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "minute": 90,
+        "penalty": true,
+        "detail": "Penalty"
+      }
+    ],
+    "events": [
+      {
+        "type": "kick_off",
+        "minute": 0,
+        "detail": "KICK-OFF: เริ่มการแข่งขัน"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Wieke Kaptein",
+        "minute": 4,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 6,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 8,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Lucy Bronze",
+        "minute": 9,
+        "detail": "ยิงประตูแต่ติดเซฟของ Allyson Swaby"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Lexi Potter",
+        "minute": 12,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Maika Hamano",
+        "minute": 13,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 14,
+        "detail": "ได้ยิงแต่ Pauline Peyraud-Magnin เซฟไว้ได้"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Maika Hamano",
+        "minute": 14,
+        "detail": "ได้ยิงแต่ Pauline Peyraud-Magnin เซฟไว้ได้"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 14,
+        "detail": "ได้ยิง และ Aimee Everett ช่วยเคลียร์"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "minute": 14,
+        "detail": "ได้ยิง และ Molly Bartrip เซฟไว้ได้"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Teyah Goldie",
+        "minute": 15,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Alyssa Thompson",
+        "minute": 15,
+        "detail": "ได้จังหวะยิง"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Maika Hamano",
+        "minute": 17,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "corner",
+        "team": "home",
+        "player": "Fuka Tsunoda",
+        "minute": 18,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Lexi Lloyd-Smith",
+        "minute": 19,
+        "detail": "ได้ยิงแต่ Lucy Bronze ช่วยบล็อกไว้ได้"
+      },
+      {
+        "type": "corner",
+        "team": "home",
+        "player": "Fuka Tsunoda",
+        "minute": 19,
+        "detail": "เปิดเตะมุมต่อเนื่อง"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Molly Bartrip",
+        "minute": 20,
+        "detail": "Crystal Palace ขึ้นนำ 1 - 0"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Abbie Larkin",
+        "minute": 29,
+        "detail": "ได้ยิงแต่ Kadeisha Buchanan เซฟไว้ได้"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Hayley Ladd",
+        "minute": 29,
+        "detail": "ได้ยิงแต่ Hannah Hampton เซฟไว้ได้"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 29,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "minute": 30,
+        "detail": "ได้ยิงแต่ Pauline Peyraud-Magnin เซฟไว้ได้"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 33,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Wieke Kaptein",
+        "minute": 37,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Lexi Lloyd-Smith",
+        "minute": 37,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 39,
+        "detail": "ได้ยิงประตู"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Ellie Carpenter",
+        "minute": 41,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Wieke Kaptein",
+        "minute": 42,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "injury",
+        "team": "home",
+        "player": "Fuka Tsunoda",
+        "minute": 43,
+        "detail": "มีอาการบาดเจ็บ"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Annabel Blanchard",
+        "minute": 44,
+        "detail": "รับใบเหลือง"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Wieke Kaptein",
+        "minute": 44,
+        "detail": "รับใบเหลือง"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 44,
+        "detail": "รับใบเหลือง"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": "45+2",
+        "display_minute": "47'",
+        "detail": "ได้ยิงประตู"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": "45+2",
+        "display_minute": "47'",
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Lucy Bronze",
+        "minute": "45+3",
+        "display_minute": "48'",
+        "detail": "ได้ยิงแต่ Molly Bartrip เซฟไว้ได้"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Wieke Kaptein",
+        "minute": "45+3",
+        "display_minute": "48'",
+        "detail": "ได้ยิงแต่ Molly Bartrip เซฟไว้ได้"
+      },
+      {
+        "type": "period",
+        "minute": "45+99",
+        "display_minute": "HT",
+        "detail": "จบครึ่งแรก: Crystal Palace 1 - 0 Chelsea"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "player_in": "Sandy Baltimore",
+        "player_out": "Alyssa Thompson",
+        "minute": 46
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "player_in": "Erin Cuthbert",
+        "player_out": "Maika Hamano",
+        "minute": 46
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 49,
+        "detail": "ได้ยิงแต่ Pauline Peyraud-Magnin เซฟไว้ได้"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 50,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 51,
+        "detail": "ตีเสมอ 1 - 1"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 54,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 56,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Ellie Carpenter",
+        "minute": 59,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "minute": 62,
+        "detail": "ได้ยิงแต่ Pauline Peyraud-Magnin เซฟไว้ได้"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Lucy Bronze",
+        "minute": 63,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Lucy Bronze",
+        "minute": 63,
+        "detail": "รับใบเหลือง"
+      },
+      {
+        "type": "injury",
+        "team": "home",
+        "player": "Annabel Blanchard",
+        "minute": 64,
+        "detail": "มีอาการบาดเจ็บ"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 68,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Aggie Beever-Jones",
+        "player_in": "Aggie Beever-Jones",
+        "player_out": "Wieke Kaptein",
+        "minute": 69
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Hayley Ladd",
+        "minute": 70,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Hayley Ladd",
+        "minute": 70,
+        "detail": "รับใบเหลือง"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 70,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "minute": 71,
+        "detail": "ได้ยิงประตู"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 71,
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "minute": 72,
+        "detail": "เปิดเตะมุมติดต่อกัน (2 ครั้ง) และ Allyson Swaby เซฟไว้ได้"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Lexi Potter",
+        "minute": 74,
+        "detail": "ได้ยิงแต่ Molly Bartrip เซฟป้องกันไว้ได้"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 74,
+        "detail": "ได้ยิงแต่ Molly Bartrip เซฟป้องกันไว้ได้"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Melvine Malard",
+        "minute": 75,
+        "detail": "ยิงให้เชลซีแซงนำ 1 - 2"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Shannon O’Brien",
+        "player_in": "Shannon O’Brien",
+        "player_out": "Annabel Blanchard",
+        "minute": 77
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 77,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "injury",
+        "team": "home",
+        "player": "Abbie Larkin",
+        "minute": 78,
+        "detail": "มีอาการบาดเจ็บ"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Aggie Beever-Jones",
+        "minute": 81,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Fuka Tsunoda",
+        "minute": 82,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Lexi Potter",
+        "minute": 86,
+        "detail": "ได้ยิงประตู"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Molly Bartrip",
+        "minute": 89,
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "goal",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "minute": 90,
+        "detail": "Penalty"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Manaka Matsukubo",
+        "player_in": "Manaka Matsukubo",
+        "player_out": "Melvine Malard",
+        "minute": 91,
+        "display_minute": "90+1'"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Giulia Dragoni",
+        "player_in": "Giulia Dragoni",
+        "player_out": "Sjoeke Nüsken",
+        "minute": 91,
+        "display_minute": "90+1'"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "minute": 93,
+        "display_minute": "90+3'",
+        "detail": "เปิดเตะมุม"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Sierra Enge",
+        "player_in": "Sierra Enge",
+        "player_out": "Hayley Ladd",
+        "minute": 95,
+        "display_minute": "90+5'"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Jamie-Lee Napier",
+        "player_in": "Jamie-Lee Napier",
+        "player_out": "Allyson Swaby",
+        "minute": 95,
+        "display_minute": "90+5'"
+      },
+      {
+        "type": "period",
+        "minute": "95+99",
+        "display_minute": "FT",
+        "detail": "จบการแข่งขัน: Crystal Palace 1 - 3 Chelsea"
+      }
+    ],
+    "stats": [
+      {
+        "name": "เปอร์เซ็นต์การครองบอล (Possession)",
+        "home": 30,
+        "away": 70,
+        "isPercentage": true
+      },
+      {
+        "name": "ประตูที่ทำได้ (Goals Scored)",
+        "home": 1,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงเข้ากรอบ (Shots on Goal)",
+        "home": 2,
+        "away": 10,
+        "isPercentage": false
+      },
+      {
+        "name": "โอกาสทองในการทำประตู (Big Chances)",
+        "home": 1,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "ลูกยิงที่ถูกบล็อก (Blocked Shots)",
+        "home": 2,
+        "away": 6,
+        "isPercentage": false
+      },
+      {
+        "name": "ความแม่นยำในการส่งบอล (Pass Accuracy)",
+        "home": 63,
+        "away": 83,
+        "isPercentage": true
+      },
+      {
+        "name": "จำนวนการส่งบอล (Pass Attempts)",
+        "home": 259,
+        "away": 578,
+        "isPercentage": false
+      },
+      {
+        "name": "ลูกเตะมุม (Corners)",
+        "home": 2,
+        "away": 13,
+        "isPercentage": false
+      },
+      {
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 0,
+        "away": 2,
+        "isPercentage": false
+      },
+      {
+        "name": "ดวลชนะ (Duels Won)",
+        "home": 41,
+        "away": 46,
+        "isPercentage": false
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 5,
+        "away": 12,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 2,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      }
+    ],
+    "lineups": {
+      "home": {
+        "manager": "Jo Potter",
+        "formation": "3-4-1-2",
+        "starting": [
+          {
+            "number": 26,
+            "name": "Pauline Peyraud-Magnin",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 22,
+            "name": "Teyah Goldie",
+            "position": "DF"
+          },
+          {
+            "number": 32,
+            "name": "Molly Bartrip",
+            "position": "DF"
+          },
+          {
+            "number": 29,
+            "name": "Allyson Swaby",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Aimee Everett",
+            "position": "DF",
+            "captain": true
+          },
+          {
+            "number": 16,
+            "name": "Hayley Ladd",
+            "position": "MF"
+          },
+          {
+            "number": 25,
+            "name": "Fuka Tsunoda",
+            "position": "MF"
+          },
+          {
+            "number": 17,
+            "name": "Annabel Blanchard",
+            "position": "MF"
+          },
+          {
+            "number": 7,
+            "name": "Lexi Lloyd-Smith",
+            "position": "FW"
+          },
+          {
+            "number": 9,
+            "name": "Bethany England",
+            "position": "FW"
+          },
+          {
+            "number": 19,
+            "name": "Abbie Larkin",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 30,
+            "name": "Shae Yáñez",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 3,
+            "name": "Jamie-Lee Napier",
+            "position": "DF",
+            "minute_in": 95
+          },
+          {
+            "number": 4,
+            "name": "Sierra Enge",
+            "position": "MF",
+            "minute_in": 95
+          },
+          {
+            "number": 8,
+            "name": "Molly-Mae Sharpe",
+            "position": "FW"
+          },
+          {
+            "number": 10,
+            "name": "Kirsty Howat",
+            "position": "FW"
+          },
+          {
+            "number": 11,
+            "name": "Ashleigh Weerden",
+            "position": "FW"
+          },
+          {
+            "number": 15,
+            "name": "Hayley Nolan",
+            "position": "DF"
+          },
+          {
+            "number": 24,
+            "name": "Shanade Hopcroft",
+            "position": "MF"
+          },
+          {
+            "number": 27,
+            "name": "Shannon O’Brien",
+            "position": "FW",
+            "minute_in": 77
+          }
+        ]
+      },
+      "away": {
+        "manager": "Sonia Bompastor",
+        "formation": "3-4-2-1",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "DF"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "DF"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "DF",
+            "captain": true
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": "MF"
+          },
+          {
+            "number": 32,
+            "name": "Lexi Potter",
+            "position": "MF"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "MF"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "MF"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "FW"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "FW"
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "DF"
+          },
+          {
+            "number": 8,
+            "name": "Erin Cuthbert",
+            "position": "MF",
+            "minute_in": 46
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "MF",
+            "minute_in": 46
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "MF",
+            "minute_in": 91
+          },
+          {
+            "number": 17,
+            "name": "Nelly Las",
+            "position": "DF"
+          },
+          {
+            "number": 25,
+            "name": "Lola Brown",
+            "position": "MF"
+          },
+          {
+            "number": 29,
+            "name": "Manaka Matsukubo",
+            "position": "MF",
+            "minute_in": 91
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones",
+            "position": "FW",
+            "minute_in": 69
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "Referee",
+          "name": "Alice Parker"
+        }
+      ]
+    },
     "competition_name": "Barclays Women's Super League",
     "team_type": "W",
     "xg": null,
     "xga": null,
-    "poss": null,
+    "poss": 70,
     "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
+    "captain": "Lucy Bronze",
+    "formation": "3-4-2-1",
+    "referee": "Alice Parker",
     "round": "Matchweek 7"
   },
   {

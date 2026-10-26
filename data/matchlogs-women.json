@@ -3,14 +3,14 @@
   "team": "Chelsea Women",
   "season": "2026-2027",
   "total_matches": 37,
-  "completed_matches": 10,
-  "upcoming_matches": 27,
+  "completed_matches": 11,
+  "upcoming_matches": 26,
   "summary": {
-    "wins": 9,
+    "wins": 10,
     "draws": 1,
     "losses": 0,
-    "goals_for": 32,
-    "goals_against": 5,
+    "goals_for": 35,
+    "goals_against": 6,
     "clean_sheets": 7
   },
   "matchlogs": [
@@ -867,20 +867,34 @@
       "round": "Matchweek 7",
       "day": "Sun",
       "venue": "Away",
-      "result": null,
-      "gf": null,
-      "ga": null,
+      "result": "W",
+      "gf": 3,
+      "ga": 1,
       "opponent": "Crystal Palace",
       "opponent_crest": "databases/logo/teams/england_crystal-palace.svg",
       "stadium": "VBS Community Stadium, Sutton",
       "xg": null,
       "xga": null,
-      "poss": null,
+      "poss": 70,
       "attendance": null,
-      "captain": null,
-      "formation": null,
-      "referee": null,
-      "scorers": []
+      "captain": "Lucy Bronze",
+      "formation": "3-4-2-1",
+      "referee": "Alice Parker",
+      "scorers": [
+        {
+          "player": "Melvine Malard",
+          "minute": 51
+        },
+        {
+          "player": "Melvine Malard",
+          "minute": 75
+        },
+        {
+          "player": "Sandy Baltimore",
+          "minute": 90,
+          "penalty": true
+        }
+      ]
     },
     {
       "id": "w10",

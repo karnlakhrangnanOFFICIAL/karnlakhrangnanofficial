@@ -1007,6 +1007,8 @@ async function loadPlayersAvatarMap() {
     buchanan: "assets/images/players/women/kadeisha-buchanan.jpg",
     "nathalie bjorn": "assets/images/players/women/nathalie-bjorn.jpg",
     bjorn: "assets/images/players/women/nathalie-bjorn.jpg",
+    "katie mccabe": "src/assets/images/regenerated_image_1793037492711.jpg",
+    mccabe: "src/assets/images/regenerated_image_1793037492711.jpg",
   };
   Object.assign(playerAvatarMap, fastKnown);
 
@@ -3613,16 +3615,25 @@ window.addEventListener("languageChanged", () => {
 });
 
 window.getLocalMatchDateTime = function (dateStr, timeThStr, timeUkStr) {
-  let fallbackTime = timeThStr || timeUkStr || "TBC";
-  if (fallbackTime !== "TBC") fallbackTime = fallbackTime.substring(0, 5);
+  const extractHHMM = (val) => {
+    if (!val || val === "TBC") return "";
+    const m = String(val).match(/(\d{1,2}:\d{2})/);
+    if (!m) return "";
+    const [hh, mm] = m[1].split(":");
+    return `${hh.padStart(2, "0")}:${mm}`;
+  };
 
-  if (!timeThStr || timeThStr === "TBC") {
+  const cleanTh = extractHHMM(timeThStr);
+  const cleanUk = extractHHMM(timeUkStr);
+  const fallbackTime = cleanTh || cleanUk || "TBC";
+
+  if (!cleanTh) {
     return { date: dateStr, time: fallbackTime === "00:00" ? "00:00" : fallbackTime };
   }
 
   try {
     // We assume timeThStr is UTC+7
-    const isoString = `${dateStr}T${timeThStr}:00+07:00`;
+    const isoString = `${dateStr}T${cleanTh}:00+07:00`;
     const d = new Date(isoString);
     if (isNaN(d.getTime())) {
       return { date: dateStr, time: fallbackTime === "00:00" ? "00:00" : fallbackTime };

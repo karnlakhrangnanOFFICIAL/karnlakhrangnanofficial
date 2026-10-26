@@ -14,15 +14,16 @@ function getLocalEflFallback(fixtureId) {
           String(m.efl_id) === String(fixtureId)
       );
       if (match) {
+        const isUpcoming = match.status === "upcoming" || match.period === "PreMatch";
         return {
           status: match.status || "completed",
-          period: match.period || "FullTime",
-          time_live: match.time_live || "FT",
-          home_score: match.home_score ?? 0,
-          away_score: match.away_score ?? 0,
-          goals: match.goals || [],
-          events: match.events || [],
-          stats: match.stats || [],
+          period: match.period || (isUpcoming ? "PreMatch" : "FullTime"),
+          time_live: isUpcoming ? "" : (match.time_live || "FT"),
+          home_score: isUpcoming ? null : (match.home_score ?? 0),
+          away_score: isUpcoming ? null : (match.away_score ?? 0),
+          goals: isUpcoming ? [] : (match.goals || []),
+          events: isUpcoming ? [] : (match.events || []),
+          stats: isUpcoming ? [] : (match.stats || []),
           youtube_id: match.youtube_id || "",
           video: match.video || null,
         };
@@ -237,11 +238,20 @@ export default async function handler(req, res) {
       { name: "ใบเหลือง (Yellow Cards)", home: yellowHome, away: yellowAway, isPercentage: false },
     ];
 
-    const period = attr.period || "SecondHalf";
-    let timeLive = "55'";
-    let status = "live";
+    const period = attr.period || "PreMatch";
+    let timeLive = "";
+    let status = "upcoming";
+    const isPreMatch =
+      period === "PreMatch" ||
+      period === "Scheduled" ||
+      period === "Fixture" ||
+      attr.matchStatus === "Fixture" ||
+      attr.matchStatus === "PreMatch";
 
-    if (period === "FullTime" || period === "PostMatch") {
+    if (isPreMatch) {
+      timeLive = "";
+      status = "upcoming";
+    } else if (period === "FullTime" || period === "PostMatch") {
       timeLive = "FT";
       status = "completed";
     } else if (period === "HalfTime") {
@@ -271,11 +281,11 @@ export default async function handler(req, res) {
         status,
         period,
         time_live: timeLive,
-        home_score: homeScore,
-        away_score: awayScore,
-        goals,
-        events,
-        stats,
+        home_score: isPreMatch ? null : homeScore,
+        away_score: isPreMatch ? null : awayScore,
+        goals: isPreMatch ? [] : goals,
+        events: isPreMatch ? [] : events,
+        stats: isPreMatch ? [] : stats,
         youtube_id: getLocalEflFallback(fixtureId)?.youtube_id || "",
         video: getLocalEflFallback(fixtureId)?.video || null,
       },
