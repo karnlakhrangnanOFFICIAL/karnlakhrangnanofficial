@@ -121,20 +121,20 @@
       let compName = 'Premier League';
       const compLower = (f.competition || '').toLowerCase();
       if (compLower.includes('champions') || compLower.includes('uwcl')) {
-        compCode = 'UWCL';
+        compCode = f.competition_short || 'UWCL';
         compName = f.competition_name || f.competition || "UEFA Women's Champions League";
       } else if (compLower.includes('women') || compLower.includes('wsl') || isWomen) {
-        compCode = 'WSL';
+        compCode = f.competition_short || 'WSL';
         compName = f.competition_name || f.competition || "Women's Super League";
-      } else if (compLower.includes('league-cup') || compLower.includes('carabao')) {
-        compCode = 'FLC';
-        compName = 'Carabao Cup';
+      } else if (compLower.includes('league-cup') || compLower.includes('carabao') || compLower.includes('efl')) {
+        compCode = f.competition_short || 'EFL Cup';
+        compName = f.competition_name || 'Carabao Cup';
       } else if (compLower.includes('fa-cup')) {
-        compCode = 'FAC';
-        compName = 'FA Cup';
+        compCode = f.competition_short || 'FAC';
+        compName = f.competition_name || 'FA Cup';
       } else if (compLower.includes('friendly')) {
-        compCode = 'FRIENDLY';
-        compName = 'Club Friendly';
+        compCode = f.competition_short || 'FRIENDLY';
+        compName = f.competition_name || 'Club Friendly';
       }
 
       return {
@@ -145,6 +145,7 @@
         matchday: f.matchday || f.round || null,
         round: f.round || f.matchday || null,
         venue: f.venue || (isHome ? 'Stamford Bridge (Home)' : 'Away Match'),
+        referee: f.referee || null,
         channels: f.channels || [],
         time_th: f.time_th || f.time,
         time_uk: f.time_uk,

@@ -4819,7 +4819,7 @@
                 <div class="sidebar-card-list">
                   <div class="sidebar-info-row">
                     <span class="sidebar-info-label">🏆 ${isTh ? "การแข่งขัน" : "Competition"}</span>
-                    <span class="sidebar-info-val">${compName}${match.season ? ` (${match.season})` : ""}</span>
+                    <span class="sidebar-info-val">${compName}${match.competition_short && match.competition_short.toLowerCase() !== compName.toLowerCase() ? ` (${match.competition_short})` : ""}${match.season ? ` (${match.season})` : ""}</span>
                   </div>
                   ${
                     match.round
@@ -4857,11 +4857,11 @@
                       : ""
                   }
                   ${
-                    match.referee
+                    match.referee || (match.officials && match.officials.referee)
                       ? `
                   <div class="sidebar-info-row">
                     <span class="sidebar-info-label">⚖️ ${isTh ? "กรรมการผู้ตัดสิน" : "Referee"}</span>
-                    <span class="sidebar-info-val">${match.referee}</span>
+                    <span class="sidebar-info-val">${match.referee || match.officials.referee}</span>
                   </div>
                   `
                       : ""

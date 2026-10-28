@@ -669,7 +669,7 @@ window.generateCalendarMatchTooltipHTML = function(match, isTh) {
   else if (compKey.includes("uwcl") || (compKey.includes("women") && compKey.includes("champions"))) compName = isTh ? "⭐ ยูฟ่า แชมเปียนส์ ลีก (หญิง)" : "⭐ UEFA Women's Champions League";
   else if (compKey.includes("champions")) compName = isTh ? "⭐ ยูฟ่า แชมเปียนส์ ลีก" : "⭐ UEFA Champions League";
   else if (compKey.includes("fa-cup") || compKey.includes("fa cup")) compName = isTh ? "🏆 เอฟเอ คัพ" : "🏆 FA Cup";
-  else if (compKey.includes("league-cup") || compKey.includes("carabao")) compName = isTh ? "🏆 คาราบาว คัพ" : "🏆 Carabao Cup";
+  else if (compKey.includes("league-cup") || compKey.includes("carabao") || compKey.includes("efl")) compName = isTh ? "🏆 คาราบาว คัพ" : "🏆 Carabao Cup";
 
   const compLogo = match.competition_logo || "";
 

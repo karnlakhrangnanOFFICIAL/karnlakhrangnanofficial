@@ -6729,18 +6729,20 @@
     "id": "m47",
     "date": "2026-10-29",
     "time": "03:00",
-    "time_th": "03:00 น.",
+    "time_th": "03:00",
     "time_uk": "20:00",
     "competition": "efl-cup",
-    "competition_name": "EFL Cup",
+    "competition_name": "Carabao Cup",
+    "competition_short": "EFL Cup",
     "competition_logo": "databases/logo/competitions/men/england_efl-cup.svg",
-    "round": "รอบ 4 - เลกเดียว",
+    "round": "Round 4",
     "ha": "A",
     "home_team": "Liverpool",
     "home_logo": "databases/logo/teams/england_liverpool.svg",
     "away_team": "Chelsea",
     "away_logo": "databases/logo/teams/england_chelsea.svg",
-    "venue": "Anfield",
+    "venue": "Anfield, Liverpool",
+    "referee": "Darren England",
     "channels": [
       {
         "name": "MONOMAX",
@@ -15183,22 +15185,24 @@
     "time_uk": "17:45",
     "competition": "UEFA Women's Champions League",
     "competition_name": "UEFA Women's Champions League",
+    "competition_short": "UWCL",
     "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Roma",
     "away_logo": "databases/logo/teams/italy_roma.svg",
-    "venue": "Stamford Bridge, London",
+    "venue": "The Cherry Red Records Stadium",
     "ha": "H",
     "status": "upcoming",
     "home_score": null,
     "away_score": null,
     "round": "League Phase 3",
+    "referee": "Olatz Rivera Olmedo",
     "channels": [
       {
-        "platform": "beIN",
-        "name": "beIN SPORTS",
-        "logo": "databases/logo/tv/bein_sports.svg"
+        "platform": "Disney+",
+        "name": "Disney+",
+        "logo": "databases/logo/tv/disney+.svg"
       }
     ],
     "team_type": "W"
