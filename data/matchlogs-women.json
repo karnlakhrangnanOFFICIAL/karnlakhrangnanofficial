@@ -3,15 +3,15 @@
   "team": "Chelsea Women",
   "season": "2026-2027",
   "total_matches": 37,
-  "completed_matches": 11,
-  "upcoming_matches": 26,
+  "completed_matches": 12,
+  "upcoming_matches": 25,
   "summary": {
-    "wins": 10,
+    "wins": 11,
     "draws": 1,
     "losses": 0,
-    "goals_for": 35,
+    "goals_for": 37,
     "goals_against": 6,
-    "clean_sheets": 7
+    "clean_sheets": 8
   },
   "matchlogs": [
     {
@@ -1385,20 +1385,29 @@
       "round": "League Phase 3",
       "day": "Thu",
       "venue": "Home",
-      "result": null,
-      "gf": null,
-      "ga": null,
+      "result": "W",
+      "gf": 2,
+      "ga": 0,
       "opponent": "Roma",
       "opponent_crest": "databases/logo/teams/italy_roma.svg",
       "stadium": "The Cherry Red Records Stadium",
       "xg": null,
       "xga": null,
-      "poss": null,
+      "poss": 60,
       "attendance": null,
-      "captain": null,
+      "captain": "Erin Cuthbert",
       "formation": null,
       "referee": "Olatz Rivera Olmedo",
-      "scorers": []
+      "scorers": [
+        {
+          "player": "Ellie Carpenter",
+          "minute": 51
+        },
+        {
+          "player": "Kadeisha Buchanan",
+          "minute": 89
+        }
+      ]
     },
     {
       "id": "w_uwcl_6",

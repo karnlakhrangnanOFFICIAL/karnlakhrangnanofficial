@@ -2717,6 +2717,11 @@
                       if (!playerTeamMap[last]) playerTeamMap[last] = "women";
                     }
                   }
+                  if (n === "lexi potter") {
+                    if (p.image) playerImageMap["alexia potter"] = p.image;
+                    if (p.id) playerIdMap["alexia potter"] = p.id;
+                    playerTeamMap["alexia potter"] = "women";
+                  }
                 }
               });
             }
@@ -3530,6 +3535,7 @@
 
         const isWomenMatch =
           match.team_type === "women" ||
+          match.team_type === "W" ||
           (match.competition_name && match.competition_name.toLowerCase().includes("wsl")) ||
           (match.home_team && match.home_team.toLowerCase().includes("women")) ||
           (match.away_team && match.away_team.toLowerCase().includes("women"));
@@ -3847,15 +3853,22 @@
                 return '<span style="font-size: 16px; line-height: 1;">🚩</span>';
               case "foul":
                 return '<span style="font-size: 15px; line-height: 1;">⚠️</span>';
+              case "free_kick":
+                return '<span style="font-size: 15px; line-height: 1;">🏳️</span>';
               case "shot":
                 return '<span style="font-size: 15px; line-height: 1;">🎯</span>';
               case "save":
                 return '<span style="font-size: 15px; line-height: 1;">🧤</span>';
               case "injury":
                 return '<img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 18px; height: 18px;">';
+              case "delay":
+                return '<span style="font-size: 15px; line-height: 1;">⏸️</span>';
+              case "added_time":
+                return '<span style="font-size: 15px; line-height: 1;">⏱️</span>';
               case "kick_off":
               case "kickoff":
               case "period":
+              case "full_time":
                 return '<img src="databases/logo/svg/kick-off.svg" alt="Period" style="width: 18px; height: 18px;">';
               default:
                 return "⚽";
@@ -3871,10 +3884,13 @@
             if (type === "var") return "VAR";
             if (type === "corner") return isTh ? "เตะมุม" : "Corner";
             if (type === "foul") return isTh ? "ทำฟาวล์" : "Foul";
+            if (type === "free_kick") return isTh ? "ได้ลูกฟรีคิก" : "Free Kick";
             if (type === "shot") return isTh ? "โอกาสยิง" : "Shot";
             if (type === "save") return isTh ? "เซฟลูกยิง" : "Save";
             if (type === "injury") return isTh ? "ได้รับบาดเจ็บ" : "Injury";
-            if (type === "period") return isTh ? "สัญญาณเวลา" : "Period";
+            if (type === "delay") return isTh ? "หยุดเกมชั่วคราว" : "Match Delay";
+            if (type === "added_time") return isTh ? "ทดเวลาบาดเจ็บ" : "Added Time";
+            if (type === "period" || type === "full_time") return isTh ? "สัญญาณเวลา" : "Period";
             return type.charAt(0).toUpperCase() + type.slice(1).replace("_", " ");
           };
 
@@ -4132,7 +4148,7 @@
   </div>
 </div>
               `;
-            } else if (eType === "period") {
+            } else if (eType === "period" || eType === "full_time") {
               const pText = e.detail || (e.display_minute === "HT" ? (isTh ? "จบครึ่งแรก (Half Time)" : "Half Time") : (isTh ? "จบการแข่งขัน (Full Time)" : "Full Time"));
               return `
 <div class="timeline-event-card is-period-card">
@@ -4153,9 +4169,30 @@
   </div>
 </div>
               `;
+            } else if (eType === "added_time" || (!e.team && eType === "delay")) {
+              const pText = e.detail || title;
+              return `
+<div class="timeline-event-card is-period-card">
+  <div class="timeline-side home-side"></div>
+  <div class="timeline-time-col">
+    ${timeColHtml}
+  </div>
+  <div class="timeline-side away-side">
+    <div class="event-detail-group away-layout" style="--event-index: ${index};">
+      <div class="event-icon-col justify-start">
+        ${icon}
+      </div>
+      <div class="event-name-col text-left">
+        <span class="event-description" style="color: var(--ink-muted); font-size: 0.86rem;">${pText}</span>
+      </div>
+      <div class="event-logo-col"></div>
+    </div>
+  </div>
+</div>
+              `;
             } else {
               cardClass += `is-${eType}`;
-              const pDisplay = getPlayerLink(e.player);
+              const pDisplay = e.player ? getPlayerLink(e.player) : title;
               if (pDisplay && e.detail) {
                 nameHtml = `<span class="player-name">${pDisplay}</span> <span class="event-description" style="color: var(--ink-muted); font-size: 0.84rem;">${e.detail}</span>`;
               } else {

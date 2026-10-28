@@ -6757,6 +6757,232 @@
     "away_score": null,
     "goals": [],
     "events": [],
+    "lineups": {
+      "home": {
+        "manager": "Andoni Iraola",
+        "formation": "4-2-3-1",
+        "starting": [
+          {
+            "number": 25,
+            "name": "Giorgi Mamardashvili",
+            "position": "Goalkeeper"
+          },
+          {
+            "number": 2,
+            "name": "Joe Gomez",
+            "position": "Defender"
+          },
+          {
+            "number": 4,
+            "name": "Virgil van Dijk",
+            "position": "Defender",
+            "captain": true
+          },
+          {
+            "number": 33,
+            "name": "Ronald Araújo",
+            "position": "Defender"
+          },
+          {
+            "number": 21,
+            "name": "Konstantinos Tsimikas",
+            "position": "Defender"
+          },
+          {
+            "number": 38,
+            "name": "Ryan Gravenberch",
+            "position": "Midfielder"
+          },
+          {
+            "number": 42,
+            "name": "Trey Nyoni",
+            "position": "Midfielder"
+          },
+          {
+            "number": 73,
+            "name": "Rio Ngumoha",
+            "position": "Forward"
+          },
+          {
+            "number": 53,
+            "name": "James McConnell",
+            "position": "Midfielder"
+          },
+          {
+            "number": 18,
+            "name": "Cody Gakpo",
+            "position": "Forward"
+          },
+          {
+            "number": 67,
+            "name": "Lewis Koumas",
+            "position": "Forward"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Alisson Becker",
+            "position": "Goalkeeper"
+          },
+          {
+            "number": 3,
+            "name": "Wataru Endo",
+            "position": "Midfielder"
+          },
+          {
+            "number": 5,
+            "name": "Jérémy Jacquet",
+            "position": "Defender"
+          },
+          {
+            "number": 7,
+            "name": "Florian Wirtz",
+            "position": "Midfielder"
+          },
+          {
+            "number": 9,
+            "name": "Alexander Isak",
+            "position": "Forward"
+          },
+          {
+            "number": 10,
+            "name": "Alexis Mac Allister",
+            "position": "Midfielder"
+          },
+          {
+            "number": 14,
+            "name": "Federico Chiesa",
+            "position": "Forward"
+          },
+          {
+            "number": 29,
+            "name": "Bradley Barcola",
+            "position": "Forward"
+          },
+          {
+            "number": 44,
+            "name": "Luke Chambers",
+            "position": "Defender"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Xabi Alonso",
+        "formation": "4-3-3",
+        "starting": [
+          {
+            "number": 39,
+            "name": "Mike Penders",
+            "position": "Goalkeeper"
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto",
+            "position": "Defender"
+          },
+          {
+            "number": 5,
+            "name": "Maxence Lacroix",
+            "position": "Defender"
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana",
+            "position": "Defender"
+          },
+          {
+            "number": 34,
+            "name": "Josh Acheampong",
+            "position": "Defender"
+          },
+          {
+            "number": 14,
+            "name": "Jordan Henderson",
+            "position": "Midfielder"
+          },
+          {
+            "number": 25,
+            "name": "Moisés Caicedo",
+            "position": "Midfielder",
+            "captain": true
+          },
+          {
+            "number": 45,
+            "name": "Roméo Lavia",
+            "position": "Midfielder"
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto",
+            "position": "Forward"
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck",
+            "position": "Forward"
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers",
+            "position": "Forward"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 28,
+            "name": "Teddy Sharman-Lowe",
+            "position": "Goalkeeper"
+          },
+          {
+            "number": 2,
+            "name": "Marco Palestra",
+            "position": "Defender"
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco",
+            "position": "Defender"
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill",
+            "position": "Defender"
+          },
+          {
+            "number": 22,
+            "name": "Emanuel Emegha",
+            "position": "Forward"
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda",
+            "position": "Forward"
+          },
+          {
+            "number": 32,
+            "name": "Mahdi Nicoll-Jazuli",
+            "position": "Midfielder"
+          },
+          {
+            "number": 37,
+            "name": "Olutayo Subuloye",
+            "position": "Defender"
+          },
+          {
+            "number": 41,
+            "name": "Estêvão",
+            "position": "Forward"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "กรรมการผู้ตัดสิน (Referee)",
+          "name": "Darren England"
+        }
+      ]
+    },
     "team_type": "M"
   },
   {
@@ -15193,9 +15419,12 @@
     "away_logo": "databases/logo/teams/italy_roma.svg",
     "venue": "The Cherry Red Records Stadium",
     "ha": "H",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
+    "status": "completed",
+    "period": "FullTime",
+    "home_score": 2,
+    "away_score": 0,
+    "home_half_score": 0,
+    "away_half_score": 0,
     "round": "League Phase 3",
     "referee": "Olatz Rivera Olmedo",
     "channels": [
@@ -15205,6 +15434,863 @@
         "logo": "databases/logo/tv/disney+.svg"
       }
     ],
+    "goals": [
+      {
+        "team": "home",
+        "player": "Ellie Carpenter",
+        "minute": 51,
+        "assist": "Wieke Kaptein"
+      },
+      {
+        "team": "home",
+        "player": "Kadeisha Buchanan",
+        "minute": 89,
+        "assist": "Wieke Kaptein"
+      }
+    ],
+    "events": [
+      {
+        "type": "kick_off",
+        "minute": 1,
+        "detail": "เริ่มการแข่งขันครึ่งแรก (First Half begins)"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Aggie Beever-Jones",
+        "minute": 18,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "away",
+        "player": "Elisabetta Oliviero",
+        "minute": 18,
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Lauren James",
+        "minute": 20,
+        "detail": "ยิงด้วยซ้ายติดเซฟของ Rachele Baldi"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Martina Piemonte",
+        "minute": 21,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "home",
+        "player": "Kadeisha Buchanan",
+        "minute": 21,
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "injury",
+        "team": "home",
+        "player": "Lexi Potter",
+        "minute": 22,
+        "detail": "เกมหยุดชั่วคราวเนื่องจากมีอาการบาดเจ็บ"
+      },
+      {
+        "type": "delay",
+        "minute": 23,
+        "detail": "กลับมาแข่งขันต่อ (Delay over. Ready to continue)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "minute": 30,
+        "detail": "ยิงด้วยซ้ายข้ามคานออกไป"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Lucy Bronze",
+        "minute": 32,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "away",
+        "player": "Elisabetta Oliviero",
+        "minute": 32,
+        "detail": "ได้ลูกฟรีคิกทางฝั่งซ้าย"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Giada Cimò",
+        "minute": 33,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "home",
+        "player": "Lucy Bronze",
+        "minute": 33,
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "corner",
+        "team": "away",
+        "minute": 37,
+        "detail": "ได้ลูกเตะมุม (เสียเตะมุมโดย Erin Cuthbert)"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Maya Doms",
+        "minute": 37,
+        "detail": "ยิงด้วยขวาหลุดเสาขวาออกไป (แอสซิสต์: Giada Greggi)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Lauren James",
+        "minute": 38,
+        "detail": "ยิงด้วยขวาติดบล็อก (แอสซิสต์: Wieke Kaptein)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "minute": 38,
+        "detail": "ยิงด้วยขวาในกรอบ 6 หลาหลุดเสาซ้ายออกไป"
+      },
+      {
+        "type": "corner",
+        "team": "home",
+        "minute": 40,
+        "detail": "ได้ลูกเตะมุม (เสียเตะมุมโดย Elisabetta Oliviero)"
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Elisabetta Oliviero",
+        "minute": 43,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "home",
+        "player": "Alyssa Thompson",
+        "minute": 43,
+        "detail": "ได้ลูกฟรีคิกทางฝั่งขวา"
+      },
+      {
+        "type": "added_time",
+        "minute": "45+1",
+        "display_minute": "45+1'",
+        "detail": "ผู้ตัดสินที่ 4 ยกป้ายทดเวลาบาดเจ็บครึ่งแรก 2 นาที"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "minute": "45+1",
+        "display_minute": "45+1'",
+        "detail": "โหม่งกลางกรอบเขตโทษติดเซฟของ Rachele Baldi"
+      },
+      {
+        "type": "period",
+        "minute": "45+99",
+        "display_minute": "HT",
+        "detail": "จบครึ่งแรก: Chelsea Women 0 - 0 Roma"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Ellie Carpenter",
+        "player_in": "Ellie Carpenter",
+        "player_out": "Alyssa Thompson",
+        "minute": 46
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "player_in": "Sjoeke Nüsken",
+        "player_out": "Lauren James",
+        "minute": 46
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Frederikke Thøgersen",
+        "player_in": "Frederikke Thøgersen",
+        "player_out": "Giada Cimò",
+        "minute": 46
+      },
+      {
+        "type": "period",
+        "minute": 46,
+        "display_minute": "46'",
+        "detail": "เริ่มการแข่งขันครึ่งหลัง: Chelsea Women 0 - 0 Roma"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "minute": 48,
+        "detail": "ยิงด้วยขวานอกกรอบเขตโทษติดเซฟของ Rachele Baldi"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Lexi Potter",
+        "minute": 50,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "away",
+        "player": "Winonah Heatley",
+        "minute": 50,
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Ellie Carpenter",
+        "assist": "Wieke Kaptein",
+        "minute": 51,
+        "detail": "Chelsea Women ขึ้นนำ 1 - 0 (ยิงด้วยขวาจากฝั่งขวาของกรอบเขตโทษเข้ากลางประตู แอสซิสต์: Wieke Kaptein)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Aggie Beever-Jones",
+        "minute": 54,
+        "detail": "ยิงด้วยซ้ายกลางกรอบเขตโทษติดเซฟของ Rachele Baldi (แอสซิสต์: Lucy Bronze)"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Keira Walsh",
+        "player_in": "Keira Walsh",
+        "player_out": "Erin Cuthbert",
+        "minute": 55
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Melvine Malard",
+        "player_in": "Melvine Malard",
+        "player_out": "Aggie Beever-Jones",
+        "minute": 56
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Veerle Buurman",
+        "minute": 56,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "away",
+        "player": "Martina Piemonte",
+        "minute": 56,
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Manuela Giugliano",
+        "player_in": "Manuela Giugliano",
+        "player_out": "Giada Greggi",
+        "minute": 60
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Alayah Pilgrim",
+        "player_in": "Alayah Pilgrim",
+        "player_out": "Katelyn van Dooren",
+        "minute": 60
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Sandy Baltimore",
+        "minute": 66,
+        "detail": "ยิงด้วยขวาจากฝั่งซ้ายของกรอบเขตโทษติดบล็อก (แอสซิสต์: Veerle Buurman)"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Maya Doms",
+        "minute": 66,
+        "detail": "ยิงด้วยขวากลางกรอบเขตโทษข้ามคานออกไป (แอสซิสต์: Frederikke Thøgersen)"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Sofia Jahnukainen",
+        "player_in": "Sofia Jahnukainen",
+        "player_out": "Valentina Bergamaschi",
+        "minute": 70
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "minute": 72,
+        "detail": "ยิงด้วยขวานอกกรอบเขตโทษติดบล็อก (แอสซิสต์: Sandy Baltimore)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "minute": 74,
+        "detail": "ยิงด้วยขวานอกกรอบเขตโทษติดบล็อก"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Melvine Malard",
+        "minute": 76,
+        "detail": "ยิงด้วยขวาจากฝั่งซ้ายของกรอบเขตโทษหลุดเสาขวา (แอสซิสต์: Sjoeke Nüsken)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "minute": 76,
+        "detail": "ยิงด้วยขวากลางกรอบเขตโทษข้ามคานออกไป (แอสซิสต์: Melvine Malard)"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Sandy Baltimore",
+        "minute": 77,
+        "detail": "ยิงด้วยซ้ายกลางกรอบเขตโทษติดบล็อก (แอสซิสต์: Sjoeke Nüsken)"
+      },
+      {
+        "type": "corner",
+        "team": "home",
+        "minute": 77,
+        "detail": "ได้ลูกเตะมุม (เสียเตะมุมโดย Frederikke Thøgersen)"
+      },
+      {
+        "type": "corner",
+        "team": "home",
+        "minute": 78,
+        "detail": "ได้ลูกเตะมุมต่อเนื่อง (เสียเตะมุมโดย Frederikke Thøgersen)"
+      },
+      {
+        "type": "shot",
+        "team": "away",
+        "player": "Alayah Pilgrim",
+        "minute": 79,
+        "detail": "ยิงด้วยขวากลางกรอบเขตโทษเฉียดสามเหลี่ยมขวาออกไป (แอสซิสต์: Marie-Aurelle Antoine)"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "player": "Alice Corelli",
+        "player_in": "Alice Corelli",
+        "player_out": "Winonah Heatley",
+        "minute": 80
+      },
+      {
+        "type": "injury",
+        "team": "home",
+        "player": "Lexi Potter",
+        "minute": 82,
+        "detail": "เกมหยุดชั่วคราวเนื่องจากมีอาการบาดเจ็บ"
+      },
+      {
+        "type": "delay",
+        "minute": 83,
+        "detail": "กลับมาแข่งขันต่อ (Delay over. Ready to continue)"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "player": "Giulia Dragoni",
+        "player_in": "Giulia Dragoni",
+        "player_out": "Lexi Potter",
+        "injury": true,
+        "minute": 84
+      },
+      {
+        "type": "foul",
+        "team": "away",
+        "player": "Elisabetta Oliviero",
+        "minute": 86,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "home",
+        "player": "Ellie Carpenter",
+        "minute": 86,
+        "detail": "ได้ลูกฟรีคิกทางฝั่งขวา"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Ellie Carpenter",
+        "minute": 88,
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "away",
+        "player": "Elisabetta Oliviero",
+        "minute": 88,
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "corner",
+        "team": "home",
+        "minute": 88,
+        "detail": "ได้ลูกเตะมุม (เสียเตะมุมโดย Rachele Baldi)"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "player": "Kadeisha Buchanan",
+        "assist": "Wieke Kaptein",
+        "minute": 89,
+        "detail": "Chelsea Women นำห่าง 2 - 0 (โหม่งกลางกรอบเขตโทษต่อเนื่องจากลูกเตะมุม แอสซิสต์: Wieke Kaptein)"
+      },
+      {
+        "type": "added_time",
+        "minute": "90+1",
+        "display_minute": "90+1'",
+        "detail": "ผู้ตัดสินที่ 4 ยกป้ายทดเวลาบาดเจ็บครึ่งหลัง 4 นาที"
+      },
+      {
+        "type": "foul",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "minute": "90+2",
+        "display_minute": "90+2'",
+        "detail": "ทำฟาวล์ (Foul)"
+      },
+      {
+        "type": "free_kick",
+        "team": "away",
+        "player": "Elisabetta Oliviero",
+        "minute": "90+2",
+        "display_minute": "90+2'",
+        "detail": "ได้ลูกฟรีคิกในแดนตัวเอง"
+      },
+      {
+        "type": "shot",
+        "team": "home",
+        "player": "Melvine Malard",
+        "minute": "90+4",
+        "display_minute": "90+4'",
+        "detail": "ยิงด้วยขวานอกกรอบเขตโทษข้ามคานออกไปเล็กน้อย (แอสซิสต์: Sjoeke Nüsken)"
+      },
+      {
+        "type": "period",
+        "minute": "90+99",
+        "display_minute": "FT",
+        "detail": "จบการแข่งขัน: Chelsea Women 2 - 0 Roma"
+      }
+    ],
+    "stats": [
+      {
+        "category": "ภาพรวม",
+        "name": "เปอร์เซ็นต์การครองบอล (Ball possession)",
+        "home": 60,
+        "away": 40,
+        "isPercentage": true
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "โอกาสทอง (Big chances)",
+        "home": 3,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "โอกาสยิงทั้งหมด (Total shots)",
+        "home": 16,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "การเซฟของผู้รักษาประตู (Goalkeeper saves)",
+        "home": 0,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "ลูกเตะมุม (Corner kicks)",
+        "home": 4,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "การทำฟาวล์ (Fouls)",
+        "home": 6,
+        "away": 4,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "จำนวนการจ่ายบอล (Passes)",
+        "home": 416,
+        "away": 279,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "การแท็กเกิล (Tackles)",
+        "home": 20,
+        "away": 16,
+        "isPercentage": false
+      },
+      {
+        "category": "ภาพรวม",
+        "name": "ลูกฟรีคิก (Free kicks)",
+        "home": 4,
+        "away": 6,
+        "isPercentage": false
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Hannah Hampton",
+        "team": "Chelsea Women",
+        "saves": 0
+      },
+      {
+        "name": "Rachele Baldi",
+        "team": "Roma",
+        "saves": 4
+      }
+    ],
+    "live_commentary": [
+      { "time": "FT", "type": "end", "isKey": true, "text": "Match ends, Chelsea Women 2, Roma Femminile 0." },
+      { "time": "90'+4", "type": "end", "isKey": true, "text": "Second Half ends, Chelsea Women 2, Roma Femminile 0." },
+      { "time": "90'+4", "type": "miss", "team": "home", "text": "Attempt missed. Melvine Malard (Chelsea Women) right footed shot from outside the box is just a bit too high. Assisted by Sjoeke Nüsken." },
+      { "time": "90'+2", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half." },
+      { "time": "90'+2", "type": "foul", "team": "home", "text": "Foul by Sjoeke Nüsken (Chelsea Women)." },
+      { "time": "90'+1", "type": "commentary", "text": "Fourth official has announced 4 minutes of added time." },
+      { "time": "89'", "type": "goal", "team": "home", "isKey": true, "text": "Goal! Chelsea Women 2, Roma Femminile 0. Kadeisha Buchanan (Chelsea Women) header from the centre of the box. Assisted by Wieke Kaptein with a cross following a corner." },
+      { "time": "88'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Rachele Baldi." },
+      { "time": "88'", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half." },
+      { "time": "88'", "type": "foul", "team": "home", "text": "Foul by Ellie Carpenter (Chelsea Women)." },
+      { "time": "86'", "type": "free kick", "team": "home", "text": "Ellie Carpenter (Chelsea Women) wins a free kick on the right wing." },
+      { "time": "86'", "type": "foul", "team": "away", "text": "Foul by Elisabetta Oliviero (Roma Femminile)." },
+      { "time": "84'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Giulia Dragoni replaces Lexi Potter because of an injury." },
+      { "time": "83'", "type": "commentary", "text": "Delay over. They are ready to continue." },
+      { "time": "82'", "type": "commentary", "team": "home", "text": "Delay in match because of an injury Lexi Potter (Chelsea Women)." },
+      { "time": "80'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Alice Corelli replaces Winonah Heatley." },
+      { "time": "79'", "type": "miss", "team": "away", "text": "Attempt missed. Alayah Pilgrim (Roma Femminile) right footed shot from the centre of the box is close, but misses the top right corner. Assisted by Marie-Aurelle Antoine." },
+      { "time": "78'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Frederikke Thøgersen." },
+      { "time": "77'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Frederikke Thøgersen." },
+      { "time": "77'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sandy Baltimore (Chelsea Women) left footed shot from the centre of the box is blocked. Assisted by Sjoeke Nüsken." },
+      { "time": "76'", "type": "miss", "team": "home", "text": "Attempt missed. Sjoeke Nüsken (Chelsea Women) right footed shot from the centre of the box is too high. Assisted by Melvine Malard." },
+      { "time": "76'", "type": "miss", "team": "home", "text": "Attempt missed. Melvine Malard (Chelsea Women) right footed shot from the left side of the box misses to the right. Assisted by Sjoeke Nüsken." },
+      { "time": "74'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sjoeke Nüsken (Chelsea Women) right footed shot from outside the box is blocked." },
+      { "time": "72'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sjoeke Nüsken (Chelsea Women) right footed shot from outside the box is blocked. Assisted by Sandy Baltimore." },
+      { "time": "70'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Sofia Jahnukainen replaces Valentina Bergamaschi." },
+      { "time": "66'", "type": "miss", "team": "away", "text": "Attempt missed. Maya Doms (Roma Femminile) right footed shot from the centre of the box is too high. Assisted by Frederikke Thøgersen with a cross." },
+      { "time": "66'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sandy Baltimore (Chelsea Women) right footed shot from the left side of the box is blocked. Assisted by Veerle Buurman." },
+      { "time": "60'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Alayah Pilgrim replaces Katelyn van Dooren." },
+      { "time": "60'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Manuela Giugliano replaces Giada Greggi." },
+      { "time": "56'", "type": "free kick", "team": "away", "text": "Martina Piemonte (Roma Femminile) wins a free kick in the defensive half." },
+      { "time": "56'", "type": "foul", "team": "home", "text": "Foul by Veerle Buurman (Chelsea Women)." },
+      { "time": "56'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Melvine Malard replaces Aggie Beever-Jones." },
+      { "time": "55'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Keira Walsh replaces Erin Cuthbert." },
+      { "time": "54'", "type": "attempt saved", "team": "home", "text": "Attempt saved. Aggie Beever-Jones (Chelsea Women) left footed shot from the centre of the box is saved in the top centre of the goal by Rachele Baldi (Roma Femminile). Assisted by Lucy Bronze." },
+      { "time": "51'", "type": "goal", "team": "home", "isKey": true, "text": "Goal! Chelsea Women 1, Roma Femminile 0. Ellie Carpenter (Chelsea Women) right footed shot from the right side of the box to the centre of the goal. Assisted by Wieke Kaptein with a cross." },
+      { "time": "50'", "type": "foul", "team": "home", "text": "Foul by Lexi Potter (Chelsea Women)." },
+      { "time": "50'", "type": "free kick", "team": "away", "text": "Winonah Heatley (Roma Femminile) wins a free kick in the defensive half." },
+      { "time": "48'", "type": "attempt saved", "team": "home", "text": "Attempt saved. Wieke Kaptein (Chelsea Women) right footed shot from outside the box is saved by Rachele Baldi (Roma Femminile)." },
+      { "time": "46'", "type": "start", "isKey": true, "text": "Second Half begins, Chelsea Women 0, Roma Femminile 0." },
+      { "time": "46'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Frederikke Thøgersen replaces Giada Cimò." },
+      { "time": "46'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Sjoeke Nüsken replaces Lauren James." },
+      { "time": "46'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Ellie Carpenter replaces Alyssa Thompson." },
+      { "time": "HT", "type": "halftime", "isKey": true, "text": "First Half ends, Chelsea Women 0, Roma Femminile 0." },
+      { "time": "45'+1", "type": "attempt saved", "team": "home", "text": "Attempt saved. Wieke Kaptein (Chelsea Women) header from the centre of the box is saved by Rachele Baldi (Roma Femminile)." },
+      { "time": "45'+1", "type": "commentary", "text": "Fourth official has announced 2 minutes of added time." },
+      { "time": "43'", "type": "foul", "team": "away", "text": "Foul by Elisabetta Oliviero (Roma Femminile)." },
+      { "time": "43'", "type": "free kick", "team": "home", "text": "Alyssa Thompson (Chelsea Women) wins a free kick on the right wing." },
+      { "time": "40'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Elisabetta Oliviero." },
+      { "time": "38'", "type": "miss", "team": "home", "text": "Attempt missed. Wieke Kaptein (Chelsea Women) right footed shot from six yard box misses to the left." },
+      { "time": "38'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Lauren James (Chelsea Women) right footed shot is blocked. Assisted by Wieke Kaptein." },
+      { "time": "37'", "type": "miss", "team": "away", "text": "Attempt missed. Maya Doms (Roma Femminile) right footed shot misses to the right. Assisted by Giada Greggi." },
+      { "time": "37'", "type": "corner", "team": "away", "text": "Corner, Roma Femminile. Conceded by Erin Cuthbert." },
+      { "time": "33'", "type": "free kick", "team": "home", "text": "Lucy Bronze (Chelsea Women) wins a free kick in the defensive half." },
+      { "time": "33'", "type": "foul", "team": "away", "text": "Foul by Giada Cimò (Roma Femminile)." },
+      { "time": "32'", "type": "foul", "team": "home", "text": "Foul by Lucy Bronze (Chelsea Women)." },
+      { "time": "32'", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick on the left wing." },
+      { "time": "30'", "type": "miss", "team": "home", "text": "Attempt missed. Wieke Kaptein (Chelsea Women) left footed shot is too high." },
+      { "time": "23'", "type": "commentary", "text": "Delay over. They are ready to continue." },
+      { "time": "22'", "type": "commentary", "team": "home", "text": "Delay in match because of an injury Lexi Potter (Chelsea Women)." },
+      { "time": "21'", "type": "free kick", "team": "home", "text": "Kadeisha Buchanan (Chelsea Women) wins a free kick in the defensive half." },
+      { "time": "21'", "type": "foul", "team": "away", "text": "Foul by Martina Piemonte (Roma Femminile)." },
+      { "time": "20'", "type": "attempt saved", "team": "home", "text": "Attempt saved. Lauren James (Chelsea Women) left footed shot is saved by Rachele Baldi." },
+      { "time": "18'", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half." },
+      { "time": "18'", "type": "foul", "team": "home", "text": "Foul by Aggie Beever-Jones (Chelsea Women)." },
+      { "time": "1'", "type": "start", "isKey": true, "text": "First Half begins." }
+    ],
+    "lineups": {
+      "home": {
+        "manager": "Sonia Bompastor",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "DF"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "DF"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "MF"
+          },
+          {
+            "number": 8,
+            "name": "Erin Cuthbert",
+            "position": "MF",
+            "captain": true
+          },
+          {
+            "number": 32,
+            "name": "Lexi Potter",
+            "position": "MF"
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "FW"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "FW"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones",
+            "position": "FW"
+          },
+          {
+            "number": 10,
+            "name": "Lauren James",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "MF"
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": "FW"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn",
+            "position": "DF"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "DF"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "MF"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": "MF"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "FW"
+          },
+          {
+            "number": 25,
+            "name": "Lola Brown",
+            "position": "MF"
+          },
+          {
+            "number": 29,
+            "name": "Manaka Matsukubo",
+            "position": "MF"
+          },
+          {
+            "number": 38,
+            "name": "Rebecca Spencer",
+            "position": "GK",
+            "pos": "GK"
+          }
+        ]
+      },
+      "away": {
+        "manager": "Gianpiero Piovani",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Rachele Baldi",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 23,
+            "name": "Valentina Bergamaschi",
+            "position": "DF"
+          },
+          {
+            "number": 5,
+            "name": "Marie-Aurelle Antoine",
+            "position": "DF"
+          },
+          {
+            "number": 19,
+            "name": "Sola Oladipo",
+            "position": "DF"
+          },
+          {
+            "number": 13,
+            "name": "Elisabetta Oliviero",
+            "position": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Maya Doms",
+            "position": "MF"
+          },
+          {
+            "number": 4,
+            "name": "Winonah Heatley",
+            "position": "MF"
+          },
+          {
+            "number": 20,
+            "name": "Giada Greggi",
+            "position": "MF",
+            "captain": true
+          },
+          {
+            "number": 8,
+            "name": "Katelyn van Dooren",
+            "position": "MF"
+          },
+          {
+            "number": 14,
+            "name": "Giada Cimò",
+            "position": "FW"
+          },
+          {
+            "number": 18,
+            "name": "Martina Piemonte",
+            "position": "FW"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 7,
+            "name": "Sofia Jahnukainen"
+          },
+          {
+            "number": 10,
+            "name": "Manuela Giugliano"
+          },
+          {
+            "number": 11,
+            "name": "Alayah Pilgrim"
+          },
+          {
+            "number": 12,
+            "name": "Ella Ottey"
+          },
+          {
+            "number": 16,
+            "name": "Alice Corelli"
+          },
+          {
+            "number": 22,
+            "name": "Marta Pandini"
+          },
+          {
+            "number": 25,
+            "name": "Frederikke Thøgersen"
+          },
+          {
+            "number": 29,
+            "name": "Annalena Rieke"
+          },
+          {
+            "number": 30,
+            "name": "Rinsola Babajide"
+          },
+          {
+            "number": 32,
+            "name": "Bianca Vergani"
+          },
+          {
+            "number": 36,
+            "name": "Valentina Soggiu",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 78,
+            "name": "Magda Piekarska"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "Referee",
+          "name": "Olatz Rivera Olmedo"
+        }
+      ]
+    },
     "team_type": "W"
   },
   {

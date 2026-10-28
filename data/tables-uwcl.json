@@ -3,11 +3,25 @@
   "competition": "UEFA Women's Champions League",
   "stage": "League phase",
   "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
-  "last_updated": "2026-10-04T07:00:00.000Z",
+  "last_updated": "2026-10-29T03:00:00.000Z",
   "source": "https://www.uefa.com/womenschampionsleague/standings/",
   "standings": [
     {
       "pos": 1,
+      "team": "Chelsea",
+      "p": 3,
+      "w": 2,
+      "d": 1,
+      "l": 0,
+      "gf": 3,
+      "ga": 0,
+      "gd": 3,
+      "pts": 7,
+      "logo": "databases/logo/teams/england_chelsea.svg",
+      "status": "first_tier"
+    },
+    {
+      "pos": 2,
       "team": "FC Barcelona",
       "p": 2,
       "w": 2,
@@ -21,7 +35,7 @@
       "status": "first_tier"
     },
     {
-      "pos": 2,
+      "pos": 3,
       "team": "Bayern",
       "p": 2,
       "w": 2,
@@ -35,7 +49,7 @@
       "status": "first_tier"
     },
     {
-      "pos": 3,
+      "pos": 4,
       "team": "Arsenal",
       "p": 2,
       "w": 2,
@@ -49,7 +63,7 @@
       "status": "first_tier"
     },
     {
-      "pos": 4,
+      "pos": 5,
       "team": "Lyonnes",
       "p": 2,
       "w": 1,
@@ -60,10 +74,10 @@
       "gd": 3,
       "pts": 4,
       "logo": "databases/logo/teams/france_lyon.svg",
-      "status": "first_tier"
+      "status": "playoff"
     },
     {
-      "pos": 5,
+      "pos": 6,
       "team": "Real Madrid",
       "p": 2,
       "w": 1,
@@ -77,35 +91,7 @@
       "status": "playoff"
     },
     {
-      "pos": 6,
-      "team": "Chelsea",
-      "p": 2,
-      "w": 1,
-      "d": 1,
-      "l": 0,
-      "gf": 1,
-      "ga": 0,
-      "gd": 1,
-      "pts": 4,
-      "logo": "databases/logo/teams/england_chelsea.svg",
-      "status": "playoff"
-    },
-    {
       "pos": 7,
-      "team": "Juventus",
-      "p": 2,
-      "w": 1,
-      "d": 1,
-      "l": 0,
-      "gf": 2,
-      "ga": 1,
-      "gd": 1,
-      "pts": 4,
-      "logo": "databases/logo/teams/italy_juventus--white.svg",
-      "status": "playoff"
-    },
-    {
-      "pos": 8,
       "team": "PSG",
       "p": 2,
       "w": 1,
@@ -116,6 +102,20 @@
       "gd": 1,
       "pts": 4,
       "logo": "databases/logo/teams/france_psg.svg",
+      "status": "playoff"
+    },
+    {
+      "pos": 8,
+      "team": "Juventus",
+      "p": 2,
+      "w": 1,
+      "d": 1,
+      "l": 0,
+      "gf": 2,
+      "ga": 1,
+      "gd": 1,
+      "pts": 4,
+      "logo": "databases/logo/teams/italy_juventus--white.svg",
       "status": "playoff"
     },
     {
@@ -134,20 +134,6 @@
     },
     {
       "pos": 10,
-      "team": "Inter",
-      "p": 2,
-      "w": 1,
-      "d": 0,
-      "l": 1,
-      "gf": 3,
-      "ga": 3,
-      "gd": 0,
-      "pts": 3,
-      "logo": "databases/logo/teams/italy_inter.football-logos.cc.svg",
-      "status": "playoff"
-    },
-    {
-      "pos": 11,
       "team": "Man City",
       "p": 2,
       "w": 1,
@@ -161,21 +147,21 @@
       "status": "playoff"
     },
     {
-      "pos": 12,
-      "team": "Roma",
+      "pos": 11,
+      "team": "Inter",
       "p": 2,
-      "w": 0,
-      "d": 1,
+      "w": 1,
+      "d": 0,
       "l": 1,
-      "gf": 2,
+      "gf": 3,
       "ga": 3,
-      "gd": -1,
-      "pts": 1,
-      "logo": "databases/logo/teams/italy_roma.svg",
+      "gd": 0,
+      "pts": 3,
+      "logo": "databases/logo/teams/italy_inter.football-logos.cc.svg",
       "status": "playoff"
     },
     {
-      "pos": 13,
+      "pos": 12,
       "team": "Benfica",
       "p": 2,
       "w": 0,
@@ -186,6 +172,20 @@
       "gd": -1,
       "pts": 1,
       "logo": "databases/logo/teams/portugal_benfica.svg",
+      "status": "playoff"
+    },
+    {
+      "pos": 13,
+      "team": "Roma",
+      "p": 3,
+      "w": 0,
+      "d": 1,
+      "l": 2,
+      "gf": 2,
+      "ga": 5,
+      "gd": -3,
+      "pts": 1,
+      "logo": "databases/logo/teams/italy_roma.svg",
       "status": "elimination"
     },
     {
