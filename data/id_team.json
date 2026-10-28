@@ -406,6 +406,15 @@
   },
   {
     "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Barcelona",
+    "ชื่อสโมสร (ภาษาไทย)": "บาร์เซโลนา",
+    "ชื่อย่อ": "BAR",
+    "ชื่อสนามเหย้า (Home Stadium)": "Estadi Johan Cruyff",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Estadi Olímpic Lluís Companys",
+    "logo": "databases/logo/teams/spain_barcelona.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
     "สโมสร": "Bayern",
     "ชื่อสโมสร (ภาษาไทย)": "บาเยิร์น มิวนิค",
     "ชื่อย่อ": "BAY",
@@ -427,6 +436,15 @@
     "สโมสร": "OL Lyonnes",
     "ชื่อสโมสร (ภาษาไทย)": "โอแอล ลียงเนสส์",
     "ชื่อย่อ": "OLL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Groupama OL Training Center",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Groupama Stadium",
+    "logo": "databases/logo/teams/france_ol-lyonnes.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "OL Lyonnais",
+    "ชื่อสโมสร (ภาษาไทย)": "โอลิมปิก ลียง",
+    "ชื่อย่อ": "OLY",
     "ชื่อสนามเหย้า (Home Stadium)": "Groupama OL Training Center",
     "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Groupama Stadium",
     "logo": "databases/logo/teams/france_ol-lyonnes.football-logos.cc.svg"
@@ -457,6 +475,24 @@
     "ชื่อสนามเหย้า (Home Stadium)": "Campus PSG",
     "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Parc des Princes",
     "logo": "databases/logo/teams/france_psg.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "Paris SG",
+    "ชื่อสโมสร (ภาษาไทย)": "ปารีส แซงต์-แชร์กแมง",
+    "ชื่อย่อ": "PSG",
+    "ชื่อสนามเหย้า (Home Stadium)": "Campus PSG",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "Parc des Princes",
+    "logo": "databases/logo/teams/france_psg.svg"
+  },
+  {
+    "ลีก": "UEFA Women's Champions League",
+    "สโมสร": "BK Häcken",
+    "ชื่อสโมสร (ภาษาไทย)": "บีเค ฮัคเค่น",
+    "ชื่อย่อ": "BKH",
+    "ชื่อสนามเหย้า (Home Stadium)": "Bravida Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/sweden_hacken.football-logos.cc.svg"
   },
   {
     "ลีก": "UEFA Women's Champions League",

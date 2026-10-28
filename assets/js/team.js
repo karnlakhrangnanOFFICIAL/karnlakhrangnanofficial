@@ -358,10 +358,17 @@ function getLocalTeamLogo(teamName, fallbackLogo) {
   if (name.includes("juventus")) return "databases/logo/teams/italy_juventus--white.svg";
   if (name.includes("milan")) return "databases/logo/teams/italy_milan.svg";
   if (name.includes("barcelona")) return "databases/logo/teams/spain_barcelona.svg";
+  if (name.includes("ol lyon") || name.includes("lyonnais") || name.includes("lyonnes")) return "databases/logo/teams/france_ol-lyonnes.football-logos.cc.svg";
   if (name.includes("lyon")) return "databases/logo/teams/france_lyon.svg";
   if (name.includes("bayern")) return "databases/logo/teams/germany_bayern-munchen.svg";
   if (name.includes("wolfsburg")) return "databases/logo/teams/germany_wolfsburg.svg";
-  if (name.includes("psg") || name.includes("paris saint-germain")) return "databases/logo/teams/france_psg.svg";
+  if (name.includes("psg") || name.includes("paris sg") || name.includes("paris saint-germain")) return "databases/logo/teams/france_psg.svg";
+  if (name === "paris" || name.includes("paris fc")) return "databases/logo/teams/france_paris-fc.football-logos.cc.svg";
+  if (name.includes("inter")) return "databases/logo/teams/italy_inter.football-logos.cc.svg";
+  if (name.includes("leuven")) return "databases/logo/teams/belgium_ohl-oud-heverlee-leuven.football-logos.cc.svg";
+  if (name.includes("austria wien")) return "databases/logo/teams/austria_austria-wien.football-logos.cc.svg";
+  if (name.includes("häcken") || name.includes("hacken")) return "databases/logo/teams/sweden_hacken.football-logos.cc.svg";
+  if (name.includes("køge") || name.includes("koge")) return "databases/logo/teams/denmark_hb_koge.football-logos.cc.svg";
   if (name.includes("roma")) return "databases/logo/teams/italy_roma.svg";
   if (name.includes("benfica")) return "databases/logo/teams/portugal_benfica.svg";
   if (name.includes("valerenga") || name.includes("vålerenga")) return "databases/logo/teams/norway_valerenga.svg";
@@ -420,8 +427,8 @@ function renderTable(container, table, highlightTeam, compLogo, compName, compKe
 
             if (isUwcl) {
               if (posNum >= 1 && posNum <= 4) posClass = "pos-first-tier";
-              else if (posNum >= 5 && posNum <= 16) posClass = "pos-playoff";
-              else if (posNum >= 17) posClass = "pos-relegation";
+              else if (posNum >= 5 && posNum <= 12) posClass = "pos-playoff";
+              else if (posNum >= 13) posClass = "pos-relegation";
             } else if (isWomenPage) {
               if (posNum >= 1 && posNum <= 2) posClass = "pos-ucl";
               else if (posNum === 3) posClass = "pos-uwcl-qual";
@@ -439,7 +446,9 @@ function renderTable(container, table, highlightTeam, compLogo, compName, compKe
             const l = row.l ?? row.lost ?? 0;
             const gf = row.gf ?? row.goalsFor ?? 0;
             const ga = row.ga ?? row.goalsAgainst ?? 0;
-            const gd = row.gd ?? row.goalDifference ?? gf - ga;
+            const gdRaw = row.gd ?? row.goalDifference ?? gf - ga;
+            const gdNum = Number(gdRaw);
+            const gdDisplay = !isNaN(gdNum) && gdNum > 0 ? `+${gdNum}` : String(gdRaw);
             const pts = row.pts ?? row.points ?? 0;
 
             const isHighlighted =
@@ -453,7 +462,7 @@ function renderTable(container, table, highlightTeam, compLogo, compName, compKe
             <td class="logo-cell">${teamLogo ? `<img src="${teamLogo}" alt="${rawTeamName}" class="table-team-logo" onerror="this.onerror=null; this.src='databases/logo/teams/england_chelsea.svg';">` : ""}</td>
             <td class="team-cell">${teamHtml}</td>
             <td>${p}</td><td>${w}</td><td>${d}</td><td>${l}</td>
-            <td>${gf}</td><td>${ga}</td><td>${gd}</td>
+            <td>${gf}</td><td>${ga}</td><td>${gdDisplay}</td>
             <td><strong>${pts}</strong></td>
           </tr>
           `;
@@ -487,9 +496,9 @@ function renderWomenTableRules(compKey = "uwcl") {
           <span>⭐</span> ${isTh ? "กฎการแข่งขัน UEFA Women's Champions League (League phase · 18 ทีม):" : "UEFA Women's Champions League Format (League phase · 18 teams):"}
         </strong>
         <div style="display: flex; flex-direction: column; gap: 4px; line-height: 1.5;">
-          <div>• <strong>${isTh ? "อันดับ 1 - 4:" : "1st - 4th Place:"}</strong> <span style="color: #93c5fd;">${isTh ? "ผ่านเข้าสู่รอบ 16 ทีมสุดท้ายโดยตรง (Direct Round of 16)" : "Advance directly to the Round of 16"}</span></div>
-          <div>• <strong>${isTh ? "อันดับ 5 - 16:" : "5th - 16th Place:"}</strong> <span style="color: #67e8f9;">${isTh ? "ผ่านเข้าสู่รอบเพลย์ออฟน็อคเอาท์ (Knockout phase play-offs)" : "Advance to the Knockout phase play-offs"}</span></div>
-          <div>• <strong>${isTh ? "อันดับ 17 - 18:" : "17th - 18th Place:"}</strong> <span style="color: #fca5a5;">${isTh ? "ตกรอบการแข่งขันในฤดูกาลนี้ (Eliminated)" : "Eliminated from European competition"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 1 - 4:" : "1st - 4th Place:"}</strong> <span style="color: #93c5fd;">${isTh ? "ผ่านเข้าสู่รอบก่อนรองชนะเลิศโดยตรง (Direct Quarter-finals)" : "Advance directly to the Quarter-finals"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 5 - 12:" : "5th - 12th Place:"}</strong> <span style="color: #67e8f9;">${isTh ? "ผ่านเข้าสู่รอบเพลย์ออฟน็อคเอาท์ (Knockout phase play-offs)" : "Advance to the Knockout phase play-offs"}</span></div>
+          <div>• <strong>${isTh ? "อันดับ 13 - 18:" : "13th - 18th Place:"}</strong> <span style="color: #fca5a5;">${isTh ? "ตกรอบการแข่งขันในฤดูกาลนี้ (Eliminated)" : "Eliminated from European competition"}</span></div>
         </div>
       </div>
     `;
@@ -497,15 +506,15 @@ function renderWomenTableRules(compKey = "uwcl") {
     rankKeyHtml = `
       <li class="table-rules-item">
         <span class="legend-dot first-tier"></span>
-        <span><strong>${isTh ? "ผ่านเข้ารอบ 16 ทีมสุดท้ายโดยตรง (อันดับ 1 - 4):" : "Direct Round of 16 (Rank 1 - 4):"}</strong> ${isTh ? "ได้สิทธิ์เข้าสู่รอบน็อคเอาท์ 16 ทีมสุดท้ายของ UWCL ทันที" : "Qualifies directly for the UEFA Women's Champions League Round of 16"}</span>
+        <span><strong>${isTh ? "ผ่านเข้ารอบ 8 ทีมสุดท้ายโดยตรง (อันดับ 1 - 4):" : "Direct Quarter-finals (Rank 1 - 4):"}</strong> ${isTh ? "ได้สิทธิ์เข้าสู่รอบก่อนรองชนะเลิศ (Quarter-finals) ของ UWCL ทันที" : "Qualifies directly for the UEFA Women's Champions League Quarter-finals"}</span>
       </li>
       <li class="table-rules-item">
         <span class="legend-dot playoff"></span>
-        <span><strong>${isTh ? "รอบเพลย์ออฟน็อคเอาท์ (อันดับ 5 - 16):" : "Knockout Play-offs (Rank 5 - 16):"}</strong> ${isTh ? "ผ่านเข้าสู่รอบเพลย์ออฟประกบคู่เหย้า-เยือน เพื่อหาทีมเข้าสู่รอบ 16 ทีม" : "Qualifies for the 2-legged knockout phase play-offs"}</span>
+        <span><strong>${isTh ? "รอบเพลย์ออฟน็อคเอาท์ (อันดับ 5 - 12):" : "Knockout Play-offs (Rank 5 - 12):"}</strong> ${isTh ? "ผ่านเข้าสู่รอบเพลย์ออฟประกบคู่เหย้า-เยือน เพื่อหา 4 ทีมเข้าสู่รอบ 8 ทีมสุดท้าย" : "Qualifies for the 2-legged knockout phase play-offs"}</span>
       </li>
       <li class="table-rules-item">
         <span class="legend-dot relegation"></span>
-        <span><strong>${isTh ? "ตกรอบการแข่งขัน (อันดับ 17 - 18):" : "Eliminated (Rank 17 - 18):"}</strong> ${isTh ? "สิ้นสุดการแข่งขันฟุตบอลยุโรปในฤดูกาลปัจจุบัน" : "Eliminated from the competition for the current season"}</span>
+        <span><strong>${isTh ? "ตกรอบการแข่งขัน (อันดับ 13 - 18):" : "Eliminated (Rank 13 - 18):"}</strong> ${isTh ? "สิ้นสุดการแข่งขันฟุตบอลยุโรปในฤดูกาลปัจจุบัน" : "Eliminated from the competition for the current season"}</span>
       </li>
     `;
   } else {

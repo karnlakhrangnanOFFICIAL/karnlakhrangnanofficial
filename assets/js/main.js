@@ -828,11 +828,20 @@ function getTeamInfo(teamName) {
   const norm = rawStr.toLowerCase().trim();
   if (teamsDataMap.has(norm)) return teamsDataMap.get(norm);
 
+  if ((norm.includes("paris sg") || norm.includes("paris saint") || norm === "psg") && teamsDataMap.has("psg")) {
+    return teamsDataMap.get("psg");
+  }
+  if ((norm.includes("lyonnais") || norm.includes("lyonnes")) && (teamsDataMap.get("ol lyonnais") || teamsDataMap.get("ol lyonnes"))) {
+    return teamsDataMap.get("ol lyonnais") || teamsDataMap.get("ol lyonnes");
+  }
+
   // Normalize variations e.g. "Chelsea FC", "Chelsea Women"
   for (const [key, val] of teamsDataMap.entries()) {
+    if (key === "paris" && norm !== "paris" && norm !== "paris fc") continue;
     if (norm === key || norm.startsWith(key) || key.startsWith(norm)) return val;
   }
   for (const [key, val] of teamsDataMap.entries()) {
+    if (key === "paris" && norm !== "paris" && norm !== "paris fc") continue;
     if (norm.includes(key) || key.includes(norm)) return val;
   }
   return null;
