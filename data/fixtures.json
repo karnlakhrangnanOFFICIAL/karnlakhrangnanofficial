@@ -6750,13 +6750,1033 @@
         "platform": "www.monomax.me"
       }
     ],
-    "status": "upcoming",
-    "period": "PreMatch",
-    "clock": "",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "period": "FullTime",
+    "clock": "FT",
+    "home_score": 1,
+    "away_score": 1,
+    "goals": [
+      {
+        "minute": 40,
+        "team": "away",
+        "player": "Morgan Rogers",
+        "number": 17,
+        "penalty": true,
+        "detail": "Penalty",
+        "assist": ""
+      },
+      {
+        "minute": 43,
+        "team": "home",
+        "player": "Cody Gakpo",
+        "number": 18,
+        "penalty": true,
+        "detail": "Penalty",
+        "assist": ""
+      }
+    ],
+    "events": [
+      {
+        "minute": 1,
+        "display_minute": "1'",
+        "type": "kick_off",
+        "detail": "First Half begins."
+      },
+      {
+        "minute": 6,
+        "display_minute": "6'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Rio Ngumoha",
+        "detail": "Wins a free kick on the left wing"
+      },
+      {
+        "minute": 6,
+        "display_minute": "6'",
+        "type": "foul",
+        "team": "away",
+        "player": "Pedro Neto",
+        "detail": "Foul"
+      },
+      {
+        "minute": 10,
+        "display_minute": "10'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Maxence Lacroix",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 10,
+        "display_minute": "10'",
+        "type": "foul",
+        "team": "home",
+        "player": "Lewis Koumas",
+        "detail": "Foul"
+      },
+      {
+        "minute": 11,
+        "display_minute": "11'",
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Lewis Koumas",
+        "detail": "Yellow card (for a bad foul)"
+      },
+      {
+        "minute": 17,
+        "display_minute": "17'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Moisés Caicedo)"
+      },
+      {
+        "minute": 18,
+        "display_minute": "18'",
+        "type": "foul",
+        "team": "home",
+        "player": "Kostas Tsimikas",
+        "detail": "Foul"
+      },
+      {
+        "minute": 18,
+        "display_minute": "18'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Malo Gusto",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 18,
+        "display_minute": "18'",
+        "type": "foul",
+        "team": "home",
+        "player": "Kostas Tsimikas",
+        "detail": "Foul"
+      },
+      {
+        "minute": 18,
+        "display_minute": "18'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Pedro Neto",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 21,
+        "display_minute": "21'",
+        "type": "foul",
+        "team": "home",
+        "player": "James McConnell",
+        "detail": "Handball"
+      },
+      {
+        "minute": 21,
+        "display_minute": "21'",
+        "type": "yellow_card",
+        "team": "home",
+        "player": "James McConnell",
+        "detail": "Yellow card (for handball)"
+      },
+      {
+        "minute": 22,
+        "display_minute": "22'",
+        "type": "shot",
+        "team": "away",
+        "player": "Moisés Caicedo",
+        "detail": "right footed shot from outside the box misses to the left"
+      },
+      {
+        "minute": 25,
+        "display_minute": "25'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Trey Nyoni",
+        "detail": "Wins a free kick on the left wing"
+      },
+      {
+        "minute": 25,
+        "display_minute": "25'",
+        "type": "foul",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Foul"
+      },
+      {
+        "minute": 26,
+        "display_minute": "26'",
+        "type": "offside",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "Caught offside"
+      },
+      {
+        "minute": 27,
+        "display_minute": "27'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Josh Acheampong)"
+      },
+      {
+        "minute": 29,
+        "display_minute": "29'",
+        "type": "foul",
+        "team": "home",
+        "player": "Cody Gakpo",
+        "detail": "Foul"
+      },
+      {
+        "minute": 29,
+        "display_minute": "29'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 31,
+        "display_minute": "31'",
+        "type": "shot",
+        "team": "home",
+        "player": "Ronald Araujo",
+        "detail": "header from the centre of the box is blocked"
+      },
+      {
+        "minute": 31,
+        "display_minute": "31'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Malo Gusto)"
+      },
+      {
+        "minute": 32,
+        "display_minute": "32'",
+        "type": "offside",
+        "team": "home",
+        "player": "Rio Ngumoha",
+        "detail": "Caught offside"
+      },
+      {
+        "minute": 38,
+        "display_minute": "38'",
+        "type": "penalty_awarded",
+        "team": "home",
+        "player": "Ryan Gravenberch",
+        "detail": "Penalty conceded (after a foul in the penalty area)"
+      },
+      {
+        "minute": 38,
+        "display_minute": "38'",
+        "type": "penalty_awarded",
+        "team": "away",
+        "player": "Moisés Caicedo",
+        "detail": "Wins penalty in the penalty area"
+      },
+      {
+        "minute": 40,
+        "display_minute": "40'",
+        "type": "goal",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "Penalty",
+        "assist": ""
+      },
+      {
+        "minute": 41,
+        "display_minute": "41'",
+        "type": "shot",
+        "team": "home",
+        "player": "Trey Nyoni",
+        "detail": "right footed shot from outside the box is blocked"
+      },
+      {
+        "minute": 41,
+        "display_minute": "41'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Wesley Fofana)"
+      },
+      {
+        "minute": 42,
+        "display_minute": "42'",
+        "type": "shot",
+        "team": "home",
+        "player": "Virgil van Dijk",
+        "detail": "header from the centre of the box is blocked. Assisted by Kostas Tsimikas"
+      },
+      {
+        "minute": 42,
+        "display_minute": "42'",
+        "type": "penalty_awarded",
+        "team": "away",
+        "player": "Wesley Fofana",
+        "detail": "Penalty conceded (with a handball in the penalty area)"
+      },
+      {
+        "minute": 43,
+        "display_minute": "43'",
+        "type": "goal",
+        "team": "home",
+        "player": "Cody Gakpo",
+        "detail": "Penalty",
+        "assist": ""
+      },
+      {
+        "minute": 44,
+        "display_minute": "44'",
+        "type": "save",
+        "team": "home",
+        "player": "Cody Gakpo",
+        "detail": "right footed shot from outside the box is saved in the bottom right corner by Mike Penders (Chelsea)"
+      },
+      {
+        "minute": 45,
+        "display_minute": "45'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Josh Acheampong)"
+      },
+      {
+        "minute": 45,
+        "display_minute": "45'",
+        "type": "injury",
+        "team": "away",
+        "player": "Maxence Lacroix",
+        "detail": "Delay in match due to injury"
+      },
+      {
+        "minute": "45+1",
+        "display_minute": "45+1'",
+        "type": "delay",
+        "detail": "Delay over. They are ready to continue."
+      },
+      {
+        "minute": "45+1",
+        "display_minute": "45+1'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Levi Colwill",
+        "player_out": "Maxence Lacroix",
+        "injury": true
+      },
+      {
+        "minute": "45+2",
+        "display_minute": "45+2'",
+        "type": "shot",
+        "team": "home",
+        "player": "Ronald Araujo",
+        "detail": "header from the centre of the box is too high. Assisted by Kostas Tsimikas"
+      },
+      {
+        "minute": "45+4",
+        "display_minute": "45+4'",
+        "type": "added_time",
+        "detail": "Fourth official has announced 3 minutes of added time."
+      },
+      {
+        "minute": "45+4",
+        "display_minute": "45+4'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Cody Gakpo",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": "45+4",
+        "display_minute": "45+4'",
+        "type": "foul",
+        "team": "away",
+        "player": "Levi Colwill",
+        "detail": "Foul"
+      },
+      {
+        "minute": "45+99",
+        "display_minute": "HT",
+        "type": "period",
+        "detail": "First Half ends, Liverpool 1, Chelsea 1."
+      },
+      {
+        "minute": 46,
+        "display_minute": "46'",
+        "type": "period",
+        "detail": "Second Half begins Liverpool 1, Chelsea 1."
+      },
+      {
+        "minute": 48,
+        "display_minute": "48'",
+        "type": "save",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "right footed shot from the centre of the box is saved by Giorgi Mamardashvili (Liverpool)"
+      },
+      {
+        "minute": 48,
+        "display_minute": "48'",
+        "type": "corner",
+        "team": "away",
+        "player": "Chelsea",
+        "detail": "Corner kick (Conceded by Giorgi Mamardashvili)"
+      },
+      {
+        "minute": 49,
+        "display_minute": "49'",
+        "type": "foul",
+        "team": "home",
+        "player": "Lewis Koumas",
+        "detail": "Handball"
+      },
+      {
+        "minute": 50,
+        "display_minute": "50'",
+        "type": "foul",
+        "team": "away",
+        "player": "Josh Acheampong",
+        "detail": "Foul"
+      },
+      {
+        "minute": 50,
+        "display_minute": "50'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Rio Ngumoha",
+        "detail": "Wins a free kick on the left wing"
+      },
+      {
+        "minute": 50,
+        "display_minute": "50'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Josh Acheampong",
+        "detail": "Yellow card (for a bad foul)"
+      },
+      {
+        "minute": 53,
+        "display_minute": "53'",
+        "type": "shot",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "right footed shot from the left side of the box is blocked"
+      },
+      {
+        "minute": 53,
+        "display_minute": "53'",
+        "type": "save",
+        "team": "away",
+        "player": "Pedro Neto",
+        "detail": "left footed shot from outside the box is saved in the top centre by Giorgi Mamardashvili (Liverpool)"
+      },
+      {
+        "minute": 54,
+        "display_minute": "54'",
+        "type": "offside",
+        "team": "away",
+        "player": "Malo Gusto",
+        "detail": "Caught offside"
+      },
+      {
+        "minute": 55,
+        "display_minute": "55'",
+        "type": "shot",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "right footed shot from the right side of the box is blocked"
+      },
+      {
+        "minute": 55,
+        "display_minute": "55'",
+        "type": "corner",
+        "team": "away",
+        "player": "Chelsea",
+        "detail": "Corner kick (Conceded by Virgil van Dijk)"
+      },
+      {
+        "minute": 56,
+        "display_minute": "56'",
+        "type": "offside",
+        "team": "away",
+        "player": "Malo Gusto",
+        "detail": "Caught offside"
+      },
+      {
+        "minute": 57,
+        "display_minute": "57'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Ryan Gravenberch",
+        "detail": "Wins a free kick in the attacking half"
+      },
+      {
+        "minute": 57,
+        "display_minute": "57'",
+        "type": "foul",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Foul"
+      },
+      {
+        "minute": 59,
+        "display_minute": "59'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Bradley Barcola",
+        "player_out": "Lewis Koumas",
+        "injury": false
+      },
+      {
+        "minute": 59,
+        "display_minute": "59'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Florian Wirtz",
+        "player_out": "James McConnell",
+        "injury": false
+      },
+      {
+        "minute": 61,
+        "display_minute": "61'",
+        "type": "save",
+        "team": "home",
+        "player": "Ronald Araujo",
+        "detail": "header from the centre of the box is saved by Mike Penders (Chelsea)"
+      },
+      {
+        "minute": 61,
+        "display_minute": "61'",
+        "type": "shot",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "right footed shot from the centre of the box is blocked"
+      },
+      {
+        "minute": 61,
+        "display_minute": "61'",
+        "type": "corner",
+        "team": "away",
+        "player": "Chelsea",
+        "detail": "Corner kick (Conceded by Joe Gomez)"
+      },
+      {
+        "minute": 62,
+        "display_minute": "62'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Wesley Fofana",
+        "detail": "Wins a free kick on the left wing"
+      },
+      {
+        "minute": 62,
+        "display_minute": "62'",
+        "type": "foul",
+        "team": "home",
+        "player": "Joe Gomez",
+        "detail": "Foul"
+      },
+      {
+        "minute": 65,
+        "display_minute": "65'",
+        "type": "save",
+        "team": "home",
+        "player": "Bradley Barcola",
+        "detail": "left footed shot is saved in the bottom right corner by Mike Penders (Chelsea)"
+      },
+      {
+        "minute": 65,
+        "display_minute": "65'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Mike Penders)"
+      },
+      {
+        "minute": 66,
+        "display_minute": "66'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Wins a free kick in the attacking half"
+      },
+      {
+        "minute": 66,
+        "display_minute": "66'",
+        "type": "foul",
+        "team": "home",
+        "player": "Cody Gakpo",
+        "detail": "Foul"
+      },
+      {
+        "minute": 67,
+        "display_minute": "67'",
+        "type": "shot",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "right footed shot from outside the box is too high from a direct free kick"
+      },
+      {
+        "minute": 68,
+        "display_minute": "68'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Emmanuel Emegha",
+        "player_out": "Danny Welbeck",
+        "injury": false
+      },
+      {
+        "minute": 68,
+        "display_minute": "68'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Marco Palestra",
+        "player_out": "Malo Gusto",
+        "injury": false
+      },
+      {
+        "minute": 68,
+        "display_minute": "68'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Valentín Barco",
+        "player_out": "Moisés Caicedo",
+        "injury": false
+      },
+      {
+        "minute": 72,
+        "display_minute": "72'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Jérémy Jacquet",
+        "player_out": "Virgil van Dijk",
+        "injury": false
+      },
+      {
+        "minute": 73,
+        "display_minute": "73'",
+        "type": "foul",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Foul"
+      },
+      {
+        "minute": 73,
+        "display_minute": "73'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Rio Ngumoha",
+        "detail": "Wins a free kick in the attacking half"
+      },
+      {
+        "minute": 73,
+        "display_minute": "73'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Yellow card (for a bad foul)"
+      },
+      {
+        "minute": 75,
+        "display_minute": "75'",
+        "type": "shot",
+        "team": "away",
+        "player": "Josh Acheampong",
+        "detail": "right footed shot from the right side of the box misses to the left"
+      },
+      {
+        "minute": 76,
+        "display_minute": "76'",
+        "type": "foul",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "Foul"
+      },
+      {
+        "minute": 76,
+        "display_minute": "76'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Joe Gomez",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 76,
+        "display_minute": "76'",
+        "type": "corner",
+        "team": "away",
+        "player": "Chelsea",
+        "detail": "Corner kick (Conceded by Ronald Araujo)"
+      },
+      {
+        "minute": 78,
+        "display_minute": "78'",
+        "type": "save",
+        "team": "away",
+        "player": "Marco Palestra",
+        "detail": "right footed shot is saved in the bottom left corner by Giorgi Mamardashvili (Liverpool)"
+      },
+      {
+        "minute": 78,
+        "display_minute": "78'",
+        "type": "corner",
+        "team": "away",
+        "player": "Chelsea",
+        "detail": "Corner kick (Conceded by Giorgi Mamardashvili)"
+      },
+      {
+        "minute": 78,
+        "display_minute": "78'",
+        "type": "shot",
+        "team": "away",
+        "player": "Levi Colwill",
+        "detail": "header from very close range misses to the right"
+      },
+      {
+        "minute": 79,
+        "display_minute": "79'",
+        "type": "injury",
+        "team": "away",
+        "player": "Wesley Fofana",
+        "detail": "Delay in match due to injury"
+      },
+      {
+        "minute": 80,
+        "display_minute": "80'",
+        "type": "delay",
+        "detail": "Delay over. They are ready to continue."
+      },
+      {
+        "minute": 80,
+        "display_minute": "80'",
+        "type": "shot",
+        "team": "home",
+        "player": "Florian Wirtz",
+        "detail": "right footed shot from very close range is blocked"
+      },
+      {
+        "minute": 80,
+        "display_minute": "80'",
+        "type": "shot",
+        "team": "home",
+        "player": "Bradley Barcola",
+        "detail": "right footed shot from very close range is blocked"
+      },
+      {
+        "minute": 81,
+        "display_minute": "81'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Alexis Mac Allister",
+        "player_out": "Trey Nyoni",
+        "injury": false
+      },
+      {
+        "minute": 82,
+        "display_minute": "82'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Alexander Isak",
+        "player_out": "Rio Ngumoha",
+        "injury": false
+      },
+      {
+        "minute": 82,
+        "display_minute": "82'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Marco Palestra",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 82,
+        "display_minute": "82'",
+        "type": "foul",
+        "team": "home",
+        "player": "Bradley Barcola",
+        "detail": "Foul"
+      },
+      {
+        "minute": 85,
+        "display_minute": "85'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Wins a free kick in the attacking half"
+      },
+      {
+        "minute": 85,
+        "display_minute": "85'",
+        "type": "foul",
+        "team": "home",
+        "player": "Florian Wirtz",
+        "detail": "Foul"
+      },
+      {
+        "minute": 86,
+        "display_minute": "86'",
+        "type": "corner",
+        "team": "home",
+        "player": "Liverpool",
+        "detail": "Corner kick (Conceded by Valentín Barco)"
+      },
+      {
+        "minute": 88,
+        "display_minute": "88'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": 88,
+        "display_minute": "88'",
+        "type": "foul",
+        "team": "home",
+        "player": "Jérémy Jacquet",
+        "detail": "Foul"
+      },
+      {
+        "minute": 90,
+        "display_minute": "90'",
+        "type": "added_time",
+        "detail": "Fourth official has announced 3 minutes of added time."
+      },
+      {
+        "minute": "90+1",
+        "display_minute": "90+1'",
+        "type": "foul",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "detail": "Foul"
+      },
+      {
+        "minute": "90+1",
+        "display_minute": "90+1'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Joe Gomez",
+        "detail": "Wins a free kick in the defensive half"
+      },
+      {
+        "minute": "90+99",
+        "display_minute": "FT",
+        "type": "full_time",
+        "detail": "Second Half ends, Liverpool 1, Chelsea 1."
+      },
+      {
+        "minute": "120+0",
+        "display_minute": "PEN",
+        "period": "shootout",
+        "type": "period",
+        "detail": "Penalty Shootout begins Liverpool 1, Chelsea 1."
+      },
+      {
+        "minute": "120+1",
+        "display_minute": "P1",
+        "period": "shootout",
+        "round": 1,
+        "kick": 1,
+        "type": "shootout_goal",
+        "team": "home",
+        "player": "Alexis Mac Allister",
+        "shootout_score": "1 - 0",
+        "detail": "Converts penalty (1 - 0)"
+      },
+      {
+        "minute": "120+2",
+        "display_minute": "P2",
+        "period": "shootout",
+        "round": 1,
+        "kick": 2,
+        "type": "shootout_goal",
+        "team": "away",
+        "player": "Pedro Neto",
+        "shootout_score": "1 - 1",
+        "detail": "Converts penalty (1 - 1)"
+      },
+      {
+        "minute": "120+3",
+        "display_minute": "P3",
+        "period": "shootout",
+        "round": 2,
+        "kick": 3,
+        "type": "shootout_goal",
+        "team": "home",
+        "player": "Alexander Isak",
+        "shootout_score": "2 - 1",
+        "detail": "Converts penalty (2 - 1)"
+      },
+      {
+        "minute": "120+4",
+        "display_minute": "P4",
+        "period": "shootout",
+        "round": 2,
+        "kick": 4,
+        "type": "shootout_goal",
+        "team": "away",
+        "player": "Morgan Rogers",
+        "shootout_score": "2 - 2",
+        "detail": "Converts penalty (2 - 2)"
+      },
+      {
+        "minute": "120+5",
+        "display_minute": "P5",
+        "period": "shootout",
+        "round": 3,
+        "kick": 5,
+        "type": "shootout_goal",
+        "team": "home",
+        "player": "Cody Gakpo",
+        "shootout_score": "3 - 2",
+        "detail": "Converts penalty (3 - 2)"
+      },
+      {
+        "minute": "120+6",
+        "display_minute": "P6",
+        "period": "shootout",
+        "round": 3,
+        "kick": 6,
+        "type": "shootout_goal",
+        "team": "away",
+        "player": "Roméo Lavia",
+        "shootout_score": "3 - 3",
+        "detail": "Converts penalty (3 - 3)"
+      },
+      {
+        "minute": "120+7",
+        "display_minute": "P7",
+        "period": "shootout",
+        "round": 4,
+        "kick": 7,
+        "type": "shootout_goal",
+        "team": "home",
+        "player": "Florian Wirtz",
+        "shootout_score": "4 - 3",
+        "detail": "Converts penalty (4 - 3)"
+      },
+      {
+        "minute": "120+8",
+        "display_minute": "P8",
+        "period": "shootout",
+        "round": 4,
+        "kick": 8,
+        "type": "shootout_miss",
+        "team": "away",
+        "player": "Valentín Barco",
+        "shootout_score": "4 - 3",
+        "detail": "Hits the left post with a left footed shot (4 - 3)"
+      },
+      {
+        "minute": "120+9",
+        "display_minute": "P9",
+        "period": "shootout",
+        "round": 5,
+        "kick": 9,
+        "type": "shootout_miss",
+        "team": "home",
+        "player": "Kostas Tsimikas",
+        "shootout_score": "4 - 3",
+        "detail": "Left footed shot is high and wide to the left (4 - 3)"
+      },
+      {
+        "minute": "120+10",
+        "display_minute": "P10",
+        "period": "shootout",
+        "round": 5,
+        "kick": 10,
+        "type": "shootout_goal",
+        "team": "away",
+        "player": "Jordan Henderson",
+        "shootout_score": "4 - 4",
+        "detail": "Converts penalty (4 - 4)"
+      },
+      {
+        "minute": "120+11",
+        "display_minute": "P11",
+        "period": "shootout",
+        "round": 6,
+        "kick": 11,
+        "type": "shootout_goal",
+        "team": "home",
+        "player": "Bradley Barcola",
+        "shootout_score": "5 - 4",
+        "detail": "Converts penalty (5 - 4)"
+      },
+      {
+        "minute": "120+12",
+        "display_minute": "P12",
+        "period": "shootout",
+        "round": 6,
+        "kick": 12,
+        "type": "shootout_goal",
+        "team": "away",
+        "player": "Levi Colwill",
+        "shootout_score": "5 - 5",
+        "detail": "Converts penalty (5 - 5)"
+      },
+      {
+        "minute": "120+13",
+        "display_minute": "P13",
+        "period": "shootout",
+        "round": 7,
+        "kick": 13,
+        "type": "shootout_save",
+        "team": "home",
+        "player": "Ryan Gravenberch",
+        "shootout_score": "5 - 5",
+        "detail": "Saved by Mike Penders (5 - 5)"
+      },
+      {
+        "minute": "120+14",
+        "display_minute": "P14",
+        "period": "shootout",
+        "round": 7,
+        "kick": 14,
+        "type": "shootout_save",
+        "team": "away",
+        "player": "Emmanuel Emegha",
+        "shootout_score": "5 - 5",
+        "detail": "Saved by Giorgi Mamardashvili (5 - 5)"
+      },
+      {
+        "minute": "120+15",
+        "display_minute": "P15",
+        "period": "shootout",
+        "round": 8,
+        "kick": 15,
+        "type": "shootout_goal",
+        "team": "home",
+        "player": "Joe Gomez",
+        "shootout_score": "6 - 5",
+        "detail": "Converts penalty (6 - 5)"
+      },
+      {
+        "minute": "120+16",
+        "display_minute": "P16",
+        "period": "shootout",
+        "round": 8,
+        "kick": 16,
+        "type": "shootout_miss",
+        "team": "away",
+        "player": "Wesley Fofana",
+        "shootout_score": "6 - 5",
+        "detail": "Right footed shot is too high (6 - 5)"
+      },
+      {
+        "minute": "120+98",
+        "display_minute": "PEN",
+        "period": "shootout",
+        "type": "period",
+        "detail": "Penalty Shootout ends, Liverpool 1(6), Chelsea 1(5)."
+      },
+      {
+        "minute": "120+99",
+        "display_minute": "FT",
+        "period": "shootout",
+        "type": "full_time",
+        "detail": "Match ends, Liverpool 1(6), Chelsea 1(5)."
+      }
+    ],
     "lineups": {
       "home": {
         "manager": "Andoni Iraola",
@@ -6983,7 +8003,1078 @@
         }
       ]
     },
-    "team_type": "M"
+    "team_type": "M",
+    "time_live": "",
+    "home_half_score": 1,
+    "away_half_score": 1,
+    "home_pen_score": 6,
+    "away_pen_score": 5,
+    "winner": "home",
+    "result_note_th": "Liverpool ชนะการดวลจุดโทษ 6 - 5 (เสมอในเวลา 90 นาที 1 - 1)",
+    "result_note_en": "Liverpool win 6 - 5 on penalties (1 - 1 after 90 mins)",
+    "penalty_shootout": [
+      {
+        "kick": 1,
+        "round": 1,
+        "team": "home",
+        "player": "Alexis Mac Allister",
+        "outcome": "scored",
+        "score": "1 - 0",
+        "detail": "GOAL! Liverpool 1(1), Chelsea 1(0). Alexis Mac Allister (Liverpool) converts the penalty."
+      },
+      {
+        "kick": 2,
+        "round": 1,
+        "team": "away",
+        "player": "Pedro Neto",
+        "outcome": "scored",
+        "score": "1 - 1",
+        "detail": "GOAL! Liverpool 1(1), Chelsea 1(1). Pedro Neto (Chelsea) converts the penalty."
+      },
+      {
+        "kick": 3,
+        "round": 2,
+        "team": "home",
+        "player": "Alexander Isak",
+        "outcome": "scored",
+        "score": "2 - 1",
+        "detail": "GOAL! Liverpool 1(2), Chelsea 1(1). Alexander Isak (Liverpool) converts the penalty."
+      },
+      {
+        "kick": 4,
+        "round": 2,
+        "team": "away",
+        "player": "Morgan Rogers",
+        "outcome": "scored",
+        "score": "2 - 2",
+        "detail": "GOAL! Liverpool 1(2), Chelsea 1(2). Morgan Rogers (Chelsea) converts the penalty."
+      },
+      {
+        "kick": 5,
+        "round": 3,
+        "team": "home",
+        "player": "Cody Gakpo",
+        "outcome": "scored",
+        "score": "3 - 2",
+        "detail": "GOAL! Liverpool 1(3), Chelsea 1(2). Cody Gakpo (Liverpool) converts the penalty."
+      },
+      {
+        "kick": 6,
+        "round": 3,
+        "team": "away",
+        "player": "Roméo Lavia",
+        "outcome": "scored",
+        "score": "3 - 3",
+        "detail": "GOAL! Liverpool 1(3), Chelsea 1(3). Roméo Lavia (Chelsea) converts the penalty."
+      },
+      {
+        "kick": 7,
+        "round": 4,
+        "team": "home",
+        "player": "Florian Wirtz",
+        "outcome": "scored",
+        "score": "4 - 3",
+        "detail": "GOAL! Liverpool 1(4), Chelsea 1(3). Florian Wirtz (Liverpool) converts the penalty."
+      },
+      {
+        "kick": 8,
+        "round": 4,
+        "team": "away",
+        "player": "Valentín Barco",
+        "outcome": "missed",
+        "score": "4 - 3",
+        "detail": "MISSED! Valentín Barco (Chelsea) hits the left post with a left footed shot."
+      },
+      {
+        "kick": 9,
+        "round": 5,
+        "team": "home",
+        "player": "Kostas Tsimikas",
+        "outcome": "missed",
+        "score": "4 - 3",
+        "detail": "MISSED! Kostas Tsimikas (Liverpool) left footed shot is high and wide to the left."
+      },
+      {
+        "kick": 10,
+        "round": 5,
+        "team": "away",
+        "player": "Jordan Henderson",
+        "outcome": "scored",
+        "score": "4 - 4",
+        "detail": "GOAL! Liverpool 1(4), Chelsea 1(4). Jordan Henderson (Chelsea) converts the penalty."
+      },
+      {
+        "kick": 11,
+        "round": 6,
+        "team": "home",
+        "player": "Bradley Barcola",
+        "outcome": "scored",
+        "score": "5 - 4",
+        "detail": "GOAL! Liverpool 1(5), Chelsea 1(4). Bradley Barcola (Liverpool) converts the penalty."
+      },
+      {
+        "kick": 12,
+        "round": 6,
+        "team": "away",
+        "player": "Levi Colwill",
+        "outcome": "scored",
+        "score": "5 - 5",
+        "detail": "GOAL! Liverpool 1(5), Chelsea 1(5). Levi Colwill (Chelsea) converts the penalty."
+      },
+      {
+        "kick": 13,
+        "round": 7,
+        "team": "home",
+        "player": "Ryan Gravenberch",
+        "outcome": "saved",
+        "score": "5 - 5",
+        "detail": "SAVED! Ryan Gravenberch (Liverpool) penalty saved by Mike Penders (Chelsea)."
+      },
+      {
+        "kick": 14,
+        "round": 7,
+        "team": "away",
+        "player": "Emmanuel Emegha",
+        "outcome": "saved",
+        "score": "5 - 5",
+        "detail": "SAVED! Emmanuel Emegha (Chelsea) penalty saved by Giorgi Mamardashvili (Liverpool)."
+      },
+      {
+        "kick": 15,
+        "round": 8,
+        "team": "home",
+        "player": "Joe Gomez",
+        "outcome": "scored",
+        "score": "6 - 5",
+        "detail": "GOAL! Liverpool 1(6), Chelsea 1(5). Joe Gomez (Liverpool) converts the penalty."
+      },
+      {
+        "kick": 16,
+        "round": 8,
+        "team": "away",
+        "player": "Wesley Fofana",
+        "outcome": "missed",
+        "score": "6 - 5",
+        "detail": "MISSED! Wesley Fofana (Chelsea) right footed shot is too high."
+      }
+    ],
+    "live_commentary": [
+      {
+        "time": "1'",
+        "type": "Kick Off",
+        "text": "First Half begins.",
+        "isKey": true
+      },
+      {
+        "time": "6'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Rio Ngumoha (Liverpool) wins a free kick on the left wing.",
+        "isKey": false
+      },
+      {
+        "time": "6'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Pedro Neto (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "10'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Maxence Lacroix (Chelsea) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "10'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Lewis Koumas (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "11'",
+        "type": "Yellow Card",
+        "team": "home",
+        "text": "Yellow Card: Lewis Koumas (Liverpool) is shown the yellow card for a bad foul.",
+        "isKey": true
+      },
+      {
+        "time": "17'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Moisés Caicedo.",
+        "isKey": false
+      },
+      {
+        "time": "18'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Kostas Tsimikas (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "18'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Malo Gusto (Chelsea) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "18'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Kostas Tsimikas (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "18'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Pedro Neto (Chelsea) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "21'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Handball by James McConnell (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "21'",
+        "type": "Yellow Card",
+        "team": "home",
+        "text": "Yellow Card: James McConnell (Liverpool) is shown the yellow card for handball.",
+        "isKey": true
+      },
+      {
+        "time": "22'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Attempt missed. Moisés Caicedo (Chelsea) right footed shot from outside the box misses to the left.",
+        "isKey": false
+      },
+      {
+        "time": "25'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Trey Nyoni (Liverpool) wins a free kick on the left wing.",
+        "isKey": false
+      },
+      {
+        "time": "25'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Roméo Lavia (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "26'",
+        "type": "Offside",
+        "team": "away",
+        "text": "Offside, Chelsea. Morgan Rogers is caught offside.",
+        "isKey": false
+      },
+      {
+        "time": "27'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Josh Acheampong.",
+        "isKey": false
+      },
+      {
+        "time": "29'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Cody Gakpo (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "29'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "31'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Attempt blocked. Ronald Araujo (Liverpool) header from the centre of the box is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "31'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Malo Gusto.",
+        "isKey": false
+      },
+      {
+        "time": "32'",
+        "type": "Offside",
+        "team": "home",
+        "text": "Offside, Liverpool. Rio Ngumoha is caught offside.",
+        "isKey": false
+      },
+      {
+        "time": "38'",
+        "type": "Penalty Decision",
+        "team": "home",
+        "text": "Penalty conceded by Ryan Gravenberch (Liverpool) after a foul in the penalty area.",
+        "isKey": true
+      },
+      {
+        "time": "38'",
+        "type": "Penalty Decision",
+        "team": "away",
+        "text": "Penalty Chelsea. Moisés Caicedo draws a foul in the penalty area.",
+        "isKey": true
+      },
+      {
+        "time": "40'",
+        "type": "Goal",
+        "team": "away",
+        "text": "GOAL! Liverpool 0, Chelsea 1. Morgan Rogers (Chelsea) converts the penalty with a right footed shot to the top right corner.",
+        "isKey": true
+      },
+      {
+        "time": "41'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Attempt blocked. Trey Nyoni (Liverpool) right footed shot from outside the box is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "41'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Wesley Fofana.",
+        "isKey": false
+      },
+      {
+        "time": "42'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Attempt blocked. Virgil van Dijk (Liverpool) header from the centre of the box is blocked. Assisted by Kostas Tsimikas.",
+        "isKey": false
+      },
+      {
+        "time": "42'",
+        "type": "Penalty Decision",
+        "team": "away",
+        "text": "Penalty conceded by Wesley Fofana (Chelsea) with a handball in the penalty area.",
+        "isKey": true
+      },
+      {
+        "time": "43'",
+        "type": "Goal",
+        "team": "home",
+        "text": "GOAL! Liverpool 1, Chelsea 1. Cody Gakpo (Liverpool) converts the penalty with a right footed shot to the bottom left corner.",
+        "isKey": true
+      },
+      {
+        "time": "44'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Attempt saved. Cody Gakpo (Liverpool) right footed shot from outside the box is saved in the bottom right corner by Mike Penders (Chelsea).",
+        "isKey": true
+      },
+      {
+        "time": "45'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Josh Acheampong.",
+        "isKey": false
+      },
+      {
+        "time": "45'",
+        "type": "Injury Delay",
+        "team": "away",
+        "text": "Delay in match because of an injury Maxence Lacroix (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "45+1'",
+        "type": "Match Resumed",
+        "text": "Delay over. They are ready to continue.",
+        "isKey": false
+      },
+      {
+        "time": "45+1'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "Substitution: Chelsea - Levi Colwill (In) / Maxence Lacroix (Out)",
+        "isKey": true
+      },
+      {
+        "time": "45+2'",
+        "type": "Attempt Missed",
+        "team": "home",
+        "text": "Attempt missed. Ronald Araujo (Liverpool) header from the centre of the box is too high. Assisted by Kostas Tsimikas.",
+        "isKey": false
+      },
+      {
+        "time": "45+4'",
+        "type": "Added Time",
+        "text": "Fourth official has announced 3 minutes of added time.",
+        "isKey": false
+      },
+      {
+        "time": "45+4'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Cody Gakpo (Liverpool) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "45+4'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Levi Colwill (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "HT",
+        "type": "Half Time",
+        "text": "First Half ends, Liverpool 1, Chelsea 1.",
+        "isKey": true
+      },
+      {
+        "time": "46'",
+        "type": "Second Half Start",
+        "text": "Second Half begins Liverpool 1, Chelsea 1.",
+        "isKey": true
+      },
+      {
+        "time": "48'",
+        "type": "Attempt Saved",
+        "team": "away",
+        "text": "Attempt saved. Morgan Rogers (Chelsea) right footed shot from the centre of the box is saved by Giorgi Mamardashvili (Liverpool).",
+        "isKey": true
+      },
+      {
+        "time": "48'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Corner, Chelsea. Conceded by Giorgi Mamardashvili.",
+        "isKey": false
+      },
+      {
+        "time": "49'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Handball by Lewis Koumas (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "50'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Josh Acheampong (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "50'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Rio Ngumoha (Liverpool) wins a free kick on the left wing.",
+        "isKey": false
+      },
+      {
+        "time": "50'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Yellow Card: Josh Acheampong (Chelsea) is shown the yellow card for a bad foul.",
+        "isKey": true
+      },
+      {
+        "time": "53'",
+        "type": "Attempt Blocked",
+        "team": "away",
+        "text": "Attempt blocked. Morgan Rogers (Chelsea) right footed shot from the left side of the box is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "53'",
+        "type": "Attempt Saved",
+        "team": "away",
+        "text": "Attempt saved. Pedro Neto (Chelsea) left footed shot from outside the box is saved in the top centre by Giorgi Mamardashvili (Liverpool).",
+        "isKey": true
+      },
+      {
+        "time": "54'",
+        "type": "Offside",
+        "team": "away",
+        "text": "Offside, Chelsea. Malo Gusto is caught offside.",
+        "isKey": false
+      },
+      {
+        "time": "55'",
+        "type": "Attempt Blocked",
+        "team": "away",
+        "text": "Attempt blocked. Morgan Rogers (Chelsea) right footed shot from the right side of the box is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "55'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Corner, Chelsea. Conceded by Virgil van Dijk.",
+        "isKey": false
+      },
+      {
+        "time": "56'",
+        "type": "Offside",
+        "team": "away",
+        "text": "Offside, Chelsea. Malo Gusto is caught offside.",
+        "isKey": false
+      },
+      {
+        "time": "57'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Ryan Gravenberch (Liverpool) wins a free kick in the attacking half.",
+        "isKey": false
+      },
+      {
+        "time": "57'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Roméo Lavia (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "59'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "Substitution: Liverpool - Bradley Barcola (In) / Lewis Koumas (Out)",
+        "isKey": true
+      },
+      {
+        "time": "59'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "Substitution: Liverpool - Florian Wirtz (In) / James McConnell (Out)",
+        "isKey": true
+      },
+      {
+        "time": "61'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Attempt saved. Ronald Araujo (Liverpool) header from the centre of the box is saved by Mike Penders (Chelsea).",
+        "isKey": true
+      },
+      {
+        "time": "61'",
+        "type": "Attempt Blocked",
+        "team": "away",
+        "text": "Attempt blocked. Morgan Rogers (Chelsea) right footed shot from the centre of the box is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "61'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Corner, Chelsea. Conceded by Joe Gomez.",
+        "isKey": false
+      },
+      {
+        "time": "62'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Wesley Fofana (Chelsea) wins a free kick on the left wing.",
+        "isKey": false
+      },
+      {
+        "time": "62'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Joe Gomez (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "65'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Attempt saved. Bradley Barcola (Liverpool) left footed shot is saved in the bottom right corner by Mike Penders (Chelsea).",
+        "isKey": true
+      },
+      {
+        "time": "65'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Mike Penders.",
+        "isKey": false
+      },
+      {
+        "time": "66'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the attacking half.",
+        "isKey": false
+      },
+      {
+        "time": "66'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Cody Gakpo (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "67'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Attempt missed. Morgan Rogers (Chelsea) right footed shot from outside the box is too high from a direct free kick.",
+        "isKey": false
+      },
+      {
+        "time": "68'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "Substitution: Chelsea - Emmanuel Emegha (In) / Danny Welbeck (Out)",
+        "isKey": true
+      },
+      {
+        "time": "68'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "Substitution: Chelsea - Marco Palestra (In) / Malo Gusto (Out)",
+        "isKey": true
+      },
+      {
+        "time": "68'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "Substitution: Chelsea - Valentín Barco (In) / Moisés Caicedo (Out)",
+        "isKey": true
+      },
+      {
+        "time": "72'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "Substitution: Liverpool - Jérémy Jacquet (In) / Virgil van Dijk (Out)",
+        "isKey": true
+      },
+      {
+        "time": "73'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Roméo Lavia (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "73'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Rio Ngumoha (Liverpool) wins a free kick in the attacking half.",
+        "isKey": false
+      },
+      {
+        "time": "73'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Yellow Card: Roméo Lavia (Chelsea) is shown the yellow card for a bad foul.",
+        "isKey": true
+      },
+      {
+        "time": "75'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Attempt missed. Josh Acheampong (Chelsea) right footed shot from the right side of the box misses to the left.",
+        "isKey": false
+      },
+      {
+        "time": "76'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Morgan Rogers (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "76'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Joe Gomez (Liverpool) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "76'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Corner, Chelsea. Conceded by Ronald Araujo.",
+        "isKey": false
+      },
+      {
+        "time": "78'",
+        "type": "Attempt Saved",
+        "team": "away",
+        "text": "Attempt saved. Marco Palestra (Chelsea) right footed shot is saved in the bottom left corner by Giorgi Mamardashvili (Liverpool).",
+        "isKey": true
+      },
+      {
+        "time": "78'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Corner, Chelsea. Conceded by Giorgi Mamardashvili.",
+        "isKey": false
+      },
+      {
+        "time": "78'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Attempt missed. Levi Colwill (Chelsea) header from very close range misses to the right.",
+        "isKey": false
+      },
+      {
+        "time": "79'",
+        "type": "Injury Delay",
+        "team": "away",
+        "text": "Delay in match because of an injury Wesley Fofana (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "80'",
+        "type": "Match Resumed",
+        "text": "Delay over. They are ready to continue.",
+        "isKey": false
+      },
+      {
+        "time": "80'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Attempt blocked. Florian Wirtz (Liverpool) right footed shot from very close range is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "80'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Attempt blocked. Bradley Barcola (Liverpool) right footed shot from very close range is blocked.",
+        "isKey": false
+      },
+      {
+        "time": "81'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "Substitution: Liverpool - Alexis Mac Allister (In) / Trey Nyoni (Out)",
+        "isKey": true
+      },
+      {
+        "time": "82'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "Substitution: Liverpool - Alexander Isak (In) / Rio Ngumoha (Out)",
+        "isKey": true
+      },
+      {
+        "time": "82'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Marco Palestra (Chelsea) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "82'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Bradley Barcola (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "85'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the attacking half.",
+        "isKey": false
+      },
+      {
+        "time": "85'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Florian Wirtz (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "86'",
+        "type": "Corner",
+        "team": "home",
+        "text": "Corner, Liverpool. Conceded by Valentín Barco.",
+        "isKey": false
+      },
+      {
+        "time": "88'",
+        "type": "Free Kick",
+        "team": "away",
+        "text": "Roméo Lavia (Chelsea) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "88'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Foul by Jérémy Jacquet (Liverpool).",
+        "isKey": false
+      },
+      {
+        "time": "90'",
+        "type": "Added Time",
+        "text": "Fourth official has announced 3 minutes of added time.",
+        "isKey": false
+      },
+      {
+        "time": "90+1'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Foul by Morgan Rogers (Chelsea).",
+        "isKey": false
+      },
+      {
+        "time": "90+1'",
+        "type": "Free Kick",
+        "team": "home",
+        "text": "Joe Gomez (Liverpool) wins a free kick in the defensive half.",
+        "isKey": false
+      },
+      {
+        "time": "FT",
+        "type": "Second Half Ends",
+        "text": "Second Half ends, Liverpool 1, Chelsea 1.",
+        "isKey": true
+      },
+      {
+        "time": "PEN",
+        "type": "Penalty Shootout Start",
+        "text": "Penalty Shootout begins Liverpool 1, Chelsea 1.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 1",
+        "type": "Goal (Penalty Shootout)",
+        "team": "home",
+        "text": "GOAL! Liverpool 1(1), Chelsea 1(0). Alexis Mac Allister (Liverpool) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 2",
+        "type": "Goal (Penalty Shootout)",
+        "team": "away",
+        "text": "GOAL! Liverpool 1(1), Chelsea 1(1). Pedro Neto (Chelsea) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 3",
+        "type": "Goal (Penalty Shootout)",
+        "team": "home",
+        "text": "GOAL! Liverpool 1(2), Chelsea 1(1). Alexander Isak (Liverpool) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 4",
+        "type": "Goal (Penalty Shootout)",
+        "team": "away",
+        "text": "GOAL! Liverpool 1(2), Chelsea 1(2). Morgan Rogers (Chelsea) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 5",
+        "type": "Goal (Penalty Shootout)",
+        "team": "home",
+        "text": "GOAL! Liverpool 1(3), Chelsea 1(2). Cody Gakpo (Liverpool) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 6",
+        "type": "Goal (Penalty Shootout)",
+        "team": "away",
+        "text": "GOAL! Liverpool 1(3), Chelsea 1(3). Roméo Lavia (Chelsea) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 7",
+        "type": "Goal (Penalty Shootout)",
+        "team": "home",
+        "text": "GOAL! Liverpool 1(4), Chelsea 1(3). Florian Wirtz (Liverpool) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 8",
+        "type": "Penalty Shootout Miss/Save",
+        "team": "away",
+        "text": "MISSED! Valentín Barco (Chelsea) hits the left post with a left footed shot.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 9",
+        "type": "Penalty Shootout Miss/Save",
+        "team": "home",
+        "text": "MISSED! Kostas Tsimikas (Liverpool) left footed shot is high and wide to the left.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 10",
+        "type": "Goal (Penalty Shootout)",
+        "team": "away",
+        "text": "GOAL! Liverpool 1(4), Chelsea 1(4). Jordan Henderson (Chelsea) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 11",
+        "type": "Goal (Penalty Shootout)",
+        "team": "home",
+        "text": "GOAL! Liverpool 1(5), Chelsea 1(4). Bradley Barcola (Liverpool) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 12",
+        "type": "Goal (Penalty Shootout)",
+        "team": "away",
+        "text": "GOAL! Liverpool 1(5), Chelsea 1(5). Levi Colwill (Chelsea) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 13",
+        "type": "Penalty Shootout Miss/Save",
+        "team": "home",
+        "text": "SAVED! Ryan Gravenberch (Liverpool) penalty saved by Mike Penders (Chelsea).",
+        "isKey": true
+      },
+      {
+        "time": "PEN 14",
+        "type": "Penalty Shootout Miss/Save",
+        "team": "away",
+        "text": "SAVED! Emmanuel Emegha (Chelsea) penalty saved by Giorgi Mamardashvili (Liverpool).",
+        "isKey": true
+      },
+      {
+        "time": "PEN 15",
+        "type": "Goal (Penalty Shootout)",
+        "team": "home",
+        "text": "GOAL! Liverpool 1(6), Chelsea 1(5). Joe Gomez (Liverpool) converts the penalty.",
+        "isKey": true
+      },
+      {
+        "time": "PEN 16",
+        "type": "Penalty Shootout Miss/Save",
+        "team": "away",
+        "text": "MISSED! Wesley Fofana (Chelsea) right footed shot is too high.",
+        "isKey": true
+      },
+      {
+        "time": "PEN",
+        "type": "Penalty Shootout End",
+        "text": "Penalty Shootout ends, Liverpool 1(6), Chelsea 1(5).",
+        "isKey": true
+      },
+      {
+        "time": "FT",
+        "type": "Full Time",
+        "text": "Match ends, Liverpool 1(6), Chelsea 1(5).",
+        "isKey": true
+      }
+    ],
+    "stats": [
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 10,
+        "away": 11,
+        "isPercentage": false,
+        "category": "ภาพรวม"
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots on Target)",
+        "home": 4,
+        "away": 4,
+        "isPercentage": false,
+        "category": "ภาพรวม"
+      },
+      {
+        "name": "การเซฟของผู้รักษาประตู (Goalkeeper Saves)",
+        "home": 3,
+        "away": 3,
+        "isPercentage": false,
+        "category": "ภาพรวม"
+      },
+      {
+        "name": "ลูกเตะมุม (Corner Kicks)",
+        "home": 7,
+        "away": 5,
+        "isPercentage": false,
+        "category": "ภาพรวม"
+      },
+      {
+        "name": "ยิงติดบล็อก (Blocked Shots)",
+        "home": 5,
+        "away": 3,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ยิงหลุดกรอบ (Shots off Target)",
+        "home": 1,
+        "away": 4,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ลูกจุดโทษในเวลาปกติ (Penalties Scored)",
+        "home": 1,
+        "away": 1,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 1,
+        "away": 3,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "การทำฟาวล์ (Fouls)",
+        "home": 12,
+        "away": 9,
+        "isPercentage": false,
+        "category": "วินัย"
+      },
+      {
+        "name": "ลูกฟรีคิก (Free Kicks)",
+        "home": 8,
+        "away": 11,
+        "isPercentage": false,
+        "category": "วินัย"
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 2,
+        "away": 2,
+        "isPercentage": false,
+        "category": "วินัย"
+      },
+      {
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false,
+        "category": "วินัย"
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Giorgi Mamardashvili",
+        "team": "Liverpool",
+        "saves": 3,
+        "save_pct": "75% · +1 Shootout Save"
+      },
+      {
+        "name": "Mike Penders",
+        "team": "Chelsea",
+        "saves": 3,
+        "save_pct": "75% · +1 Shootout Save"
+      }
+    ]
   },
   {
     "id": "m15",
@@ -15977,71 +18068,404 @@
       }
     ],
     "live_commentary": [
-      { "time": "FT", "type": "end", "isKey": true, "text": "Match ends, Chelsea Women 2, Roma Femminile 0." },
-      { "time": "90'+4", "type": "end", "isKey": true, "text": "Second Half ends, Chelsea Women 2, Roma Femminile 0." },
-      { "time": "90'+4", "type": "miss", "team": "home", "text": "Attempt missed. Melvine Malard (Chelsea Women) right footed shot from outside the box is just a bit too high. Assisted by Sjoeke Nüsken." },
-      { "time": "90'+2", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half." },
-      { "time": "90'+2", "type": "foul", "team": "home", "text": "Foul by Sjoeke Nüsken (Chelsea Women)." },
-      { "time": "90'+1", "type": "commentary", "text": "Fourth official has announced 4 minutes of added time." },
-      { "time": "89'", "type": "goal", "team": "home", "isKey": true, "text": "Goal! Chelsea Women 2, Roma Femminile 0. Kadeisha Buchanan (Chelsea Women) header from the centre of the box. Assisted by Wieke Kaptein with a cross following a corner." },
-      { "time": "88'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Rachele Baldi." },
-      { "time": "88'", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half." },
-      { "time": "88'", "type": "foul", "team": "home", "text": "Foul by Ellie Carpenter (Chelsea Women)." },
-      { "time": "86'", "type": "free kick", "team": "home", "text": "Ellie Carpenter (Chelsea Women) wins a free kick on the right wing." },
-      { "time": "86'", "type": "foul", "team": "away", "text": "Foul by Elisabetta Oliviero (Roma Femminile)." },
-      { "time": "84'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Giulia Dragoni replaces Lexi Potter because of an injury." },
-      { "time": "83'", "type": "commentary", "text": "Delay over. They are ready to continue." },
-      { "time": "82'", "type": "commentary", "team": "home", "text": "Delay in match because of an injury Lexi Potter (Chelsea Women)." },
-      { "time": "80'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Alice Corelli replaces Winonah Heatley." },
-      { "time": "79'", "type": "miss", "team": "away", "text": "Attempt missed. Alayah Pilgrim (Roma Femminile) right footed shot from the centre of the box is close, but misses the top right corner. Assisted by Marie-Aurelle Antoine." },
-      { "time": "78'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Frederikke Thøgersen." },
-      { "time": "77'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Frederikke Thøgersen." },
-      { "time": "77'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sandy Baltimore (Chelsea Women) left footed shot from the centre of the box is blocked. Assisted by Sjoeke Nüsken." },
-      { "time": "76'", "type": "miss", "team": "home", "text": "Attempt missed. Sjoeke Nüsken (Chelsea Women) right footed shot from the centre of the box is too high. Assisted by Melvine Malard." },
-      { "time": "76'", "type": "miss", "team": "home", "text": "Attempt missed. Melvine Malard (Chelsea Women) right footed shot from the left side of the box misses to the right. Assisted by Sjoeke Nüsken." },
-      { "time": "74'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sjoeke Nüsken (Chelsea Women) right footed shot from outside the box is blocked." },
-      { "time": "72'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sjoeke Nüsken (Chelsea Women) right footed shot from outside the box is blocked. Assisted by Sandy Baltimore." },
-      { "time": "70'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Sofia Jahnukainen replaces Valentina Bergamaschi." },
-      { "time": "66'", "type": "miss", "team": "away", "text": "Attempt missed. Maya Doms (Roma Femminile) right footed shot from the centre of the box is too high. Assisted by Frederikke Thøgersen with a cross." },
-      { "time": "66'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Sandy Baltimore (Chelsea Women) right footed shot from the left side of the box is blocked. Assisted by Veerle Buurman." },
-      { "time": "60'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Alayah Pilgrim replaces Katelyn van Dooren." },
-      { "time": "60'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Manuela Giugliano replaces Giada Greggi." },
-      { "time": "56'", "type": "free kick", "team": "away", "text": "Martina Piemonte (Roma Femminile) wins a free kick in the defensive half." },
-      { "time": "56'", "type": "foul", "team": "home", "text": "Foul by Veerle Buurman (Chelsea Women)." },
-      { "time": "56'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Melvine Malard replaces Aggie Beever-Jones." },
-      { "time": "55'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Keira Walsh replaces Erin Cuthbert." },
-      { "time": "54'", "type": "attempt saved", "team": "home", "text": "Attempt saved. Aggie Beever-Jones (Chelsea Women) left footed shot from the centre of the box is saved in the top centre of the goal by Rachele Baldi (Roma Femminile). Assisted by Lucy Bronze." },
-      { "time": "51'", "type": "goal", "team": "home", "isKey": true, "text": "Goal! Chelsea Women 1, Roma Femminile 0. Ellie Carpenter (Chelsea Women) right footed shot from the right side of the box to the centre of the goal. Assisted by Wieke Kaptein with a cross." },
-      { "time": "50'", "type": "foul", "team": "home", "text": "Foul by Lexi Potter (Chelsea Women)." },
-      { "time": "50'", "type": "free kick", "team": "away", "text": "Winonah Heatley (Roma Femminile) wins a free kick in the defensive half." },
-      { "time": "48'", "type": "attempt saved", "team": "home", "text": "Attempt saved. Wieke Kaptein (Chelsea Women) right footed shot from outside the box is saved by Rachele Baldi (Roma Femminile)." },
-      { "time": "46'", "type": "start", "isKey": true, "text": "Second Half begins, Chelsea Women 0, Roma Femminile 0." },
-      { "time": "46'", "type": "substitution", "team": "away", "isKey": true, "text": "Substitution, Roma Femminile. Frederikke Thøgersen replaces Giada Cimò." },
-      { "time": "46'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Sjoeke Nüsken replaces Lauren James." },
-      { "time": "46'", "type": "substitution", "team": "home", "isKey": true, "text": "Substitution, Chelsea Women. Ellie Carpenter replaces Alyssa Thompson." },
-      { "time": "HT", "type": "halftime", "isKey": true, "text": "First Half ends, Chelsea Women 0, Roma Femminile 0." },
-      { "time": "45'+1", "type": "attempt saved", "team": "home", "text": "Attempt saved. Wieke Kaptein (Chelsea Women) header from the centre of the box is saved by Rachele Baldi (Roma Femminile)." },
-      { "time": "45'+1", "type": "commentary", "text": "Fourth official has announced 2 minutes of added time." },
-      { "time": "43'", "type": "foul", "team": "away", "text": "Foul by Elisabetta Oliviero (Roma Femminile)." },
-      { "time": "43'", "type": "free kick", "team": "home", "text": "Alyssa Thompson (Chelsea Women) wins a free kick on the right wing." },
-      { "time": "40'", "type": "corner", "team": "home", "text": "Corner, Chelsea Women. Conceded by Elisabetta Oliviero." },
-      { "time": "38'", "type": "miss", "team": "home", "text": "Attempt missed. Wieke Kaptein (Chelsea Women) right footed shot from six yard box misses to the left." },
-      { "time": "38'", "type": "attempt blocked", "team": "home", "text": "Attempt blocked. Lauren James (Chelsea Women) right footed shot is blocked. Assisted by Wieke Kaptein." },
-      { "time": "37'", "type": "miss", "team": "away", "text": "Attempt missed. Maya Doms (Roma Femminile) right footed shot misses to the right. Assisted by Giada Greggi." },
-      { "time": "37'", "type": "corner", "team": "away", "text": "Corner, Roma Femminile. Conceded by Erin Cuthbert." },
-      { "time": "33'", "type": "free kick", "team": "home", "text": "Lucy Bronze (Chelsea Women) wins a free kick in the defensive half." },
-      { "time": "33'", "type": "foul", "team": "away", "text": "Foul by Giada Cimò (Roma Femminile)." },
-      { "time": "32'", "type": "foul", "team": "home", "text": "Foul by Lucy Bronze (Chelsea Women)." },
-      { "time": "32'", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick on the left wing." },
-      { "time": "30'", "type": "miss", "team": "home", "text": "Attempt missed. Wieke Kaptein (Chelsea Women) left footed shot is too high." },
-      { "time": "23'", "type": "commentary", "text": "Delay over. They are ready to continue." },
-      { "time": "22'", "type": "commentary", "team": "home", "text": "Delay in match because of an injury Lexi Potter (Chelsea Women)." },
-      { "time": "21'", "type": "free kick", "team": "home", "text": "Kadeisha Buchanan (Chelsea Women) wins a free kick in the defensive half." },
-      { "time": "21'", "type": "foul", "team": "away", "text": "Foul by Martina Piemonte (Roma Femminile)." },
-      { "time": "20'", "type": "attempt saved", "team": "home", "text": "Attempt saved. Lauren James (Chelsea Women) left footed shot is saved by Rachele Baldi." },
-      { "time": "18'", "type": "free kick", "team": "away", "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half." },
-      { "time": "18'", "type": "foul", "team": "home", "text": "Foul by Aggie Beever-Jones (Chelsea Women)." },
-      { "time": "1'", "type": "start", "isKey": true, "text": "First Half begins." }
+      {
+        "time": "FT",
+        "type": "end",
+        "isKey": true,
+        "text": "Match ends, Chelsea Women 2, Roma Femminile 0."
+      },
+      {
+        "time": "90'+4",
+        "type": "end",
+        "isKey": true,
+        "text": "Second Half ends, Chelsea Women 2, Roma Femminile 0."
+      },
+      {
+        "time": "90'+4",
+        "type": "miss",
+        "team": "home",
+        "text": "Attempt missed. Melvine Malard (Chelsea Women) right footed shot from outside the box is just a bit too high. Assisted by Sjoeke Nüsken."
+      },
+      {
+        "time": "90'+2",
+        "type": "free kick",
+        "team": "away",
+        "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half."
+      },
+      {
+        "time": "90'+2",
+        "type": "foul",
+        "team": "home",
+        "text": "Foul by Sjoeke Nüsken (Chelsea Women)."
+      },
+      {
+        "time": "90'+1",
+        "type": "commentary",
+        "text": "Fourth official has announced 4 minutes of added time."
+      },
+      {
+        "time": "89'",
+        "type": "goal",
+        "team": "home",
+        "isKey": true,
+        "text": "Goal! Chelsea Women 2, Roma Femminile 0. Kadeisha Buchanan (Chelsea Women) header from the centre of the box. Assisted by Wieke Kaptein with a cross following a corner."
+      },
+      {
+        "time": "88'",
+        "type": "corner",
+        "team": "home",
+        "text": "Corner, Chelsea Women. Conceded by Rachele Baldi."
+      },
+      {
+        "time": "88'",
+        "type": "free kick",
+        "team": "away",
+        "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half."
+      },
+      {
+        "time": "88'",
+        "type": "foul",
+        "team": "home",
+        "text": "Foul by Ellie Carpenter (Chelsea Women)."
+      },
+      {
+        "time": "86'",
+        "type": "free kick",
+        "team": "home",
+        "text": "Ellie Carpenter (Chelsea Women) wins a free kick on the right wing."
+      },
+      {
+        "time": "86'",
+        "type": "foul",
+        "team": "away",
+        "text": "Foul by Elisabetta Oliviero (Roma Femminile)."
+      },
+      {
+        "time": "84'",
+        "type": "substitution",
+        "team": "home",
+        "isKey": true,
+        "text": "Substitution, Chelsea Women. Giulia Dragoni replaces Lexi Potter because of an injury."
+      },
+      {
+        "time": "83'",
+        "type": "commentary",
+        "text": "Delay over. They are ready to continue."
+      },
+      {
+        "time": "82'",
+        "type": "commentary",
+        "team": "home",
+        "text": "Delay in match because of an injury Lexi Potter (Chelsea Women)."
+      },
+      {
+        "time": "80'",
+        "type": "substitution",
+        "team": "away",
+        "isKey": true,
+        "text": "Substitution, Roma Femminile. Alice Corelli replaces Winonah Heatley."
+      },
+      {
+        "time": "79'",
+        "type": "miss",
+        "team": "away",
+        "text": "Attempt missed. Alayah Pilgrim (Roma Femminile) right footed shot from the centre of the box is close, but misses the top right corner. Assisted by Marie-Aurelle Antoine."
+      },
+      {
+        "time": "78'",
+        "type": "corner",
+        "team": "home",
+        "text": "Corner, Chelsea Women. Conceded by Frederikke Thøgersen."
+      },
+      {
+        "time": "77'",
+        "type": "corner",
+        "team": "home",
+        "text": "Corner, Chelsea Women. Conceded by Frederikke Thøgersen."
+      },
+      {
+        "time": "77'",
+        "type": "attempt blocked",
+        "team": "home",
+        "text": "Attempt blocked. Sandy Baltimore (Chelsea Women) left footed shot from the centre of the box is blocked. Assisted by Sjoeke Nüsken."
+      },
+      {
+        "time": "76'",
+        "type": "miss",
+        "team": "home",
+        "text": "Attempt missed. Sjoeke Nüsken (Chelsea Women) right footed shot from the centre of the box is too high. Assisted by Melvine Malard."
+      },
+      {
+        "time": "76'",
+        "type": "miss",
+        "team": "home",
+        "text": "Attempt missed. Melvine Malard (Chelsea Women) right footed shot from the left side of the box misses to the right. Assisted by Sjoeke Nüsken."
+      },
+      {
+        "time": "74'",
+        "type": "attempt blocked",
+        "team": "home",
+        "text": "Attempt blocked. Sjoeke Nüsken (Chelsea Women) right footed shot from outside the box is blocked."
+      },
+      {
+        "time": "72'",
+        "type": "attempt blocked",
+        "team": "home",
+        "text": "Attempt blocked. Sjoeke Nüsken (Chelsea Women) right footed shot from outside the box is blocked. Assisted by Sandy Baltimore."
+      },
+      {
+        "time": "70'",
+        "type": "substitution",
+        "team": "away",
+        "isKey": true,
+        "text": "Substitution, Roma Femminile. Sofia Jahnukainen replaces Valentina Bergamaschi."
+      },
+      {
+        "time": "66'",
+        "type": "miss",
+        "team": "away",
+        "text": "Attempt missed. Maya Doms (Roma Femminile) right footed shot from the centre of the box is too high. Assisted by Frederikke Thøgersen with a cross."
+      },
+      {
+        "time": "66'",
+        "type": "attempt blocked",
+        "team": "home",
+        "text": "Attempt blocked. Sandy Baltimore (Chelsea Women) right footed shot from the left side of the box is blocked. Assisted by Veerle Buurman."
+      },
+      {
+        "time": "60'",
+        "type": "substitution",
+        "team": "away",
+        "isKey": true,
+        "text": "Substitution, Roma Femminile. Alayah Pilgrim replaces Katelyn van Dooren."
+      },
+      {
+        "time": "60'",
+        "type": "substitution",
+        "team": "away",
+        "isKey": true,
+        "text": "Substitution, Roma Femminile. Manuela Giugliano replaces Giada Greggi."
+      },
+      {
+        "time": "56'",
+        "type": "free kick",
+        "team": "away",
+        "text": "Martina Piemonte (Roma Femminile) wins a free kick in the defensive half."
+      },
+      {
+        "time": "56'",
+        "type": "foul",
+        "team": "home",
+        "text": "Foul by Veerle Buurman (Chelsea Women)."
+      },
+      {
+        "time": "56'",
+        "type": "substitution",
+        "team": "home",
+        "isKey": true,
+        "text": "Substitution, Chelsea Women. Melvine Malard replaces Aggie Beever-Jones."
+      },
+      {
+        "time": "55'",
+        "type": "substitution",
+        "team": "home",
+        "isKey": true,
+        "text": "Substitution, Chelsea Women. Keira Walsh replaces Erin Cuthbert."
+      },
+      {
+        "time": "54'",
+        "type": "attempt saved",
+        "team": "home",
+        "text": "Attempt saved. Aggie Beever-Jones (Chelsea Women) left footed shot from the centre of the box is saved in the top centre of the goal by Rachele Baldi (Roma Femminile). Assisted by Lucy Bronze."
+      },
+      {
+        "time": "51'",
+        "type": "goal",
+        "team": "home",
+        "isKey": true,
+        "text": "Goal! Chelsea Women 1, Roma Femminile 0. Ellie Carpenter (Chelsea Women) right footed shot from the right side of the box to the centre of the goal. Assisted by Wieke Kaptein with a cross."
+      },
+      {
+        "time": "50'",
+        "type": "foul",
+        "team": "home",
+        "text": "Foul by Lexi Potter (Chelsea Women)."
+      },
+      {
+        "time": "50'",
+        "type": "free kick",
+        "team": "away",
+        "text": "Winonah Heatley (Roma Femminile) wins a free kick in the defensive half."
+      },
+      {
+        "time": "48'",
+        "type": "attempt saved",
+        "team": "home",
+        "text": "Attempt saved. Wieke Kaptein (Chelsea Women) right footed shot from outside the box is saved by Rachele Baldi (Roma Femminile)."
+      },
+      {
+        "time": "46'",
+        "type": "start",
+        "isKey": true,
+        "text": "Second Half begins, Chelsea Women 0, Roma Femminile 0."
+      },
+      {
+        "time": "46'",
+        "type": "substitution",
+        "team": "away",
+        "isKey": true,
+        "text": "Substitution, Roma Femminile. Frederikke Thøgersen replaces Giada Cimò."
+      },
+      {
+        "time": "46'",
+        "type": "substitution",
+        "team": "home",
+        "isKey": true,
+        "text": "Substitution, Chelsea Women. Sjoeke Nüsken replaces Lauren James."
+      },
+      {
+        "time": "46'",
+        "type": "substitution",
+        "team": "home",
+        "isKey": true,
+        "text": "Substitution, Chelsea Women. Ellie Carpenter replaces Alyssa Thompson."
+      },
+      {
+        "time": "HT",
+        "type": "halftime",
+        "isKey": true,
+        "text": "First Half ends, Chelsea Women 0, Roma Femminile 0."
+      },
+      {
+        "time": "45'+1",
+        "type": "attempt saved",
+        "team": "home",
+        "text": "Attempt saved. Wieke Kaptein (Chelsea Women) header from the centre of the box is saved by Rachele Baldi (Roma Femminile)."
+      },
+      {
+        "time": "45'+1",
+        "type": "commentary",
+        "text": "Fourth official has announced 2 minutes of added time."
+      },
+      {
+        "time": "43'",
+        "type": "foul",
+        "team": "away",
+        "text": "Foul by Elisabetta Oliviero (Roma Femminile)."
+      },
+      {
+        "time": "43'",
+        "type": "free kick",
+        "team": "home",
+        "text": "Alyssa Thompson (Chelsea Women) wins a free kick on the right wing."
+      },
+      {
+        "time": "40'",
+        "type": "corner",
+        "team": "home",
+        "text": "Corner, Chelsea Women. Conceded by Elisabetta Oliviero."
+      },
+      {
+        "time": "38'",
+        "type": "miss",
+        "team": "home",
+        "text": "Attempt missed. Wieke Kaptein (Chelsea Women) right footed shot from six yard box misses to the left."
+      },
+      {
+        "time": "38'",
+        "type": "attempt blocked",
+        "team": "home",
+        "text": "Attempt blocked. Lauren James (Chelsea Women) right footed shot is blocked. Assisted by Wieke Kaptein."
+      },
+      {
+        "time": "37'",
+        "type": "miss",
+        "team": "away",
+        "text": "Attempt missed. Maya Doms (Roma Femminile) right footed shot misses to the right. Assisted by Giada Greggi."
+      },
+      {
+        "time": "37'",
+        "type": "corner",
+        "team": "away",
+        "text": "Corner, Roma Femminile. Conceded by Erin Cuthbert."
+      },
+      {
+        "time": "33'",
+        "type": "free kick",
+        "team": "home",
+        "text": "Lucy Bronze (Chelsea Women) wins a free kick in the defensive half."
+      },
+      {
+        "time": "33'",
+        "type": "foul",
+        "team": "away",
+        "text": "Foul by Giada Cimò (Roma Femminile)."
+      },
+      {
+        "time": "32'",
+        "type": "foul",
+        "team": "home",
+        "text": "Foul by Lucy Bronze (Chelsea Women)."
+      },
+      {
+        "time": "32'",
+        "type": "free kick",
+        "team": "away",
+        "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick on the left wing."
+      },
+      {
+        "time": "30'",
+        "type": "miss",
+        "team": "home",
+        "text": "Attempt missed. Wieke Kaptein (Chelsea Women) left footed shot is too high."
+      },
+      {
+        "time": "23'",
+        "type": "commentary",
+        "text": "Delay over. They are ready to continue."
+      },
+      {
+        "time": "22'",
+        "type": "commentary",
+        "team": "home",
+        "text": "Delay in match because of an injury Lexi Potter (Chelsea Women)."
+      },
+      {
+        "time": "21'",
+        "type": "free kick",
+        "team": "home",
+        "text": "Kadeisha Buchanan (Chelsea Women) wins a free kick in the defensive half."
+      },
+      {
+        "time": "21'",
+        "type": "foul",
+        "team": "away",
+        "text": "Foul by Martina Piemonte (Roma Femminile)."
+      },
+      {
+        "time": "20'",
+        "type": "attempt saved",
+        "team": "home",
+        "text": "Attempt saved. Lauren James (Chelsea Women) left footed shot is saved by Rachele Baldi."
+      },
+      {
+        "time": "18'",
+        "type": "free kick",
+        "team": "away",
+        "text": "Elisabetta Oliviero (Roma Femminile) wins a free kick in the defensive half."
+      },
+      {
+        "time": "18'",
+        "type": "foul",
+        "team": "home",
+        "text": "Foul by Aggie Beever-Jones (Chelsea Women)."
+      },
+      {
+        "time": "1'",
+        "type": "start",
+        "isKey": true,
+        "text": "First Half begins."
+      }
     ],
     "lineups": {
       "home": {

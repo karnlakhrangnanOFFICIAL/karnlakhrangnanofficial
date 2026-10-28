@@ -56,12 +56,14 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      /* Back Link */
+      /* Back Link & Top Actions */
       .back-nav-container {
         margin-bottom: 24px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
       }
       .back-link {
         font-family: "Space Mono", monospace;
@@ -79,6 +81,154 @@
       .back-link:hover {
         color: var(--gold-light);
         transform: translateX(-4px);
+      }
+
+      /* Download Match Report Button */
+      .download-report-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 16px;
+        border-radius: 8px;
+        background: var(--accent, #0033a0);
+        color: #ffffff;
+        border: 1px solid rgba(212, 175, 55, 0.45);
+        font-family: "Space Mono", monospace;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.2s ease;
+        white-space: nowrap;
+        box-shadow: 0 2px 10px rgba(0, 20, 137, 0.22);
+      }
+      .download-report-btn:hover:not(:disabled) {
+        background: var(--accent-light, #1a56db);
+        border-color: var(--gold, #d4af37);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(0, 20, 137, 0.32);
+      }
+      .download-report-btn:active:not(:disabled) {
+        transform: translateY(0);
+      }
+      .download-report-btn:disabled {
+        opacity: 0.72;
+        cursor: wait;
+      }
+      .download-report-btn svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+      }
+      @keyframes reportSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .report-spin {
+        animation: reportSpin 0.85s linear infinite;
+      }
+
+      /* Penalty Shootout Scoreboard & Timeline Styles */
+      .pen-shootout-hero-pill {
+        margin-top: 8px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        background: #03132e;
+        color: #ffffff;
+        padding: 5px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(212, 175, 55, 0.55);
+        box-shadow: 0 2px 8px rgba(3, 19, 46, 0.2);
+      }
+      .pen-shootout-hero-score {
+        font-family: "Space Mono", monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #facc15;
+        letter-spacing: 0.08em;
+      }
+      .pen-shootout-hero-note {
+        font-family: "Inter", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .shootout-summary-card {
+        margin: 0 0 18px;
+        padding: 14px 16px;
+        background: rgba(212, 175, 55, 0.06);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        border-radius: 10px;
+      }
+      .shootout-summary-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 6px 0;
+      }
+      .shootout-summary-row + .shootout-summary-row {
+        border-top: 1px solid var(--ink-faint);
+      }
+      .shootout-team-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 120px;
+        font-weight: 700;
+        font-size: 0.86rem;
+        color: var(--ink);
+      }
+      .shootout-team-label img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+      .shootout-kicks-dots {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .shootout-kick-dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Mono", monospace;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      .shootout-kick-dot.scored {
+        background: #10b981;
+      }
+      .shootout-kick-dot.missed,
+      .shootout-kick-dot.saved {
+        background: #ef4444;
+      }
+      .shootout-score-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 1px 7px;
+        border-radius: 4px;
+        font-family: "Space Mono", monospace;
+        font-size: 0.74rem;
+        font-weight: 700;
+        background: rgba(212, 175, 55, 0.14);
+        color: var(--gold);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        margin-left: 6px;
       }
 
       /* Scoreboard Hero */
@@ -2293,6 +2443,8 @@
     </footer>
 
     <!-- ==================== SCRIPTS ==================== -->
+    <script src="assets/js/vendor/html2canvas.min.js"></script>
+    <script src="assets/js/vendor/jspdf.umd.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
       // ---------- Player Lookup Maps ----------
@@ -2515,8 +2667,24 @@
         // Chelsea is represented by signature theme accent (blue)
         // Everton is represented by Everton royal blue (#003399)
         // General opponents get distinct contrast color
-        const homeBarColor = isHomeChelsea ? "var(--accent)" : (isHomeEverton ? "#003399" : "#475569");
-        const awayBarColor = isAwayChelsea ? "var(--accent)" : (isAwayEverton ? "#003399" : "#dc2626");
+        const isHomeLiverpool = homeTeamName && homeTeamName.toLowerCase().includes("liverpool");
+        const isAwayLiverpool = awayTeamName && awayTeamName.toLowerCase().includes("liverpool");
+        const homeBarColor = isHomeChelsea
+          ? "var(--accent)"
+          : isHomeLiverpool
+            ? "#dc2626"
+            : isHomeEverton
+              ? "#003399"
+              : "#475569";
+        const awayBarColor = isAwayChelsea
+          ? "var(--accent)"
+          : isAwayLiverpool
+            ? "#dc2626"
+            : isAwayEverton
+              ? "#003399"
+              : isHomeChelsea
+                ? "#dc2626"
+                : "#64748b";
 
         let html = `
         <div class="stats-card">
@@ -3598,6 +3766,25 @@
 
         // Scoreboard Center Box HTML (Displays Kick-off Time for Upcoming Matches)
         const isUpcoming = match.status === "upcoming" || (!isMatchLive && sHome === "-" && sAway === "-");
+        const hasPenShootout =
+          match.home_pen_score !== null &&
+          match.home_pen_score !== undefined &&
+          match.away_pen_score !== null &&
+          match.away_pen_score !== undefined;
+        let penHeroHtml = "";
+        if (!isUpcoming && hasPenShootout) {
+          const penWinner =
+            match.home_pen_score > match.away_pen_score ? match.home_team : match.away_team;
+          const penLabel = isTh
+            ? `${penWinner} ชนะจุดโทษ ${match.home_pen_score} - ${match.away_pen_score}`
+            : `${penWinner} win ${match.home_pen_score}-${match.away_pen_score} on penalties`;
+          penHeroHtml = `
+            <div class="pen-shootout-hero-pill">
+              <span class="pen-shootout-hero-score">PEN: ${match.home_pen_score} - ${match.away_pen_score}</span>
+              <span class="pen-shootout-hero-note">${penLabel}</span>
+            </div>
+          `;
+        }
         let scoreMainHtml = "";
         if (isUpcoming) {
           const timeFormatted = displayTime !== "TBC" ? displayTime + (isTh ? " น." : "") : "TBC";
@@ -3851,6 +4038,16 @@
                 return '<img src="databases/logo/svg/var.svg" alt="VAR" style="width: 22px; height: 22px;">';
               case "corner":
                 return '<span style="font-size: 16px; line-height: 1;">🚩</span>';
+              case "offside":
+                return '<span style="font-size: 15px; line-height: 1;">🏁</span>';
+              case "penalty_awarded":
+                return '<span style="font-size: 15px; line-height: 1;">🎯</span>';
+              case "shootout_goal":
+                return '<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#10b981;color:#fff;font-size:12px;font-weight:800;">✓</span>';
+              case "shootout_miss":
+                return '<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#ef4444;color:#fff;font-size:12px;font-weight:800;">✕</span>';
+              case "shootout_save":
+                return '<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#ef4444;color:#fff;font-size:12px;font-weight:800;">🧤</span>';
               case "foul":
                 return '<span style="font-size: 15px; line-height: 1;">⚠️</span>';
               case "free_kick":
@@ -3883,6 +4080,11 @@
             if (type === "substitution") return isTh ? "เปลี่ยนตัว" : "Substitution";
             if (type === "var") return "VAR";
             if (type === "corner") return isTh ? "เตะมุม" : "Corner";
+            if (type === "offside") return isTh ? "ล้ำหน้า" : "Offside";
+            if (type === "penalty_awarded") return isTh ? "ลูกจุดโทษ" : "Penalty";
+            if (type === "shootout_goal") return isTh ? "ยิงจุดโทษเข้า" : "Penalty Scored";
+            if (type === "shootout_miss") return isTh ? "ยิงจุดโทษพลาด" : "Penalty Missed";
+            if (type === "shootout_save") return isTh ? "เซฟลูกจุดโทษ" : "Penalty Saved";
             if (type === "foul") return isTh ? "ทำฟาวล์" : "Foul";
             if (type === "free_kick") return isTh ? "ได้ลูกฟรีคิก" : "Free Kick";
             if (type === "shot") return isTh ? "โอกาสยิง" : "Shot";
@@ -3938,6 +4140,8 @@
               if (e.display_minute) {
                 if (e.display_minute === "HT") formattedMin = isTh ? "พักครึ่ง" : "Half Time";
                 else if (e.display_minute === "FT") formattedMin = isTh ? "จบเกม" : "Full Time";
+                else if (e.display_minute === "PEN" || /^P\d+$/i.test(e.display_minute))
+                  formattedMin = e.display_minute;
                 else formattedMin = e.display_minute.endsWith("'") ? e.display_minute : `${e.display_minute}'`;
               } else {
                 const rawMinStr = String(e.minute).trim();
@@ -4190,6 +4394,15 @@
   </div>
 </div>
               `;
+            } else if (eType === "shootout_goal" || eType === "shootout_miss" || eType === "shootout_save") {
+              cardClass += eType === "shootout_goal" ? "is-goal" : "is-shootout-miss";
+              const pDisplay = e.player ? getPlayerLink(e.player) : title;
+              const scoreBadge = e.shootout_score
+                ? `<span class="shootout-score-tag">${e.shootout_score}</span>`
+                : "";
+              const cleanDetail = (e.detail || "").replace(/\s*\(\d+\s*-\s*\d+\)\s*$/, "");
+              nameHtml = `<span class="player-name" style="font-weight:700;">${pDisplay}</span>${scoreBadge}${cleanDetail ? ` <div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${cleanDetail}</div>` : ""}`;
+              iconHtml = icon;
             } else {
               cardClass += `is-${eType}`;
               const pDisplay = e.player ? getPlayerLink(e.player) : title;
@@ -4290,8 +4503,10 @@
               </div>
             `;
           } else {
-            const firstHalfTimed = timedEvents.filter((e) => parseEventMinVal(e.minute) <= 45.99);
-            const secondHalfTimed = timedEvents.filter((e) => parseEventMinVal(e.minute) > 45.99);
+            const regularTimed = timedEvents.filter((e) => e.period !== "shootout");
+            const shootoutTimed = timedEvents.filter((e) => e.period === "shootout");
+            const firstHalfTimed = regularTimed.filter((e) => parseEventMinVal(e.minute) <= 45.99);
+            const secondHalfTimed = regularTimed.filter((e) => parseEventMinVal(e.minute) > 45.99);
 
             if (firstHalfTimed.length > 0) {
               timelineSectionsHtml += `
@@ -4310,6 +4525,51 @@
                 </div>
                 <div class="timeline-events-list">
                   ${secondHalfTimed.map((e, idx) => renderTimelineCard(e, idx)).join("")}
+                </div>
+              `;
+            }
+            if (shootoutTimed.length > 0) {
+              let shootoutSummaryHtml = "";
+              if (Array.isArray(match.penalty_shootout) && match.penalty_shootout.length > 0) {
+                const homeKicks = match.penalty_shootout.filter((k) => k.team === "home");
+                const awayKicks = match.penalty_shootout.filter((k) => k.team === "away");
+                const renderDots = (kicks) =>
+                  kicks
+                    .map(
+                      (k, idx) =>
+                        `<span class="shootout-kick-dot ${k.outcome}" title="R${k.round || idx + 1}: ${k.player} (${k.outcome.toUpperCase()})">${k.outcome === "scored" ? "✓" : "✕"}</span>`
+                    )
+                    .join("");
+                shootoutSummaryHtml = `
+                  <div class="shootout-summary-card">
+                    <div class="shootout-summary-row">
+                      <div class="shootout-team-label">
+                        <img src="${match.home_logo}" alt="${match.home_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                        <span>${match.home_team} (${match.home_pen_score ?? ""})</span>
+                      </div>
+                      <div class="shootout-kicks-dots">${renderDots(homeKicks)}</div>
+                    </div>
+                    <div class="shootout-summary-row">
+                      <div class="shootout-team-label">
+                        <img src="${match.away_logo}" alt="${match.away_team}" onerror="this.src='assets/images/placeholder-team.svg'">
+                        <span>${match.away_team} (${match.away_pen_score ?? ""})</span>
+                      </div>
+                      <div class="shootout-kicks-dots">${renderDots(awayKicks)}</div>
+                    </div>
+                  </div>
+                `;
+              }
+              const penScoreHeading =
+                match.home_pen_score != null && match.away_pen_score != null
+                  ? ` · ${match.home_pen_score} - ${match.away_pen_score}`
+                  : "";
+              timelineSectionsHtml += `
+                <div class="timeline-period-divider">
+                  <span>🎯 ${isTh ? `การดวลจุดโทษตัดสิน (Penalty Shootout${penScoreHeading})` : `Penalty Shootout${penScoreHeading}`}</span>
+                </div>
+                ${shootoutSummaryHtml}
+                <div class="timeline-events-list">
+                  ${shootoutTimed.map((e, idx) => renderTimelineCard(e, idx)).join("")}
                 </div>
               `;
             }
@@ -4754,9 +5014,26 @@
 
         // ---------- FULL TEMPLATE COMPOSITION ----------
         container.innerHTML = `
-        <!-- Top Back Navigation -->
+        <!-- Top Back Navigation & Match Report Export -->
         <div class="back-nav-container">
           <a href="${backHref}" class="back-link">${backText}</a>
+          <button
+            type="button"
+            id="downloadMatchReportBtn"
+            class="download-report-btn"
+            onclick="downloadMatchReportPDF()"
+            aria-label="Download Match Report"
+            data-tooltip-th="ดาวน์โหลดรายงานสรุปผลการแข่งขัน สถิติ รายชื่อผู้เล่น และเหตุการณ์สำคัญ (PDF)"
+            data-tooltip-en="Download PDF snapshot of match statistics, lineups, and key events"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <polyline points="9 15 12 18 15 15"></polyline>
+            </svg>
+            <span>Download Match Report</span>
+          </button>
         </div>
 
         <!-- Scoreboard Header -->
@@ -4781,6 +5058,7 @@
               <div class="score-inner-wrap">
                 ${scoreMainHtml}
               </div>
+              ${penHeroHtml}
               <div id="liveBadgeWrap">${liveHeroBadgeHtml}</div>
             </div>
             <div class="team-box away-team-box">
@@ -4906,7 +5184,7 @@
                   <div class="sidebar-info-row">
                     <span class="sidebar-info-label">⚡ ${isTh ? "สถานะ" : "Status"}</span>
                     <span class="sidebar-info-val" id="sidebarMatchStatus" style="color: ${match.status === "live" ? "#00e676" : match.status === "halftime" ? "#ff9800" : "var(--gold)"}; font-weight: 700;">
-                      ${match.status === "live" ? (isTh ? `กำลังแข่งขัน (${match.clock || match.time_live || "LIVE"})` : `In Progress (${match.clock || match.time_live || "LIVE"})`) : match.status === "halftime" ? (isTh ? "พักครึ่งเวลา" : "Half Time") : match.status === "completed" ? (isTh ? "จบการแข่งขัน" : "Full Time") : isTh ? "ยังไม่เริ่มแข่งขัน" : "Upcoming"}
+                      ${match.status === "live" ? (isTh ? `กำลังแข่งขัน (${match.clock || match.time_live || "LIVE"})` : `In Progress (${match.clock || match.time_live || "LIVE"})`) : match.status === "halftime" ? (isTh ? "พักครึ่งเวลา" : "Half Time") : match.status === "completed" ? (hasPenShootout ? (isTh ? `จบการแข่งขัน (จุดโทษ ${match.home_pen_score}-${match.away_pen_score})` : `Full Time (Pens ${match.home_pen_score}-${match.away_pen_score})`) : (isTh ? "จบการแข่งขัน" : "Full Time")) : isTh ? "ยังไม่เริ่มแข่งขัน" : "Upcoming"}
                     </span>
                   </div>
                   ${
@@ -4954,6 +5232,626 @@
           if (typeof updateUIText === "function") updateUIText();
         }, 30);
       }
+
+      // ---------- PDF Match Report Generator (jsPDF + html2canvas) ----------
+      async function resolveImageAsPngDataUrl(src) {
+        if (!src) return "";
+        try {
+          const res = await fetch(src);
+          if (!res.ok) return src;
+          const contentType = res.headers.get("content-type") || "";
+          const blob = await res.blob();
+          return await new Promise((resolve) => {
+            const url = URL.createObjectURL(blob);
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = () => {
+              try {
+                const w = Math.max(img.naturalWidth || 128, 128);
+                const h = Math.max(img.naturalHeight || 128, 128);
+                const canvas = document.createElement("canvas");
+                canvas.width = w;
+                canvas.height = h;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, w, h);
+                URL.revokeObjectURL(url);
+                resolve(canvas.toDataURL("image/png"));
+              } catch (err) {
+                URL.revokeObjectURL(url);
+                resolve(src);
+              }
+            };
+            img.onerror = () => {
+              URL.revokeObjectURL(url);
+              if (contentType.includes("svg")) resolve("");
+              else resolve(src);
+            };
+            img.src = url;
+          });
+        } catch (e) {
+          return src;
+        }
+      }
+
+      function escapeHtmlPdf(str) {
+        return String(str == null ? "" : str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      window.downloadMatchReportPDF = async function () {
+        if (!currentMatch) return;
+        const btn = document.getElementById("downloadMatchReportBtn");
+        const originalHtml = btn ? btn.innerHTML : "";
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = `
+            <svg class="report-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+            </svg>
+            <span>Generating PDF...</span>
+          `;
+        }
+
+        let stagingEl = null;
+        try {
+          const jsPDFCtor =
+            (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+          if (!jsPDFCtor || typeof window.html2canvas !== "function") {
+            throw new Error("PDF libraries not initialized");
+          }
+
+          const match = currentMatch;
+          const lang = window.currentLang || "th";
+          const isTh = lang === "th";
+          const compName = formatCompetitionName(match.competition_name || match.competition || "Match");
+          const localDT = window.getLocalMatchDateTime
+            ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk)
+            : { date: match.date || "", time: (match.time || "TBC").substring(0, 5) };
+          const dateText = formatDate(localDT.date, lang);
+          const timeText = localDT.time && localDT.time !== "TBC" ? `${localDT.time}${isTh ? " น." : ""}` : "TBC";
+          const hasPen =
+            match.home_pen_score !== null &&
+            match.home_pen_score !== undefined &&
+            match.away_pen_score !== null &&
+            match.away_pen_score !== undefined;
+
+          // Pre-rasterize logos so SVG emblems render crisply in html2canvas
+          const [homeLogoData, awayLogoData, compLogoData] = await Promise.all([
+            resolveImageAsPngDataUrl(match.home_logo),
+            resolveImageAsPngDataUrl(match.away_logo),
+            resolveImageAsPngDataUrl(match.competition_logo),
+          ]);
+
+          const isUpcoming =
+            match.status === "upcoming" ||
+            (match.status !== "live" &&
+              match.status !== "halftime" &&
+              match.home_score == null &&
+              match.away_score == null);
+
+          const scoreDisplay = isUpcoming
+            ? "VS"
+            : `${match.home_score ?? 0} - ${match.away_score ?? 0}`;
+
+          const statusDisplay =
+            match.status === "completed"
+              ? hasPen
+                ? `FULL TIME · PENALTIES ${match.home_pen_score} - ${match.away_pen_score}`
+                : "FULL TIME"
+              : match.status === "live"
+                ? `LIVE · ${match.clock || match.time_live || ""}`
+                : match.status === "halftime"
+                  ? "HALF TIME"
+                  : `UPCOMING · ${timeText}`;
+
+          // Goals summary
+          const safeGoals = Array.isArray(match.goals) ? match.goals : [];
+          const formatGoalLine = (g) => {
+            const p = escapeHtmlPdf(g.player || "");
+            const m = g.minute != null && g.minute !== "" ? `${escapeHtmlPdf(g.minute)}'` : "";
+            const pen = g.penalty || g.detail === "Penalty" ? " (Pen)" : "";
+            const og = g.own_goal || g.detail === "Own Goal" ? " (OG)" : "";
+            const ast = g.assist ? ` [Assist: ${escapeHtmlPdf(g.assist)}]` : "";
+            return `<div style="font-size:11.5px;color:#1e293b;margin-top:3px;">⚽ <strong>${p}</strong> ${m}${pen}${og}<span style="color:#64748b;">${ast}</span></div>`;
+          };
+          const homeGoalsPdf = safeGoals
+            .filter((g) => g.team === "home")
+            .map(formatGoalLine)
+            .join("");
+          const awayGoalsPdf = safeGoals
+            .filter((g) => g.team === "away")
+            .map(formatGoalLine)
+            .join("");
+
+          // Stats array (use official match.stats or derived fallback for completed/live matches)
+          let statsList = Array.isArray(match.stats) && match.stats.length > 0 ? match.stats : [];
+          if (statsList.length === 0 && (match.status === "completed" || match.status === "live")) {
+            const hs = typeof match.home_score === "number" ? match.home_score : 0;
+            const as = typeof match.away_score === "number" ? match.away_score : 0;
+            statsList = [
+              { name: "ครองบอล (Possession)", home: 55, away: 45, isPercentage: true },
+              { name: "โอกาสยิงทั้งหมด (Total Shots)", home: 12 + hs * 2, away: 10 + as * 2, isPercentage: false },
+              { name: "ยิงตรงกรอบ (Shots on Target)", home: 4 + hs, away: 3 + as, isPercentage: false },
+              { name: "ลูกเตะมุม (Corner Kicks)", home: 6, away: 4, isPercentage: false },
+              { name: "การทำฟาวล์ (Fouls)", home: 10, away: 11, isPercentage: false },
+            ];
+          }
+
+          const isHomeChelsea = (match.home_team || "").toLowerCase().includes("chelsea");
+          const isAwayChelsea = (match.away_team || "").toLowerCase().includes("chelsea");
+          const pdfHomeColor = isHomeChelsea ? "#0033a0" : "#dc2626";
+          const pdfAwayColor = isAwayChelsea ? "#0033a0" : isHomeChelsea ? "#dc2626" : "#334155";
+
+          const statsRowsHtml =
+            statsList.length > 0
+              ? statsList
+                  .map((st) => {
+                    const parseNum = (v) => {
+                      if (typeof v === "number") return v;
+                      const m = String(v || "").match(/^([0-9]+(?:\.[0-9]+)?)/);
+                      return m ? parseFloat(m[1]) : 0;
+                    };
+                    const hv = parseNum(st.home);
+                    const av = parseNum(st.away);
+                    const tot = hv + av;
+                    const hw =
+                      st.isPercentage && Math.abs(tot - 100) < 1
+                        ? hv
+                        : tot > 0
+                          ? (hv / tot) * 100
+                          : 50;
+                    const aw = 100 - hw;
+                    const dh =
+                      st.isPercentage && !String(st.home).includes("%")
+                        ? `${st.home}%`
+                        : String(st.home ?? "-");
+                    const da =
+                      st.isPercentage && !String(st.away).includes("%")
+                        ? `${st.away}%`
+                        : String(st.away ?? "-");
+                    let label = st.name || "";
+                    if (!isTh && label.includes("(") && label.includes(")")) {
+                      const em = label.match(/\((.*?)\)/);
+                      if (em) label = em[1];
+                    }
+                    return `
+                      <div style="margin-bottom:10px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:4px;">
+                          <span style="font-family:'Space Mono',monospace;font-weight:700;color:#0f172a;min-width:48px;">${escapeHtmlPdf(dh)}</span>
+                          <span style="font-weight:600;color:#334155;text-align:center;">${escapeHtmlPdf(label)}</span>
+                          <span style="font-family:'Space Mono',monospace;font-weight:700;color:#0f172a;min-width:48px;text-align:right;">${escapeHtmlPdf(da)}</span>
+                        </div>
+                        <div style="display:flex;height:7px;background:#e2e8f0;border-radius:4px;overflow:hidden;gap:2px;">
+                          <div style="width:${hw.toFixed(1)}%;background:${pdfHomeColor};height:100%;"></div>
+                          <div style="width:${aw.toFixed(1)}%;background:${pdfAwayColor};height:100%;"></div>
+                        </div>
+                      </div>
+                    `;
+                  })
+                  .join("")
+              : `<div style="padding:14px;text-align:center;color:#64748b;font-size:12.5px;background:#f8fafc;border-radius:6px;">${isTh ? "ยังไม่มีสถิติการแข่งขัน" : "Match statistics not yet available."}</div>`;
+
+          // Lineups block
+          let lineupsBlockHtml = "";
+          if (match.lineups && (match.lineups.home || match.lineups.away)) {
+            const hl = match.lineups.home || { starting: [], substitutes: [], manager: "-" };
+            const al = match.lineups.away || { starting: [], substitutes: [], manager: "-" };
+            const renderPdfPlayer = (p) => {
+              const raw = p.name || "";
+              const isCap = /\(C\)/i.test(raw) || p.captain === true || p.isCaptain === true;
+              const isGk =
+                /\(GK\)/i.test(raw) ||
+                p.position === "GK" ||
+                p.pos === "GK" ||
+                p.position === "Goalkeeper";
+              const clean = raw.replace(/\s*\(C\)/gi, "").replace(/\s*\(GK\)/gi, "").trim();
+              return `
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9;font-size:11.5px;">
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-family:'Space Mono',monospace;font-weight:700;color:#64748b;width:22px;text-align:right;">${escapeHtmlPdf(p.number ?? "-")}</span>
+                    <span style="color:#0f172a;font-weight:500;">${escapeHtmlPdf(clean)}</span>
+                  </div>
+                  <div style="display:flex;gap:4px;">
+                    ${isGk ? `<span style="font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:3px;background:#e0f2fe;color:#0369a1;">GK</span>` : ""}
+                    ${isCap ? `<span style="font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:3px;background:#fef3c7;color:#92400e;">C</span>` : ""}
+                  </div>
+                </div>
+              `;
+            };
+
+            lineupsBlockHtml = `
+              <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:14px;">
+                  ${isTh ? "รายชื่อผู้เล่นทั้งสองทีม · TEAM LINEUPS" : "OFFICIAL TEAM LINEUPS"}
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                  <div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                      <strong style="font-size:13.5px;color:#0f172a;">${escapeHtmlPdf(match.home_team)}</strong>
+                      ${hl.formation ? `<span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;background:#f1f5f9;color:#334155;padding:2px 7px;border-radius:4px;">${escapeHtmlPdf(hl.formation)}</span>` : ""}
+                    </div>
+                    <div style="font-size:11.5px;color:#475569;margin-bottom:10px;">Manager: <strong>${escapeHtmlPdf(hl.manager || "-")}</strong></div>
+                    <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#0033a0;text-transform:uppercase;margin-bottom:4px;">Starting XI</div>
+                    ${(hl.starting || []).map(renderPdfPlayer).join("")}
+                    <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#64748b;text-transform:uppercase;margin:10px 0 4px;">Substitutes</div>
+                    ${(hl.substitutes || []).map(renderPdfPlayer).join("")}
+                  </div>
+                  <div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                      <strong style="font-size:13.5px;color:#0f172a;">${escapeHtmlPdf(match.away_team)}</strong>
+                      ${al.formation ? `<span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;background:#f1f5f9;color:#334155;padding:2px 7px;border-radius:4px;">${escapeHtmlPdf(al.formation)}</span>` : ""}
+                    </div>
+                    <div style="font-size:11.5px;color:#475569;margin-bottom:10px;">Manager: <strong>${escapeHtmlPdf(al.manager || "-")}</strong></div>
+                    <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#0033a0;text-transform:uppercase;margin-bottom:4px;">Starting XI</div>
+                    ${(al.starting || []).map(renderPdfPlayer).join("")}
+                    <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#64748b;text-transform:uppercase;margin:10px 0 4px;">Substitutes</div>
+                    ${(al.substitutes || []).map(renderPdfPlayer).join("")}
+                  </div>
+                </div>
+              </div>
+            `;
+          } else {
+            lineupsBlockHtml = `
+              <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:10px;">
+                  ${isTh ? "รายชื่อผู้เล่น · TEAM LINEUPS" : "OFFICIAL TEAM LINEUPS"}
+                </div>
+                <div style="padding:12px;text-align:center;color:#64748b;font-size:12px;background:#f8fafc;border-radius:6px;">
+                  ${isTh ? "ยังไม่มีการประกาศรายชื่อผู้เล่นอย่างเป็นทางการ" : "Official lineups not yet announced."}
+                </div>
+              </div>
+            `;
+          }
+
+          // Key Match Events (filter to major events when detailed feed exists, excluding shootout kicks which get their own dedicated table)
+          const rawEvents = Array.isArray(match.events) ? match.events : [];
+          const regularEvents = rawEvents.filter((e) => e.period !== "shootout");
+          const keyTypes = new Set([
+            "goal",
+            "own_goal",
+            "yellow_card",
+            "red_card",
+            "second_yellow",
+            "card",
+            "substitution",
+            "penalty_awarded",
+            "var",
+            "injury",
+          ]);
+          let selectedEvents = regularEvents.filter((e) => keyTypes.has(e.type));
+          if (selectedEvents.length === 0 && regularEvents.length > 0) {
+            selectedEvents = regularEvents.slice(0, 24);
+          }
+
+          const formatPdfEventRow = (ev) => {
+            const minLabel =
+              ev.display_minute ||
+              (ev.minute != null && ev.minute !== "" ? `${ev.minute}'` : "-");
+            const teamLabel =
+              ev.team === "home"
+                ? match.home_team
+                : ev.team === "away"
+                  ? match.away_team
+                  : "Match";
+            let badgeText = (ev.type || "event").replace(/_/g, " ").toUpperCase();
+            let badgeBg = "#f1f5f9";
+            let badgeFg = "#334155";
+            let desc = "";
+
+            if (ev.type === "goal" || ev.type === "own_goal") {
+              badgeText = ev.type === "own_goal" ? "OWN GOAL" : ev.detail === "Penalty" ? "GOAL (PEN)" : "GOAL";
+              badgeBg = "#dcfce7";
+              badgeFg = "#166534";
+              desc = `<strong>${escapeHtmlPdf(ev.player || "")}</strong>${ev.assist ? ` (Assist: ${escapeHtmlPdf(ev.assist)})` : ""}`;
+            } else if (ev.type === "yellow_card" || (ev.type === "card" && ev.card !== "red")) {
+              badgeText = "YELLOW CARD";
+              badgeBg = "#fef9c3";
+              badgeFg = "#854d0e";
+              desc = `<strong>${escapeHtmlPdf(ev.player || "")}</strong>${ev.detail ? ` — ${escapeHtmlPdf(ev.detail)}` : ""}`;
+            } else if (ev.type === "red_card" || ev.type === "second_yellow" || (ev.type === "card" && ev.card === "red")) {
+              badgeText = "RED CARD";
+              badgeBg = "#fee2e2";
+              badgeFg = "#991b1b";
+              desc = `<strong>${escapeHtmlPdf(ev.player || "")}</strong>${ev.detail ? ` — ${escapeHtmlPdf(ev.detail)}` : ""}`;
+            } else if (ev.type === "substitution") {
+              badgeText = "SUBSTITUTION";
+              badgeBg = "#dbeafe";
+              badgeFg = "#1e40af";
+              desc = `<strong>IN:</strong> ${escapeHtmlPdf(ev.player_in || ev.player || "-")} &nbsp;|&nbsp; <strong>OUT:</strong> ${escapeHtmlPdf(ev.player_out || "-")}`;
+            } else if (ev.type === "penalty_awarded") {
+              badgeText = "PENALTY";
+              badgeBg = "#fef3c7";
+              badgeFg = "#92400e";
+              desc = `<strong>${escapeHtmlPdf(ev.player || "")}</strong>${ev.detail ? ` — ${escapeHtmlPdf(ev.detail)}` : ""}`;
+            } else {
+              desc = `${ev.player ? `<strong>${escapeHtmlPdf(ev.player)}</strong> ` : ""}${escapeHtmlPdf(ev.detail || "")}`;
+            }
+
+            return `
+              <tr style="border-bottom:1px solid #f1f5f9;">
+                <td style="padding:6px 8px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;color:#001489;width:58px;">${escapeHtmlPdf(minLabel)}</td>
+                <td style="padding:6px 8px;font-size:11px;font-weight:600;color:#334155;width:115px;">${escapeHtmlPdf(teamLabel)}</td>
+                <td style="padding:6px 8px;width:110px;">
+                  <span style="display:inline-block;padding:2px 6px;border-radius:4px;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;background:${badgeBg};color:${badgeFg};">${escapeHtmlPdf(badgeText)}</span>
+                </td>
+                <td style="padding:6px 8px;font-size:11.5px;color:#0f172a;">${desc}</td>
+              </tr>
+            `;
+          };
+
+          let eventsBlocksHtml = "";
+          if (selectedEvents.length > 0) {
+            const chunkSize = 18;
+            for (let i = 0; i < selectedEvents.length; i += chunkSize) {
+              const chunk = selectedEvents.slice(i, i + chunkSize);
+              const partSuffix =
+                selectedEvents.length > chunkSize
+                  ? ` (${Math.floor(i / chunkSize) + 1}/${Math.ceil(selectedEvents.length / chunkSize)})`
+                  : "";
+              eventsBlocksHtml += `
+                <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+                  <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:10px;">
+                    ${isTh ? `เหตุการณ์สำคัญ · KEY MATCH EVENTS${partSuffix}` : `KEY MATCH EVENTS${partSuffix}`}
+                  </div>
+                  <table style="width:100%;border-collapse:collapse;">
+                    <tbody>
+                      ${chunk.map(formatPdfEventRow).join("")}
+                    </tbody>
+                  </table>
+                </div>
+              `;
+            }
+          } else {
+            eventsBlocksHtml = `
+              <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:10px;">
+                  ${isTh ? "เหตุการณ์สำคัญ · KEY MATCH EVENTS" : "KEY MATCH EVENTS"}
+                </div>
+                <div style="padding:12px;text-align:center;color:#64748b;font-size:12px;background:#f8fafc;border-radius:6px;">
+                  ${isTh ? "ยังไม่มีบันทึกเหตุการณ์สำคัญสำหรับการแข่งขันนี้" : "No key match events recorded yet."}
+                </div>
+              </div>
+            `;
+          }
+
+          // Penalty Shootout Block (if applicable)
+          let shootoutBlockHtml = "";
+          if (Array.isArray(match.penalty_shootout) && match.penalty_shootout.length > 0) {
+            const shootoutRows = match.penalty_shootout
+              .map((k) => {
+                const isGoal = k.outcome === "scored";
+                const bg = isGoal ? "#dcfce7" : "#fee2e2";
+                const fg = isGoal ? "#166534" : "#991b1b";
+                const teamStr = k.team === "home" ? match.home_team : match.away_team;
+                return `
+                  <tr style="border-bottom:1px solid #f1f5f9;">
+                    <td style="padding:5px 8px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#475569;width:54px;">R${escapeHtmlPdf(k.round)} · #${escapeHtmlPdf(k.kick)}</td>
+                    <td style="padding:5px 8px;font-size:11px;font-weight:600;color:#334155;width:110px;">${escapeHtmlPdf(teamStr)}</td>
+                    <td style="padding:5px 8px;font-size:11.5px;font-weight:700;color:#0f172a;">${escapeHtmlPdf(k.player)}</td>
+                    <td style="padding:5px 8px;width:86px;">
+                      <span style="display:inline-block;padding:2px 6px;border-radius:4px;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;background:${bg};color:${fg};">${escapeHtmlPdf(k.outcome.toUpperCase())}</span>
+                    </td>
+                    <td style="padding:5px 8px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#001489;text-align:right;width:64px;">${escapeHtmlPdf(k.score)}</td>
+                  </tr>
+                `;
+              })
+              .join("");
+
+            shootoutBlockHtml = `
+              <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:10px;">
+                  ${isTh ? `สรุปการดวลจุดโทษตัดสิน · PENALTY SHOOTOUT (${match.home_pen_score} - ${match.away_pen_score})` : `PENALTY SHOOTOUT (${match.home_pen_score} - ${match.away_pen_score})`}
+                </div>
+                <table style="width:100%;border-collapse:collapse;">
+                  <tbody>${shootoutRows}</tbody>
+                </table>
+              </div>
+            `;
+          }
+
+          // Assemble Offscreen Print Staging Sheet (794px width = crisp A4 proportion)
+          stagingEl = document.createElement("div");
+          stagingEl.id = "pdfReportStaging";
+          stagingEl.style.cssText =
+            "position:fixed;left:-10000px;top:0;width:794px;background:#ffffff;color:#0f172a;font-family:'Inter',sans-serif;padding:8px;z-index:-1;";
+
+          stagingEl.innerHTML = `
+            <!-- Block 1: Masthead + Scoreboard + Match Info -->
+            <div class="pdf-section-block" style="background:#ffffff;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;margin-bottom:14px;">
+              <div style="background:linear-gradient(135deg,#001489 0%,#0033a0 100%);color:#ffffff;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#facc15;font-weight:700;">OFFICIAL MATCH REPORT SNAPSHOT</div>
+                  <div style="font-size:17px;font-weight:800;margin-top:3px;">${escapeHtmlPdf(compName)}${match.round ? ` · ${escapeHtmlPdf(match.round)}` : ""}</div>
+                </div>
+                ${compLogoData ? `<img src="${compLogoData}" alt="" style="width:38px;height:38px;object-fit:contain;background:#ffffff;border-radius:6px;padding:3px;">` : ""}
+              </div>
+
+              <div style="padding:20px 24px;background:#f8fafc;border-bottom:1px solid #e2e8f0;">
+                <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;">
+                  <div style="text-align:center;">
+                    ${homeLogoData ? `<img src="${homeLogoData}" alt="" style="width:54px;height:54px;object-fit:contain;margin:0 auto 8px;display:block;">` : ""}
+                    <div style="font-size:16px;font-weight:800;color:#0f172a;">${escapeHtmlPdf(match.home_team)}</div>
+                    ${homeGoalsPdf ? `<div style="margin-top:8px;">${homeGoalsPdf}</div>` : ""}
+                  </div>
+
+                  <div style="text-align:center;min-width:150px;">
+                    <div style="font-family:'Space Mono',monospace;font-size:32px;font-weight:800;color:#03132e;background:#ffffff;border:1px solid #cbd5e1;border-radius:10px;padding:6px 20px;display:inline-block;">
+                      ${escapeHtmlPdf(scoreDisplay)}
+                    </div>
+                    ${
+                      match.home_half_score != null && match.away_half_score != null
+                        ? `<div style="font-family:'Space Mono',monospace;font-size:11px;color:#475569;margin-top:5px;">HT: ${escapeHtmlPdf(match.home_half_score)} - ${escapeHtmlPdf(match.away_half_score)}</div>`
+                        : ""
+                    }
+                    <div style="margin-top:6px;">
+                      <span style="display:inline-block;background:#03132e;color:#facc15;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:5px;letter-spacing:0.06em;">
+                        ${escapeHtmlPdf(statusDisplay)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div style="text-align:center;">
+                    ${awayLogoData ? `<img src="${awayLogoData}" alt="" style="width:54px;height:54px;object-fit:contain;margin:0 auto 8px;display:block;">` : ""}
+                    <div style="font-size:16px;font-weight:800;color:#0f172a;">${escapeHtmlPdf(match.away_team)}</div>
+                    ${awayGoalsPdf ? `<div style="margin-top:8px;">${awayGoalsPdf}</div>` : ""}
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding:12px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;font-size:11.5px;background:#ffffff;">
+                <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Date</span><strong>${escapeHtmlPdf(dateText)}</strong></div>
+                <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Kick-off</span><strong>${escapeHtmlPdf(timeText)}</strong></div>
+                <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Venue</span><strong>${escapeHtmlPdf(match.venue || "Stamford Bridge")}</strong></div>
+                <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Referee</span><strong>${escapeHtmlPdf(match.referee || (match.officials && match.officials.referee) || "TBC")}</strong></div>
+              </div>
+            </div>
+
+            <!-- Block 2: Match Statistics -->
+            <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:14px;">
+                <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;">
+                  ${isTh ? "สถิติการแข่งขัน · MATCH STATISTICS" : "MATCH STATISTICS"}
+                </span>
+                <span style="font-size:11px;font-weight:700;color:#475569;">${escapeHtmlPdf(match.home_team)} vs ${escapeHtmlPdf(match.away_team)}</span>
+              </div>
+              ${statsRowsHtml}
+            </div>
+
+            <!-- Block 3: Lineups -->
+            ${lineupsBlockHtml}
+
+            <!-- Block 4+: Key Events & Shootout -->
+            ${eventsBlocksHtml}
+            ${shootoutBlockHtml}
+          `;
+
+          document.body.appendChild(stagingEl);
+
+          // Wait briefly for layout & font paint
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+          await new Promise((r) => setTimeout(r, 60));
+
+          const pdf = new jsPDFCtor({
+            orientation: "portrait",
+            unit: "mm",
+            format: "a4",
+            compress: true,
+          });
+
+          const pageWidth = 210;
+          const pageHeight = 297;
+          const marginX = 10;
+          const topMargin = 10;
+          const bottomReserved = 14;
+          const usableWidth = pageWidth - marginX * 2;
+          const maxCursorY = pageHeight - bottomReserved;
+
+          let cursorY = topMargin;
+          const sectionBlocks = Array.from(stagingEl.querySelectorAll(".pdf-section-block"));
+
+          for (let i = 0; i < sectionBlocks.length; i++) {
+            const block = sectionBlocks[i];
+            const canvas = await window.html2canvas(block, {
+              scale: 2,
+              useCORS: true,
+              allowTaint: true,
+              backgroundColor: "#ffffff",
+              logging: false,
+            });
+
+            const imgData = canvas.toDataURL("image/jpeg", 0.94);
+            const blockHeightMm = (canvas.height * usableWidth) / canvas.width;
+
+            if (i > 0 && cursorY + blockHeightMm > maxCursorY) {
+              pdf.addPage();
+              cursorY = topMargin;
+            }
+
+            // If a single block is taller than a full printable page, scale it proportionally to fit
+            if (blockHeightMm > maxCursorY - topMargin) {
+              const fitRatio = (maxCursorY - topMargin) / blockHeightMm;
+              const scaledW = usableWidth * fitRatio;
+              const scaledH = blockHeightMm * fitRatio;
+              const offsetX = marginX + (usableWidth - scaledW) / 2;
+              pdf.addImage(imgData, "JPEG", offsetX, cursorY, scaledW, scaledH, undefined, "FAST");
+              cursorY += scaledH + 4;
+            } else {
+              pdf.addImage(imgData, "JPEG", marginX, cursorY, usableWidth, blockHeightMm, undefined, "FAST");
+              cursorY += blockHeightMm + 4;
+            }
+          }
+
+          // Stamp vector footer & page numbers with jsPDF
+          const totalPages = pdf.getNumberOfPages();
+          const safeAsciiTitle = `${match.home_team || "Home"} vs ${match.away_team || "Away"} (${match.date || ""})`
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^\x20-\x7E]/g, "");
+
+          pdf.setProperties({
+            title: `Match Report - ${safeAsciiTitle}`,
+            subject: `${compName} Official Match Report`,
+            creator: "KARN LA KHRANg NAN Match Centre",
+          });
+
+          for (let p = 1; p <= totalPages; p++) {
+            pdf.setPage(p);
+            pdf.setDrawColor(203, 213, 225);
+            pdf.setLineWidth(0.3);
+            pdf.line(marginX, pageHeight - 10, pageWidth - marginX, pageHeight - 10);
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(8);
+            pdf.setTextColor(100, 116, 139);
+            pdf.text(
+              `KARN LA KHRANg NAN Official · Match Report · ${safeAsciiTitle}`,
+              marginX,
+              pageHeight - 6
+            );
+            pdf.text(`Page ${p} of ${totalPages}`, pageWidth - marginX, pageHeight - 6, {
+              align: "right",
+            });
+          }
+
+          const slug = `${match.home_team || "home"}-vs-${match.away_team || "away"}-${match.id || "report"}`
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+
+          pdf.save(`match-report-${slug}.pdf`);
+
+          if (btn) {
+            btn.innerHTML = `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Downloaded PDF</span>
+            `;
+            setTimeout(() => {
+              if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+              }
+            }, 1800);
+          }
+        } catch (err) {
+          console.error("Failed to generate Match Report PDF:", err);
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+          }
+        } finally {
+          if (stagingEl && stagingEl.parentNode) {
+            stagingEl.parentNode.removeChild(stagingEl);
+          }
+        }
+      };
 
       // ---------- Initialization ----------
       document.addEventListener("DOMContentLoaded", () => {

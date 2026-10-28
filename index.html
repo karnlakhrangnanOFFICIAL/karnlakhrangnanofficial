@@ -1833,8 +1833,9 @@
               <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
             </div>
             
-            <div class="match-card-timebox" style="background: rgba(255,255,255,0.05);">
+            <div class="match-card-timebox" style="background: rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <span>${match.home_score} - ${match.away_score}</span>
+              ${match.home_pen_score != null && match.away_pen_score != null ? `<span style="font-size: 0.66rem; font-weight: 700; color: var(--gold, #d4af37); letter-spacing: 0.04em; line-height: 1.1; margin-top: 2px;">PEN ${match.home_pen_score}-${match.away_pen_score}</span>` : ''}
             </div>
             
             <div class="match-card-team away">
