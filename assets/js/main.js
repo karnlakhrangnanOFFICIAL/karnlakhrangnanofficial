@@ -118,7 +118,7 @@ const FALLBACK_TRANSLATIONS = {
     "filter_midfielder": "🎯 กองกลาง",
     "filter_forward": "⚽ กองหน้า",
     "filter_goalkeeper": "🧤 ผู้รักษาประตู",
-    "loading": "กำลังโหลดตำนาน...",
+    "loading": "กำลังโหลด...",
     "error": "ไม่สามารถโหลดข้อมูลตำนานได้",
     "empty": "ไม่พบตำนานตามตัวกรองนี้",
     "apps": "นัด",
@@ -126,7 +126,10 @@ const FALLBACK_TRANSLATIONS = {
     "pos_defender": "กองหลัง",
     "pos_midfielder": "กองกลาง",
     "pos_forward": "กองหน้า",
-    "pos_goalkeeper": "ผู้รักษาประตู"
+    "pos_goalkeeper": "ผู้รักษาประตู",
+    "coming_soon_title": "Coming Soon",
+    "coming_soon_desc": "บทความประวัติและเกียรติยศของตำนานสโมสรท่านนี้ยังไม่มีข้อมูลในไฟล์ กำลังอยู่ในระหว่างการจัดทำเนื้อหา",
+    "close_modal": "ปิดหน้าต่าง"
   },
   "story": {
     "title": "The Story Blue (กาลครั้งนั้น)",
@@ -202,6 +205,9 @@ const FALLBACK_TRANSLATIONS = {
     "score": "สกอร์",
     "view_all": "ดูทั้งหมด",
     "loading": "กำลังโหลด...",
+    "loading_download": "กำลังเตรียมไฟล์ดาวน์โหลด...",
+    "loading_upload": "กำลังอัปโหลดข้อมูล...",
+    "loading_reload": "กำลังรีโหลดข้อมูล...",
     "disclaimer": "เว็บไซต์นี้เป็นแฟนไซต์ที่ไม่เป็นทางการ ไม่มีความเกี่ยวข้องกับสโมสรฟุตบอลเชลซี",
     "rights": "สงวนลิขสิทธิ์"
   },
@@ -348,7 +354,7 @@ const FALLBACK_TRANSLATIONS = {
     "filter_midfielder": "🎯 Midfielders",
     "filter_forward": "⚽ Forwards",
     "filter_goalkeeper": "🧤 Goalkeepers",
-    "loading": "Loading legends...",
+    "loading": "Loading...",
     "error": "Failed to load legends data",
     "empty": "No legends found for this filter",
     "apps": "apps",
@@ -356,7 +362,10 @@ const FALLBACK_TRANSLATIONS = {
     "pos_defender": "Defender",
     "pos_midfielder": "Midfielder",
     "pos_forward": "Forward",
-    "pos_goalkeeper": "Goalkeeper"
+    "pos_goalkeeper": "Goalkeeper",
+    "coming_soon_title": "Coming Soon",
+    "coming_soon_desc": "Full biography and honours archive for this club legend are not yet available. Coming soon.",
+    "close_modal": "Close"
   },
   "story": {
     "title": "The Story Blue",
@@ -432,6 +441,9 @@ const FALLBACK_TRANSLATIONS = {
     "score": "Score",
     "view_all": "View All",
     "loading": "Loading...",
+    "loading_download": "Preparing download...",
+    "loading_upload": "Uploading data...",
+    "loading_reload": "Reloading data...",
     "disclaimer": "This is an unofficial fan website. Not affiliated with Chelsea FC.",
     "rights": "All Rights Reserved."
   },
@@ -467,6 +479,473 @@ const FALLBACK_TRANSLATIONS = {
 }
 };
 let translations = FALLBACK_TRANSLATIONS[currentLang] || FALLBACK_TRANSLATIONS.th;
+
+// ---------- GLOBAL LOADING BACKDROP (DOWNLOAD / UPLOAD / RELOAD) ----------
+(function initGlobalAppLoading() {
+  let backdropEl = null;
+  let titleEl = null;
+  let subEl = null;
+  let activeCount = 0;
+  let currentMode = "default";
+  let safetyTimer = null;
+
+  function ensureStylesAndDOM() {
+    if (!document.getElementById("appLoadingFallbackStyles")) {
+      const st = document.createElement("style");
+      st.id = "appLoadingFallbackStyles";
+      st.textContent = `
+        @keyframes appLoaderSpin { to { transform: rotate(360deg); } }
+        .app-loading-backdrop {
+          position: fixed; inset: 0; z-index: 999999;
+          display: flex; align-items: center; justify-content: center; padding: 24px;
+          background: rgba(4, 15, 38, 0.76);
+          backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+          opacity: 0; visibility: hidden; pointer-events: none;
+          transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .app-loading-backdrop.is-active {
+          opacity: 1; visibility: visible; pointer-events: auto;
+        }
+        .app-loading-card {
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          text-align: center; min-width: 240px; max-width: 340px; padding: 28px 36px;
+          background: #071936; border: 1px solid rgba(212, 175, 55, 0.34);
+          border-radius: 18px; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45); color: #ffffff;
+          font-family: 'Inter', 'Prompt', system-ui, sans-serif;
+        }
+        .app-loading-spinner {
+          width: 44px; height: 44px; border: 4px solid rgba(255, 255, 255, 0.16);
+          border-top-color: #d4af37; border-radius: 50%;
+          animation: appLoaderSpin 0.75s linear infinite; margin-bottom: 14px;
+        }
+        .app-loading-title {
+          font-size: 1.12rem; font-weight: 700; letter-spacing: 0.02em; color: #ffffff; margin: 0;
+        }
+        .app-loading-sub {
+          font-size: 0.8rem; color: rgba(255, 255, 255, 0.74); margin: 6px 0 0;
+        }
+      `;
+      (document.head || document.documentElement).appendChild(st);
+    }
+
+    if (!backdropEl && document.body) {
+      backdropEl = document.getElementById("appLoadingBackdrop");
+      if (!backdropEl) {
+        backdropEl = document.createElement("div");
+        backdropEl.id = "appLoadingBackdrop";
+        backdropEl.className = "app-loading-backdrop";
+        backdropEl.setAttribute("role", "status");
+        backdropEl.setAttribute("aria-live", "polite");
+        backdropEl.setAttribute("data-html2canvas-ignore", "true");
+        backdropEl.innerHTML = `
+          <div class="app-loading-card">
+            <div class="app-loading-spinner"></div>
+            <p class="app-loading-title" id="appLoadingTitle">กำลังโหลด...</p>
+            <p class="app-loading-sub" id="appLoadingSub" style="display:none;"></p>
+          </div>
+        `;
+        document.body.appendChild(backdropEl);
+      }
+      titleEl = backdropEl.querySelector("#appLoadingTitle");
+      subEl = backdropEl.querySelector("#appLoadingSub");
+    }
+  }
+
+  function getLabels(mode, customSub) {
+    const lang = window.currentLang || localStorage.getItem("lang") || "th";
+    const isTh = lang === "th";
+    const primary = isTh ? "กำลังโหลด..." : "Loading...";
+    let secondary = customSub || "";
+    if (!secondary) {
+      if (mode === "download") {
+        secondary = isTh ? "กำลังเตรียมไฟล์ดาวน์โหลด..." : "Preparing download...";
+      } else if (mode === "upload") {
+        secondary = isTh ? "กำลังอัปโหลดข้อมูล..." : "Uploading data...";
+      } else if (mode === "reload") {
+        secondary = isTh ? "กำลังรีโหลดข้อมูล..." : "Reloading data...";
+      }
+    }
+    return { primary, secondary };
+  }
+
+  function refreshLabels(customSub) {
+    if (!titleEl) return;
+    const { primary, secondary } = getLabels(currentMode, customSub);
+    titleEl.textContent = primary;
+    if (subEl) {
+      if (secondary) {
+        subEl.textContent = secondary;
+        subEl.style.display = "block";
+      } else {
+        subEl.textContent = "";
+        subEl.style.display = "none";
+      }
+    }
+  }
+
+  const AppLoading = {
+    show(mode = "default", customSub = "", maxMs = 15000) {
+      currentMode = mode || "default";
+      activeCount++;
+      ensureStylesAndDOM();
+      if (!backdropEl) {
+        document.addEventListener("DOMContentLoaded", () => {
+          ensureStylesAndDOM();
+          if (activeCount > 0 && backdropEl) {
+            refreshLabels(customSub);
+            backdropEl.classList.add("is-active");
+          }
+        }, { once: true });
+        return;
+      }
+      refreshLabels(customSub);
+      backdropEl.classList.add("is-active");
+      if (safetyTimer) clearTimeout(safetyTimer);
+      if (maxMs > 0) {
+        safetyTimer = setTimeout(() => {
+          activeCount = 0;
+          if (backdropEl) backdropEl.classList.remove("is-active");
+        }, maxMs);
+      }
+    },
+    hide(force = false) {
+      if (force) {
+        activeCount = 0;
+      } else {
+        activeCount = Math.max(0, activeCount - 1);
+      }
+      if (activeCount === 0) {
+        if (safetyTimer) {
+          clearTimeout(safetyTimer);
+          safetyTimer = null;
+        }
+        if (backdropEl) {
+          backdropEl.classList.remove("is-active");
+        }
+      }
+    },
+    suppressUnload(ms = 2500) {
+      window.__suppressUnloadLoader = true;
+      setTimeout(() => {
+        window.__suppressUnloadLoader = false;
+      }, ms);
+    }
+  };
+
+  window.AppLoading = AppLoading;
+  window.showAppLoading = (mode, sub) => AppLoading.show(mode, sub);
+  window.hideAppLoading = (force) => AppLoading.hide(force);
+  window.suppressUnloadLoader = (ms) => AppLoading.suppressUnload(ms);
+
+  // Hook file input uploads & FileReader operations automatically
+  document.addEventListener("change", (e) => {
+    const target = e.target;
+    if (target && target.tagName === "INPUT" && target.type === "file" && target.files && target.files.length > 0) {
+      AppLoading.show("upload", "", 8000);
+      setTimeout(() => AppLoading.hide(), 700);
+    }
+  }, true);
+
+  if (typeof window.FileReader === "function") {
+    ["readAsDataURL", "readAsText", "readAsArrayBuffer", "readAsBinaryString"].forEach((method) => {
+      const orig = window.FileReader.prototype[method];
+      if (typeof orig === "function") {
+        window.FileReader.prototype[method] = function (...args) {
+          AppLoading.show("upload", "", 15000);
+          this.addEventListener("loadend", () => AppLoading.hide(), { once: true });
+          return orig.apply(this, args);
+        };
+      }
+    });
+  }
+
+  // Hook FormData / Blob / File uploads via fetch
+  if (typeof window.fetch === "function") {
+    const origFetch = window.fetch.bind(window);
+    window.fetch = function (input, init) {
+      const body = init && init.body;
+      const isUploadPayload =
+        (typeof FormData !== "undefined" && body instanceof FormData) ||
+        (typeof File !== "undefined" && body instanceof File) ||
+        (typeof Blob !== "undefined" && body instanceof Blob);
+      if (isUploadPayload) {
+        AppLoading.show("upload", "", 30000);
+        return origFetch(input, init).finally(() => AppLoading.hide());
+      }
+      return origFetch(input, init);
+    };
+  }
+
+  // Hook anchor [download] clicks
+  document.addEventListener("click", (e) => {
+    const link = e.target && e.target.closest ? e.target.closest("a[download]") : null;
+    if (link) {
+      AppLoading.suppressUnload(2500);
+      AppLoading.show("download", "", 3000);
+      setTimeout(() => AppLoading.hide(), 650);
+    }
+  }, true);
+
+  // Show loading backdrop when browser window reloads/navigates, and always clear on pageshow
+  window.addEventListener("beforeunload", () => {
+    if (window.__suppressUnloadLoader) return;
+    AppLoading.show("reload", "", 5000);
+  });
+
+  window.addEventListener("pageshow", () => {
+    AppLoading.hide(true);
+  });
+
+  window.addEventListener("languageChanged", () => {
+    refreshLabels();
+  });
+})();
+
+// ---------- INLINE IMAGE LOADING STATE (NEWS & PLAYER PROFILES) ----------
+(function () {
+  const TRANSPARENT_PIXEL = [
+    "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP",
+    "yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+  ].join("\x2f\x2f\x2f");
+
+  function ensureImgLoaderStyles() {
+    if (document.getElementById("imgLoadingInlineStyle")) return;
+    const st = document.createElement("style");
+    st.id = "imgLoadingInlineStyle";
+    st.textContent = `
+      .img-loading-host { position: relative !important; overflow: hidden; }
+      .img-loading-overlay {
+        position: absolute; inset: 0; z-index: 4;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 8px; padding: 10px; text-align: center;
+        background: linear-gradient(110deg, var(--bg-card, #0b2046) 25%, var(--bg-card-hover, #112c5c) 50%, var(--bg-card, #0b2046) 75%);
+        background-size: 220% 100%;
+        animation: imgLoadingShimmer 1.6s ease-in-out infinite;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity 0.22s ease, visibility 0.22s ease;
+      }
+      html[data-theme="editorial"] .img-loading-overlay, body.theme-editorial .img-loading-overlay {
+        background: linear-gradient(110deg, #e9eef5 25%, #f8fafc 50%, #e9eef5 75%);
+        background-size: 220% 100%;
+      }
+      .img-loading-host.is-loading > .img-loading-overlay { opacity: 1; visibility: visible; }
+      .img-loading-host.is-loading > img, img.is-img-pending { opacity: 0 !important; }
+      .img-loading-host > img { transition: opacity 0.25s ease, transform 0.35s ease; }
+      .img-loading-spinner {
+        width: 28px; height: 28px;
+        border: 3px solid rgba(56, 189, 248, 0.22);
+        border-top-color: var(--accent-light, #38bdf8);
+        border-radius: 50%;
+        animation: appSpin 0.75s linear infinite;
+        flex-shrink: 0;
+      }
+      html[data-theme="editorial"] .img-loading-spinner, body.theme-editorial .img-loading-spinner {
+        border-color: rgba(0, 20, 137, 0.16); border-top-color: #001489;
+      }
+      .img-loading-text {
+        font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em;
+        color: var(--text-color, #ffffff); line-height: 1.25;
+      }
+      html[data-theme="editorial"] .img-loading-text, body.theme-editorial .img-loading-text {
+        color: #1e293b;
+      }
+      .img-loading-overlay.is-compact { gap: 5px; padding: 6px; }
+      .img-loading-overlay.is-compact .img-loading-spinner { width: 20px; height: 20px; border-width: 2.5px; }
+      .img-loading-overlay.is-compact .img-loading-text { font-size: 0.68rem; }
+      @keyframes imgLoadingShimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+    `;
+    (document.head || document.documentElement).appendChild(st);
+  }
+
+  function getImgLoadingLabel() {
+    const lang = window.currentLang || localStorage.getItem("lang") || "th";
+    return lang === "th" ? "กำลังโหลด..." : "Loading...";
+  }
+
+  function isPlaceholderPixel(src) {
+    if (!src) return true;
+    return String(src).indexOf("data:image/gif;base64,") === 0;
+  }
+
+  function ensureOverlayOnHost(host, compact = false) {
+    if (!host) return null;
+    ensureImgLoaderStyles();
+    host.classList.add("img-loading-host");
+    let overlay = host.querySelector(":scope > .img-loading-overlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.className = compact ? "img-loading-overlay is-compact" : "img-loading-overlay";
+      overlay.setAttribute("aria-hidden", "true");
+      overlay.innerHTML = `<div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${getImgLoadingLabel()}</span>`;
+      host.appendChild(overlay);
+    } else {
+      const txtEl = overlay.querySelector(".img-loading-text");
+      if (txtEl) txtEl.textContent = getImgLoadingLabel();
+    }
+    return overlay;
+  }
+
+  const ImageLoader = {
+    TRANSPARENT_PIXEL,
+
+    startLoading(imgEl, compact = false) {
+      if (!imgEl) return;
+      ensureImgLoaderStyles();
+      const host = imgEl.parentElement;
+      if (host) {
+        ensureOverlayOnHost(host, compact);
+        host.classList.add("is-loading");
+      }
+      imgEl.classList.add("is-img-pending");
+    },
+
+    finishLoading(imgEl) {
+      if (!imgEl) return;
+      if (imgEl._imgLoadTimer) {
+        clearTimeout(imgEl._imgLoadTimer);
+        imgEl._imgLoadTimer = null;
+      }
+      imgEl.classList.remove("is-img-pending");
+      const host = imgEl.parentElement;
+      if (host) {
+        host.classList.remove("is-loading");
+      }
+    },
+
+    load(imgEl, targetSrc, fallbackSrc = "assets/images/placeholder-player.svg", altText) {
+      if (!imgEl) return;
+      const seq = Number(imgEl.dataset.loadSeq || 0) + 1;
+      imgEl.dataset.loadSeq = String(seq);
+      delete imgEl.dataset.fallbackApplied;
+
+      if (altText !== undefined) {
+        imgEl.alt = altText;
+      }
+
+      const resolvedSrc =
+        targetSrc && !isPlaceholderPixel(targetSrc) ? targetSrc : fallbackSrc;
+
+      this.startLoading(imgEl);
+
+      if (imgEl._imgLoadTimer) clearTimeout(imgEl._imgLoadTimer);
+      imgEl._imgLoadTimer = setTimeout(() => {
+        if (imgEl.dataset.loadSeq === String(seq)) {
+          this.finishLoading(imgEl);
+        }
+      }, 10000);
+
+      const applyFallback = () => {
+        if (imgEl.dataset.loadSeq !== String(seq)) return;
+        if (imgEl.dataset.fallbackApplied === "1" || !fallbackSrc || resolvedSrc === fallbackSrc) {
+          this.finishLoading(imgEl);
+          return;
+        }
+        imgEl.dataset.fallbackApplied = "1";
+        imgEl.onload = () => {
+          if (imgEl.dataset.loadSeq === String(seq)) this.finishLoading(imgEl);
+        };
+        imgEl.onerror = () => {
+          if (imgEl.dataset.loadSeq === String(seq)) this.finishLoading(imgEl);
+        };
+        imgEl.src = fallbackSrc;
+        if (imgEl.complete && imgEl.naturalWidth > 0) {
+          this.finishLoading(imgEl);
+        }
+      };
+
+      imgEl.onload = () => {
+        if (imgEl.dataset.loadSeq !== String(seq)) return;
+        if (!isPlaceholderPixel(imgEl.getAttribute("src"))) {
+          this.finishLoading(imgEl);
+        }
+      };
+
+      imgEl.onerror = applyFallback;
+      imgEl.src = resolvedSrc;
+
+      if (imgEl.complete && !isPlaceholderPixel(resolvedSrc)) {
+        if (imgEl.naturalWidth > 0) {
+          this.finishLoading(imgEl);
+        } else {
+          applyFallback();
+        }
+      }
+    }
+  };
+
+  window.ImageLoader = ImageLoader;
+  window.getImgLoadingLabel = getImgLoadingLabel;
+  window.renderImgLoaderOverlayHTML = function (compact = false) {
+    const cls = compact ? "img-loading-overlay is-compact" : "img-loading-overlay";
+    return `<div class="${cls}" aria-hidden="true"><div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${getImgLoadingLabel()}</span></div>`;
+  };
+
+  window.onTrackedImgLoad = function (imgEl) {
+    if (!imgEl) return;
+    if (isPlaceholderPixel(imgEl.getAttribute("src"))) return;
+    ImageLoader.finishLoading(imgEl);
+  };
+
+  window.onTrackedImgError = function (imgEl, fallbackSrc) {
+    if (!imgEl) return;
+    const fb = fallbackSrc || imgEl.getAttribute("data-fallback-src") || "assets/images/placeholder-player.svg";
+    if (imgEl.dataset.fallbackApplied === "1") {
+      ImageLoader.finishLoading(imgEl);
+      return;
+    }
+    imgEl.dataset.fallbackApplied = "1";
+    imgEl.onload = function () {
+      ImageLoader.finishLoading(imgEl);
+    };
+    imgEl.onerror = function () {
+      ImageLoader.finishLoading(imgEl);
+    };
+    imgEl.src = fb;
+    if (imgEl.complete && imgEl.naturalWidth > 0) {
+      ImageLoader.finishLoading(imgEl);
+    }
+  };
+
+  window.syncImageLoaders = function (rootEl) {
+    ensureImgLoaderStyles();
+    const scope = rootEl || document;
+    const hosts = scope.querySelectorAll(".img-loading-host.is-loading");
+    hosts.forEach((host) => {
+      const txtEl = host.querySelector(".img-loading-text");
+      if (txtEl) txtEl.textContent = getImgLoadingLabel();
+      const img = host.querySelector("img");
+      if (!img) {
+        host.classList.remove("is-loading");
+        return;
+      }
+      const src = img.getAttribute("src") || "";
+      if (isPlaceholderPixel(src)) return;
+      if (img.complete) {
+        if (img.naturalWidth > 0) {
+          ImageLoader.finishLoading(img);
+        } else {
+          const fb = img.getAttribute("data-fallback-src") || "assets/images/placeholder-player.svg";
+          window.onTrackedImgError(img, fb);
+        }
+      }
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    ensureImgLoaderStyles();
+    window.syncImageLoaders(document);
+  });
+
+  window.addEventListener("languageChanged", () => {
+    const label = getImgLoadingLabel();
+    document.querySelectorAll(".img-loading-text").forEach((el) => {
+      el.textContent = label;
+    });
+  });
+})();
 
 // ---------- GLOBAL TOOLTIP ----------
 document.addEventListener("DOMContentLoaded", () => {

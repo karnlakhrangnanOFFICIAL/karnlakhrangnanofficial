@@ -103,6 +103,27 @@
             -webkit-backdrop-filter: blur(12px);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
+
+        .img-loading-host { position: relative; overflow: hidden; }
+        .img-loading-overlay {
+            position: absolute; inset: 0; z-index: 20;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 8px; opacity: 0; visibility: hidden; pointer-events: none;
+            transition: opacity 0.22s ease, visibility 0.22s ease;
+        }
+        .img-loading-host.is-loading > .img-loading-overlay { opacity: 1; visibility: visible; }
+        .img-loading-host.is-loading > img, img.is-img-pending { opacity: 0 !important; }
+        .img-loading-spinner {
+            width: 30px; height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.22);
+            border-top-color: var(--chelsea-gold);
+            border-radius: 50%;
+            animation: cardSpin 0.75s linear infinite;
+        }
+        .img-loading-text {
+            font-size: 0.82rem; font-weight: 600; color: #ffffff; letter-spacing: 0.02em;
+        }
+        @keyframes cardSpin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -144,12 +165,15 @@
 
         <!-- รูปภาพนักเตะ (.png) -->
         <!-- คุณสามารถเปลี่ยนลิงก์ใน src เป็นรูปร่างนักเตะแบบไม่มีพื้นหลัง (.png) ของคุณเองได้ -->
-        <div class="image-container flex justify-center mt-[-30px] h-[320px]">
+        <div class="image-container img-loading-host is-loading flex justify-center mt-[-30px] h-[320px]" id="cardImageWrapper">
             <img id="cardPlayerImage"
-                 src="https://cdn.pixabay.com/photo/2024/04/09/22/08/ai-generated-8686845_960_720.png" 
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
                  alt="Player Portrait" 
-                 class="player-image object-contain object-bottom h-full w-auto"
-                 onerror="this.onerror=null; this.src='assets/images/players/men/cole-palmer.jpg';">
+                 class="player-image is-img-pending object-contain object-bottom h-full w-auto">
+            <div class="img-loading-overlay" role="status" aria-live="polite">
+                <div class="img-loading-spinner"></div>
+                <span class="img-loading-text" data-i18n="common.loading">กำลังโหลด...</span>
+            </div>
         </div>
 
         <!-- ส่วนข้อมูลนักเตะด้านล่าง -->
@@ -157,8 +181,8 @@
             
             <!-- ชื่อ - นามสกุล -->
             <div class="text-center mb-6">
-                <h1 id="cardPlayerFirstName" class="text-3xl font-extrabold uppercase tracking-wide leading-tight text-white/90">Cole</h1>
-                <h2 id="cardPlayerLastName" class="text-4xl font-black uppercase tracking-wider gold-gradient-text leading-none mt-1">Palmer</h2>
+                <h1 id="cardPlayerFirstName" class="text-3xl font-extrabold uppercase tracking-wide leading-tight text-white/90" data-i18n="common.loading">กำลังโหลด...</h1>
+                <h2 id="cardPlayerLastName" class="text-4xl font-black uppercase tracking-wider gold-gradient-text leading-none mt-1">&nbsp;</h2>
             </div>
 
             <!-- กล่องรายละเอียดนักเตะ -->
@@ -217,31 +241,49 @@
     </div>
 
     <!-- Script สำหรับการโหลดข้อมูลนักเตะเสริมและเลือกผู้เล่น -->
+    <script src="assets/js/main.js"></script>
     <script>
         let allMenPlayers = [];
 
         async function initCardPage() {
+            if (window.AppLoading) window.AppLoading.show("reload");
             try {
                 const res = await fetch('data/players-men.json');
                 if (res.ok) {
                     allMenPlayers = await res.json();
                     populateDropdown(allMenPlayers);
                 }
+
+                // อ่านค่า query param ?id= หรือ ?num=
+                const params = new URLSearchParams(window.location.search);
+                const playerId = params.get('id');
+                const playerNum = params.get('num');
+                
+                let selectedPlayer = null;
+                if (playerId && allMenPlayers.length > 0) {
+                    selectedPlayer = allMenPlayers.find(item => String(item.id) === String(playerId));
+                } else if (playerNum && allMenPlayers.length > 0) {
+                    selectedPlayer = allMenPlayers.find(item => String(item.number) === String(playerNum));
+                }
+                if (!selectedPlayer && allMenPlayers.length > 0) {
+                    selectedPlayer = allMenPlayers.find(item => item.name && item.name.includes("Palmer")) || allMenPlayers[0];
+                }
+                if (selectedPlayer) {
+                    renderPlayer(selectedPlayer);
+                } else {
+                    const imgEl = document.getElementById('cardPlayerImage');
+                    if (imgEl && window.ImageLoader) {
+                        window.ImageLoader.load(imgEl, 'assets/images/placeholder-player.svg', 'assets/images/placeholder-player.svg', 'Player Portrait');
+                    }
+                }
             } catch (e) {
                 console.warn("Could not load players-men.json", e);
-            }
-
-            // อ่านค่า query param ?id= หรือ ?num=
-            const params = new URLSearchParams(window.location.search);
-            const playerId = params.get('id');
-            const playerNum = params.get('num');
-            
-            if (playerId && allMenPlayers.length > 0) {
-                const p = allMenPlayers.find(item => String(item.id) === String(playerId));
-                if (p) renderPlayer(p);
-            } else if (playerNum && allMenPlayers.length > 0) {
-                const p = allMenPlayers.find(item => String(item.number) === String(playerNum));
-                if (p) renderPlayer(p);
+                const imgEl = document.getElementById('cardPlayerImage');
+                if (imgEl && window.ImageLoader) {
+                    window.ImageLoader.load(imgEl, 'assets/images/placeholder-player.svg', 'assets/images/placeholder-player.svg', 'Player Portrait');
+                }
+            } finally {
+                if (window.AppLoading) window.AppLoading.hide();
             }
         }
 
@@ -261,10 +303,14 @@
         function switchPlayerCard(selectedId) {
             const p = allMenPlayers.find(item => String(item.id) === String(selectedId));
             if (p) {
+                if (window.AppLoading) window.AppLoading.show("reload");
                 renderPlayer(p);
                 const url = new URL(window.location);
                 url.searchParams.set('id', p.id);
                 window.history.replaceState({}, '', url);
+                setTimeout(() => {
+                    if (window.AppLoading) window.AppLoading.hide();
+                }, 180);
             }
         }
 
@@ -281,15 +327,21 @@
 
             document.getElementById('cardPlayerNumber').textContent = p.number || '0';
             document.getElementById('cardPlayerPosition').textContent = p.position || 'Player';
-            document.getElementById('cardPlayerFirstName').textContent = first;
+            const firstEl = document.getElementById('cardPlayerFirstName');
+            firstEl.removeAttribute('data-i18n');
+            firstEl.textContent = first;
             document.getElementById('cardPlayerLastName').textContent = last;
 
             // รูปภาพ
             const imgEl = document.getElementById('cardPlayerImage');
-            if (p.name.includes("Palmer")) {
-                imgEl.src = "https://cdn.pixabay.com/photo/2024/04/09/22/08/ai-generated-8686845_960_720.png";
-            } else if (p.image) {
-                imgEl.src = p.image;
+            const targetSrc = p.name.includes("Palmer")
+                ? "https://cdn.pixabay.com/photo/2024/04/09/22/08/ai-generated-8686845_960_720.png"
+                : (p.image || 'assets/images/placeholder-player.svg');
+            const fallbackSrc = p.image || 'assets/images/placeholder-player.svg';
+            if (window.ImageLoader) {
+                window.ImageLoader.load(imgEl, targetSrc, fallbackSrc, p.name);
+            } else {
+                imgEl.src = targetSrc;
             }
 
             // วันเกิด

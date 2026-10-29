@@ -64,7 +64,8 @@
     if (name.includes("johor") || name.includes("tazim")) return "databases/logo/teams/malaysia_johor-darul-tazim.svg";
     if (name.includes("all stars") || name.includes("all-stars")) return "databases/logo/teams/a-league-women-all-stars.svg";
     if (name.includes("lyon") || name.includes("lyonnes")) return "databases/logo/teams/france_lyon.svg";
-    if (name.includes("hacken") || name.includes("häcken")) return "databases/logo/teams/sweden_hacken.svg";
+    if (name.includes("hacken") || name.includes("häcken")) return "databases/logo/teams/sweden_hacken.football-logos.cc.svg";
+    if (name.includes("køge") || name.includes("koge")) return "databases/logo/teams/denmark_hb_koge.football-logos.cc.svg";
     if (name.includes("leuven")) return "databases/logo/teams/belgium_oh-leuven.svg";
     if (name.includes("roma")) return "databases/logo/teams/italy_roma.svg";
     if (name.includes("paris") || name.includes("psg")) return "databases/logo/teams/france_paris-saint-germain.svg";
@@ -539,11 +540,12 @@
     const tableBody = document.getElementById('chelseaMatchesTableBody');
     if (!tableBody) return;
 
+    const isTh = (window.currentLang || 'th') === 'th';
     tableBody.innerHTML = `
       <tr>
         <td colspan="6" class="hub-state-box">
           <div class="hub-spinner"></div>
-          <p>กำลังดึงผลการแข่งขันจาก football-data.org...</p>
+          <p>${isTh ? 'กำลังโหลด...' : 'Loading...'}</p>
         </td>
       </tr>
     `;
@@ -996,9 +998,32 @@
   // ==========================================================================
   // 3. DASHBOARD (STANDINGS, NEXT FIXTURES, CURRENT SQUAD)
   // ==========================================================================
-  async function loadDashboardData() {
+  async function loadDashboardData(forceReload = false) {
+    if (forceReload) {
+      HubState.menStandings = [];
+      HubState.womenStandings = [];
+      if (window.AppLoading) {
+        window.AppLoading.show('reload');
+      }
+      try {
+        await Promise.all([
+          loadStandings(),
+          loadSquad(),
+          loadChelseaMatches()
+        ]);
+      } finally {
+        if (window.AppLoading) {
+          window.AppLoading.hide();
+        }
+      }
+      return;
+    }
     loadStandings();
     loadSquad();
+  }
+
+  async function reloadDashboardData() {
+    return loadDashboardData(true);
   }
 
   async function loadStandings(targetGender) {
@@ -1030,11 +1055,12 @@
     const tableBody = document.getElementById('dashboardStandingsBody');
     if (!tableBody) return;
 
+    const isTh = (window.currentLang || 'th') === 'th';
     tableBody.innerHTML = `
       <tr>
         <td colspan="10" class="hub-state-box">
           <div class="hub-spinner"></div>
-          <p>กำลังดึงตารางคะแนน${currentGender === 'men' ? 'ทีมชาย' : 'ทีมหญิง'}ล่าสุด...</p>
+          <p>${isTh ? 'กำลังโหลด...' : 'Loading...'}</p>
         </td>
       </tr>
     `;
@@ -1440,11 +1466,17 @@
     const btnRefresh = document.getElementById('btnLiveManualRefresh');
     if (btnRefresh) {
       btnRefresh.addEventListener('click', async () => {
-        btnRefresh.textContent = '⏳ กำลังดึง...';
+        const isTh = (window.currentLang || 'th') === 'th';
+        btnRefresh.textContent = isTh ? '⏳ กำลังโหลด...' : '⏳ Loading...';
         btnRefresh.disabled = true;
-        await refreshLiveScoreData(match);
-        btnRefresh.textContent = '⚡ รีเฟรชทันที';
-        btnRefresh.disabled = false;
+        if (window.AppLoading) window.AppLoading.show('reload');
+        try {
+          await refreshLiveScoreData(match);
+        } finally {
+          if (window.AppLoading) window.AppLoading.hide();
+          btnRefresh.textContent = isTh ? '⚡ รีเฟรชทันที' : '⚡ Refresh Now';
+          btnRefresh.disabled = false;
+        }
       });
     }
   }
@@ -1579,7 +1611,8 @@
     const coachContainer = document.getElementById('coachProfileContainer');
     if (!container) return;
 
-    container.innerHTML = `<div class="hub-state-box"><div class="hub-spinner"></div><p>กำลังซิงค์ข้อมูลโปรไฟล์นักเตะทีมชาย (data/players-men.json)...</p></div>`;
+    const isTh = (window.currentLang || 'th') === 'th';
+    container.innerHTML = `<div class="hub-state-box"><div class="hub-spinner"></div><p>${isTh ? 'กำลังโหลด...' : 'Loading...'}</p></div>`;
 
     try {
       // 1. Load official rich players data from data/players-men.json
@@ -2611,7 +2644,7 @@
     const refreshDashboardBtn = document.getElementById('btnRefreshDashboard');
     if (refreshDashboardBtn) {
       refreshDashboardBtn.addEventListener('click', () => {
-        loadDashboardData();
+        reloadDashboardData();
       });
     }
 
@@ -2663,6 +2696,7 @@
   window.ChelseaHub = {
     loadChelseaMatches,
     loadDashboardData,
+    reloadDashboardData,
     loadStandings,
     renderManagerTimeline,
     renderH2HAnalysis,

@@ -89,8 +89,9 @@
       .brand-footer img { width: 60px; }
       .brand-footer span { font-size: 24px; font-weight: 700; letter-spacing: 2px; }
     </style>
-    <!-- Include html2canvas for downloading -->
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- Include html2canvas and global loading helper -->
+    <script src="assets/js/vendor/html2canvas.min.js"></script>
+    <script src="assets/js/main.js"></script>
   </head>
   <body>
     <div class="controls">
@@ -134,6 +135,7 @@
       let allMatches = [];
 
       async function init() {
+        if (window.AppLoading) window.AppLoading.show("reload");
         try {
           // Fetch matches
           const res = await fetch("data/fixtures.json");
@@ -164,6 +166,8 @@
           window.addEventListener("resize", scaleGraphic);
         } catch (err) {
           console.error("Error loading matches:", err);
+        } finally {
+          if (window.AppLoading) window.AppLoading.hide();
         }
       }
 
@@ -210,22 +214,29 @@
         }
       }
 
-      function downloadGraphic() {
+      async function downloadGraphic() {
         const graphic = document.getElementById("graphic");
         const originalTransform = graphic.style.transform;
+        if (window.AppLoading) window.AppLoading.show("download");
         graphic.style.transform = "scale(1)"; // Reset scale for capture
 
-        html2canvas(graphic, {
-          scale: 1, // 1080x1080
-          backgroundColor: "#11111a",
-          useCORS: true,
-        }).then((canvas) => {
-          graphic.style.transform = originalTransform; // Restore scale
+        try {
+          const canvas = await html2canvas(graphic, {
+            scale: 1, // 1080x1080
+            backgroundColor: "#11111a",
+            useCORS: true,
+          });
+          if (window.suppressUnloadLoader) window.suppressUnloadLoader(2500);
           const link = document.createElement("a");
           link.download = `FT-Result-${Date.now()}.png`;
           link.href = canvas.toDataURL("image/png");
           link.click();
-        });
+        } catch (err) {
+          console.error("Error downloading graphic:", err);
+        } finally {
+          graphic.style.transform = originalTransform; // Restore scale
+          if (window.AppLoading) window.AppLoading.hide();
+        }
       }
 
       init();

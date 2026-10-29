@@ -637,26 +637,33 @@ function renderPlayers(container, players, teamType) {
 
       if (p.status === "sold") {
         const dest = p.current_club ? ` → ${p.current_club}` : "";
-        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#c0392b; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "ย้ายออก" : "Sold"}${dest}</div>`;
+        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#c0392b; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:5; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "ย้ายออก" : "Sold"}${dest}</div>`;
         opacity = "0.65";
       } else if (p.status === "loaned_out") {
         const dest = p.current_club ? ` → ${p.current_club}` : "";
-        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#f39c12; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "ยืมตัว" : "Loaned Out"}${dest}</div>`;
+        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#f39c12; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:5; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "ยืมตัว" : "Loaned Out"}${dest}</div>`;
         opacity = "0.85";
       } else if (p.status === "released") {
-        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#7f8c8d; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "หมดสัญญา" : "Released"}</div>`;
+        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#7f8c8d; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:5; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "หมดสัญญา" : "Released"}</div>`;
         opacity = "0.65";
       } else if (p.status === "retired") {
-        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#4a5568; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "แขวนสตั๊ด" : "Retired"}</div>`;
+        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#4a5568; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:5; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "แขวนสตั๊ด" : "Retired"}</div>`;
         opacity = "0.65";
       } else if (p.status === "new_signing") {
-        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#27ae60; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:1; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "นักเตะใหม่" : "New Signing"}</div>`;
+        statusBadge = `<div style="position:absolute; top:10px; right:10px; background:#27ae60; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold; z-index:5; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">${isTh ? "นักเตะใหม่" : "New Signing"}</div>`;
       }
+
+      const loaderHtml = window.renderImgLoaderOverlayHTML
+        ? window.renderImgLoaderOverlayHTML(true)
+        : `<div class="img-loading-overlay is-compact" aria-hidden="true"><div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${isTh ? "กำลังโหลด..." : "Loading..."}</span></div>`;
 
       return `
       <a href="player-profile.html?id=${p.id}&team=${teamType}" class="player-card" style="text-decoration: none; color: inherit; display: block; position:relative; opacity: ${opacity};">
         ${statusBadge}
-        <img src="${pImage}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='assets/images/placeholder-player.svg';">
+        <div class="player-card-img-wrap img-loading-host is-loading">
+          <img src="${pImage}" alt="${p.name}" loading="lazy" class="is-img-pending" data-fallback-src="assets/images/placeholder-player.svg" onload="window.onTrackedImgLoad && window.onTrackedImgLoad(this)" onerror="window.onTrackedImgError && window.onTrackedImgError(this, 'assets/images/placeholder-player.svg')">
+          ${loaderHtml}
+        </div>
         <div class="player-info">
           <h3>${p.name}</h3>
           <span class="player-number">#${p.status === "sold" || p.status === "loaned_out" || p.status === "released" || p.status === "retired" ? "?" : p.number || "?"}</span>
@@ -686,6 +693,10 @@ function renderPlayers(container, players, teamType) {
     `;
     })
     .join("");
+
+  if (window.syncImageLoaders) {
+    window.syncImageLoaders(container);
+  }
 }
 
 // ---------- SAFE FETCH JSON ----------
@@ -1009,6 +1020,11 @@ async function fetchGoogleSheetDirect(spreadsheetId, queryParams = "gid=0") {
 async function loadMenTable() {
   const container = document.getElementById("menTableContainer");
   if (!container) return;
+  const isTh = (window.currentLang || "th") === "th";
+  container.innerHTML =
+    '<div class="loading"><div class="spinner"></div><p>' +
+    (isTh ? "กำลังโหลด..." : "Loading...") +
+    "</p></div>";
   try {
     let data = await safeFetchJson("/api/epl-standings");
     if (data && data.success && data.data) {
@@ -1038,6 +1054,10 @@ async function loadMenPlayers() {
   const coachContainer = document.getElementById("menCoachProfileContainer");
   if (!container) return;
   const isTh = (window.currentLang || "th") === "th";
+  container.innerHTML =
+    '<div class="loading"><div class="spinner"></div><p data-i18n="common.loading">' +
+    (isTh ? "กำลังโหลด..." : "Loading...") +
+    "</p></div>";
 
   try {
     let players = await safeFetchJson("data/players-men.json");
@@ -1298,7 +1318,10 @@ async function loadWomenTable(compChoice = null) {
     }
   }
 
-  container.innerHTML = '<div class="loading"><div class="spinner"></div><p>' + (isTh ? "กำลังโหลดตารางคะแนน..." : "Loading standings...") + '</p></div>';
+  container.innerHTML =
+    '<div class="loading"><div class="spinner"></div><p>' +
+    (isTh ? "กำลังโหลด..." : "Loading...") +
+    "</p></div>";
 
   try {
     let data = null;
@@ -1333,6 +1356,9 @@ async function loadWomenTable(compChoice = null) {
     }
     const compName = data?.competition || (compKey === "uwcl" ? "UEFA Women's Champions League" : "Barclays Women's Super League");
 
+    if (typeof window.loadTeamsData === "function") {
+      await window.loadTeamsData();
+    }
     renderTable(container, table, "Chelsea", compLogo, compName, compKey);
     renderWomenTableRules(compKey);
   } catch (e) {
@@ -1347,6 +1373,10 @@ async function loadWomenPlayers() {
   const coachContainer = document.getElementById("womenCoachProfileContainer");
   if (!container) return;
   const isTh = (window.currentLang || "th") === "th";
+  container.innerHTML =
+    '<div class="loading"><div class="spinner"></div><p data-i18n="common.loading">' +
+    (isTh ? "กำลังโหลด..." : "Loading...") +
+    "</p></div>";
 
   try {
     let allData = await safeFetchJson("data/players-women.json");
@@ -1719,13 +1749,39 @@ async function initPlayerProfile() {
   let teamType = requestedTeam || "men";
   let isMen = teamType === "men";
 
+  const playerNameEl = document.getElementById("playerName");
+  const playerImgEl = document.getElementById("playerImage");
+  const isThInit = (window.currentLang || "th") === "th";
+
+  if (playerNameEl) {
+    playerNameEl.setAttribute("data-i18n", "common.loading");
+    playerNameEl.textContent = isThInit ? "กำลังโหลด..." : "Loading...";
+  }
+  if (playerImgEl && window.ImageLoader) {
+    window.ImageLoader.startLoading(playerImgEl);
+  }
+
   if (!playerId) {
-    if (document.getElementById("playerName")) {
-      document.getElementById("playerName").textContent = "Player Not Found";
+    if (playerNameEl) {
+      playerNameEl.removeAttribute("data-i18n");
+      playerNameEl.textContent = "Player Not Found";
+    }
+    if (playerImgEl) {
+      if (window.ImageLoader) {
+        window.ImageLoader.load(
+          playerImgEl,
+          "assets/images/placeholder-player.svg",
+          "assets/images/placeholder-player.svg",
+          "Player Not Found"
+        );
+      } else {
+        playerImgEl.src = "assets/images/placeholder-player.svg";
+      }
     }
     return;
   }
 
+  if (window.AppLoading) window.AppLoading.show("reload");
   try {
     const normalizeName = (str) => {
       if (!str) return "";
@@ -1784,15 +1840,31 @@ async function initPlayerProfile() {
     }
 
     if (!player) {
-      if (document.getElementById("playerName")) {
-        document.getElementById("playerName").textContent = "Player Not Found";
+      if (playerNameEl) {
+        playerNameEl.removeAttribute("data-i18n");
+        playerNameEl.textContent = "Player Not Found";
+      }
+      if (playerImgEl) {
+        if (window.ImageLoader) {
+          window.ImageLoader.load(
+            playerImgEl,
+            "assets/images/placeholder-player.svg",
+            "assets/images/placeholder-player.svg",
+            "Player Not Found"
+          );
+        } else {
+          playerImgEl.src = "assets/images/placeholder-player.svg";
+        }
       }
       return;
     }
 
     // Render Player Info
     const isTh = (window.currentLang || "th") === "th";
-    document.getElementById("playerName").textContent = player.name;
+    if (playerNameEl) {
+      playerNameEl.removeAttribute("data-i18n");
+      playerNameEl.textContent = player.name;
+    }
     document.getElementById("playerNumber").textContent =
       "#" +
       (player.status === "sold" ||
@@ -1802,14 +1874,22 @@ async function initPlayerProfile() {
         ? "?"
         : player.number || "?");
     const pImg = player.image || "assets/images/placeholder-player.svg";
-    const playerImgEl = document.getElementById("playerImage");
     if (playerImgEl) {
-      playerImgEl.src = pImg;
-      playerImgEl.alt = player.name;
-      playerImgEl.onerror = function () {
-        this.onerror = null;
-        this.src = "assets/images/placeholder-player.svg";
-      };
+      if (window.ImageLoader) {
+        window.ImageLoader.load(
+          playerImgEl,
+          pImg,
+          "assets/images/placeholder-player.svg",
+          player.name
+        );
+      } else {
+        playerImgEl.src = pImg;
+        playerImgEl.alt = player.name;
+        playerImgEl.onerror = function () {
+          this.onerror = null;
+          this.src = "assets/images/placeholder-player.svg";
+        };
+      }
     }
     document.getElementById("playerTeamBadge").textContent = isMen
       ? isTh
@@ -2138,7 +2218,20 @@ async function initPlayerProfile() {
     }
   } catch (e) {
     console.error(e);
-    document.getElementById("playerName").textContent = "Error Loading Player";
+    if (playerNameEl) {
+      playerNameEl.removeAttribute("data-i18n");
+      playerNameEl.textContent = "Error Loading Player";
+    }
+    if (playerImgEl && window.ImageLoader) {
+      window.ImageLoader.load(
+        playerImgEl,
+        "assets/images/placeholder-player.svg",
+        "assets/images/placeholder-player.svg",
+        "Error Loading Player"
+      );
+    }
+  } finally {
+    if (window.AppLoading) window.AppLoading.hide();
   }
 }
 

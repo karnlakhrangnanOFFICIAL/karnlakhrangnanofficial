@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>i-Cons · KARN LA KHRANg NAN Official</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css?v=1788043039" />
     <script>
       (function () {
         var t =
@@ -223,6 +223,202 @@
           font-size: 1rem;
         }
       }
+
+      /* Dark Mode Card Support */
+      html[data-theme="modern-dark"] .icon-card {
+        background: #131c31;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      html[data-theme="modern-dark"] .icon-name,
+      html[data-theme="modern-dark"] .icon-stats strong {
+        color: #f8fafc;
+      }
+      html[data-theme="modern-dark"] .icon-position {
+        color: #60a5fa;
+      }
+      html[data-theme="modern-dark"] .icon-period,
+      html[data-theme="modern-dark"] .icon-stats {
+        color: #94a3b8;
+      }
+
+      /* Coming Soon Modal */
+      .icon-cs-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(2, 16, 42, 0.74);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.18s ease, visibility 0.18s ease;
+      }
+
+      .icon-cs-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .icon-cs-dialog {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        background: #ffffff;
+        color: #0f172a;
+        border-radius: 20px;
+        padding: 32px 26px 26px;
+        text-align: center;
+        box-shadow: 0 24px 60px rgba(0, 12, 48, 0.4);
+        border: 1px solid rgba(3, 70, 148, 0.14);
+        transform: translateY(10px) scale(0.98);
+        transition: transform 0.18s ease;
+      }
+
+      .icon-cs-backdrop.is-open .icon-cs-dialog {
+        transform: translateY(0) scale(1);
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-dialog {
+        background: #0f172a;
+        color: #f8fafc;
+        border-color: rgba(212, 175, 55, 0.28);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      }
+
+      .icon-cs-close-x {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(3, 70, 148, 0.08);
+        color: #334155;
+        font-size: 1rem;
+        line-height: 1;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .icon-cs-close-x:hover {
+        background: rgba(3, 70, 148, 0.16);
+        color: #034694;
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-close-x {
+        background: rgba(255, 255, 255, 0.08);
+        color: #cbd5e1;
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-close-x:hover {
+        background: rgba(255, 255, 255, 0.16);
+        color: #ffffff;
+      }
+
+      .icon-cs-avatar-wrap {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 14px;
+        position: relative;
+      }
+
+      .icon-cs-avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--gold, #d4af37);
+        box-shadow: 0 8px 24px rgba(3, 70, 148, 0.22);
+        background: #e2e8f0;
+      }
+
+      .icon-cs-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold, #d4af37);
+        background: rgba(3, 70, 148, 0.95);
+        padding: 5px 14px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+
+      .icon-cs-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--blue-dark, #001489);
+        margin: 0 0 6px;
+        letter-spacing: -0.02em;
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-title {
+        color: #f8fafc;
+      }
+
+      .icon-cs-player {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--blue, #034694);
+        margin-bottom: 4px;
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-player {
+        color: #60a5fa;
+      }
+
+      .icon-cs-meta {
+        font-size: 0.82rem;
+        color: #64748b;
+        margin-bottom: 14px;
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-meta {
+        color: #94a3b8;
+      }
+
+      .icon-cs-desc {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: #475569;
+        margin: 0 0 22px;
+      }
+
+      html[data-theme="modern-dark"] .icon-cs-desc {
+        color: #cbd5e1;
+      }
+
+      .icon-cs-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 140px;
+        padding: 10px 24px;
+        border-radius: 10px;
+        border: none;
+        background: var(--blue, #034694);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.92rem;
+        cursor: pointer;
+        transition: background-color 0.15s ease, transform 0.15s ease;
+      }
+
+      .icon-cs-btn:hover {
+        background: var(--blue-dark, #001489);
+        transform: translateY(-1px);
+      }
     </style>
   </head>
   <body>
@@ -276,7 +472,7 @@
         </button>
         <button class="filter-btn" data-filter="women">
           <span>👩 i-Cons Women's</span>
-          <span class="count" id="countWomen">3</span>
+          <span class="count" id="countWomen">4</span>
         </button>
         <button class="filter-btn" data-filter="defender" data-i18n="icons.filter_defender">
           🛡️ กองหลัง
@@ -296,10 +492,56 @@
       <div class="icons-grid" id="iconsGrid">
         <div class="loading">
           <div class="spinner"></div>
-          <p data-i18n="icons.loading">กำลังโหลดตำนาน...</p>
+          <p data-i18n="icons.loading">กำลังโหลด...</p>
         </div>
       </div>
     </main>
+
+    <!-- ==================== COMING SOON MODAL ==================== -->
+    <div
+      class="icon-cs-backdrop"
+      id="iconComingSoonModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="iconCsTitle"
+      aria-hidden="true"
+    >
+      <div class="icon-cs-dialog">
+        <button
+          type="button"
+          class="icon-cs-close-x"
+          id="iconCsCloseX"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+        <div class="icon-cs-avatar-wrap img-loading-host">
+          <img
+            src="assets/images/placeholder-player.svg"
+            alt=""
+            class="icon-cs-avatar"
+            id="iconCsAvatar"
+          />
+        </div>
+        <div class="icon-cs-tag">i-Cons Archive</div>
+        <h2 class="icon-cs-title" id="iconCsTitle" data-i18n="icons.coming_soon_title">
+          Coming Soon
+        </h2>
+        <div class="icon-cs-player" id="iconCsPlayerName"></div>
+        <div class="icon-cs-meta" id="iconCsPlayerMeta"></div>
+        <p class="icon-cs-desc" id="iconCsDesc" data-i18n="icons.coming_soon_desc">
+          ประวัติและสถิติเชิงลึกของนักเตะตำนานท่านนี้กำลังอยู่ในระหว่างการจัดทำ โปรดติดตามเร็วๆ นี้
+        </p>
+        <button
+          type="button"
+          class="icon-cs-btn"
+          id="iconCsCloseBtn"
+          data-i18n="icons.close_modal"
+        >
+          ปิดหน้าต่าง
+        </button>
+      </div>
+    </div>
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
@@ -335,9 +577,168 @@
     <script>
       let allIcons = [];
       let currentFilter = "all";
+      const iconContentStatusCache = new Map();
+
+      async function hasIconFileContent(icon) {
+        if (!icon || !icon.link || icon.link === "#") return false;
+        const link = String(icon.link).trim();
+        if (iconContentStatusCache.has(link)) {
+          return iconContentStatusCache.get(link);
+        }
+
+        const sep = link.includes("?") ? "&" : "?";
+        const checkUrl = `${link}${sep}_check=1`;
+
+        try {
+          if (window.AppLoading) window.AppLoading.show("reload");
+          const res = await fetch(checkUrl, {
+            method: "GET",
+            headers: { Accept: "text/html" },
+          });
+          if (!res.ok) {
+            iconContentStatusCache.set(link, false);
+            return false;
+          }
+          const ct = (res.headers.get("content-type") || "").toLowerCase();
+          if (ct && !ct.includes("html")) {
+            iconContentStatusCache.set(link, false);
+            return false;
+          }
+          const html = await res.text();
+          const trimmed = html.trim();
+          const isValid =
+            trimmed.length >= 100 &&
+            !trimmed.includes("{{PLAYER_NAME}}") &&
+            !trimmed.includes('id="iconsGrid"');
+          iconContentStatusCache.set(link, isValid);
+          return isValid;
+        } catch (err) {
+          iconContentStatusCache.set(link, false);
+          return false;
+        } finally {
+          if (window.AppLoading) window.AppLoading.hide();
+        }
+      }
+
+      function openComingSoonModal(icon) {
+        const modal = document.getElementById("iconComingSoonModal");
+        if (!modal || !icon) return;
+
+        const isTh = (window.currentLang || "th") === "th";
+        const displayName =
+          isTh && icon.name_th ? `${icon.name} (${icon.name_th})` : icon.name;
+        const appsLabel = isTh ? "นัด" : "apps";
+        const goalsLabel = isTh ? "ประตู" : "goals";
+
+        const avatarEl = document.getElementById("iconCsAvatar");
+        const nameEl = document.getElementById("iconCsPlayerName");
+        const metaEl = document.getElementById("iconCsPlayerMeta");
+        const titleEl = document.getElementById("iconCsTitle");
+        const descEl = document.getElementById("iconCsDesc");
+        const closeBtnEl = document.getElementById("iconCsCloseBtn");
+
+        if (avatarEl) {
+          if (window.ImageLoader) {
+            window.ImageLoader.load(
+              avatarEl,
+              icon.image || "assets/images/placeholder-player.svg",
+              "assets/images/placeholder-player.svg",
+              icon.name || "Chelsea Legend"
+            );
+          } else {
+            avatarEl.onerror = function () {
+              this.onerror = null;
+              this.src = "assets/images/placeholder-player.svg";
+            };
+            avatarEl.src = icon.image || "assets/images/placeholder-player.svg";
+            avatarEl.alt = icon.name || "Chelsea Legend";
+          }
+        }
+        if (nameEl) nameEl.textContent = displayName || "";
+        if (metaEl) {
+          const appsText =
+            typeof icon.appearances === "number"
+              ? `${icon.appearances.toLocaleString()} ${appsLabel}`
+              : "";
+          const goalsText =
+            typeof icon.goals === "number" ? `${icon.goals} ${goalsLabel}` : "";
+          metaEl.textContent = [icon.period, appsText, goalsText]
+            .filter(Boolean)
+            .join(" · ");
+        }
+        if (titleEl) {
+          titleEl.textContent = "Coming Soon";
+        }
+        if (descEl) {
+          descEl.textContent = isTh
+            ? "ประวัติและสถิติเชิงลึกของนักเตะตำนานท่านนี้กำลังอยู่ในระหว่างการจัดทำ โปรดติดตามเร็วๆ นี้"
+            : "Detailed biography and career archive for this Chelsea legend are currently being prepared. Stay tuned!";
+        }
+        if (closeBtnEl) {
+          closeBtnEl.textContent = isTh ? "ปิดหน้าต่าง" : "Close";
+        }
+
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        if (closeBtnEl) closeBtnEl.focus();
+      }
+
+      function closeComingSoonModal() {
+        const modal = document.getElementById("iconComingSoonModal");
+        if (!modal) return;
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      function initComingSoonModal() {
+        const modal = document.getElementById("iconComingSoonModal");
+        const closeX = document.getElementById("iconCsCloseX");
+        const closeBtn = document.getElementById("iconCsCloseBtn");
+        const grid = document.getElementById("iconsGrid");
+
+        if (closeX) closeX.addEventListener("click", closeComingSoonModal);
+        if (closeBtn) closeBtn.addEventListener("click", closeComingSoonModal);
+        if (modal) {
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeComingSoonModal();
+          });
+        }
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeComingSoonModal();
+        });
+
+        if (grid) {
+          grid.addEventListener("click", async (e) => {
+            const card = e.target.closest(".icon-card");
+            if (!card) return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+            e.preventDefault();
+            const iconId = card.getAttribute("data-icon-id");
+            const icon =
+              allIcons.find((item) => String(item.id) === String(iconId)) || {
+                name: card.querySelector(".icon-name")?.textContent || "Chelsea Legend",
+                period: card.querySelector(".icon-period")?.textContent || "",
+                image: card.querySelector(".icon-avatar")?.getAttribute("src") || "",
+                link: card.getAttribute("href") || "",
+              };
+
+            const hasContent = await hasIconFileContent(icon);
+            if (hasContent) {
+              window.location.href = icon.link;
+            } else {
+              openComingSoonModal(icon);
+            }
+          });
+        }
+      }
 
       async function loadIcons() {
         const grid = document.getElementById("iconsGrid");
+        const isThLoad = (window.currentLang || "th") === "th";
+        if (grid) {
+          grid.innerHTML = `<div class="loading"><div class="spinner"></div><p data-i18n="common.loading">${isThLoad ? "กำลังโหลด..." : "Loading..."}</p></div>`;
+        }
         try {
           const response = await fetch("data/icons.json");
           if (!response.ok) throw new Error("HTTP error " + response.status);
@@ -346,6 +747,28 @@
           allIcons = await response.json();
           filterIcons(currentFilter);
           updateCounts();
+
+          const params = new URLSearchParams(window.location.search);
+          const csSlug = params.get("coming_soon");
+          if (csSlug && allIcons.length > 0) {
+            const normalized = csSlug.replace(/^icon\//i, "").toLowerCase();
+            const matched = allIcons.find((item) => {
+              const itemFile = String(item.link || "")
+                .replace(/^icon\//i, "")
+                .toLowerCase();
+              return (
+                String(item.id).toLowerCase() === normalized ||
+                itemFile === normalized ||
+                itemFile.replace(/\.html$/, "") === normalized.replace(/\.html$/, "")
+              );
+            });
+            if (matched) {
+              openComingSoonModal(matched);
+            }
+            const cleanUrl = new URL(window.location.href);
+            cleanUrl.searchParams.delete("coming_soon");
+            window.history.replaceState({}, "", cleanUrl);
+          }
         } catch (error) {
           grid.innerHTML = `
           <div class="empty-state">
@@ -370,12 +793,6 @@
 
         grid.innerHTML = icons
           .map((icon) => {
-            const initials = icon.name
-              .split(" ")
-              .map((n) => n[0])
-              .join("")
-              .slice(0, 2)
-              .toUpperCase();
             const positionLower = (icon.position || "").toLowerCase();
 
             let posText = icon.position;
@@ -404,13 +821,23 @@
             const appsLabel = isTh ? "นัด" : "apps";
             const goalsLabel = isTh ? "ประตู" : "goals";
 
+            const avatarLoaderHtml = window.renderImgLoaderOverlayHTML
+              ? window.renderImgLoaderOverlayHTML(true)
+              : `<div class="img-loading-overlay is-compact" aria-hidden="true"><div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${isTh ? "กำลังโหลด..." : "Loading..."}</span></div>`;
+
             return `
-          <a href="${icon.link}" class="icon-card">
+          <a href="${icon.link}" class="icon-card" data-icon-id="${icon.id}">
             ${badgeHtml}
-            <img src="${icon.image}" 
-                 alt="${icon.name}" 
-                 class="icon-avatar" 
-                 loading="lazy">
+            <div class="icon-avatar-wrap img-loading-host is-loading">
+              <img src="${icon.image || 'assets/images/placeholder-player.svg'}" 
+                   alt="${icon.name}" 
+                   class="icon-avatar is-img-pending" 
+                   loading="lazy"
+                   data-fallback-src="assets/images/placeholder-player.svg"
+                   onload="window.onTrackedImgLoad && window.onTrackedImgLoad(this)"
+                   onerror="window.onTrackedImgError && window.onTrackedImgError(this, 'assets/images/placeholder-player.svg')">
+              ${avatarLoaderHtml}
+            </div>
             <h3 class="icon-name">${displayName}</h3>
             <div class="icon-period">${icon.period}</div>
             <div class="icon-position">${posText}</div>
@@ -423,6 +850,10 @@
         `;
           })
           .join("");
+
+        if (window.syncImageLoaders) {
+          window.syncImageLoaders(grid);
+        }
       }
 
       function updateCounts() {
@@ -476,6 +907,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        initComingSoonModal();
         loadIcons();
         initFilters();
         window.addEventListener("languageChanged", () => {

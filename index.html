@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=1788043038">
+  <link rel="stylesheet" href="assets/css/style.css?v=1788043039">
   <link rel="stylesheet" href="assets/css/chelsea-hub.css">
   <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png">
   <script>
@@ -58,24 +58,46 @@
     <!-- LEFT: NEWS COLUMN -->
     <div class="news-column">
       <div class="news-featured">
-        <div class="news-featured-img-wrap">
-          <img id="editorialFeaturedImg" src="https://img.chelseafc.com/image/upload/v1790084013/editorial/news/2026/09/22/bompastor-press-conference-september-2026.jpg" alt="Featured News" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
+        <div class="news-featured-img-wrap img-loading-host is-loading" id="editorialFeaturedImgWrap">
+          <img
+            id="editorialFeaturedImg"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            data-default-src="https://img.chelseafc.com/image/upload/v1790084013/editorial/news/2026/09/22/bompastor-press-conference-september-2026.jpg"
+            alt="Featured News"
+            class="is-img-pending"
+          >
+          <div class="img-loading-overlay" role="status" aria-live="polite">
+            <div class="img-loading-spinner"></div>
+            <span class="img-loading-text" data-i18n="common.loading">กำลังโหลด...</span>
+          </div>
         </div>
         <div class="meta" style="color: var(--accent); margin-bottom: 6px;" id="editorialFeaturedMeta">Top Story · Press Briefing</div>
-        <h2 id="editorialFeaturedTitle">Bompastor: An Injury Update on the Eve of Vienna</h2>
-        <p id="editorialFeaturedDesc">The head coach speaks on the squad's tactical readiness, key squad rotations, and updates ahead of the European clash.</p>
+        <h2 id="editorialFeaturedTitle" data-i18n="common.loading">กำลังโหลด...</h2>
+        <p id="editorialFeaturedDesc"></p>
       </div>
 
       <div class="news-list" id="editorialNewsGrid">
         <div class="news-card">
-          <img src="https://img.chelseafc.com/image/upload/v1790072434/editorial/news/2026/09/22/CFCW_RSO_Aug_26_28.jpg" alt="Match Preview" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
-          <div class="meta" style="color: var(--accent); margin-bottom: 4px;">Women's News</div>
-          <h3>Chelsea vs Austria Vienna: European Clash Guide</h3>
+          <div class="news-card-img-wrap img-loading-host is-loading">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="News" class="is-img-pending">
+            <div class="img-loading-overlay is-compact" aria-hidden="true">
+              <div class="img-loading-spinner"></div>
+              <span class="img-loading-text" data-i18n="common.loading">กำลังโหลด...</span>
+            </div>
+          </div>
+          <div class="meta" style="color: var(--accent); margin-bottom: 4px;" data-i18n="common.loading">กำลังโหลด...</div>
+          <h3>&nbsp;</h3>
         </div>
         <div class="news-card">
-          <img src="https://img.chelseafc.com/image/upload/v1790068556/editorial/news/2026/09/22/Hamano_Birmingham_Sep_26.jpg" alt="Player Milestones" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
-          <div class="meta" style="color: var(--accent); margin-bottom: 4px;">Milestones</div>
-          <h3>Hamano Reaches Fifty Landmark Appearances</h3>
+          <div class="news-card-img-wrap img-loading-host is-loading">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="News" class="is-img-pending">
+            <div class="img-loading-overlay is-compact" aria-hidden="true">
+              <div class="img-loading-spinner"></div>
+              <span class="img-loading-text" data-i18n="common.loading">กำลังโหลด...</span>
+            </div>
+          </div>
+          <div class="meta" style="color: var(--accent); margin-bottom: 4px;" data-i18n="common.loading">กำลังโหลด...</div>
+          <h3>&nbsp;</h3>
         </div>
       </div>
 
@@ -162,7 +184,10 @@
             </style>
             <!-- Skeleton Items -->
             <div class="news-carousel-skeleton" style="flex: 0 0 280px; scroll-snap-align: start; height: 260px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg);">
-              <div class="skeleton-bg" style="height: 150px; width: 100%;"></div>
+              <div class="skeleton-bg" style="height: 150px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+                <div class="spinner" style="width: 32px; height: 32px; margin: 0;"></div>
+                <p data-i18n="common.loading" style="margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--text-color);">กำลังโหลด...</p>
+              </div>
               <div style="padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
                 <div>
                   <div class="skeleton-bg" style="height: 16px; width: 90%; margin-bottom: 8px; border-radius: 4px;"></div>
@@ -212,7 +237,7 @@
           <div id="newsArchiveGrid" class="news-archive-grid">
             <div class="loading">
               <div class="spinner"></div>
-              <p data-i18n="common.loading">กำลังโหลดคลังข่าวสาร...</p>
+              <p data-i18n="common.loading">กำลังโหลด...</p>
             </div>
           </div>
         </div>
@@ -227,7 +252,7 @@
             <div class="meta" style="color: var(--accent); margin-bottom: 4px;">Performance Hub</div>
             <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.2rem; font-style: italic; color: var(--ink); line-height: 1.05; margin: 0;">Chelsea Intelligence</h2>
           </div>
-          <button type="button" class="hub-btn hub-btn-primary" onclick="window.ChelseaHub?.loadDashboardData()" style="padding: 6px 14px; font-size: 0.78rem;">
+          <button type="button" class="hub-btn hub-btn-primary" onclick="window.ChelseaHub?.reloadDashboardData ? window.ChelseaHub.reloadDashboardData() : window.ChelseaHub?.loadDashboardData(true)" style="padding: 6px 14px; font-size: 0.78rem;">
             <span>🔄</span>
             <span>รีเฟรช</span>
           </button>
@@ -1871,7 +1896,15 @@
         const featMeta = document.getElementById('editorialFeaturedMeta');
         
         if (topItem && featTitle) {
-          if (topItem.thumbnail && featImg) featImg.src = topItem.thumbnail;
+          featTitle.removeAttribute('data-i18n');
+          if (featImg) {
+            const topThumb = topItem.thumbnail || 'assets/images/placeholder-team.svg';
+            if (window.ImageLoader) {
+              window.ImageLoader.load(featImg, topThumb, 'assets/images/placeholder-team.svg', topItem.title || 'Featured News');
+            } else {
+              featImg.src = topThumb;
+            }
+          }
           featTitle.textContent = topItem.title || featTitle.textContent;
           if (featTitle.parentElement && featTitle.parentElement.tagName === 'A') {
             featTitle.parentElement.href = topItem.link;
@@ -1892,22 +1925,32 @@
         const newsGrid = document.getElementById('editorialNewsGrid');
         if (newsGrid && items.length > 1) {
           const subItems = items.slice(1, 3);
+          const loaderSubHtml = window.renderImgLoaderOverlayHTML
+            ? window.renderImgLoaderOverlayHTML(true)
+            : `<div class="img-loading-overlay is-compact" aria-hidden="true"><div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${isTh ? 'กำลังโหลด...' : 'Loading...'}</span></div>`;
           newsGrid.innerHTML = subItems.map((sub) => {
             const thumb = sub.thumbnail || 'assets/images/placeholder-team.svg';
             return `
               <div class="news-card" onclick="window.open('${sub.link}', '_blank', 'noopener,noreferrer')" style="cursor: pointer;">
-                <img src="${thumb}" alt="${sub.title}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
+                <div class="news-card-img-wrap img-loading-host is-loading">
+                  <img src="${thumb}" alt="${sub.title}" class="is-img-pending" data-fallback-src="assets/images/placeholder-team.svg" onload="window.onTrackedImgLoad && window.onTrackedImgLoad(this)" onerror="window.onTrackedImgError && window.onTrackedImgError(this, 'assets/images/placeholder-team.svg')">
+                  ${loaderSubHtml}
+                </div>
                 <div class="meta" style="color: var(--accent); margin-bottom: 4px;">${isTh ? 'ข่าวสารสโมสร' : 'Club News'}</div>
                 <h3>${sub.title}</h3>
               </div>
             `;
           }).join('');
+          if (window.syncImageLoaders) window.syncImageLoaders(newsGrid);
         }
       } catch (e) {
         console.warn('Could not populate editorial top story:', e);
       }
 
       let html = '';
+      const carouselLoaderHtml = window.renderImgLoaderOverlayHTML
+        ? window.renderImgLoaderOverlayHTML(true)
+        : `<div class="img-loading-overlay is-compact" aria-hidden="true"><div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${isTh ? 'กำลังโหลด...' : 'Loading...'}</span></div>`;
 
       items.forEach((item, index) => {
         const thumbnail = item.thumbnail || 'assets/images/placeholder-team.svg';
@@ -1934,9 +1977,10 @@
         html += `
           <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="card-link news-carousel-card" style="text-decoration: none; display: block; scroll-snap-align: start; animation-delay: ${index * 0.03}s;">
             <div class="card" style="height: 100%; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--card-bg); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-              <div style="height: 150px; overflow: hidden; background: var(--blue-dark); position: relative;">
-                <img src="${thumbnail}" alt="" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onerror="this.src='assets/images/placeholder-team.svg'">
-                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); padding: 20px 12px 8px;">
+              <div class="news-carousel-thumb img-loading-host is-loading">
+                <img src="${thumbnail}" alt="" class="is-img-pending" data-fallback-src="assets/images/placeholder-team.svg" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onload="window.onTrackedImgLoad && window.onTrackedImgLoad(this)" onerror="window.onTrackedImgError && window.onTrackedImgError(this, 'assets/images/placeholder-team.svg')">
+                ${carouselLoaderHtml}
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); padding: 20px 12px 8px; z-index: 2;">
                   <span style="color: #fff; font-size: 0.7rem; background: var(--primary-color); padding: 2px 6px; border-radius: 4px; font-weight: bold; letter-spacing: 0.5px;">NEWS</span>
                 </div>
               </div>
@@ -1952,6 +1996,7 @@
       });
 
       carousel.innerHTML = html;
+      if (window.syncImageLoaders) window.syncImageLoaders(carousel);
       initNewsCarouselControls();
     }
 
@@ -2118,6 +2163,11 @@
     ];
 
     async function fetchNewsArchive() {
+      const archiveGrid = document.getElementById('newsArchiveGrid');
+      if (archiveGrid && (!window.newsArchiveAll || window.newsArchiveAll.length === 0)) {
+        const isThLoad = (window.currentLang || 'th') === 'th';
+        archiveGrid.innerHTML = `<div class="loading"><div class="spinner"></div><p data-i18n="common.loading">${isThLoad ? 'กำลังโหลด...' : 'Loading...'}</p></div>`;
+      }
       try {
         let historicalItems = [];
         try {
@@ -2244,6 +2294,10 @@
         return;
       }
 
+      const archiveLoaderHtml = window.renderImgLoaderOverlayHTML
+        ? window.renderImgLoaderOverlayHTML(true)
+        : `<div class="img-loading-overlay is-compact" aria-hidden="true"><div class="img-loading-spinner"></div><span class="img-loading-text" data-i18n="common.loading">${isTh ? 'กำลังโหลด...' : 'Loading...'}</span></div>`;
+
       grid.innerHTML = filtered.map((item, idx) => {
         const thumb = item.thumbnail || 'assets/images/placeholder-team.svg';
         const category = item.category || 'News';
@@ -2265,9 +2319,10 @@
 
         return `
           <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-archive-card" style="animation-delay: ${idx * 0.03}s;">
-            <div class="news-archive-card-thumb">
-              <img src="${thumb}" alt="${item.title}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';">
-              <span class="news-archive-card-category">${category}</span>
+            <div class="news-archive-card-thumb img-loading-host is-loading">
+              <img src="${thumb}" alt="${item.title}" class="is-img-pending" data-fallback-src="assets/images/placeholder-team.svg" onload="window.onTrackedImgLoad && window.onTrackedImgLoad(this)" onerror="window.onTrackedImgError && window.onTrackedImgError(this, 'assets/images/placeholder-team.svg')">
+              ${archiveLoaderHtml}
+              <span class="news-archive-card-category" style="z-index: 2;">${category}</span>
             </div>
             <div class="news-archive-card-body">
               <h3 class="news-archive-card-title" title="${item.title}">${item.title}</h3>
@@ -2282,6 +2337,8 @@
           </a>
         `;
       }).join('');
+
+      if (window.syncImageLoaders) window.syncImageLoaders(grid);
     }
 
     window.resetNewsArchiveFilters = function() {
@@ -2341,9 +2398,34 @@
       }
     }
 
+    function applyEditorialFallbackIfNeeded() {
+      const featImg = document.getElementById('editorialFeaturedImg');
+      const featTitle = document.getElementById('editorialFeaturedTitle');
+      const featDesc = document.getElementById('editorialFeaturedDesc');
+      if (featImg && window.ImageLoader) {
+        const defSrc = featImg.getAttribute('data-default-src') || 'assets/images/placeholder-team.svg';
+        window.ImageLoader.load(featImg, defSrc, 'assets/images/placeholder-team.svg', 'Featured News');
+      }
+      if (featTitle && featTitle.hasAttribute('data-i18n')) {
+        featTitle.removeAttribute('data-i18n');
+        featTitle.textContent = 'Bompastor: An Injury Update on the Eve of Vienna';
+      }
+      if (featDesc && !featDesc.textContent.trim()) {
+        featDesc.textContent = "The head coach speaks on the squad's tactical readiness, key squad rotations, and updates ahead of the European clash.";
+      }
+      const newsGrid = document.getElementById('editorialNewsGrid');
+      if (newsGrid) {
+        newsGrid.querySelectorAll('.img-loading-host.is-loading').forEach(h => h.classList.remove('is-loading'));
+      }
+    }
+
     async function fetchChelseaNews() {
       const carousel = document.getElementById('newsCarousel');
       if (!carousel) return;
+      const featImg = document.getElementById('editorialFeaturedImg');
+      if (featImg && window.ImageLoader) {
+        window.ImageLoader.startLoading(featImg);
+      }
       try {
         const res = await fetch('/api/news');
         if (!res.ok) throw new Error('Failed to fetch news');
@@ -2354,10 +2436,12 @@
           renderChelseaNewsCards(window.newsItemsGlobal);
         } else {
           carousel.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">No news available at the moment.</div>';
+          applyEditorialFallbackIfNeeded();
         }
       } catch (err) {
         console.error('Error loading news:', err);
         carousel.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">Failed to load news.</div>';
+        applyEditorialFallbackIfNeeded();
       }
 
       // Populate archive in background

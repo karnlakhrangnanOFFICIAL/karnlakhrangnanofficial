@@ -53,13 +53,30 @@ app.get('/the-story-blue/:chapter', (req, res, next) => {
   next();
 });
 
-app.get('/icon/:name', (req, res, next) => {
-  const file = req.params.name.endsWith('.html') ? req.params.name : `${req.params.name}.html`;
+app.get('/icon/:name', (req, res) => {
+  const safeBase = path.basename(req.params.name);
+  const file = safeBase.endsWith('.html') ? safeBase : `${safeBase}.html`;
   const target = path.join(__dirname, 'icon', file);
-  if (fs.existsSync(target)) {
-    return res.sendFile(target);
+
+  if (fs.existsSync(target) && file !== '_TEMPLATE.html') {
+    try {
+      const stat = fs.statSync(target);
+      if (stat.isFile() && stat.size >= 100) {
+        const html = fs.readFileSync(target, 'utf8');
+        if (html.trim().length >= 100 && !html.includes('{{PLAYER_NAME}}')) {
+          return res.sendFile(target);
+        }
+      }
+    } catch (_) {
+      // Fall through to coming soon handling
+    }
   }
-  next();
+
+  if (req.query._check) {
+    return res.status(404).json({ exists: false, comingSoon: true });
+  }
+
+  return res.redirect(302, `/icons.html?coming_soon=${encodeURIComponent(file)}`);
 });
 
 // Serve static assets with redirect: false to prevent redirect loops

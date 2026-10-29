@@ -111,7 +111,7 @@
     "filter_midfielder": "🎯 Midfielders",
     "filter_forward": "⚽ Forwards",
     "filter_goalkeeper": "🧤 Goalkeepers",
-    "loading": "Loading legends...",
+    "loading": "Loading...",
     "error": "Failed to load legends data",
     "empty": "No legends found for this filter",
     "apps": "apps",
@@ -119,7 +119,10 @@
     "pos_defender": "Defender",
     "pos_midfielder": "Midfielder",
     "pos_forward": "Forward",
-    "pos_goalkeeper": "Goalkeeper"
+    "pos_goalkeeper": "Goalkeeper",
+    "coming_soon_title": "Coming Soon",
+    "coming_soon_desc": "Full biography and honours archive for this club legend are not yet available. Coming soon.",
+    "close_modal": "Close"
   },
   "story": {
     "title": "The Story Blue",
@@ -195,6 +198,9 @@
     "score": "Score",
     "view_all": "View All",
     "loading": "Loading...",
+    "loading_download": "Preparing download...",
+    "loading_upload": "Uploading data...",
+    "loading_reload": "Reloading data...",
     "disclaimer": "This is an unofficial fan website. Not affiliated with Chelsea FC.",
     "rights": "All Rights Reserved."
   },
