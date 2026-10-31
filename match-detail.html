@@ -2941,10 +2941,11 @@
               }
             }
 
-            // 3. Numeric ID (e.g. Football-Data match ID)
-            const numId = parseInt(tid, 10);
+            // 3. Numeric ID (e.g. Football-Data match ID 560626 or api_560626)
+            const cleanNumericTid = tid.replace(/^api_/, "");
+            const numId = /^\d+$/.test(cleanNumericTid) ? parseInt(cleanNumericTid, 10) : NaN;
             if (!isNaN(numId)) {
-              found = fixturesList.find(m => m.id === numId || m.fd_id === numId);
+              found = fixturesList.find(m => Number(m.id) === numId || Number(m.fd_id) === numId);
               if (found) return found;
             }
             return null;
@@ -4697,8 +4698,14 @@
           const awayL = match.lineups.away || { starting: [], substitutes: [], manager: "-" };
 
           const renderPlayerRow = (p, isChelsea) => {
-            const rawName = p.name || "";
-            const isCaptain = /\(C\)/i.test(rawName) || p.captain === true || p.isCaptain === true;
+            const rawName = p.name || p.player_name || "";
+            const pNum = p.number ?? p.shirt_number;
+            const isCaptain =
+              /\(C\)/i.test(rawName) ||
+              p.captain === true ||
+              p.isCaptain === true ||
+              p.position === "C" ||
+              p.pos === "C";
             const isGK =
               /\(GK\)/i.test(rawName) ||
               p.position === "GK" ||
@@ -4725,7 +4732,7 @@
 
             let pNameDisplay = `<span class="non-link">${displayName}</span>${gkBadge}${armbandBadge}`;
             if (isChelsea) {
-              const pId = getPlayerIdByName(cleanName, p.number, teamType);
+              const pId = getPlayerIdByName(cleanName, pNum, teamType);
               const pTeam = getPlayerTeamByName(cleanName, teamType);
               if (pId) {
                 pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${displayName}</a>${gkBadge}${armbandBadge}`;
@@ -4733,7 +4740,7 @@
             }
             return `
             <div class="player-row">
-              <span class="player-num">${p.number || "-"}</span>
+              <span class="player-num">${pNum || "-"}</span>
               <div class="player-name-wrap">${pNameDisplay}</div>
             </div>
           `;
@@ -5150,7 +5157,7 @@
                   </div>
                   <div class="sidebar-info-row">
                     <span class="sidebar-info-label">🏟️ ${isTh ? "สนาม" : "Venue"}</span>
-                    <span class="sidebar-info-val">${match.venue || "Stamford Bridge"}</span>
+                    <span class="sidebar-info-val">${match.venue || match.stadium || "Stamford Bridge"}</span>
                   </div>
                   ${
                     match.attendance
@@ -5435,8 +5442,14 @@
             const hl = match.lineups.home || { starting: [], substitutes: [], manager: "-" };
             const al = match.lineups.away || { starting: [], substitutes: [], manager: "-" };
             const renderPdfPlayer = (p) => {
-              const raw = p.name || "";
-              const isCap = /\(C\)/i.test(raw) || p.captain === true || p.isCaptain === true;
+              const raw = p.name || p.player_name || "";
+              const pNum = p.number ?? p.shirt_number ?? "-";
+              const isCap =
+                /\(C\)/i.test(raw) ||
+                p.captain === true ||
+                p.isCaptain === true ||
+                p.position === "C" ||
+                p.pos === "C";
               const isGk =
                 /\(GK\)/i.test(raw) ||
                 p.position === "GK" ||
@@ -5446,7 +5459,7 @@
               return `
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9;font-size:11.5px;">
                   <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="font-family:'Space Mono',monospace;font-weight:700;color:#64748b;width:22px;text-align:right;">${escapeHtmlPdf(p.number ?? "-")}</span>
+                    <span style="font-family:'Space Mono',monospace;font-weight:700;color:#64748b;width:22px;text-align:right;">${escapeHtmlPdf(pNum)}</span>
                     <span style="color:#0f172a;font-weight:500;">${escapeHtmlPdf(clean)}</span>
                   </div>
                   <div style="display:flex;gap:4px;">
@@ -5699,7 +5712,7 @@
               <div style="padding:12px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;font-size:11.5px;background:#ffffff;">
                 <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Date</span><strong>${escapeHtmlPdf(dateText)}</strong></div>
                 <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Kick-off</span><strong>${escapeHtmlPdf(timeText)}</strong></div>
-                <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Venue</span><strong>${escapeHtmlPdf(match.venue || "Stamford Bridge")}</strong></div>
+                <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Venue</span><strong>${escapeHtmlPdf(match.venue || match.stadium || "Stamford Bridge")}</strong></div>
                 <div><span style="color:#64748b;display:block;font-size:10px;text-transform:uppercase;">Referee</span><strong>${escapeHtmlPdf(match.referee || (match.officials && match.officials.referee) || "TBC")}</strong></div>
               </div>
             </div>

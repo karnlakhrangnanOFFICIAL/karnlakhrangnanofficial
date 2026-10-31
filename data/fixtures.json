@@ -9078,19 +9078,33 @@
   },
   {
     "id": "m15",
+    "fd_id": 560626,
+    "alias_id": "api_560626",
+    "season": "2026/2027",
+    "matchday": 9,
+    "round": "Matchday 9",
     "date": "2026-10-31",
-    "time": "TBC",
+    "time": "19:30",
+    "time_th": "19:30",
+    "time_uk": "12:30",
+    "utcDate": "2026-10-31T12:30:00Z",
     "competition": "premier-league",
+    "competition_name": "Premier League",
+    "competition_short": "EPL",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "ha": "H",
     "home_team": "Chelsea",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Manchester United",
     "away_logo": "databases/logo/teams/england_manchester-united.svg",
     "venue": "Stamford Bridge",
+    "stadium": "Stamford Bridge",
+    "streaming": "monomax",
+    "referee": "Peter Bankes",
     "channels": [
       {
         "platform": "www.monomax.me",
-        "name": "MONOMAX SPORTS TV",
+        "name": "MONOMAX",
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
@@ -9099,7 +9113,75 @@
     "away_score": null,
     "goals": [],
     "events": [],
-    "competition_name": "premier-league",
+    "lineups": {
+      "home": {
+        "team_name": "CHELSEA",
+        "formation": "4-2-3-1",
+        "manager": "Xabi Alonso",
+        "starting": [
+          { "number": 39, "name": "Mike Penders", "position": "GK" },
+          { "number": 34, "name": "Josh Acheampong", "position": "" },
+          { "number": 3, "name": "Wesley Fofana", "position": "" },
+          { "number": 6, "name": "Levi Colwill", "position": "" },
+          { "number": 2, "name": "Marco Palestra", "position": "" },
+          { "number": 25, "name": "Moises Caicedo", "position": "C", "captain": true },
+          { "number": 45, "name": "Roméo Lavia", "position": "" },
+          { "number": 7, "name": "Pedro Neto", "position": "" },
+          { "number": 10, "name": "Cole Palmer", "position": "" },
+          { "number": 41, "name": "Estêvão Willian", "position": "" },
+          { "number": 17, "name": "Morgan Rogers", "position": "" }
+        ],
+        "substitutes": [
+          { "number": 28, "name": "Teddy Sharman-Lowe", "position": "GK" },
+          { "number": 37, "name": "Olutayo Subuloye", "position": "" },
+          { "number": 27, "name": "Malo Gusto", "position": "" },
+          { "number": 29, "name": "Pep Chavarría", "position": "" },
+          { "number": 4, "name": "Valentín Barco", "position": "" },
+          { "number": 32, "name": "Mahdi Nicoll-Jazuli", "position": "" },
+          { "number": 23, "name": "Geovany Quenda", "position": "" },
+          { "number": 22, "name": "Emmanuel Emegha", "position": "" },
+          { "number": 18, "name": "Danny Welbeck", "position": "" }
+        ]
+      },
+      "away": {
+        "team_name": "MANCHESTER UNITED",
+        "formation": "4-2-3-1",
+        "manager": "Michael Carrick",
+        "starting": [
+          { "number": 1, "name": "Senne Lammens", "position": "GK" },
+          { "number": 15, "name": "Leny Yoro", "position": "" },
+          { "number": 5, "name": "Harry Maguire", "position": "" },
+          { "number": 6, "name": "Lisandro Martínez", "position": "" },
+          { "number": 2, "name": "Diogo Dalot", "position": "" },
+          { "number": 17, "name": "Antony Santos", "position": "" },
+          { "number": 20, "name": "Carlos Baleba", "position": "" },
+          { "number": 16, "name": "Amad Diallo", "position": "" },
+          { "number": 8, "name": "Bruno Fernandes", "position": "C", "captain": true },
+          { "number": 10, "name": "Matheus Cunha", "position": "" },
+          { "number": 19, "name": "Bryan Mbeumo", "position": "" }
+        ],
+        "substitutes": [
+          { "number": 12, "name": "Karl Darlow", "position": "GK" },
+          { "number": 4, "name": "Matthijs de Ligt", "position": "" },
+          { "number": 26, "name": "Ayden Heaven", "position": "" },
+          { "number": 3, "name": "Noussair Mazraoui", "position": "" },
+          { "number": 37, "name": "Kobbie Mainoo", "position": "" },
+          { "number": 7, "name": "Mason Mount", "position": "" },
+          { "number": 18, "name": "Youri Tielemans", "position": "" },
+          { "number": 31, "name": "Shea Lacey", "position": "" },
+          { "number": 11, "name": "Joshua Zirkzee", "position": "" }
+        ]
+      },
+      "officials": [
+        {
+          "role": "กรรมการผู้ตัดสิน (Referee)",
+          "name": "Peter Bankes"
+        }
+      ]
+    },
+    "officials": {
+      "referee": "Peter Bankes"
+    },
     "team_type": "M"
   },
   {

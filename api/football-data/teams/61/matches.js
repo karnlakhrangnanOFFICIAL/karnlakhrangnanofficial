@@ -25,10 +25,10 @@ function getLocalMatchesFallback() {
       const matches = fixturesData
         .filter((m) => m.team_type !== "W")
         .map((m) => ({
-          id: m.id,
-          utcDate: `${m.date}T${m.time && m.time !== "TBC" ? m.time : "15:00"}:00Z`,
+          id: m.fd_id || m.id,
+          utcDate: m.utcDate || `${m.date}T${m.time_uk || (m.time && m.time !== "TBC" ? m.time : "15:00")}:00Z`,
           status: m.status === "completed" ? "FINISHED" : m.status === "live" ? "IN_PLAY" : "TIMED",
-          matchday: parseInt(m.round?.replace(/\D/g, ""), 10) || 1,
+          matchday: m.matchday || parseInt(m.round?.replace(/\D/g, ""), 10) || 1,
           stage: "REGULAR_SEASON",
           homeTeam: {
             id: m.ha === "H" ? 61 : 999,
@@ -46,6 +46,7 @@ function getLocalMatchesFallback() {
             fullTime: { home: m.home_score ?? null, away: m.away_score ?? null },
             halfTime: { home: m.home_half_score ?? null, away: m.away_half_score ?? null },
           },
+          referees: m.referee ? [{ name: m.referee, type: "REFEREE" }] : [],
           competition: {
             id: 2021,
             name: m.competition_name || m.competition || "Premier League",
