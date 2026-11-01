@@ -9108,11 +9108,1491 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "period": "FullTime",
+    "winner": "home",
+    "home_score": 2,
+    "away_score": 0,
+    "home_half_score": 0,
+    "away_half_score": 0,
+    "goals": [
+      {
+        "team": "home",
+        "player": "Morgan Rogers",
+        "minute": 50,
+        "assist": "Roméo Lavia"
+      },
+      {
+        "team": "home",
+        "player": "Cole Palmer",
+        "minute": 64,
+        "penalty": true,
+        "detail": "Penalty",
+        "assist": ""
+      }
+    ],
+    "events": [
+      {
+        "minute": 0,
+        "display_minute": "0'",
+        "type": "kick_off",
+        "detail": "Kick-Off เริ่มเกมการแข่งขัน"
+      },
+      {
+        "minute": 3,
+        "display_minute": "3'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Moises Caicedo",
+        "detail": "เรียกฟาวล์ได้ในแดนตัวเอง (จากการทำฟาวล์ของ Amad Diallo)"
+      },
+      {
+        "minute": 7,
+        "display_minute": "7'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Roméo Lavia",
+        "detail": "ได้ฟาวล์ในแดนบุก (จากการทำฟาวล์ของ Carlos Baleba)"
+      },
+      {
+        "minute": 7,
+        "display_minute": "7'",
+        "type": "save",
+        "team": "home",
+        "player": "Cole Palmer",
+        "detail": "ยิงไกลด้วยซ้ายระยะกว่า 35 หลา ตรงตัว Senne Lammens"
+      },
+      {
+        "minute": 8,
+        "display_minute": "8'",
+        "type": "shot",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบเขตโทษ หลุดเสาซ้าย (แอสซิสต์โดย Cole Palmer)"
+      },
+      {
+        "minute": 9,
+        "display_minute": "9'",
+        "type": "shot",
+        "team": "away",
+        "player": "Antony Santos",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบเขตโทษ เฉี่ยวเสาขวา (แอสซิสต์โดย Bruno Fernandes)"
+      },
+      {
+        "minute": 11,
+        "display_minute": "11'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "เรียกฟาวล์ได้ทางปีกขวา (จากการทำฟาวล์ของ Diogo Dalot)"
+      },
+      {
+        "minute": 13,
+        "display_minute": "13'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Bruno Fernandes",
+        "detail": "เรียกฟาวล์ได้ในแดนตัวเอง (จากการทำฟาวล์ของ Moisés Caicedo)"
+      },
+      {
+        "minute": 14,
+        "display_minute": "14'",
+        "type": "shot",
+        "team": "away",
+        "player": "Carlos Baleba",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบเขตโทษติดบล็อก"
+      },
+      {
+        "minute": 14,
+        "display_minute": "14'",
+        "type": "corner",
+        "team": "away",
+        "player": "Manchester United",
+        "detail": "ได้เตะมุมจากการสกัดของ Levi Colwill"
+      },
+      {
+        "minute": 15,
+        "display_minute": "15'",
+        "type": "save",
+        "team": "home",
+        "player": "Pedro Neto",
+        "detail": "ยิงด้วยซ้ายฝั่งขวาของเขตโทษ ถูก Senne Lammens เซฟมุมล่างซ้าย (จ่ายโดย Morgan Rogers)"
+      },
+      {
+        "minute": 15,
+        "display_minute": "15'",
+        "type": "offside",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ถูกจับล้ำหน้า"
+      },
+      {
+        "minute": 17,
+        "display_minute": "17'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Leny Yoro"
+      },
+      {
+        "minute": 18,
+        "display_minute": "18'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "detail": "เรียกฟาวล์ได้ทางปีกขวา (จากการทำฟาวล์ของ Bruno Fernandes)"
+      },
+      {
+        "minute": 19,
+        "display_minute": "19'",
+        "type": "shot",
+        "team": "away",
+        "player": "Bruno Fernandes",
+        "detail": "ยิงด้วยซ้ายกลางประตูจากจังหวะโต้กลับ เหินข้ามคาน (จ่ายโดย Bryan Mbeumo)"
+      },
+      {
+        "minute": 20,
+        "display_minute": "20'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Moises Caicedo",
+        "detail": "ได้ฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Carlos Baleba)"
+      },
+      {
+        "minute": 22,
+        "display_minute": "22'",
+        "type": "shot",
+        "team": "home",
+        "player": "Josh Acheampong",
+        "detail": "ยิงด้วยขวาจากฝั่งขวาของเขตโทษติดบล็อก"
+      },
+      {
+        "minute": 22,
+        "display_minute": "22'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Lisandro Martínez"
+      },
+      {
+        "minute": 22,
+        "display_minute": "22'",
+        "type": "save",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "detail": "โหม่งติดเซฟ Senne Lammens ที่มุมบนขวา"
+      },
+      {
+        "minute": 24,
+        "display_minute": "24'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Josh Acheampong",
+        "detail": "เรียกฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Bruno Fernandes)"
+      },
+      {
+        "minute": 26,
+        "display_minute": "26'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Bryan Mbeumo",
+        "detail": "ได้ฟาวล์ในแดนบุก (จากการฟาวล์ของ Levi Colwill)"
+      },
+      {
+        "minute": 27,
+        "display_minute": "27'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "เรียกฟาวล์ริมเส้นฝั่งขวา (จากการทำฟาวล์ของ Andrey Santos)"
+      },
+      {
+        "minute": 28,
+        "display_minute": "28'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Harry Maguire",
+        "detail": "ได้ฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Levi Colwill)"
+      },
+      {
+        "minute": 30,
+        "display_minute": "30'",
+        "type": "save",
+        "team": "away",
+        "player": "Amad Diallo",
+        "detail": "ยิงด้วยซ้ายนอกกรอบเขตโทษ ถูก Mike Penders เซฟไว้ได้"
+      },
+      {
+        "minute": 30,
+        "display_minute": "30'",
+        "type": "shot",
+        "team": "away",
+        "player": "Matheus Cunha",
+        "detail": "ยิงกลางประตูติดบล็อก"
+      },
+      {
+        "minute": 30,
+        "display_minute": "30'",
+        "type": "corner",
+        "team": "away",
+        "player": "Manchester United",
+        "detail": "ได้เตะมุมจากการสกัดของ Josh Acheampong"
+      },
+      {
+        "minute": 31,
+        "display_minute": "31'",
+        "type": "shot",
+        "team": "away",
+        "player": "Bruno Fernandes",
+        "detail": "ยิงด้วยขวาฝั่งขวาของเขตโทษติดบล็อก (ครอสโดย Lisandro Martínez)"
+      },
+      {
+        "minute": 32,
+        "display_minute": "32'",
+        "type": "shot",
+        "team": "away",
+        "player": "Amad Diallo",
+        "detail": "ยิงด้วยขวาจากมุมแคบฝั่งขวาเฉี่ยวเสาออกไป และได้เตะมุม"
+      },
+      {
+        "minute": 33,
+        "display_minute": "33'",
+        "type": "corner",
+        "team": "away",
+        "player": "Manchester United",
+        "detail": "ได้เตะมุมจากการสกัดของ Marco Palestra"
+      },
+      {
+        "minute": 34,
+        "display_minute": "34'",
+        "type": "var",
+        "team": "away",
+        "player": "Matheus Cunha",
+        "detail": "ริบประตูคืน (ล้ำหน้า) — Matheus Cunha ถูกจับล้ำหน้าหลังตรวจสอบ VAR สกอร์ยัง 0-0"
+      },
+      {
+        "minute": 36,
+        "display_minute": "36'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "detail": "เรียกฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Matheus Cunha)"
+      },
+      {
+        "minute": 38,
+        "display_minute": "38'",
+        "type": "shot",
+        "team": "away",
+        "player": "Amad Diallo",
+        "detail": "ยิงซ้ายกลางประตูติดบล็อก และได้เตะมุมต่อเนื่องจากการสกัดของ Wesley Fofana กับ Levi Colwill"
+      },
+      {
+        "minute": 41,
+        "display_minute": "41'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Andrey Santos"
+      },
+      {
+        "minute": 42,
+        "display_minute": "42'",
+        "type": "shot",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "detail": "โหม่งกลางประตูติดบล็อก (ครอสจาก Estêvão)"
+      },
+      {
+        "minute": 43,
+        "display_minute": "43'",
+        "type": "shot",
+        "team": "away",
+        "player": "Amad Diallo",
+        "detail": "ยิงด้วยซ้ายกลางประตูจากจังหวะสวนกลับ ข้ามคานออกไป"
+      },
+      {
+        "minute": 44,
+        "display_minute": "44'",
+        "type": "shot",
+        "team": "home",
+        "player": "Pedro Neto",
+        "detail": "ยิงด้วยซ้ายจากมุมแคบฝั่งซ้าย หลุดกรอบทางขวา"
+      },
+      {
+        "minute": 45,
+        "display_minute": "45'",
+        "type": "save",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ยิงด้วยขวาจากฝั่งขวาของเขตโทษตรงตัว Senne Lammens"
+      },
+      {
+        "minute": 45,
+        "display_minute": "45'",
+        "type": "added_time",
+        "detail": "ผู้ตัดสินที่สี่ชูป้ายทดเวลาบาดเจ็บครึ่งแรก 2 นาที"
+      },
+      {
+        "minute": "45+2",
+        "display_minute": "HT",
+        "type": "period",
+        "detail": "จบการแข่งขันครึ่งแรก เชลซี 0 - 0 แมนฯ ยูไนเต็ด"
+      },
+      {
+        "minute": 46,
+        "display_minute": "46'",
+        "type": "period",
+        "detail": "เริ่มเกมครึ่งหลัง สกอร์ เชลซี 0 - 0 แมนฯ ยูไนเต็ด"
+      },
+      {
+        "minute": 48,
+        "display_minute": "48'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Marco Palestra",
+        "detail": "ได้ฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Amad Diallo)"
+      },
+      {
+        "minute": 50,
+        "display_minute": "50'",
+        "type": "goal",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "assist": "Roméo Lavia",
+        "detail": "ยิงด้วยซ้ายกลางประตูเข้ากึ่งกลางตาข่าย"
+      },
+      {
+        "minute": 51,
+        "display_minute": "51'",
+        "type": "save",
+        "team": "home",
+        "player": "Pedro Neto",
+        "detail": "โหม่งกลางประตูถูก Senne Lammens ปัดเซฟมุมซ้ายบน (จ่ายโดย Estêvão)"
+      },
+      {
+        "minute": 52,
+        "display_minute": "52'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Matheus Cunha",
+        "detail": "ได้ฟาวล์ในแดนตัวเอง (จากการฟาวล์ของ Roméo Lavia)"
+      },
+      {
+        "minute": 53,
+        "display_minute": "53'",
+        "type": "free_kick",
+        "team": "away",
+        "player": "Bruno Fernandes",
+        "detail": "ได้ฟาวล์ริมปีกซ้าย (จากการทำฟาวล์ของ Estêvão)"
+      },
+      {
+        "minute": 54,
+        "display_minute": "54'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Pedro Neto",
+        "detail": "ได้ฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Lisandro Martínez)"
+      },
+      {
+        "minute": 55,
+        "display_minute": "55'",
+        "type": "shot",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "detail": "ยิงด้วยขวาติดบล็อก"
+      },
+      {
+        "minute": 56,
+        "display_minute": "56'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Diogo Dalot"
+      },
+      {
+        "minute": 57,
+        "display_minute": "57'",
+        "type": "free_kick",
+        "team": "home",
+        "player": "Roméo Lavia",
+        "detail": "ได้ฟาวล์ในแดนตัวเอง (จากการทำฟาวล์ของ Andrey Santos)"
+      },
+      {
+        "minute": 58,
+        "display_minute": "58'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Kobbie Mainoo",
+        "player_out": "Carlos Baleba",
+        "injury": false
+      },
+      {
+        "minute": 59,
+        "display_minute": "59'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Lisandro Martínez",
+        "detail": "ทำฟาวล์ใส่ Morgan Rogers"
+      },
+      {
+        "minute": 60,
+        "display_minute": "60'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Harry Maguire และ Bruno Fernandes"
+      },
+      {
+        "minute": 60,
+        "display_minute": "60'",
+        "type": "penalty_awarded",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "detail": "เชลซีได้ลูกจุดโทษ จากจังหวะที่ Wesley Fofana ถูกทำฟาวล์ในกรอบเขตโทษ"
+      },
+      {
+        "minute": 61,
+        "display_minute": "61'",
+        "type": "var",
+        "team": "home",
+        "player": "Wesley Fofana",
+        "detail": "ยืนยันลูกจุดโทษ — ผู้ตัดสินเช็ก VAR และยืนยันให้จุดโทษกับเชลซี"
+      },
+      {
+        "minute": 63,
+        "display_minute": "63'",
+        "type": "second_yellow",
+        "team": "away",
+        "player": "Lisandro Martínez",
+        "detail": "ใบเหลืองที่สองกลายเป็นใบแดงไล่ออกจากสนามจากการทำฟาวล์"
+      },
+      {
+        "minute": 64,
+        "display_minute": "64'",
+        "type": "goal",
+        "team": "home",
+        "player": "Cole Palmer",
+        "detail": "Penalty",
+        "assist": ""
+      },
+      {
+        "minute": 65,
+        "display_minute": "65'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Harry Maguire",
+        "detail": "ทำฟาวล์ใส่ Morgan Rogers"
+      },
+      {
+        "minute": 66,
+        "display_minute": "66'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Mason Mount",
+        "player_out": "Matheus Cunha",
+        "injury": false
+      },
+      {
+        "minute": 66,
+        "display_minute": "66'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Ayden Heaven",
+        "player_out": "Antony Santos",
+        "injury": false
+      },
+      {
+        "minute": 67,
+        "display_minute": "67'",
+        "type": "shot",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ยิงด้วยซ้ายจากฝั่งขวาของเขตโทษ ข้ามคานออกไป (จ่ายโดย Morgan Rogers)"
+      },
+      {
+        "minute": 68,
+        "display_minute": "68'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Harry Maguire"
+      },
+      {
+        "minute": 69,
+        "display_minute": "69'",
+        "type": "save",
+        "team": "home",
+        "player": "Josh Acheampong",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบติดเซฟ Senne Lammens (จ่ายโดย Cole Palmer)"
+      },
+      {
+        "minute": 70,
+        "display_minute": "70'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Kobbie Mainoo",
+        "detail": "ทำฟาวล์ใส่ Cole Palmer"
+      },
+      {
+        "minute": 71,
+        "display_minute": "71'",
+        "type": "var",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ริบประตูคืน (ล้ำหน้า) — Estêvão ส่งบอลเข้าประตูแต่ถูกจับล้ำหน้าหลังตรวจสอบ VAR"
+      },
+      {
+        "minute": 74,
+        "display_minute": "74'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Pep Chavarría",
+        "player_out": "Marco Palestra",
+        "injury": false
+      },
+      {
+        "minute": 75,
+        "display_minute": "75'",
+        "type": "injury",
+        "team": "away",
+        "player": "Amad Diallo",
+        "detail": "เกมหยุดชั่วคราวเนื่องจากมีอาการบาดเจ็บ"
+      },
+      {
+        "minute": 77,
+        "display_minute": "77'",
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Joshua Zirkzee",
+        "player_out": "Amad Diallo",
+        "injury": true
+      },
+      {
+        "minute": 79,
+        "display_minute": "79'",
+        "type": "shot",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ยิงด้วยซ้ายกลางประตูติดบล็อก และเชลซีได้เตะมุมจากการสกัดของ Diogo Dalot"
+      },
+      {
+        "minute": 80,
+        "display_minute": "80'",
+        "type": "shot",
+        "team": "home",
+        "player": "Cole Palmer",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบเขตโทษ เหินข้ามคาน"
+      },
+      {
+        "minute": 81,
+        "display_minute": "81'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Bryan Mbeumo",
+        "detail": "ได้รับใบเหลือง"
+      },
+      {
+        "minute": 83,
+        "display_minute": "83'",
+        "type": "offside",
+        "team": "home",
+        "player": "Morgan Rogers",
+        "detail": "เชลซีได้เตะมุมจากการสกัดของ Mason Mount และต่อมา Morgan Rogers ถูกจับล้ำหน้า"
+      },
+      {
+        "minute": 84,
+        "display_minute": "84'",
+        "type": "save",
+        "team": "away",
+        "player": "Joshua Zirkzee",
+        "detail": "ยิงด้วยขวาจากนอกกรอบติดเซฟ Mike Penders"
+      },
+      {
+        "minute": 84,
+        "display_minute": "84'",
+        "type": "save",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบติดเซฟ Senne Lammens"
+      },
+      {
+        "minute": 85,
+        "display_minute": "85'",
+        "type": "save",
+        "team": "home",
+        "player": "Estêvão Willian",
+        "detail": "ยิงด้วยซ้ายจากนอกกรอบเขตโทษ ถูกเซฟที่มุมล่างซ้าย"
+      },
+      {
+        "minute": 86,
+        "display_minute": "86'",
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Joshua Zirkzee",
+        "detail": "ทำฟาวล์ใส่ Moisés Caicedo"
+      },
+      {
+        "minute": 87,
+        "display_minute": "87'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Danny Welbeck",
+        "player_out": "Moises Caicedo",
+        "injury": false
+      },
+      {
+        "minute": 87,
+        "display_minute": "87'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Valentín Barco",
+        "player_out": "Pedro Neto",
+        "injury": false
+      },
+      {
+        "minute": 87,
+        "display_minute": "87'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Malo Gusto",
+        "player_out": "Estêvão Willian",
+        "injury": false
+      },
+      {
+        "minute": 90,
+        "display_minute": "90'",
+        "type": "added_time",
+        "detail": "ผู้ตัดสินที่สี่ชูป้ายทดเวลาบาดเจ็บครึ่งหลัง 10 นาที"
+      },
+      {
+        "minute": "90+2",
+        "display_minute": "90+2'",
+        "type": "save",
+        "team": "away",
+        "player": "Bryan Mbeumo",
+        "detail": "ยิงไกลติดเซฟ Mike Penders ที่มุมบนขวา และ Ayden Heaven ถูกจับล้ำหน้า"
+      },
+      {
+        "minute": "90+3",
+        "display_minute": "90+3'",
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Mike Penders",
+        "detail": "ได้รับใบเหลือง"
+      },
+      {
+        "minute": "90+3",
+        "display_minute": "90+3'",
+        "type": "shot",
+        "team": "home",
+        "player": "Cole Palmer",
+        "detail": "ยิงด้วยซ้ายกลางประตู บอลสูงข้ามคานไปนิดเดียว"
+      },
+      {
+        "minute": "90+5",
+        "display_minute": "90+5'",
+        "type": "corner",
+        "team": "home",
+        "player": "Chelsea",
+        "detail": "ได้เตะมุมจากการสกัดของ Leny Yoro"
+      },
+      {
+        "minute": "90+7",
+        "display_minute": "90+7'",
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Geovany Quenda",
+        "player_out": "Cole Palmer",
+        "injury": false
+      },
+      {
+        "minute": "90+9",
+        "display_minute": "90+9'",
+        "type": "shot",
+        "team": "home",
+        "player": "Valentín Barco",
+        "detail": "ยิงด้วยซ้ายกลางประตู เฉี่ยวเสาซ้ายออกไปอย่างหวุดหวิด"
+      },
+      {
+        "minute": "90+10",
+        "display_minute": "90+10'",
+        "type": "foul",
+        "team": "away",
+        "player": "Joshua Zirkzee",
+        "detail": "ทำฟาวล์ในจังหวะสุดท้ายของเกม"
+      },
+      {
+        "minute": "90+99",
+        "display_minute": "FT",
+        "type": "full_time",
+        "detail": "จบการแข่งขัน เชลซี 2 - 0 แมนฯ ยูไนเต็ด"
+      }
+    ],
+    "commentary": [
+      {
+        "section": "ประเด็นสำคัญจากการแข่งขัน (Key Takeaways)",
+        "events": [
+          {
+            "text": "เชลซีเปิดรังสแตมฟอร์ด บริดจ์ เอาชนะ แมนเชสเตอร์ ยูไนเต็ด 2-0 ในศึกพรีเมียร์ลีก นัดที่ 9 โดยครองบอลเหนือกว่าที่ 58.6% และสร้างค่า xG สูงถึง 2.67 ต่อ 1.17"
+          },
+          {
+            "text": "นาทีที่ 34 แมนฯ ยูไนเต็ดส่งบอลเข้าตาข่ายจาก Matheus Cunha แต่ถูก VAR ริบประตูคืนจากจังหวะล้ำหน้า ก่อนที่ครึ่งหลัง Morgan Rogers จะซัดเบิกร่อง 1-0 ในนาทีที่ 50 จากแอสซิสต์ของ Roméo Lavia"
+          },
+          {
+            "text": "จุดเปลี่ยนสำคัญเกิดขึ้นช่วงนาทีที่ 60-64 เมื่อ Wesley Fofana เรียกจุดโทษให้เชลซี (VAR ยืนยัน) และ Lisandro Martínez โดนใบเหลืองที่สองกลายเป็นใบแดงในนาทีที่ 63 ก่อนที่ Cole Palmer จะสังหารจุดโทษไม่พลาดเป็น 2-0"
+          },
+          {
+            "text": "Mike Penders เก็บคลีนชีตสำเร็จพร้อมเซฟสำคัญ 3 ครั้ง ขณะที่ Senne Lammens ผู้รักษาประตูทีมเยือนช่วยเซฟถึง 7 ครั้ง"
+          }
+        ]
+      }
+    ],
+    "live_commentary": [
+      {
+        "time": "0'",
+        "type": "Match Start",
+        "team": "",
+        "text": "Kick-Off เริ่มเกมการแข่งขัน",
+        "isKey": true
+      },
+      {
+        "time": "3'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Moisés Caicedo (เชลซี) เรียกฟาวล์ได้ในแดนตัวเอง จากการทำฟาวล์ของ Amad Diallo (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "7'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Roméo Lavia (เชลซี) ได้ฟาวล์ในแดนบุกจากการทำฟาวล์ของ Carlos Baleba (แมนฯ ยูไนเต็ด) และ Cole Palmer (เชลซี) ได้โอกาสยิงไกลด้วยซ้ายระยะกว่า 35 หลา แต่บอลไปตรงตัวผู้รักษาประตู",
+        "isKey": false
+      },
+      {
+        "time": "8'",
+        "type": "Attempt Missed",
+        "team": "home",
+        "text": "Estêvão (เชลซี) ได้โอกาสยิงด้วยซ้ายจากนอกกรอบเขตโทษ แต่บอลหลุดเสาออกไปทางซ้าย (แอสซิสต์โดย Cole Palmer)",
+        "isKey": false
+      },
+      {
+        "time": "9'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Andrey Santos (แมนฯ ยูไนเต็ด) ยิงด้วยซ้ายจากนอกกรอบเขตโทษ บอลเฉี่ยวเสาออกไปทางขวา (แอสซิสต์โดย Bruno Fernandes)",
+        "isKey": false
+      },
+      {
+        "time": "11'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Estêvão (เชลซี) เรียกฟาวล์ได้ทางปีกขวา จากการทำฟาวล์ของ Diogo Dalot (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "13'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Bruno Fernandes (แมนฯ ยูไนเต็ด) เรียกฟาวล์ได้ในแดนตัวเอง จากการทำฟาวล์ของ Moisés Caicedo (เชลซี)",
+        "isKey": false
+      },
+      {
+        "time": "14'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Carlos Baleba (แมนฯ ยูไนเต็ด) ได้ยิงด้วยซ้ายจากนอกกรอบเขตโทษแต่ถูกบล็อก แมนฯ ยูไนเต็ดได้เตะมุมจากการสกัดของ Levi Colwill",
+        "isKey": false
+      },
+      {
+        "time": "15'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Pedro Neto (เชลซี) ยิงด้วยซ้ายจากฝั่งขวาของกรอบเขตโทษ แต่ถูก Senne Lammens เซฟไว้ได้ที่มุมล่างซ้าย (แอสซิสต์โดย Morgan Rogers) และ Estêvão (เชลซี) ถูกจับล้ำหน้า",
+        "isKey": false
+      },
+      {
+        "time": "17'",
+        "type": "Corner",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดของ Leny Yoro",
+        "isKey": false
+      },
+      {
+        "time": "18'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Morgan Rogers (เชลซี) เรียกฟาวล์ได้ทางปีกขวา จากการทำฟาวล์ของ Bruno Fernandes (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "19'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Bruno Fernandes (แมนฯ ยูไนเต็ด) ได้โอกาสยิงด้วยซ้ายกลางประตูจากจังหวะโต้กลับ แต่บอลเหินข้ามคานออกไปทางซ้าย (แอสซิสต์โดย Bryan Mbeumo)",
+        "isKey": false
+      },
+      {
+        "time": "20'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Moisés Caicedo (เชลซี) ได้ฟาวล์ในแดนตัวเอง จากการทำฟาวล์ของ Carlos Baleba (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "22'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Josh Acheampong (เชลซี) ยิงด้วยขวาจากฝั่งขวาของกรอบเขตโทษแต่ติดบล็อก, เชลซีได้เตะมุมจากการสกัดของ Lisandro Martínez และ Wesley Fofana (เชลซี) โหม่งติดเซฟที่มุมบนขวา",
+        "isKey": false
+      },
+      {
+        "time": "24'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Josh Acheampong (เชลซี) เรียกฟาวล์ในแดนตัวเอง จากการทำฟาวล์ของ Bruno Fernandes (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "26'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Bryan Mbeumo (แมนฯ ยูไนเต็ด) ได้ฟาวล์ในแดนบุก จากการฟาวล์ของ Levi Colwill (เชลซี)",
+        "isKey": false
+      },
+      {
+        "time": "27'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Estêvão (เชลซี) เรียกฟาวล์ริมเส้นฝั่งขวา จากการทำฟาวล์ของ Andrey Santos (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "28'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Harry Maguire (แมนฯ ยูไนเต็ด) ได้ฟาวล์ในแดนตัวเอง จากจังหวะที่ Levi Colwill (เชลซี) ทำฟาวล์",
+        "isKey": false
+      },
+      {
+        "time": "30'",
+        "type": "Attempt Saved",
+        "team": "away",
+        "text": "Amad Diallo (แมนฯ ยูไนเต็ด) ยิงด้วยซ้ายนอกกรอบเขตโทษแต่ถูก Mike Penders เซฟไว้ได้, Matheus Cunha (แมนฯ ยูไนเต็ด) ยิงกลางประตูติดบล็อก และแมนฯ ยูไนเต็ดได้เตะมุมจากการสกัดของ Josh Acheampong",
+        "isKey": false
+      },
+      {
+        "time": "31'",
+        "type": "Attempt Blocked",
+        "team": "away",
+        "text": "Bruno Fernandes (แมนฯ ยูไนเต็ด) ยิงด้วยขวาฝั่งขวาของเขตโทษติดบล็อก (แอสซิสต์ด้วยลูกครอสจาก Lisandro Martínez)",
+        "isKey": false
+      },
+      {
+        "time": "32'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Amad Diallo (แมนฯ ยูไนเต็ด) ยิงด้วยขวาจากมุมแคบฝั่งขวาบอลเฉี่ยวเสาออกไป และแมนฯ ยูไนเต็ดได้เตะมุม",
+        "isKey": false
+      },
+      {
+        "time": "33'",
+        "type": "Corner",
+        "team": "away",
+        "text": "แมนฯ ยูไนเต็ดได้เตะมุมจากการสกัดของ Marco Palestra",
+        "isKey": false
+      },
+      {
+        "time": "34'",
+        "type": "VAR Decision",
+        "team": "away",
+        "text": "Matheus Cunha (แมนฯ ยูไนเต็ด) ถูกจับล้ำหน้า และถูกริบประตูคืนหลังจากตรวจสอบผ่าน VAR สกอร์ยังคง 0-0",
+        "isKey": true
+      },
+      {
+        "time": "36'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Wesley Fofana (เชลซี) เรียกฟาวล์ในแดนตัวเอง จากการทำฟาวล์ของ Matheus Cunha (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "38'",
+        "type": "Corner",
+        "team": "away",
+        "text": "Amad Diallo (แมนฯ ยูไนเต็ด) ยิงซ้ายกลางประตูติดบล็อก แมนฯ ยูไนเต็ดได้เตะมุมติดต่อกันจากการสกัดของ Wesley Fofana และ Levi Colwill",
+        "isKey": false
+      },
+      {
+        "time": "41'",
+        "type": "Corner",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดของ Andrey Santos",
+        "isKey": false
+      },
+      {
+        "time": "42'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Wesley Fofana (เชลซี) โหม่งกลางประตูติดบล็อก (แอสซิสต์จากลูกครอสของ Estêvão)",
+        "isKey": false
+      },
+      {
+        "time": "43'",
+        "type": "Attempt Missed",
+        "team": "away",
+        "text": "Amad Diallo (แมนฯ ยูไนเต็ด) ได้โอกาสยิงด้วยซ้ายกลางประตูจากจังหวะสวนกลับ แต่บอลข้ามคานออกไป",
+        "isKey": false
+      },
+      {
+        "time": "44'",
+        "type": "Attempt Missed",
+        "team": "home",
+        "text": "Pedro Neto (เชลซี) ยิงด้วยซ้ายจากมุมแคบฝั่งซ้าย บอลหลุดกรอบออกไปทางขวา",
+        "isKey": false
+      },
+      {
+        "time": "45'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Estêvão (เชลซี) ยิงด้วยขวาจากฝั่งขวาของเขตโทษไปตรงตัว Senne Lammens และผู้ตัดสินที่สี่ชูป้ายทดเวลาบาดเจ็บ 2 นาที",
+        "isKey": false
+      },
+      {
+        "time": "45+2'",
+        "type": "Half Time",
+        "team": "",
+        "text": "จบการแข่งขันครึ่งแรก เชลซี 0 - แมนฯ ยูไนเต็ด 0",
+        "isKey": true
+      },
+      {
+        "time": "46'",
+        "type": "Match Period Start",
+        "team": "",
+        "text": "เริ่มเกมครึ่งหลัง สกอร์ เชลซี 0 - แมนฯ ยูไนเต็ด 0",
+        "isKey": true
+      },
+      {
+        "time": "48'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Marco Palestra (เชลซี) ได้ฟาวล์ในแดนตัวเอง จากการทำฟาวล์ของ Amad Diallo (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "50'",
+        "type": "Goal",
+        "team": "home",
+        "text": "GOAL! เชลซีขึ้นนำ 1 - 0 — Morgan Rogers (เชลซี) ยิงด้วยซ้ายกลางประตูเข้าสู่กึ่งกลางของตาข่าย (แอสซิสต์โดย Roméo Lavia)",
+        "isKey": true
+      },
+      {
+        "time": "51'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Pedro Neto (เชลซี) โหม่งกลางประตูแต่ถูก Senne Lammens ปัดเซฟไว้ได้ที่มุมซ้ายบน (แอสซิสต์โดย Estêvão)",
+        "isKey": false
+      },
+      {
+        "time": "52'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Matheus Cunha (แมนฯ ยูไนเต็ด) ได้ฟาวล์ในแดนตัวเอง จากการฟาวล์ของ Roméo Lavia (เชลซี)",
+        "isKey": false
+      },
+      {
+        "time": "53'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Bruno Fernandes (แมนฯ ยูไนเต็ด) ได้ฟาวล์ริมปีกซ้าย จากการทำฟาวล์ของ Estêvão (เชลซี)",
+        "isKey": false
+      },
+      {
+        "time": "54'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Pedro Neto (เชลซี) ได้ฟาวล์ในแดนตัวเอง จากการทำฟาวล์ของ Lisandro Martínez (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "55'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Morgan Rogers (เชลซี) ยิงด้วยขวาติดบล็อก และ Matheus Cunha (แมนฯ ยูไนเต็ด) เรียกฟาวล์ในแดนตัวเองจากการฟาวล์ของ Roméo Lavia",
+        "isKey": false
+      },
+      {
+        "time": "56'",
+        "type": "Corner",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดของ Diogo Dalot",
+        "isKey": false
+      },
+      {
+        "time": "57'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Roméo Lavia (เชลซี) ได้ฟาวล์ในแดนตัวเอง จากการทำฟาวล์ของ Andrey Santos (แมนฯ ยูไนเต็ด)",
+        "isKey": false
+      },
+      {
+        "time": "58'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "แมนฯ ยูไนเต็ดเปลี่ยนตัว: ส่ง Kobbie Mainoo ลงสนามแทน Carlos Baleba",
+        "isKey": true
+      },
+      {
+        "time": "59'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Lisandro Martínez (แมนฯ ยูไนเต็ด) โดนใบเหลืองจากการทำฟาวล์ใส่ Morgan Rogers ทำให้เชลซีได้ฟรีคิกทางปีกขวา",
+        "isKey": true
+      },
+      {
+        "time": "60'",
+        "type": "Penalty Awarded",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดทิ้งของ Harry Maguire ต่อมาเชลซีได้ลูกจุดโทษจากจังหวะที่ Wesley Fofana ถูกทำฟาวล์ในกรอบเขตโทษ และเชลซีได้ลูกเตะมุมจากการสกัดของ Bruno Fernandes",
+        "isKey": true
+      },
+      {
+        "time": "61'",
+        "type": "VAR Decision",
+        "team": "home",
+        "text": "ผู้ตัดสินเช็ก VAR และยืนยันให้จุดโทษกับเชลซี",
+        "isKey": true
+      },
+      {
+        "time": "63'",
+        "type": "Red Card",
+        "team": "away",
+        "text": "ใบแดง! Lisandro Martínez (แมนฯ ยูไนเต็ด) ได้รับใบเหลืองที่สอง กลายเป็นใบแดงไล่ออกจากสนามจากการทำฟาวล์",
+        "isKey": true
+      },
+      {
+        "time": "64'",
+        "type": "Goal",
+        "team": "home",
+        "text": "GOAL (Penalty)! เชลซีนำห่าง 2 - 0 — Cole Palmer ยิงจุดโทษด้วยเท้าซ้ายเข้ามุมขวาล่างอย่างเฉียบขาด",
+        "isKey": true
+      },
+      {
+        "time": "65'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Harry Maguire (แมนฯ ยูไนเต็ด) ได้รับใบเหลืองจากการทำฟาวล์ และ Morgan Rogers (เชลซี) เรียกฟาวล์ได้ในแดนบุก",
+        "isKey": true
+      },
+      {
+        "time": "66'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "แมนฯ ยูไนเต็ดเปลี่ยนตัว 2 คนรวด: ส่ง Mason Mount แทน Matheus Cunha และ Ayden Heaven แทน Antony Santos",
+        "isKey": true
+      },
+      {
+        "time": "67'",
+        "type": "Attempt Missed",
+        "team": "home",
+        "text": "Estêvão (เชลซี) ยิงด้วยซ้ายจากฝั่งขวาของเขตโทษ บอลหลุดข้ามคานออกไปทางซ้าย (แอสซิสต์โดย Morgan Rogers)",
+        "isKey": false
+      },
+      {
+        "time": "68'",
+        "type": "Corner",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดของ Harry Maguire",
+        "isKey": false
+      },
+      {
+        "time": "69'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Josh Acheampong (เชลซี) ยิงด้วยซ้ายจากนอกกรอบถูกผู้รักษาประตูเซฟไว้ได้ (แอสซิสต์โดย Cole Palmer) และต่อมา Cole Palmer ได้ฟาวล์ในแดนตัวเองจากการทำฟาวล์ของ Leny Yoro",
+        "isKey": false
+      },
+      {
+        "time": "70'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Kobbie Mainoo (แมนฯ ยูไนเต็ด) โดนใบเหลืองจากการทำฟาวล์ใส่ Cole Palmer",
+        "isKey": true
+      },
+      {
+        "time": "71'",
+        "type": "VAR Decision",
+        "team": "home",
+        "text": "Estêvão (เชลซี) ส่งบอลเข้าประตูไปแล้ว แต่ถูกจับล้ำหน้าและริบประตูคืนหลังจากการตรวจสอบโดย VAR",
+        "isKey": true
+      },
+      {
+        "time": "74'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "เชลซีเปลี่ยนตัว: ส่ง Pep Chavarría ลงสนามแทน Marco Palestra",
+        "isKey": true
+      },
+      {
+        "time": "75'-76'",
+        "type": "Injury",
+        "team": "away",
+        "text": "เกมหยุดชั่วคราวเนื่องจาก Amad Diallo (แมนฯ ยูไนเต็ด) มีอาการบาดเจ็บ",
+        "isKey": false
+      },
+      {
+        "time": "77'",
+        "type": "Substitution",
+        "team": "away",
+        "text": "แมนฯ ยูไนเต็ดเปลี่ยนตัว: ส่ง Joshua Zirkzee ลงมาแทน Amad Diallo ที่มีอาการบาดเจ็บ",
+        "isKey": true
+      },
+      {
+        "time": "79'",
+        "type": "Attempt Blocked",
+        "team": "home",
+        "text": "Joshua Zirkzee (แมนฯ ยูไนเต็ด) ได้ฟาวล์ในแดนตัวเอง ต่อมา Estêvão (เชลซี) ยิงด้วยซ้ายกลางประตูแต่ติดบล็อก และเชลซีได้เตะมุมจากการสกัดของ Diogo Dalot",
+        "isKey": false
+      },
+      {
+        "time": "80'",
+        "type": "Attempt Missed",
+        "team": "home",
+        "text": "Cole Palmer (เชลซี) ยิงด้วยซ้ายจากนอกกรอบเขตโทษ บอลเหินข้ามคานออกไป",
+        "isKey": false
+      },
+      {
+        "time": "81'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Bryan Mbeumo (แมนฯ ยูไนเต็ด) ได้รับใบเหลือง และ Cole Palmer ได้ฟาวล์ในแดนบุกจาก Leny Yoro",
+        "isKey": true
+      },
+      {
+        "time": "83'",
+        "type": "Offside",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดของ Mason Mount และ Morgan Rogers ถูกจับล้ำหน้า",
+        "isKey": false
+      },
+      {
+        "time": "84'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Joshua Zirkzee (แมนฯ ยูไนเต็ด) ยิงด้วยขวาจากนอกกรอบติดเซฟ และ Estêvão (เชลซี) ยิงด้วยซ้ายจากนอกกรอบติดเซฟเช่นกัน",
+        "isKey": false
+      },
+      {
+        "time": "85'",
+        "type": "Attempt Saved",
+        "team": "home",
+        "text": "Estêvão (เชลซี) ยิงด้วยซ้ายจากนอกกรอบเขตโทษ แต่ถูกเซฟไว้ได้ที่มุมล่างซ้าย",
+        "isKey": false
+      },
+      {
+        "time": "86'",
+        "type": "Yellow Card",
+        "team": "away",
+        "text": "Joshua Zirkzee (แมนฯ ยูไนเต็ด) โดนใบเหลืองจากการทำฟาวล์ใส่ Moisés Caicedo",
+        "isKey": true
+      },
+      {
+        "time": "87'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "เชลซีเปลี่ยนตัว 3 คนรวด: ส่ง Danny Welbeck แทน Moisés Caicedo, Valentín Barco แทน Pedro Neto และ Malo Gusto แทน Estêvão",
+        "isKey": true
+      },
+      {
+        "time": "88'",
+        "type": "Foul",
+        "team": "home",
+        "text": "มีการทำฟาวล์โดย Levi Colwill (เชลซี)",
+        "isKey": false
+      },
+      {
+        "time": "89'",
+        "type": "Foul",
+        "team": "home",
+        "text": "Cole Palmer (เชลซี) ได้ฟาวล์ในแดนตัวเองจากการทำฟาวล์ของ Mason Mount",
+        "isKey": false
+      },
+      {
+        "time": "90'",
+        "type": "Match Period",
+        "team": "",
+        "text": "ผู้ตัดสินที่สี่ชูป้ายทดเวลาบาดเจ็บ 10 นาที",
+        "isKey": false
+      },
+      {
+        "time": "90+2'",
+        "type": "Attempt Saved",
+        "team": "away",
+        "text": "Joshua Zirkzee (แมนฯ ยูไนเต็ด) ยิงมุมแคบติดบล็อก, แมนฯ ยูไนเต็ดได้เตะมุม, Bryan Mbeumo ยิงไกลติดเซฟที่มุมบนขวา และ Ayden Heaven ถูกจับล้ำหน้า",
+        "isKey": false
+      },
+      {
+        "time": "90+3'",
+        "type": "Yellow Card",
+        "team": "home",
+        "text": "Mike Penders (เชลซี) ได้รับใบเหลือง และ Cole Palmer มีโอกาสยิงด้วยซ้ายกลางประตูแต่บอลสูงเกินไปนิดเดียว",
+        "isKey": true
+      },
+      {
+        "time": "90+5'",
+        "type": "Corner",
+        "team": "home",
+        "text": "เชลซีได้เตะมุมจากการสกัดของ Leny Yoro",
+        "isKey": false
+      },
+      {
+        "time": "90+6'",
+        "type": "Foul",
+        "team": "away",
+        "text": "Bryan Mbeumo (แมนฯ ยูไนเต็ด) ได้ฟาวล์ในแดนตัวเองจากการทำฟาวล์ของ Cole Palmer",
+        "isKey": false
+      },
+      {
+        "time": "90+7'",
+        "type": "Substitution",
+        "team": "home",
+        "text": "เชลซีเปลี่ยนตัว: ส่ง Geovany Quenda ลงสนามแทน Cole Palmer",
+        "isKey": true
+      },
+      {
+        "time": "90+9'",
+        "type": "Attempt Missed",
+        "team": "home",
+        "text": "Valentín Barco (เชลซี) ยิงด้วยซ้ายกลางประตู บอลเฉี่ยวเสาซ้ายออกไปอย่างหวุดหวิด",
+        "isKey": false
+      },
+      {
+        "time": "90+10'",
+        "type": "Foul",
+        "team": "away",
+        "text": "จังหวะฟาวล์โดย Joshua Zirkzee (แมนฯ ยูไนเต็ด) เป็นเหตุการณ์สุดท้ายของการรายงานสด",
+        "isKey": false
+      },
+      {
+        "time": "FT",
+        "type": "Full Time",
+        "team": "",
+        "text": "จบการแข่งขัน เชลซี 2 - 0 แมนฯ ยูไนเต็ด",
+        "isKey": true
+      }
+    ],
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": "58.6%",
+        "away": "41.4%",
+        "isPercentage": true,
+        "category": "ภาพรวม"
+      },
+      {
+        "name": "โอกาสทำประตูที่คาดหวัง (xG - Expected Goals)",
+        "home": 2.67,
+        "away": 1.17,
+        "isPercentage": false,
+        "category": "ภาพรวม"
+      },
+      {
+        "name": "โอกาสยิงทั้งหมด (Total Shots)",
+        "home": 18,
+        "away": 12,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ยิงตรงกรอบ (Shots On Target)",
+        "home": 9,
+        "away": 5,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ยิงหลุดกรอบ (Shots Off Target)",
+        "home": 6,
+        "away": 4,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ยิงในกรอบเขตโทษ (Shots Inside the Box)",
+        "home": 4,
+        "away": 4,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "ยิงนอกกรอบเขตโทษ (Shots Outside the Box)",
+        "home": 5,
+        "away": 5,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "โอกาสทองที่สร้างได้ (Big Chances Created)",
+        "home": 2,
+        "away": 1,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "เตะมุม (Corners)",
+        "home": 8,
+        "away": 7,
+        "isPercentage": false,
+        "category": "เกมรุก"
+      },
+      {
+        "name": "เปิดบอลทั้งหมด / สำเร็จ (Total Crosses)",
+        "home": "14 (36%)",
+        "away": "13 (23%)",
+        "isPercentage": false,
+        "category": "การครองบอล"
+      },
+      {
+        "name": "การส่งบอลทั้งหมด / สำเร็จ (Total Passes)",
+        "home": "541 (88%)",
+        "away": "379 (77%)",
+        "isPercentage": false,
+        "category": "การครองบอล"
+      },
+      {
+        "name": "การวางบอลยาว / สำเร็จ (Long Passes)",
+        "home": "38 (42%)",
+        "away": "44 (30%)",
+        "isPercentage": false,
+        "category": "การครองบอล"
+      },
+      {
+        "name": "การจ่ายบอลทะลุช่อง (Through Balls)",
+        "home": "0 (0%)",
+        "away": "0 (0%)",
+        "isPercentage": false,
+        "category": "การครองบอล"
+      },
+      {
+        "name": "สัมผัสบอลทั้งหมด (Touches)",
+        "home": 748,
+        "away": 557,
+        "isPercentage": false,
+        "category": "การครองบอล"
+      },
+      {
+        "name": "สัมผัสบอลในกรอบเขตโทษคู่แข่ง (Touches in Opposition Box)",
+        "home": 40,
+        "away": 21,
+        "isPercentage": false,
+        "category": "การครองบอล"
+      },
+      {
+        "name": "เข้าปะทะสำเร็จ (Tackles Won)",
+        "home": "15 (71%)",
+        "away": "15 (68%)",
+        "isPercentage": false,
+        "category": "เกมรับ"
+      },
+      {
+        "name": "บล็อกลูกยิง (Blocks)",
+        "home": 9,
+        "away": 6,
+        "isPercentage": false,
+        "category": "เกมรับ"
+      },
+      {
+        "name": "ตัดบอล (Interceptions)",
+        "home": 16,
+        "away": 14,
+        "isPercentage": false,
+        "category": "เกมรับ"
+      },
+      {
+        "name": "เคลียร์บอล (Clearances)",
+        "home": 11,
+        "away": 19,
+        "isPercentage": false,
+        "category": "เกมรับ"
+      },
+      {
+        "name": "เซฟของผู้รักษาประตู (Saves)",
+        "home": 3,
+        "away": 7,
+        "isPercentage": false,
+        "category": "เกมรับ"
+      },
+      {
+        "name": "เลี้ยงบอลทั้งหมด (Total Dribbles)",
+        "home": 16,
+        "away": 12,
+        "isPercentage": false,
+        "category": "สภาพร่างกาย"
+      },
+      {
+        "name": "เลี้ยงบอลสำเร็จ (Successful Dribbles)",
+        "home": 5,
+        "away": 4,
+        "isPercentage": false,
+        "category": "สภาพร่างกาย"
+      },
+      {
+        "name": "ชนะการดวลทั้งหมด (Duels Won)",
+        "home": 56,
+        "away": 42,
+        "isPercentage": false,
+        "category": "สภาพร่างกาย"
+      },
+      {
+        "name": "ชนะการดวลกลางอากาศ (Aerial Duels Won)",
+        "home": 10,
+        "away": 8,
+        "isPercentage": false,
+        "category": "สภาพร่างกาย"
+      },
+      {
+        "name": "ใบแดง (Red Cards)",
+        "home": 0,
+        "away": 1,
+        "isPercentage": false,
+        "category": "วินัย"
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 1,
+        "away": 4,
+        "isPercentage": false,
+        "category": "วินัย"
+      },
+      {
+        "name": "ทำฟาวล์ (Fouls)",
+        "home": 8,
+        "away": 20,
+        "isPercentage": false,
+        "category": "วินัย"
+      },
+      {
+        "name": "ล้ำหน้า (Offsides)",
+        "home": 3,
+        "away": 2,
+        "isPercentage": false,
+        "category": "วินัย"
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Mike Penders",
+        "team": "Chelsea",
+        "saves": 3,
+        "save_pct": "100% · Clean Sheet"
+      },
+      {
+        "name": "Senne Lammens",
+        "team": "Manchester United",
+        "saves": 7,
+        "save_pct": "77.8%"
+      }
+    ],
     "lineups": {
       "home": {
         "team_name": "CHELSEA",
@@ -9149,16 +10629,16 @@
         "manager": "Michael Carrick",
         "starting": [
           { "number": 1, "name": "Senne Lammens", "position": "GK" },
+          { "number": 2, "name": "Diogo Dalot", "position": "" },
           { "number": 15, "name": "Leny Yoro", "position": "" },
           { "number": 5, "name": "Harry Maguire", "position": "" },
           { "number": 6, "name": "Lisandro Martínez", "position": "" },
-          { "number": 2, "name": "Diogo Dalot", "position": "" },
-          { "number": 17, "name": "Antony Santos", "position": "" },
           { "number": 20, "name": "Carlos Baleba", "position": "" },
+          { "number": 17, "name": "Antony Santos", "position": "" },
           { "number": 16, "name": "Amad Diallo", "position": "" },
           { "number": 8, "name": "Bruno Fernandes", "position": "C", "captain": true },
-          { "number": 10, "name": "Matheus Cunha", "position": "" },
-          { "number": 19, "name": "Bryan Mbeumo", "position": "" }
+          { "number": 19, "name": "Bryan Mbeumo", "position": "" },
+          { "number": 10, "name": "Matheus Cunha", "position": "" }
         ],
         "substitutes": [
           { "number": 12, "name": "Karl Darlow", "position": "GK" },
@@ -9174,13 +10654,38 @@
       },
       "officials": [
         {
-          "role": "กรรมการผู้ตัดสิน (Referee)",
+          "role": "ผู้ตัดสิน (Referee)",
           "name": "Peter Bankes"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน 1 (Assistant Referee #1)",
+          "name": "Gary Beswick"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน 2 (Assistant Referee #2)",
+          "name": "Blake Antrobus"
+        },
+        {
+          "role": "ผู้ตัดสินที่ 4 (Fourth Official)",
+          "name": "Paul Tierney"
+        },
+        {
+          "role": "ผู้ตัดสิน VAR (VAR)",
+          "name": "James Bell"
+        },
+        {
+          "role": "ผู้ช่วยผู้ตัดสิน VAR (VAR Assistant)",
+          "name": "Timothy Wood"
         }
       ]
     },
     "officials": {
-      "referee": "Peter Bankes"
+      "referee": "Peter Bankes",
+      "assistant_referee_1": "Gary Beswick",
+      "assistant_referee_2": "Blake Antrobus",
+      "fourth_official": "Paul Tierney",
+      "var": "James Bell",
+      "assistant_var": "Timothy Wood"
     },
     "team_type": "M"
   },

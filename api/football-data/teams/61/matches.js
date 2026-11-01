@@ -78,6 +78,76 @@ function getLocalMatchesFallback() {
   };
 }
 
+function mergeLocalCompletedOverrides(apiPayload) {
+  if (!apiPayload || !Array.isArray(apiPayload.matches)) return apiPayload;
+  try {
+    const fixturesFile = path.join(process.cwd(), "data", "fixtures.json");
+    if (!fs.existsSync(fixturesFile)) return apiPayload;
+    const fixturesData = JSON.parse(fs.readFileSync(fixturesFile, "utf8"));
+    if (!Array.isArray(fixturesData)) return apiPayload;
+
+    const completedLocal = fixturesData.filter(
+      (m) =>
+        m.team_type !== "W" &&
+        m.status === "completed" &&
+        m.home_score !== null &&
+        m.home_score !== undefined &&
+        m.away_score !== null &&
+        m.away_score !== undefined
+    );
+    if (completedLocal.length === 0) return apiPayload;
+
+    apiPayload.matches = apiPayload.matches.map((item) => {
+      const localMatch = completedLocal.find((m) => {
+        if (m.fd_id && Number(m.fd_id) === Number(item.id)) return true;
+        const utcDate = item.utcDate ? item.utcDate.substring(0, 10) : "";
+        if (!utcDate || !m.date || utcDate !== m.date) return false;
+        const apiChelseaHome =
+          item.homeTeam?.id === 61 || (item.homeTeam?.name || "").toLowerCase().includes("chelsea");
+        const localChelseaHome = (m.home_team || "").toLowerCase().includes("chelsea");
+        return apiChelseaHome === localChelseaHome;
+      });
+
+      if (!localMatch || item.status === "FINISHED") return item;
+
+      const apiChelseaHome =
+        item.homeTeam?.id === 61 || (item.homeTeam?.name || "").toLowerCase().includes("chelsea");
+      const localChelseaHome = (localMatch.home_team || "").toLowerCase().includes("chelsea");
+      const fullHome = apiChelseaHome === localChelseaHome ? localMatch.home_score : localMatch.away_score;
+      const fullAway = apiChelseaHome === localChelseaHome ? localMatch.away_score : localMatch.home_score;
+      const halfHome =
+        apiChelseaHome === localChelseaHome
+          ? (localMatch.home_half_score ?? null)
+          : (localMatch.away_half_score ?? null);
+      const halfAway =
+        apiChelseaHome === localChelseaHome
+          ? (localMatch.away_half_score ?? null)
+          : (localMatch.home_half_score ?? null);
+
+      return {
+        ...item,
+        status: "FINISHED",
+        score: {
+          ...(item.score || {}),
+          winner: fullHome > fullAway ? "HOME_TEAM" : fullAway > fullHome ? "AWAY_TEAM" : "DRAW",
+          duration: "REGULAR",
+          fullTime: { home: fullHome, away: fullAway },
+          halfTime: { home: halfHome, away: halfAway },
+        },
+        referees:
+          Array.isArray(item.referees) && item.referees.length > 0
+            ? item.referees
+            : localMatch.referee
+              ? [{ name: localMatch.referee, type: "REFEREE" }]
+              : [],
+      };
+    });
+  } catch (err) {
+    // Non-fatal override merge
+  }
+  return apiPayload;
+}
+
 export default async function handler(req, res) {
   // CORS Configuration
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -127,7 +197,8 @@ export default async function handler(req, res) {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        const rawData = await response.json();
+        const data = mergeLocalCompletedOverrides(rawData);
         memoryCache = {
           data,
           timestamp: now,

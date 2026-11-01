@@ -1393,8 +1393,9 @@
         flex: 1;
         min-width: 0;
         overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        white-space: normal;
+        line-height: 1.38;
+        word-break: break-word;
         font-size: 0.95rem;
         font-weight: 700;
         color: var(--ink);
@@ -2024,8 +2025,10 @@
       .stat-value-away {
         font-family: "Space Mono", monospace;
         font-weight: 700;
-        font-size: 1.15rem;
+        font-size: 1.08rem;
         min-width: 45px;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
       .stat-value-home {
         text-align: left;
@@ -2037,9 +2040,10 @@
         font-family: "Space Mono", monospace;
         font-size: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.08em;
         color: var(--ink-muted);
         text-align: center;
+        padding: 0 10px;
       }
       .stat-bar-container {
         display: flex;
@@ -2596,6 +2600,8 @@
           defaultTargetId = "tab-lineups";
         } else if (activeIdx === "2" || tabParam === "timeline") {
           defaultTargetId = "tab-timeline";
+        } else if (tabParam === "commentary") {
+          defaultTargetId = "tab-commentary";
         } else if (activeIdx === "4" || tabParam === "video") {
           defaultTargetId = "tab-video";
         } else if (!tabParam && !activeIdx && currentMatch) {
@@ -2769,8 +2775,16 @@
                                  stat.name.includes("แดง") || stat.name.includes("Red") ||
                                  stat.name.includes("ล้ำหน้า") || stat.name.includes("Offside");
 
-          const homeLead = !isNegativeStat && (homeVal > awayVal);
-          const awayLead = !isNegativeStat && (awayVal > homeVal);
+          const parseSecondaryPct = (val) => {
+            if (!val) return 0;
+            const pm = String(val).match(/\(([0-9]+(?:\.[0-9]+)?)%\)/);
+            return pm ? parseFloat(pm[1]) : 0;
+          };
+          const homePctTie = parseSecondaryPct(stat.home);
+          const awayPctTie = parseSecondaryPct(stat.away);
+
+          const homeLead = !isNegativeStat && (homeVal > awayVal || (homeVal === awayVal && homePctTie > awayPctTie));
+          const awayLead = !isNegativeStat && (awayVal > homeVal || (awayVal === homeVal && awayPctTie > homePctTie));
 
           let displayName = stat.name;
           if (!isTh && stat.name.includes("(") && stat.name.includes(")")) {
@@ -3239,6 +3253,18 @@
         const kickoffIso = fdMatch.utcDate || (match.date ? `${match.date}T23:59:59+07:00` : "");
         const kickoffMs = kickoffIso ? Date.parse(kickoffIso) : NaN;
         const isFutureMatch = !isNaN(kickoffMs) && kickoffMs > Date.now() + 2 * 3600 * 1000;
+
+        const isLocallyCompleted =
+          match.status === "completed" &&
+          match.home_score !== null &&
+          match.home_score !== undefined &&
+          match.away_score !== null &&
+          match.away_score !== undefined;
+
+        if (isLocallyCompleted && fdMatch.status !== "FINISHED") {
+          match.period = match.period || "FullTime";
+          return false;
+        }
 
         // Status mapping
         let newStatus = match.status;
@@ -4022,6 +4048,8 @@
                 return '<img src="databases/logo/svg/goal.svg" alt="Own Goal" style="width: 20px; height: 20px; filter: invert(36%) sepia(93%) saturate(6288%) hue-rotate(344deg);">';
               case "yellow_card":
                 return '<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" style="width: 18px; height: 18px;">';
+              case "second_yellow":
+                return '<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow" style="width: 22px; height: 20px;">';
               case "red_card":
                 return '<img src="databases/logo/svg/red_card.svg" alt="Red Card" style="width: 18px; height: 18px;">';
               case "substitution":
@@ -4068,6 +4096,7 @@
             if (type === "goal") return isTh ? "ทำประตู" : "Goal";
             if (type === "own_goal") return isTh ? "เข้าประตูตัวเอง" : "Own Goal";
             if (type === "yellow_card") return isTh ? "ใบเหลือง" : "Yellow Card";
+            if (type === "second_yellow") return isTh ? "ใบเหลือง-แดง" : "Second Yellow";
             if (type === "red_card") return isTh ? "ใบแดง" : "Red Card";
             if (type === "substitution") return isTh ? "เปลี่ยนตัว" : "Substitution";
             if (type === "var") return "VAR";
@@ -4300,17 +4329,20 @@
             } else if (eType === "second_yellow" || (eType === "red_card" && (e.card === "second_yellow" || /second yellow|เหลืองที่สอง/i.test(e.detail || "")))) {
               cardClass += "is-second-yellow";
               const pDisplay = getPlayerLink(e.player);
-              nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}`;
+              const cardSub = e.detail && !/^(second yellow|red card)$/i.test(e.detail.trim()) ? `<div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${e.detail}</div>` : "";
+              nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}${cardSub}`;
               iconHtml = `<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow to Red" class="event-icon" style="width: 24px; height: 22px;">`;
             } else if (eType === "yellow_card") {
               cardClass += "is-yellow-card";
               const pDisplay = getPlayerLink(e.player);
-              nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}`;
+              const cardSub = e.detail && !/^yellow card/i.test(e.detail.trim()) ? `<div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${e.detail}</div>` : "";
+              nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}${cardSub}`;
               iconHtml = `<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" class="event-icon" style="width: 16px; height: 22px;">`;
             } else if (eType === "red_card") {
               cardClass += "is-red-card";
               const pDisplay = getPlayerLink(e.player);
-              nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}`;
+              const cardSub = e.detail && !/^red card/i.test(e.detail.trim()) ? `<div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${e.detail}</div>` : "";
+              nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}${cardSub}`;
               iconHtml = `<img src="databases/logo/svg/red_card.svg" alt="Red Card" class="event-icon" style="width: 16px; height: 22px;">`;
             } else if (eType === "injury") {
               cardClass += "is-injury";
@@ -4869,12 +4901,16 @@
               const t = (type || "").toLowerCase();
               if (t.includes("goal") && !t.includes("var"))
                 return { label: "Goal", icon: "⚽", cls: "is-goal" };
+              if (t.includes("penalty"))
+                return { label: "Penalty", icon: "🎯", cls: "is-goal" };
               if (t.includes("var")) return { label: "VAR Decision", icon: "❌", cls: "is-var" };
               if (t.includes("yellow card"))
                 return { label: "Yellow Card", icon: "🟨", cls: "is-card" };
               if (t.includes("red card")) return { label: "Red Card", icon: "🟥", cls: "is-card" };
               if (t.includes("substitution"))
                 return { label: "Substitution", icon: "🔄", cls: "is-sub" };
+              if (t.includes("injury"))
+                return { label: "Injury", icon: "🚑", cls: "" };
               if (t.includes("attempt saved")) return { label: "Save", icon: "🧤", cls: "" };
               if (t.includes("attempt blocked"))
                 return { label: "Blocked Shot", icon: "🛡️", cls: "" };
@@ -4884,7 +4920,7 @@
               if (t.includes("offside")) return { label: "Offside", icon: "🏁", cls: "" };
               if (t.includes("free kick") || t.includes("foul"))
                 return { label: "Foul / Free Kick", icon: "🛑", cls: "" };
-              if (t.includes("start") || t.includes("end") || t.includes("halftime"))
+              if (t.includes("start") || t.includes("end") || t.includes("halftime") || t.includes("half time") || t.includes("full time") || t.includes("period"))
                 return { label: "Match Period", icon: "⏱️", cls: "" };
               return { label: "Commentary", icon: "⚡", cls: "" };
             };
@@ -4892,7 +4928,7 @@
             const keyCount = match.live_commentary.filter((c) => c.isKey).length;
             const goalsCount = match.live_commentary.filter((c) => {
               const t = (c.type || "").toLowerCase();
-              return t.includes("goal") || t.includes("var");
+              return t.includes("goal") || t.includes("var") || t.includes("penalty");
             }).length;
             const cardsCount = match.live_commentary.filter((c) =>
               (c.type || "").toLowerCase().includes("card")
@@ -4908,7 +4944,7 @@
                 const specificType = (c.type || "").toLowerCase();
                 let categoryTags = "all";
                 if (c.isKey) categoryTags += " key";
-                if (specificType.includes("goal") || specificType.includes("var"))
+                if (specificType.includes("goal") || specificType.includes("var") || specificType.includes("penalty"))
                   categoryTags += " goals";
                 if (specificType.includes("card")) categoryTags += " cards";
                 if (specificType.includes("substitution")) categoryTags += " subs";
@@ -5082,6 +5118,15 @@
               <button class="tab-btn active" data-target="tab-timeline">
                 <span>⏱️</span> <span>${isTh ? "ไทม์ไลน์" : "Timeline"}</span>
               </button>
+              ${
+                hasLiveCommentary || hasSummaryCommentary
+                  ? `
+              <button class="tab-btn" data-target="tab-commentary">
+                <span>🎙️</span> <span>${isTh ? "บรรยายสด" : "Commentary"}</span>
+              </button>
+              `
+                  : ""
+              }
               <button class="tab-btn" data-target="tab-stats">
                 <span>📊</span> <span>${isTh ? "สถิติ" : "Stats"}</span>
               </button>
@@ -5100,17 +5145,28 @@
                 ${timelineTabHtml}
               </div>
 
-              <!-- Tab 2: Stats -->
+              ${
+                hasLiveCommentary || hasSummaryCommentary
+                  ? `
+              <!-- Tab 2: Live Commentary -->
+              <div id="tab-commentary" class="tab-pane">
+                ${commentaryTabHtml}
+              </div>
+              `
+                  : ""
+              }
+
+              <!-- Tab 3: Stats -->
               <div id="tab-stats" class="tab-pane">
                 ${statsTabHtml}
               </div>
 
-              <!-- Tab 3: Lineups -->
+              <!-- Tab 4: Lineups -->
               <div id="tab-lineups" class="tab-pane">
                 ${lineupsTabHtml}
               </div>
 
-              <!-- Tab 4: Video -->
+              <!-- Tab 5: Video -->
               <div id="tab-video" class="tab-pane">
                 ${videoTabHtml}
               </div>
@@ -5470,6 +5526,29 @@
               `;
             };
 
+            const pdfOfficialsHtml =
+              Array.isArray(match.lineups.officials) && match.lineups.officials.length > 0
+                ? `
+                  <div style="margin-top:16px;padding-top:12px;border-top:1px solid #e2e8f0;">
+                    <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#001489;text-transform:uppercase;margin-bottom:8px;">
+                      ${isTh ? "คณะผู้ตัดสิน · MATCH OFFICIALS" : "MATCH OFFICIALS"}
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+                      ${match.lineups.officials
+                        .map(
+                          (o) => `
+                        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;">
+                          <div style="font-size:9.5px;color:#64748b;font-weight:600;">${escapeHtmlPdf(o.role || "")}</div>
+                          <div style="font-size:11px;color:#0f172a;font-weight:700;margin-top:2px;">${escapeHtmlPdf(o.name || "")}</div>
+                        </div>
+                      `
+                        )
+                        .join("")}
+                    </div>
+                  </div>
+                `
+                : "";
+
             lineupsBlockHtml = `
               <div class="pdf-section-block" style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
                 <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;border-bottom:2px solid #001489;padding-bottom:6px;margin-bottom:14px;">
@@ -5499,6 +5578,7 @@
                     ${(al.substitutes || []).map(renderPdfPlayer).join("")}
                   </div>
                 </div>
+                ${pdfOfficialsHtml}
               </div>
             `;
           } else {

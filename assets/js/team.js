@@ -834,8 +834,17 @@ function mergeMenLiveMatches(localMatches, apiData) {
 
     const kickoffMs = am.utcDate ? Date.parse(am.utcDate) : NaN;
     const isFutureMatch = !isNaN(kickoffMs) && kickoffMs > Date.now() + 2 * 3600 * 1000;
+    const isLocallyCompleted =
+      m.status === "completed" &&
+      m.home_score !== null &&
+      m.home_score !== undefined &&
+      m.away_score !== null &&
+      m.away_score !== undefined;
 
     const updated = { ...m, utcDate: am.utcDate || m.utcDate };
+    if (isLocallyCompleted && am.status !== "FINISHED") {
+      return updated;
+    }
     if (isFutureMatch || am.status === "TIMED" || am.status === "SCHEDULED" || am.status === "POSTPONED") {
       updated.status = "upcoming";
       updated.home_score = null;
