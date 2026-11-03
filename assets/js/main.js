@@ -1455,6 +1455,7 @@ async function loadPlayersAvatarMap() {
     slonina: "assets/images/players/men/gabriel-slonina.jpg",
     // Women
     "aggie beever jones": "assets/images/players/women/aggie-beever-jones.png",
+    "agnes beever jones": "assets/images/players/women/aggie-beever-jones.png",
     "beever jones": "assets/images/players/women/aggie-beever-jones.png",
     "sandy baltimore": "assets/images/players/women/sandy-baltimore.jpg",
     baltimore: "assets/images/players/women/sandy-baltimore.jpg",
@@ -1538,6 +1539,14 @@ async function loadPlayersAvatarMap() {
           const last = parts[parts.length - 1];
           if (!playerAvatarMap[last] && p.image) playerAvatarMap[last] = p.image;
           if (!playerShirtNumberMap[last] && p.number) playerShirtNumberMap[last] = p.number;
+        }
+        if (n === "aggie beever jones") {
+          if (p.image) {
+            playerAvatarMap["agnes beever jones"] = p.image;
+          }
+          if (p.number) {
+            playerShirtNumberMap["agnes beever jones"] = p.number;
+          }
         }
       });
     }

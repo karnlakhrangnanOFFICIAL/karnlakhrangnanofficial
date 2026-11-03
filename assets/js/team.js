@@ -1833,6 +1833,7 @@ async function initPlayerProfile() {
         if (p.name) {
           const pNorm = normalizeName(p.name);
           if (pNorm === targetNorm) return true;
+          if (pNorm === "aggie beever jones" && targetNorm === "agnes beever jones") return true;
           if (pNorm && targetNorm && (pNorm.includes(targetNorm) || targetNorm.includes(pNorm)))
             return true;
         }

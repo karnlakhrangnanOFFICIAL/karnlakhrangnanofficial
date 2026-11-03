@@ -2683,16 +2683,31 @@
                 ? "#dc2626"
                 : "#64748b";
 
+        const homeStatsFormation =
+          (currentMatch && currentMatch.lineups && currentMatch.lineups.home && currentMatch.lineups.home.stats_formation) ||
+          (currentMatch && currentMatch.stats_formation_home) ||
+          "";
+        const awayStatsFormation =
+          (currentMatch && currentMatch.lineups && currentMatch.lineups.away && currentMatch.lineups.away.stats_formation) ||
+          (currentMatch && currentMatch.stats_formation_away) ||
+          "";
+
         let html = `
         <div class="stats-card">
           <div class="stats-header-bar">
             <div class="stats-header-team">
               ${homeLogo ? `<img src="${homeLogo}" alt="${homeTeamName}" onerror="this.src='assets/images/placeholder-team.svg'">` : ""}
-              <span style="${isHomeChelsea ? "color: var(--gold);" : "color: var(--ink);"}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(homeTeamName) : homeTeamName}</span>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 3px;">
+                <span style="${isHomeChelsea ? "color: var(--gold);" : "color: var(--ink);"}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(homeTeamName) : homeTeamName}</span>
+                ${homeStatsFormation ? `<span class="lineup-formation-badge" style="font-size: 0.68rem; padding: 2px 8px;">${isTh ? "แผนการเล่น:" : "Formation:"} ${homeStatsFormation}</span>` : ""}
+              </div>
             </div>
             <div class="stats-vs-badge">${isTh ? "พบกับ" : "Versus"}</div>
             <div class="stats-header-team" style="justify-content: flex-end;">
-              <span style="${isAwayChelsea ? "color: var(--gold);" : "color: var(--ink);"}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(awayTeamName) : awayTeamName}</span>
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px;">
+                <span style="${isAwayChelsea ? "color: var(--gold);" : "color: var(--ink);"}">${window.renderTeamNameHTML ? window.renderTeamNameHTML(awayTeamName) : awayTeamName}</span>
+                ${awayStatsFormation ? `<span class="lineup-formation-badge" style="font-size: 0.68rem; padding: 2px 8px;">${isTh ? "แผนการเล่น:" : "Formation:"} ${awayStatsFormation}</span>` : ""}
+              </div>
               ${awayLogo ? `<img src="${awayLogo}" alt="${awayTeamName}" onerror="this.src='assets/images/placeholder-team.svg'">` : ""}
             </div>
           </div>
@@ -2769,11 +2784,21 @@
           const displayHome = formatDisplay(stat.home);
           const displayAway = formatDisplay(stat.away);
 
+          // Safely resolve stat labels across both { name } and { label, label_en } schemas
+          const statNameTh = String(stat.name || stat.label || stat.label_en || "");
+          const statNameEn = String(stat.label_en || stat.name_en || "");
+          const statCheckStr = `${statNameTh} ${statNameEn}`;
+
           // For disciplinary or negative metrics (Fouls, Cards, Offsides), do not falsely highlight higher numbers
-          const isNegativeStat = stat.name.includes("ฟาวล์") || stat.name.includes("Fouls") ||
-                                 stat.name.includes("เหลือง") || stat.name.includes("Yellow") ||
-                                 stat.name.includes("แดง") || stat.name.includes("Red") ||
-                                 stat.name.includes("ล้ำหน้า") || stat.name.includes("Offside");
+          const isNegativeStat =
+            statCheckStr.includes("ฟาวล์") ||
+            statCheckStr.includes("Fouls") ||
+            statCheckStr.includes("เหลือง") ||
+            statCheckStr.includes("Yellow") ||
+            statCheckStr.includes("แดง") ||
+            statCheckStr.includes("Red") ||
+            statCheckStr.includes("ล้ำหน้า") ||
+            statCheckStr.includes("Offside");
 
           const parseSecondaryPct = (val) => {
             if (!val) return 0;
@@ -2786,10 +2811,14 @@
           const homeLead = !isNegativeStat && (homeVal > awayVal || (homeVal === awayVal && homePctTie > awayPctTie));
           const awayLead = !isNegativeStat && (awayVal > homeVal || (awayVal === homeVal && awayPctTie > homePctTie));
 
-          let displayName = stat.name;
-          if (!isTh && stat.name.includes("(") && stat.name.includes(")")) {
-            const matchEn = stat.name.match(/\((.*?)\)/);
-            if (matchEn) displayName = matchEn[1];
+          let displayName = statNameTh;
+          if (!isTh) {
+            if (statNameEn) {
+              displayName = statNameEn;
+            } else if (statNameTh.includes("(") && statNameTh.includes(")")) {
+              const matchEn = statNameTh.match(/\((.*?)\)/);
+              if (matchEn) displayName = matchEn[1];
+            }
           }
 
           html += `
@@ -2894,6 +2923,11 @@
                     if (p.image) playerImageMap["alexia potter"] = p.image;
                     if (p.id) playerIdMap["alexia potter"] = p.id;
                     playerTeamMap["alexia potter"] = "women";
+                  }
+                  if (n === "aggie beever jones") {
+                    if (p.image) playerImageMap["agnes beever jones"] = p.image;
+                    if (p.id) playerIdMap["agnes beever jones"] = p.id;
+                    playerTeamMap["agnes beever jones"] = "women";
                   }
                 }
               });
@@ -3816,8 +3850,16 @@
             </div>
           `;
         } else {
+          const htSubHtml =
+            match.home_half_score !== null &&
+            match.home_half_score !== undefined &&
+            match.away_half_score !== null &&
+            match.away_half_score !== undefined
+              ? `<div class="score-ht-sub" style="font-family: 'Space Mono', monospace; font-size: 0.76rem; font-weight: 600; color: var(--ink-muted); margin-top: 4px; letter-spacing: 0.04em;">${isTh ? `ครึ่งแรก ${match.home_half_score} - ${match.away_half_score}` : `HT: ${match.home_half_score} - ${match.away_half_score}`}</div>`
+              : "";
           scoreMainHtml = `
             <div class="score-main" id="scoreMain">${sHome} - ${sAway}</div>
+            ${htSubHtml}
           `;
         }
 
@@ -3827,13 +3869,15 @@
           channelsHtml = `
           <div class="channel-badges-wrap">
             ${match.channels
-              .map(
-                (ch) => `
-              <span class="channel-badge-item" title="${ch.name}">
-                ${ch.logo ? `<img src="${ch.logo}" alt="${ch.name}" onerror="this.style.display='none'">` : (ch.name || "")}
+              .map((ch) => {
+                const chName = typeof ch === "string" ? ch : (ch && ch.name) || "";
+                const chLogo = ch && typeof ch === "object" ? ch.logo : "";
+                return `
+              <span class="channel-badge-item" title="${chName}">
+                ${chLogo ? `<img src="${chLogo}" alt="${chName}" onerror="this.style.display='none'">` : chName}
               </span>
-            `
-              )
+            `;
+              })
               .join("")}
           </div>
         `;
@@ -4762,12 +4806,17 @@
                 </span>`
               : "";
 
-            let pNameDisplay = `<span class="non-link">${displayName}</span>${gkBadge}${armbandBadge}`;
+            const subPosLabel = !isGK && !isCaptain ? (isTh ? (p.sub_pos_th || "") : (p.sub_pos_en || p.sub_pos_th || "")) : "";
+            const subPosBadge = subPosLabel
+              ? `<span style="display: inline-flex; align-items: center; font-family: 'Space Mono', 'Prompt', sans-serif; font-size: 0.68rem; font-weight: 600; color: var(--ink-muted); background: rgba(148, 163, 184, 0.14); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 4px; padding: 1px 6px; margin-left: 6px; line-height: 1.3;">${subPosLabel}</span>`
+              : "";
+
+            let pNameDisplay = `<span class="non-link">${displayName}</span>${gkBadge}${armbandBadge}${subPosBadge}`;
             if (isChelsea) {
               const pId = getPlayerIdByName(cleanName, pNum, teamType);
               const pTeam = getPlayerTeamByName(cleanName, teamType);
               if (pId) {
-                pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${displayName}</a>${gkBadge}${armbandBadge}`;
+                pNameDisplay = `<a href="player-profile.html?id=${pId}&team=${pTeam}" class="player-profile-link">${displayName}</a>${gkBadge}${armbandBadge}${subPosBadge}`;
               }
             }
             return `
@@ -4865,25 +4914,34 @@
         const hasSummaryCommentary = match.commentary && match.commentary.length > 0;
 
         if (hasLiveCommentary || hasSummaryCommentary) {
-          // Summary Takeaways (if present)
+          // Summary Takeaways (supports both structured section objects and plain string arrays)
           let summaryTakeawaysHtml = "";
           if (hasSummaryCommentary) {
             const takeaways = match.commentary.find(
-              (c) => c.section && (c.section.includes("ประเด็นสำคัญ") || c.section.includes("Key"))
+              (c) =>
+                c &&
+                typeof c === "object" &&
+                c.section &&
+                (c.section.includes("ประเด็นสำคัญ") || c.section.includes("Key"))
             );
-            if (takeaways && takeaways.events) {
+            const takeawayItems =
+              takeaways && Array.isArray(takeaways.events)
+                ? takeaways.events.map((ev) => (typeof ev === "string" ? ev : ev.text || "")).filter(Boolean)
+                : match.commentary.filter((c) => typeof c === "string" && c.trim() !== "");
+
+            if (takeawayItems.length > 0) {
               summaryTakeawaysHtml = `
               <div class="commentary-section" style="margin-bottom: 20px; border-left: 4px solid var(--gold);">
                 <div class="commentary-section-title" style="display: flex; align-items: center; gap: 8px;">
                   <span>📌</span> <span>${isTh ? "ประเด็นสำคัญจากการแข่งขัน (Key Takeaways)" : "Match Key Takeaways"}</span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
-                  ${takeaways.events
+                  ${takeawayItems
                     .map(
-                      (ev) => `
+                      (txt) => `
                     <div style="display: flex; gap: 12px; font-size: 0.9rem; line-height: 1.6;">
                       <span style="color: var(--gold); font-weight: 700; font-family: 'Space Mono', monospace;">•</span>
-                      <div style="color: var(--ink);">${ev.text}</div>
+                      <div style="color: var(--ink);">${txt}</div>
                     </div>
                   `
                     )
@@ -4894,56 +4952,112 @@
             }
           }
 
-          // Live Feed (Full Premier League Play-by-Play Events)
+          // Live Feed (Full Play-by-Play Events)
           let liveFeedHtml = "";
           if (hasLiveCommentary) {
             const getCommentaryBadge = (type) => {
-              const t = (type || "").toLowerCase();
+              const t = String(type || "")
+                .toLowerCase()
+                .replace(/_/g, " ");
               if (t.includes("goal") && !t.includes("var"))
                 return { label: "Goal", icon: "⚽", cls: "is-goal" };
               if (t.includes("penalty"))
                 return { label: "Penalty", icon: "🎯", cls: "is-goal" };
               if (t.includes("var")) return { label: "VAR Decision", icon: "❌", cls: "is-var" };
-              if (t.includes("yellow card"))
+              if (t.includes("yellow card") || t.includes("second yellow"))
                 return { label: "Yellow Card", icon: "🟨", cls: "is-card" };
               if (t.includes("red card")) return { label: "Red Card", icon: "🟥", cls: "is-card" };
               if (t.includes("substitution"))
                 return { label: "Substitution", icon: "🔄", cls: "is-sub" };
               if (t.includes("injury"))
                 return { label: "Injury", icon: "🚑", cls: "" };
-              if (t.includes("attempt saved")) return { label: "Save", icon: "🧤", cls: "" };
+              if (t.includes("attempt saved") || t === "save" || t.includes("save"))
+                return { label: "Save", icon: "🧤", cls: "" };
               if (t.includes("attempt blocked"))
                 return { label: "Blocked Shot", icon: "🛡️", cls: "" };
-              if (t.includes("miss") || t.includes("post") || t.includes("woodwork"))
+              if (
+                t.includes("miss") ||
+                t.includes("post") ||
+                t.includes("woodwork") ||
+                t === "shot" ||
+                t.includes("shot")
+              )
                 return { label: "Attempt", icon: "🎯", cls: "" };
               if (t.includes("corner")) return { label: "Corner", icon: "🚩", cls: "" };
               if (t.includes("offside")) return { label: "Offside", icon: "🏁", cls: "" };
               if (t.includes("free kick") || t.includes("foul"))
                 return { label: "Foul / Free Kick", icon: "🛑", cls: "" };
-              if (t.includes("start") || t.includes("end") || t.includes("halftime") || t.includes("half time") || t.includes("full time") || t.includes("period"))
+              if (
+                t.includes("start") ||
+                t.includes("end") ||
+                t.includes("kick off") ||
+                t.includes("kickoff") ||
+                t.includes("halftime") ||
+                t.includes("half time") ||
+                t.includes("full time") ||
+                t.includes("period")
+              )
                 return { label: "Match Period", icon: "⏱️", cls: "" };
               return { label: "Commentary", icon: "⚡", cls: "" };
             };
 
-            const keyCount = match.live_commentary.filter((c) => c.isKey).length;
+            const hasExplicitKey = match.live_commentary.some((c) => c && c.isKey !== undefined);
+            const isKeyCommentaryItem = (c) => {
+              if (!c) return false;
+              if (hasExplicitKey) return Boolean(c.isKey);
+              const t = String(c.type || "")
+                .toLowerCase()
+                .replace(/_/g, " ");
+              return (
+                t.includes("goal") ||
+                t.includes("penalty") ||
+                t.includes("var") ||
+                t.includes("card") ||
+                t.includes("substitution") ||
+                t.includes("injury") ||
+                t.includes("half time") ||
+                t.includes("halftime") ||
+                t.includes("full time") ||
+                t.includes("kick off")
+              );
+            };
+
+            const keyCount = match.live_commentary.filter(isKeyCommentaryItem).length;
             const goalsCount = match.live_commentary.filter((c) => {
-              const t = (c.type || "").toLowerCase();
+              const t = String((c && c.type) || "")
+                .toLowerCase()
+                .replace(/_/g, " ");
               return t.includes("goal") || t.includes("var") || t.includes("penalty");
             }).length;
             const cardsCount = match.live_commentary.filter((c) =>
-              (c.type || "").toLowerCase().includes("card")
+              String((c && c.type) || "")
+                .toLowerCase()
+                .replace(/_/g, " ")
+                .includes("card")
             ).length;
             const subsCount = match.live_commentary.filter((c) =>
-              (c.type || "").toLowerCase().includes("substitution")
+              String((c && c.type) || "")
+                .toLowerCase()
+                .replace(/_/g, " ")
+                .includes("substitution")
             ).length;
 
             const renderedRows = match.live_commentary
               .map((c) => {
                 const badge = getCommentaryBadge(c.type);
-                const timeStr = c.time || " ";
-                const specificType = (c.type || "").toLowerCase();
+                const timeStr =
+                  c.time ||
+                  c.display_minute ||
+                  (c.minute !== null && c.minute !== undefined && c.minute !== ""
+                    ? String(c.minute).endsWith("'")
+                      ? String(c.minute)
+                      : `${c.minute}'`
+                    : " ");
+                const specificType = String(c.type || "")
+                  .toLowerCase()
+                  .replace(/_/g, " ");
                 let categoryTags = "all";
-                if (c.isKey) categoryTags += " key";
+                if (isKeyCommentaryItem(c)) categoryTags += " key";
                 if (specificType.includes("goal") || specificType.includes("var") || specificType.includes("penalty"))
                   categoryTags += " goals";
                 if (specificType.includes("card")) categoryTags += " cards";
@@ -4958,7 +5072,7 @@
                     ${c.team === "home" ? `<span style="font-size: 0.75rem; color: var(--gold); font-family: 'Space Mono', monospace; font-weight: 600;">${match.home_team}</span>` : ""}
                     ${c.team === "away" ? `<span style="font-size: 0.75rem; color: #60a5fa; font-family: 'Space Mono', monospace; font-weight: 600;">${match.away_team}</span>` : ""}
                   </div>
-                  <p class="live-comment-text">${c.text}</p>
+                  <p class="live-comment-text">${c.text || ""}</p>
                 </div>
               </div>
             `;
@@ -5470,10 +5584,14 @@
                       st.isPercentage && !String(st.away).includes("%")
                         ? `${st.away}%`
                         : String(st.away ?? "-");
-                    let label = st.name || "";
-                    if (!isTh && label.includes("(") && label.includes(")")) {
-                      const em = label.match(/\((.*?)\)/);
-                      if (em) label = em[1];
+                    let label = String(st.name || st.label || st.label_en || "");
+                    if (!isTh) {
+                      if (st.label_en || st.name_en) {
+                        label = String(st.label_en || st.name_en);
+                      } else if (label.includes("(") && label.includes(")")) {
+                        const em = label.match(/\((.*?)\)/);
+                        if (em) label = em[1];
+                      }
                     }
                     return `
                       <div style="margin-bottom:10px;">
@@ -5512,6 +5630,7 @@
                 p.pos === "GK" ||
                 p.position === "Goalkeeper";
               const clean = raw.replace(/\s*\(C\)/gi, "").replace(/\s*\(GK\)/gi, "").trim();
+              const subPosPdf = !isGk && !isCap ? (isTh ? (p.sub_pos_th || "") : (p.sub_pos_en || p.sub_pos_th || "")) : "";
               return `
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9;font-size:11.5px;">
                   <div style="display:flex;align-items:center;gap:8px;">
@@ -5521,6 +5640,7 @@
                   <div style="display:flex;gap:4px;">
                     ${isGk ? `<span style="font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:3px;background:#e0f2fe;color:#0369a1;">GK</span>` : ""}
                     ${isCap ? `<span style="font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:3px;background:#fef3c7;color:#92400e;">C</span>` : ""}
+                    ${subPosPdf ? `<span style="font-size:9.5px;font-weight:600;padding:1px 5px;border-radius:3px;background:#f1f5f9;color:#475569;">${escapeHtmlPdf(subPosPdf)}</span>` : ""}
                   </div>
                 </div>
               `;
@@ -5803,7 +5923,7 @@
                 <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#001489;">
                   ${isTh ? "สถิติการแข่งขัน · MATCH STATISTICS" : "MATCH STATISTICS"}
                 </span>
-                <span style="font-size:11px;font-weight:700;color:#475569;">${escapeHtmlPdf(match.home_team)} vs ${escapeHtmlPdf(match.away_team)}</span>
+                <span style="font-size:11px;font-weight:700;color:#475569;">${escapeHtmlPdf(match.home_team)}${match.lineups && match.lineups.home && match.lineups.home.stats_formation ? ` (${escapeHtmlPdf(match.lineups.home.stats_formation)})` : ""} vs ${escapeHtmlPdf(match.away_team)}${match.lineups && match.lineups.away && match.lineups.away.stats_formation ? ` (${escapeHtmlPdf(match.lineups.away.stats_formation)})` : ""}</span>
               </div>
               ${statsRowsHtml}
             </div>

@@ -3,15 +3,15 @@
   "team": "Chelsea Women",
   "season": "2026-2027",
   "total_matches": 37,
-  "completed_matches": 12,
-  "upcoming_matches": 25,
+  "completed_matches": 13,
+  "upcoming_matches": 24,
   "summary": {
-    "wins": 11,
+    "wins": 12,
     "draws": 1,
     "losses": 0,
-    "goals_for": 37,
+    "goals_for": 43,
     "goals_against": 6,
-    "clean_sheets": 8
+    "clean_sheets": 9
   },
   "matchlogs": [
     {
@@ -902,23 +902,30 @@
       "time_uk": "14:30",
       "time_th": "21:30",
       "comp": "Barclays Women's Super League",
-      "round": "Matchweek 8",
+      "round": "Matchday 8",
       "day": "Sun",
       "venue": "Away",
-      "result": null,
-      "gf": null,
-      "ga": null,
+      "result": "W",
+      "gf": 6,
+      "ga": 0,
       "opponent": "Charlton Athletic",
       "opponent_crest": "databases/logo/teams/england_charlton.svg",
       "stadium": "The Valley, London",
-      "xg": null,
-      "xga": null,
-      "poss": null,
-      "attendance": null,
-      "captain": null,
-      "formation": null,
-      "referee": null,
-      "scorers": []
+      "xg": 4.95,
+      "xga": 0.48,
+      "poss": 71,
+      "attendance": 3027,
+      "captain": "Nathalie Björn",
+      "formation": "3-4-2-1",
+      "referee": "Melissa Burgin",
+      "scorers": [
+        { "player": "Nathalie Björn", "minute": 3, "assist": "Katie McCabe" },
+        { "player": "Melvine Malard", "minute": 10 },
+        { "player": "Ellie Carpenter", "minute": 13 },
+        { "player": "Melvine Malard", "minute": 19 },
+        { "player": "Agnes Beever-Jones", "minute": 57, "assist": "Keira Walsh" },
+        { "player": "Giulia Dragoni", "minute": 66, "assist": "Alyssa Thompson" }
+      ]
     },
     {
       "id": "w11",

@@ -554,9 +554,29 @@
       // Pre-load local fixtures for rich match detail links and women fixtures
       let localConverted = [];
       try {
-        const fRes = await fetch('data/fixtures.json');
-        if (fRes.ok) {
-          HubState.localFixtures = await fRes.json();
+        const [fRes, fwRes] = await Promise.all([
+          fetch('data/fixtures.json').catch(() => null),
+          fetch('data/fixtures-women.json').catch(() => null)
+        ]);
+        let mergedLocal = [];
+        if (fRes && fRes.ok) {
+          mergedLocal = await fRes.json();
+        }
+        if (fwRes && fwRes.ok) {
+          const fwList = await fwRes.json();
+          if (Array.isArray(fwList)) {
+            fwList.forEach(wm => {
+              const idx = mergedLocal.findIndex(m => String(m.id) === String(wm.id));
+              if (idx >= 0) {
+                mergedLocal[idx] = { ...mergedLocal[idx], ...wm };
+              } else {
+                mergedLocal.push(wm);
+              }
+            });
+          }
+        }
+        if (mergedLocal.length > 0) {
+          HubState.localFixtures = mergedLocal;
           localConverted = convertLocalFixturesToMatches(HubState.localFixtures, true);
         }
       } catch (e) {

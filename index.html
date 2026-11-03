@@ -1005,6 +1005,7 @@
       if (name.includes('bournemouth')) return 'databases/logo/teams/england_bournemouth.svg';
       if (name.includes('brentford')) return 'databases/logo/teams/england_brentford.svg';
       if (name.includes('brighton')) return 'databases/logo/teams/england_brighton.svg';
+      if (name.includes('charlton')) return 'databases/logo/teams/england_charlton.svg';
       if (name.includes('crystal palace')) return 'databases/logo/teams/england_crystal-palace.svg';
       if (name.includes('everton')) return 'databases/logo/teams/england_everton.svg';
       if (name.includes('fulham')) return 'databases/logo/teams/england_fulham.svg';
@@ -1061,13 +1062,21 @@
         let localFixtures = [];
         let apiMatches = [];
 
-        const [localRes, apiData] = await Promise.allSettled([
+        const [localRes, womenRes, apiData] = await Promise.allSettled([
           fetch('data/fixtures.json').then(r => r.ok ? r.json() : []),
+          fetch('data/fixtures-women.json').then(r => r.ok ? r.json() : []),
           fetchMatchesFromAPI()
         ]);
 
         if (localRes.status === 'fulfilled' && Array.isArray(localRes.value)) {
           localFixtures = localRes.value;
+        }
+        if (womenRes.status === 'fulfilled' && Array.isArray(womenRes.value)) {
+          womenRes.value.forEach(wm => {
+            const idx = localFixtures.findIndex(m => String(m.id) === String(wm.id));
+            if (idx >= 0) localFixtures[idx] = { ...localFixtures[idx], ...wm };
+            else localFixtures.push(wm);
+          });
         }
         if (apiData.status === 'fulfilled' && Array.isArray(apiData.value)) {
           apiMatches = apiData.value;
