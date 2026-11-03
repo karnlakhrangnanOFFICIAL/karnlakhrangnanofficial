@@ -10692,7 +10692,7 @@
   {
     "id": "m16",
     "date": "2026-11-07",
-    "time": "TBC",
+    "time": "21:00",
     "competition": "premier-league",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
     "home_team": "Sunderland",
@@ -10718,7 +10718,7 @@
   {
     "id": "m17",
     "date": "2026-11-21",
-    "time": "TBC",
+    "time": "22:00",
     "competition": "premier-league",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
     "home_team": "Chelsea",
@@ -10743,8 +10743,8 @@
   },
   {
     "id": "m18",
-    "date": "2026-11-28",
-    "time": "TBC",
+    "date": "2026-11-27",
+    "time": "03:00",
     "competition": "premier-league",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
     "home_team": "Nottingham Forest",

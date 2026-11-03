@@ -1,0 +1,1521 @@
+[
+  {
+    "id": "m16",
+    "date": "2026-11-07",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Sunderland",
+    "home_logo": "databases/logo/teams/england_sunderland.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Stadium of Light",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w11",
+    "date": "2026-11-07",
+    "time": "19:30",
+    "time_th": "19:30",
+    "time_uk": "12:30",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Everton",
+    "away_logo": "databases/logo/teams/england_everton.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 9"
+  },
+  {
+    "id": "w_uwcl_6",
+    "date": "2026-11-11",
+    "time": "00:45",
+    "time_th": "00:45",
+    "time_uk": "17:45",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Häcken",
+    "home_logo": "databases/logo/teams/sweden_hacken.football-logos.cc.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Bravida Arena, Gothenburg",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 4",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "w12",
+    "date": "2026-11-14",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Manchester City",
+    "away_logo": "databases/logo/teams/england_manchester-city.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 10"
+  },
+  {
+    "id": "w_uwcl_7",
+    "date": "2026-11-19",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "PSG",
+    "away_logo": "databases/logo/teams/france_psg.svg",
+    "venue": "Stamford Bridge, London",
+    "ha": "H",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 5",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "m17",
+    "date": "2026-11-21",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Leeds United",
+    "away_logo": "databases/logo/teams/england_leeds-united.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w13",
+    "date": "2026-11-22",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Liverpool",
+    "home_logo": "databases/logo/teams/england_liverpool.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Totally Wicked Stadium, St Helens",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 11"
+  },
+  {
+    "id": "m18",
+    "date": "2026-11-28",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Nottingham Forest",
+    "home_logo": "databases/logo/teams/england_nottingham-forest.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "The City Ground",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m19",
+    "date": "2026-12-02",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Crystal Palace",
+    "away_logo": "databases/logo/teams/england_crystal-palace.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m20",
+    "date": "2026-12-05",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Liverpool",
+    "away_logo": "databases/logo/teams/england_liverpool.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m21",
+    "date": "2026-12-12",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Manchester City",
+    "home_logo": "databases/logo/teams/england_manchester-city.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Etihad Stadium",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w14",
+    "date": "2026-12-13",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "London City Lionesses",
+    "away_logo": "databases/logo/teams/London_City_Lionesses.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 12"
+  },
+  {
+    "id": "w_uwcl_8",
+    "date": "2026-12-17",
+    "time": "03:00",
+    "time_th": "03:00",
+    "time_uk": "20:00",
+    "competition": "UEFA Women's Champions League",
+    "competition_name": "UEFA Women's Champions League",
+    "competition_logo": "databases/logo/competitions/women/women_uwcl_champions_league_logo.svg",
+    "home_team": "OH Leuven",
+    "home_logo": "databases/logo/teams/belgium_ohl-oud-heverlee-leuven.football-logos.cc.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "King Power at Den Dreef Stadion, Leuven",
+    "ha": "A",
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "round": "League Phase 6",
+    "channels": [
+      {
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
+      },
+      {
+        "platform": "DAZN",
+        "name": "DAZN Women's Football",
+        "logo": "databases/logo/tv/dazn.svg"
+      }
+    ],
+    "team_type": "W"
+  },
+  {
+    "id": "m22",
+    "date": "2026-12-19",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Aston Villa",
+    "away_logo": "databases/logo/teams/england_aston-villa.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w15",
+    "date": "2026-12-19",
+    "time": "19:30",
+    "time_th": "19:30",
+    "time_uk": "12:30",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Brighton & Hove Albion",
+    "home_logo": "databases/logo/teams/england_brighton.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Broadfield Stadium, Crawley",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 13"
+  },
+  {
+    "id": "m23",
+    "date": "2026-12-26",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Coventry City",
+    "home_logo": "databases/logo/teams/england_coventry-city.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "The Coventry Building Society Arena",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m24",
+    "date": "2026-12-30",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Ipswich Town",
+    "home_logo": "databases/logo/teams/england_ipswich.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Portman Road",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m25",
+    "date": "2027-01-02",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Newcastle United",
+    "away_logo": "databases/logo/teams/england_newcastle.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m26",
+    "date": "2027-01-06",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Crystal Palace",
+    "home_logo": "databases/logo/teams/england_crystal-palace.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Selhurst Park",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w16",
+    "date": "2027-01-10",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Manchester City",
+    "home_logo": "databases/logo/teams/england_manchester-city.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Joie Stadium, Manchester",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 14"
+  },
+  {
+    "id": "m27",
+    "date": "2027-01-16",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Sunderland",
+    "away_logo": "databases/logo/teams/england_sunderland.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w17",
+    "date": "2027-01-21",
+    "time": "02:00",
+    "time_th": "02:00",
+    "time_uk": "19:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Charlton Athletic",
+    "away_logo": "databases/logo/teams/england_charlton.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 15"
+  },
+  {
+    "id": "m28",
+    "date": "2027-01-23",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Leeds United",
+    "home_logo": "databases/logo/teams/england_leeds-united.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Elland Road",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w18",
+    "date": "2027-01-24",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Crystal Palace",
+    "away_logo": "databases/logo/teams/england_crystal-palace.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 16"
+  },
+  {
+    "id": "m29",
+    "date": "2027-01-30",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Nottingham Forest",
+    "away_logo": "databases/logo/teams/england_nottingham-forest.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w19",
+    "date": "2027-01-31",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Tottenham Hotspur",
+    "home_logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Brisbane Road, London",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 17"
+  },
+  {
+    "id": "m30",
+    "date": "2027-02-06",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Manchester United",
+    "home_logo": "databases/logo/teams/england_manchester-united.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Old Trafford",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w20",
+    "date": "2027-02-07",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Liverpool",
+    "away_logo": "databases/logo/teams/england_liverpool.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 18"
+  },
+  {
+    "id": "m31",
+    "date": "2027-02-10",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Newcastle United",
+    "home_logo": "databases/logo/teams/england_newcastle.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "St. James' Park",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w21",
+    "date": "2027-02-14",
+    "time": "21:00",
+    "time_th": "21:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "London City Lionesses",
+    "home_logo": "databases/logo/teams/London_City_Lionesses.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Hayes Lane, Bromley",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 19"
+  },
+  {
+    "id": "m32",
+    "date": "2027-02-20",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Ipswich Town",
+    "away_logo": "databases/logo/teams/england_ipswich.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m33",
+    "date": "2027-02-27",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Aston Villa",
+    "home_logo": "databases/logo/teams/england_aston-villa.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Villa Park",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m34",
+    "date": "2027-03-03",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Coventry City",
+    "away_logo": "databases/logo/teams/england_coventry-city.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m35",
+    "date": "2027-03-13",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Arsenal",
+    "away_logo": "databases/logo/teams/england_arsenal.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w22",
+    "date": "2027-03-13",
+    "time": "19:30",
+    "time_th": "19:30",
+    "time_uk": "12:30",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Birmingham City",
+    "home_logo": "databases/logo/teams/england_birmingham.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "St Andrew's, Birmingham",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 20"
+  },
+  {
+    "id": "w23",
+    "date": "2027-03-18",
+    "time": "02:00",
+    "time_th": "02:00",
+    "time_uk": "19:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "West Ham United",
+    "away_logo": "databases/logo/teams/england_west-ham.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 21"
+  },
+  {
+    "id": "m36",
+    "date": "2027-03-20",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Hull City",
+    "home_logo": "databases/logo/teams/england_hull-city.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "The MKM Stadium",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w24",
+    "date": "2027-03-28",
+    "time": "20:00",
+    "time_th": "20:00",
+    "time_uk": "13:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Arsenal",
+    "home_logo": "databases/logo/teams/england_arsenal.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Emirates Stadium, London",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 22"
+  },
+  {
+    "id": "w25",
+    "date": "2027-04-04",
+    "time": "20:00",
+    "time_th": "20:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Manchester United",
+    "away_logo": "databases/logo/teams/england_manchester-united.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 23"
+  },
+  {
+    "id": "m37",
+    "date": "2027-04-10",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Fulham",
+    "away_logo": "databases/logo/teams/england_fulham.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m38",
+    "date": "2027-04-17",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Brighton & Hove Albion",
+    "home_logo": "databases/logo/teams/england_brighton.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "American Express Stadium",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m39",
+    "date": "2027-04-24",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Manchester City",
+    "away_logo": "databases/logo/teams/england_manchester-city.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m40",
+    "date": "2027-05-01",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Liverpool",
+    "home_logo": "databases/logo/teams/england_liverpool.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Anfield",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w26",
+    "date": "2027-05-03",
+    "time": "00:00",
+    "time_th": "00:00",
+    "time_uk": "18:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Aston Villa",
+    "home_logo": "databases/logo/teams/england_aston-villa.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Villa Park, Birmingham",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 24"
+  },
+  {
+    "id": "m41",
+    "date": "2027-05-08",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Tottenham Hotspur",
+    "home_logo": "databases/logo/teams/england_tottenham--2006-2013.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Tottenham Hotspur Stadium",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w27",
+    "date": "2027-05-09",
+    "time": "20:00",
+    "time_th": "20:00",
+    "time_uk": "14:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Chelsea Women",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Brighton & Hove Albion",
+    "away_logo": "databases/logo/teams/england_brighton.svg",
+    "venue": "Kingsmeadow, Kingston upon Thames",
+    "ha": "H",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 25"
+  },
+  {
+    "id": "m42",
+    "date": "2027-05-15",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Everton",
+    "away_logo": "databases/logo/teams/england_everton.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "w28",
+    "date": "2027-05-22",
+    "time": "23:00",
+    "time_th": "23:00",
+    "time_uk": "17:00",
+    "competition": "Barclays Women's Super League",
+    "competition_logo": "databases/logo/competitions/women/women_super_league.png",
+    "home_team": "Everton",
+    "home_logo": "databases/logo/teams/england_everton.svg",
+    "away_team": "Chelsea Women",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Walton Hall Park, Liverpool",
+    "ha": "A",
+    "channels": [
+      {
+        "platform": "CFC+",
+        "name": "CFC+ Live",
+        "logo": "databases/logo/tv/cfc.png"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "Barclays Women's Super League",
+    "team_type": "W",
+    "xg": null,
+    "xga": null,
+    "poss": null,
+    "attendance": null,
+    "captain": null,
+    "formation": null,
+    "referee": null,
+    "round": "Matchweek 26"
+  },
+  {
+    "id": "m43",
+    "date": "2027-05-23",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "AFC Bournemouth",
+    "home_logo": "databases/logo/teams/england_bournemouth.svg",
+    "away_team": "Chelsea",
+    "away_logo": "databases/logo/teams/england_chelsea.svg",
+    "venue": "Vitality Stadium",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  },
+  {
+    "id": "m44",
+    "date": "2027-05-30",
+    "time": "TBC",
+    "competition": "premier-league",
+    "competition_logo": "databases/logo/competitions/men/premier-league.png",
+    "home_team": "Chelsea",
+    "home_logo": "databases/logo/teams/england_chelsea.svg",
+    "away_team": "Brentford",
+    "away_logo": "databases/logo/teams/england_brentford.svg",
+    "venue": "Stamford Bridge",
+    "channels": [
+      {
+        "platform": "www.monomax.me",
+        "name": "MONOMAX SPORTS TV",
+        "logo": "databases/logo/tv/monomax.svg"
+      }
+    ],
+    "status": "upcoming",
+    "home_score": null,
+    "away_score": null,
+    "goals": [],
+    "events": [],
+    "competition_name": "premier-league",
+    "team_type": "M"
+  }
+]
