@@ -75,7 +75,7 @@
 │   │   ├── vendor/            # ไลบรารีฝั่ง Client ที่โฮสต์ในโปรเจกต์
 │   │   └── app.bundle.min.js  # [GENERATED] รวม main.js + team.js จาก npm run build (ห้ามแก้ตรง)
 │   ├── fonts/                 # ฟอนต์ประจำเว็บไซต์
-│   ├── images/ & img/         # รูปภาพนักเตะ กราฟิก โลโก้ และ Placeholder
+│   └── images/                # รูปภาพนักเตะ กราฟิก โลโก้ และ Placeholder
 │
 ├── data/                      # ฐานข้อมูล JSON หลักของฝั่ง Frontend และ API
 │   ├── players-men.json / all-players-men.json
@@ -95,7 +95,7 @@
     └── import_fbref_women.mjs
 ```
 
-> **หมายเหตุเรื่อง Path รูปภาพ:** รูปภาพมีการอ้างอิงอยู่ใน `assets/images/`, `assets/img/`, `img/`, `databases/logo/` และบางไฟล์ใน `src/assets/images/` ก่อนลบหรือย้ายไฟล์รูปภาพทุกครั้ง ต้องค้นหา Path อ้างอิงใน `.html`, `assets/js/*.js` และ `data/*.json` ให้ครบถ้วนก่อนเสมอ
+> **หมายเหตุเรื่อง Path รูปภาพ:** รูปภาพมีการอ้างอิงอยู่ใน `assets/images/`, `img/`, `icon/profile/`, `databases/logo/` และบางไฟล์ใน `src/assets/images/` ก่อนลบหรือย้ายไฟล์รูปภาพทุกครั้ง ต้องค้นหา Path อ้างอิงใน `.html`, `assets/js/*.js` และ `data/*.json` ให้ครบถ้วนก่อนเสมอ
 
 ---
 
