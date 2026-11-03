@@ -1414,8 +1414,8 @@
         text-decoration: underline;
       }
       .event-icon-col {
-        width: 28px;
-        min-width: 28px;
+        width: 50px;
+        min-width: 50px;
         display: flex;
         align-items: center;
         margin-right: 0px;
@@ -1589,8 +1589,8 @@
       }
       @media (max-width: 768px) {
         .event-icon-col {
-          width: 24px;
-          min-width: 24px;
+          width: 50px;
+          min-width: 50px;
           gap: 2px;
           margin-right: 0px;
           padding-top: 0px;
@@ -4087,25 +4087,25 @@
           const getEventIcon = (type) => {
             switch (type) {
               case "goal":
-                return '<img src="databases/logo/svg/goal.svg" alt="Goal" style="width: 20px; height: 20px;">';
+                return '<img src="databases/logo/svg/goal.svg" alt="Goal" style="width: 50px; height: 50px;">';
               case "own_goal":
-                return '<img src="databases/logo/svg/goal.svg" alt="Own Goal" style="width: 20px; height: 20px; filter: invert(36%) sepia(93%) saturate(6288%) hue-rotate(344deg);">';
+                return '<img src="databases/logo/svg/goal.svg" alt="Own Goal" style="width: 50px; height: 50px; filter: invert(36%) sepia(93%) saturate(6288%) hue-rotate(344deg);">';
               case "yellow_card":
-                return '<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" style="width: 18px; height: 18px;">';
+                return '<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" style="width: 50px; height: 50px;">';
               case "second_yellow":
-                return '<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow" style="width: 22px; height: 20px;">';
+                return '<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow" style="width: 50px; height: 50px;">';
               case "red_card":
-                return '<img src="databases/logo/svg/red_card.svg" alt="Red Card" style="width: 18px; height: 18px;">';
+                return '<img src="databases/logo/svg/red_card.svg" alt="Red Card" style="width: 50px; height: 50px;">';
               case "substitution":
-                return '<img src="databases/logo/svg/substitution_in.svg" alt="Sub" style="width: 20px; height: 20px;">';
+                return '<img src="databases/logo/svg/substitution_in.svg" alt="Sub" style="width: 25px; height: 25px;">';
               case "var":
-                return '<img src="databases/logo/svg/var.svg" alt="VAR" style="width: 22px; height: 22px;">';
+                return '<img src="databases/logo/svg/var.svg" alt="VAR" style="width: 50px; height: 50px;">';
               case "corner":
-                return '<span style="font-size: 16px; line-height: 1;">🚩</span>';
+                return '<img src="assets/aistudio/Corner_62924f75.svg" alt="Corner" class="event-icon" style="width: 50px; height: 50px;">';
               case "offside":
-                return '<span style="font-size: 15px; line-height: 1;">🏁</span>';
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">🏁</span>';
               case "penalty_awarded":
-                return '<span style="font-size: 15px; line-height: 1;">🎯</span>';
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">🎯</span>';
               case "shootout_goal":
                 return '<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#10b981;color:#fff;font-size:12px;font-weight:800;">✓</span>';
               case "shootout_miss":
@@ -4113,26 +4113,30 @@
               case "shootout_save":
                 return '<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#ef4444;color:#fff;font-size:12px;font-weight:800;">🧤</span>';
               case "foul":
-                return '<span style="font-size: 15px; line-height: 1;">⚠️</span>';
+                return '<img src="assets/aistudio/Foul_93b29d2b.svg" alt="Foul" class="event-icon" style="width: 50px; height: 50px;">';
               case "free_kick":
-                return '<span style="font-size: 15px; line-height: 1;">🏳️</span>';
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">🏳️</span>';
+              case "shot_off_target":
+              case "missed_shot":
+              case "miss":
+                return '<img src="assets/aistudio/no-g_840a737a.svg" alt="Shot Off Target" class="event-icon" style="width: 50px; height: 50px;">';
               case "shot":
-                return '<span style="font-size: 15px; line-height: 1;">🎯</span>';
+                return '<img src="assets/aistudio/no-ball_f30ad3c6.svg" alt="Shot" class="event-icon" style="width: 50px; height: 50px;">';
               case "save":
-                return '<span style="font-size: 15px; line-height: 1;">🧤</span>';
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">🧤</span>';
               case "injury":
-                return '<img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 18px; height: 18px;">';
+                return '<img src="databases/logo/svg/injury.svg" alt="Injury" style="width: 50px; height: 50px;">';
               case "delay":
-                return '<span style="font-size: 15px; line-height: 1;">⏸️</span>';
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">⏸️</span>';
               case "added_time":
-                return '<span style="font-size: 15px; line-height: 1;">⏱️</span>';
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">⏱️</span>';
               case "kick_off":
               case "kickoff":
               case "period":
               case "full_time":
-                return '<img src="databases/logo/svg/kick-off.svg" alt="Period" style="width: 18px; height: 18px;">';
+                return '<img src="databases/logo/svg/kick-off.svg" alt="Period" style="width: 50px; height: 50px;">';
               default:
-                return "⚽";
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px;">⚽</span>';
             }
           };
 
@@ -4152,6 +4156,8 @@
             if (type === "shootout_save") return isTh ? "เซฟลูกจุดโทษ" : "Penalty Saved";
             if (type === "foul") return isTh ? "ทำฟาวล์" : "Foul";
             if (type === "free_kick") return isTh ? "ได้ลูกฟรีคิก" : "Free Kick";
+            if (type === "shot_off_target" || type === "missed_shot" || type === "miss")
+              return isTh ? "ยิงไม่เข้ากรอบ" : "Shot Off Target";
             if (type === "shot") return isTh ? "โอกาสยิง" : "Shot";
             if (type === "save") return isTh ? "เซฟลูกยิง" : "Save";
             if (type === "injury") return isTh ? "ได้รับบาดเจ็บ" : "Injury";
@@ -4171,6 +4177,14 @@
               (e.detail === "Own Goal" || (e.player && /\(OG\)|Own Goal|ทำเข้าประตูตัวเอง/i.test(e.player)))
             ) {
               eType = "own_goal";
+            }
+            if (
+              e.type === "shot" &&
+              /ไม่เข้ากรอบ|หลุดกรอบ|ข้ามคาน|หลุดเสา|เฉี่ยวเสา|เฉียดสามเหลี่ยม|ออกหลัง|off[\s-]*target|\bmiss(?:ed|es)?\b|\bwide\b|too high|over the bar/i.test(
+                e.detail || ""
+              )
+            ) {
+              eType = "shot_off_target";
             }
             const icon = getEventIcon(eType);
             const title = getEventTitle(eType);
@@ -4289,7 +4303,7 @@
                     ${assistRowHome}
                   </div>
                 `;
-                iconHtml = `<img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">`;
+                iconHtml = `<img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 50px; height: 50px;">`;
               } else {
                 const assistRowAway = assistLink ? `
                   <div class="goal-assist-line" title="${isTh ? 'แอสซิสต์: ' + goalAssist : 'Assist: ' + goalAssist}">
@@ -4306,7 +4320,7 @@
                     ${assistRowAway}
                   </div>
                 `;
-                iconHtml = `<img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 20px; height: 20px;">`;
+                iconHtml = `<img src="databases/logo/svg/goal.svg" alt="Goal" class="event-icon" style="width: 50px; height: 50px;">`;
               }
             } else if (eType === "own_goal") {
               cardClass += "is-own-goal";
@@ -4317,7 +4331,7 @@
                 ? `(ทำเข้าประตูตัวเอง${playerClub ? " · " + playerClub : ""})`
                 : `(Own Goal${playerClub ? " · " + playerClub : ""})`;
               nameHtml = `<span class="player-name">${goalPlayerDisplay}</span> <span class="event-note-tag">${ogNote}</span>`;
-              iconHtml = `<img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 20px; height: 20px;">`;
+              iconHtml = `<img src="databases/logo/svg/own-goal.svg" alt="Own Goal" class="event-icon" style="width: 50px; height: 50px;">`;
             } else if (eType === "substitution") {
               cardClass += "is-sub";
               const inPlayer = getPlayerLink(e.player_in || e.player);
@@ -4336,14 +4350,14 @@
                       <span class="sub-name-in">${inPlayer}</span>
                       <span class="sub-tag-in-badge">
                         <span>${tagInText}</span>
-                        <img src="databases/logo/svg/substitution_in.svg" alt="${tagInText}" style="width: 13px; height: 13px;">
+                        <img src="databases/logo/svg/substitution_in.svg" alt="${tagInText}" style="width: 25px; height: 25px;">
                       </span>
                     </div>
                     <div class="sub-line-out">
                       <span class="sub-name-out">${outPlayer}</span>${injuryBadge}
                       <span class="sub-tag-out-badge">
                         <span>${tagOutText}</span>
-                        <img src="databases/logo/svg/substitution_out.svg" alt="${tagOutText}" style="width: 13px; height: 13px;">
+                        <img src="databases/logo/svg/substitution_out.svg" alt="${tagOutText}" style="width: 25px; height: 25px;">
                       </span>
                     </div>
                   </div>
@@ -4354,14 +4368,14 @@
                   <div class="sub-lines-container">
                     <div class="sub-line-in">
                       <span class="sub-tag-in-badge">
-                        <img src="databases/logo/svg/substitution_in.svg" alt="${tagInText}" style="width: 13px; height: 13px;">
+                        <img src="databases/logo/svg/substitution_in.svg" alt="${tagInText}" style="width: 25px; height: 25px;">
                         <span>${tagInText}</span>
                       </span>
                       <span class="sub-name-in">${inPlayer}</span>
                     </div>
                     <div class="sub-line-out">
                       <span class="sub-tag-out-badge">
-                        <img src="databases/logo/svg/substitution_out.svg" alt="${tagOutText}" style="width: 13px; height: 13px;">
+                        <img src="databases/logo/svg/substitution_out.svg" alt="${tagOutText}" style="width: 25px; height: 25px;">
                         <span>${tagOutText}</span>
                       </span>
                       <span class="sub-name-out">${outPlayer}</span>${injuryBadge}
@@ -4375,30 +4389,30 @@
               const pDisplay = getPlayerLink(e.player);
               const cardSub = e.detail && !/^(second yellow|red card)$/i.test(e.detail.trim()) ? `<div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${e.detail}</div>` : "";
               nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}${cardSub}`;
-              iconHtml = `<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow to Red" class="event-icon" style="width: 24px; height: 22px;">`;
+              iconHtml = `<img src="databases/logo/svg/second_yellow_card-2x.svg" alt="Second Yellow to Red" class="event-icon" style="width: 50px; height: 50px;">`;
             } else if (eType === "yellow_card") {
               cardClass += "is-yellow-card";
               const pDisplay = getPlayerLink(e.player);
               const cardSub = e.detail && !/^yellow card/i.test(e.detail.trim()) ? `<div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${e.detail}</div>` : "";
               nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}${cardSub}`;
-              iconHtml = `<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" class="event-icon" style="width: 16px; height: 22px;">`;
+              iconHtml = `<img src="databases/logo/svg/yellow_card.svg" alt="Yellow Card" class="event-icon" style="width: 50px; height: 50px;">`;
             } else if (eType === "red_card") {
               cardClass += "is-red-card";
               const pDisplay = getPlayerLink(e.player);
               const cardSub = e.detail && !/^red card/i.test(e.detail.trim()) ? `<div class="event-description" style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 2px;">${e.detail}</div>` : "";
               nameHtml = `<span class="player-name">${pDisplay}</span>${roleTagHtml}${cardSub}`;
-              iconHtml = `<img src="databases/logo/svg/red_card.svg" alt="Red Card" class="event-icon" style="width: 16px; height: 22px;">`;
+              iconHtml = `<img src="databases/logo/svg/red_card.svg" alt="Red Card" class="event-icon" style="width: 50px; height: 50px;">`;
             } else if (eType === "injury") {
               cardClass += "is-injury";
               const pDisplay = getPlayerLink(e.player);
               nameHtml = `<span class="player-name">${pDisplay}</span>${e.detail ? ` <span class="event-description" style="color: var(--ink-muted); font-size: 0.84rem;">${e.detail}</span>` : ""}`;
-              iconHtml = `<img src="databases/logo/svg/injury.svg" alt="Injury" class="event-icon" style="width: 20px; height: 20px;">`;
+              iconHtml = `<img src="databases/logo/svg/injury.svg" alt="Injury" class="event-icon" style="width: 50px; height: 50px;">`;
             } else if (eType === "var") {
               cardClass += "is-var";
               let varText = e.detail || (e.player ? `${e.player} - ` : "") + "Video Assistant Referee Decision";
               varText = varText.replace(/^VAR Decision:\s*/i, "");
               nameHtml = `<span class="event-description">${varText}</span>`;
-              iconHtml = `<img src="databases/logo/svg/var.svg" alt="Video Assistant Referee" class="event-icon" style="width: 20px; height: 20px;">`;
+              iconHtml = `<img src="databases/logo/svg/var.svg" alt="Video Assistant Referee" class="event-icon" style="width: 50px; height: 50px;">`;
             } else if (eType === "kick_off" || eType === "kickoff" || (e.type === "period" && (e.minute === 0 || e.minute === "0"))) {
               const koText = e.detail || (isTh ? "เริ่มต้นการแข่งขัน (First Half Begins)" : "First Half Begins");
               return `
@@ -4410,7 +4424,7 @@
   <div class="timeline-side away-side">
     <div class="event-detail-group away-layout" style="--event-index: ${index};">
       <div class="event-icon-col justify-start">
-        <img src="databases/logo/svg/kick-off.svg" alt="Kick-off" class="event-icon" style="width: 20px; height: 20px;">
+        <img src="databases/logo/svg/kick-off.svg" alt="Kick-off" class="event-icon" style="width: 50px; height: 50px;">
       </div>
       <div class="event-name-col text-left">
         <span class="event-description">${koText}</span>
@@ -4431,7 +4445,7 @@
   <div class="timeline-side away-side">
     <div class="event-detail-group away-layout" style="--event-index: ${index};">
       <div class="event-icon-col justify-start">
-        <img src="databases/logo/svg/kick-off.svg" alt="Whistle" class="event-icon" style="width: 18px; height: 18px;">
+        <img src="databases/logo/svg/kick-off.svg" alt="Whistle" class="event-icon" style="width: 50px; height: 50px;">
       </div>
       <div class="event-name-col text-left">
         <span class="event-description" style="font-weight: 700; color: var(--gold);">${pText}</span>
