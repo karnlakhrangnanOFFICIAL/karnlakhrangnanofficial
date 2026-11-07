@@ -10599,28 +10599,109 @@
         "formation": "4-2-3-1",
         "manager": "Xabi Alonso",
         "starting": [
-          { "number": 39, "name": "Mike Penders", "position": "GK" },
-          { "number": 34, "name": "Josh Acheampong", "position": "" },
-          { "number": 3, "name": "Wesley Fofana", "position": "" },
-          { "number": 6, "name": "Levi Colwill", "position": "" },
-          { "number": 2, "name": "Marco Palestra", "position": "" },
-          { "number": 25, "name": "Moises Caicedo", "position": "C", "captain": true },
-          { "number": 45, "name": "Roméo Lavia", "position": "" },
-          { "number": 7, "name": "Pedro Neto", "position": "" },
-          { "number": 10, "name": "Cole Palmer", "position": "" },
-          { "number": 41, "name": "Estêvão Willian", "position": "" },
-          { "number": 17, "name": "Morgan Rogers", "position": "" }
+          {
+            "number": 39,
+            "name": "Mike Penders",
+            "position": "GK"
+          },
+          {
+            "number": 34,
+            "name": "Josh Acheampong",
+            "position": ""
+          },
+          {
+            "number": 3,
+            "name": "Wesley Fofana",
+            "position": ""
+          },
+          {
+            "number": 6,
+            "name": "Levi Colwill",
+            "position": ""
+          },
+          {
+            "number": 2,
+            "name": "Marco Palestra",
+            "position": ""
+          },
+          {
+            "number": 25,
+            "name": "Moises Caicedo",
+            "position": "C",
+            "captain": true
+          },
+          {
+            "number": 45,
+            "name": "Roméo Lavia",
+            "position": ""
+          },
+          {
+            "number": 7,
+            "name": "Pedro Neto",
+            "position": ""
+          },
+          {
+            "number": 10,
+            "name": "Cole Palmer",
+            "position": ""
+          },
+          {
+            "number": 41,
+            "name": "Estêvão Willian",
+            "position": ""
+          },
+          {
+            "number": 17,
+            "name": "Morgan Rogers",
+            "position": ""
+          }
         ],
         "substitutes": [
-          { "number": 28, "name": "Teddy Sharman-Lowe", "position": "GK" },
-          { "number": 37, "name": "Olutayo Subuloye", "position": "" },
-          { "number": 27, "name": "Malo Gusto", "position": "" },
-          { "number": 29, "name": "Pep Chavarría", "position": "" },
-          { "number": 4, "name": "Valentín Barco", "position": "" },
-          { "number": 32, "name": "Mahdi Nicoll-Jazuli", "position": "" },
-          { "number": 23, "name": "Geovany Quenda", "position": "" },
-          { "number": 22, "name": "Emmanuel Emegha", "position": "" },
-          { "number": 18, "name": "Danny Welbeck", "position": "" }
+          {
+            "number": 28,
+            "name": "Teddy Sharman-Lowe",
+            "position": "GK"
+          },
+          {
+            "number": 37,
+            "name": "Olutayo Subuloye",
+            "position": ""
+          },
+          {
+            "number": 27,
+            "name": "Malo Gusto",
+            "position": ""
+          },
+          {
+            "number": 29,
+            "name": "Pep Chavarría",
+            "position": ""
+          },
+          {
+            "number": 4,
+            "name": "Valentín Barco",
+            "position": ""
+          },
+          {
+            "number": 32,
+            "name": "Mahdi Nicoll-Jazuli",
+            "position": ""
+          },
+          {
+            "number": 23,
+            "name": "Geovany Quenda",
+            "position": ""
+          },
+          {
+            "number": 22,
+            "name": "Emmanuel Emegha",
+            "position": ""
+          },
+          {
+            "number": 18,
+            "name": "Danny Welbeck",
+            "position": ""
+          }
         ]
       },
       "away": {
@@ -10628,28 +10709,109 @@
         "formation": "4-2-3-1",
         "manager": "Michael Carrick",
         "starting": [
-          { "number": 1, "name": "Senne Lammens", "position": "GK" },
-          { "number": 2, "name": "Diogo Dalot", "position": "" },
-          { "number": 15, "name": "Leny Yoro", "position": "" },
-          { "number": 5, "name": "Harry Maguire", "position": "" },
-          { "number": 6, "name": "Lisandro Martínez", "position": "" },
-          { "number": 20, "name": "Carlos Baleba", "position": "" },
-          { "number": 17, "name": "Antony Santos", "position": "" },
-          { "number": 16, "name": "Amad Diallo", "position": "" },
-          { "number": 8, "name": "Bruno Fernandes", "position": "C", "captain": true },
-          { "number": 19, "name": "Bryan Mbeumo", "position": "" },
-          { "number": 10, "name": "Matheus Cunha", "position": "" }
+          {
+            "number": 1,
+            "name": "Senne Lammens",
+            "position": "GK"
+          },
+          {
+            "number": 2,
+            "name": "Diogo Dalot",
+            "position": ""
+          },
+          {
+            "number": 15,
+            "name": "Leny Yoro",
+            "position": ""
+          },
+          {
+            "number": 5,
+            "name": "Harry Maguire",
+            "position": ""
+          },
+          {
+            "number": 6,
+            "name": "Lisandro Martínez",
+            "position": ""
+          },
+          {
+            "number": 20,
+            "name": "Carlos Baleba",
+            "position": ""
+          },
+          {
+            "number": 17,
+            "name": "Antony Santos",
+            "position": ""
+          },
+          {
+            "number": 16,
+            "name": "Amad Diallo",
+            "position": ""
+          },
+          {
+            "number": 8,
+            "name": "Bruno Fernandes",
+            "position": "C",
+            "captain": true
+          },
+          {
+            "number": 19,
+            "name": "Bryan Mbeumo",
+            "position": ""
+          },
+          {
+            "number": 10,
+            "name": "Matheus Cunha",
+            "position": ""
+          }
         ],
         "substitutes": [
-          { "number": 12, "name": "Karl Darlow", "position": "GK" },
-          { "number": 4, "name": "Matthijs de Ligt", "position": "" },
-          { "number": 26, "name": "Ayden Heaven", "position": "" },
-          { "number": 3, "name": "Noussair Mazraoui", "position": "" },
-          { "number": 37, "name": "Kobbie Mainoo", "position": "" },
-          { "number": 7, "name": "Mason Mount", "position": "" },
-          { "number": 18, "name": "Youri Tielemans", "position": "" },
-          { "number": 31, "name": "Shea Lacey", "position": "" },
-          { "number": 11, "name": "Joshua Zirkzee", "position": "" }
+          {
+            "number": 12,
+            "name": "Karl Darlow",
+            "position": "GK"
+          },
+          {
+            "number": 4,
+            "name": "Matthijs de Ligt",
+            "position": ""
+          },
+          {
+            "number": 26,
+            "name": "Ayden Heaven",
+            "position": ""
+          },
+          {
+            "number": 3,
+            "name": "Noussair Mazraoui",
+            "position": ""
+          },
+          {
+            "number": 37,
+            "name": "Kobbie Mainoo",
+            "position": ""
+          },
+          {
+            "number": 7,
+            "name": "Mason Mount",
+            "position": ""
+          },
+          {
+            "number": 18,
+            "name": "Youri Tielemans",
+            "position": ""
+          },
+          {
+            "number": 31,
+            "name": "Shea Lacey",
+            "position": ""
+          },
+          {
+            "number": 11,
+            "name": "Joshua Zirkzee",
+            "position": ""
+          }
         ]
       },
       "officials": [
@@ -17092,28 +17254,125 @@
         "stats_formation": "4-3-3",
         "manager": "Karen Hills",
         "starting": [
-          { "number": 24, "name": "Anna Koivunen", "position": "GK" },
-          { "number": 2, "name": "Ellie Mason", "position": "" },
-          { "number": 4, "name": "Grace Johnston", "position": "" },
-          { "number": 6, "name": "Leah Davidson", "position": "" },
-          { "number": 12, "name": "Jodie Hutton", "position": "" },
-          { "number": 14, "name": "Keira Flannery", "position": "" },
-          { "number": 16, "name": "Maria Korhonen", "position": "" },
-          { "number": 17, "name": "Kiera Skeels", "position": "C", "captain": true },
-          { "number": 22, "name": "Emily van Egmond", "position": "" },
-          { "number": 23, "name": "Lucia Lobato", "position": "" },
-          { "number": 29, "name": "Ashleigh Neville", "position": "" }
+          {
+            "number": 24,
+            "name": "Anna Koivunen",
+            "position": "GK"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Mason",
+            "position": ""
+          },
+          {
+            "number": 4,
+            "name": "Grace Johnston",
+            "position": ""
+          },
+          {
+            "number": 6,
+            "name": "Leah Davidson",
+            "position": ""
+          },
+          {
+            "number": 12,
+            "name": "Jodie Hutton",
+            "position": ""
+          },
+          {
+            "number": 14,
+            "name": "Keira Flannery",
+            "position": ""
+          },
+          {
+            "number": 16,
+            "name": "Maria Korhonen",
+            "position": ""
+          },
+          {
+            "number": 17,
+            "name": "Kiera Skeels",
+            "position": "C",
+            "captain": true
+          },
+          {
+            "number": 22,
+            "name": "Emily van Egmond",
+            "position": ""
+          },
+          {
+            "number": 23,
+            "name": "Lucia Lobato",
+            "position": ""
+          },
+          {
+            "number": 29,
+            "name": "Ashleigh Neville",
+            "position": ""
+          }
         ],
         "substitutes": [
-          { "number": 1, "name": "Sophie Whitehouse", "position": "GK" },
-          { "number": 8, "name": "Carla Humphrey", "position": "", "sub_pos_th": "กลาง", "sub_pos_en": "MF" },
-          { "number": 9, "name": "Lorena Azzaro", "position": "", "sub_pos_th": "หน้า", "sub_pos_en": "FW" },
-          { "number": 10, "name": "Gillian Kenney", "position": "", "sub_pos_th": "กลาง", "sub_pos_en": "MF" },
-          { "number": 11, "name": "Lucy Fitzgerald", "position": "", "sub_pos_th": "กลาง", "sub_pos_en": "MF" },
-          { "number": 15, "name": "Katie Lockwood", "position": "", "sub_pos_th": "หน้า", "sub_pos_en": "FW" },
-          { "number": 25, "name": "Lizzie Waldie", "position": "", "sub_pos_th": "หลัง", "sub_pos_en": "DF" },
-          { "number": 30, "name": "Leigh-Anne Robe", "position": "", "sub_pos_th": "หลัง", "sub_pos_en": "DF" },
-          { "number": 32, "name": "Angela Nelson-Iye", "position": "", "sub_pos_th": "หลัง", "sub_pos_en": "DF" }
+          {
+            "number": 1,
+            "name": "Sophie Whitehouse",
+            "position": "GK"
+          },
+          {
+            "number": 8,
+            "name": "Carla Humphrey",
+            "position": "",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF"
+          },
+          {
+            "number": 9,
+            "name": "Lorena Azzaro",
+            "position": "",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 10,
+            "name": "Gillian Kenney",
+            "position": "",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF"
+          },
+          {
+            "number": 11,
+            "name": "Lucy Fitzgerald",
+            "position": "",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF"
+          },
+          {
+            "number": 15,
+            "name": "Katie Lockwood",
+            "position": "",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 25,
+            "name": "Lizzie Waldie",
+            "position": "",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 30,
+            "name": "Leigh-Anne Robe",
+            "position": "",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 32,
+            "name": "Angela Nelson-Iye",
+            "position": "",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          }
         ]
       },
       "away": {
@@ -17122,35 +17381,144 @@
         "stats_formation": "4-4-2",
         "manager": "Sonia Bompastor",
         "starting": [
-          { "number": 24, "name": "Hannah Hampton", "position": "GK" },
-          { "number": 2, "name": "Ellie Carpenter", "position": "" },
-          { "number": 5, "name": "Veerle Buurman", "position": "" },
-          { "number": 6, "name": "Sjoeke Nüsken", "position": "" },
-          { "number": 9, "name": "Melvine Malard", "position": "" },
-          { "number": 10, "name": "Lauren James", "position": "" },
-          { "number": 11, "name": "Sandy Baltimore", "position": "" },
-          { "number": 14, "name": "Nathalie Björn", "position": "C", "captain": true },
-          { "number": 15, "name": "Katie McCabe", "position": "" },
-          { "number": 21, "name": "Keira Walsh", "position": "" },
-          { "number": 29, "name": "Manaka Matsukubo", "position": "" }
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK"
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": ""
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": ""
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": ""
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": ""
+          },
+          {
+            "number": 10,
+            "name": "Lauren James",
+            "position": ""
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": ""
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn",
+            "position": "C",
+            "captain": true
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": ""
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": ""
+          },
+          {
+            "number": 29,
+            "name": "Manaka Matsukubo",
+            "position": ""
+          }
         ],
         "substitutes": [
-          { "number": 1, "name": "Livia Peng", "position": "GK" },
-          { "number": 8, "name": "Erin Cuthbert", "position": "", "sub_pos_th": "กลาง", "sub_pos_en": "MF" },
-          { "number": 12, "name": "Alyssa Thompson", "position": "", "sub_pos_th": "หน้า", "sub_pos_en": "FW" },
-          { "number": 16, "name": "Giulia Dragoni", "position": "", "sub_pos_th": "กลาง", "sub_pos_en": "MF" },
-          { "number": 19, "name": "Wieke Kaptein", "position": "", "sub_pos_th": "กลาง", "sub_pos_en": "MF" },
-          { "number": 22, "name": "Lucy Bronze", "position": "", "sub_pos_th": "หลัง", "sub_pos_en": "DF" },
-          { "number": 23, "name": "Maika Hamano", "position": "", "sub_pos_th": "หน้า", "sub_pos_en": "FW" },
-          { "number": 26, "name": "Kadeisha Buchanan", "position": "", "sub_pos_th": "หลัง", "sub_pos_en": "DF" },
-          { "number": 33, "name": "Agnes Beever-Jones", "position": "", "sub_pos_th": "หน้า", "sub_pos_en": "FW" }
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK"
+          },
+          {
+            "number": 8,
+            "name": "Erin Cuthbert",
+            "position": "",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 33,
+            "name": "Agnes Beever-Jones",
+            "position": "",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          }
         ]
       },
       "officials": [
-        { "role": "Referee", "name": "Melissa Burgin" },
-        { "role": "Assistant Referee 1 (AR1)", "name": "Michael Webb" },
-        { "role": "Assistant Referee 2 (AR2)", "name": "Lorraine Catchpole" },
-        { "role": "Fourth Official (4th)", "name": "Aaron Farmer" }
+        {
+          "role": "Referee",
+          "name": "Melissa Burgin"
+        },
+        {
+          "role": "Assistant Referee 1 (AR1)",
+          "name": "Michael Webb"
+        },
+        {
+          "role": "Assistant Referee 2 (AR2)",
+          "name": "Lorraine Catchpole"
+        },
+        {
+          "role": "Fourth Official (4th)",
+          "name": "Aaron Farmer"
+        }
       ]
     },
     "stats": [
@@ -17254,104 +17622,700 @@
       }
     ],
     "events": [
-      { "minute": 0, "display_minute": "0'", "type": "kick_off", "detail": "เริ่มครึ่งแรก (Kick-off): Charlton Athletic พบ Chelsea Women" },
-      { "minute": 2, "type": "foul", "team": "home", "player": "Keira Flannery", "detail": "ทำฟาวล์" },
-      { "minute": 2, "type": "shot", "team": "away", "player": "Sandy Baltimore", "detail": "ยิงไม่เข้ากรอบ" },
-      { "minute": 2, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": 2, "type": "corner", "team": "away", "player": "Lauren James", "detail": "เตะมุม" },
-      { "minute": 3, "type": "shot", "team": "away", "player": "Lauren James", "detail": "ยิง" },
-      { "minute": 3, "type": "save", "team": "home", "player": "Maria Korhonen", "detail": "เซฟ" },
-      { "minute": 3, "type": "goal", "team": "away", "player": "Nathalie Björn", "assist": "Katie McCabe", "detail": "GOAL 0–1 (แอสซิสต์: Katie McCabe)" },
-      { "minute": 4, "type": "shot", "team": "away", "player": "Katie McCabe", "detail": "ยิง" },
-      { "minute": 6, "type": "shot", "team": "away", "player": "Lauren James", "detail": "ยิง" },
-      { "minute": 6, "type": "save", "team": "home", "player": "Lucia Lobato", "detail": "เซฟ" },
-      { "minute": 6, "type": "shot", "team": "away", "player": "Keira Walsh", "detail": "ยิง" },
-      { "minute": 6, "type": "save", "team": "home", "player": "Kiera Skeels", "detail": "เซฟ" },
-      { "minute": 8, "type": "foul", "team": "away", "player": "Manaka Matsukubo", "detail": "ทำฟาวล์" },
-      { "minute": 9, "type": "shot", "team": "away", "player": "Sjoeke Nüsken", "detail": "ยิง" },
-      { "minute": 10, "type": "goal", "team": "away", "player": "Melvine Malard", "detail": "GOAL 0–2" },
-      { "minute": 13, "type": "goal", "team": "away", "player": "Ellie Carpenter", "detail": "GOAL 0–3" },
-      { "minute": 13, "type": "shot", "team": "away", "player": "Lauren James", "detail": "ยิง" },
-      { "minute": 13, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": 14, "type": "shot", "team": "away", "player": "Manaka Matsukubo", "detail": "ยิง" },
-      { "minute": 17, "type": "foul", "team": "away", "player": "Lauren James", "detail": "ทำฟาวล์" },
-      { "minute": 19, "type": "goal", "team": "away", "player": "Melvine Malard", "detail": "GOAL 0–4" },
-      { "minute": 19, "type": "shot", "team": "away", "player": "Ellie Carpenter", "detail": "ยิง" },
-      { "minute": 19, "type": "save", "team": "home", "player": "Grace Johnston", "detail": "เซฟ" },
-      { "minute": 19, "type": "shot", "team": "away", "player": "Melvine Malard", "detail": "ยิง" },
-      { "minute": 19, "type": "save", "team": "home", "player": "Kiera Skeels", "detail": "เซฟ" },
-      { "minute": 19, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": 23, "type": "shot", "team": "away", "player": "Sjoeke Nüsken", "detail": "ยิง" },
-      { "minute": 23, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": 25, "type": "injury", "team": "away", "player": "Sjoeke Nüsken", "detail": "บาดเจ็บ" },
-      { "minute": 32, "type": "injury", "team": "away", "player": "Lauren James", "detail": "บาดเจ็บ" },
-      { "minute": 35, "type": "substitution", "team": "away", "player_in": "Erin Cuthbert", "player_out": "Lauren James", "injury": true, "detail": "เปลี่ยนตัวเนื่องจากอาการบาดเจ็บ" },
-      { "minute": 35, "type": "shot", "team": "home", "player": "Jodie Hutton", "detail": "ยิง" },
-      { "minute": 36, "type": "foul", "team": "away", "player": "Veerle Buurman", "detail": "ทำฟาวล์" },
-      { "minute": 39, "type": "foul", "team": "home", "player": "Lucia Lobato", "detail": "ทำฟาวล์" },
-      { "minute": 41, "type": "shot", "team": "home", "player": "Ellie Mason", "detail": "ยิง" },
-      { "minute": 41, "type": "save", "team": "away", "player": "Nathalie Björn", "detail": "เซฟ" },
-      { "minute": 42, "type": "shot", "team": "home", "player": "Maria Korhonen", "detail": "ยิง" },
-      { "minute": 43, "type": "corner", "team": "away", "player": "Katie McCabe", "detail": "เตะมุม" },
-      { "minute": 45, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": "45+99", "display_minute": "HT", "type": "period", "detail": "จบครึ่งแรก (Half-Time): Charlton Athletic 0–4 Chelsea Women" },
-      { "minute": 46, "display_minute": "46'", "type": "period", "detail": "เริ่มครึ่งหลัง (Second Half): Charlton Athletic 0–4 Chelsea Women" },
-      { "minute": 46, "type": "substitution", "team": "home", "player_in": "Gillian Kenney", "player_out": "Emily van Egmond" },
-      { "minute": 46, "type": "substitution", "team": "away", "player_in": "Agnes Beever-Jones", "player_out": "Melvine Malard" },
-      { "minute": 46, "type": "shot", "team": "away", "player": "Manaka Matsukubo", "detail": "ยิง" },
-      { "minute": 48, "type": "corner", "team": "away", "player": "Erin Cuthbert", "detail": "เตะมุม" },
-      { "minute": 49, "type": "shot", "team": "away", "player": "Keira Walsh", "detail": "ยิง" },
-      { "minute": 50, "type": "foul", "team": "home", "player": "Jodie Hutton", "detail": "ทำฟาวล์" },
-      { "minute": 50, "type": "yellow_card", "team": "home", "player": "Jodie Hutton", "detail": "ใบเหลือง" },
-      { "minute": 52, "type": "shot", "team": "away", "player": "Erin Cuthbert", "detail": "ยิง" },
-      { "minute": 52, "type": "save", "team": "home", "player": "Kiera Skeels", "detail": "เซฟ" },
-      { "minute": 52, "type": "shot", "team": "away", "player": "Agnes Beever-Jones", "detail": "ยิง" },
-      { "minute": 57, "type": "goal", "team": "away", "player": "Agnes Beever-Jones", "assist": "Keira Walsh", "detail": "GOAL 0–5 (แอสซิสต์: Keira Walsh)" },
-      { "minute": 58, "type": "substitution", "team": "home", "player_in": "Lizzie Waldie", "player_out": "Ellie Mason" },
-      { "minute": 58, "type": "substitution", "team": "home", "player_in": "Lucy Fitzgerald", "player_out": "Maria Korhonen" },
-      { "minute": 59, "type": "foul", "team": "away", "player": "Manaka Matsukubo", "detail": "ทำฟาวล์" },
-      { "minute": 60, "type": "shot", "team": "away", "player": "Sandy Baltimore", "detail": "ยิง" },
-      { "minute": 60, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": 61, "type": "substitution", "team": "away", "player_in": "Giulia Dragoni", "player_out": "Keira Walsh" },
-      { "minute": 62, "type": "substitution", "team": "away", "player_in": "Alyssa Thompson", "player_out": "Nathalie Björn" },
-      { "minute": 62, "type": "substitution", "team": "away", "player_in": "Maika Hamano", "player_out": "Manaka Matsukubo" },
-      { "minute": 64, "type": "shot", "team": "away", "player": "Sandy Baltimore", "detail": "ยิง" },
-      { "minute": 64, "type": "save", "team": "home", "player": "Ashleigh Neville", "detail": "เซฟ" },
-      { "minute": 66, "type": "goal", "team": "away", "player": "Giulia Dragoni", "assist": "Alyssa Thompson", "detail": "GOAL 0–6 (แอสซิสต์: Alyssa Thompson)" },
-      { "minute": 68, "type": "foul", "team": "home", "player": "Ashleigh Neville", "detail": "ทำฟาวล์" },
-      { "minute": 68, "type": "corner", "team": "home", "player": "Jodie Hutton", "detail": "เตะมุม" },
-      { "minute": 69, "type": "shot", "team": "home", "player": "Ashleigh Neville", "detail": "ยิง" },
-      { "minute": 69, "type": "save", "team": "away", "player": "Katie McCabe", "detail": "เซฟ" },
-      { "minute": 69, "type": "shot", "team": "home", "player": "Leah Davidson", "detail": "ยิง" },
-      { "minute": 69, "type": "save", "team": "away", "player": "Veerle Buurman", "detail": "เซฟ" },
-      { "minute": 71, "type": "shot", "team": "away", "player": "Giulia Dragoni", "detail": "ยิง" },
-      { "minute": 71, "type": "save", "team": "home", "player": "Kiera Skeels", "detail": "เซฟ" },
-      { "minute": 71, "type": "foul", "team": "away", "player": "Veerle Buurman", "detail": "ทำฟาวล์" },
-      { "minute": 71, "type": "foul", "team": "away", "player": "Agnes Beever-Jones", "detail": "ทำฟาวล์ (ต้นฉบับระบุ 73')" },
-      { "minute": 73, "type": "substitution", "team": "home", "player_in": "Katie Lockwood", "player_out": "Jodie Hutton" },
-      { "minute": 74, "type": "shot", "team": "away", "player": "Alyssa Thompson", "detail": "ยิง" },
-      { "minute": 74, "type": "save", "team": "home", "player": "Anna Koivunen", "detail": "เซฟ" },
-      { "minute": 76, "type": "shot", "team": "away", "player": "Giulia Dragoni", "detail": "ยิง" },
-      { "minute": 77, "type": "corner", "team": "home", "player": "Keira Flannery", "detail": "เตะมุม" },
-      { "minute": 79, "type": "substitution", "team": "home", "player_in": "Leigh-Anne Robe", "player_out": "Grace Johnston" },
-      { "minute": 79, "type": "corner", "team": "away", "player": "Katie McCabe", "detail": "เตะมุม" },
-      { "minute": 81, "type": "corner", "team": "away", "player": "Erin Cuthbert", "detail": "เตะมุม" },
-      { "minute": 81, "type": "save", "team": "home", "player": "Keira Flannery", "detail": "เซฟ" },
-      { "minute": 81, "type": "shot", "team": "away", "player": "Giulia Dragoni", "detail": "ยิง" },
-      { "minute": 82, "type": "shot", "team": "away", "player": "Erin Cuthbert", "detail": "ยิง" },
-      { "minute": 82, "type": "save", "team": "home", "player": "Leigh-Anne Robe", "detail": "เซฟ" },
-      { "minute": 85, "type": "corner", "team": "home", "player": "Keira Flannery", "detail": "เตะมุม" },
-      { "minute": 86, "type": "shot", "team": "home", "player": "Ashleigh Neville", "detail": "ยิง" },
-      { "minute": 88, "type": "corner", "team": "away", "player": "Katie McCabe", "detail": "เตะมุม" },
-      { "minute": 89, "type": "shot", "team": "away", "player": "Veerle Buurman", "detail": "ยิง" },
-      { "minute": 91, "display_minute": "91'", "type": "foul", "team": "away", "player": "Sandy Baltimore", "detail": "ทำฟาวล์" },
-      { "minute": 91, "display_minute": "91'", "type": "foul", "team": "home", "player": "Leigh-Anne Robe", "detail": "ทำฟาวล์" },
-      { "minute": 92, "display_minute": "92'", "type": "shot", "team": "away", "player": "Sjoeke Nüsken", "detail": "ยิง" },
-      { "minute": 92, "display_minute": "92'", "type": "save", "team": "home", "player": "Lucy Fitzgerald", "detail": "เซฟ" },
-      { "minute": 92, "display_minute": "92'", "type": "corner", "team": "away", "player": "Erin Cuthbert", "detail": "เตะมุม" },
-      { "minute": 93, "display_minute": "93'", "type": "foul", "team": "home", "player": "Keira Flannery", "detail": "ทำฟาวล์" },
-      { "minute": 94, "display_minute": "94'", "type": "shot", "team": "away", "player": "Agnes Beever-Jones", "detail": "ยิง" },
-      { "minute": "94+99", "display_minute": "FT", "type": "period", "detail": "จบครึ่งหลัง / จบการแข่งขัน (Full-Time): Charlton Athletic 0–6 Chelsea Women" }
+      {
+        "minute": 0,
+        "display_minute": "0'",
+        "type": "kick_off",
+        "detail": "เริ่มครึ่งแรก (Kick-off): Charlton Athletic พบ Chelsea Women"
+      },
+      {
+        "minute": 2,
+        "type": "foul",
+        "team": "home",
+        "player": "Keira Flannery",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 2,
+        "type": "shot",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "detail": "ยิงไม่เข้ากรอบ"
+      },
+      {
+        "minute": 2,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 2,
+        "type": "corner",
+        "team": "away",
+        "player": "Lauren James",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 3,
+        "type": "shot",
+        "team": "away",
+        "player": "Lauren James",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 3,
+        "type": "save",
+        "team": "home",
+        "player": "Maria Korhonen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 3,
+        "type": "goal",
+        "team": "away",
+        "player": "Nathalie Björn",
+        "assist": "Katie McCabe",
+        "detail": "GOAL 0–1 (แอสซิสต์: Katie McCabe)"
+      },
+      {
+        "minute": 4,
+        "type": "shot",
+        "team": "away",
+        "player": "Katie McCabe",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 6,
+        "type": "shot",
+        "team": "away",
+        "player": "Lauren James",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 6,
+        "type": "save",
+        "team": "home",
+        "player": "Lucia Lobato",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 6,
+        "type": "shot",
+        "team": "away",
+        "player": "Keira Walsh",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 6,
+        "type": "save",
+        "team": "home",
+        "player": "Kiera Skeels",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 8,
+        "type": "foul",
+        "team": "away",
+        "player": "Manaka Matsukubo",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 9,
+        "type": "shot",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 10,
+        "type": "goal",
+        "team": "away",
+        "player": "Melvine Malard",
+        "detail": "GOAL 0–2"
+      },
+      {
+        "minute": 13,
+        "type": "goal",
+        "team": "away",
+        "player": "Ellie Carpenter",
+        "detail": "GOAL 0–3"
+      },
+      {
+        "minute": 13,
+        "type": "shot",
+        "team": "away",
+        "player": "Lauren James",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 13,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 14,
+        "type": "shot",
+        "team": "away",
+        "player": "Manaka Matsukubo",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 17,
+        "type": "foul",
+        "team": "away",
+        "player": "Lauren James",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 19,
+        "type": "goal",
+        "team": "away",
+        "player": "Melvine Malard",
+        "detail": "GOAL 0–4"
+      },
+      {
+        "minute": 19,
+        "type": "shot",
+        "team": "away",
+        "player": "Ellie Carpenter",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 19,
+        "type": "save",
+        "team": "home",
+        "player": "Grace Johnston",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 19,
+        "type": "shot",
+        "team": "away",
+        "player": "Melvine Malard",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 19,
+        "type": "save",
+        "team": "home",
+        "player": "Kiera Skeels",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 19,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 23,
+        "type": "shot",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 23,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 25,
+        "type": "injury",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "detail": "บาดเจ็บ"
+      },
+      {
+        "minute": 32,
+        "type": "injury",
+        "team": "away",
+        "player": "Lauren James",
+        "detail": "บาดเจ็บ"
+      },
+      {
+        "minute": 35,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Erin Cuthbert",
+        "player_out": "Lauren James",
+        "injury": true,
+        "detail": "เปลี่ยนตัวเนื่องจากอาการบาดเจ็บ"
+      },
+      {
+        "minute": 35,
+        "type": "shot",
+        "team": "home",
+        "player": "Jodie Hutton",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 36,
+        "type": "foul",
+        "team": "away",
+        "player": "Veerle Buurman",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 39,
+        "type": "foul",
+        "team": "home",
+        "player": "Lucia Lobato",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 41,
+        "type": "shot",
+        "team": "home",
+        "player": "Ellie Mason",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 41,
+        "type": "save",
+        "team": "away",
+        "player": "Nathalie Björn",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 42,
+        "type": "shot",
+        "team": "home",
+        "player": "Maria Korhonen",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 43,
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 45,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": "45+99",
+        "display_minute": "HT",
+        "type": "period",
+        "detail": "จบครึ่งแรก (Half-Time): Charlton Athletic 0–4 Chelsea Women"
+      },
+      {
+        "minute": 46,
+        "display_minute": "46'",
+        "type": "period",
+        "detail": "เริ่มครึ่งหลัง (Second Half): Charlton Athletic 0–4 Chelsea Women"
+      },
+      {
+        "minute": 46,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Gillian Kenney",
+        "player_out": "Emily van Egmond"
+      },
+      {
+        "minute": 46,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Agnes Beever-Jones",
+        "player_out": "Melvine Malard"
+      },
+      {
+        "minute": 46,
+        "type": "shot",
+        "team": "away",
+        "player": "Manaka Matsukubo",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 48,
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 49,
+        "type": "shot",
+        "team": "away",
+        "player": "Keira Walsh",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 50,
+        "type": "foul",
+        "team": "home",
+        "player": "Jodie Hutton",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 50,
+        "type": "yellow_card",
+        "team": "home",
+        "player": "Jodie Hutton",
+        "detail": "ใบเหลือง"
+      },
+      {
+        "minute": 52,
+        "type": "shot",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 52,
+        "type": "save",
+        "team": "home",
+        "player": "Kiera Skeels",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 52,
+        "type": "shot",
+        "team": "away",
+        "player": "Agnes Beever-Jones",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 57,
+        "type": "goal",
+        "team": "away",
+        "player": "Agnes Beever-Jones",
+        "assist": "Keira Walsh",
+        "detail": "GOAL 0–5 (แอสซิสต์: Keira Walsh)"
+      },
+      {
+        "minute": 58,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Lizzie Waldie",
+        "player_out": "Ellie Mason"
+      },
+      {
+        "minute": 58,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Lucy Fitzgerald",
+        "player_out": "Maria Korhonen"
+      },
+      {
+        "minute": 59,
+        "type": "foul",
+        "team": "away",
+        "player": "Manaka Matsukubo",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 60,
+        "type": "shot",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 60,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 61,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Giulia Dragoni",
+        "player_out": "Keira Walsh"
+      },
+      {
+        "minute": 62,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Alyssa Thompson",
+        "player_out": "Nathalie Björn"
+      },
+      {
+        "minute": 62,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Maika Hamano",
+        "player_out": "Manaka Matsukubo"
+      },
+      {
+        "minute": 64,
+        "type": "shot",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 64,
+        "type": "save",
+        "team": "home",
+        "player": "Ashleigh Neville",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 66,
+        "type": "goal",
+        "team": "away",
+        "player": "Giulia Dragoni",
+        "assist": "Alyssa Thompson",
+        "detail": "GOAL 0–6 (แอสซิสต์: Alyssa Thompson)"
+      },
+      {
+        "minute": 68,
+        "type": "foul",
+        "team": "home",
+        "player": "Ashleigh Neville",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 68,
+        "type": "corner",
+        "team": "home",
+        "player": "Jodie Hutton",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 69,
+        "type": "shot",
+        "team": "home",
+        "player": "Ashleigh Neville",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 69,
+        "type": "save",
+        "team": "away",
+        "player": "Katie McCabe",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 69,
+        "type": "shot",
+        "team": "home",
+        "player": "Leah Davidson",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 69,
+        "type": "save",
+        "team": "away",
+        "player": "Veerle Buurman",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 71,
+        "type": "shot",
+        "team": "away",
+        "player": "Giulia Dragoni",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 71,
+        "type": "save",
+        "team": "home",
+        "player": "Kiera Skeels",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 71,
+        "type": "foul",
+        "team": "away",
+        "player": "Veerle Buurman",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 71,
+        "type": "foul",
+        "team": "away",
+        "player": "Agnes Beever-Jones",
+        "detail": "ทำฟาวล์ (ต้นฉบับระบุ 73')"
+      },
+      {
+        "minute": 73,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Katie Lockwood",
+        "player_out": "Jodie Hutton"
+      },
+      {
+        "minute": 74,
+        "type": "shot",
+        "team": "away",
+        "player": "Alyssa Thompson",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 74,
+        "type": "save",
+        "team": "home",
+        "player": "Anna Koivunen",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 76,
+        "type": "shot",
+        "team": "away",
+        "player": "Giulia Dragoni",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 77,
+        "type": "corner",
+        "team": "home",
+        "player": "Keira Flannery",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 79,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Leigh-Anne Robe",
+        "player_out": "Grace Johnston"
+      },
+      {
+        "minute": 79,
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 81,
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 81,
+        "type": "save",
+        "team": "home",
+        "player": "Keira Flannery",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 81,
+        "type": "shot",
+        "team": "away",
+        "player": "Giulia Dragoni",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 82,
+        "type": "shot",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 82,
+        "type": "save",
+        "team": "home",
+        "player": "Leigh-Anne Robe",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 85,
+        "type": "corner",
+        "team": "home",
+        "player": "Keira Flannery",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 86,
+        "type": "shot",
+        "team": "home",
+        "player": "Ashleigh Neville",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 88,
+        "type": "corner",
+        "team": "away",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 89,
+        "type": "shot",
+        "team": "away",
+        "player": "Veerle Buurman",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 91,
+        "display_minute": "91'",
+        "type": "foul",
+        "team": "away",
+        "player": "Sandy Baltimore",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 91,
+        "display_minute": "91'",
+        "type": "foul",
+        "team": "home",
+        "player": "Leigh-Anne Robe",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 92,
+        "display_minute": "92'",
+        "type": "shot",
+        "team": "away",
+        "player": "Sjoeke Nüsken",
+        "detail": "ยิง"
+      },
+      {
+        "minute": 92,
+        "display_minute": "92'",
+        "type": "save",
+        "team": "home",
+        "player": "Lucy Fitzgerald",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 92,
+        "display_minute": "92'",
+        "type": "corner",
+        "team": "away",
+        "player": "Erin Cuthbert",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 93,
+        "display_minute": "93'",
+        "type": "foul",
+        "team": "home",
+        "player": "Keira Flannery",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 94,
+        "display_minute": "94'",
+        "type": "shot",
+        "team": "away",
+        "player": "Agnes Beever-Jones",
+        "detail": "ยิง"
+      },
+      {
+        "minute": "94+99",
+        "display_minute": "FT",
+        "type": "period",
+        "detail": "จบครึ่งหลัง / จบการแข่งขัน (Full-Time): Charlton Athletic 0–6 Chelsea Women"
+      }
     ],
     "commentary": [
       "เชลซี ทีมหญิง บุกถล่ม ชาร์ลตัน แอธเลติก ขาดลอย 0–6 ถึงสนาม The Valley ในศึก Barclays Women's Super League นัดที่ 8 โดยขึ้นนำถึง 0–4 ตั้งแต่นาทีที่ 19 ของครึ่งแรก",
@@ -17359,47 +18323,290 @@
       "ครึ่งหลังตัวสำรองลงมาสร้างผลงานทันที โดย Agnes Beever-Jones ยิงประตูที่ห้านาทีที่ 57 (แอสซิสต์ Keira Walsh) และ Giulia Dragoni ปิดกล่องนาทีที่ 66 (แอสซิสต์ Alyssa Thompson) พร้อมค่า xG สูงถึง 4.95 และครองบอล 71%"
     ],
     "live_commentary": [
-      { "minute": 94, "display_minute": "FT", "type": "full_time", "text": "จบการแข่งขัน (Full-Time): Charlton Athletic 0–6 Chelsea Women (ครึ่งแรก 0–4)" },
-      { "minute": 94, "display_minute": "94'", "type": "shot", "team": "away", "text": "Agnes Beever-Jones (Chelsea) ได้โอกาสยิงท้ายเกม" },
-      { "minute": 93, "display_minute": "93'", "type": "foul", "team": "home", "text": "Keira Flannery (Charlton Athletic) ทำฟาวล์" },
-      { "minute": 92, "display_minute": "92'", "type": "corner", "team": "away", "text": "Erin Cuthbert (Chelsea) เปิดลูกเตะมุม หลังจังหวะยิงของ Sjoeke Nüsken ถูก Lucy Fitzgerald สกัดเซฟไว้ได้" },
-      { "minute": 91, "display_minute": "91'", "type": "foul", "team": "home", "text": "จังหวะทำฟาวล์ต่อเนื่องของ Sandy Baltimore (Chelsea) และ Leigh-Anne Robe (Charlton Athletic)" },
-      { "minute": 89, "display_minute": "89'", "type": "shot", "team": "away", "text": "Veerle Buurman (Chelsea) เติมขึ้นมาลุ้นยิงประตู หลังลูกเตะมุมของ Katie McCabe ในนาทีที่ 88" },
-      { "minute": 86, "display_minute": "86'", "type": "shot", "team": "home", "text": "Ashleigh Neville (Charlton Athletic) ได้โอกาสยิงต่อเนื่องจากจังหวะเตะมุมของ Keira Flannery (85')" },
-      { "minute": 82, "display_minute": "82'", "type": "save", "team": "home", "text": "Erin Cuthbert (Chelsea) ซัดทำประตูแต่ Leigh-Anne Robe (Charlton Athletic) ช่วยสกัดเซฟไว้ได้" },
-      { "minute": 81, "display_minute": "81'", "type": "corner", "team": "away", "text": "Erin Cuthbert เปิดลูกเตะมุมให้ Chelsea ก่อนที่ Giulia Dragoni จะได้ยิงและ Keira Flannery ช่วยเซฟ" },
-      { "minute": 79, "display_minute": "79'", "type": "substitution", "team": "home", "text": "Charlton Athletic เปลี่ยนตัวผู้เล่น: Leigh-Anne Robe ลงสนามแทน Grace Johnston ก่อนที่ Katie McCabe จะเปิดเตะมุมให้เชลซี" },
-      { "minute": 77, "display_minute": "77'", "type": "corner", "team": "home", "text": "Keira Flannery เปิดลูกเตะมุมให้กับ Charlton Athletic" },
-      { "minute": 76, "display_minute": "76'", "type": "shot", "team": "away", "text": "Giulia Dragoni (Chelsea) ได้จังหวะสับไกลุ้นประตูอีกครั้ง" },
-      { "minute": 74, "display_minute": "74'", "type": "save", "team": "home", "text": "Alyssa Thompson (Chelsea) ได้ยิงเข้ากรอบ แต่ Anna Koivunen ผู้รักษาประตูเจ้าถิ่นเซฟไว้ได้" },
-      { "minute": 73, "display_minute": "73'", "type": "substitution", "team": "home", "text": "Charlton Athletic เปลี่ยนตัวผู้เล่น: Katie Lockwood ลงสนามแทน Jodie Hutton" },
-      { "minute": 71, "display_minute": "71'", "type": "shot", "team": "away", "text": "Giulia Dragoni (Chelsea) ได้โอกาสยิงติดเซฟ Kiera Skeels ก่อนมีจังหวะฟาวล์ของ Veerle Buurman และ Agnes Beever-Jones (ต้นฉบับระบุ 73')" },
-      { "minute": 69, "display_minute": "69'", "type": "save", "team": "away", "text": "แนวรับเชลซีช่วยกันป้องกันลูกยิงของ Ashleigh Neville (เซฟโดย Katie McCabe) และ Leah Davidson (เซฟโดย Veerle Buurman) ต่อเนื่องจากเตะมุมของ Jodie Hutton (68')" },
-      { "minute": 68, "display_minute": "68'", "type": "foul", "team": "home", "text": "Ashleigh Neville (Charlton Athletic) ทำฟาวล์" },
-      { "minute": 66, "display_minute": "66'", "type": "goal", "team": "away", "text": "⚽ GOAL! Charlton Athletic 0–6 Chelsea Women — Giulia Dragoni ยิงประตูที่หกให้ทัพสิงห์บลูส์สาว จากการแอสซิสต์ของ Alyssa Thompson!" },
-      { "minute": 64, "display_minute": "64'", "type": "shot", "team": "away", "text": "Sandy Baltimore (Chelsea) ได้ยิงแต่ Ashleigh Neville ช่วยบล็อกเซฟไว้ได้" },
-      { "minute": 62, "display_minute": "62'", "type": "substitution", "team": "away", "text": "Chelsea ขยับสำรอง 2 รายซ้อน: Alyssa Thompson ลงแทนกัปตันทีม Nathalie Björn และ Maika Hamano ลงแทน Manaka Matsukubo" },
-      { "minute": 61, "display_minute": "61'", "type": "substitution", "team": "away", "text": "Chelsea เปลี่ยนตัวผู้เล่น: Giulia Dragoni ลงสนามแทน Keira Walsh" },
-      { "minute": 60, "display_minute": "60'", "type": "save", "team": "home", "text": "Sandy Baltimore (Chelsea) ได้สับไกยิง แต่ Anna Koivunen พุ่งเซฟช่วยเจ้าบ้านไว้ได้" },
-      { "minute": 59, "display_minute": "59'", "type": "foul", "team": "away", "text": "Manaka Matsukubo (Chelsea) ทำฟาวล์" },
-      { "minute": 58, "display_minute": "58'", "type": "substitution", "team": "home", "text": "Charlton Athletic เปลี่ยนตัว 2 ราย: Lizzie Waldie ลงแทน Ellie Mason และ Lucy Fitzgerald ลงแทน Maria Korhonen" },
-      { "minute": 57, "display_minute": "57'", "type": "goal", "team": "away", "text": "⚽ GOAL! Charlton Athletic 0–5 Chelsea Women — Agnes Beever-Jones ซัดประตูหนีห่างเป็น 0–5 จากการจ่ายแอสซิสต์ของ Keira Walsh!" },
-      { "minute": 52, "display_minute": "52'", "type": "shot", "team": "away", "text": "เชลซีเดินหน้าบุกต่อเนื่อง Erin Cuthbert ยิงติดเซฟ Kiera Skeels และ Agnes Beever-Jones ได้โอกาสยิงซ้ำ" },
-      { "minute": 50, "display_minute": "50'", "type": "yellow_card", "team": "home", "text": "🟨 ใบเหลือง! Jodie Hutton (Charlton Athletic) ได้รับใบเหลืองหลังจังหวะทำฟาวล์" },
-      { "minute": 49, "display_minute": "49'", "type": "shot", "team": "away", "text": "Keira Walsh (Chelsea) ลองส่องไกลต่อเนื่องหลังลูกเตะมุมของ Erin Cuthbert (48')" },
-      { "minute": 46, "display_minute": "46'", "type": "substitution", "team": "away", "text": "เริ่มครึ่งหลังพร้อมการเปลี่ยนตัวทั้งสองฝั่ง: Agnes Beever-Jones ลงแทน Melvine Malard (Chelsea) และ Gillian Kenney ลงแทน Emily van Egmond (Charlton Athletic) ก่อนที่ Manaka Matsukubo จะได้ทักทายด้วยลูกยิงทันที" },
-      { "minute": 45, "display_minute": "HT", "type": "half_time", "text": "จบครึ่งแรก (Half-Time): Charlton Athletic 0–4 Chelsea Women — Anna Koivunen เซฟลูกยิงท้ายครึ่งแรกในนาทีที่ 45" },
-      { "minute": 43, "display_minute": "43'", "type": "corner", "team": "away", "text": "Katie McCabe เปิดลูกเตะมุมให้ Chelsea" },
-      { "minute": 41, "display_minute": "41'", "type": "shot", "team": "home", "text": "เจ้าถิ่นได้ลุ้นบ้างจากจังหวะยิงของ Ellie Mason ที่ถูก Nathalie Björn บล็อกเซฟไว้ ตามด้วยลูกยิงของ Maria Korhonen ในนาทีที่ 42" },
-      { "minute": 35, "display_minute": "35'", "type": "substitution", "team": "away", "text": "Chelsea จำเป็นต้องเปลี่ยนตัวผู้เล่น: Erin Cuthbert ลงสนามแทน Lauren James ที่มีอาการบาดเจ็บ (32') ก่อนที่ Jodie Hutton จะได้ยิงให้เจ้าบ้าน" },
-      { "minute": 25, "display_minute": "25'", "type": "injury", "team": "away", "text": "เกมหยุดชั่วคราวหลัง Sjoeke Nüsken (Chelsea) มีอาการบาดเจ็บ ต่อจากจังหวะที่เจ้าตัวยิงไปติดเซฟ Anna Koivunen ในนาทีที่ 23" },
-      { "minute": 19, "display_minute": "19'", "type": "goal", "team": "away", "text": "⚽ GOAL! Charlton Athletic 0–4 Chelsea Women — Melvine Malard บวกประตูที่สองของตัวเองในเกมนี้ พาเชลซีหนีห่าง 0–4 ท่ามกลางจังหวะบุกกระหน่ำของ Ellie Carpenter และ Melvine Malard ที่แนวรับเจ้าถิ่นและ Anna Koivunen ต้องช่วยกันเซฟอุตลุด!" },
-      { "minute": 13, "display_minute": "13'", "type": "goal", "team": "away", "text": "⚽ GOAL! Charlton Athletic 0–3 Chelsea Women — Ellie Carpenter เติมเกมรุกขึ้นมาซัดประตูที่สามให้เชลซีอย่างเฉียบขาด ก่อนที่ Lauren James และ Manaka Matsukubo (14') จะได้ยิงลุ้นประตูเพิ่ม" },
-      { "minute": 10, "display_minute": "10'", "type": "goal", "team": "away", "text": "⚽ GOAL! Charlton Athletic 0–2 Chelsea Women — Melvine Malard จบสกอร์ขยับสกอร์นำเป็น 0–2 ต่อเนื่องจากจังหวะยิงของ Sjoeke Nüsken ในนาทีที่ 9!" },
-      { "minute": 6, "display_minute": "6'", "type": "shot", "team": "away", "text": "เชลซีกดดันหนักทั้งลูกยิงของ Lauren James (ติดเซฟ Lucia Lobato) และ Keira Walsh (ติดเซฟ Kiera Skeels)" },
-      { "minute": 3, "display_minute": "3'", "type": "goal", "team": "away", "text": "⚽ GOAL! Charlton Athletic 0–1 Chelsea Women — กัปตันทีม Nathalie Björn ส่งบอลซุกก้นตาข่ายให้ทีมเยือนออกนำเร็วตั้งแต่นาทีที่ 3 จากแอสซิสต์ของ Katie McCabe!" },
-      { "minute": 2, "display_minute": "2'", "type": "corner", "team": "away", "text": "เชลซีเปิดฉากบุกทันทีหลัง Keira Flannery ทำฟาวล์ โดย Sandy Baltimore ได้ยิงหลุดกรอบ, Anna Koivunen เซฟ และ Lauren James เปิดลูกเตะมุม" },
-      { "minute": 0, "display_minute": "0'", "type": "kick_off", "text": "เริ่มการแข่งขันศึก Barclays Women's Super League นัดที่ 8 ระหว่าง Charlton Athletic เปิดสนาม The Valley รับการมาเยือนของ Chelsea Women" }
+      {
+        "minute": 94,
+        "display_minute": "FT",
+        "type": "full_time",
+        "text": "จบการแข่งขัน (Full-Time): Charlton Athletic 0–6 Chelsea Women (ครึ่งแรก 0–4)"
+      },
+      {
+        "minute": 94,
+        "display_minute": "94'",
+        "type": "shot",
+        "team": "away",
+        "text": "Agnes Beever-Jones (Chelsea) ได้โอกาสยิงท้ายเกม"
+      },
+      {
+        "minute": 93,
+        "display_minute": "93'",
+        "type": "foul",
+        "team": "home",
+        "text": "Keira Flannery (Charlton Athletic) ทำฟาวล์"
+      },
+      {
+        "minute": 92,
+        "display_minute": "92'",
+        "type": "corner",
+        "team": "away",
+        "text": "Erin Cuthbert (Chelsea) เปิดลูกเตะมุม หลังจังหวะยิงของ Sjoeke Nüsken ถูก Lucy Fitzgerald สกัดเซฟไว้ได้"
+      },
+      {
+        "minute": 91,
+        "display_minute": "91'",
+        "type": "foul",
+        "team": "home",
+        "text": "จังหวะทำฟาวล์ต่อเนื่องของ Sandy Baltimore (Chelsea) และ Leigh-Anne Robe (Charlton Athletic)"
+      },
+      {
+        "minute": 89,
+        "display_minute": "89'",
+        "type": "shot",
+        "team": "away",
+        "text": "Veerle Buurman (Chelsea) เติมขึ้นมาลุ้นยิงประตู หลังลูกเตะมุมของ Katie McCabe ในนาทีที่ 88"
+      },
+      {
+        "minute": 86,
+        "display_minute": "86'",
+        "type": "shot",
+        "team": "home",
+        "text": "Ashleigh Neville (Charlton Athletic) ได้โอกาสยิงต่อเนื่องจากจังหวะเตะมุมของ Keira Flannery (85')"
+      },
+      {
+        "minute": 82,
+        "display_minute": "82'",
+        "type": "save",
+        "team": "home",
+        "text": "Erin Cuthbert (Chelsea) ซัดทำประตูแต่ Leigh-Anne Robe (Charlton Athletic) ช่วยสกัดเซฟไว้ได้"
+      },
+      {
+        "minute": 81,
+        "display_minute": "81'",
+        "type": "corner",
+        "team": "away",
+        "text": "Erin Cuthbert เปิดลูกเตะมุมให้ Chelsea ก่อนที่ Giulia Dragoni จะได้ยิงและ Keira Flannery ช่วยเซฟ"
+      },
+      {
+        "minute": 79,
+        "display_minute": "79'",
+        "type": "substitution",
+        "team": "home",
+        "text": "Charlton Athletic เปลี่ยนตัวผู้เล่น: Leigh-Anne Robe ลงสนามแทน Grace Johnston ก่อนที่ Katie McCabe จะเปิดเตะมุมให้เชลซี"
+      },
+      {
+        "minute": 77,
+        "display_minute": "77'",
+        "type": "corner",
+        "team": "home",
+        "text": "Keira Flannery เปิดลูกเตะมุมให้กับ Charlton Athletic"
+      },
+      {
+        "minute": 76,
+        "display_minute": "76'",
+        "type": "shot",
+        "team": "away",
+        "text": "Giulia Dragoni (Chelsea) ได้จังหวะสับไกลุ้นประตูอีกครั้ง"
+      },
+      {
+        "minute": 74,
+        "display_minute": "74'",
+        "type": "save",
+        "team": "home",
+        "text": "Alyssa Thompson (Chelsea) ได้ยิงเข้ากรอบ แต่ Anna Koivunen ผู้รักษาประตูเจ้าถิ่นเซฟไว้ได้"
+      },
+      {
+        "minute": 73,
+        "display_minute": "73'",
+        "type": "substitution",
+        "team": "home",
+        "text": "Charlton Athletic เปลี่ยนตัวผู้เล่น: Katie Lockwood ลงสนามแทน Jodie Hutton"
+      },
+      {
+        "minute": 71,
+        "display_minute": "71'",
+        "type": "shot",
+        "team": "away",
+        "text": "Giulia Dragoni (Chelsea) ได้โอกาสยิงติดเซฟ Kiera Skeels ก่อนมีจังหวะฟาวล์ของ Veerle Buurman และ Agnes Beever-Jones (ต้นฉบับระบุ 73')"
+      },
+      {
+        "minute": 69,
+        "display_minute": "69'",
+        "type": "save",
+        "team": "away",
+        "text": "แนวรับเชลซีช่วยกันป้องกันลูกยิงของ Ashleigh Neville (เซฟโดย Katie McCabe) และ Leah Davidson (เซฟโดย Veerle Buurman) ต่อเนื่องจากเตะมุมของ Jodie Hutton (68')"
+      },
+      {
+        "minute": 68,
+        "display_minute": "68'",
+        "type": "foul",
+        "team": "home",
+        "text": "Ashleigh Neville (Charlton Athletic) ทำฟาวล์"
+      },
+      {
+        "minute": 66,
+        "display_minute": "66'",
+        "type": "goal",
+        "team": "away",
+        "text": "⚽ GOAL! Charlton Athletic 0–6 Chelsea Women — Giulia Dragoni ยิงประตูที่หกให้ทัพสิงห์บลูส์สาว จากการแอสซิสต์ของ Alyssa Thompson!"
+      },
+      {
+        "minute": 64,
+        "display_minute": "64'",
+        "type": "shot",
+        "team": "away",
+        "text": "Sandy Baltimore (Chelsea) ได้ยิงแต่ Ashleigh Neville ช่วยบล็อกเซฟไว้ได้"
+      },
+      {
+        "minute": 62,
+        "display_minute": "62'",
+        "type": "substitution",
+        "team": "away",
+        "text": "Chelsea ขยับสำรอง 2 รายซ้อน: Alyssa Thompson ลงแทนกัปตันทีม Nathalie Björn และ Maika Hamano ลงแทน Manaka Matsukubo"
+      },
+      {
+        "minute": 61,
+        "display_minute": "61'",
+        "type": "substitution",
+        "team": "away",
+        "text": "Chelsea เปลี่ยนตัวผู้เล่น: Giulia Dragoni ลงสนามแทน Keira Walsh"
+      },
+      {
+        "minute": 60,
+        "display_minute": "60'",
+        "type": "save",
+        "team": "home",
+        "text": "Sandy Baltimore (Chelsea) ได้สับไกยิง แต่ Anna Koivunen พุ่งเซฟช่วยเจ้าบ้านไว้ได้"
+      },
+      {
+        "minute": 59,
+        "display_minute": "59'",
+        "type": "foul",
+        "team": "away",
+        "text": "Manaka Matsukubo (Chelsea) ทำฟาวล์"
+      },
+      {
+        "minute": 58,
+        "display_minute": "58'",
+        "type": "substitution",
+        "team": "home",
+        "text": "Charlton Athletic เปลี่ยนตัว 2 ราย: Lizzie Waldie ลงแทน Ellie Mason และ Lucy Fitzgerald ลงแทน Maria Korhonen"
+      },
+      {
+        "minute": 57,
+        "display_minute": "57'",
+        "type": "goal",
+        "team": "away",
+        "text": "⚽ GOAL! Charlton Athletic 0–5 Chelsea Women — Agnes Beever-Jones ซัดประตูหนีห่างเป็น 0–5 จากการจ่ายแอสซิสต์ของ Keira Walsh!"
+      },
+      {
+        "minute": 52,
+        "display_minute": "52'",
+        "type": "shot",
+        "team": "away",
+        "text": "เชลซีเดินหน้าบุกต่อเนื่อง Erin Cuthbert ยิงติดเซฟ Kiera Skeels และ Agnes Beever-Jones ได้โอกาสยิงซ้ำ"
+      },
+      {
+        "minute": 50,
+        "display_minute": "50'",
+        "type": "yellow_card",
+        "team": "home",
+        "text": "🟨 ใบเหลือง! Jodie Hutton (Charlton Athletic) ได้รับใบเหลืองหลังจังหวะทำฟาวล์"
+      },
+      {
+        "minute": 49,
+        "display_minute": "49'",
+        "type": "shot",
+        "team": "away",
+        "text": "Keira Walsh (Chelsea) ลองส่องไกลต่อเนื่องหลังลูกเตะมุมของ Erin Cuthbert (48')"
+      },
+      {
+        "minute": 46,
+        "display_minute": "46'",
+        "type": "substitution",
+        "team": "away",
+        "text": "เริ่มครึ่งหลังพร้อมการเปลี่ยนตัวทั้งสองฝั่ง: Agnes Beever-Jones ลงแทน Melvine Malard (Chelsea) และ Gillian Kenney ลงแทน Emily van Egmond (Charlton Athletic) ก่อนที่ Manaka Matsukubo จะได้ทักทายด้วยลูกยิงทันที"
+      },
+      {
+        "minute": 45,
+        "display_minute": "HT",
+        "type": "half_time",
+        "text": "จบครึ่งแรก (Half-Time): Charlton Athletic 0–4 Chelsea Women — Anna Koivunen เซฟลูกยิงท้ายครึ่งแรกในนาทีที่ 45"
+      },
+      {
+        "minute": 43,
+        "display_minute": "43'",
+        "type": "corner",
+        "team": "away",
+        "text": "Katie McCabe เปิดลูกเตะมุมให้ Chelsea"
+      },
+      {
+        "minute": 41,
+        "display_minute": "41'",
+        "type": "shot",
+        "team": "home",
+        "text": "เจ้าถิ่นได้ลุ้นบ้างจากจังหวะยิงของ Ellie Mason ที่ถูก Nathalie Björn บล็อกเซฟไว้ ตามด้วยลูกยิงของ Maria Korhonen ในนาทีที่ 42"
+      },
+      {
+        "minute": 35,
+        "display_minute": "35'",
+        "type": "substitution",
+        "team": "away",
+        "text": "Chelsea จำเป็นต้องเปลี่ยนตัวผู้เล่น: Erin Cuthbert ลงสนามแทน Lauren James ที่มีอาการบาดเจ็บ (32') ก่อนที่ Jodie Hutton จะได้ยิงให้เจ้าบ้าน"
+      },
+      {
+        "minute": 25,
+        "display_minute": "25'",
+        "type": "injury",
+        "team": "away",
+        "text": "เกมหยุดชั่วคราวหลัง Sjoeke Nüsken (Chelsea) มีอาการบาดเจ็บ ต่อจากจังหวะที่เจ้าตัวยิงไปติดเซฟ Anna Koivunen ในนาทีที่ 23"
+      },
+      {
+        "minute": 19,
+        "display_minute": "19'",
+        "type": "goal",
+        "team": "away",
+        "text": "⚽ GOAL! Charlton Athletic 0–4 Chelsea Women — Melvine Malard บวกประตูที่สองของตัวเองในเกมนี้ พาเชลซีหนีห่าง 0–4 ท่ามกลางจังหวะบุกกระหน่ำของ Ellie Carpenter และ Melvine Malard ที่แนวรับเจ้าถิ่นและ Anna Koivunen ต้องช่วยกันเซฟอุตลุด!"
+      },
+      {
+        "minute": 13,
+        "display_minute": "13'",
+        "type": "goal",
+        "team": "away",
+        "text": "⚽ GOAL! Charlton Athletic 0–3 Chelsea Women — Ellie Carpenter เติมเกมรุกขึ้นมาซัดประตูที่สามให้เชลซีอย่างเฉียบขาด ก่อนที่ Lauren James และ Manaka Matsukubo (14') จะได้ยิงลุ้นประตูเพิ่ม"
+      },
+      {
+        "minute": 10,
+        "display_minute": "10'",
+        "type": "goal",
+        "team": "away",
+        "text": "⚽ GOAL! Charlton Athletic 0–2 Chelsea Women — Melvine Malard จบสกอร์ขยับสกอร์นำเป็น 0–2 ต่อเนื่องจากจังหวะยิงของ Sjoeke Nüsken ในนาทีที่ 9!"
+      },
+      {
+        "minute": 6,
+        "display_minute": "6'",
+        "type": "shot",
+        "team": "away",
+        "text": "เชลซีกดดันหนักทั้งลูกยิงของ Lauren James (ติดเซฟ Lucia Lobato) และ Keira Walsh (ติดเซฟ Kiera Skeels)"
+      },
+      {
+        "minute": 3,
+        "display_minute": "3'",
+        "type": "goal",
+        "team": "away",
+        "text": "⚽ GOAL! Charlton Athletic 0–1 Chelsea Women — กัปตันทีม Nathalie Björn ส่งบอลซุกก้นตาข่ายให้ทีมเยือนออกนำเร็วตั้งแต่นาทีที่ 3 จากแอสซิสต์ของ Katie McCabe!"
+      },
+      {
+        "minute": 2,
+        "display_minute": "2'",
+        "type": "corner",
+        "team": "away",
+        "text": "เชลซีเปิดฉากบุกทันทีหลัง Keira Flannery ทำฟาวล์ โดย Sandy Baltimore ได้ยิงหลุดกรอบ, Anna Koivunen เซฟ และ Lauren James เปิดลูกเตะมุม"
+      },
+      {
+        "minute": 0,
+        "display_minute": "0'",
+        "type": "kick_off",
+        "text": "เริ่มการแข่งขันศึก Barclays Women's Super League นัดที่ 8 ระหว่าง Charlton Athletic เปิดสนาม The Valley รับการมาเยือนของ Chelsea Women"
+      }
     ],
     "youtube_id": "9VrLcXlg2oY",
     "highlight": "https://youtu.be/9VrLcXlg2oY?si=crd9xqnzZxrlSoid",
@@ -17426,39 +18633,1096 @@
   {
     "id": "w11",
     "date": "2026-11-07",
-    "time": "19:30",
-    "time_th": "19:30",
-    "time_uk": "12:30",
+    "time": "19:45",
+    "time_th": "19:45",
+    "time_uk": "12:45",
     "competition": "Barclays Women's Super League",
     "competition_logo": "databases/logo/competitions/women/women_super_league.png",
     "home_team": "Chelsea Women",
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "Everton",
     "away_logo": "databases/logo/teams/england_everton.svg",
-    "venue": "Kingsmeadow, Kingston upon Thames",
+    "venue": "Stamford Bridge, London",
     "ha": "H",
     "channels": [
       {
-        "platform": "CFC+",
-        "name": "CFC+ Live",
-        "logo": "databases/logo/tv/cfc.png"
+        "platform": "beIN",
+        "name": "beIN SPORTS",
+        "logo": "databases/logo/tv/bein_sports.svg"
       }
     ],
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
-    "goals": [],
-    "events": [],
+    "status": "completed",
+    "home_score": 1,
+    "away_score": 1,
+    "goals": [
+      {
+        "team": "home",
+        "player": "Sandy Baltimore",
+        "minute": 28,
+        "detail": "Goal",
+        "score_after": "1-0",
+        "note": "ก่อนหน้านี้ที่ 27' K. McCabe เป็นผู้เตะมุม"
+      },
+      {
+        "team": "away",
+        "player": "Lucy Bronze",
+        "minute": 33,
+        "detail": "Own Goal",
+        "own_goal": true,
+        "score_after": "1-1",
+        "note": "ทำเข้าประตูตัวเอง ได้ประตูให้ Everton"
+      }
+    ],
+    "events": [
+      {
+        "minute": 0,
+        "display_minute": "0'",
+        "type": "kick_off",
+        "detail": "เริ่มการแข่งขันครึ่งแรก (KICK-OFF: Chelsea v Everton)"
+      },
+      {
+        "minute": 3,
+        "type": "corner",
+        "team": "home",
+        "player": "Erin Cuthbert",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 5,
+        "type": "foul",
+        "team": "home",
+        "player": "Keira Walsh",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 6,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 6,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 8,
+        "type": "shot",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 8,
+        "type": "save",
+        "team": "away",
+        "player": "Ruby Mace",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 10,
+        "type": "foul",
+        "team": "away",
+        "player": "Romee van Gool",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 13,
+        "type": "foul",
+        "team": "away",
+        "player": "Naomi Layzell",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 13,
+        "type": "shot",
+        "team": "home",
+        "player": "Ellie Carpenter",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 13,
+        "type": "save",
+        "team": "away",
+        "player": "Rion Ishikawa",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 13,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 17,
+        "type": "corner",
+        "team": "home",
+        "player": "Erin Cuthbert",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 17,
+        "type": "shot",
+        "team": "home",
+        "player": "Sandy Baltimore",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 17,
+        "type": "save",
+        "team": "away",
+        "player": "Hannah Blundell",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 20,
+        "type": "foul",
+        "team": "home",
+        "player": "Erin Cuthbert",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 22,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 25,
+        "type": "foul",
+        "team": "home",
+        "player": "Manaka Matsukubo",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 26,
+        "type": "shot",
+        "team": "home",
+        "player": "Wieke Kaptein",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 26,
+        "type": "shot",
+        "team": "home",
+        "player": "Erin Cuthbert",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 26,
+        "type": "save",
+        "team": "away",
+        "player": "Hannah Blundell",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 27,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 28,
+        "type": "goal",
+        "team": "home",
+        "player": "Sandy Baltimore",
+        "detail": "Goal",
+        "note": "ก่อนหน้านี้ที่ 27' K. McCabe เป็นผู้เตะมุม"
+      },
+      {
+        "minute": 33,
+        "type": "own_goal",
+        "team": "away",
+        "player": "Lucy Bronze",
+        "detail": "Own Goal",
+        "own_goal": true,
+        "note": "ทำเข้าประตูตัวเอง ได้ประตูให้ Everton"
+      },
+      {
+        "minute": 35,
+        "type": "shot",
+        "team": "home",
+        "player": "Melvine Malard",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 35,
+        "type": "save",
+        "team": "away",
+        "player": "Courtney Brosnan",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 37,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 39,
+        "type": "shot",
+        "team": "home",
+        "player": "Melvine Malard",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 40,
+        "type": "foul",
+        "team": "away",
+        "player": "Ornella Vignola",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 40,
+        "type": "foul",
+        "team": "away",
+        "player": "Ruby Mace",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 41,
+        "type": "shot",
+        "team": "home",
+        "player": "Melvine Malard",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 41,
+        "type": "save",
+        "team": "away",
+        "player": "Courtney Brosnan",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 44,
+        "type": "shot",
+        "team": "home",
+        "player": "Manaka Matsukubo",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 44,
+        "type": "save",
+        "team": "away",
+        "player": "Courtney Brosnan",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 45,
+        "added_minute": 2,
+        "display_minute": "45+2'",
+        "type": "shot",
+        "team": "away",
+        "player": "Yuka Momiki",
+        "detail": "โอกาสยิง (ทดเวลาบาดเจ็บครึ่งแรก)"
+      },
+      {
+        "minute": 45,
+        "display_minute": "HT",
+        "type": "period",
+        "detail": "จบครึ่งแรก (HALF-TIME: Chelsea 1-1 Everton)"
+      },
+      {
+        "minute": 46,
+        "display_minute": "46'",
+        "type": "period",
+        "detail": "เริ่มครึ่งหลัง (SECOND HALF: Chelsea 1-1 Everton)"
+      },
+      {
+        "minute": 46,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Lexi Potter",
+        "player_out": "Manaka Matsukubo",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 55,
+        "type": "shot",
+        "team": "away",
+        "player": "Mayra Pacheco",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 55,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Sjoeke Nüsken",
+        "player_out": "Wieke Kaptein",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 55,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Alyssa Thompson",
+        "player_out": "Sandy Baltimore",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 57,
+        "type": "foul",
+        "team": "away",
+        "player": "Hikaru Kitagawa",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 58,
+        "type": "shot",
+        "team": "home",
+        "player": "Kadeisha Buchanan",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 58,
+        "type": "shot",
+        "team": "home",
+        "player": "Keira Walsh",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 58,
+        "type": "save",
+        "team": "away",
+        "player": "Ruby Mace",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 59,
+        "type": "foul",
+        "team": "home",
+        "player": "Lexi Potter",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 60,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 62,
+        "type": "foul",
+        "team": "away",
+        "player": "Romee van Gool",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 63,
+        "type": "foul",
+        "team": "home",
+        "player": "Kadeisha Buchanan",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 64,
+        "type": "injury",
+        "team": "away",
+        "player": "Ornella Vignola",
+        "detail": "ได้รับบาดเจ็บ"
+      },
+      {
+        "minute": 66,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 69,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 72,
+        "type": "shot",
+        "team": "away",
+        "player": "Ornella Vignola",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 74,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Aggie Beever-Jones",
+        "player_out": "Erin Cuthbert",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 75,
+        "type": "foul",
+        "team": "away",
+        "player": "Mayra Pacheco",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 76,
+        "type": "shot",
+        "team": "home",
+        "player": "Keira Walsh",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 76,
+        "type": "save",
+        "team": "away",
+        "player": "Courtney Brosnan",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 79,
+        "type": "foul",
+        "team": "away",
+        "player": "Ornella Vignola",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 80,
+        "type": "shot",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 80,
+        "type": "shot",
+        "team": "home",
+        "player": "Lucy Bronze",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 80,
+        "type": "shot",
+        "team": "home",
+        "player": "Sjoeke Nüsken",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 80,
+        "type": "save",
+        "team": "away",
+        "player": "Naomi Layzell",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 80,
+        "type": "save",
+        "team": "away",
+        "player": "Courtney Brosnan",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 82,
+        "type": "foul",
+        "team": "home",
+        "player": "Alyssa Thompson",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 84,
+        "type": "substitution",
+        "team": "home",
+        "player_in": "Giulia Dragoni",
+        "player_out": "Melvine Malard",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 84,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Noémie Mouchon",
+        "player_out": "Yuka Momiki",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 85,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 88,
+        "type": "foul",
+        "team": "away",
+        "player": "Hannah Blundell",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 88,
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Hannah Blundell",
+        "detail": "ใบเหลือง"
+      },
+      {
+        "minute": 89,
+        "type": "shot",
+        "team": "home",
+        "player": "Keira Walsh",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 89,
+        "type": "save",
+        "team": "away",
+        "player": "Courtney Brosnan",
+        "detail": "เซฟ"
+      },
+      {
+        "minute": 90,
+        "type": "foul",
+        "team": "away",
+        "player": "Ruby Mace",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 90,
+        "type": "yellow_card",
+        "team": "away",
+        "player": "Ruby Mace",
+        "detail": "ใบเหลือง"
+      },
+      {
+        "minute": 90,
+        "type": "substitution",
+        "team": "away",
+        "player_in": "Aurora Galli",
+        "player_out": "Romee van Gool",
+        "detail": "เปลี่ยนตัว"
+      },
+      {
+        "minute": 91,
+        "type": "corner",
+        "team": "home",
+        "player": "Katie McCabe",
+        "detail": "เตะมุม"
+      },
+      {
+        "minute": 92,
+        "type": "shot",
+        "team": "home",
+        "player": "Lucy Bronze",
+        "detail": "โอกาสยิง"
+      },
+      {
+        "minute": 92,
+        "type": "save",
+        "team": "away",
+        "player": "Naomi Layzell",
+        "detail": "เซฟ (บล็อกลูกยิง)"
+      },
+      {
+        "minute": 94,
+        "type": "foul",
+        "team": "home",
+        "player": "Lucy Bronze",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 95,
+        "type": "foul",
+        "team": "home",
+        "player": "Keira Walsh",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "minute": 95,
+        "display_minute": "FT",
+        "type": "period",
+        "detail": "จบการแข่งขัน (The second half ends / FULL-TIME: Chelsea 1-1 Everton)"
+      }
+    ],
     "competition_name": "Barclays Women's Super League",
     "team_type": "W",
-    "xg": null,
-    "xga": null,
-    "poss": null,
-    "attendance": null,
-    "captain": null,
-    "formation": null,
-    "referee": null,
-    "round": "Matchweek 9"
+    "xg": 1.95,
+    "xga": 0.38,
+    "poss": 65,
+    "attendance": 4185,
+    "captain": "Lucy Bronze",
+    "formation": "3-4-3",
+    "referee": "Lisa Benn",
+    "round": "Matchweek 9",
+    "competition_short": "WSL",
+    "matchday": 9,
+    "period": "FullTime",
+    "clock": "90+5'",
+    "home_half_score": 1,
+    "away_half_score": 1,
+    "lineups": {
+      "home": {
+        "team_name": "Chelsea Women",
+        "formation": "3-4-3",
+        "stats_formation": "4-3-3",
+        "manager": "Sonia Bompastor",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "Back three (left)"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "Back three (centre)"
+          },
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "Back three (right)",
+            "captain": true,
+            "isCaptain": true
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": "Wing-back/Midfield (right)"
+          },
+          {
+            "number": 8,
+            "name": "Erin Cuthbert",
+            "position": "Central midfield",
+            "sub_status": "OUT",
+            "sub_minute": 74
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": "Central midfield"
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "Wing-back/Midfield (left)",
+            "sub_status": "OUT",
+            "sub_minute": 55
+          },
+          {
+            "number": 29,
+            "name": "Manaka Matsukubo",
+            "position": "Forward (left)",
+            "sub_status": "OUT",
+            "sub_minute": 46
+          },
+          {
+            "number": 9,
+            "name": "Melvine Malard",
+            "position": "Forward (centre)",
+            "sub_status": "OUT",
+            "sub_minute": 84
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "Forward (right)",
+            "sub_status": "OUT",
+            "sub_minute": 55
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "Defender",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "Midfielder",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF",
+            "sub_status": "IN",
+            "sub_minute": 55,
+            "minute_in": 55
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "Forward",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW",
+            "sub_status": "IN",
+            "sub_minute": 55,
+            "minute_in": 55
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn",
+            "position": "Defender",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "Midfielder",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF",
+            "sub_status": "IN",
+            "sub_minute": 84,
+            "minute_in": 84
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "Forward",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 32,
+            "name": "Lexi Potter",
+            "position": "Midfielder",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF",
+            "sub_status": "IN",
+            "sub_minute": 46,
+            "minute_in": 46
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones",
+            "position": "Forward",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW",
+            "sub_status": "IN",
+            "sub_minute": 74,
+            "minute_in": 74
+          }
+        ]
+      },
+      "away": {
+        "team_name": "Everton",
+        "formation": "4-2-3-1",
+        "stats_formation": "4-4-2",
+        "manager": "Scott Phelan",
+        "starting": [
+          {
+            "number": 1,
+            "name": "Courtney Brosnan",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 13,
+            "name": "Hikaru Kitagawa",
+            "position": "Defender (right)"
+          },
+          {
+            "number": 3,
+            "name": "Rion Ishikawa",
+            "position": "Defender"
+          },
+          {
+            "number": 5,
+            "name": "Naomi Layzell",
+            "position": "Defender"
+          },
+          {
+            "number": 2,
+            "name": "Hannah Blundell",
+            "position": "Defender (left)"
+          },
+          {
+            "number": 30,
+            "name": "Ruby Mace",
+            "position": "Defensive midfield"
+          },
+          {
+            "number": 7,
+            "name": "Clare Wheeler",
+            "position": "Defensive midfield"
+          },
+          {
+            "number": 33,
+            "name": "Mayra Pacheco",
+            "position": "Attacking midfield (right)"
+          },
+          {
+            "number": 8,
+            "name": "Romee van Gool",
+            "position": "Attacking midfield (centre)",
+            "sub_status": "OUT",
+            "sub_minute": 90
+          },
+          {
+            "number": 29,
+            "name": "Yuka Momiki",
+            "position": "Attacking midfield (left)",
+            "sub_status": "OUT",
+            "sub_minute": 84
+          },
+          {
+            "number": 18,
+            "name": "Ornella Vignola",
+            "position": "Striker"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 24,
+            "name": "Rylee Foster",
+            "position": "GK",
+            "pos": "GK"
+          },
+          {
+            "number": 11,
+            "name": "Hannah Cain",
+            "position": "Forward",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 15,
+            "name": "Jutta Rantala",
+            "position": "Forward",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW"
+          },
+          {
+            "number": 17,
+            "name": "Noémie Mouchon",
+            "position": "Forward",
+            "sub_pos_th": "หน้า",
+            "sub_pos_en": "FW",
+            "sub_status": "IN",
+            "sub_minute": 84,
+            "minute_in": 84
+          },
+          {
+            "number": 20,
+            "name": "Megan Finnigan",
+            "position": "Defender",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          },
+          {
+            "number": 22,
+            "name": "Aurora Galli",
+            "position": "Midfielder",
+            "sub_pos_th": "กลาง",
+            "sub_pos_en": "MF",
+            "sub_status": "IN",
+            "sub_minute": 90,
+            "minute_in": 90
+          },
+          {
+            "number": 25,
+            "name": "Hannah Silcock",
+            "position": "Defender",
+            "sub_pos_th": "หลัง",
+            "sub_pos_en": "DF"
+          }
+        ]
+      },
+      "officials": [
+        {
+          "role": "Referee",
+          "name": "Lisa Benn"
+        }
+      ]
+    },
+    "stats": [
+      {
+        "label": "เปอร์เซ็นต์การครองบอล",
+        "label_en": "Possession",
+        "home": 65,
+        "away": 35,
+        "isPercentage": true
+      },
+      {
+        "label": "ความแม่นยำในการส่งบอล",
+        "label_en": "Pass Accuracy",
+        "home": 83,
+        "away": 70,
+        "isPercentage": true
+      },
+      {
+        "label": "โอกาสทอง",
+        "label_en": "Big Chances",
+        "home": 3,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "label": "ยิงเข้ากรอบ",
+        "label_en": "Shots on Goal",
+        "home": 8,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "label": "การยิงที่ถูกบล็อก",
+        "label_en": "Blocked Shots",
+        "home": 6,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "label": "ลูกเตะมุม",
+        "label_en": "Corner Kicks",
+        "home": 13,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "label": "ล้ำหน้า",
+        "label_en": "Offsides",
+        "home": 10,
+        "away": 1,
+        "isPercentage": false
+      },
+      {
+        "label": "ดวลชนะ",
+        "label_en": "Duels Won",
+        "home": 42,
+        "away": 48,
+        "isPercentage": false
+      },
+      {
+        "label": "การทำฟาวล์",
+        "label_en": "Fouls",
+        "home": 8,
+        "away": 10,
+        "isPercentage": false
+      },
+      {
+        "label": "ใบเหลือง",
+        "label_en": "Yellow Cards",
+        "home": 0,
+        "away": 2,
+        "isPercentage": false
+      },
+      {
+        "label": "ใบแดง",
+        "label_en": "Red Cards",
+        "home": 0,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "label": "ความพยายามในการส่งบอล",
+        "label_en": "Pass Attempts",
+        "home": 552,
+        "away": 305,
+        "isPercentage": false
+      },
+      {
+        "label": "ประตูที่ทำได้",
+        "label_en": "Goals Scored",
+        "home": 1,
+        "away": 1,
+        "isPercentage": false
+      }
+    ],
+    "commentary": {
+      "summary": "เชลซี วีเมน เปิดบ้านเสมอกับ เอฟเวอร์ตัน 1-1 ที่ Stamford Bridge โดย Sandy Baltimore ยิงให้เจ้าถิ่นขึ้นนำในนาทีที่ 28 ก่อนที่ Everton จะตีเสมอจากการทำเข้าประตูตัวเองของ Lucy Bronze ในนาทีที่ 33",
+      "takeaways": [
+        "Sandy Baltimore ยิงประตูให้ Chelsea ขึ้นนำ 1-0 ในนาทีที่ 28",
+        "Everton ได้ประตูตีเสมอ 1-1 จากการทำเข้าประตูตัวเองของ Lucy Bronze ในนาทีที่ 33",
+        "Chelsea โหมบุกหนักมีโอกาสยิงตรงกรอบ 8 ครั้ง และได้ลูกเตะมุมถึง 13 ครั้ง",
+        "Everton รับใบเหลือง 2 ใบ ได้แก่ Hannah Blundell (88') และ Ruby Mace (90')",
+        "การครองบอล Chelsea เหนือกว่าที่ 65% ต่อ 35%"
+      ]
+    },
+    "live_commentary": [
+      {
+        "id": 1,
+        "time": "0'",
+        "type": "kick_off",
+        "text": "เริ่มการแข่งขันครึ่งแรก (KICK-OFF: Chelsea v Everton)",
+        "team": null,
+        "isKey": true
+      },
+      {
+        "id": 2,
+        "time": "28'",
+        "type": "goal",
+        "text": "GOAL! เชลซี ขึ้นนำ 1-0 จากลูกยิงของ Sandy Baltimore",
+        "team": "home",
+        "isKey": true
+      },
+      {
+        "id": 3,
+        "time": "33'",
+        "type": "own_goal",
+        "text": "OWN GOAL! เอฟเวอร์ตัน ตีเสมอ 1-1 จากการทำเข้าประตูตัวเองของ Lucy Bronze",
+        "team": "away",
+        "isKey": true
+      },
+      {
+        "id": 4,
+        "time": "45+2'",
+        "type": "period",
+        "text": "หมดเวลาการแข่งขันครึ่งแรก: Chelsea Women 1-1 Everton",
+        "team": null,
+        "isKey": false
+      },
+      {
+        "id": 5,
+        "time": "46'",
+        "type": "period",
+        "text": "เริ่มการแข่งขันครึ่งหลัง",
+        "team": null,
+        "isKey": false
+      },
+      {
+        "id": 6,
+        "time": "64'",
+        "type": "injury",
+        "text": "Ornella Vignola ได้รับบาดเจ็บ ต้องได้รับการปฐมพยาบาล",
+        "team": "away",
+        "isKey": false
+      },
+      {
+        "id": 7,
+        "time": "88'",
+        "type": "card",
+        "text": "ใบเหลือง! Hannah Blundell (Everton) ได้รับใบเหลืองจากการทำฟาวล์",
+        "team": "away",
+        "isKey": true
+      },
+      {
+        "id": 8,
+        "time": "90'",
+        "type": "card",
+        "text": "ใบเหลือง! Ruby Mace (Everton) ได้รับใบเหลือง",
+        "team": "away",
+        "isKey": true
+      },
+      {
+        "id": 9,
+        "time": "90+5'",
+        "type": "period",
+        "text": "จบการแข่งขัน: Chelsea Women 1-1 Everton",
+        "team": null,
+        "isKey": true
+      }
+    ]
   },
   {
     "id": "w12",
