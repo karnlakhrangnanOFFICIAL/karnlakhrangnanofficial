@@ -66,6 +66,15 @@
             >
               STATUS
             </div>
+            <a
+              id="playerLegendBadge"
+              href="icon/Guro-Reiten.html"
+              class="player-hero-badge"
+              style="display: none; background: linear-gradient(135deg, #d97706, #b45309); color: #fff; text-decoration: none; align-items: center; gap: 5px; cursor: pointer;"
+            >
+              <span>🌟</span>
+              <span id="playerLegendBadgeText">ตำนานสโมสร (Club Legend)</span>
+            </a>
           </div>
           <h1 id="playerName" data-i18n="common.loading">กำลังโหลด...</h1>
           <div class="player-meta">
@@ -81,10 +90,16 @@
     <main class="main-container player-profile-main">
       <div style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
         <a href="men-team.html" id="playerBackLink" class="back-link">← กลับหน้าทีม</a>
-        <a href="player-card.html" id="playerCardLink" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--accent-color, #38bdf8); color: var(--accent-light, #38bdf8); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-          <span>🎴</span>
-          <span data-i18n="player.view_card">การ์ดนักเตะ (Collectible Card)</span>
-        </a>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a href="player-card.html" id="playerCardLink" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--accent-color, #38bdf8); color: var(--accent-light, #38bdf8); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+            <span>🎴</span>
+            <span data-i18n="player.view_card">การ์ดนักเตะ (Collectible Card)</span>
+          </a>
+          <a href="icon/Guro-Reiten.html" id="playerIconLink" class="btn btn-outline" style="display: none; font-size: 0.82rem; padding: 6px 14px; border-radius: 20px; border: 1px solid #ecc94b; color: #ecc94b; text-decoration: none; align-items: center; gap: 6px; background: rgba(236,201,75,0.12);">
+            <span>🌟</span>
+            <span id="playerIconLinkText">ประวัติตำนานสโมสร (Club Legend Story)</span>
+          </a>
+        </div>
       </div>
 
       <div class="profile-grid">

@@ -1975,6 +1975,35 @@ async function initPlayerProfile() {
       cardLink.href = `player-card.html?id=${player.id}`;
     }
 
+    const iconLink = player.icon_link || (player.id === 35 ? "icon/Guro-Reiten.html" : null);
+    const legendBadge = document.getElementById("playerLegendBadge");
+    if (legendBadge) {
+      if (iconLink) {
+        legendBadge.href = iconLink;
+        legendBadge.style.display = "inline-flex";
+        const legendBadgeText = document.getElementById("playerLegendBadgeText");
+        if (legendBadgeText) {
+          legendBadgeText.textContent = isTh ? "ตำนานสโมสร (Club Legend)" : "Club Legend";
+        }
+      } else {
+        legendBadge.style.display = "none";
+      }
+    }
+
+    const iconBtn = document.getElementById("playerIconLink");
+    if (iconBtn) {
+      if (iconLink) {
+        iconBtn.href = iconLink;
+        iconBtn.style.display = "inline-flex";
+        const iconBtnText = document.getElementById("playerIconLinkText");
+        if (iconBtnText) {
+          iconBtnText.textContent = isTh ? "ประวัติตำนานสโมสร (Club Legend Story) →" : "Club Legend Story →";
+        }
+      } else {
+        iconBtn.style.display = "none";
+      }
+    }
+
     const teamTitleText = isMen
       ? isTh
         ? "ทีมชาย"
@@ -2206,6 +2235,39 @@ async function initPlayerProfile() {
     } else {
       document.getElementById("playerBio").innerHTML =
         `<p>${isTh ? "ไม่มีข้อมูลชีวประวัติ" : "No biography available."}</p>`;
+    }
+
+    if (iconLink) {
+      const bioEl = document.getElementById("playerBio");
+      if (bioEl) {
+        const legendCallout = document.createElement("div");
+        legendCallout.className = "legend-callout";
+        legendCallout.style.marginTop = "1.25rem";
+        legendCallout.style.padding = "14px 18px";
+        legendCallout.style.borderRadius = "10px";
+        legendCallout.style.background = "linear-gradient(135deg, rgba(236,201,75,0.12), rgba(217,119,6,0.18))";
+        legendCallout.style.border = "1px solid rgba(236,201,75,0.45)";
+        legendCallout.style.display = "flex";
+        legendCallout.style.alignItems = "center";
+        legendCallout.style.justifyContent = "space-between";
+        legendCallout.style.flexWrap = "wrap";
+        legendCallout.style.gap = "10px";
+        legendCallout.innerHTML = `
+          <div>
+            <div style="font-weight: 700; color: #ecc94b; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
+              <span>🌟</span>
+              <span>${isTh ? "บทความทำเนียบตำนานสโมสรเชลซี (Club Legend)" : "Chelsea FC Women Legend Profile"}</span>
+            </div>
+            <p style="margin: 4px 0 0; font-size: 0.86rem; color: var(--text-secondary, #cbd5e1); line-height: 1.4;">
+              ${isTh ? "อ่านประวัติฉบับเต็ม 5 ช่วงเวลาแห่งความทรงจำกับสโมสร และทำเนียบแชมป์ 6.5 ฤดูกาล" : "Read the comprehensive biography, 5 iconic moments, and all honours across 6.5 seasons."}
+            </p>
+          </div>
+          <a href="${iconLink}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 15px; border-radius: 6px; background: #ecc94b; color: #001433; font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+            <span>${isTh ? "อ่านบทความตำนาน →" : "Read Legend Story →"}</span>
+          </a>
+        `;
+        bioEl.appendChild(legendCallout);
+      }
     }
 
     // Social

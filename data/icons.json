@@ -500,6 +500,8 @@
     "nationality": "norway",
     "image": "icon/profile/guro_reiten.png",
     "link": "icon/Guro-Reiten.html",
-    "team_type": "women"
+    "team_type": "women",
+    "profile_id": 35,
+    "profile_url": "player-profile.html?id=35&team=women"
   }
 ]

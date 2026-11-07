@@ -1496,8 +1496,10 @@ async function loadPlayersAvatarMap() {
     buchanan: "assets/images/players/women/kadeisha-buchanan.jpg",
     "nathalie bjorn": "assets/images/players/women/nathalie-bjorn.jpg",
     bjorn: "assets/images/players/women/nathalie-bjorn.jpg",
-    "katie mccabe": "src/assets/images/regenerated_image_1793037492711.jpg",
-    mccabe: "src/assets/images/regenerated_image_1793037492711.jpg",
+    "katie mccabe": "assets/images/players/women/katie_mccabe.png",
+    mccabe: "assets/images/players/women/katie_mccabe.png",
+    "guro reiten": "icon/profile/guro_reiten.png",
+    reiten: "icon/profile/guro_reiten.png",
   };
   Object.assign(playerAvatarMap, fastKnown);
 
