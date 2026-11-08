@@ -10852,7 +10852,7 @@
     "team_type": "M"
   },
   {
-    "id": "m16",
+    "id": "560636",
     "date": "2026-11-07",
     "time": "21:00",
     "competition": "premier-league",
@@ -10869,13 +10869,71 @@
         "logo": "databases/logo/tv/monomax.svg"
       }
     ],
-    "status": "upcoming",
+    "status": "completed",
     "home_score": null,
     "away_score": null,
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "lineups": {
+      "home": {
+        "manager": "Régis Le Bris",
+        "formation": "4-2-3-1",
+        "starting": [
+          { "number": 22, "name": "Robin Roefs" },
+          { "number": 12, "name": "Thomas Meunier" },
+          { "number": 17, "name": "Reinildo Mandava" },
+          { "number": 27, "name": "Noah Sadiki" },
+          { "number": 20, "name": "Nordi Mukiele" },
+          { "number": 13, "name": "Luke O'Nien" },
+          { "number": 32, "name": "Trai Hume" },
+          { "number": 34, "name": "Granit Xhaka" },
+          { "number": 9, "name": "Brian Brobbey" },
+          { "number": 28, "name": "Enzo Le Fée" },
+          { "number": 7, "name": "Chemsdine Talbi" }
+        ],
+        "substitutes": [
+          { "number": 18, "name": "Wilson Isidor" },
+          { "number": 31, "name": "Melker Ellborg" },
+          { "number": 10, "name": "Nilson Angulo" },
+          { "number": 4, "name": "Kevin Danso" },
+          { "number": 39, "name": "Malick Fofana" },
+          { "number": 11, "name": "Chris Rigg" },
+          { "number": 57, "name": "Tymur Tutierov" },
+          { "number": 6, "name": "Dayann Méthalie" },
+          { "number": 29, "name": "Jules Ahoka" }
+        ]
+      },
+      "away": {
+        "manager": "Xabi Alonso",
+        "formation": "4-3-2-1",
+        "starting": [
+          { "number": 39, "name": "Mike Penders" },
+          { "number": 2, "name": "Marco Palestra" },
+          { "number": 29, "name": "Pep Chavarria" },
+          { "number": 45, "name": "Romeo Lavia" },
+          { "number": 3, "name": "Wesley Fofana" },
+          { "number": 6, "name": "Levi Colwill" },
+          { "number": 14, "name": "Jordan Henderson" },
+          { "number": 25, "name": "Moises Caicedo" },
+          { "number": 7, "name": "Pedro Neto" },
+          { "number": 10, "name": "Cole Palmer" },
+          { "number": 17, "name": "Morgan Rogers" }
+        ],
+        "substitutes": [
+          { "number": 32, "name": "Mahdi Nicoll-Jazuli" },
+          { "number": 18, "name": "Danny Welbeck" },
+          { "number": 41, "name": "Estevao Willian" },
+          { "number": 30, "name": "Aaron Anselmino" },
+          { "number": 23, "name": "Geovany Quenda" },
+          { "number": 4, "name": "Valentin Barco" },
+          { "number": 22, "name": "Emmanuel Emegha" },
+          { "number": 28, "name": "Teddy Sharman-Lowe" },
+          { "number": 27, "name": "Malo Gusto" }
+        ]
+      }
+    }
   },
   {
     "id": "m17",
