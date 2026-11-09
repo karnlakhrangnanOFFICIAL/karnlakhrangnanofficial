@@ -22,6 +22,7 @@ app.get(['/about', '/about/'], (req, res) => res.sendFile(path.join(__dirname, '
 app.get(['/icons', '/icons/'], (req, res) => res.sendFile(path.join(__dirname, 'icons.html')));
 app.get(['/match-detail', '/match-detail/'], (req, res) => res.sendFile(path.join(__dirname, 'match-detail.html')));
 app.get(['/match-detail-women', '/match-detail-women/'], (req, res) => res.sendFile(path.join(__dirname, 'match-detail-women.html')));
+app.get(['/match-history', '/match-history/'], (req, res) => res.sendFile(path.join(__dirname, 'match-history.html')));
 app.get(['/men-team', '/men-team/'], (req, res) => res.sendFile(path.join(__dirname, 'men-team.html')));
 app.get(['/player-card', '/player-card/'], (req, res) => res.sendFile(path.join(__dirname, 'player-card.html')));
 app.get(['/player-profile', '/player-profile/'], (req, res) => res.sendFile(path.join(__dirname, 'player-profile.html')));

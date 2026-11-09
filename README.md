@@ -20,6 +20,7 @@ https://karnlakhrangnanofficial.github.io/karnlakhrangnanofficial
 ├── trophy.html              # ถ้วยรางวัล (Trophy Room - ทำเนียบแชมป์และความสำเร็จ)
 ├── icons.html               # i-Cons (ตำนานสโมสร)
 ├── the-story-blue.html      # เรื่องราวสโมสร (The Story Blue)
+├── match-history.html       # คลังค้นหาผลการแข่งขันทีมชายย้อนหลัง (1905–2001)
 ├── match-detail.html        # หน้ารายละเอียดแมตช์ (Match Detail - แสดงช่องถ่ายทอดสด Logo TV, รายละเอียดการแข่งขัน, ไฮไลต์)
 ├── about.html               # เกี่ยวกับเรา (About Us)
 ├── server.js                # Express Server สำหรับให้บริการ Static Files
@@ -37,6 +38,7 @@ https://karnlakhrangnanofficial.github.io/karnlakhrangnanofficial
 │
 └── data/                    # ไฟล์ข้อมูล JSON (Data Stores)
     ├── fixtures.json        # โปรแกรมการแข่งขันทีมชาย
+    ├── chelsea-match-history.json # ผลการแข่งขันทีมชายย้อนหลัง 1905–2001 จากแฟ้มข้อมูลสโมสร
     ├── fixtures-women.json  # โปรแกรมการแข่งขันทีมหญิง
     ├── results-men.json     # ผลการแข่งขันทีมชาย
     ├── results-women.json   # ผลการแข่งขันทีมหญิง

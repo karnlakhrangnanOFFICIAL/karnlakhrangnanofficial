@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Search Chelsea FC men's match results from 1905 to 2001." />
+    <title>คลังผลการแข่งขัน Chelsea | KARN LA KHRANg NAN</title>
+    <link rel="stylesheet" href="assets/css/match-history.css" />
+    <script>
+      const savedTheme = localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'classic-blue';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+  </head>
+  <body>
+    <header class="archive-header">
+      <a class="archive-brand" href="index.html" aria-label="KARN LA KHRANg NAN home">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN" />
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="index.html" data-lang-th="หน้าแรก" data-lang-en="Home">หน้าแรก</a>
+        <a href="the-story-blue.html" data-lang-th="ประวัติสโมสร" data-lang-en="Club story">ประวัติสโมสร</a>
+        <a href="men-team.html" data-lang-th="ทีมชาย" data-lang-en="Men's team">ทีมชาย</a>
+        <button id="languageToggle" class="language-toggle" type="button" aria-label="Switch language">EN</button>
+      </nav>
+    </header>
+
+    <main class="archive-main">
+      <section class="archive-hero">
+        <p class="eyebrow" data-lang-th="บันทึกแห่งสีน้ำเงิน · คลังสโมสร" data-lang-en="The Blue Chronicles · Club archive">บันทึกแห่งสีน้ำเงิน · คลังสโมสร</p>
+        <h1 data-lang-th="คลังผลการแข่งขันเชลซี" data-lang-en="Chelsea Match Archive">คลังผลการแข่งขันเชลซี</h1>
+        <p class="archive-intro" data-lang-th="ค้นหาผลการแข่งขันทีมชายตามฤดูกาล คู่แข่ง และรายการแข่งขัน จากบันทึกตั้งแต่ปี 1905 ถึง 2001" data-lang-en="Search men's team results by season, opponent, and competition in this archive covering 1905 to 2001.">ค้นหาผลการแข่งขันทีมชายตามฤดูกาล คู่แข่ง และรายการแข่งขัน จากบันทึกตั้งแต่ปี 1905 ถึง 2001</p>
+        <div class="archive-stats" aria-live="polite">
+          <div class="stat-card"><strong id="statMatches">—</strong><span data-lang-th="นัดในคลัง" data-lang-en="matches">นัดในคลัง</span></div>
+          <div class="stat-card"><strong id="statSeasons">—</strong><span data-lang-th="ฤดูกาล" data-lang-en="seasons">ฤดูกาล</span></div>
+          <div class="stat-card"><strong id="statRecord">—</strong><span data-lang-th="ชนะ · เสมอ · แพ้" data-lang-en="wins · draws · losses">ชนะ · เสมอ · แพ้</span></div>
+        </div>
+      </section>
+
+      <section class="archive-panel" aria-labelledby="filterHeading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-lang-th="ค้นหาในบันทึก" data-lang-en="Explore the records">ค้นหาในบันทึก</p>
+            <h2 id="filterHeading" data-lang-th="กรองผลการแข่งขัน" data-lang-en="Filter match results">กรองผลการแข่งขัน</h2>
+          </div>
+          <button id="clearFilters" class="text-button" type="button" data-lang-th="ล้างตัวกรอง" data-lang-en="Clear filters">ล้างตัวกรอง</button>
+        </div>
+        <div class="filters">
+          <label class="search-field">
+            <span data-lang-th="ค้นหาทีม สนาม หรือผู้ทำประตู" data-lang-en="Search team, venue, or scorer">ค้นหาทีม สนาม หรือผู้ทำประตู</span>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="เช่น Arsenal หรือ Stamford Bridge" />
+          </label>
+          <label>
+            <span data-lang-th="ฤดูกาล" data-lang-en="Season">ฤดูกาล</span>
+            <select id="seasonFilter"><option value="" data-lang-th="ทุกฤดูกาล" data-lang-en="All seasons">ทุกฤดูกาล</option></select>
+          </label>
+          <label>
+            <span data-lang-th="รายการแข่งขัน" data-lang-en="Competition">รายการแข่งขัน</span>
+            <select id="competitionFilter"><option value="" data-lang-th="ทุกรายการ" data-lang-en="All competitions">ทุกรายการ</option></select>
+          </label>
+          <label>
+            <span data-lang-th="ผลของเชลซี" data-lang-en="Chelsea result">ผลของเชลซี</span>
+            <select id="resultFilter">
+              <option value="" data-lang-th="ทุกผลการแข่งขัน" data-lang-en="All results">ทุกผลการแข่งขัน</option>
+              <option value="W" data-lang-th="ชนะ" data-lang-en="Win">ชนะ</option>
+              <option value="D" data-lang-th="เสมอ" data-lang-en="Draw">เสมอ</option>
+              <option value="L" data-lang-th="แพ้" data-lang-en="Loss">แพ้</option>
+            </select>
+          </label>
+          <label>
+            <span data-lang-th="เรียงวันที่" data-lang-en="Date order">เรียงวันที่</span>
+            <select id="sortOrder">
+              <option value="newest" data-lang-th="ใหม่ไปเก่า" data-lang-en="Newest first">ใหม่ไปเก่า</option>
+              <option value="oldest" data-lang-th="เก่าไปใหม่" data-lang-en="Oldest first">เก่าไปใหม่</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="results-section" aria-labelledby="resultsHeading">
+        <div class="results-heading">
+          <h2 id="resultsHeading" data-lang-th="ผลการแข่งขัน" data-lang-en="Results">ผลการแข่งขัน</h2>
+          <p id="resultCount" aria-live="polite" data-lang-th="กำลังโหลดคลังข้อมูล…" data-lang-en="Loading the archive…">กำลังโหลดคลังข้อมูล…</p>
+        </div>
+        <div id="matchList" class="match-list" aria-live="polite">
+          <p class="empty-state" data-lang-th="กำลังโหลดผลการแข่งขัน…" data-lang-en="Loading match results…">กำลังโหลดผลการแข่งขัน…</p>
+        </div>
+        <button id="loadMore" class="load-more" type="button" hidden data-lang-th="แสดงผลเพิ่มเติม" data-lang-en="Load more results">แสดงผลเพิ่มเติม</button>
+      </section>
+
+      <p class="source-note" data-lang-th="แหล่งข้อมูล: ไฟล์บันทึกผลการแข่งขันที่ผู้ใช้ให้มา ครอบคลุมปี 1905–2001 ตัวเลขและรายละเอียดสะกดตามต้นฉบับ บางนัดช่วงสงครามถูกทำเครื่องหมายว่าไม่รวมในสถิติทางการ" data-lang-en="Source: the supplied match archive covering 1905–2001. Scores and details follow the source; some wartime matches are marked as excluded from official statistics.">แหล่งข้อมูล: ไฟล์บันทึกผลการแข่งขันที่ผู้ใช้ให้มา ครอบคลุมปี 1905–2001 ตัวเลขและรายละเอียดสะกดตามต้นฉบับ บางนัดช่วงสงครามถูกทำเครื่องหมายว่าไม่รวมในสถิติทางการ</p>
+    </main>
+
+    <footer class="archive-footer">
+      <a href="the-story-blue.html" data-lang-th="กลับไปที่ The Story Blue" data-lang-en="Back to The Story Blue">กลับไปที่ The Story Blue</a>
+      <span>KARN LA KHRANg NAN · Chelsea FC Independent Archive</span>
+    </footer>
+    <script type="module" src="assets/js/match-history.js"></script>
+  </body>
+</html>
