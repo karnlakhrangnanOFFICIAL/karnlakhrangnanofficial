@@ -1,0 +1,43 @@
+table,column,type,description,if missing,example
+Matches,match_id,text,Unique key = season start year + running number inside the season,never empty,2024-01
+Matches,season,text,Season label,never empty,2024-2025
+Matches,season_status,text,"Official, or Unofficial (war-time matches the source says are excluded from official statistics)",never empty,Official
+Matches,club_match_no,int,"Cumulative official match number from the source ""Match Facts"" line; used to detect missing matches",-,5372
+Matches,match_date,date,Match date (yyyy-mm-dd),-,2024-08-18
+Matches,kickoff_time,text hh:mm,Kick-off time,-,16:30
+Matches,competition,text,"Competition; trailing league ""Position N"" removed per instruction",-,Premier League
+Matches,venue,text,Stadium,-,Stamford Bridge
+Matches,attendance,int,Attendance as a number,-,39818
+Matches,referee,text,Referee,-,Anthony Taylor
+Matches,team,text,"Main team, always Chelsea",never empty,Chelsea
+Matches,chelsea_score,int,Chelsea goals in the full-time score; half-time bracket scores are NOT kept,never empty,0
+Matches,ft,text,"Literal ""ft"" separator, as in the requested layout",never empty,ft
+Matches,opponent_score,int,Opponent goals in the full-time score,never empty,2
+Matches,opponent,text,Opposing team,never empty,Manchester City
+Matches,chelsea_listed_as,text,Home/Away = Chelsea listed first/second in the source header (neutral venues are not distinguished),never empty,Home
+Matches,result,formula,"W/D/L from Chelsea view: =IF(L>N,""W"",IF(L<N,""L"",""D""))",never empty,L
+Matches,chelsea_manager,text,Chelsea manager,-,Enzo Maresca
+Matches,opponent_manager,text,Opponent manager,-,Pep Guardiola
+Matches,home_team / away_team,text,Original source order of the teams,never empty,Chelsea / Manchester City
+Matches,chelsea_starters_n / opponent_starters_n,int,Number of starters parsed; completeness indicator (expected 11),0 if lineup absent,11
+Matches,scorer_check,text,OK = listed scorers equal the score; MISMATCH; NO_SCORER_DATA (indicative only: own goals/old records),never empty,OK
+Matches,penalty_shootout,text,Shoot-out text if the source has one,-,"Havertz-saved 0-0, ..."
+Matches,notes,text,"Source remarks (comments, extra time, abandoned etc.)",-,After extra time
+Matches,data_flags,text,"Processing flags, e.g. DATE_FROM_USER_MESSAGE, CHELSEA_STARTERS_NE_11",-,-
+Matches,source_sheet / source_row,text/int,Location of the match header in the uploaded workbook (traceability),never empty,2024 / 2946
+Lineups,"match_id, season, team, is_chelsea",text,Link to Matches; one row per player per team,never empty,2024-01
+Lineups,role,text,Starter / Sub Used / Sub Not Used,never empty,Starter
+Lineups,order,int,Order of appearance in the source line-up,never empty,1
+Lineups,shirt_no,int,Shirt number when the source lists it (older games and opponents often have none),-,1
+Lineups,player,text,Player name as in the source,never empty,Robert Sanchez
+Lineups,replaced_player / sub_minute_raw / sub_minute,text/int,For Sub Used: who was replaced and when (raw text and numeric minute),-,Marc Cucurella / 80 / 80
+Events,"match_id, season, team, is_chelsea",text,Link to Matches,never empty,2024-01
+Events,event_type,text,Goal / Penalty Goal / Own Goal / Yellow Card / Red Card / Penalty Missed / Substitution,never empty,Substitution
+Events,minute_raw / minute,text/int,"Minute as written, and numeric minute (stoppage ""90+2"" -> 90)",-,58 / 58
+Events,"player, shirt_no",text/int,Player concerned. For Substitution this is the player going OUT,-,Chris Nkunku / 18
+Events,"player_in, shirt_no_in",text/int,Substitution only: player coming IN,-,Pedro Neto / 19
+Events,detail,text,Qualifier from the source such as Pen or Saved,-,Pen
+Events,player_as_listed,text,Original text before matching to the line-up,never empty,Caicedo
+Season_Coverage,all,mixed,One row per season 1905-1906 to 2024-2025; counts are live formulas on Matches,-,
+Issues_Log,all,text,"Every data problem found, count and action taken",-,
+Convention,missing value,rule,"Missing text/date/number is written as ""-"" (requested for Date, applied to all)",,-
