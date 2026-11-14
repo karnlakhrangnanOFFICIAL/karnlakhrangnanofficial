@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { buildMenFixturesSummary } from './build-fixtures-summary.mjs';
 
 function minifyJS(code) {
   return code
@@ -20,6 +21,8 @@ function minifyCSS(code) {
 }
 
 try {
+  buildMenFixturesSummary();
+
   const mainJs = fs.readFileSync('assets/js/main.js', 'utf8');
   const teamJs = fs.readFileSync('assets/js/team.js', 'utf8');
   const bundledJs = mainJs + '\n;\n' + teamJs;

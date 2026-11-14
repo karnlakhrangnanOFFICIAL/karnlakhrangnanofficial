@@ -317,6 +317,43 @@ function renderResults(container, results, badgeClass) {
     .join("");
 }
 
+const MEN_RESULTS_PAGE_SIZE = 36;
+
+function renderMenResultsPaged(container, results) {
+  if (!container) return;
+  const pageSize = MEN_RESULTS_PAGE_SIZE;
+  let visibleCount = Math.min(pageSize, results.length);
+  renderResults(container, results.slice(0, visibleCount), "M");
+  if (visibleCount >= results.length) return;
+
+  const moreWrap = document.createElement("div");
+  moreWrap.style.cssText = "grid-column:1/-1;display:flex;justify-content:center;padding:12px 0 24px;";
+  const moreButton = document.createElement("button");
+  moreButton.type = "button";
+  moreButton.className = "men-results-load-more";
+  moreButton.style.cssText = "border:1px solid var(--border-color,rgba(255,255,255,.15));border-radius:999px;padding:11px 22px;background:var(--card-bg,#fff);color:var(--text-color,#001489);font:inherit;font-weight:700;cursor:pointer;";
+  moreWrap.appendChild(moreButton);
+  container.appendChild(moreWrap);
+
+  const updateButton = () => {
+    const isTh = (window.currentLang || "th") === "th";
+    moreButton.textContent = isTh ? "แสดงผลเพิ่มเติม" : "Load more results";
+    moreButton.setAttribute("aria-label", moreButton.textContent);
+  };
+  updateButton();
+  moreButton.addEventListener("click", () => {
+    const nextCount = Math.min(visibleCount + pageSize, results.length);
+    const nextPage = document.createElement("div");
+    renderResults(nextPage, results.slice(visibleCount, nextCount), "M");
+    while (nextPage.firstElementChild) {
+      container.insertBefore(nextPage.firstElementChild, moreWrap);
+    }
+    visibleCount = nextCount;
+    if (visibleCount >= results.length) moreWrap.remove();
+    else updateButton();
+  });
+}
+
 function getLocalTeamLogo(teamName, fallbackLogo) {
   const nameStr =
     typeof teamName === "object" && teamName !== null
@@ -700,7 +737,15 @@ function renderPlayers(container, players, teamType) {
 }
 
 // ---------- SAFE FETCH JSON ----------
+const staticJsonRequestCache = new Map();
+
 async function safeFetchJson(url) {
+  const cacheStaticData = /^(?:\.\/)?data\//.test(url);
+  if (cacheStaticData && staticJsonRequestCache.has(url)) {
+    return staticJsonRequestCache.get(url);
+  }
+
+  const request = (async () => {
   try {
     const res = await fetch(url);
     if (!res.ok) return null;
@@ -719,6 +764,16 @@ async function safeFetchJson(url) {
     console.warn(`Safe fetch failed for ${url}:`, e);
     return null;
   }
+  })();
+
+  if (cacheStaticData) staticJsonRequestCache.set(url, request);
+  const data = await request;
+  if (cacheStaticData && data === null) staticJsonRequestCache.delete(url);
+  return data;
+}
+
+async function loadMenFixtureCardData() {
+  return (await safeFetchJson("data/fixtures-men-summary.json")) || safeFetchJson("data/fixtures.json");
 }
 
 // ---------- HELPER FOR COMPETITION FILTERING ----------
@@ -927,25 +982,18 @@ function mergeMenLiveMatches(localMatches, apiData) {
   });
 }
 
-async function loadMenFixtures() {
+async function loadMenFixtures(renderLocalFirst = true) {
   const container = document.getElementById("menFixturesContainer");
   if (!container) return;
   try {
-    const [rawAll, apiData] = await Promise.all([
-      safeFetchJson("data/fixtures.json"),
-      fetchMenLiveApiCached(),
-    ]);
-    let all = rawAll;
-    if (!all || !Array.isArray(all)) {
+    const rawAll = await loadMenFixtureCardData();
+    if (!Array.isArray(rawAll)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📅</span><p>No upcoming fixtures</p></div>';
       return;
     }
-    all = mergeMenLiveMatches(
-      all.filter((m) => m.team_type === "M"),
-      apiData
-    );
-    const upcoming = all
+    const menMatches = rawAll.filter((m) => m.team_type === "M");
+    const getUpcoming = (matches) => matches
       .filter((m) => m.status === "upcoming" || m.status === "live" || m.status === "halftime")
       .sort((a, b) => {
         let timeA = a.time || "00:00";
@@ -954,21 +1002,39 @@ async function loadMenFixtures() {
         if (timeB === "TBC") timeB = "00:00";
         return new Date(a.date + "T" + timeA) - new Date(b.date + "T" + timeB);
       });
+    const renderUpcoming = (upcoming) => {
+      setupSelectCompFilter("menFixturesCompFilter", upcoming, (comp) => {
+        const filtered = comp === "all" ? upcoming : upcoming.filter((m) => getMatchCompKey(m) === comp);
+        renderFixtures(container, filtered, "M");
+      });
+      renderFixtures(container, upcoming, "M");
+    };
 
-    setupSelectCompFilter("menFixturesCompFilter", upcoming, (comp) => {
-      const filtered =
-        comp === "all" ? upcoming : upcoming.filter((m) => getMatchCompKey(m) === comp);
-      renderFixtures(container, filtered, "M");
+    const localUpcoming = getUpcoming(menMatches);
+    if (renderLocalFirst) renderUpcoming(localUpcoming);
+
+    const apiData = await fetchMenLiveApiCached();
+    const mergedMatches = mergeMenLiveMatches(menMatches, apiData);
+    const upcoming = getUpcoming(mergedMatches);
+    const baselineById = new Map(menMatches.map((m) => [m.id, m]));
+    const hasLiveDataChanges = upcoming.length !== localUpcoming.length || upcoming.some((m) => {
+      const base = baselineById.get(m.id);
+      return !base || base.status !== m.status || base.home_score !== m.home_score || base.away_score !== m.away_score || base.time_live !== m.time_live;
     });
-
-    renderFixtures(container, upcoming, "M");
+    const newlyCompleted = mergedMatches.filter((m) => m.status === "completed" && baselineById.get(m.id)?.status !== "completed");
+    if (hasLiveDataChanges) renderUpcoming(upcoming);
+    if (newlyCompleted.some((m) => !window._menApiCompletedIds?.has(m.id))) {
+      window._menApiCompletedIds ||= new Set();
+      newlyCompleted.forEach((m) => window._menApiCompletedIds.add(m.id));
+      loadMenResults();
+    }
 
     const hasLive = upcoming.some((m) => m.status === "live" || m.status === "halftime");
     if (hasLive && !window._menTeamLivePoll) {
-      window._menTeamLivePoll = setInterval(() => {
-        loadMenFixtures();
-        loadMenResults();
-      }, 15000);
+      window._menTeamLivePoll = setInterval(() => loadMenFixtures(false), 15000);
+    } else if (!hasLive && window._menTeamLivePoll) {
+      clearInterval(window._menTeamLivePoll);
+      window._menTeamLivePoll = null;
     }
   } catch (e) {
     container.innerHTML =
@@ -981,30 +1047,39 @@ async function loadMenResults() {
   const container = document.getElementById("menResultsContainer");
   if (!container) return;
   try {
-    const [rawAll, apiData] = await Promise.all([
-      safeFetchJson("data/fixtures.json"),
-      fetchMenLiveApiCached(),
-    ]);
+    const rawAll = await loadMenFixtureCardData();
     let all = rawAll;
     if (!all || !Array.isArray(all)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📊</span><p>No results yet</p></div>';
       return;
     }
-    all = mergeMenLiveMatches(
-      all.filter((m) => m.team_type === "M"),
-      apiData
-    );
-    const results = all
-      .filter((m) => m.status === "completed")
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
+    all = all.filter((m) => m.team_type === "M");
+    const getCompletedResults = (source) => source
+        .filter((m) => m.status === "completed")
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+    const renderCompletedResults = (results) => {
+      setupSelectSeasonFilter("menResultsCompFilter", results, (season) => {
+        const filtered = season === "all" ? results : results.filter((m) => getMatchSeasonLabel(m) === season);
+        renderMenResultsPaged(container, filtered);
+      });
+      const selectedSeason = document.getElementById("menResultsCompFilter")?.value || "all";
+      const visibleResults = selectedSeason === "all"
+        ? results
+        : results.filter((m) => getMatchSeasonLabel(m) === selectedSeason);
+      renderMenResultsPaged(container, visibleResults);
+    };
 
-    setupSelectSeasonFilter("menResultsCompFilter", results, (season) => {
-      const filtered = season === "all" ? results : results.filter((m) => getMatchSeasonLabel(m) === season);
-      renderResults(container, filtered, "M");
-    });
-
-    renderResults(container, results, "M");
+    const initialResults = getCompletedResults(all);
+    renderCompletedResults(initialResults);
+    const initialResultKeys = initialResults.map((m) => `${m.id}:${m.home_score}-${m.away_score}`).join("|");
+    fetchMenLiveApiCached().then((apiData) => {
+      if (!apiData) return;
+      const refreshed = getCompletedResults(mergeMenLiveMatches(all, apiData));
+      const refreshedResultKeys = refreshed.map((m) => `${m.id}:${m.home_score}-${m.away_score}`).join("|");
+      if (refreshedResultKeys === initialResultKeys) return;
+      renderCompletedResults(refreshed);
+    }).catch(() => {});
   } catch (e) {
     container.innerHTML =
       '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Error loading results</p></div>';
