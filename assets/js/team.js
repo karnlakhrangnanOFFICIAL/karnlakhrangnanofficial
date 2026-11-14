@@ -794,6 +794,35 @@ function setupSelectCompFilter(selectId, matches, onFilterChange) {
   };
 }
 
+function getMatchSeasonLabel(match) {
+  const season = String(match?.season || "").trim();
+  const seasonYears = season.match(/^(\d{4})\s*[-/–]\s*(\d{4})$/);
+  if (seasonYears) return `${seasonYears[1]}/${seasonYears[2]}`;
+  if (/^\d{4}$/.test(season)) return `${season}/${Number(season) + 1}`;
+
+  const date = String(match?.date || "").match(/^(\d{4})-(\d{2})/);
+  if (!date) return season || "Unknown season";
+  const year = Number(date[1]) - (Number(date[2]) < 7 ? 1 : 0);
+  return `${year}/${year + 1}`;
+}
+
+function setupSelectSeasonFilter(selectId, matches, onFilterChange) {
+  const selectEl = document.getElementById(selectId);
+  if (!selectEl) return;
+  const selectedSeason = selectEl.value;
+  const seasons = [...new Set(matches.map(getMatchSeasonLabel))]
+    .sort((a, b) => Number(b.slice(0, 4)) - Number(a.slice(0, 4)) || b.localeCompare(a));
+  const isTh = (window.currentLang || "th") === "th";
+  const allSeasons = isTh ? "ทุกฤดูกาล" : "All Seasons";
+  let html = `<option value="all">${allSeasons}</option>`;
+  seasons.forEach((season) => {
+    html += `<option value="${season}">${season}</option>`;
+  });
+  selectEl.innerHTML = html;
+  if (seasons.includes(selectedSeason)) selectEl.value = selectedSeason;
+  selectEl.onchange = (event) => onFilterChange(event.target.value);
+}
+
 // ---------- LOAD DATA ----------
 let _fdLiveCache = { ts: 0, promise: null };
 function fetchMenLiveApiCached() {
@@ -970,9 +999,8 @@ async function loadMenResults() {
       .filter((m) => m.status === "completed")
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    setupSelectCompFilter("menResultsCompFilter", results, (comp) => {
-      const filtered =
-        comp === "all" ? results : results.filter((m) => getMatchCompKey(m) === comp);
+    setupSelectSeasonFilter("menResultsCompFilter", results, (season) => {
+      const filtered = season === "all" ? results : results.filter((m) => getMatchSeasonLabel(m) === season);
       renderResults(container, filtered, "M");
     });
 

@@ -46,6 +46,69 @@ function formatNumber(value) {
   return new Intl.NumberFormat(language === 'th' ? 'th-TH' : 'en-GB').format(value);
 }
 
+function getLeagueCupNameForSeason(season) {
+  const year = Number(String(season || '').match(/^\d{4}/)?.[0]);
+  if (!Number.isFinite(year)) return null;
+  if (year >= 1960 && year < 1981) return 'Football League Cup';
+  if (year >= 1981 && year < 1986) return 'Milk Cup';
+  if (year >= 1986 && year < 1990) return 'Littlewoods Challenge Cup';
+  if (year >= 1990 && year < 1992) return 'Rumbelows Cup';
+  if (year >= 1992 && year < 1998) return 'Coca-Cola Cup';
+  if (year >= 1998 && year < 2003) return 'Worthington Cup';
+  if (year >= 2003 && year < 2012) return 'Carling Cup';
+  if (year >= 2012 && year < 2016) return 'Capital One Cup';
+  if (year >= 2016 && year < 2017) return 'EFL Cup';
+  if (year >= 2017) return 'Carabao Cup';
+  return null;
+}
+
+function getEuropeanCupNameForSeason(competition, season) {
+  const year = Number(String(season || '').match(/^\d{4}/)?.[0]);
+  if (!Number.isFinite(year)) return null;
+  const name = String(competition || '').toLocaleLowerCase();
+
+  if (/conference league|europa conference/.test(name)) {
+    if (year >= 2021 && year < 2024) return 'UEFA Europa Conference League';
+    if (year >= 2024) return 'UEFA Conference League';
+  }
+  if (/champions league|european cup/.test(name) && !/cup winners|women/.test(name)) {
+    if (year >= 1955 && year < 1992) return 'European Cup';
+    if (year >= 1992) return 'UEFA Champions League';
+  }
+  if (/inter-cities fairs|fairs cup/.test(name) && year >= 1955 && year <= 1970) return 'Inter-Cities Fairs Cup';
+  if (/intercontinental|toyota cup/.test(name)) {
+    if (year >= 1960 && year < 1980) return 'Intercontinental Cup';
+    if (year >= 1980 && year <= 2004) return 'Toyota Cup';
+  }
+  if (/intertoto|international football cup/.test(name)) {
+    if (year >= 1961 && year < 1967) return 'International Football Cup';
+    if (year >= 1967 && year < 1995) return 'Intertoto Cup';
+    if (year >= 1995 && year <= 2008) return 'UEFA Intertoto Cup';
+  }
+  if (/cup winners/.test(name) || /\bucwc\b/.test(name)) {
+    if (year >= 1960 && year < 1994) return 'European Cup Winners\' Cup';
+    if (year >= 1994 && year <= 1998) return 'UEFA Cup Winners\' Cup';
+  }
+  if (/super cup|supercup/.test(name) || /\b usc \b/.test(` ${name} `)) {
+    if (year >= 1973 && year < 1995) return 'European Super Cup';
+    if (year >= 1995) return 'UEFA Super Cup';
+  }
+  if (/europa league|uefa cup/.test(name)) {
+    if (year >= 1971 && year < 2009) return 'UEFA Cup';
+    if (year >= 2009) return 'UEFA Europa League';
+  }
+  return null;
+}
+
+function getCompetitionFilterName(match) {
+  const competition = String(match.competition || '');
+  const leagueCupPattern = /\b(?:football league cup|league cup|milk cup|littlewoods(?: challenge)? cup|rumbelows cup|coca[- ]cola cup|worthington cup|carling cup|capital one cup|efl cup|carabao cup)\b/i;
+  if (leagueCupPattern.test(competition)) {
+    return getLeagueCupNameForSeason(match.season) || competition;
+  }
+  return getEuropeanCupNameForSeason(competition, match.season) || competition;
+}
+
 function formatDate(isoDate) {
   if (!isoDate) return '—';
   const date = new Date(`${isoDate}T12:00:00Z`);
@@ -73,7 +136,7 @@ function populateFilters() {
   const selectedSeason = elements.season.value;
   const selectedCompetition = elements.competition.value;
   const seasons = [...new Set(archiveMatches.map(match => match.season).filter(Boolean))].sort((a, b) => b.localeCompare(a));
-  const competitions = [...new Set(archiveMatches.map(match => match.competition).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  const competitions = [...new Set(archiveMatches.map(getCompetitionFilterName).filter(Boolean))].sort((a, b) => a.localeCompare(b));
 
   elements.season.innerHTML = `<option value="">${escapeHtml(words.allSeasons)}</option>${seasons.map(season => `<option value="${escapeHtml(season)}">${escapeHtml(season)}</option>`).join('')}`;
   elements.competition.innerHTML = `<option value="">${escapeHtml(words.allCompetitions)}</option>${competitions.map(competition => `<option value="${escapeHtml(competition)}">${escapeHtml(competition)}</option>`).join('')}`;
@@ -86,10 +149,10 @@ function filteredMatches() {
   const result = elements.result.value;
   const filtered = archiveMatches.filter(match => {
     if (elements.season.value && match.season !== elements.season.value) return false;
-    if (elements.competition.value && match.competition !== elements.competition.value) return false;
+    if (elements.competition.value && getCompetitionFilterName(match) !== elements.competition.value) return false;
     if (result && match.result !== result) return false;
     if (!term) return true;
-    const searchable = [match.homeTeam, match.awayTeam, match.competition, match.venue, match.referee,
+    const searchable = [match.homeTeam, match.awayTeam, match.competition, getCompetitionFilterName(match), match.venue, match.referee,
       ...(match.scorers || []).map(item => `${item.type} ${item.text}`)].join(' ').toLocaleLowerCase();
     return searchable.includes(term);
   });

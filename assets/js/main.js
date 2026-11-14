@@ -63,7 +63,7 @@ const FALLBACK_TRANSLATIONS = {
   "men": {
     "badge": "⚽ ทีมชาย",
     "title": "เชลซี ทีมชาย",
-    "season": "ทีมชาย · ฤดูกาล 2026/27",
+    "season": "ฤดูกาล 2026/27 · ผลการแข่งขันและโปรแกรม",
     "all_results": "ผลการแข่งขันทั้งหมด",
     "all_fixtures": "โปรแกรมแข่งขันทั้งหมด",
     "table_title": "🏆 ตารางคะแนน พรีเมียร์ลีก",
@@ -299,7 +299,7 @@ const FALLBACK_TRANSLATIONS = {
   "men": {
     "badge": "⚽ MEN'S TEAM",
     "title": "Chelsea Men's Team",
-    "season": "MEN'S TEAM · 2026/27",
+    "season": "SEASON 2026/27 · RESULTS & FIXTURES",
     "all_results": "All Results",
     "all_fixtures": "All Fixtures",
     "table_title": "🏆 Premier League Table",
