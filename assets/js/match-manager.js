@@ -801,14 +801,24 @@ function syncCompetitionPickerUI() {
 function findClubMatch(name) {
   const q = String(name || '').trim().toLowerCase();
   if (!q) return null;
+  const normalizedQ = q
+    .replace('legia warszawa', 'legia warsaw')
+    .replace('djurgården', 'djurgarden')
+    .replace('espérance', 'esperance')
+    .replace('fc copenhagen', 'copenhagen')
+    .replace('fc københavn', 'copenhagen')
+    .replace('fc kobenhavn', 'copenhagen');
+
   return state.clubs.find((c) => {
     const en = String(c['สโมสร'] || '').toLowerCase();
     const th = String(c['ชื่อสโมสร (ภาษาไทย)'] || '').toLowerCase();
     const abbr = String(c['ชื่อย่อ'] || '').toLowerCase();
-    return en === q || th === q || abbr === q;
+    return en === normalizedQ || th === q || abbr === q;
   }) || state.clubs.find((c) => {
     const en = String(c['สโมสร'] || '').toLowerCase();
-    return en.includes(q) && q.length >= 4;
+    if (en === 'copenhagen' && (normalizedQ.includes('frem ') || normalizedQ.includes('kb '))) return false;
+    if (en === 'paris' && normalizedQ !== 'paris' && normalizedQ !== 'paris fc') return false;
+    return (en.includes(normalizedQ) && normalizedQ.length >= 4) || (en.length >= 4 && normalizedQ.includes(en));
   });
 }
 

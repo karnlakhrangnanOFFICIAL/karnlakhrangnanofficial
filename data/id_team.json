@@ -772,5 +772,86 @@
     "ชื่อสนามเหย้า (Home Stadium)": "Brick Community Stadium",
     "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
     "logo": "databases/logo/teams/england_wigan.svg"
+  },
+  {
+    "ลีก": "Brasileirão Série A",
+    "สโมสร": "Palmeiras",
+    "ชื่อสโมสร (ภาษาไทย)": "พัลไมรัส",
+    "ชื่อย่อ": "PAL",
+    "ชื่อสนามเหย้า (Home Stadium)": "Allianz Parque",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/brazil_palmeiras.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Brasileirão Série A",
+    "สโมสร": "Fluminense",
+    "ชื่อสโมสร (ภาษาไทย)": "ฟลูมิเนนเซ",
+    "ชื่อย่อ": "FLU",
+    "ชื่อสนามเหย้า (Home Stadium)": "Maracanã",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/brazil_fluminense.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Tunisian Ligue Professionnelle 1",
+    "สโมสร": "Esperance Sportive",
+    "ชื่อสโมสร (ภาษาไทย)": "เอสเปร็องซ์ เดอ ตูนิส",
+    "ชื่อย่อ": "EST",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stade Hammadi Agrebi",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/tunisia_esperance.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Brasileirão Série A",
+    "สโมสร": "Flamengo",
+    "ชื่อสโมสร (ภาษาไทย)": "ฟลาเมงโก",
+    "ชื่อย่อ": "FLA",
+    "ชื่อสนามเหย้า (Home Stadium)": "Maracanã",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/brazil_flamengo.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Major League Soccer",
+    "สโมสร": "Los Angeles FC",
+    "ชื่อสโมสร (ภาษาไทย)": "ลอสแอนเจลิส เอฟซี",
+    "ชื่อย่อ": "LAFC",
+    "ชื่อสนามเหย้า (Home Stadium)": "BMO Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/usa_los-angeles-fc.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "La Liga",
+    "สโมสร": "Real Betis",
+    "ชื่อสโมสร (ภาษาไทย)": "เรอัล เบติส",
+    "ชื่อย่อ": "BET",
+    "ชื่อสนามเหย้า (Home Stadium)": "Estadio Benito Villamarín",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/spain_real-betis.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Allsvenskan",
+    "สโมสร": "Djurgarden",
+    "ชื่อสโมสร (ภาษาไทย)": "เยอร์การ์เดนส์",
+    "ชื่อย่อ": "DIF",
+    "ชื่อสนามเหย้า (Home Stadium)": "3Arena",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/sweden_djurgarden.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Ekstraklasa",
+    "สโมสร": "Legia Warsaw",
+    "ชื่อสโมสร (ภาษาไทย)": "ลีเกีย วอร์ซอ",
+    "ชื่อย่อ": "LEG",
+    "ชื่อสนามเหย้า (Home Stadium)": "Stadion Wojska Polskiego",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/poland_legia-warszawa.football-logos.cc.svg"
+  },
+  {
+    "ลีก": "Danish Superliga",
+    "สโมสร": "Copenhagen",
+    "ชื่อสโมสร (ภาษาไทย)": "เอฟซี โคเปนเฮเกน",
+    "ชื่อย่อ": "FCK",
+    "ชื่อสนามเหย้า (Home Stadium)": "Parken Stadium",
+    "ชื่อสนามรอง / นัดสำคัญ (Secondary)": "-",
+    "logo": "databases/logo/teams/denmark_copenhagen.football-logos.cc.svg"
   }
 ]

@@ -71,6 +71,15 @@
     if (name === "paris" || name.includes("paris fc")) return "databases/logo/teams/france_paris-fc.football-logos.cc.svg";
     if (name.includes("paris") || name.includes("psg")) return "databases/logo/teams/france_psg.svg";
     if (name.includes("austria wien") || name.includes("landhaus")) return "databases/logo/teams/austria_austria-wien.svg";
+    if (name.includes("palmeiras")) return "databases/logo/teams/brazil_palmeiras.football-logos.cc.svg";
+    if (name.includes("fluminense")) return "databases/logo/teams/brazil_fluminense.football-logos.cc.svg";
+    if (name.includes("esperance") || name.includes("espérance")) return "databases/logo/teams/tunisia_esperance.football-logos.cc.svg";
+    if (name.includes("flamengo")) return "databases/logo/teams/brazil_flamengo.football-logos.cc.svg";
+    if (name.includes("los angeles") || name === "lafc") return "databases/logo/teams/usa_los-angeles-fc.football-logos.cc.svg";
+    if (name.includes("real betis") || name.includes("betis")) return "databases/logo/teams/spain_real-betis.football-logos.cc.svg";
+    if (name.includes("djurgarden") || name.includes("djurgården")) return "databases/logo/teams/sweden_djurgarden.football-logos.cc.svg";
+    if (name.includes("legia")) return "databases/logo/teams/poland_legia-warszawa.football-logos.cc.svg";
+    if ((name === "copenhagen" || name.includes("fc copenhagen") || name.includes("kobenhavn") || name.includes("københavn")) && !name.includes("frem ") && !name.includes("kb ")) return "databases/logo/teams/denmark_copenhagen.football-logos.cc.svg";
     
     if (fallbackLogo && fallbackLogo.startsWith("databases/logo/teams/")) return fallbackLogo;
     return fallbackLogo || "databases/logo/teams/england_chelsea.svg";

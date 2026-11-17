@@ -1315,6 +1315,21 @@ function getTeamInfo(teamName) {
   if ((norm.includes("lyonnais") || norm.includes("lyonnes")) && (teamsDataMap.get("ol lyonnais") || teamsDataMap.get("ol lyonnes"))) {
     return teamsDataMap.get("ol lyonnais") || teamsDataMap.get("ol lyonnes");
   }
+  if (norm.includes("legia") && teamsDataMap.has("legia warsaw")) {
+    return teamsDataMap.get("legia warsaw");
+  }
+  if ((norm.includes("esperance") || norm.includes("espérance")) && teamsDataMap.has("esperance sportive")) {
+    return teamsDataMap.get("esperance sportive");
+  }
+  if (norm.includes("djurgården") && teamsDataMap.has("djurgarden")) {
+    return teamsDataMap.get("djurgarden");
+  }
+  if ((norm === "lafc" || norm.includes("los angeles")) && teamsDataMap.has("los angeles fc")) {
+    return teamsDataMap.get("los angeles fc");
+  }
+  if ((norm === "fc copenhagen" || norm.includes("københavn") || norm.includes("kobenhavn")) && teamsDataMap.has("copenhagen")) {
+    return teamsDataMap.get("copenhagen");
+  }
 
   // Normalize variations e.g. "Chelsea FC", "Chelsea Women"
   for (const [key, val] of teamsDataMap.entries()) {

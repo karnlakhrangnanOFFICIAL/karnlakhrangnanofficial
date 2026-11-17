@@ -166,7 +166,7 @@ function renderFixtures(container, fixtures, badgeClass) {
       
       <div class="match-card-row">
         <div class="match-card-team home">
-          <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <img src="${getLocalTeamLogo(match.home_team, match.home_logo)}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
         </div>
         
         <div class="match-card-timebox">
@@ -174,7 +174,7 @@ function renderFixtures(container, fixtures, badgeClass) {
         </div>
         
         <div class="match-card-team away">
-          <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <img src="${getLocalTeamLogo(match.away_team, match.away_logo)}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
         </div>
       </div>
       
@@ -298,7 +298,7 @@ function renderResults(container, results, badgeClass) {
       
       <div class="match-card-row">
         <div class="match-card-team home">
-          <img src="${match.home_logo}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <img src="${getLocalTeamLogo(match.home_team, match.home_logo)}" alt="${match.home_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
         </div>
         
         <div class="match-card-timebox" style="background: rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center;">
@@ -307,7 +307,7 @@ function renderResults(container, results, badgeClass) {
         </div>
         
         <div class="match-card-team away">
-          <img src="${match.away_logo}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
+          <img src="${getLocalTeamLogo(match.away_team, match.away_logo)}" alt="${match.away_team}" class="match-card-team-logo" onerror="this.src='assets/images/placeholder-team.svg'">
         </div>
       </div>
       
@@ -421,6 +421,15 @@ function getLocalTeamLogo(teamName, fallbackLogo) {
   if (name.includes("wanderers")) return "databases/logo/teams/australia_western-sydney-wanderers.svg";
   if (name.includes("johor") || name.includes("tazim")) return "databases/logo/teams/malaysia_johor-darul-tazim.svg";
   if (name.includes("all stars") || name.includes("all-stars")) return "databases/logo/teams/a-league-women-all-stars.svg";
+  if (name.includes("palmeiras")) return "databases/logo/teams/brazil_palmeiras.football-logos.cc.svg";
+  if (name.includes("fluminense")) return "databases/logo/teams/brazil_fluminense.football-logos.cc.svg";
+  if (name.includes("esperance") || name.includes("espérance")) return "databases/logo/teams/tunisia_esperance.football-logos.cc.svg";
+  if (name.includes("flamengo")) return "databases/logo/teams/brazil_flamengo.football-logos.cc.svg";
+  if (name.includes("los angeles") || name === "lafc") return "databases/logo/teams/usa_los-angeles-fc.football-logos.cc.svg";
+  if (name.includes("real betis") || name.includes("betis")) return "databases/logo/teams/spain_real-betis.football-logos.cc.svg";
+  if (name.includes("djurgarden") || name.includes("djurgården")) return "databases/logo/teams/sweden_djurgarden.football-logos.cc.svg";
+  if (name.includes("legia")) return "databases/logo/teams/poland_legia-warszawa.football-logos.cc.svg";
+  if ((name === "copenhagen" || name.includes("fc copenhagen") || name.includes("kobenhavn") || name.includes("københavn")) && !name.includes("frem ") && !name.includes("kb ")) return "databases/logo/teams/denmark_copenhagen.football-logos.cc.svg";
   
   if (fallback && fallback.startsWith("databases/logo/teams/")) return fallback;
   return fallback || "databases/logo/teams/england_chelsea.svg";
