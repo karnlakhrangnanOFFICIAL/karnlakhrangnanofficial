@@ -1,20 +1,68 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Match Detail · KARN LA KHRANg NAN Official</title>
+    <title>Women's Match Detail · KARN LA KHRANg NAN Official</title>
+    <link rel="stylesheet" href="assets/css/tactical-lineup.css" />
     <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png" />
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem("theme") ||
+          localStorage.getItem("chelsea_theme") ||
+          "modern-dark";
+        document.documentElement.setAttribute("data-theme", t);
+        document.documentElement.classList.add("theme-" + t);
+      })();
+    </script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 
-      :root {
+      :root,
+      [data-theme="modern-dark"],
+      .theme-modern-dark {
         --bg: #0c0c0e;
+        --card-bg: #14161f;
         --ink: #ffffff;
         --accent: #0033a0;
-        --ink-faint: rgba(255, 255, 255, 0.08);
-        --ink-muted: rgba(255, 255, 255, 0.5);
+        --accent-light: #1a56db;
+        --ink-faint: rgba(255, 255, 255, 0.1);
+        --ink-muted: rgba(255, 255, 255, 0.58);
         --gold: #d4af37;
+        --gold-light: #f3e5ab;
+        --danger: #ef4444;
+        --success: #10b981;
+      }
+
+      [data-theme="classic-blue"],
+      .theme-classic-blue {
+        --bg: #f4f6fa;
+        --card-bg: #ffffff;
+        --ink: #001489;
+        --accent: #001489;
+        --accent-light: #034694;
+        --ink-faint: rgba(0, 20, 137, 0.12);
+        --ink-muted: #536471;
+        --gold: #b48a1e;
+        --gold-light: #856404;
+        --danger: #ef4444;
+        --success: #10b981;
+      }
+
+      [data-theme="editorial"],
+      .theme-editorial {
+        --bg: #f8f7f3;
+        --card-bg: #ffffff;
+        --ink: #111827;
+        --accent: #034694;
+        --accent-light: #1d4ed8;
+        --ink-faint: rgba(17, 24, 39, 0.12);
+        --ink-muted: #4b5563;
+        --gold: #9a7414;
+        --gold-light: #6b4f0b;
+        --danger: #dc2626;
+        --success: #059669;
       }
 
       * {
@@ -22,6 +70,7 @@
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
         background-color: var(--bg);
         color: var(--ink);
@@ -54,6 +103,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 16px;
       }
       .logo-block {
         display: flex;
@@ -72,6 +122,11 @@
         font-weight: 700;
         color: var(--ink);
       }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
       .nav-links {
         display: flex;
         gap: 24px;
@@ -79,46 +134,104 @@
       }
       .nav-links a {
         font-family: "Space Mono", monospace;
-        font-size: 0.65rem;
+        font-size: 0.72rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         text-decoration: none;
         color: var(--ink-muted);
+        transition: color 0.2s ease;
       }
+      .nav-links a:hover,
       .nav-links a.active {
         color: var(--ink);
+        font-weight: 700;
       }
 
       /* Main Content */
       .main-container {
         flex: 1;
-        padding-top: 60px;
+        padding-top: 36px;
         padding-bottom: 80px;
+      }
+
+      #matchContent {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
+      }
+
+      .back-nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .back-link {
+        font-family: "Space Mono", monospace;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: var(--gold);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s ease;
+      }
+      .back-link:hover {
+        transform: translateX(-4px);
+      }
+
+      .match-switcher-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .match-switcher-label {
+        font-family: "Space Mono", monospace;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+      }
+      .match-switcher-select {
+        background: var(--card-bg);
+        color: var(--ink);
+        border: 1px solid var(--ink-faint);
+        border-radius: 8px;
+        padding: 7px 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        max-width: 340px;
       }
 
       /* Match Hero Header */
       .match-hero-minimal {
         text-align: center;
         border-bottom: 1px solid var(--ink-faint);
-        padding-bottom: 60px;
+        padding-bottom: 32px;
       }
       .meta-label {
         font-family: "Space Mono", monospace;
-        font-size: 20px;
-        line-height: 20px;
-        font-weight: bold;
+        font-size: 1rem;
+        line-height: 1.4;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.16em;
         color: var(--gold);
-        margin-bottom: 24px;
-        display: block;
+        margin-bottom: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
       }
-      /* ============================================
-         Scoreboard Grid Layout (เลย์เอาต์หลัก 3 คอลัมน์)
-         ============================================ */
+      .meta-label img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+      }
+
       .scoreboard-grid {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
@@ -126,18 +239,15 @@
         align-items: start;
         width: 100%;
         padding: 24px;
-        background-color: var(--card-bg, #1a1a24);
+        background-color: var(--card-bg);
         border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--ink-faint);
       }
       .team-box {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-      }
-      .home-team-box,
-      .away-team-box {
-        align-items: center; 
+        gap: 10px;
+        align-items: center;
       }
       .team-logo-wrap {
         display: flex;
@@ -149,31 +259,28 @@
         width: 64px;
         height: 64px;
         object-fit: contain;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-        transition: transform 0.3s ease;
-      }
-      .team-logo:hover {
-        transform: scale(1.05);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
       }
       .score-center-box {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 72px;
+        min-height: 72px;
+        gap: 10px;
       }
       .score-main {
         font-size: 2.2rem;
         font-weight: 800;
-        font-family: var(--font-mono, "Space Mono", monospace);
+        font-family: "Space Mono", monospace;
         color: var(--ink);
-        background: rgba(255, 255, 255, 0.1);
-        padding: 4px 20px;
+        background: rgba(128, 128, 128, 0.12);
+        padding: 6px 22px;
         border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid var(--ink-faint);
         letter-spacing: 2px;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         line-height: 1.2;
+        font-variant-numeric: tabular-nums;
       }
       .team-name-wrap {
         display: flex;
@@ -188,210 +295,409 @@
         margin: 0;
         text-align: center;
       }
-      html[data-theme="editorial"] .score-main,
-      html[data-theme="editorial"] .team-name-display,
-      html[data-theme="editorial"] .team-name-display span {
-        color: #000000 !important;
+      .team-name-wrapper .team-name-full {
+        display: inline !important;
       }
-      /* ============================================
-         สไตล์รายชื่อผู้ทำประตู (ล็อกคอลัมน์เป๊ะแบบตาราง)
-         ============================================ */
+      .team-name-wrapper .team-name-short {
+        display: none !important;
+      }
+      .match-status {
+        font-family: "Space Mono", monospace;
+        font-size: 0.72rem;
+        background: var(--ink);
+        color: var(--bg);
+        padding: 4px 12px;
+        border-radius: 4px;
+        display: inline-block;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
       .goalscorers-list {
         display: flex;
         flex-direction: column;
         gap: 4px;
-        margin-top: 16px;
+        margin-top: 8px;
         width: 100%;
       }
-
       .home-scorers .goal-item {
         display: grid;
-        grid-template-columns: 45px 1fr 25px; 
+        grid-template-columns: 45px 1fr 22px;
         align-items: center;
-        width: 100%;
       }
-
       .home-scorers .goal-minute {
         text-align: left;
       }
-
       .home-scorers .goal-player {
         text-align: right;
-        padding-right: 12px;
+        padding-right: 10px;
       }
-
-      .home-scorers .goal-icon-wrap {
-        display: flex;
-        justify-content: flex-end;
-      }
-
       .away-scorers .goal-item {
         display: grid;
-        grid-template-columns: 25px 1fr 45px;
+        grid-template-columns: 22px 1fr 45px;
         align-items: center;
-        width: 100%;
       }
-
-      .away-scorers .goal-icon-wrap {
-        display: flex;
-        justify-content: flex-start;
-      }
-
       .away-scorers .goal-player {
         text-align: left;
-        padding-left: 12px;
+        padding-left: 10px;
       }
-
       .away-scorers .goal-minute {
         text-align: right;
       }
-
       .goal-player {
         font-weight: 600;
-        color: var(--ink, #ffffff);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.88rem;
+        color: var(--ink);
       }
-
-      html[data-theme="editorial"] .goal-player {
-        color: #000000 !important;
-      }
-
       .goal-minute {
-        font-family: var(--font-mono, "Space Mono", monospace);
+        font-family: "Space Mono", monospace;
         font-weight: 700;
         color: #38bdf8;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
       }
 
-      .goal-icon {
-        width: 14px;
-        height: 14px;
-        object-fit: contain;
-        display: block;
-      }
-      .match-status {
-        font-family: "Space Mono", monospace;
-        font-size: 0.75rem;
-        background: var(--ink);
-        color: var(--bg);
-        padding: 4px 12px;
-        margin-top: 16px;
-        display: inline-block;
-        font-weight: bold;
-      }
-
-      /* Detailed Information */
+      /* Detailed Grid */
       .details-grid {
         display: grid;
-        grid-template-columns: 350px 1fr;
-        gap: 60px;
+        grid-template-columns: 340px minmax(0, 1fr);
+        gap: 40px;
         align-items: start;
       }
 
       .sidebar-meta {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 24px;
         border-right: 1px solid var(--ink-faint);
-        padding-right: 40px;
+        padding-right: 32px;
+      }
+      .sidebar-card {
+        background: var(--card-bg);
+        border: 1px solid var(--ink-faint);
+        border-radius: 12px;
+        padding: 18px;
+      }
+      .sidebar-card-title {
+        font-family: "Space Mono", monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+        font-weight: 700;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid var(--ink-faint);
       }
       .meta-item {
         margin-bottom: 12px;
       }
+      .meta-item:last-child {
+        margin-bottom: 0;
+      }
       .label {
         font-family: "Space Mono", monospace;
-        font-size: 0.6rem;
+        font-size: 0.65rem;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         color: var(--ink-muted);
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: 3px;
       }
       .value {
         font-size: 0.9rem;
-        font-weight: 500;
+        font-weight: 600;
+        color: var(--ink);
       }
-
-      /* Goalscorers */
       .goals-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-        margin-top: 20px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .col-team-heading {
+        font-family: "Space Mono", monospace;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin-bottom: 6px;
       }
       .goal-entry {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 8px 0;
+        gap: 10px;
+        padding: 7px 0;
         border-bottom: 1px solid var(--ink-faint);
         text-decoration: none;
         color: var(--ink);
       }
+      .goal-entry:last-child {
+        border-bottom: 0;
+      }
       .goal-entry img {
-        width: 32px;
-        height: 40px;
+        width: 30px;
+        height: 36px;
         object-fit: cover;
-        border-radius: 2px;
+        object-position: top center;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.08);
       }
       .goal-entry .time {
         font-family: "Space Mono", monospace;
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         color: var(--gold);
+        margin-left: 4px;
       }
       .goal-entry .name {
         font-weight: 600;
         font-size: 0.85rem;
       }
 
-      /* Events Table */
-      .section-title {
-        font-family: "Syne", sans-serif;
-        font-size: 1.5rem;
-        text-transform: uppercase;
+      /* Tabs Navigation (Parity with match-detail.html) */
+      .events-log {
+        min-width: 0;
+      }
+      .match-tabs {
+        display: flex;
+        gap: 10px;
+        border-bottom: 1px solid var(--ink-faint);
         margin-bottom: 24px;
-        border-bottom: 2px solid var(--ink);
-        padding-bottom: 8px;
-        display: inline-block;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+      }
+      .match-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .tab-btn {
+        background: none;
+        border: none;
+        color: var(--ink-muted);
+        padding: 12px 16px;
+        font-family: "Space Mono", monospace;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        border-radius: 6px 6px 0 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tab-btn:hover {
+        color: var(--ink);
+        background: rgba(128, 128, 128, 0.06);
+      }
+      .tab-btn.active {
+        color: var(--gold);
+        font-weight: 700;
+        background: rgba(212, 175, 55, 0.06);
+      }
+      .tab-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--gold);
+      }
+      .tab-pane {
+        display: none;
+      }
+      .tab-pane.active {
+        display: block;
+      }
+
+      /* Timeline Rows */
+      .timeline-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
       .event-row {
         display: grid;
-        grid-template-columns: 60px 180px 1fr 1fr;
-        padding: 16px 0;
-        border-bottom: 1px solid var(--ink-faint);
+        grid-template-columns: 58px 170px 1fr 1fr;
+        gap: 12px;
+        padding: 13px 16px;
+        background: var(--card-bg);
+        border: 1px solid var(--ink-faint);
+        border-radius: 10px;
         align-items: center;
+      }
+      .event-row.is-goal {
+        border-left: 4px solid var(--gold);
+      }
+      .event-row.is-card {
+        border-left: 4px solid #f59e0b;
+      }
+      .event-row.is-sub {
+        border-left: 4px solid #10b981;
       }
       .event-min {
         font-family: "Space Mono", monospace;
         font-weight: 700;
         color: var(--gold);
+        font-size: 0.9rem;
       }
       .event-team {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        font-size: 0.78rem;
+        font-weight: 700;
         display: flex;
         align-items: center;
         gap: 8px;
+        color: var(--ink);
       }
       .event-team img {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
       }
       .event-player {
         font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--ink);
       }
       .event-type {
-        font-size: 0.75rem;
+        font-size: 0.82rem;
         color: var(--ink-muted);
+        text-align: right;
+      }
+
+      /* Stats Card */
+      .stats-card {
+        background: var(--card-bg);
+        border: 1px solid var(--ink-faint);
+        border-radius: 12px;
+        padding: 24px;
+      }
+      .stats-header-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--ink-faint);
+      }
+      .stats-header-team {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Syne", sans-serif;
+        font-size: 0.98rem;
+        font-weight: 700;
+      }
+      .stats-header-team img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+      }
+      .stat-row {
+        margin-bottom: 18px;
+      }
+      .stat-row:last-child {
+        margin-bottom: 0;
+      }
+      .stat-labels {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .stat-value-home,
+      .stat-value-away {
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        font-size: 0.96rem;
+        min-width: 48px;
+      }
+      .stat-value-away {
+        text-align: right;
+      }
+      .stat-name {
+        font-family: "Space Mono", monospace;
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        text-align: center;
+      }
+      .stat-bar-container {
+        display: flex;
+        height: 8px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgba(128, 128, 128, 0.16);
+        gap: 2px;
+      }
+      .stat-bar-home {
+        background: #034694;
+        height: 100%;
+      }
+      .stat-bar-away {
+        background: #64748b;
+        height: 100%;
+      }
+
+      /* Empty Tab State */
+      .empty-tab-box {
+        text-align: center;
+        padding: 44px 20px;
+        background: var(--card-bg);
+        border: 1px dashed var(--ink-faint);
+        border-radius: 12px;
+        color: var(--ink-muted);
+      }
+      .empty-tab-box p {
+        margin-top: 8px;
+        font-size: 0.9rem;
+      }
+
+      /* Commentary & Video */
+      .commentary-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .commentary-item {
+        display: flex;
+        gap: 14px;
+        padding: 14px 16px;
+        background: var(--card-bg);
+        border: 1px solid var(--ink-faint);
+        border-radius: 10px;
+      }
+      .commentary-time {
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        color: var(--gold);
+        min-width: 44px;
+      }
+      .video-card {
+        background: var(--card-bg);
+        border: 1px solid var(--ink-faint);
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #000;
+      }
+      .video-container iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
 
       /* Footer */
       footer {
         border-top: 1px solid var(--ink-faint);
-        padding: 60px 0;
+        padding: 48px 0;
         margin-top: auto;
       }
       .footer-content {
@@ -400,18 +706,44 @@
         align-items: flex-start;
       }
       .footer-legal {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
         color: var(--ink-muted);
-        max-width: 300px;
+        max-width: 340px;
       }
       .footer-copyright {
         font-family: "Space Mono", monospace;
-        font-size: 0.65rem;
+        font-size: 0.68rem;
       }
 
-      ::selection {
-        background: var(--gold);
-        color: var(--bg);
+      @media (max-width: 960px) {
+        .details-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .sidebar-meta {
+          border-right: 0;
+          padding-right: 0;
+          border-bottom: 1px solid var(--ink-faint);
+          padding-bottom: 24px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .nav-container,
+        .main-container,
+        .footer-content {
+          padding: 0 18px;
+        }
+        .scoreboard-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .event-row {
+          grid-template-columns: 48px 1fr;
+        }
+        .event-type {
+          text-align: left;
+        }
       }
     </style>
   </head>
@@ -422,158 +754,30 @@
           <img src="assets/images/karnlakhrangnan-logo.png" alt="Logo" />
           <span>KARN LA KHRANg NAN</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="men-team.html">Men's Team</a></li>
-          <li><a href="women-team.html" class="active">Women's Team</a></li>
-        </ul>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="men-team.html">Men's Team</a></li>
+            <li><a href="women-team.html" class="active">Women's Team</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
 
     <main class="main-container">
-      <header class="match-hero-minimal">
-        <span class="meta-label">UEFA WOMEN'S CHAMPIONS LEAGUE [UWCL]</span>
-        <div class="scoreboard-grid">
-          <div class="team-box home-team-box">
-            <div class="team-logo-wrap">
-              <img src="databases/logo/teams/england_chelsea.svg" alt="Chelsea Women" class="team-logo" />
-            </div>
-            <div class="team-name-wrap">
-              <h2 class="team-name-display" style="color: var(--gold)">Chelsea Women</h2>
-            </div>
-          </div>
-          <div class="score-center-box">
-            <div class="score-inner-wrap">
-              <div class="score-main">5-2</div>
-              <div class="match-status">FULL TIME</div>
-            </div>
-          </div>
-          <div class="team-box away-team-box">
-            <div class="team-logo-wrap">
-              <img src="databases/logo/teams/spain_real-sociedad.svg" alt="Real Sociedad Women" class="team-logo" />
-            </div>
-            <div class="team-name-wrap">
-              <h2 class="team-name-display">Real Sociedad</h2>
-            </div>
-          </div>
+      <div class="back-nav-container">
+        <a href="women-team.html" class="back-link" id="womenBackLink">← กลับหน้าทีมหญิง</a>
+        <div class="match-switcher-wrap">
+          <label for="womenMatchSelect" class="match-switcher-label" id="womenSwitcherLabel">Match:</label>
+          <select id="womenMatchSelect" class="match-switcher-select"></select>
         </div>
-      </header>
+      </div>
 
-      <div class="details-grid">
-        <aside class="sidebar-meta">
-          <div>
-            <div class="meta-item">
-              <span class="label">Date</span>
-              <span class="value">27 August 2026</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Kick Off</span>
-              <span class="value">00:45</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Venue</span>
-              <span class="value">Cherry Red Records Stadium</span>
-            </div>
-          </div>
-
-          <div>
-            <span class="label">Goalscorers</span>
-            <div class="goals-container">
-              <div class="goals-col">
-                <a href="#" class="goal-entry"
-                  ><img src="assets/images/players/women/naomi-girma.png" />
-                  <div class="name">Girma <span class="time">30'</span></div></a
-                >
-                <a href="#" class="goal-entry"
-                  ><img src="assets/images/players/women/veerle-buurman.jpg" />
-                  <div class="name">Buurman <span class="time">54'</span></div></a
-                >
-                <a href="#" class="goal-entry"
-                  ><img src="assets/images/players/women/melvine-malard.jpg" />
-                  <div class="name">Malard <span class="time">67'</span></div></a
-                >
-                <a href="#" class="goal-entry"
-                  ><img src="assets/images/players/women/lauren-james.jpg" />
-                  <div class="name">James <span class="time">74'</span></div></a
-                >
-                <a href="#" class="goal-entry"
-                  ><img src="assets/images/players/women/melvine-malard.jpg" />
-                  <div class="name">Malard <span class="time">88'</span></div></a
-                >
-              </div>
-              <div class="goals-col">
-                <div class="goal-entry">
-                  <img src="assets/images/placeholder-player.svg" />
-                  <div class="name">Marín <span class="time">8'</span></div>
-                </div>
-                <div class="goal-entry">
-                  <img src="assets/images/placeholder-player.svg" />
-                  <div class="name">Marcos <span class="time">58'</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <section class="events-log">
-          <h3 class="section-title">Key Events</h3>
-          <div class="event-row">
-            <span class="event-min">8'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/spain_real-sociedad.svg" />SOC</span
-            >
-            <span class="event-player">Ainhoa Marín</span>
-            <span class="event-type">Goal (0-1)</span>
-          </div>
-          <div class="event-row">
-            <span class="event-min">30'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/england_chelsea.svg" />CHE</span
-            >
-            <span class="event-player">Naomi Girma</span>
-            <span class="event-type">Goal (1-1)</span>
-          </div>
-          <div class="event-row">
-            <span class="event-min">54'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/england_chelsea.svg" />CHE</span
-            >
-            <span class="event-player">Veerle Buurman</span>
-            <span class="event-type">Goal (2-1)</span>
-          </div>
-          <div class="event-row">
-            <span class="event-min">58'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/spain_real-sociedad.svg" />SOC</span
-            >
-            <span class="event-player">Cecilia Marcos</span>
-            <span class="event-type">Goal (2-2)</span>
-          </div>
-          <div class="event-row">
-            <span class="event-min">67'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/england_chelsea.svg" />CHE</span
-            >
-            <span class="event-player">Melvine Malard</span>
-            <span class="event-type">Goal (3-2)</span>
-          </div>
-          <div class="event-row">
-            <span class="event-min">74'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/england_chelsea.svg" />CHE</span
-            >
-            <span class="event-player">Lauren James</span>
-            <span class="event-type">Goal (4-2)</span>
-          </div>
-          <div class="event-row">
-            <span class="event-min">88'</span>
-            <span class="event-team"
-              ><img src="databases/logo/teams/england_chelsea.svg" />CHE</span
-            >
-            <span class="event-player">Melvine Malard</span>
-            <span class="event-type">Goal (5-2)</span>
-          </div>
-        </section>
+      <div id="matchContent">
+        <div class="empty-tab-box">
+          <strong style="color: var(--ink);">กำลังโหลดข้อมูลการแข่งขัน...</strong>
+          <p>Loading match details...</p>
+        </div>
       </div>
     </main>
 
@@ -594,6 +798,7 @@
           <div>
             <img
               src="assets/images/karnlakhrangnan-logo.png"
+              alt="KARN LA KHRANg NAN"
               style="height: 32px; margin-bottom: 12px"
             />
             <div class="footer-copyright">© 2026 KARN LA KHRANg NAN OFFICIAL</div>
@@ -605,6 +810,455 @@
         </div>
       </div>
     </footer>
+
+    <script src="assets/js/tactical-lineup.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        let womenMatches = [];
+        let playerLookup = {};
+        let currentMatch = null;
+        let activeTabId = "tab-timeline";
+
+        function esc(val) {
+          return String(val ?? "").replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+          });
+        }
+
+        function normalizeName(str) {
+          return String(str || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s*\(C\)/gi, "")
+            .replace(/\s*\(GK\)/gi, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+        }
+
+        function resolveChelseaPlayer(cleanName, pNum, teamTypeArg, isChelseaTeam) {
+          if (!isChelseaTeam) return null;
+          const norm = normalizeName(cleanName);
+          let found = playerLookup[norm];
+          if (!found && norm) {
+            const parts = norm.split(" ").filter(function (pt) { return pt.length > 2; });
+            const surname = parts[parts.length - 1];
+            if (surname && playerLookup["surname:" + surname]) {
+              found = playerLookup["surname:" + surname];
+            }
+          }
+          if (!found && pNum !== undefined && pNum !== "" && playerLookup["num:" + String(pNum)]) {
+            found = playerLookup["num:" + String(pNum)];
+          }
+          if (!found) return null;
+          return {
+            id: found.id,
+            team: "women",
+            image: found.image || "",
+          };
+        }
+
+        function formatGoalList(goals, side) {
+          const filtered = (goals || []).filter(function (g) { return g.team === side; });
+          return filtered.map(function (g) {
+            const min = g.minute != null && g.minute !== "" ? esc(String(g.minute).replace(/'$/, "")) + "'" : "";
+            const ogTag = g.own_goal ? " (OG)" : "";
+            if (side === "home") {
+              return (
+                '<div class="goal-item">' +
+                  '<span class="goal-minute">' + min + '</span>' +
+                  '<span class="goal-player">' + esc(g.player) + esc(ogTag) + '</span>' +
+                  '<span>⚽</span>' +
+                '</div>'
+              );
+            }
+            return (
+              '<div class="goal-item">' +
+                '<span>⚽</span>' +
+                '<span class="goal-player">' + esc(g.player) + esc(ogTag) + '</span>' +
+                '<span class="goal-minute">' + min + '</span>' +
+              '</div>'
+            );
+          }).join("");
+        }
+
+        function buildSidebarGoalList(goals, side, teamName, isTh) {
+          const isChelsea = String(teamName || "").toLowerCase().includes("chelsea");
+          const filtered = (goals || []).filter(function (g) { return g.team === side; });
+          if (filtered.length === 0) {
+            return '<div style="font-size:0.82rem;color:var(--ink-muted);">' + (isTh ? "ไม่มีประตู" : "No goals") + '</div>';
+          }
+          return filtered.map(function (g) {
+            const resolved = resolveChelseaPlayer(g.player, "", "women", isChelsea);
+            const imgSrc = resolved && resolved.image ? resolved.image : "assets/images/placeholder-player.svg";
+            const min = g.minute != null && g.minute !== "" ? esc(String(g.minute).replace(/'$/, "")) + "'" : "";
+            const og = g.own_goal ? " (OG)" : "";
+            const inner =
+              '<img src="' + esc(imgSrc) + '" alt="' + esc(g.player) + '" onerror="this.src=\'assets/images/placeholder-player.svg\'" />' +
+              '<div class="name">' + esc(g.player) + esc(og) + '<span class="time">' + min + '</span></div>';
+            if (resolved && resolved.id) {
+              return '<a href="player-profile.html?id=' + encodeURIComponent(resolved.id) + '&team=women" class="goal-entry">' + inner + '</a>';
+            }
+            return '<div class="goal-entry">' + inner + '</div>';
+          }).join("");
+        }
+
+        function buildTimelineHTML(match, isTh) {
+          const rawEvents = Array.isArray(match.events) ? match.events : [];
+          const keyTypes = new Set([
+            "goal", "own_goal", "penalty", "yellow_card", "second_yellow", "red_card",
+            "substitution", "kick_off", "half_time", "full_time", "var"
+          ]);
+          const keyEvents = rawEvents.filter(function (ev) {
+            return keyTypes.has(String(ev.type || "").toLowerCase());
+          });
+          const eventsToShow = keyEvents.length > 0 ? keyEvents : rawEvents.slice(0, 40);
+
+          if (eventsToShow.length === 0) {
+            return (
+              '<div class="empty-tab-box">' +
+                '<div style="font-size:1.5rem;margin-bottom:8px;">⏱️</div>' +
+                '<strong style="color:var(--ink);">' + (isTh ? "ยังไม่มีข้อมูลเหตุการณ์การแข่งขัน" : "No match events recorded") + '</strong>' +
+                '<p>' + (isTh ? "เหตุการณ์สำคัญจะปรากฏเมื่อการแข่งขันเริ่มต้น" : "Key match events will appear once kick-off begins.") + '</p>' +
+              '</div>'
+            );
+          }
+
+          return '<div class="timeline-list">' + eventsToShow.map(function (ev) {
+            const type = String(ev.type || "").toLowerCase();
+            const isHome = ev.team === "home";
+            const teamName = ev.team === "home" ? match.home_team : ev.team === "away" ? match.away_team : "";
+            const teamLogo = ev.team === "home" ? match.home_logo : ev.team === "away" ? match.away_logo : "";
+            const minStr = ev.display_minute
+              ? esc(ev.display_minute)
+              : (ev.minute !== undefined && ev.minute !== null ? esc(ev.minute) + "'" : "-");
+
+            let rowCls = "";
+            if (type.includes("goal") || type === "penalty") rowCls = "is-goal";
+            else if (type.includes("card")) rowCls = "is-card";
+            else if (type === "substitution") rowCls = "is-sub";
+
+            let playerText = ev.player || "";
+            if (type === "substitution") {
+              const pIn = ev.player_in || ev.player || "";
+              const pOut = ev.player_out || ev.replaced || "";
+              playerText = (pIn ? "↑ " + pIn : "") + (pOut ? (pIn ? "  /  " : "") + "↓ " + pOut : "");
+            }
+
+            const teamCell = teamName
+              ? '<span class="event-team"><img src="' + esc(teamLogo || "assets/images/placeholder-team.svg") + '" alt="" onerror="this.src=\'assets/images/placeholder-team.svg\'" /><span>' + esc(teamName) + '</span></span>'
+              : '<span class="event-team">—</span>';
+
+            return (
+              '<div class="event-row ' + rowCls + '">' +
+                '<span class="event-min">' + minStr + '</span>' +
+                teamCell +
+                '<span class="event-player">' + esc(playerText || (isHome ? match.home_team : match.away_team || "-")) + '</span>' +
+                '<span class="event-type">' + esc(ev.detail || ev.type || "") + '</span>' +
+              '</div>'
+            );
+          }).join("") + '</div>';
+        }
+
+        function buildStatsHTML(match, isTh) {
+          const stats = Array.isArray(match.stats) ? match.stats : [];
+          if (stats.length === 0) {
+            return (
+              '<div class="empty-tab-box">' +
+                '<div style="font-size:1.5rem;margin-bottom:8px;">📊</div>' +
+                '<strong style="color:var(--ink);">' + (isTh ? "ยังไม่มีสถิติการแข่งขัน" : "No match statistics available") + '</strong>' +
+                '<p>' + (isTh ? "สถิติหลังเกมจะอัปเดตเมื่อมีข้อมูลอย่างเป็นทางการ" : "Detailed statistics will appear once available.") + '</p>' +
+              '</div>'
+            );
+          }
+
+          const rows = stats.map(function (st) {
+            const hVal = Number(st.home) || 0;
+            const aVal = Number(st.away) || 0;
+            const total = hVal + aVal;
+            const hPct = total > 0 ? Math.round((hVal / total) * 100) : 50;
+            const aPct = total > 0 ? 100 - hPct : 50;
+            const suffix = st.isPercentage ? "%" : "";
+            const label = isTh ? (st.label || st.name || st.label_en || "") : (st.label_en || st.name || st.label || "");
+
+            return (
+              '<div class="stat-row">' +
+                '<div class="stat-labels">' +
+                  '<span class="stat-value-home">' + esc(hVal) + suffix + '</span>' +
+                  '<span class="stat-name">' + esc(label) + '</span>' +
+                  '<span class="stat-value-away">' + esc(aVal) + suffix + '</span>' +
+                '</div>' +
+                '<div class="stat-bar-container">' +
+                  '<div class="stat-bar-home" style="width:' + hPct + '%"></div>' +
+                  '<div class="stat-bar-away" style="width:' + aPct + '%"></div>' +
+                '</div>' +
+              '</div>'
+            );
+          }).join("");
+
+          return (
+            '<div class="stats-card">' +
+              '<div class="stats-header-bar">' +
+                '<div class="stats-header-team">' +
+                  '<img src="' + esc(match.home_logo || "assets/images/placeholder-team.svg") + '" alt="" onerror="this.src=\'assets/images/placeholder-team.svg\'" />' +
+                  '<span>' + esc(match.home_team) + '</span>' +
+                '</div>' +
+                '<div class="stats-header-team">' +
+                  '<span>' + esc(match.away_team) + '</span>' +
+                  '<img src="' + esc(match.away_logo || "assets/images/placeholder-team.svg") + '" alt="" onerror="this.src=\'assets/images/placeholder-team.svg\'" />' +
+                '</div>' +
+              '</div>' +
+              rows +
+            '</div>'
+          );
+        }
+
+        function buildCommentaryHTML(match, isTh) {
+          const items = Array.isArray(match.live_commentary) && match.live_commentary.length > 0
+            ? match.live_commentary
+            : (Array.isArray(match.commentary) ? match.commentary : []);
+
+          if (items.length === 0) {
+            return (
+              '<div class="empty-tab-box">' +
+                '<div style="font-size:1.5rem;margin-bottom:8px;">🎙️</div>' +
+                '<strong style="color:var(--ink);">' + (isTh ? "ยังไม่มีบันทึกบรรยายสด" : "No live commentary available") + '</strong>' +
+                '<p>' + (isTh ? "คุณสามารถดูเหตุการณ์สำคัญและสถิติได้จากแท็บไทม์ไลน์และสถิติ" : "Switch to Timeline or Stats for key match moments.") + '</p>' +
+              '</div>'
+            );
+          }
+
+          return '<div class="commentary-list">' + items.map(function (c) {
+            if (typeof c === "string") {
+              return '<div class="commentary-item"><span class="commentary-time">•</span><div>' + esc(c) + '</div></div>';
+            }
+            const t = c.time || c.display_minute || (c.minute != null ? c.minute + "'" : "•");
+            const txt = c.text || c.section || "";
+            return (
+              '<div class="commentary-item">' +
+                '<span class="commentary-time">' + esc(t) + '</span>' +
+                '<div>' + esc(txt) + '</div>' +
+              '</div>'
+            );
+          }).join("") + '</div>';
+        }
+
+        function buildVideoHTML(match, isTh) {
+          const videoId = match.youtube_id || (match.video && match.video.id);
+          if (!videoId) {
+            return (
+              '<div class="empty-tab-box">' +
+                '<div style="font-size:1.5rem;margin-bottom:8px;">🎥</div>' +
+                '<strong style="color:var(--ink);">' + (isTh ? "ยังไม่มีไฮไลท์วิดีโอ" : "No video highlight available") + '</strong>' +
+                '<p>' + (isTh ? "วิดีโอไฮไลท์จะอัปเดตหลังจบเกม" : "Match highlights will be added after full-time.") + '</p>' +
+              '</div>'
+            );
+          }
+          return (
+            '<div class="video-card">' +
+              '<div class="video-container">' +
+                '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '" title="Match Highlights" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        function activateTab(targetId) {
+          activeTabId = targetId || "tab-timeline";
+          document.querySelectorAll(".tab-btn").forEach(function (btn) {
+            btn.classList.toggle("active", btn.getAttribute("data-target") === activeTabId);
+          });
+          document.querySelectorAll(".tab-pane").forEach(function (pane) {
+            pane.classList.toggle("active", pane.id === activeTabId);
+          });
+        }
+
+        function renderMatch(match) {
+          if (!match) return;
+          currentMatch = match;
+          const isTh = (window.currentLang || localStorage.getItem("lang") || "th") === "th";
+
+          const backLink = document.getElementById("womenBackLink");
+          if (backLink) backLink.textContent = isTh ? "← กลับหน้าทีมหญิง" : "← Back to Women's Team";
+
+          const switcherLabel = document.getElementById("womenSwitcherLabel");
+          if (switcherLabel) switcherLabel.textContent = isTh ? "เลือกแมตช์:" : "Match:";
+
+          const isHomeChelsea = String(match.home_team || "").toLowerCase().includes("chelsea");
+          const isAwayChelsea = String(match.away_team || "").toLowerCase().includes("chelsea");
+          const homeNameHtml = window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : esc(match.home_team);
+          const awayNameHtml = window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : esc(match.away_team);
+
+          const hasScore = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined;
+          const scoreStr = hasScore ? (match.home_score + " - " + match.away_score) : (match.time_th || match.time || "VS");
+          const statusStr = match.status === "completed"
+            ? (isTh ? "จบการแข่งขัน" : "FULL TIME")
+            : match.status === "live"
+            ? "LIVE"
+            : (isTh ? "โปรแกรมแข่งขัน" : "UPCOMING");
+
+          const lineupsTabHtml = window.TacticalLineup
+            ? window.TacticalLineup.renderTacticalLineupsHTML(match, {
+                isTh: isTh,
+                teamType: "women",
+                resolveChelseaPlayer: resolveChelseaPlayer,
+              })
+            : "";
+
+          const container = document.getElementById("matchContent");
+          container.innerHTML =
+            '<header class="match-hero-minimal">' +
+              '<span class="meta-label">' +
+                (match.competition_logo ? '<img src="' + esc(match.competition_logo) + '" alt="" onerror="this.style.display=\'none\'">' : "") +
+                '<span>' + esc(match.competition || "Chelsea FC Women") + '</span>' +
+              '</span>' +
+              '<div class="scoreboard-grid">' +
+                '<div class="team-box home-team-box">' +
+                  '<div class="team-logo-wrap"><img src="' + esc(match.home_logo || "assets/images/placeholder-team.svg") + '" alt="' + esc(match.home_team) + '" class="team-logo" onerror="this.src=\'assets/images/placeholder-team.svg\'" /></div>' +
+                  '<div class="team-name-wrap"><h2 class="team-name-display" style="' + (isHomeChelsea ? "color: var(--gold);" : "") + '">' + homeNameHtml + '</h2></div>' +
+                  '<div class="goalscorers-list home-scorers">' + formatGoalList(match.goals, "home") + '</div>' +
+                '</div>' +
+                '<div class="score-center-box">' +
+                  '<div class="score-main">' + esc(scoreStr) + '</div>' +
+                  '<div class="match-status">' + esc(statusStr) + '</div>' +
+                '</div>' +
+                '<div class="team-box away-team-box">' +
+                  '<div class="team-logo-wrap"><img src="' + esc(match.away_logo || "assets/images/placeholder-team.svg") + '" alt="' + esc(match.away_team) + '" class="team-logo" onerror="this.src=\'assets/images/placeholder-team.svg\'" /></div>' +
+                  '<div class="team-name-wrap"><h2 class="team-name-display" style="' + (isAwayChelsea ? "color: var(--gold);" : "") + '">' + awayNameHtml + '</h2></div>' +
+                  '<div class="goalscorers-list away-scorers">' + formatGoalList(match.goals, "away") + '</div>' +
+                '</div>' +
+              '</div>' +
+            '</header>' +
+
+            '<div class="details-grid">' +
+              '<aside class="sidebar-meta">' +
+                '<div class="sidebar-card">' +
+                  '<div class="sidebar-card-title">' + (isTh ? "📌 ข้อมูลการแข่งขัน" : "📌 Match Details") + '</div>' +
+                  '<div class="meta-item"><span class="label">' + (isTh ? "วันที่" : "Date") + '</span><span class="value">' + esc(match.date || "-") + '</span></div>' +
+                  '<div class="meta-item"><span class="label">' + (isTh ? "เวลาเริ่มแข่ง (TH / UK)" : "Kick Off (TH / UK)") + '</span><span class="value">' + esc(match.time_th || match.time || "-") + (match.time_uk ? " / " + esc(match.time_uk) + " UK" : "") + '</span></div>' +
+                  '<div class="meta-item"><span class="label">' + (isTh ? "สนามแข่งขัน" : "Venue") + '</span><span class="value">' + esc(match.venue || "-") + '</span></div>' +
+                '</div>' +
+                '<div class="sidebar-card">' +
+                  '<div class="sidebar-card-title">' + (isTh ? "⚽ ผู้ทำประตู" : "⚽ Goalscorers") + '</div>' +
+                  '<div class="goals-container">' +
+                    '<div><div class="col-team-heading">' + esc(match.home_team) + '</div>' + buildSidebarGoalList(match.goals, "home", match.home_team, isTh) + '</div>' +
+                    '<div><div class="col-team-heading">' + esc(match.away_team) + '</div>' + buildSidebarGoalList(match.goals, "away", match.away_team, isTh) + '</div>' +
+                  '</div>' +
+                '</div>' +
+              '</aside>' +
+
+              '<section class="events-log">' +
+                '<div class="match-tabs">' +
+                  '<button class="tab-btn" data-target="tab-timeline"><span>⏱️</span> <span>' + (isTh ? "ไทม์ไลน์" : "Timeline") + '</span></button>' +
+                  '<button class="tab-btn" data-target="tab-commentary"><span>🎙️</span> <span>' + (isTh ? "บรรยายสด" : "Commentary") + '</span></button>' +
+                  '<button class="tab-btn" data-target="tab-stats"><span>📊</span> <span>' + (isTh ? "สถิติ" : "Stats") + '</span></button>' +
+                  '<button class="tab-btn" data-target="tab-lineups"><span>📋</span> <span>' + (isTh ? "รายชื่อผู้เล่น" : "Lineups") + '</span></button>' +
+                  '<button class="tab-btn" data-target="tab-video"><span>🎥</span> <span>' + (isTh ? "ไฮไลท์" : "Video") + '</span></button>' +
+                '</div>' +
+                '<div class="tab-content-container">' +
+                  '<div id="tab-timeline" class="tab-pane">' + buildTimelineHTML(match, isTh) + '</div>' +
+                  '<div id="tab-commentary" class="tab-pane">' + buildCommentaryHTML(match, isTh) + '</div>' +
+                  '<div id="tab-stats" class="tab-pane">' + buildStatsHTML(match, isTh) + '</div>' +
+                  '<div id="tab-lineups" class="tab-pane">' + lineupsTabHtml + '</div>' +
+                  '<div id="tab-video" class="tab-pane">' + buildVideoHTML(match, isTh) + '</div>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.querySelectorAll(".tab-btn").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              activateTab(btn.getAttribute("data-target"));
+            });
+          });
+
+          activateTab(activeTabId);
+        }
+
+        async function initWomenMatchDetail() {
+          try {
+            const [womenRes, playersRes] = await Promise.all([
+              fetch("data/fixtures-women.json"),
+              fetch("data/players-women.json").catch(function () { return null; }),
+            ]);
+            if (womenRes && womenRes.ok) {
+              womenMatches = await womenRes.json();
+            }
+            if (playersRes && playersRes.ok) {
+              const players = await playersRes.json();
+              players.forEach(function (p) {
+                const norm = normalizeName(p.name);
+                if (norm) playerLookup[norm] = p;
+                const parts = norm.split(" ");
+                const surname = parts[parts.length - 1];
+                if (surname && !playerLookup["surname:" + surname]) {
+                  playerLookup["surname:" + surname] = p;
+                }
+                if (p.number !== null && p.number !== undefined) {
+                  playerLookup["num:" + String(p.number)] = p;
+                }
+              });
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const reqId = params.get("id");
+            const reqTab = params.get("tab");
+            if (reqTab === "lineups") activeTabId = "tab-lineups";
+
+            const selectEl = document.getElementById("womenMatchSelect");
+            if (selectEl) {
+              const ordered = womenMatches.slice().sort(function (a, b) {
+                return String(b.date || "").localeCompare(String(a.date || ""));
+              });
+              selectEl.innerHTML = ordered.map(function (m) {
+                const score = m.home_score != null ? m.home_score + "-" + m.away_score : m.time || "vs";
+                return '<option value="' + esc(m.id) + '">' + esc(m.date) + " · " + esc(m.home_team) + " " + esc(score) + " " + esc(m.away_team) + "</option>";
+              }).join("");
+
+              selectEl.addEventListener("change", function () {
+                const chosen = womenMatches.find(function (m) { return String(m.id) === String(selectEl.value); });
+                if (chosen) {
+                  const nextUrl = new URL(window.location.href);
+                  nextUrl.searchParams.set("id", chosen.id);
+                  window.history.replaceState({}, "", nextUrl.toString());
+                  renderMatch(chosen);
+                }
+              });
+            }
+
+            let target = reqId
+              ? womenMatches.find(function (m) { return String(m.id).toLowerCase() === String(reqId).toLowerCase(); })
+              : null;
+
+            if (!target) {
+              const completedWithLineup = womenMatches
+                .filter(function (m) {
+                  return m.status === "completed" && m.lineups && (m.lineups.home?.starting?.length || m.lineups.away?.starting?.length);
+                })
+                .sort(function (a, b) { return String(b.date || "").localeCompare(String(a.date || "")); });
+              target = completedWithLineup[0] || womenMatches[0];
+            }
+
+            if (target && selectEl) {
+              selectEl.value = target.id;
+            }
+            if (target) {
+              renderMatch(target);
+            }
+          } catch (err) {
+            console.error("Error loading women match detail:", err);
+          }
+        }
+
+        window.addEventListener("languageChanged", function () {
+          if (currentMatch) renderMatch(currentMatch);
+        });
+
+        document.addEventListener("DOMContentLoaded", initWomenMatchDetail);
+      })();
+    </script>
   </body>
 </html>

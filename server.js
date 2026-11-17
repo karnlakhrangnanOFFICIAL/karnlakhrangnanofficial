@@ -10,6 +10,7 @@ import plMatchHandler from './api/pl-match.js';
 import eflMatchHandler from './api/efl-match.js';
 import matchesHandler from './api/football-data/teams/61/matches.js';
 import footballDataHandler from './api/football-data/[...path].js';
+import matchesApiHandler from './api/matches.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,12 +18,15 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json({ limit: '10mb' }));
+
 // Explicit page routes BEFORE static middlewares (Prevents folder-name redirect loops)
 app.get(['/about', '/about/'], (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
 app.get(['/icons', '/icons/'], (req, res) => res.sendFile(path.join(__dirname, 'icons.html')));
 app.get(['/match-detail', '/match-detail/'], (req, res) => res.sendFile(path.join(__dirname, 'match-detail.html')));
 app.get(['/match-detail-women', '/match-detail-women/'], (req, res) => res.sendFile(path.join(__dirname, 'match-detail-women.html')));
 app.get(['/match-history', '/match-history/'], (req, res) => res.sendFile(path.join(__dirname, 'match-history.html')));
+app.get(['/match-manager', '/match-manager/'], (req, res) => res.sendFile(path.join(__dirname, 'match-manager.html')));
 app.get(['/men-team', '/men-team/'], (req, res) => res.sendFile(path.join(__dirname, 'men-team.html')));
 app.get(['/player-card', '/player-card/'], (req, res) => res.sendFile(path.join(__dirname, 'player-card.html')));
 app.get(['/player-profile', '/player-profile/'], (req, res) => res.sendFile(path.join(__dirname, 'player-profile.html')));
@@ -98,6 +102,8 @@ app.all('/api/efl-match', (req, res) => eflMatchHandler(req, res));
 app.all('/api/epl-standings', (req, res) => eplHandler(req, res));
 app.all('/api/wsl-standings', (req, res) => wslHandler(req, res));
 app.all('/api/uwcl-standings', (req, res) => uwclHandler(req, res));
+app.all('/api/matches', (req, res) => matchesApiHandler(req, res));
+app.all('/api/matches/:id', (req, res) => matchesApiHandler(req, res));
 
 // Dedicated Chelsea Matches Endpoint
 app.all('/api/football-data/teams/61/matches', (req, res) => matchesHandler(req, res));

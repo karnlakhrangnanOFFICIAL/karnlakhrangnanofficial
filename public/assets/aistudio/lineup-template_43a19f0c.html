@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tactical Line-up Template</title>
+<style>
+  :root {
+    --bg-card: #181a1f;
+    --bg-surface: #22252c;
+    --pitch-green: #2d7a47;
+    --pitch-line: rgba(255, 255, 255, 0.35);
+    --text-main: #ffffff;
+    --text-muted: #9aa0a6;
+    --yellow-card: #f5c518;
+    --red-card: #e53935;
+    --sub-green: #2ecc71;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+  body { background: #101216; color: var(--text-main); padding: 16px; }
+  .lineup-wrapper { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+
+  /* 1. Sticky Tab Bar */
+  .sticky-tabs {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg-card); padding: 10px 14px; border-radius: 12px;
+    display: flex; gap: 8px; overflow-x: auto; border: 1px solid #2c303a;
+  }
+  .tab-btn {
+    background: transparent; color: var(--text-muted); border: 1px solid #343844;
+    padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; white-space: nowrap;
+  }
+  .tab-btn[aria-selected="true"] {
+    background: #ffffff; color: #101216; font-weight: 600; border-color: #ffffff;
+  }
+
+  /* 2. Team Headers */
+  .card { background: var(--bg-card); border-radius: 14px; overflow: hidden; border: 1px solid #2c303a; }
+  .teams-header { display: flex; justify-content: space-between; padding: 12px 16px; background: var(--bg-surface); }
+  .team-box { display: flex; align-items: center; gap: 12px; }
+  .team-box.away { flex-direction: row-reverse; text-align: right; }
+  .formation-badge { background: #303440; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+
+  /* 3. Horizontal Football Pitch */
+  .pitch-container {
+    display: flex; position: relative; background: var(--pitch-green);
+    min-height: 440px; border-top: 2px solid var(--pitch-line); border-bottom: 2px solid var(--pitch-line);
+  }
+  .pitch-half {
+    flex: 1; display: flex; justify-content: space-evenly; padding: 16px 8px; position: relative; z-index: 2;
+  }
+  .pitch-half.left { border-right: 2px solid var(--pitch-line); }
+
+  /* Tactical Lines */
+  .tactical-col { display: flex; justify-content: space-evenly; align-items: center; flex: 1; }
+  .pitch-half.left .tactical-col { flex-direction: column-reverse; }
+  .pitch-half.right .tactical-col { flex-direction: column; }
+
+  /* Pitch Markings */
+  .pitch-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+
+  /* Player Node & Badges */
+  .player-node { display: flex; flex-direction: column; align-items: center; width: 78px; text-align: center; }
+  .avatar-wrap { position: relative; width: 42px; height: 42px; }
+  .avatar {
+    width: 42px; height: 42px; border-radius: 50%; background: #1e222a;
+    border: 2px solid #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; color: #fff; overflow: hidden;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .avatar.red-carded { opacity: 0.5; }
+
+  .badge-col {
+    position: absolute; top: -4px; bottom: -4px; width: 16px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .badge-col.left { left: -10px; }
+  .badge-col.right { right: -10px; }
+  .badge {
+    width: 16px; height: 16px; border-radius: 50%; background: #fff; color: #111;
+    font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .card-icon { width: 8px; height: 11px; border-radius: 1px; }
+  .card-icon.yellow { background: var(--yellow-card); }
+  .card-icon.red { background: var(--red-card); }
+
+  .player-name { font-size: 11px; margin-top: 4px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+  .player-num { color: #d0f0dc; margin-right: 2px; }
+  .player-meta { font-size: 10px; background: rgba(0,0,0,0.45); padding: 1px 6px; border-radius: 8px; margin-top: 2px; }
+
+  /* 4. Bottom Info Sections */
+  .section-title { text-align: center; padding: 12px; font-weight: 700; font-size: 15px; border-bottom: 1px solid #2c303a; }
+  .split-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .split-col { padding: 12px 16px; }
+  .split-col:first-child { border-right: 1px solid #2c303a; }
+  .list-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #242830; font-size: 13px; }
+  .list-item:last-child { border-bottom: none; }
+  .sub-info { font-size: 11px; color: var(--sub-green); margin-top: 2px; }
+  .sub-out { color: var(--text-muted); margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="lineup-wrapper">
+  <!-- 1. Sticky Filter Tabs -->
+  <div class="sticky-tabs" role="tablist">
+    <button class="tab-btn" role="tab" aria-selected="true" data-mode="rating">สมรรถนะ</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-mode="club">สโมสร</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-mode="age">อายุ</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-mode="height">ส่วนสูง</button>
+  </div>
+
+  <!-- 2 & 3. Main Pitch Card -->
+  <div class="card">
+    <div class="teams-header">
+      <div class="team-box home">
+        <strong id="home-name">-</strong>
+        <span class="formation-badge" id="home-formation">-</span>
+      </div>
+      <div class="team-box away">
+        <strong id="away-name">-</strong>
+        <span class="formation-badge" id="away-formation">-</span>
+      </div>
+    </div>
+
+    <div class="pitch-container">
+      <svg class="pitch-svg" viewBox="0 0 800 440" preserveAspectRatio="none">
+        <circle cx="400" cy="220" r="55" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+        <rect x="0" y="110" width="90" height="220" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+        <rect x="710" y="110" width="90" height="220" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      </svg>
+      <div class="pitch-half left" id="pitch-home"></div>
+      <div class="pitch-half right" id="pitch-away"></div>
+    </div>
+  </div>
+
+  <!-- 4. Managers & Substitutions -->
+  <div class="card">
+    <div class="section-title">ผู้จัดการทีม</div>
+    <div class="split-grid">
+      <div class="split-col" id="home-manager">-</div>
+      <div class="split-col" id="away-manager">-</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">การเปลี่ยนตัว & ตัวสำรอง</div>
+    <div class="split-grid">
+      <div class="split-col" id="home-subs"></div>
+      <div class="split-col" id="away-subs"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let activeMatchData = null;
+let currentMode = "rating";
+
+function renderHalf(containerId, team) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  if (!team || !team.formation || !Array.isArray(team.startingXI)) return;
+
+  const lines = [1, ...team.formation.split("-").map(Number)];
+  let idx = 0;
+
+  lines.forEach(count => {
+    const col = document.createElement("div");
+    col.className = "tactical-col";
+
+    for (let i = 0; i < count; i++) {
+      const p = team.startingXI[idx++];
+      if (!p) continue;
+
+      const cardBadge = p.card ? `<span class="badge"><span class="card-icon ${p.card}"></span></span>` : `<span></span>`;
+      const subBadge = p.subOut ? `<span class="badge" title="ออก ${p.subOut}">⇄</span>` : `<span></span>`;
+      const goalBadge = p.goals ? `<span class="badge">⚽${p.goals > 1 ? p.goals : ""}</span>` : `<span></span>`;
+      const avatarContent = p.avatar ? `<img src="${p.avatar}" alt="${p.name}">` : (p.num ?? "");
+      const metaValue = p[currentMode] ?? "-";
+
+      col.innerHTML += `
+        <div class="player-node">
+          <div class="avatar-wrap">
+            <div class="avatar ${p.card === 'red' ? 'red-carded' : ''}">${avatarContent}</div>
+            <div class="badge-col left">${cardBadge}${subBadge}</div>
+            <div class="badge-col right">${goalBadge}</div>
+          </div>
+          <div class="player-name"><span class="player-num">${p.num ?? ""}</span>${p.name ?? ""}</div>
+          <div class="player-meta">${metaValue}</div>
+        </div>
+      `;
+    }
+    container.appendChild(col);
+  });
+}
+
+function renderMatchLineup(data) {
+  if (!data) return;
+  activeMatchData = data;
+
+  document.getElementById("home-name").textContent = data.home?.name || "-";
+  document.getElementById("home-formation").textContent = data.home?.formation || "-";
+  document.getElementById("away-name").textContent = data.away?.name || "-";
+  document.getElementById("away-formation").textContent = data.away?.formation || "-";
+
+  renderHalf("pitch-home", data.home);
+  renderHalf("pitch-away", data.away);
+
+  document.getElementById("home-manager").textContent = `ผู้ฝึกสอน: ${data.home?.manager || "-"}`;
+  document.getElementById("away-manager").textContent = `ผู้ฝึกสอน: ${data.away?.manager || "-"}`;
+
+  ["home", "away"].forEach(side => {
+    const el = document.getElementById(`${side}-subs`);
+    const subs = data[side]?.substitutes || [];
+    el.innerHTML = subs.map(s => `
+      <div class="list-item">
+        <div>
+          <strong>${s.num ?? ""}</strong> ${s.name ?? ""} ${s.card === 'yellow' ? '🟨' : s.card === 'red' ? '🟥' : ''}
+          ${s.subIn ? `<div class="sub-info">↳ ${s.subIn} <span class="sub-out">ออก: ${s.replaced || "-"}</span></div>` : ''}
+        </div>
+      </div>
+    `).join("");
+  });
+}
+
+// Event Listener สำหรับสลับแท็บข้อมูล
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.setAttribute("aria-selected", "false"));
+    btn.setAttribute("aria-selected", "true");
+    currentMode = btn.dataset.mode;
+    renderMatchLineup(activeMatchData);
+  });
+});
+
+// โหลดข้อมูลจากไฟล์ JSON ภายนอก (เปลี่ยน path ได้ตามต้องการ)
+fetch("./match-data.json")
+  .then(res => res.json())
+  .then(data => renderMatchLineup(data))
+  .catch(err => console.warn("รอการส่งข้อมูลเข้าฟังก์ชัน renderMatchLineup(data):", err));
+</script>
+</body>
+</html>

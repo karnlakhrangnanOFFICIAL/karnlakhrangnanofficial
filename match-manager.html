@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Match Schedule & Result Manager — KARN LA KHRANg NAN Official"
+    />
+    <title>จัดการโปรแกรมและผลการแข่งขัน · KARN LA KHRANg NAN Official</title>
+    <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png" />
+    <link rel="stylesheet" href="assets/css/match-manager.css" />
+    <link rel="stylesheet" href="assets/css/tactical-lineup.css" />
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem('theme') || localStorage.getItem('chelsea_theme') || 'editorial';
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.classList.add('theme-' + t);
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- ==================== TOP BAR ==================== -->
+    <header class="mm-topbar">
+      <a href="index.html" class="mm-brand" aria-label="KARN LA KHRANg NAN Home">
+        <img src="assets/images/karnlakhrangnan-logo.png" alt="KARN LA KHRANg NAN" />
+        <span>KARN LA KHRANg NAN</span>
+      </a>
+
+      <nav class="mm-nav" aria-label="Main Navigation">
+        <a href="index.html" data-lang-th="หน้าแรก" data-lang-en="Home">หน้าแรก</a>
+        <a href="men-team.html" data-lang-th="ทีมชาย" data-lang-en="Men">ทีมชาย</a>
+        <a href="women-team.html" data-lang-th="ทีมหญิง" data-lang-en="Women">ทีมหญิง</a>
+        <a href="match-history.html" data-lang-th="คลังผลการแข่งขัน" data-lang-en="Archive">คลังผลการแข่งขัน</a>
+        <a href="match-manager.html" class="active" data-lang-th="กรอกโปรแกรม &amp; ผล" data-lang-en="Match Manager">กรอกโปรแกรม &amp; ผล</a>
+      </nav>
+
+      <div class="mm-topbar-actions">
+        <button type="button" class="mm-icon-btn" id="langToggleBtn" aria-label="Switch language">
+          EN
+        </button>
+        <button type="button" class="mm-icon-btn" id="themeToggleBtn" aria-label="Switch theme">
+          <span id="themeIcon">📰</span>
+          <span id="themeLabel">Editorial</span>
+        </button>
+        <button
+          type="button"
+          class="mm-btn mm-btn-primary mm-btn-compact"
+          id="topNewMatchBtn"
+          data-lang-th="+ เพิ่มแมตช์ใหม่"
+          data-lang-en="+ New Match"
+        >
+          + เพิ่มแมตช์ใหม่
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== MAIN WORKSPACE ==================== -->
+    <main class="mm-shell">
+      <div class="mm-page-header">
+        <div>
+          <p class="mm-kicker" data-lang-th="ระบบบันทึกข้อมูลการแข่งขัน · KARN LA KHRANg NAN" data-lang-en="Match Data Entry &amp; Filter Console · KARN LA KHRANg NAN">
+            ระบบบันทึกข้อมูลการแข่งขัน · KARN LA KHRANg NAN
+          </p>
+          <h1 class="mm-title" data-lang-th="จัดการโปรแกรมการแข่งขันและผลการแข่งขัน" data-lang-en="Fixtures &amp; Match Results Manager">
+            จัดการโปรแกรมการแข่งขันและผลการแข่งขัน
+          </h1>
+          <p class="mm-subtitle" data-lang-th="เพิ่ม แก้ไข หรือบันทึกผลการแข่งขันพร้อมผู้ทำประตูสำหรับทีมชายและทีมหญิง เชื่อมต่อกับฐานข้อมูลหลักของเว็บไซต์โดยตรง" data-lang-en="Add, edit, or record match results and goalscorers for Chelsea Men and Women, synced directly with the site fixture database.">
+            เพิ่ม แก้ไข หรือบันทึกผลการแข่งขันพร้อมผู้ทำประตูสำหรับทีมชายและทีมหญิง เชื่อมต่อกับฐานข้อมูลหลักของเว็บไซต์โดยตรง
+          </p>
+        </div>
+
+        <div class="mm-header-tools">
+          <button type="button" class="mm-btn" id="openFilterMenuBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span data-lang-th="หน้าต่างเลือกและกรองข้อมูล" data-lang-en="Filter &amp; Select Menu">หน้าต่างเลือกและกรองข้อมูล</span>
+          </button>
+          <button type="button" class="mm-btn" id="openJsonModalBtn" data-lang-th="ดู / ส่งออก JSON" data-lang-en="View / Export JSON">
+            ดู / ส่งออก JSON
+          </button>
+        </div>
+      </div>
+
+      <!-- SUMMARY STRIP -->
+      <section class="mm-summary-strip" aria-label="Match Statistics Summary">
+        <div class="mm-stat-box">
+          <span class="mm-stat-label" data-lang-th="รายการที่แสดงตามตัวกรอง" data-lang-en="Filtered Matches">รายการที่แสดงตามตัวกรอง</span>
+          <strong class="mm-stat-value" id="statTotal">—</strong>
+          <span class="mm-stat-sub" id="statSeasonNote">—</span>
+        </div>
+        <div class="mm-stat-box">
+          <span class="mm-stat-label" data-lang-th="โปรแกรมการแข่งขัน (รอแข่ง)" data-lang-en="Upcoming Fixtures">โปรแกรมการแข่งขัน (รอแข่ง)</span>
+          <strong class="mm-stat-value" id="statUpcoming">—</strong>
+          <span class="mm-stat-sub" data-lang-th="สถานะ: ยังไม่เริ่ม" data-lang-en="Status: Upcoming">สถานะ: ยังไม่เริ่ม</span>
+        </div>
+        <div class="mm-stat-box">
+          <span class="mm-stat-label" data-lang-th="ผลการแข่งขัน (จบเกมแล้ว)" data-lang-en="Completed Results">ผลการแข่งขัน (จบเกมแล้ว)</span>
+          <strong class="mm-stat-value" id="statCompleted">—</strong>
+          <span class="mm-stat-sub" data-lang-th="สถานะ: จบการแข่งขัน" data-lang-en="Status: Completed">สถานะ: จบการแข่งขัน</span>
+        </div>
+        <div class="mm-stat-box">
+          <span class="mm-stat-label" data-lang-th="สัดส่วนทีมชาย / ทีมหญิง" data-lang-en="Men / Women Split">สัดส่วนทีมชาย / ทีมหญิง</span>
+          <strong class="mm-stat-value" id="statSplit">—</strong>
+          <span class="mm-stat-sub" id="statStorageNote" data-lang-th="กำลังเชื่อมต่อฐานข้อมูล..." data-lang-en="Connecting to database...">กำลังเชื่อมต่อฐานข้อมูล...</span>
+        </div>
+      </section>
+
+      <!-- QUICK TOOLBAR -->
+      <section class="mm-toolbar" aria-label="Quick Filter Toolbar">
+        <div class="mm-toolbar-left">
+          <div class="mm-segmented" role="tablist" aria-label="Match Status Quick Filter">
+            <button type="button" class="mm-seg-btn active" data-quick-status="all" data-lang-th="ทั้งหมด" data-lang-en="All">ทั้งหมด</button>
+            <button type="button" class="mm-seg-btn" data-quick-status="upcoming" data-lang-th="โปรแกรมการแข่งขัน" data-lang-en="Fixtures">โปรแกรมการแข่งขัน</button>
+            <button type="button" class="mm-seg-btn" data-quick-status="completed" data-lang-th="ผลการแข่งขัน" data-lang-en="Results">ผลการแข่งขัน</button>
+            <button type="button" class="mm-seg-btn" data-quick-status="live" data-lang-th="กำลังแข่ง" data-lang-en="Live">กำลังแข่ง</button>
+          </div>
+
+          <div class="mm-segmented" role="tablist" aria-label="Team Quick Filter">
+            <button type="button" class="mm-seg-btn active" data-quick-team="all" data-lang-th="ทุกทีม" data-lang-en="All Teams">ทุกทีม</button>
+            <button type="button" class="mm-seg-btn" data-quick-team="M" data-lang-th="ทีมชาย" data-lang-en="Men">ทีมชาย</button>
+            <button type="button" class="mm-seg-btn" data-quick-team="W" data-lang-th="ทีมหญิง" data-lang-en="Women">ทีมหญิง</button>
+          </div>
+
+          <div class="mm-search-wrap">
+            <span class="mm-search-icon" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input
+              type="search"
+              id="quickSearchInput"
+              autocomplete="off"
+              placeholder="ค้นหาทีม, สนาม, ผู้ทำประตู, รหัส..."
+            />
+          </div>
+        </div>
+
+        <div class="mm-active-filter-text" id="activeFilterSummary">
+          <span>2026/27</span>
+        </div>
+      </section>
+
+      <!-- TWO-PANE WORKSPACE -->
+      <div class="mm-workspace">
+        <!-- LEFT PANE: MATCH SELECTOR LIST -->
+        <section class="mm-panel" aria-labelledby="matchListHeading">
+          <div class="mm-panel-head">
+            <div>
+              <h2 class="mm-panel-title" id="matchListHeading" data-lang-th="รายการแมตช์สำหรับเลือกแก้ไข / บันทึกผล" data-lang-en="Matches List (Select to Edit or Enter Result)">
+                รายการแมตช์สำหรับเลือกแก้ไข / บันทึกผล
+              </h2>
+            </div>
+            <span class="mm-panel-meta" id="listCountLabel" data-lang-th="กำลังโหลด..." data-lang-en="Loading...">กำลังโหลด...</span>
+          </div>
+
+          <div class="mm-match-list" id="matchListContainer">
+            <div class="mm-state-box">
+              <div class="mm-spinner"></div>
+              <span data-lang-th="กำลังโหลด..." data-lang-en="Loading...">กำลังโหลด...</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT PANE: DATA ENTRY FORM -->
+        <section class="mm-panel" aria-labelledby="formHeading">
+          <div class="mm-panel-head">
+            <div>
+              <h2 class="mm-panel-title" id="formHeading" data-lang-th="เพิ่มข้อมูลแมตช์ใหม่" data-lang-en="Create New Match Entry">
+                เพิ่มข้อมูลแมตช์ใหม่
+              </h2>
+              <span class="mm-panel-meta" id="formSubMeta" data-lang-th="กรอกโปรแกรมการแข่งขันหรือบันทึกผลการแข่งขัน" data-lang-en="Enter upcoming fixture or completed match result">
+                กรอกโปรแกรมการแข่งขันหรือบันทึกผลการแข่งขัน
+              </span>
+            </div>
+            <div class="mm-actions-group">
+              <a
+                href="#"
+                id="previewDetailLink"
+                class="mm-btn mm-btn-compact"
+                style="display: none"
+                data-lang-th="เปิดดูหน้ารายละเอียด"
+                data-lang-en="View Match Page"
+              >
+                เปิดดูหน้ารายละเอียด
+              </a>
+              <button
+                type="button"
+                class="mm-btn mm-btn-compact"
+                id="resetFormBtn"
+                data-lang-th="+ สร้างใหม่"
+                data-lang-en="+ New Entry"
+              >
+                + สร้างใหม่
+              </button>
+            </div>
+          </div>
+
+          <form class="mm-form-body" id="matchEntryForm" novalidate>
+            <!-- 1. ENTRY TYPE / STATUS -->
+            <div class="mm-form-section">
+              <div class="mm-section-label">
+                <span data-lang-th="1. ประเภทข้อมูลและสถานะการแข่งขัน" data-lang-en="1. Entry Type &amp; Match Status">1. ประเภทข้อมูลและสถานะการแข่งขัน</span>
+              </div>
+              <div class="mm-grid-2">
+                <div class="mm-field">
+                  <label data-lang-th="สถานะแมตช์" data-lang-en="Match Status">สถานะแมตช์</label>
+                  <div class="mm-segmented" id="statusSegControl">
+                    <button type="button" class="mm-seg-btn active" data-form-status="upcoming" data-lang-th="โปรแกรมแข่ง" data-lang-en="Upcoming">โปรแกรมแข่ง</button>
+                    <button type="button" class="mm-seg-btn" data-form-status="completed" data-lang-th="ผลการแข่งขัน" data-lang-en="Completed">ผลการแข่งขัน</button>
+                    <button type="button" class="mm-seg-btn" data-form-status="live" data-lang-th="กำลังแข่ง" data-lang-en="Live">กำลังแข่ง</button>
+                  </div>
+                  <input type="hidden" id="fieldStatus" value="upcoming" />
+                </div>
+
+                <div class="mm-field">
+                  <label data-lang-th="ชุดทีม" data-lang-en="Squad / Team Type">ชุดทีม</label>
+                  <div class="mm-segmented" id="teamTypeSegControl">
+                    <button type="button" class="mm-seg-btn active" data-form-team-type="M" data-lang-th="ทีมชาย (M)" data-lang-en="Men's (M)">ทีมชาย (M)</button>
+                    <button type="button" class="mm-seg-btn" data-form-team-type="W" data-lang-th="ทีมหญิง (W)" data-lang-en="Women's (W)">ทีมหญิง (W)</button>
+                  </div>
+                  <input type="hidden" id="fieldTeamType" value="M" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. COMPETITION & SCHEDULE -->
+            <div class="mm-form-section">
+              <div class="mm-section-label">
+                <span data-lang-th="2. รายการแข่งขัน วัน-เวลา และสนาม" data-lang-en="2. Competition, Schedule &amp; Venue">2. รายการแข่งขัน วัน-เวลา และสนาม</span>
+              </div>
+
+              <div class="mm-grid-3">
+                <div class="mm-field">
+                  <label for="fieldId" data-lang-th="รหัสแมตช์ (ID)" data-lang-en="Match ID">รหัสแมตช์ (ID)</label>
+                  <input type="text" class="mm-input mono" id="fieldId" placeholder="เว้นว่างเพื่อสร้างอัตโนมัติ" />
+                </div>
+
+                <div class="mm-field">
+                  <label for="competitionPickerBtn" data-lang-th="รายการแข่งขัน" data-lang-en="Competition">รายการแข่งขัน</label>
+                  <select class="mm-select mm-native-select-hidden" id="fieldCompetition" tabindex="-1" aria-hidden="true">
+                    <option value="premier-league">Premier League</option>
+                    <option value="fa-cup">FA Cup</option>
+                    <option value="league-cup">Carabao Cup (EFL Cup)</option>
+                    <option value="champions-league">UEFA Champions League</option>
+                    <option value="Barclays Women's Super League">Barclays Women's Super League</option>
+                    <option value="UEFA Women's Champions League">UEFA Women's Champions League</option>
+                    <option value="Women's FA Cup">Women's FA Cup</option>
+                    <option value="Women's League Cup">Women's League Cup</option>
+                    <option value="Friendly">Friendly Match</option>
+                    <option value="club-world-cup">FIFA Club World Cup</option>
+                    <option value="__custom__">กำหนดชื่อรายการเอง...</option>
+                  </select>
+                  <div class="mm-comp-picker" id="competitionPicker">
+                    <button
+                      type="button"
+                      class="mm-comp-trigger"
+                      id="competitionPickerBtn"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                    >
+                      <span class="mm-comp-logo-cell">
+                        <img src="databases/logo/competitions/men/premier-league.png" alt="" id="competitionPickerLogo" />
+                      </span>
+                      <span class="mm-comp-name-cell" id="competitionPickerLabel">Premier League</span>
+                      <span class="mm-comp-caret-cell" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </span>
+                    </button>
+                    <div class="mm-comp-menu" id="competitionPickerMenu" role="listbox" aria-label="รายการแข่งขัน"></div>
+                  </div>
+                </div>
+
+                <div class="mm-field">
+                  <label for="fieldRound" data-lang-th="รอบ / สัปดาห์ที่ (Round)" data-lang-en="Round / Matchweek">รอบ / สัปดาห์ที่ (Round)</label>
+                  <input type="text" class="mm-input" id="fieldRound" placeholder="เช่น Matchweek 12" />
+                </div>
+              </div>
+
+              <div class="mm-field" id="customCompWrap" style="display: none">
+                <label for="fieldCustomCompetition" data-lang-th="ชื่อรายการแข่งขันที่กำหนดเอง" data-lang-en="Custom Competition Name">ชื่อรายการแข่งขันที่กำหนดเอง</label>
+                <input type="text" class="mm-input" id="fieldCustomCompetition" placeholder="ระบุชื่อรายการแข่งขัน" />
+              </div>
+
+              <div class="mm-grid-3">
+                <div class="mm-field">
+                  <label for="fieldDate" data-lang-th="วันที่แข่งขัน (ปี-เดือน-วัน)" data-lang-en="Match Date (YYYY-MM-DD)">วันที่แข่งขัน (ปี-เดือน-วัน)</label>
+                  <div class="mm-date-input-wrap">
+                    <input
+                      type="text"
+                      class="mm-input tabular mono mm-date-text-input"
+                      id="fieldDate"
+                      inputmode="numeric"
+                      maxlength="10"
+                      pattern="\d{4}-\d{2}-\d{2}"
+                      placeholder="YYYY-MM-DD"
+                      required
+                    />
+                    <button
+                      type="button"
+                      class="mm-date-picker-btn"
+                      id="openDatePickerBtn"
+                      title="เลือกวันที่จากปฏิทิน"
+                      aria-label="เลือกวันที่จากปฏิทิน"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                    </button>
+                    <input type="date" class="mm-date-native-proxy" id="fieldDatePicker" tabindex="-1" aria-hidden="true" />
+                  </div>
+                  <span class="mm-time-hint" id="dateTimezoneNote"></span>
+                </div>
+
+                <div class="mm-field">
+                  <label for="fieldTimeTh" data-lang-th="เวลาไทย (TH Time)" data-lang-en="Time (TH / UTC+7)">เวลาไทย (TH Time)</label>
+                  <select class="mm-select mono" id="fieldTimeTh" aria-label="เวลาไทย"></select>
+                  <input type="time" class="mm-input mono mm-custom-time-input" id="fieldTimeThCustom" style="display: none" aria-label="กำหนดเวลาไทยเอง" />
+                  <span class="mm-time-hint" id="timeThHint"></span>
+                </div>
+
+                <div class="mm-field">
+                  <label for="fieldTimeUk" data-lang-th="เวลาอังกฤษ (UK Time)" data-lang-en="UK Time (GMT/BST)">เวลาอังกฤษ (UK Time)</label>
+                  <select class="mm-select mono" id="fieldTimeUk" aria-label="เวลาอังกฤษ"></select>
+                  <input type="time" class="mm-input mono mm-custom-time-input" id="fieldTimeUkCustom" style="display: none" aria-label="กำหนดเวลาอังกฤษเอง" />
+                  <span class="mm-time-hint" id="timeUkHint"></span>
+                </div>
+              </div>
+
+              <div class="mm-field">
+                <label for="fieldVenue" data-lang-th="สนามแข่งขัน (Venue / Stadium)" data-lang-en="Venue / Stadium">สนามแข่งขัน (Venue / Stadium)</label>
+                <input type="text" class="mm-input" id="fieldVenue" placeholder="เช่น Stamford Bridge" />
+              </div>
+            </div>
+
+            <!-- 3. TEAMS & LOGOS -->
+            <div class="mm-form-section">
+              <div class="mm-section-label">
+                <span data-lang-th="3. ทีมเหย้าและทีมเยือน" data-lang-en="3. Home &amp; Away Teams">3. ทีมเหย้าและทีมเยือน</span>
+                <div class="mm-preset-row">
+                  <button type="button" class="mm-btn mm-btn-compact" id="presetChelseaHomeBtn" data-lang-th="ตั้ง Chelsea เป็นเจ้าบ้าน (H)" data-lang-en="Set Chelsea Home (H)">
+                    ตั้ง Chelsea เป็นเจ้าบ้าน (H)
+                  </button>
+                  <button type="button" class="mm-btn mm-btn-compact" id="presetChelseaAwayBtn" data-lang-th="ตั้ง Chelsea เป็นทีมเยือน (A)" data-lang-en="Set Chelsea Away (A)">
+                    ตั้ง Chelsea เป็นทีมเยือน (A)
+                  </button>
+                  <button type="button" class="mm-btn mm-btn-compact" id="swapTeamsBtn" data-lang-th="สลับเหย้า ↔ เยือน" data-lang-en="Swap H ↔ A">
+                    สลับเหย้า ↔ เยือน
+                  </button>
+                </div>
+              </div>
+
+              <div class="mm-grid-2">
+                <div class="mm-field">
+                  <label for="fieldHomeTeam" data-lang-th="ทีมเหย้า (Home Team)" data-lang-en="Home Team">ทีมเหย้า (Home Team)</label>
+                  <div class="mm-team-input-row">
+                    <img src="databases/logo/teams/england_chelsea.svg" alt="Home Logo Preview" class="mm-team-preview" id="homeLogoPreview" />
+                    <input type="text" class="mm-input" id="fieldHomeTeam" list="clubsDatalist" placeholder="เช่น Chelsea" required />
+                  </div>
+                </div>
+
+                <div class="mm-field">
+                  <label for="fieldAwayTeam" data-lang-th="ทีมเยือน (Away Team)" data-lang-en="Away Team">ทีมเยือน (Away Team)</label>
+                  <div class="mm-team-input-row">
+                    <img src="assets/images/placeholder-team.svg" alt="Away Logo Preview" class="mm-team-preview" id="awayLogoPreview" />
+                    <input type="text" class="mm-input" id="fieldAwayTeam" list="clubsDatalist" placeholder="เช่น Arsenal" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mm-grid-2">
+                <div class="mm-field">
+                  <label for="fieldHomeLogo" data-lang-th="Path โลโก้ทีมเหย้า" data-lang-en="Home Logo Path">Path โลโก้ทีมเหย้า</label>
+                  <input type="text" class="mm-input mono" id="fieldHomeLogo" value="databases/logo/teams/england_chelsea.svg" />
+                </div>
+                <div class="mm-field">
+                  <label for="fieldAwayLogo" data-lang-th="Path โลโก้ทีมเยือน" data-lang-en="Away Logo Path">Path โลโก้ทีมเยือน</label>
+                  <input type="text" class="mm-input mono" id="fieldAwayLogo" value="assets/images/placeholder-team.svg" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. SCORE & GOALSCORERS -->
+            <div class="mm-form-section" id="scoreSection">
+              <div class="mm-section-label">
+                <span data-lang-th="4. สกอร์และรายชื่อผู้ทำประตู" data-lang-en="4. Score &amp; Goalscorers">4. สกอร์และรายชื่อผู้ทำประตู</span>
+                <button type="button" class="mm-btn mm-btn-compact" id="addGoalBtn" data-lang-th="+ เพิ่มผู้ทำประตู" data-lang-en="+ Add Goal">
+                  + เพิ่มผู้ทำประตู
+                </button>
+              </div>
+
+              <div class="mm-scoreboard-editor">
+                <div class="mm-score-team">
+                  <img src="databases/logo/teams/england_chelsea.svg" alt="Home" id="scoreboardHomeLogo" />
+                  <span id="scoreboardHomeName">Chelsea</span>
+                </div>
+
+                <div class="mm-score-controls">
+                  <input type="number" min="0" max="99" class="mm-score-input" id="fieldHomeScore" placeholder="—" />
+                  <span class="mm-score-dash">-</span>
+                  <input type="number" min="0" max="99" class="mm-score-input" id="fieldAwayScore" placeholder="—" />
+                </div>
+
+                <div class="mm-score-team">
+                  <img src="assets/images/placeholder-team.svg" alt="Away" id="scoreboardAwayLogo" />
+                  <span id="scoreboardAwayName">Opponent</span>
+                </div>
+              </div>
+
+              <div class="mm-goals-list" id="goalsListContainer"></div>
+            </div>
+
+            <!-- 5. BROADCAST CHANNELS -->
+            <div class="mm-form-section">
+              <div class="mm-section-label">
+                <span data-lang-th="5. ช่องทางการถ่ายทอดสด" data-lang-en="5. Broadcast Channels">5. ช่องทางการถ่ายทอดสด</span>
+              </div>
+              <div class="mm-channels-grid" id="channelsGrid"></div>
+            </div>
+
+            <!-- 6. PRE-MATCH TACTICAL LINE-UP -->
+            <div class="mm-form-section" id="lineupSection">
+              <div class="mm-section-label">
+                <span data-lang-th="6. ระบบ Line-up ก่อนแข่ง (Tactical Line-up)" data-lang-en="6. Pre-Match Tactical Line-up">
+                  6. ระบบ Line-up ก่อนแข่ง (Tactical Line-up)
+                </span>
+                <div class="mm-actions-group">
+                  <button type="button" class="mm-btn mm-btn-compact" id="lineupCopyLatestBtn" data-lang-th="ดึงจากแมตช์ล่าสุด" data-lang-en="Copy Latest XI">
+                    ดึงจากแมตช์ล่าสุด
+                  </button>
+                  <button type="button" class="mm-btn mm-btn-compact" id="lineupClearBtn" data-lang-th="ล้าง Line-up" data-lang-en="Clear Line-up">
+                    ล้าง Line-up
+                  </button>
+                </div>
+              </div>
+
+              <div class="mm-lineup-side-tabs" id="lineupSideTabs" role="tablist" aria-label="Line-up Team Side">
+                <button type="button" class="mm-lineup-tab active" data-lineup-side="home" role="tab" aria-selected="true">
+                  <img src="databases/logo/teams/england_chelsea.svg" alt="" id="lineupTabHomeLogo" />
+                  <span class="mm-lineup-tab-name" id="lineupTabHomeName">Chelsea</span>
+                  <span class="mm-lineup-tab-count tabular" id="lineupTabHomeCount">0/11</span>
+                </button>
+                <button type="button" class="mm-lineup-tab" data-lineup-side="away" role="tab" aria-selected="false">
+                  <img src="assets/images/placeholder-team.svg" alt="" id="lineupTabAwayLogo" />
+                  <span class="mm-lineup-tab-name" id="lineupTabAwayName">Opponent</span>
+                  <span class="mm-lineup-tab-count tabular" id="lineupTabAwayCount">0/11</span>
+                </button>
+              </div>
+
+              <div class="mm-lineup-editor-card">
+                <div class="mm-grid-2">
+                  <div class="mm-field">
+                    <label for="lineupFormationSelect" data-lang-th="แผนการเล่น (Formation)" data-lang-en="Formation">แผนการเล่น (Formation)</label>
+                    <select class="mm-select mono" id="lineupFormationSelect">
+                      <option value="4-2-3-1">4-2-3-1</option>
+                      <option value="4-3-3">4-3-3</option>
+                      <option value="3-4-2-1">3-4-2-1</option>
+                      <option value="3-4-3">3-4-3</option>
+                      <option value="3-5-2">3-5-2</option>
+                      <option value="4-4-2">4-4-2</option>
+                      <option value="4-1-4-1">4-1-4-1</option>
+                      <option value="4-3-1-2">4-3-1-2</option>
+                      <option value="5-3-2">5-3-2</option>
+                      <option value="__custom__" data-lang-th="กำหนดเอง..." data-lang-en="Custom...">กำหนดเอง...</option>
+                    </select>
+                    <input
+                      type="text"
+                      class="mm-input mono mm-custom-time-input"
+                      id="lineupFormationCustom"
+                      placeholder="เช่น 3-4-1-2"
+                      style="display: none"
+                    />
+                  </div>
+
+                  <div class="mm-field">
+                    <label for="lineupManagerInput" data-lang-th="ผู้จัดการทีม (Manager)" data-lang-en="Manager / Head Coach">ผู้จัดการทีม (Manager)</label>
+                    <input
+                      type="text"
+                      class="mm-input"
+                      id="lineupManagerInput"
+                      placeholder="เช่น Liam Rosenior / Sonia Bompastor"
+                    />
+                  </div>
+                </div>
+
+                <div class="mm-lineup-toolbar">
+                  <div class="mm-actions-group">
+                    <button type="button" class="mm-btn mm-btn-compact" id="lineupInitSlotsBtn" data-lang-th="จัด 11 ตำแหน่งตามแผน" data-lang-en="Init 11 Slots">
+                      จัด 11 ตำแหน่งตามแผน
+                    </button>
+                    <button type="button" class="mm-btn mm-btn-compact" id="lineupAutoChelseaBtn" data-lang-th="เติม 11 ตัวจริงอัตโนมัติ" data-lang-en="Auto-Fill XI" style="display: none">
+                      เติม 11 ตัวจริงอัตโนมัติ
+                    </button>
+                  </div>
+
+                  <div class="mm-lineup-quick-add" id="lineupChelseaQuickWrap" style="display: none">
+                    <select class="mm-select" id="lineupChelseaQuickSelect" aria-label="Quick add squad player">
+                      <option value="">+ เลือกนักเตะใส่ในตำแหน่งถัดไป...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mm-lineup-subhead">
+                  <span data-lang-th="11 ตัวจริง (Starting XI)" data-lang-en="Starting XI">11 ตัวจริง (Starting XI)</span>
+                  <button type="button" class="mm-btn mm-btn-compact" id="lineupAddStarterBtn" data-lang-th="+ เพิ่มตัวจริง" data-lang-en="+ Add Starter">
+                    + เพิ่มตัวจริง
+                  </button>
+                </div>
+
+                <div class="mm-lineup-rows" id="lineupStartingContainer"></div>
+
+                <div class="mm-lineup-subhead" style="margin-top: 8px">
+                  <span data-lang-th="รายชื่อตัวสำรอง (Substitutes)" data-lang-en="Substitutes / Bench">รายชื่อตัวสำรอง (Substitutes)</span>
+                  <button type="button" class="mm-btn mm-btn-compact" id="lineupAddSubBtn" data-lang-th="+ เพิ่มตัวสำรอง" data-lang-en="+ Add Sub">
+                    + เพิ่มตัวสำรอง
+                  </button>
+                </div>
+
+                <div class="mm-lineup-rows" id="lineupSubsContainer"></div>
+              </div>
+
+              <div class="mm-lineup-preview-wrap">
+                <div class="mm-lineup-preview-head">
+                  <span data-lang-th="ตัวอย่างผัง Tactical Line-up (แสดงผลเหมือนหน้า Match Detail)" data-lang-en="Live Tactical Line-up Preview (Matches Detail Page)">
+                    ตัวอย่างผัง Tactical Line-up (แสดงผลเหมือนหน้า Match Detail)
+                  </span>
+                  <button type="button" class="mm-btn mm-btn-compact" id="lineupTogglePreviewBtn" data-lang-th="ซ่อนพรีวิว" data-lang-en="Hide Preview">
+                    ซ่อนพรีวิว
+                  </button>
+                </div>
+                <div class="mm-lineup-preview-box" id="lineupLivePreview"></div>
+              </div>
+            </div>
+
+            <!-- 7. EXTRA STATS & OFFICIALS (COLLAPSIBLE) -->
+            <div class="mm-form-section">
+              <details class="mm-details">
+                <summary data-lang-th="7. ข้อมูลสถิติและผู้ตัดสินเพิ่มเติม (ไม่บังคับ)" data-lang-en="7. Additional Match Stats &amp; Officials (Optional)">
+                  7. ข้อมูลสถิติและผู้ตัดสินเพิ่มเติม (ไม่บังคับ)
+                </summary>
+                <div class="mm-grid-3" style="margin-bottom: 12px">
+                  <div class="mm-field">
+                    <label for="fieldReferee" data-lang-th="ผู้ตัดสิน (Referee)" data-lang-en="Referee">ผู้ตัดสิน (Referee)</label>
+                    <input type="text" class="mm-input" id="fieldReferee" placeholder="เช่น Michael Oliver" />
+                  </div>
+                  <div class="mm-field">
+                    <label for="fieldAttendance" data-lang-th="จำนวนผู้ชม (Attendance)" data-lang-en="Attendance">จำนวนผู้ชม (Attendance)</label>
+                    <input type="number" min="0" class="mm-input tabular" id="fieldAttendance" placeholder="40173" />
+                  </div>
+                  <div class="mm-field">
+                    <label for="fieldFormation" data-lang-th="แผนการเล่น (Formation)" data-lang-en="Formation">แผนการเล่น (Formation)</label>
+                    <input type="text" class="mm-input mono" id="fieldFormation" placeholder="4-2-3-1" />
+                  </div>
+                </div>
+                <div class="mm-grid-3" style="margin-bottom: 12px">
+                  <div class="mm-field">
+                    <label for="fieldCaptain" data-lang-th="กัปตันทีม (Captain)" data-lang-en="Captain">กัปตันทีม (Captain)</label>
+                    <input type="text" class="mm-input" id="fieldCaptain" list="playersDatalist" placeholder="เช่น Reece James" />
+                  </div>
+                  <div class="mm-field">
+                    <label for="fieldPoss" data-lang-th="ครองบอล % (Possession)" data-lang-en="Possession %">ครองบอล % (Possession)</label>
+                    <input type="number" min="0" max="100" step="0.1" class="mm-input tabular" id="fieldPoss" placeholder="61.5" />
+                  </div>
+                  <div class="mm-field">
+                    <label for="fieldXg" data-lang-th="ค่า xG (Expected Goals)" data-lang-en="Expected Goals (xG)">ค่า xG (Expected Goals)</label>
+                    <input type="number" min="0" step="0.01" class="mm-input tabular" id="fieldXg" placeholder="1.85" />
+                  </div>
+                </div>
+                <div class="mm-field">
+                  <label for="fieldNotes" data-lang-th="บันทึกเพิ่มเติม (Notes)" data-lang-en="Match Notes">บันทึกเพิ่มเติม (Notes)</label>
+                  <textarea class="mm-textarea" id="fieldNotes" placeholder="หมายเหตุเพิ่มเติมหลังเกมหรือรายละเอียดสำคัญ..."></textarea>
+                </div>
+              </details>
+            </div>
+
+            <!-- INLINE DELETE CONFIRMATION -->
+            <div class="mm-confirm-bar" id="deleteConfirmBar">
+              <span data-lang-th="ยืนยันการลบแมตช์นี้ออกจากฐานข้อมูล?" data-lang-en="Confirm deleting this match permanently?">ยืนยันการลบแมตช์นี้ออกจากฐานข้อมูล?</span>
+              <button type="button" class="mm-btn mm-btn-danger mm-btn-compact" id="confirmDeleteBtn" data-lang-th="ยืนยันลบ" data-lang-en="Confirm Delete">ยืนยันลบ</button>
+              <button type="button" class="mm-btn mm-btn-compact" id="cancelDeleteBtn" data-lang-th="ยกเลิก" data-lang-en="Cancel">ยกเลิก</button>
+            </div>
+
+            <!-- SUBMIT & ACTION BAR -->
+            <div class="mm-form-actions">
+              <div class="mm-actions-group">
+                <button type="button" class="mm-btn mm-btn-danger" id="requestDeleteBtn" style="display: none" data-lang-th="ลบแมตช์นี้" data-lang-en="Delete Match">
+                  ลบแมตช์นี้
+                </button>
+              </div>
+              <div class="mm-actions-group">
+                <button type="button" class="mm-btn" id="clearFormBtn" data-lang-th="ล้างฟอร์ม" data-lang-en="Reset Form">
+                  ล้างฟอร์ม
+                </button>
+                <button type="submit" class="mm-btn mm-btn-primary" id="saveMatchBtn">
+                  <span data-lang-th="บันทึกข้อมูลแมตช์" data-lang-en="Save Match">บันทึกข้อมูลแมตช์</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <!-- AUTOCOMPLETE DATALISTS -->
+    <datalist id="clubsDatalist"></datalist>
+    <datalist id="playersDatalist"></datalist>
+    <datalist id="lineupPlayersDatalist"></datalist>
+
+    <!-- ==================== FILTER & SELECTION MENU WINDOW (MODAL) ==================== -->
+    <div
+      class="mm-modal-backdrop"
+      id="filterMenuModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="filterModalTitle"
+    >
+      <div class="mm-modal">
+        <div class="mm-modal-header">
+          <h2 id="filterModalTitle" data-lang-th="หน้าต่างเมนูเลือกและกรองข้อมูลแมตช์" data-lang-en="Match Filter &amp; Selection Menu">
+            หน้าต่างเมนูเลือกและกรองข้อมูลแมตช์
+          </h2>
+          <button type="button" class="mm-btn mm-btn-compact" id="closeFilterMenuBtn" data-lang-th="ปิดหน้าต่าง" data-lang-en="Close">
+            ปิดหน้าต่าง
+          </button>
+        </div>
+
+        <div class="mm-modal-body">
+          <!-- LEFT COLUMN: FILTER CONTROLS -->
+          <div class="mm-modal-filters">
+            <div class="mm-field">
+              <label for="modalSearchInput" data-lang-th="ค้นหาคำสำคัญ (ชื่อทีม, สนาม, ผู้ทำประตู, ผู้ตัดสิน, รหัส)" data-lang-en="Keyword Search (Team, Venue, Scorer, Referee, ID)">
+                ค้นหาคำสำคัญ (ชื่อทีม, สนาม, ผู้ทำประตู, ผู้ตัดสิน, รหัส)
+              </label>
+              <input type="search" class="mm-input" id="modalSearchInput" placeholder="เช่น Arsenal, Palmer, Stamford Bridge" />
+            </div>
+
+            <div class="mm-grid-2">
+              <div class="mm-field">
+                <label for="modalStatusSelect" data-lang-th="ประเภท / สถานะแมตช์" data-lang-en="Match Status">ประเภท / สถานะแมตช์</label>
+                <select class="mm-select" id="modalStatusSelect">
+                  <option value="all" data-lang-th="ทั้งหมด (โปรแกรม + ผล)" data-lang-en="All (Fixtures + Results)">ทั้งหมด (โปรแกรม + ผล)</option>
+                  <option value="upcoming" data-lang-th="โปรแกรมการแข่งขัน (Upcoming)" data-lang-en="Upcoming Fixtures">โปรแกรมการแข่งขัน (Upcoming)</option>
+                  <option value="completed" data-lang-th="ผลการแข่งขัน (Completed)" data-lang-en="Completed Results">ผลการแข่งขัน (Completed)</option>
+                  <option value="live" data-lang-th="กำลังแข่งขัน (Live)" data-lang-en="Live Matches">กำลังแข่งขัน (Live)</option>
+                </select>
+              </div>
+
+              <div class="mm-field">
+                <label for="modalTeamSelect" data-lang-th="ชุดทีม" data-lang-en="Team">ชุดทีม</label>
+                <select class="mm-select" id="modalTeamSelect">
+                  <option value="all" data-lang-th="ทุกชุดทีม (ชาย + หญิง)" data-lang-en="All Teams (Men + Women)">ทุกชุดทีม (ชาย + หญิง)</option>
+                  <option value="M" data-lang-th="ทีมชาย (Men)" data-lang-en="Men's Team (M)">ทีมชาย (Men)</option>
+                  <option value="W" data-lang-th="ทีมหญิง (Women)" data-lang-en="Women's Team (W)">ทีมหญิง (Women)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mm-grid-2">
+              <div class="mm-field">
+                <label for="modalSeasonSelect" data-lang-th="ฤดูกาล (Season)" data-lang-en="Season">ฤดูกาล (Season)</label>
+                <select class="mm-select" id="modalSeasonSelect">
+                  <option value="2026/27">2026/27</option>
+                  <option value="all">ทุกฤดูกาล (All Seasons)</option>
+                </select>
+              </div>
+
+              <div class="mm-field">
+                <label for="modalCompSelect" data-lang-th="รายการแข่งขัน (Competition)" data-lang-en="Competition">รายการแข่งขัน (Competition)</label>
+                <select class="mm-select" id="modalCompSelect">
+                  <option value="all">ทุกรายการแข่งขัน</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mm-grid-3">
+              <div class="mm-field">
+                <label for="modalMonthSelect" data-lang-th="เดือน (Month)" data-lang-en="Month">เดือน (Month)</label>
+                <select class="mm-select" id="modalMonthSelect">
+                  <option value="all">ทุกเดือน</option>
+                  <option value="08">08 · สิงหาคม (Aug)</option>
+                  <option value="09">09 · กันยายน (Sep)</option>
+                  <option value="10">10 · ตุลาคม (Oct)</option>
+                  <option value="11">11 · พฤศจิกายน (Nov)</option>
+                  <option value="12">12 · ธันวาคม (Dec)</option>
+                  <option value="01">01 · มกราคม (Jan)</option>
+                  <option value="02">02 · กุมภาพันธ์ (Feb)</option>
+                  <option value="03">03 · มีนาคม (Mar)</option>
+                  <option value="04">04 · เมษายน (Apr)</option>
+                  <option value="05">05 · พฤษภาคม (May)</option>
+                  <option value="06">06 · มิถุนายน (Jun)</option>
+                  <option value="07">07 · กรกฎาคม (Jul)</option>
+                </select>
+              </div>
+
+              <div class="mm-field">
+                <label for="modalHaSelect" data-lang-th="เหย้า / เยือน" data-lang-en="Home / Away">เหย้า / เยือน</label>
+                <select class="mm-select" id="modalHaSelect">
+                  <option value="all">ทั้งหมด</option>
+                  <option value="H">เหย้า (Home)</option>
+                  <option value="A">เยือน (Away)</option>
+                </select>
+              </div>
+
+              <div class="mm-field">
+                <label for="modalOutcomeSelect" data-lang-th="ผลของ Chelsea" data-lang-en="Chelsea Outcome">ผลของ Chelsea</label>
+                <select class="mm-select" id="modalOutcomeSelect">
+                  <option value="all">ทุกผลแข่ง</option>
+                  <option value="W">ชนะ (Win)</option>
+                  <option value="D">เสมอ (Draw)</option>
+                  <option value="L">แพ้ (Loss)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mm-grid-3">
+              <div class="mm-field">
+                <label for="modalDateFrom" data-lang-th="ตั้งแต่วันที่" data-lang-en="Date From">ตั้งแต่วันที่</label>
+                <input type="date" class="mm-input tabular" id="modalDateFrom" />
+              </div>
+              <div class="mm-field">
+                <label for="modalDateTo" data-lang-th="ถึงวันที่" data-lang-en="Date To">ถึงวันที่</label>
+                <input type="date" class="mm-input tabular" id="modalDateTo" />
+              </div>
+              <div class="mm-field">
+                <label for="modalSortSelect" data-lang-th="เรียงลำดับ" data-lang-en="Sort Order">เรียงลำดับ</label>
+                <select class="mm-select" id="modalSortSelect">
+                  <option value="date_desc">วันที่ใหม่ → เก่า</option>
+                  <option value="date_asc">วันที่เก่า → ใหม่</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: LIVE FILTERED PREVIEW & DIRECT SELECTION -->
+          <div class="mm-modal-preview">
+            <div class="mm-section-label">
+              <span data-lang-th="ผลลัพธ์ที่เลือกได้ทันที (คลิกเพื่อโหลดลงฟอร์ม)" data-lang-en="Matching Records (Click to Load into Form)">
+                ผลลัพธ์ที่เลือกได้ทันที (คลิกเพื่อโหลดลงฟอร์ม)
+              </span>
+              <span class="mm-panel-meta" id="modalPreviewCount">0 รายการ</span>
+            </div>
+            <div class="mm-modal-preview-list" id="modalPreviewList">
+              <div class="mm-state-box">
+                <div class="mm-spinner"></div>
+                <span>กำลังโหลด...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-modal-footer">
+          <button type="button" class="mm-btn" id="modalResetFiltersBtn" data-lang-th="ล้างตัวกรองทั้งหมด" data-lang-en="Reset All Filters">
+            ล้างตัวกรองทั้งหมด
+          </button>
+          <div class="mm-actions-group">
+            <button type="button" class="mm-btn" id="modalNewMatchBtn" data-lang-th="+ สร้างแมตช์ใหม่" data-lang-en="+ Create New Match">
+              + สร้างแมตช์ใหม่
+            </button>
+            <button type="button" class="mm-btn mm-btn-primary" id="modalApplyFiltersBtn" data-lang-th="ใช้ตัวกรองกับหน้าหลัก" data-lang-en="Apply Filters">
+              ใช้ตัวกรองกับหน้าหลัก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== JSON EXPORT / PREVIEW MODAL ==================== -->
+    <div
+      class="mm-modal-backdrop"
+      id="jsonPreviewModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="jsonModalTitle"
+    >
+      <div class="mm-modal" style="width: min(760px, 100%)">
+        <div class="mm-modal-header">
+          <h2 id="jsonModalTitle" data-lang-th="ตัวอย่างข้อมูล JSON ของแมตช์ปัจจุบัน" data-lang-en="Current Match JSON Payload">
+            ตัวอย่างข้อมูล JSON ของแมตช์ปัจจุบัน
+          </h2>
+          <button type="button" class="mm-btn mm-btn-compact" id="closeJsonModalBtn" data-lang-th="ปิดหน้าต่าง" data-lang-en="Close">
+            ปิดหน้าต่าง
+          </button>
+        </div>
+        <div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 12px">
+          <pre class="mm-json-pre" id="jsonPreviewCode"></pre>
+        </div>
+        <div class="mm-modal-footer">
+          <span class="mm-panel-meta" data-lang-th="ตรงตามโครงสร้าง data/fixtures.json" data-lang-en="Compatible with data/fixtures.json schema">
+            ตรงตามโครงสร้าง data/fixtures.json
+          </span>
+          <div class="mm-actions-group">
+            <button type="button" class="mm-btn" id="downloadJsonBtn" data-lang-th="ดาวน์โหลดไฟล์ .json" data-lang-en="Download .json">
+              ดาวน์โหลดไฟล์ .json
+            </button>
+            <button type="button" class="mm-btn mm-btn-primary" id="copyJsonBtn" data-lang-th="คัดลอก JSON" data-lang-en="Copy JSON">
+              คัดลอก JSON
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="mm-toast" id="mmToast" role="status" aria-live="polite"></div>
+
+    <script src="assets/js/tactical-lineup.js"></script>
+    <script type="module" src="assets/js/match-manager.js"></script>
+  </body>
+</html>
