@@ -68,7 +68,8 @@
     if (name.includes("køge") || name.includes("koge")) return "databases/logo/teams/denmark_hb_koge.football-logos.cc.svg";
     if (name.includes("leuven")) return "databases/logo/teams/belgium_oh-leuven.svg";
     if (name.includes("roma")) return "databases/logo/teams/italy_roma.svg";
-    if (name.includes("paris") || name.includes("psg")) return "databases/logo/teams/france_paris-saint-germain.svg";
+    if (name === "paris" || name.includes("paris fc")) return "databases/logo/teams/france_paris-fc.football-logos.cc.svg";
+    if (name.includes("paris") || name.includes("psg")) return "databases/logo/teams/france_psg.svg";
     if (name.includes("austria wien") || name.includes("landhaus")) return "databases/logo/teams/austria_austria-wien.svg";
     
     if (fallbackLogo && fallbackLogo.startsWith("databases/logo/teams/")) return fallbackLogo;
@@ -1249,6 +1250,8 @@
         }
 
         const matchDetailUrl = `match-detail.html?id=${nextMatch.id}&team=${nextMatch.teamType === 'W' ? 'women' : 'men'}`;
+        const homeLogo = resolveLocalTeamLogo(nextMatch.homeTeam?.name || homeName, nextMatch.homeTeam?.crest);
+        const awayLogo = resolveLocalTeamLogo(nextMatch.awayTeam?.name || awayName, nextMatch.awayTeam?.crest);
 
         spotlightContainer.innerHTML = `
           <div class="spotlight-card">
@@ -1259,13 +1262,13 @@
 
             <div class="spotlight-match-teams">
               <div class="spotlight-team">
-                <img src="${nextMatch.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                <img src="${homeLogo || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               </div>
 
               <div class="spotlight-vs">VS</div>
 
               <div class="spotlight-team">
-                <img src="${nextMatch.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
+                <img src="${awayLogo || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
               </div>
             </div>
 
@@ -1424,6 +1427,8 @@
 
     const homeName = match.homeTeam.shortName || match.homeTeam.name;
     const awayName = match.awayTeam.shortName || match.awayTeam.name;
+    const homeLogo = resolveLocalTeamLogo(match.homeTeam?.name || homeName, match.homeTeam?.crest);
+    const awayLogo = resolveLocalTeamLogo(match.awayTeam?.name || awayName, match.awayTeam?.crest);
 
     const matchDetailUrl = `match-detail.html?id=${match.id}&team=${match.teamType === 'W' ? 'women' : 'men'}`;
 
@@ -1438,7 +1443,7 @@
 
         <div class="spotlight-match-teams">
           <div class="spotlight-team">
-            <img src="${match.homeTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" title="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" />
+            <img src="${homeLogo || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${homeName}" title="${homeName}" data-tooltip="${homeName}" data-tooltip-th="${homeName}" data-tooltip-en="${homeName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
           </div>
 
           <div class="spotlight-live-scorebox">
@@ -1452,7 +1457,7 @@
           </div>
 
           <div class="spotlight-team">
-            <img src="${match.awayTeam.crest || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" title="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" />
+            <img src="${awayLogo || 'assets/images/placeholder-team.svg'}" class="spotlight-crest" alt="${awayName}" title="${awayName}" data-tooltip="${awayName}" data-tooltip-th="${awayName}" data-tooltip-en="${awayName}" onerror="this.onerror=null; this.src='assets/images/placeholder-team.svg';" />
           </div>
         </div>
 
