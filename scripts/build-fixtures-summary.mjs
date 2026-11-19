@@ -32,6 +32,7 @@ const cardFields = [
   "goals",
   "team_type",
   "round",
+  "matchday",
   "ha",
 ];
 

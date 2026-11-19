@@ -61,6 +61,76 @@ function formatCompetitionName(name) {
     .join(" ");
 }
 
+function getMatchLeagueDisplay(match) {
+  const rawCompName = String(match?.competition_name || match?.competition || "").trim();
+  const formattedRaw = formatCompetitionName(rawCompName);
+
+  const cupPrefixes = [
+    "FIFA Club World Cup",
+    "UEFA Champions League",
+    "UEFA Europa League",
+    "UEFA Conference League",
+    "UEFA Women's Champions League",
+    "UEFA Super Cup",
+    "UEFA Cup Winners' Cup",
+    "European Cup Winners' Cup",
+    "Inter-Cities Fairs Cup",
+    "Carabao Cup",
+    "Football League Cup",
+    "League Cup",
+    "F.A. Cup",
+    "FA Cup",
+    "FA Community Shield",
+    "Charity Shield",
+    "Full Members Cup",
+  ];
+
+  let compTitle = formattedRaw;
+  let embeddedRound = "";
+
+  for (let i = 0; i < cupPrefixes.length; i++) {
+    const prefix = cupPrefixes[i];
+    const lowerRaw = rawCompName.toLowerCase();
+    const lowerPrefix = prefix.toLowerCase();
+    if (lowerRaw.startsWith(lowerPrefix + " ") && rawCompName.length > prefix.length + 1) {
+      compTitle = rawCompName.slice(0, prefix.length);
+      embeddedRound = rawCompName.slice(prefix.length).replace(/^[\-–:\s]+/, "").trim();
+      break;
+    }
+  }
+
+  let roundRaw = String(match?.round || "").trim();
+  if (!roundRaw && match?.matchday != null && match.matchday !== "") {
+    roundRaw = `Matchday ${match.matchday}`;
+  }
+
+  let roundLabel = roundRaw || embeddedRound;
+  if (embeddedRound && roundRaw) {
+    const lowerEmbedded = embeddedRound.toLowerCase();
+    const lowerRound = roundRaw.toLowerCase();
+    if (
+      lowerEmbedded.includes("leg") ||
+      lowerEmbedded.includes("replay") ||
+      lowerEmbedded.includes("match ") ||
+      /^round\s+\d+/i.test(embeddedRound)
+    ) {
+      roundLabel = embeddedRound;
+    } else if (lowerRound === "league phase" || lowerRound === "group stage") {
+      roundLabel = embeddedRound;
+    }
+  }
+
+  if (roundLabel) {
+    roundLabel = roundLabel.replace(/^(League Phase \d+)\s*\(Matchday \d+\)$/i, "$1").trim();
+  }
+
+  if (roundLabel && roundLabel.toLowerCase() === compTitle.toLowerCase()) {
+    roundLabel = "";
+  }
+
+  return { compTitle, roundLabel };
+}
+
 function renderFixtures(container, fixtures, badgeClass) {
   if (!container) return;
   const lang = window.currentLang || "th";
@@ -76,7 +146,7 @@ function renderFixtures(container, fixtures, badgeClass) {
   const cardsHtml = fixtures
     .map((match, index) => {
       const compLogo = match.competition_logo || "";
-      const compName = formatCompetitionName(match.competition_name || match.competition);
+      const { compTitle: compName, roundLabel } = getMatchLeagueDisplay(match);
       const localDT = window.getLocalMatchDateTime
         ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk)
         : {
@@ -154,7 +224,8 @@ function renderFixtures(container, fixtures, badgeClass) {
           <div class="match-card-league-badge">
             ${compLogo ? `<div class="comp-logo-container"><img src="${compLogo}" alt=""></div>` : ""}
             <div class="comp-name-container">
-              <span>${compName}</span>
+              <span class="comp-name-main">${compName}</span>
+              ${roundLabel ? `<span class="comp-round-sub">${roundLabel}</span>` : ""}
             </div>
           </div>
         </div>
@@ -204,7 +275,7 @@ function renderResults(container, results, badgeClass) {
         ? window.getLocalMatchDateTime(match.date, match.time_th || match.time, match.time_uk)
         : { date: match.date };
       const displayDate = localDT.date;
-      const compName = formatCompetitionName(match.competition_name || match.competition);
+      const { compTitle: compName, roundLabel } = getMatchLeagueDisplay(match);
       const compLogo = match.competition_logo || "";
       const teamBadgeClass = badgeClass.toLowerCase();
 
@@ -286,7 +357,8 @@ function renderResults(container, results, badgeClass) {
           <div class="match-card-league-badge">
             ${compLogo ? `<div class="comp-logo-container"><img src="${compLogo}" alt=""></div>` : ""}
             <div class="comp-name-container">
-              <span>${compName}</span>
+              <span class="comp-name-main">${compName}</span>
+              ${roundLabel ? `<span class="comp-round-sub">${roundLabel}</span>` : ""}
             </div>
           </div>
         </div>

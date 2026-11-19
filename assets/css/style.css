@@ -234,6 +234,14 @@ html[data-theme="editorial"] .match-card-venue {
   color: #475569 !important;
 }
 
+html[data-theme="editorial"] .comp-name-main {
+  color: #0f172a !important;
+}
+
+html[data-theme="editorial"] .comp-round-sub {
+  color: #b45309 !important;
+}
+
 html[data-theme="editorial"] .match-card-team-name,
 html[data-theme="editorial"] .match-card-team-name span,
 html[data-theme="editorial"] .match-card .team-name,
@@ -4119,14 +4127,16 @@ html[lang="th"] .lang-en {
 .match-card-league {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .match-card-league-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
 }
 
 .comp-logo-container {
@@ -4138,15 +4148,40 @@ html[lang="th"] .lang-en {
 
 .match-card-league img,
 .comp-logo-container img {
-  height: 24px;
+  height: 28px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 
 .comp-name-container {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  text-align: left;
+  line-height: 1.25;
+}
+
+.comp-name-container:only-child {
   align-items: center;
+  text-align: center;
+}
+
+.comp-name-main {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink, #ffffff);
+  line-height: 1.25;
+}
+
+.comp-round-sub {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gold, #d4af37);
+  line-height: 1.2;
+  letter-spacing: 0.015em;
 }
 
 .match-card-venue {
