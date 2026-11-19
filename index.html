@@ -34,13 +34,6 @@
         <li><a href="women-team.html" data-i18n="nav.women_team">Women</a></li>
         <li><a href="#" class="lang-toggle" id="langToggle" data-i18n="nav.lang_toggle">EN</a></li>
         <li>
-          <button type="button" class="notif-toggle-btn" id="goalNotifToggle" aria-label="Toggle Live Goal Notifications" data-tooltip-th="🔔 แจ้งเตือนประตูสด (คลิกเพื่อเปิด/ปิด)" data-tooltip-en="🔔 Live Goal Alerts (Click to toggle)">
-            <span class="notif-bell-icon">🔔</span>
-            <span class="notif-status-dot"></span>
-            <span class="notif-btn-label">Goal Alerts</span>
-          </button>
-        </li>
-        <li>
           <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
             <span class="theme-icon" id="themeIcon">📰</span>
             <span class="theme-label" id="themeLabel">Editorial</span>
@@ -658,17 +651,7 @@
             <span class="live-badge-text">LIVE</span>
           </span>
         </h2>
-        <div class="fixtures-goal-notif-bar">
-          <button type="button" class="notif-pill-switch" id="fixturesGoalNotifPill" title="Toggle Live Goal Notifications" data-tooltip-th="🔔 เปิด/ปิด การแจ้งเตือนประตูสด" data-tooltip-en="🔔 Toggle Live Goal Alerts">
-            <span>🔔</span>
-            <span>แจ้งเตือนประตู: ปิด</span>
-            <span class="notif-status-dot"></span>
-          </button>
-          <button type="button" class="notif-test-btn" id="testGoalAlertBtn" title="Test Goal Alert Notification" data-tooltip-th="⚡ ทดสอบเสียงและการแจ้งเตือนประตู" data-tooltip-en="⚡ Test Goal Alert & Sound">
-            <span>⚡ ทดสอบแจ้งเตือน</span>
-          </button>
-          <a href="men-team.html" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
-        </div>
+        <a href="men-team.html" class="view-all" data-i18n="common.view_all">ดูทั้งหมด</a>
       </div>
 
       <!-- LIVE Spotlight Component for in-progress matches at the top of Fixtures -->
@@ -1230,11 +1213,6 @@
         window.fixturesGlobal = fixtures;
         window.resultsGlobal = results;
         window.liveMatchesGlobal = liveMatches;
-        
-        // Track live scores for real-time goal alerts
-        if (window.LiveGoalNotifier) {
-          window.LiveGoalNotifier.trackScores(allMatches);
-        }
 
         initCalendarToggle();
         populateFilterControls();

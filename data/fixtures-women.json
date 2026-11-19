@@ -12318,11 +12318,11 @@
     "home_logo": "databases/logo/teams/england_chelsea.svg",
     "away_team": "PSG",
     "away_logo": "databases/logo/teams/france_psg.svg",
-    "venue": "Stamford Bridge, London",
+    "venue": "Wheatsheaf Park, Staines",
     "ha": "H",
-    "status": "upcoming",
-    "home_score": null,
-    "away_score": null,
+    "status": "completed",
+    "home_score": 1,
+    "away_score": 0,
     "round": "League Phase 5",
     "channels": [
       {
@@ -12336,7 +12336,706 @@
         "logo": "databases/logo/tv/dazn.svg"
       }
     ],
-    "team_type": "W"
+    "team_type": "W",
+    "period": "FullTime",
+    "home_half_score": 0,
+    "away_half_score": 0,
+    "captain": "Nathalie Björn",
+    "formation": "3-4-3",
+    "referee": "Maria Sole Ferrieri Caputi",
+    "officials": {
+      "referee": "Maria Sole Ferrieri Caputi"
+    },
+    "possession": {
+      "home": 71,
+      "away": 29
+    },
+    "shots": {
+      "home": 17,
+      "away": 11
+    },
+    "corners": {
+      "home": 10,
+      "away": 3
+    },
+    "goals": [
+      {
+        "team": "home",
+        "player": "Veerle Buurman",
+        "number": 5,
+        "minute": 87,
+        "assist": "Lucy Bronze"
+      }
+    ],
+    "lineups": {
+      "home": {
+        "formation": "3-4-3",
+        "stats_formation": "3-4-3",
+        "manager": "Sonia Bompastor",
+        "starting": [
+          {
+            "number": 24,
+            "name": "Hannah Hampton",
+            "position": "GK"
+          },
+          {
+            "number": 15,
+            "name": "Katie McCabe",
+            "position": "Defender"
+          },
+          {
+            "number": 5,
+            "name": "Veerle Buurman",
+            "position": "Defender"
+          },
+          {
+            "number": 14,
+            "name": "Nathalie Björn (C)",
+            "position": "Defender (C)",
+            "captain": true
+          },
+          {
+            "number": 2,
+            "name": "Ellie Carpenter",
+            "position": "Midfielder"
+          },
+          {
+            "number": 21,
+            "name": "Keira Walsh",
+            "position": "Midfielder"
+          },
+          {
+            "number": 32,
+            "name": "Alexia Potter",
+            "position": "Midfielder"
+          },
+          {
+            "number": 12,
+            "name": "Alyssa Thompson",
+            "position": "Midfielder"
+          },
+          {
+            "number": 11,
+            "name": "Sandy Baltimore",
+            "position": "Forward"
+          },
+          {
+            "number": 19,
+            "name": "Wieke Kaptein",
+            "position": "Forward"
+          },
+          {
+            "number": 33,
+            "name": "Aggie Beever-Jones",
+            "position": "Forward"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 22,
+            "name": "Lucy Bronze",
+            "position": "Defender"
+          },
+          {
+            "number": 8,
+            "name": "Erin Cuthbert",
+            "position": "Midfielder"
+          },
+          {
+            "number": 23,
+            "name": "Maika Hamano",
+            "position": "Forward"
+          },
+          {
+            "number": 6,
+            "name": "Sjoeke Nüsken",
+            "position": "Midfielder"
+          },
+          {
+            "number": 1,
+            "name": "Livia Peng",
+            "position": "GK"
+          },
+          {
+            "number": 38,
+            "name": "Rebecca Spencer",
+            "position": "GK"
+          },
+          {
+            "number": 26,
+            "name": "Kadeisha Buchanan",
+            "position": "Defender"
+          },
+          {
+            "number": 17,
+            "name": "Nelly Las",
+            "position": "Defender"
+          },
+          {
+            "number": 16,
+            "name": "Giulia Dragoni",
+            "position": "Midfielder"
+          },
+          {
+            "number": 25,
+            "name": "Lola Brown",
+            "position": "Forward"
+          }
+        ]
+      },
+      "away": {
+        "formation": "4-2-3-1",
+        "stats_formation": "4-2-3-1",
+        "manager": "Paulo César Parente",
+        "starting": [
+          {
+            "number": 1,
+            "name": "K. Kiedrzynek",
+            "position": "GK"
+          },
+          {
+            "number": 12,
+            "name": "Isabela",
+            "position": "Defender"
+          },
+          {
+            "number": 29,
+            "name": "G. Mbock Bathy (C)",
+            "position": "Defender (C)",
+            "captain": true
+          },
+          {
+            "number": 2,
+            "name": "T. Samoura",
+            "position": "Defender"
+          },
+          {
+            "number": 28,
+            "name": "J. L. Guilly",
+            "position": "Defender"
+          },
+          {
+            "number": 30,
+            "name": "E. Østerås",
+            "position": "Midfielder"
+          },
+          {
+            "number": 14,
+            "name": "J. Groenen",
+            "position": "Midfielder"
+          },
+          {
+            "number": 19,
+            "name": "M. Kanjinga",
+            "position": "Midfielder"
+          },
+          {
+            "number": 6,
+            "name": "J. Echegini",
+            "position": "Midfielder"
+          },
+          {
+            "number": 20,
+            "name": "T. Elimbi",
+            "position": "Midfielder"
+          },
+          {
+            "number": 18,
+            "name": "N. Feller",
+            "position": "Forward"
+          }
+        ],
+        "substitutes": [
+          {
+            "number": 77,
+            "name": "Olga Carmona",
+            "position": "Defender"
+          },
+          {
+            "number": 34,
+            "name": "Alyssa Charlier",
+            "position": "Midfielder"
+          },
+          {
+            "number": 4,
+            "name": "Paulina Dudek",
+            "position": "Defender"
+          },
+          {
+            "number": 57,
+            "name": "Léa Morissaint",
+            "position": "Forward"
+          },
+          {
+            "number": 33,
+            "name": "Océane Toussaint",
+            "position": "GK"
+          },
+          {
+            "number": 16,
+            "name": "Oliwia Szperkowska Peda",
+            "position": "GK"
+          },
+          {
+            "number": 23,
+            "name": "Noémie Fatier",
+            "position": ""
+          },
+          {
+            "number": 8,
+            "name": "Yaya",
+            "position": ""
+          },
+          {
+            "number": 11,
+            "name": "Florianne Jourde",
+            "position": ""
+          },
+          {
+            "number": 27,
+            "name": "Gabrielle Le Roux",
+            "position": ""
+          },
+          {
+            "number": 24,
+            "name": "Katia Imarazene",
+            "position": ""
+          },
+          {
+            "number": 47,
+            "name": "Marie Lafontaine",
+            "position": ""
+          }
+        ]
+      }
+    },
+    "line_ups": {
+      "home_team": {
+        "team_name": "Chelsea Women",
+        "formation": "3-4-3",
+        "manager": "Sonia Bompastor",
+        "starting_xi": [
+          {
+            "shirt_number": 24,
+            "player_name": "Hannah Hampton",
+            "position": "GK"
+          },
+          {
+            "shirt_number": 15,
+            "player_name": "Katie McCabe",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 5,
+            "player_name": "Veerle Buurman",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 14,
+            "player_name": "Nathalie Björn",
+            "position": "Defender (C)"
+          },
+          {
+            "shirt_number": 2,
+            "player_name": "Ellie Carpenter",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 21,
+            "player_name": "Keira Walsh",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 32,
+            "player_name": "Alexia Potter",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 12,
+            "player_name": "Alyssa Thompson",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 11,
+            "player_name": "Sandy Baltimore",
+            "position": "Forward"
+          },
+          {
+            "shirt_number": 19,
+            "player_name": "Wieke Kaptein",
+            "position": "Forward"
+          },
+          {
+            "shirt_number": 33,
+            "player_name": "Aggie Beever-Jones",
+            "position": "Forward"
+          }
+        ],
+        "substitutes": [
+          {
+            "shirt_number": 22,
+            "player_name": "Lucy Bronze",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 8,
+            "player_name": "Erin Cuthbert",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 23,
+            "player_name": "Maika Hamano",
+            "position": "Forward"
+          },
+          {
+            "shirt_number": 6,
+            "player_name": "Sjoeke Nüsken",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 1,
+            "player_name": "Livia Peng",
+            "position": "GK"
+          },
+          {
+            "shirt_number": 38,
+            "player_name": "Rebecca Spencer",
+            "position": "GK"
+          },
+          {
+            "shirt_number": 26,
+            "player_name": "Kadeisha Buchanan",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 17,
+            "player_name": "Nelly Las",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 16,
+            "player_name": "Giulia Dragoni",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 25,
+            "player_name": "Lola Brown",
+            "position": "Forward"
+          }
+        ]
+      },
+      "away_team": {
+        "team_name": "PSG",
+        "formation": "4-2-3-1",
+        "manager": "Paulo César Parente",
+        "starting_xi": [
+          {
+            "shirt_number": 1,
+            "player_name": "K. Kiedrzynek",
+            "position": "GK"
+          },
+          {
+            "shirt_number": 12,
+            "player_name": "Isabela",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 29,
+            "player_name": "G. Mbock Bathy",
+            "position": "Defender (C)"
+          },
+          {
+            "shirt_number": 2,
+            "player_name": "T. Samoura",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 28,
+            "player_name": "J. L. Guilly",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 30,
+            "player_name": "E. Østerås",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 14,
+            "player_name": "J. Groenen",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 19,
+            "player_name": "M. Kanjinga",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 6,
+            "player_name": "J. Echegini",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 20,
+            "player_name": "T. Elimbi",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 18,
+            "player_name": "N. Feller",
+            "position": "Forward"
+          }
+        ],
+        "substitutes": [
+          {
+            "shirt_number": 77,
+            "player_name": "Olga Carmona",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 34,
+            "player_name": "Alyssa Charlier",
+            "position": "Midfielder"
+          },
+          {
+            "shirt_number": 4,
+            "player_name": "Paulina Dudek",
+            "position": "Defender"
+          },
+          {
+            "shirt_number": 57,
+            "player_name": "Léa Morissaint",
+            "position": "Forward"
+          },
+          {
+            "shirt_number": 33,
+            "player_name": "Océane Toussaint",
+            "position": "GK"
+          },
+          {
+            "shirt_number": 16,
+            "player_name": "Oliwia Szperkowska Peda",
+            "position": "GK"
+          },
+          {
+            "shirt_number": 23,
+            "player_name": "Noémie Fatier"
+          },
+          {
+            "shirt_number": 8,
+            "player_name": "Yaya"
+          },
+          {
+            "shirt_number": 11,
+            "player_name": "Florianne Jourde"
+          },
+          {
+            "shirt_number": 27,
+            "player_name": "Gabrielle Le Roux"
+          },
+          {
+            "shirt_number": 24,
+            "player_name": "Katia Imarazene"
+          },
+          {
+            "shirt_number": 47,
+            "player_name": "Marie Lafontaine"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "type": "kick_off",
+        "minute": 0,
+        "detail": "เริ่มแข่งขัน"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "minute": 15,
+        "player": "Olga Carmona",
+        "player_in": "Olga Carmona",
+        "player_out": "Isabela",
+        "injury": true,
+        "detail": "เปลี่ยนตัวเนื่องจาก Isabela ได้รับบาดเจ็บ"
+      },
+      {
+        "type": "added_time",
+        "minute": 45,
+        "display_minute": "45'",
+        "detail": "ทดเวลาบาดเจ็บครึ่งแรก 1 นาที"
+      },
+      {
+        "type": "period",
+        "minute": 45,
+        "display_minute": "HT",
+        "added_time": 1,
+        "detail": "จบครึ่งแรก (0 - 0)"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "minute": 60,
+        "player": "Erin Cuthbert",
+        "player_in": "Erin Cuthbert",
+        "player_out": "Wieke Kaptein"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "minute": 60,
+        "player": "Maika Hamano",
+        "player_in": "Maika Hamano",
+        "player_out": "Alyssa Thompson"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "minute": 60,
+        "player": "Lucy Bronze",
+        "player_in": "Lucy Bronze",
+        "player_out": "Katie McCabe"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "minute": 68,
+        "player": "Alyssa Charlier",
+        "player_in": "Alyssa Charlier",
+        "player_out": "N. Feller"
+      },
+      {
+        "type": "substitution",
+        "team": "home",
+        "minute": 83,
+        "player": "Sjoeke Nüsken",
+        "player_in": "Sjoeke Nüsken",
+        "player_out": "Aggie Beever-Jones"
+      },
+      {
+        "type": "goal",
+        "team": "home",
+        "minute": 87,
+        "player": "Veerle Buurman",
+        "assist": "Lucy Bronze",
+        "detail": "1 - 0 (แอสซิสต์: Lucy Bronze)"
+      },
+      {
+        "type": "yellow_card",
+        "team": "home",
+        "minute": 89,
+        "player": "Lucy Bronze",
+        "detail": "ทำฟาวล์"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "minute": 89,
+        "player": "Léa Morissaint",
+        "player_in": "Léa Morissaint",
+        "player_out": "J. Echegini"
+      },
+      {
+        "type": "substitution",
+        "team": "away",
+        "minute": 89,
+        "player": "Paulina Dudek",
+        "player_in": "Paulina Dudek",
+        "player_out": "E. Østerås"
+      },
+      {
+        "type": "added_time",
+        "minute": 90,
+        "display_minute": "90'",
+        "detail": "ทดเวลาบาดเจ็บครึ่งหลัง 3 นาที"
+      },
+      {
+        "type": "full_time",
+        "minute": 93,
+        "display_minute": "FT",
+        "detail": "จบเกม: Chelsea 1 - 0 PSG"
+      }
+    ],
+    "stats": [
+      {
+        "name": "การครองบอล (Possession)",
+        "home": 71,
+        "away": 29,
+        "isPercentage": true
+      },
+      {
+        "name": "โอกาสสำคัญ (Big Chances)",
+        "home": 3,
+        "away": 0,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงทั้งหมด (Total Shots)",
+        "home": 17,
+        "away": 11,
+        "isPercentage": false
+      },
+      {
+        "name": "ยิงเข้ากรอบ (Shots on Target)",
+        "home": 8,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ผู้รักษาประตูป้องกัน (Saves)",
+        "home": 3,
+        "away": 7,
+        "isPercentage": false
+      },
+      {
+        "name": "เตะมุม (Corner Kicks)",
+        "home": 10,
+        "away": 3,
+        "isPercentage": false
+      },
+      {
+        "name": "ฟาวล์ (Fouls)",
+        "home": 9,
+        "away": 7,
+        "isPercentage": false
+      },
+      {
+        "name": "การผ่านบอล (Passes)",
+        "home": 578,
+        "away": 238,
+        "isPercentage": false
+      },
+      {
+        "name": "แย่งบอล (Tackles)",
+        "home": 22,
+        "away": 26,
+        "isPercentage": false
+      },
+      {
+        "name": "ฟรีคิก (Free Kicks)",
+        "home": 7,
+        "away": 9,
+        "isPercentage": false
+      },
+      {
+        "name": "ใบเหลือง (Yellow Cards)",
+        "home": 1,
+        "away": 0,
+        "isPercentage": false
+      }
+    ],
+    "goalkeeper_stats": [
+      {
+        "name": "Hannah Hampton",
+        "team": "Chelsea Women",
+        "saves": 3
+      },
+      {
+        "name": "K. Kiedrzynek",
+        "team": "PSG",
+        "saves": 7
+      }
+    ]
   },
   {
     "id": "w_uwcl_8",

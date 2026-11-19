@@ -23,7 +23,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 38",
+    "matchday": 38
   },
   {
     "id": "m43",
@@ -49,7 +51,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 37",
+    "matchday": 37
   },
   {
     "id": "w28",
@@ -112,7 +116,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 36",
+    "matchday": 36
   },
   {
     "id": "w27",
@@ -175,7 +181,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 35",
+    "matchday": 35
   },
   {
     "id": "w26",
@@ -238,7 +246,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 34",
+    "matchday": 34
   },
   {
     "id": "m39",
@@ -264,7 +274,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 33",
+    "matchday": 33
   },
   {
     "id": "m38",
@@ -290,7 +302,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 32",
+    "matchday": 32
   },
   {
     "id": "m37",
@@ -316,7 +330,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 31",
+    "matchday": 31
   },
   {
     "id": "w25",
@@ -416,7 +432,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 30",
+    "matchday": 30
   },
   {
     "id": "w23",
@@ -516,7 +534,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 29",
+    "matchday": 29
   },
   {
     "id": "m34",
@@ -542,7 +562,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 28",
+    "matchday": 28
   },
   {
     "id": "m33",
@@ -568,7 +590,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 27",
+    "matchday": 27
   },
   {
     "id": "m32",
@@ -594,7 +618,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 26",
+    "matchday": 26
   },
   {
     "id": "w21",
@@ -657,7 +683,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 25",
+    "matchday": 25
   },
   {
     "id": "w20",
@@ -720,7 +748,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 24",
+    "matchday": 24
   },
   {
     "id": "w19",
@@ -783,7 +813,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 23",
+    "matchday": 23
   },
   {
     "id": "w18",
@@ -846,7 +878,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 22",
+    "matchday": 22
   },
   {
     "id": "w17",
@@ -909,7 +943,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 21",
+    "matchday": 21
   },
   {
     "id": "w16",
@@ -972,7 +1008,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 20",
+    "matchday": 20
   },
   {
     "id": "m25",
@@ -998,7 +1036,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 19",
+    "matchday": 19
   },
   {
     "id": "m24",
@@ -1024,7 +1064,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 18",
+    "matchday": 18
   },
   {
     "id": "m23",
@@ -1050,7 +1092,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 17",
+    "matchday": 17
   },
   {
     "id": "w15",
@@ -1113,7 +1157,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 16",
+    "matchday": 16
   },
   {
     "id": "w_uwcl_8",
@@ -1209,7 +1255,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 15",
+    "matchday": 15
   },
   {
     "id": "m20",
@@ -1235,7 +1283,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 14",
+    "matchday": 14
   },
   {
     "id": "m19",
@@ -1261,7 +1311,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 13",
+    "matchday": 13
   },
   {
     "id": "m18",
@@ -1287,7 +1339,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 12",
+    "matchday": 12
   },
   {
     "id": "w13",
@@ -1350,7 +1404,9 @@
     "goals": [],
     "events": [],
     "competition_name": "premier-league",
-    "team_type": "M"
+    "team_type": "M",
+    "round": "Matchday 11",
+    "matchday": 11
   },
   {
     "id": "w_uwcl_7",
@@ -1461,8 +1517,6 @@
     "time": "21:00",
     "competition": "premier-league",
     "competition_logo": "databases/logo/competitions/men/premier-league.png",
-    "round": "Matchday 10",
-    "matchday": 10,
     "round": "Matchday 10",
     "matchday": 10,
     "home_team": "Sunderland",
