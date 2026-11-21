@@ -160,7 +160,7 @@ service cloud.firestore {
         isOptionalNumber(data, 'xga', 0, 50) &&
         isOptionalString(data, 'notes', 2000) &&
         (!('lineups' in data) || data.lineups == null || data.lineups is map) &&
-        isOptionalBoundedList(data, 'stats', 40) &&
+        (!('stats' in data) || (data.stats is list && data.stats.size() <= 40 && (data.stats.size() == 0 || data.stats[0] is map))) &&
         (!('officials' in data) || data.officials == null || data.officials is map) &&
         (!('_deleted' in data) || data._deleted is bool);
     }
@@ -172,7 +172,7 @@ service cloud.firestore {
 
     function isValidMatchUpdate(data, oldData, matchId) {
       return isValidMatchBase(data, matchId) &&
-        (!('createdAt' in oldData) || (data.createdAt is timestamp && data.createdAt == oldData.createdAt)) &&
+        (!('createdAt' in oldData) || !(oldData.createdAt is timestamp) || (data.createdAt is timestamp && data.createdAt == oldData.createdAt)) &&
         data.id == oldData.id &&
         incoming().diff(existing()).affectedKeys().hasOnly([
           'date',
