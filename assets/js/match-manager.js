@@ -109,6 +109,9 @@ const I18N = {
     authRequiredToast: 'กรุณาเข้าสู่ระบบด้วยบัญชีแอดมิน (kaebmoopingkai3737@gmail.com) ก่อนแก้ไขข้อมูล',
     authSignInSuccess: (email) => `เข้าสู่ระบบแอดมิน ${email} สำเร็จ`,
     authSignInDenied: (email) => `บัญชี ${email} ไม่ได้รับอนุญาตให้แก้ไขฐานข้อมูล`,
+    authPopupBlockedTitle: 'หน้าต่าง Pop-up เข้าสู่ระบบ Google ถูกบล็อก (auth/popup-blocked)',
+    authPopupBlockedDesc: 'กรุณากดอนุญาต Pop-up ที่ไอคอนแถบ Address Bar ของเบราว์เซอร์ หรือกดปุ่ม "เปิดในแท็บใหม่เพื่อล็อกอิน ↗" ด้านขวาเพื่อเข้าสู่ระบบนอกกรอบ Preview',
+    authPopupBlockedToast: 'Pop-up ถูกบล็อก: กรุณาอนุญาต Pop-up หรือกด "เปิดในแท็บใหม่เพื่อล็อกอิน ↗"',
     allSeasons: 'ทุกฤดูกาล (All)',
     allComps: 'ทุกรายการแข่งขัน',
     copiedJson: 'คัดลอก JSON ไปยังคลิปบอร์ดแล้ว',
@@ -180,6 +183,9 @@ const I18N = {
     authRequiredToast: 'Please sign in with the admin Google account (kaebmoopingkai3737@gmail.com) first.',
     authSignInSuccess: (email) => `Signed in as admin ${email}`,
     authSignInDenied: (email) => `Account ${email} is not authorized to edit the database.`,
+    authPopupBlockedTitle: 'Google Sign-In Pop-up Was Blocked (auth/popup-blocked)',
+    authPopupBlockedDesc: 'Please allow pop-ups in your browser address bar or click "Open in New Tab to Sign In ↗" to sign in outside the preview frame.',
+    authPopupBlockedToast: 'Pop-up blocked: allow pop-ups or click "Open in New Tab to Sign In ↗".',
     allSeasons: 'All Seasons',
     allComps: 'All Competitions',
     copiedJson: 'JSON copied to clipboard.',
@@ -254,6 +260,7 @@ const state = {
   authReady: false,
   authUser: null,
   isAdmin: false,
+  popupBlocked: false,
   baseMatches: [],
   cloudMatches: [],
   allMergedMatches: [],
@@ -268,6 +275,7 @@ const el = {
   adminBannerTitle: document.getElementById('adminBannerTitle'),
   adminBannerDesc: document.getElementById('adminBannerDesc'),
   bannerSignInBtn: document.getElementById('bannerSignInBtn'),
+  bannerOpenTabLink: document.getElementById('bannerOpenTabLink'),
   langToggleBtn: document.getElementById('langToggleBtn'),
   themeToggleBtn: document.getElementById('themeToggleBtn'),
   themeIcon: document.getElementById('themeIcon'),
@@ -381,6 +389,7 @@ const el = {
   clubsDatalist: document.getElementById('clubsDatalist'),
   playersDatalist: document.getElementById('playersDatalist'),
   lineupPlayersDatalist: document.getElementById('lineupPlayersDatalist'),
+  lineupNumbersDatalist: document.getElementById('lineupNumbersDatalist'),
 
   filterMenuModal: document.getElementById('filterMenuModal'),
   closeFilterMenuBtn: document.getElementById('closeFilterMenuBtn'),
@@ -477,23 +486,40 @@ function updateAuthUI() {
 
   if (el.adminAuthBanner && el.adminBannerTitle && el.adminBannerDesc && el.bannerSignInBtn) {
     el.adminAuthBanner.classList.remove('is-locked', 'is-denied', 'is-admin');
+    const inIframe = (() => {
+      try {
+        return window.self !== window.top;
+      } catch {
+        return true;
+      }
+    })();
+
     if (!user) {
       el.adminAuthBanner.classList.add('is-locked');
-      el.adminBannerTitle.textContent = t('authLockedTitle');
-      el.adminBannerDesc.textContent = t('authLockedDesc');
+      el.adminBannerTitle.textContent = state.popupBlocked ? t('authPopupBlockedTitle') : t('authLockedTitle');
+      el.adminBannerDesc.textContent = state.popupBlocked ? t('authPopupBlockedDesc') : t('authLockedDesc');
       el.bannerSignInBtn.style.display = 'inline-flex';
       el.bannerSignInBtn.textContent = t('authSignInBtn');
+      if (el.bannerOpenTabLink) {
+        el.bannerOpenTabLink.style.display = (inIframe || state.popupBlocked) ? 'inline-flex' : 'none';
+      }
     } else if (!isAdmin) {
       el.adminAuthBanner.classList.add('is-denied');
-      el.adminBannerTitle.textContent = t('authDeniedTitle')(user.email || '');
-      el.adminBannerDesc.textContent = t('authDeniedDesc');
+      el.adminBannerTitle.textContent = state.popupBlocked ? t('authPopupBlockedTitle') : t('authDeniedTitle')(user.email || '');
+      el.adminBannerDesc.textContent = state.popupBlocked ? t('authPopupBlockedDesc') : t('authDeniedDesc');
       el.bannerSignInBtn.style.display = 'inline-flex';
       el.bannerSignInBtn.textContent = t('authSwitchBtn');
+      if (el.bannerOpenTabLink) {
+        el.bannerOpenTabLink.style.display = (inIframe || state.popupBlocked) ? 'inline-flex' : 'none';
+      }
     } else {
       el.adminAuthBanner.classList.add('is-admin');
       el.adminBannerTitle.textContent = t('authAdminTitle')(user.email || '');
       el.adminBannerDesc.textContent = t('authAdminDesc');
       el.bannerSignInBtn.style.display = 'none';
+      if (el.bannerOpenTabLink) {
+        el.bannerOpenTabLink.style.display = 'none';
+      }
     }
   }
 
@@ -504,14 +530,19 @@ function updateAuthUI() {
 
 async function handleAdminAuthAction() {
   if (!window.KlknFirebase) return;
+  if (state.authUser && state.isAdmin) {
+    try {
+      await window.KlknFirebase.signOutUser();
+    } catch (err) {
+      showToast(err.message || 'Sign-out failed', 'error');
+    }
+    return;
+  }
+
+  state.popupBlocked = false;
   try {
-    if (state.authUser && state.isAdmin) {
-      await window.KlknFirebase.signOutUser();
-      return;
-    }
-    if (state.authUser && !state.isAdmin) {
-      await window.KlknFirebase.signOutUser();
-    }
+    // Call signInWithGoogle() immediately without awaiting anything beforehand
+    // so browsers preserve the synchronous user click activation for the popup.
     const user = await window.KlknFirebase.signInWithGoogle();
     const ok = await window.KlknFirebase.verifyAdminAccess(user);
     if (ok) {
@@ -520,7 +551,13 @@ async function handleAdminAuthAction() {
       showToast(t('authSignInDenied')(user?.email || ''), 'error');
     }
   } catch (err) {
-    if (err && err.code !== 'auth/popup-closed-by-user') {
+    if (err && err.code === 'auth/popup-blocked') {
+      state.popupBlocked = true;
+      updateAuthUI();
+      showToast(t('authPopupBlockedToast'), 'error');
+      return;
+    }
+    if (err && err.code !== 'auth/popup-closed-by-user' && err.code !== 'auth/cancelled-popup-request') {
       showToast(err.message || 'Sign-in failed', 'error');
     }
   }
@@ -1296,6 +1333,74 @@ function syncAutoWomenManagersForForm() {
   });
 }
 
+function normalizeTeamKeyForSquadLookup(teamName) {
+  return String(teamName || '')
+    .trim()
+    .toLowerCase()
+    .replace(/['’]s\b/gi, '')
+    .replace(/\b(w\.?f\.?c\.?|fc|cf|afc|women)\b/gi, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function getHistoricalClubPoolFromMatches(teamName, teamType) {
+  const targetClean = normalizeTeamKeyForSquadLookup(teamName);
+  if (!targetClean || !Array.isArray(state.allMergedMatches) || state.allMergedMatches.length === 0) {
+    return [];
+  }
+  const byKey = new Map();
+  const sorted = state.allMergedMatches
+    .filter((m) => m && m.lineups && (!teamType || m.team_type === teamType))
+    .slice()
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+
+  for (const m of sorted) {
+    const homeClean = normalizeTeamKeyForSquadLookup(m.home_team);
+    const awayClean = normalizeTeamKeyForSquadLookup(m.away_team);
+    const matchedSides = [];
+    if (homeClean && (homeClean === targetClean || (targetClean.length >= 4 && (homeClean.includes(targetClean) || targetClean.includes(homeClean))))) {
+      matchedSides.push(m.lineups.home);
+    }
+    if (awayClean && (awayClean === targetClean || (targetClean.length >= 4 && (awayClean.includes(targetClean) || targetClean.includes(awayClean))))) {
+      matchedSides.push(m.lineups.away);
+    }
+    for (const sideObj of matchedSides) {
+      if (!sideObj) continue;
+      const players = [
+        ...(Array.isArray(sideObj.starting) ? sideObj.starting : []),
+        ...(Array.isArray(sideObj.substitutes) ? sideObj.substitutes : []),
+      ];
+      for (const p of players) {
+        if (!p || !p.name) continue;
+        const cleanName = String(p.name).replace(/\s*\(C\)/gi, '').replace(/\s*\(GK\)/gi, '').trim();
+        const norm = normalizePlayerNameForMatch(cleanName);
+        if (!norm) continue;
+        const pNum = p.number ?? p.shirt_number ?? '';
+        const key = `${norm}`;
+        if (!byKey.has(key)) {
+          byKey.set(key, {
+            id: `hist_${norm}`,
+            name: cleanName,
+            number: pNum !== '' && !isNaN(Number(pNum)) ? Number(pNum) : null,
+            position: mapSquadPosToShortTag(p.position || p.pos || ''),
+            status: 'active',
+          });
+        } else {
+          const existing = byKey.get(key);
+          if ((existing.number === null || existing.number === undefined) && pNum !== '' && !isNaN(Number(pNum))) {
+            existing.number = Number(pNum);
+          }
+          if (!existing.position && (p.position || p.pos)) {
+            existing.position = mapSquadPosToShortTag(p.position || p.pos);
+          }
+        }
+      }
+    }
+  }
+  return Array.from(byKey.values());
+}
+
 function getSquadPoolForSide(side) {
   const teamName = String(side === 'home' ? el.fieldHomeTeam?.value : el.fieldAwayTeam?.value || '').trim();
   const isChelsea = teamName.toLowerCase().includes('chelsea');
@@ -1313,7 +1418,56 @@ function getSquadPoolForSide(side) {
       }));
     }
   }
-  return [];
+  return getHistoricalClubPoolFromMatches(teamName, isW ? 'W' : 'M');
+}
+
+function isPoolPlayerActive(player) {
+  const st = String(player?.status || '').trim().toLowerCase();
+  return !st || st === 'active' || st === 'new_signing';
+}
+
+function findPlayersByNumberInPool(rawNum, pool) {
+  const numStr = String(rawNum ?? '').trim();
+  if (!numStr || !Array.isArray(pool) || pool.length === 0) return [];
+  const parsedTarget = /^\d+$/.test(numStr) ? parseInt(numStr, 10) : null;
+  const matches = pool.filter((p) => {
+    if (p.number === null || p.number === undefined || String(p.number).trim() === '') return false;
+    const pStr = String(p.number).trim();
+    if (pStr === numStr) return true;
+    if (parsedTarget !== null && /^\d+$/.test(pStr) && parseInt(pStr, 10) === parsedTarget) return true;
+    return false;
+  });
+  return matches.sort((a, b) => {
+    const aActive = isPoolPlayerActive(a) ? 0 : 1;
+    const bActive = isPoolPlayerActive(b) ? 0 : 1;
+    if (aActive !== bActive) return aActive - bActive;
+    const aApp = Number(a.appearances ?? 0);
+    const bApp = Number(b.appearances ?? 0);
+    return bApp - aApp;
+  });
+}
+
+function pickBestPlayerByNumber(rawNum, side, currentIdx, isSub) {
+  const pool = getSquadPoolForSide(side);
+  const candidates = findPlayersByNumberInPool(rawNum, pool);
+  if (candidates.length === 0) return null;
+  if (candidates.length === 1) return candidates[0];
+
+  const sideData = state.lineups[side] || { starting: [], substitutes: [] };
+  const usedNorms = new Set();
+  sideData.starting.forEach((r, i) => {
+    if (!isSub && i === currentIdx) return;
+    const n = normalizePlayerNameForMatch(r?.name || '');
+    if (n) usedNorms.add(n);
+  });
+  sideData.substitutes.forEach((r, i) => {
+    if (isSub && i === currentIdx) return;
+    const n = normalizePlayerNameForMatch(r?.name || '');
+    if (n) usedNorms.add(n);
+  });
+
+  const unused = candidates.find((c) => !usedNorms.has(normalizePlayerNameForMatch(c.name)));
+  return unused || candidates[0];
 }
 
 function findPlayerInPool(rawName, pNum, pool) {
@@ -1336,9 +1490,8 @@ function findPlayerInPool(rawName, pNum, pool) {
     }
   }
   if (pNum !== undefined && pNum !== null && String(pNum).trim() !== '') {
-    const numStr = String(pNum).trim();
-    const byNum = pool.find((p) => String(p.number ?? '') === numStr);
-    if (byNum) return byNum;
+    const byNum = findPlayersByNumberInPool(pNum, pool);
+    if (byNum.length > 0) return byNum[0];
   }
   return null;
 }
@@ -1444,12 +1597,34 @@ function syncChelseaSummaryFieldsFromLineup() {
 
 function populateActiveSideSquadControls() {
   const side = state.activeLineupSide === 'away' ? 'away' : 'home';
-  const pool = getSquadPoolForSide(side).slice().sort((a, b) => Number(a.number ?? 999) - Number(b.number ?? 999));
+  const pool = getSquadPoolForSide(side).slice().sort((a, b) => {
+    const aAct = isPoolPlayerActive(a) ? 0 : 1;
+    const bAct = isPoolPlayerActive(b) ? 0 : 1;
+    if (aAct !== bAct) return aAct - bAct;
+    return Number(a.number ?? 999) - Number(b.number ?? 999);
+  });
   const teamLabel = (side === 'home' ? el.fieldHomeTeam?.value : el.fieldAwayTeam?.value || '').trim() || (side === 'home' ? 'Home' : 'Away');
 
   if (el.lineupPlayersDatalist) {
     el.lineupPlayersDatalist.innerHTML = pool
       .map((p) => `<option value="${escapeHtml(p.name)}">#${escapeHtml(p.number ?? '-')} · ${escapeHtml(mapSquadPosToShortTag(p.position))}${p.role ? ` (${escapeHtml(p.role)})` : ''}</option>`)
+      .join('');
+  }
+
+  if (el.lineupNumbersDatalist) {
+    const seenNumOption = new Set();
+    el.lineupNumbersDatalist.innerHTML = pool
+      .filter((p) => p.number !== null && p.number !== undefined && String(p.number).trim() !== '')
+      .filter((p) => {
+        const key = `${String(p.number).trim()}|${normalizePlayerNameForMatch(p.name)}`;
+        if (seenNumOption.has(key)) return false;
+        seenNumOption.add(key);
+        return true;
+      })
+      .map((p) => {
+        const shortPos = mapSquadPosToShortTag(p.position);
+        return `<option value="${escapeHtml(p.number)}">${escapeHtml(p.name)}${shortPos ? ` (${escapeHtml(shortPos)})` : ''}</option>`;
+      })
       .join('');
   }
 
@@ -1488,7 +1663,7 @@ function updateLineupSideUI() {
   const side = state.activeLineupSide === 'away' ? 'away' : 'home';
   const teamName = String(side === 'home' ? el.fieldHomeTeam?.value : el.fieldAwayTeam?.value || '').trim();
   const teamType = el.fieldTeamType?.value || 'M';
-  const squadControlKey = `${side}|${teamType}|${teamName}|${state.lang}|${state.womenSquads.length}|${state.playersMen.length}|${state.playersWomen.length}`;
+  const squadControlKey = `${side}|${teamType}|${teamName}|${state.lang}|${state.womenSquads.length}|${state.playersMen.length}|${state.playersWomen.length}|${state.allMergedMatches.length}`;
 
   if (el.lineupManagerInput && document.activeElement !== el.lineupManagerInput) {
     el.lineupManagerInput.value = state.lineups[side]?.manager || '';
@@ -1507,25 +1682,28 @@ function updateLineupSideUI() {
     lastActiveSquadControlKey = squadControlKey;
     if (hasPool) {
       populateActiveSideSquadControls();
-    } else if (el.lineupPlayersDatalist) {
-      el.lineupPlayersDatalist.innerHTML = '';
+    } else {
+      if (el.lineupPlayersDatalist) el.lineupPlayersDatalist.innerHTML = '';
+      if (el.lineupNumbersDatalist) el.lineupNumbersDatalist.innerHTML = '';
     }
   }
 
-  const syncRowDatalist = (container, selector) => {
+  const syncRowDatalist = (container, selector, listId) => {
     if (!container) return;
     container.querySelectorAll(selector).forEach((inputEl) => {
       if (hasPool) {
-        if (inputEl.getAttribute('list') !== 'lineupPlayersDatalist') {
-          inputEl.setAttribute('list', 'lineupPlayersDatalist');
+        if (inputEl.getAttribute('list') !== listId) {
+          inputEl.setAttribute('list', listId);
         }
       } else if (inputEl.hasAttribute('list')) {
         inputEl.removeAttribute('list');
       }
     });
   };
-  syncRowDatalist(el.lineupStartingContainer, '.lineup-name-input');
-  syncRowDatalist(el.lineupSubsContainer, '.lineup-sub-name-input');
+  syncRowDatalist(el.lineupStartingContainer, '.lineup-name-input', 'lineupPlayersDatalist');
+  syncRowDatalist(el.lineupSubsContainer, '.lineup-sub-name-input', 'lineupPlayersDatalist');
+  syncRowDatalist(el.lineupStartingContainer, '.lineup-num-input', 'lineupNumbersDatalist');
+  syncRowDatalist(el.lineupSubsContainer, '.lineup-sub-num-input', 'lineupNumbersDatalist');
 }
 
 function renderPositionSelectHTML(currentPos, extraClass = '') {
@@ -1540,11 +1718,84 @@ function renderPositionSelectHTML(currentPos, extraClass = '') {
   `;
 }
 
+function handleLineupNumberInput(side, row, rawVal, nameInput, posSelect, idx, isSub) {
+  const numStr = String(rawVal ?? '').trim();
+  row.number = rawVal;
+
+  const currentName = String(row.name || '').trim();
+  const canUpdateName = !currentName || (row._autoNameFromNum && currentName === row._autoNameFromNum);
+
+  if (!numStr) {
+    if (row._autoNameFromNum && currentName === row._autoNameFromNum) {
+      row.name = '';
+      if (nameInput) nameInput.value = '';
+    }
+    row._autoNameFromNum = '';
+    if (row._autoPosFromNum && row.position === row._autoPosFromNum) {
+      row.position = row._autoPosPrev ?? '';
+      if (posSelect) posSelect.value = row.position;
+    }
+    row._autoPosFromNum = '';
+    updateLineupSideUI();
+    renderLineupLivePreview();
+    return;
+  }
+
+  const matched = pickBestPlayerByNumber(numStr, side, idx, isSub);
+  if (matched && matched.name) {
+    if (canUpdateName) {
+      row.name = matched.name;
+      if (nameInput) nameInput.value = matched.name;
+      row._autoNameFromNum = matched.name;
+    }
+    const canUpdatePos = !row.position || (row._autoPosFromNum && row.position === row._autoPosFromNum);
+    if (canUpdatePos) {
+      if (row._autoPosFromNum === undefined || row._autoPosFromNum === '') {
+        row._autoPosPrev = row.position || '';
+      }
+      const shortPos = mapSquadPosToShortTag(matched.position);
+      if (shortPos) {
+        row.position = shortPos;
+        if (posSelect) posSelect.value = shortPos;
+        row._autoPosFromNum = shortPos;
+      }
+    }
+  } else {
+    if (row._autoNameFromNum && currentName === row._autoNameFromNum) {
+      row.name = '';
+      if (nameInput) nameInput.value = '';
+    }
+    row._autoNameFromNum = '';
+    if (row._autoPosFromNum && row.position === row._autoPosFromNum) {
+      row.position = row._autoPosPrev ?? '';
+      if (posSelect) posSelect.value = row.position;
+    }
+    row._autoPosFromNum = '';
+  }
+
+  updateLineupSideUI();
+  syncChelseaSummaryFieldsFromLineup();
+  renderLineupLivePreview();
+}
+
+function focusNextLineupNumberInput(container, currentInput) {
+  if (!container || !currentInput) return;
+  const inputs = Array.from(container.querySelectorAll('.lineup-num-input, .lineup-sub-num-input'));
+  const pos = inputs.indexOf(currentInput);
+  if (pos >= 0 && pos + 1 < inputs.length) {
+    inputs[pos + 1].focus();
+    inputs[pos + 1].select?.();
+  }
+}
+
 function renderLineupEditor() {
   const side = state.activeLineupSide === 'away' ? 'away' : 'home';
   const sideData = state.lineups[side];
   const sidePool = getSquadPoolForSide(side);
   const hasSidePool = sidePool.length > 0;
+  const numTitleHint = state.lang === 'th'
+    ? 'กรอกหมายเลขเสื้อ # เพื่อดึงชื่อนักเตะอัตโนมัติ (กด Enter เพื่อไปช่องถัดไป)'
+    : 'Enter shirt # to auto-fill player name (press Enter for next slot)';
 
   updateLineupSideUI();
 
@@ -1583,7 +1834,7 @@ function renderLineupEditor() {
       const rowsHtml = sideData.starting.map((p, idx) => `
         <div class="mm-lineup-row" data-starter-idx="${idx}">
           <span class="mm-lineup-slot-idx">${String(idx + 1).padStart(2, '0')}</span>
-          <input type="number" min="1" max="99" class="mm-input mono lineup-num-input" value="${escapeHtml(p.number ?? '')}" placeholder="#" />
+          <input type="number" min="1" max="99" class="mm-input mono lineup-num-input" ${hasSidePool ? 'list="lineupNumbersDatalist"' : ''} value="${escapeHtml(p.number ?? '')}" placeholder="#" title="${escapeHtml(numTitleHint)}" />
           <input type="text" class="mm-input lineup-name-input" ${hasSidePool ? 'list="lineupPlayersDatalist"' : ''} value="${escapeHtml(p.name || '')}" placeholder="${escapeHtml(t('lineupPlayerPlaceholder'))}" />
           ${renderPositionSelectHTML(p.position, 'lineup-pos-select')}
           <button type="button" class="mm-cap-btn ${p.captain ? 'active' : ''}" title="${escapeHtml(t('lineupColCap'))}" aria-pressed="${p.captain ? 'true' : 'false'}">C</button>
@@ -1605,12 +1856,19 @@ function renderLineupEditor() {
         const capBtn = rowEl.querySelector('.mm-cap-btn');
 
         numInput.addEventListener('input', (e) => {
-          sideData.starting[idx].number = e.target.value;
-          renderLineupLivePreview();
+          handleLineupNumberInput(side, sideData.starting[idx], e.target.value, nameInput, posSelect, idx, false);
+        });
+
+        numInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            focusNextLineupNumberInput(el.lineupStartingContainer, numInput);
+          }
         });
 
         nameInput.addEventListener('input', (e) => {
           const val = e.target.value;
+          sideData.starting[idx]._autoNameFromNum = '';
           sideData.starting[idx].name = val;
           const activePool = getSquadPoolForSide(side);
           if (activePool.length > 0) {
@@ -1632,6 +1890,7 @@ function renderLineupEditor() {
         });
 
         posSelect.addEventListener('change', (e) => {
+          sideData.starting[idx]._autoPosFromNum = '';
           sideData.starting[idx].position = e.target.value;
           renderLineupLivePreview();
         });
@@ -1677,7 +1936,7 @@ function renderLineupEditor() {
       el.lineupSubsContainer.innerHTML = sideData.substitutes.map((s, idx) => `
         <div class="mm-lineup-row is-sub" data-sub-idx="${idx}">
           <span class="mm-lineup-slot-idx">S${idx + 1}</span>
-          <input type="number" min="1" max="99" class="mm-input mono lineup-sub-num-input" value="${escapeHtml(s.number ?? '')}" placeholder="#" />
+          <input type="number" min="1" max="99" class="mm-input mono lineup-sub-num-input" ${hasSidePool ? 'list="lineupNumbersDatalist"' : ''} value="${escapeHtml(s.number ?? '')}" placeholder="#" title="${escapeHtml(numTitleHint)}" />
           <input type="text" class="mm-input lineup-sub-name-input" ${hasSidePool ? 'list="lineupPlayersDatalist"' : ''} value="${escapeHtml(s.name || '')}" placeholder="${escapeHtml(t('lineupPlayerPlaceholder'))}" />
           ${renderPositionSelectHTML(s.position, 'lineup-sub-pos-select')}
           <button type="button" class="mm-mini-op-btn is-del lineup-sub-del-btn" title="Remove">✕</button>
@@ -1691,12 +1950,19 @@ function renderLineupEditor() {
         const posSelect = rowEl.querySelector('.lineup-sub-pos-select');
 
         numInput.addEventListener('input', (e) => {
-          sideData.substitutes[idx].number = e.target.value;
-          renderLineupLivePreview();
+          handleLineupNumberInput(side, sideData.substitutes[idx], e.target.value, nameInput, posSelect, idx, true);
+        });
+
+        numInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            focusNextLineupNumberInput(el.lineupSubsContainer, numInput);
+          }
         });
 
         nameInput.addEventListener('input', (e) => {
           const val = e.target.value;
+          sideData.substitutes[idx]._autoNameFromNum = '';
           sideData.substitutes[idx].name = val;
           const activePool = getSquadPoolForSide(side);
           if (activePool.length > 0) {
@@ -1717,6 +1983,7 @@ function renderLineupEditor() {
         });
 
         posSelect.addEventListener('change', (e) => {
+          sideData.substitutes[idx]._autoPosFromNum = '';
           sideData.substitutes[idx].position = e.target.value;
           renderLineupLivePreview();
         });

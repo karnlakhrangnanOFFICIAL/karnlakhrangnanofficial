@@ -1552,6 +1552,91 @@ a {
   color: #34d399;
 }
 
+/* Keep all tactical lines and positions clearly visible inside the narrow preview pane */
+#lineupLivePreview .tl-pitch-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(430px, 1fr) minmax(430px, 1fr);
+  min-height: 860px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      var(--tl-pitch-stripe) 0 44px,
+      transparent 44px 88px
+    ),
+    var(--tl-pitch-green);
+}
+
+#lineupLivePreview .tl-pitch-svg-desktop {
+  display: none;
+}
+
+#lineupLivePreview .tl-pitch-svg-mobile {
+  display: block;
+}
+
+#lineupLivePreview .tl-pitch-half {
+  width: 100%;
+  min-width: 0;
+  padding: 20px 14px;
+  gap: 12px;
+  justify-content: space-evenly;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+#lineupLivePreview .tl-pitch-half.left {
+  flex-direction: column;
+  border-right: 0;
+  border-bottom: 2px solid var(--tl-pitch-line);
+}
+
+#lineupLivePreview .tl-pitch-half.right {
+  flex-direction: column-reverse;
+}
+
+#lineupLivePreview .tl-pitch-half.left .tl-tactical-col,
+#lineupLivePreview .tl-pitch-half.right .tl-tactical-col {
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+#lineupLivePreview .tl-player-node {
+  width: auto;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 118px;
+  padding: 0 2px;
+}
+
+#lineupLivePreview .tl-avatar-wrap,
+#lineupLivePreview .tl-avatar {
+  width: 42px;
+  height: 42px;
+}
+
+#lineupLivePreview .tl-player-name {
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  font-size: 11px;
+}
+
+#lineupLivePreview .tl-player-name-text {
+  max-width: calc(100% - 22px);
+}
+
+#lineupLivePreview .tl-player-pos {
+  max-width: 100%;
+  font-size: 9.5px;
+  padding: 2px 6px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1615,6 +1700,27 @@ a {
   }
   .mm-scoreboard-editor {
     grid-template-columns: 1fr;
+  }
+  #lineupLivePreview .tl-pitch-container {
+    grid-template-rows: minmax(370px, 1fr) minmax(370px, 1fr);
+    min-height: 740px;
+  }
+  #lineupLivePreview .tl-pitch-half {
+    padding: 14px 8px;
+    gap: 10px;
+  }
+  #lineupLivePreview .tl-avatar-wrap,
+  #lineupLivePreview .tl-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.76rem;
+  }
+  #lineupLivePreview .tl-player-name {
+    font-size: 10px;
+  }
+  #lineupLivePreview .tl-player-pos {
+    font-size: 9px;
+    padding: 1px 4px;
   }
 }
 

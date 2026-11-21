@@ -102,11 +102,10 @@ async function verifyAdminAccess(user) {
   }
 }
 
-async function signInWithGoogle() {
+function signInWithGoogle() {
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({ prompt: 'select_account' });
-  const cred = await signInWithPopup(auth, provider);
-  return cred.user;
+  return signInWithPopup(auth, provider).then((cred) => cred.user);
 }
 
 async function signOutUser() {
