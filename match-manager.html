@@ -37,6 +37,19 @@
       </nav>
 
       <div class="mm-topbar-actions">
+        <div class="mm-auth-chip" id="adminAuthChip" aria-live="polite">
+          <span class="mm-auth-dot" id="adminAuthDot"></span>
+          <span class="mm-auth-email" id="adminAuthLabel" data-lang-th="กำลังตรวจสอบสิทธิ์..." data-lang-en="Checking auth...">กำลังตรวจสอบสิทธิ์...</span>
+        </div>
+        <button
+          type="button"
+          class="mm-btn mm-btn-compact"
+          id="adminAuthBtn"
+          data-lang-th="เข้าสู่ระบบแอดมิน (Google)"
+          data-lang-en="Admin Sign In"
+        >
+          เข้าสู่ระบบแอดมิน (Google)
+        </button>
         <button type="button" class="mm-icon-btn" id="langToggleBtn" aria-label="Switch language">
           EN
         </button>
@@ -142,6 +155,23 @@
 
         <div class="mm-active-filter-text" id="activeFilterSummary">
           <span>2026/27</span>
+        </div>
+      </section>
+
+      <!-- ADMIN AUTHENTICATION & CLOUD SYNC BANNER -->
+      <section class="mm-auth-banner is-locked" id="adminAuthBanner" aria-live="polite">
+        <div class="mm-auth-banner-copy">
+          <strong id="adminBannerTitle" data-lang-th="โหมดดูข้อมูล (กรุณายืนยันตัวตนแอดมินเพื่อบันทึกออนไลน์)" data-lang-en="Read-Only Preview (Admin Google Sign-In required to save)">
+            โหมดดูข้อมูล (กรุณายืนยันตัวตนแอดมินเพื่อบันทึกออนไลน์)
+          </strong>
+          <p id="adminBannerDesc" data-lang-th="เข้าสู่ระบบด้วย Google บัญชีแอดมิน (kaebmoopingkai3737@gmail.com) เพื่อเพิ่ม แก้ไข หรือลบข้อมูลลงฐานข้อมูลกลาง Firestore ให้ทุกคนเห็นทันที" data-lang-en="Sign in with your authorized Admin Google account (kaebmoopingkai3737@gmail.com) to publish changes live to Firestore for all visitors.">
+            เข้าสู่ระบบด้วย Google บัญชีแอดมิน (kaebmoopingkai3737@gmail.com) เพื่อเพิ่ม แก้ไข หรือลบข้อมูลลงฐานข้อมูลกลาง Firestore ให้ทุกคนเห็นทันที
+          </p>
+        </div>
+        <div class="mm-actions-group">
+          <button type="button" class="mm-btn mm-btn-primary mm-btn-compact" id="bannerSignInBtn">
+            <span data-lang-th="เข้าสู่ระบบด้วย Google" data-lang-en="Sign in with Google">เข้าสู่ระบบด้วย Google</span>
+          </button>
         </div>
       </section>
 
@@ -812,6 +842,7 @@
     <!-- TOAST -->
     <div class="mm-toast" id="mmToast" role="status" aria-live="polite"></div>
 
+    <script src="assets/js/vendor/firebase-client.js"></script>
     <script src="assets/js/tactical-lineup.js"></script>
     <script type="module" src="assets/js/match-manager.js"></script>
   </body>

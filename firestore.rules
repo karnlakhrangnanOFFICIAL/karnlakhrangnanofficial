@@ -1,0 +1,275 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net (Default Deny)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Hardened Global Primitives
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isSuperAdmin() {
+      return isVerifiedUser() &&
+        request.auth.token.email == 'kaebmoopingkai3737@gmail.com';
+    }
+
+    function isAdmin() {
+      return isSuperAdmin() ||
+        (isVerifiedUser() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)));
+    }
+
+    function isValidId(id) {
+      return id is string &&
+        id.size() >= 1 &&
+        id.size() <= 128 &&
+        id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isOptionalString(data, field, maxLen) {
+      return !(field in data) || (data[field] is string && data[field].size() <= maxLen);
+    }
+
+    function isOptionalInt(data, field, minVal, maxVal) {
+      return !(field in data) ||
+        data[field] == null ||
+        (data[field] is int && data[field] >= minVal && data[field] <= maxVal);
+    }
+
+    function isOptionalNumber(data, field, minVal, maxVal) {
+      return !(field in data) ||
+        data[field] == null ||
+        ((data[field] is int || data[field] is float) && data[field] >= minVal && data[field] <= maxVal);
+    }
+
+    function isOptionalBoundedList(data, field, maxItems) {
+      return !(field in data) ||
+        (data[field] is list && data[field].size() <= maxItems);
+    }
+
+    function isValidMatchBase(data, matchId) {
+      return data.keys().hasAll([
+          'id',
+          'date',
+          'competition',
+          'home_team',
+          'away_team',
+          'status',
+          'team_type',
+          'updatedByUid',
+          'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id',
+          'date',
+          'time',
+          'time_th',
+          'time_uk',
+          'competition',
+          'competition_name',
+          'competition_logo',
+          'round',
+          'home_team',
+          'home_logo',
+          'away_team',
+          'away_logo',
+          'venue',
+          'ha',
+          'status',
+          'team_type',
+          'home_score',
+          'away_score',
+          'goals',
+          'events',
+          'channels',
+          'referee',
+          'attendance',
+          'formation',
+          'captain',
+          'poss',
+          'xg',
+          'xga',
+          'notes',
+          'lineups',
+          'stats',
+          'officials',
+          '_deleted',
+          'updatedByUid',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        data.id == matchId &&
+        isValidId(data.id) &&
+        data.date is string &&
+        data.date.size() == 10 &&
+        data.date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$') &&
+        data.competition is string &&
+        data.competition.size() >= 1 &&
+        data.competition.size() <= 120 &&
+        data.home_team is string &&
+        data.home_team.size() >= 1 &&
+        data.home_team.size() <= 120 &&
+        data.away_team is string &&
+        data.away_team.size() >= 1 &&
+        data.away_team.size() <= 120 &&
+        data.status in ['upcoming', 'live', 'halftime', 'completed'] &&
+        data.team_type in ['M', 'W'] &&
+        data.updatedByUid is string &&
+        data.updatedByUid == request.auth.uid &&
+        data.updatedByUid.size() >= 1 &&
+        data.updatedByUid.size() <= 128 &&
+        data.updatedAt is timestamp &&
+        data.updatedAt == request.time &&
+        isOptionalString(data, 'time', 20) &&
+        isOptionalString(data, 'time_th', 20) &&
+        isOptionalString(data, 'time_uk', 20) &&
+        isOptionalString(data, 'competition_name', 120) &&
+        isOptionalString(data, 'competition_logo', 300) &&
+        isOptionalString(data, 'round', 120) &&
+        isOptionalString(data, 'home_logo', 300) &&
+        isOptionalString(data, 'away_logo', 300) &&
+        isOptionalString(data, 'venue', 180) &&
+        (!('ha' in data) || data.ha in ['H', 'A', '']) &&
+        isOptionalInt(data, 'home_score', 0, 99) &&
+        isOptionalInt(data, 'away_score', 0, 99) &&
+        isOptionalBoundedList(data, 'goals', 50) &&
+        isOptionalBoundedList(data, 'events', 150) &&
+        isOptionalBoundedList(data, 'channels', 20) &&
+        isOptionalString(data, 'referee', 120) &&
+        isOptionalInt(data, 'attendance', 0, 300000) &&
+        isOptionalString(data, 'formation', 30) &&
+        isOptionalString(data, 'captain', 120) &&
+        isOptionalNumber(data, 'poss', 0, 100) &&
+        isOptionalNumber(data, 'xg', 0, 50) &&
+        isOptionalNumber(data, 'xga', 0, 50) &&
+        isOptionalString(data, 'notes', 2000) &&
+        (!('lineups' in data) || data.lineups == null || data.lineups is map) &&
+        isOptionalBoundedList(data, 'stats', 40) &&
+        (!('officials' in data) || data.officials == null || data.officials is map) &&
+        (!('_deleted' in data) || data._deleted is bool);
+    }
+
+    function isValidMatchCreate(data, matchId) {
+      return isValidMatchBase(data, matchId) &&
+        (!('createdAt' in data) || data.createdAt == request.time);
+    }
+
+    function isValidMatchUpdate(data, oldData, matchId) {
+      return isValidMatchBase(data, matchId) &&
+        (!('createdAt' in oldData) || (data.createdAt is timestamp && data.createdAt == oldData.createdAt)) &&
+        data.id == oldData.id &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'date',
+          'time',
+          'time_th',
+          'time_uk',
+          'competition',
+          'competition_name',
+          'competition_logo',
+          'round',
+          'home_team',
+          'home_logo',
+          'away_team',
+          'away_logo',
+          'venue',
+          'ha',
+          'status',
+          'team_type',
+          'home_score',
+          'away_score',
+          'goals',
+          'events',
+          'channels',
+          'referee',
+          'attendance',
+          'formation',
+          'captain',
+          'poss',
+          'xg',
+          'xga',
+          'notes',
+          'lineups',
+          'stats',
+          'officials',
+          '_deleted',
+          'updatedByUid',
+          'updatedAt'
+        ]);
+    }
+
+    function isValidAdminRecord(data, adminId) {
+      return data.keys().hasAll(['uid', 'email', 'role', 'createdAt', 'updatedAt']) &&
+        data.keys().hasOnly(['uid', 'email', 'role', 'createdAt', 'updatedAt']) &&
+        data.uid == adminId &&
+        isValidId(data.uid) &&
+        data.email is string &&
+        data.email.size() >= 3 &&
+        data.email.size() <= 200 &&
+        data.role == 'admin' &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp &&
+        data.updatedAt == request.time;
+    }
+
+    // 3. Collection: Public-read, Admin-write Match Overrides
+    match /matches/{matchId} {
+      allow get: if isValidId(matchId);
+      allow list: if request.query.limit != null && request.query.limit <= 1000;
+
+      allow create: if isVerifiedUser() &&
+        isValidId(matchId) &&
+        isValidMatchCreate(incoming(), matchId) &&
+        isAdmin();
+
+      allow update: if isVerifiedUser() &&
+        isValidId(matchId) &&
+        isValidMatchUpdate(incoming(), existing(), matchId) &&
+        isAdmin();
+
+      allow delete: if isVerifiedUser() &&
+        isValidId(matchId) &&
+        isAdmin();
+    }
+
+    // 4. Collection: Isolated Admin RBAC Registry (PII protected)
+    match /admins/{adminId} {
+      allow get: if isVerifiedUser() &&
+        isValidId(adminId) &&
+        (request.auth.uid == adminId || isSuperAdmin());
+      allow list: if isSuperAdmin();
+
+      allow create: if isSuperAdmin() &&
+        isValidId(adminId) &&
+        isValidAdminRecord(incoming(), adminId) &&
+        incoming().createdAt == request.time;
+
+      allow update: if isSuperAdmin() &&
+        isValidId(adminId) &&
+        isValidAdminRecord(incoming(), adminId) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['email', 'role', 'updatedAt']);
+
+      allow delete: if isSuperAdmin() && isValidId(adminId);
+    }
+
+    // 5. Connection test document (read-only ping)
+    match /test/{docId} {
+      allow get: if docId == 'connection';
+      allow list, write: if false;
+    }
+  }
+}

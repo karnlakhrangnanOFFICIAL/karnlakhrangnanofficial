@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import esbuild from 'esbuild';
 import { buildMenFixturesSummary } from './build-fixtures-summary.mjs';
 
 function minifyJS(code) {
@@ -22,6 +23,17 @@ function minifyCSS(code) {
 
 try {
   buildMenFixturesSummary();
+
+  esbuild.buildSync({
+    entryPoints: ['scripts/firebase-client.src.js'],
+    bundle: true,
+    minify: true,
+    format: 'iife',
+    platform: 'browser',
+    target: ['es2020'],
+    outfile: 'assets/js/vendor/firebase-client.js',
+  });
+  console.log('[Build] Firebase client bundled -> assets/js/vendor/firebase-client.js');
 
   const mainJs = fs.readFileSync('assets/js/main.js', 'utf8');
   const teamJs = fs.readFileSync('assets/js/team.js', 'utf8');

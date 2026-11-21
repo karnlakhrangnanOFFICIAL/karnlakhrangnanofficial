@@ -76,9 +76,9 @@ const I18N = {
     editingTitle: (id) => `แก้ไขแมตช์ #${id}`,
     creatingMeta: 'กรอกโปรแกรมการแข่งขันหรือบันทึกผลการแข่งขัน',
     editingMeta: (date, comp) => `${date} · ${comp}`,
-    savedDisk: 'บันทึกข้อมูลลงฐานข้อมูลเว็บไซต์เรียบร้อยแล้ว',
-    savedDraft: 'เซิร์ฟเวอร์อยู่ในโหมดอ่านอย่างเดียว บันทึกเป็น Draft ในเบราว์เซอร์แล้ว (สามารถส่งออก JSON ได้)',
-    deletedOk: 'ลบข้อมูลแมตช์เรียบร้อยแล้ว',
+    savedDisk: 'บันทึกข้อมูลลงฐานข้อมูลกลาง Firestore เรียบร้อยแล้ว (ทุกคนเห็นทันที)',
+    savedDraft: 'กรุณาเข้าสู่ระบบด้วยบัญชีแอดมินก่อนบันทึกข้อมูล',
+    deletedOk: 'ลบข้อมูลแมตช์ออกจากฐานข้อมูลกลางเรียบร้อยแล้ว',
     validationError: 'กรุณากรอกวันที่ รายการแข่งขัน ทีมเหย้า และทีมเยือนให้ครบถ้วน',
     invalidDateError: 'กรุณาระบุวันที่แข่งขันในรูปแบบ ปี-เดือน-วัน (YYYY-MM-DD) เช่น 2026-11-15',
     emptyList: 'ไม่พบแมตช์ที่ตรงกับตัวกรอง',
@@ -91,8 +91,24 @@ const I18N = {
     editBtn: 'แก้ไข',
     selectInModal: 'เลือกแก้ไข',
     itemsCount: (n) => `${n} รายการ`,
-    dbConnected: 'เชื่อมต่อฐานข้อมูล JSON แล้ว',
-    dbReadOnly: 'โหมดอ่านอย่างเดียว (Draft Local)',
+    dbConnected: 'เชื่อมต่อ Firestore ออนไลน์ (Real-time)',
+    dbReadOnly: 'โหมดดูข้อมูล (รอแอดมินเข้าสู่ระบบ)',
+    authChecking: 'กำลังตรวจสอบสิทธิ์...',
+    authGuestChip: 'ยังไม่ได้เข้าสู่ระบบ',
+    authAdminChip: (email) => `แอดมิน: ${email}`,
+    authDeniedChip: (email) => `ไม่มีสิทธิ์: ${email}`,
+    authSignInBtn: 'เข้าสู่ระบบแอดมิน (Google)',
+    authSignOutBtn: 'ออกจากระบบ',
+    authSwitchBtn: 'สลับบัญชี',
+    authLockedTitle: 'โหมดดูข้อมูล (กรุณายืนยันตัวตนแอดมินเพื่อบันทึกออนไลน์)',
+    authLockedDesc: 'เข้าสู่ระบบด้วย Google บัญชีแอดมิน (kaebmoopingkai3737@gmail.com) เพื่อเพิ่ม แก้ไข หรือลบข้อมูลลงฐานข้อมูลกลาง Firestore ให้ทุกคนเห็นทันที',
+    authDeniedTitle: (email) => `บัญชี ${email} ไม่มีสิทธิ์แอดมินในการแก้ไขฐานข้อมูล`,
+    authDeniedDesc: 'กรุณากดสลับบัญชีแล้วเข้าสู่ระบบด้วยบัญชีแอดมิน (kaebmoopingkai3737@gmail.com)',
+    authAdminTitle: (email) => `ยืนยันสิทธิ์แอดมินแล้ว (${email})`,
+    authAdminDesc: 'ทุกการเพิ่ม แก้ไข หรือลบจะบันทึกลงฐานข้อมูลกลาง Firestore และอัปเดตให้ทุกคนเห็นทันที',
+    authRequiredToast: 'กรุณาเข้าสู่ระบบด้วยบัญชีแอดมิน (kaebmoopingkai3737@gmail.com) ก่อนแก้ไขข้อมูล',
+    authSignInSuccess: (email) => `เข้าสู่ระบบแอดมิน ${email} สำเร็จ`,
+    authSignInDenied: (email) => `บัญชี ${email} ไม่ได้รับอนุญาตให้แก้ไขฐานข้อมูล`,
     allSeasons: 'ทุกฤดูกาล (All)',
     allComps: 'ทุกรายการแข่งขัน',
     copiedJson: 'คัดลอก JSON ไปยังคลิปบอร์ดแล้ว',
@@ -125,15 +141,15 @@ const I18N = {
   },
   en: {
     loading: 'Loading...',
-    saving: 'Saving match data...',
-    deleting: 'Deleting match...',
+    saving: 'Saving to Firestore...',
+    deleting: 'Deleting from Firestore...',
     creatingTitle: 'Create New Match Entry',
     editingTitle: (id) => `Edit Match #${id}`,
     creatingMeta: 'Enter upcoming fixture or completed match result',
     editingMeta: (date, comp) => `${date} · ${comp}`,
-    savedDisk: 'Match saved directly to the site database.',
-    savedDraft: 'Server is read-only; saved to browser draft (you can export JSON).',
-    deletedOk: 'Match deleted successfully.',
+    savedDisk: 'Match saved directly to central Firestore database (live for all visitors).',
+    savedDraft: 'Admin Google Sign-In is required before saving changes.',
+    deletedOk: 'Match deleted from central Firestore database.',
     validationError: 'Please fill in Date, Competition, Home Team, and Away Team.',
     invalidDateError: 'Please enter a valid date in YYYY-MM-DD format (e.g. 2026-11-15).',
     emptyList: 'No matches match the current filters',
@@ -146,8 +162,24 @@ const I18N = {
     editBtn: 'Edit',
     selectInModal: 'Select',
     itemsCount: (n) => `${n} matches`,
-    dbConnected: 'Connected to JSON database',
-    dbReadOnly: 'Read-only mode (Local Draft)',
+    dbConnected: 'Firestore Connected (Real-time)',
+    dbReadOnly: 'Read-only (Admin Sign-In required)',
+    authChecking: 'Checking auth...',
+    authGuestChip: 'Not signed in',
+    authAdminChip: (email) => `Admin: ${email}`,
+    authDeniedChip: (email) => `No access: ${email}`,
+    authSignInBtn: 'Admin Sign In (Google)',
+    authSignOutBtn: 'Sign Out',
+    authSwitchBtn: 'Switch Account',
+    authLockedTitle: 'Read-Only Preview (Admin Google Sign-In required to save)',
+    authLockedDesc: 'Sign in with your authorized Admin Google account (kaebmoopingkai3737@gmail.com) to publish changes live to Firestore for all visitors.',
+    authDeniedTitle: (email) => `Account ${email} does not have admin permission`,
+    authDeniedDesc: 'Please switch accounts and sign in with the authorized admin account (kaebmoopingkai3737@gmail.com).',
+    authAdminTitle: (email) => `Verified Admin Signed In (${email})`,
+    authAdminDesc: 'All additions, edits, and deletions are saved directly to central Firestore and synced live for everyone.',
+    authRequiredToast: 'Please sign in with the admin Google account (kaebmoopingkai3737@gmail.com) first.',
+    authSignInSuccess: (email) => `Signed in as admin ${email}`,
+    authSignInDenied: (email) => `Account ${email} is not authorized to edit the database.`,
     allSeasons: 'All Seasons',
     allComps: 'All Competitions',
     copiedJson: 'JSON copied to clipboard.',
@@ -217,11 +249,25 @@ const state = {
     sort: 'date_desc',
   },
   modalFilters: null,
-  readOnlyMode: false,
+  readOnlyMode: true,
   lastTimeSource: 'th',
+  authReady: false,
+  authUser: null,
+  isAdmin: false,
+  baseMatches: [],
+  cloudMatches: [],
+  allMergedMatches: [],
+  baseCatalogLoaded: false,
 };
 
 const el = {
+  adminAuthChip: document.getElementById('adminAuthChip'),
+  adminAuthLabel: document.getElementById('adminAuthLabel'),
+  adminAuthBtn: document.getElementById('adminAuthBtn'),
+  adminAuthBanner: document.getElementById('adminAuthBanner'),
+  adminBannerTitle: document.getElementById('adminBannerTitle'),
+  adminBannerDesc: document.getElementById('adminBannerDesc'),
+  bannerSignInBtn: document.getElementById('bannerSignInBtn'),
   langToggleBtn: document.getElementById('langToggleBtn'),
   themeToggleBtn: document.getElementById('themeToggleBtn'),
   themeIcon: document.getElementById('themeIcon'),
@@ -401,6 +447,85 @@ function applyTheme(themeId) {
   if (el.themeLabel) el.themeLabel.textContent = found.label;
 }
 
+function updateAuthUI() {
+  const user = state.authUser;
+  const isAdmin = Boolean(state.isAdmin);
+  state.readOnlyMode = !isAdmin;
+
+  if (el.adminAuthChip && el.adminAuthLabel) {
+    el.adminAuthChip.classList.remove('is-admin', 'is-denied');
+    if (!state.authReady) {
+      el.adminAuthLabel.textContent = t('authChecking');
+    } else if (!user) {
+      el.adminAuthLabel.textContent = t('authGuestChip');
+    } else if (isAdmin) {
+      el.adminAuthChip.classList.add('is-admin');
+      el.adminAuthLabel.textContent = t('authAdminChip')(user.email || '');
+    } else {
+      el.adminAuthChip.classList.add('is-denied');
+      el.adminAuthLabel.textContent = t('authDeniedChip')(user.email || '');
+    }
+  }
+
+  if (el.adminAuthBtn) {
+    if (!user) {
+      el.adminAuthBtn.textContent = t('authSignInBtn');
+    } else {
+      el.adminAuthBtn.textContent = isAdmin ? t('authSignOutBtn') : t('authSwitchBtn');
+    }
+  }
+
+  if (el.adminAuthBanner && el.adminBannerTitle && el.adminBannerDesc && el.bannerSignInBtn) {
+    el.adminAuthBanner.classList.remove('is-locked', 'is-denied', 'is-admin');
+    if (!user) {
+      el.adminAuthBanner.classList.add('is-locked');
+      el.adminBannerTitle.textContent = t('authLockedTitle');
+      el.adminBannerDesc.textContent = t('authLockedDesc');
+      el.bannerSignInBtn.style.display = 'inline-flex';
+      el.bannerSignInBtn.textContent = t('authSignInBtn');
+    } else if (!isAdmin) {
+      el.adminAuthBanner.classList.add('is-denied');
+      el.adminBannerTitle.textContent = t('authDeniedTitle')(user.email || '');
+      el.adminBannerDesc.textContent = t('authDeniedDesc');
+      el.bannerSignInBtn.style.display = 'inline-flex';
+      el.bannerSignInBtn.textContent = t('authSwitchBtn');
+    } else {
+      el.adminAuthBanner.classList.add('is-admin');
+      el.adminBannerTitle.textContent = t('authAdminTitle')(user.email || '');
+      el.adminBannerDesc.textContent = t('authAdminDesc');
+      el.bannerSignInBtn.style.display = 'none';
+    }
+  }
+
+  if (el.statStorageNote) {
+    el.statStorageNote.textContent = isAdmin ? t('dbConnected') : t('dbReadOnly');
+  }
+}
+
+async function handleAdminAuthAction() {
+  if (!window.KlknFirebase) return;
+  try {
+    if (state.authUser && state.isAdmin) {
+      await window.KlknFirebase.signOutUser();
+      return;
+    }
+    if (state.authUser && !state.isAdmin) {
+      await window.KlknFirebase.signOutUser();
+    }
+    const user = await window.KlknFirebase.signInWithGoogle();
+    const ok = await window.KlknFirebase.verifyAdminAccess(user);
+    if (ok) {
+      showToast(t('authSignInSuccess')(user?.email || ''), 'success');
+    } else {
+      showToast(t('authSignInDenied')(user?.email || ''), 'error');
+    }
+  } catch (err) {
+    if (err && err.code !== 'auth/popup-closed-by-user') {
+      showToast(err.message || 'Sign-in failed', 'error');
+    }
+  }
+}
+
 function applyLanguage() {
   document.documentElement.lang = state.lang;
   document.querySelectorAll('[data-lang-th][data-lang-en]').forEach((node) => {
@@ -412,9 +537,7 @@ function applyLanguage() {
   if (el.quickSearchInput) {
     el.quickSearchInput.placeholder = t('searchPlaceholder');
   }
-  if (el.statStorageNote) {
-    el.statStorageNote.textContent = state.readOnlyMode ? t('dbReadOnly') : t('dbConnected');
-  }
+  updateAuthUI();
   updateFormHeaderUI();
   renderCompetitionPickerMenu();
   syncCompetitionPickerUI();
@@ -2101,67 +2224,264 @@ function buildPayloadFromForm() {
   return payload;
 }
 
-function getLocalDrafts() {
-  try {
-    return JSON.parse(localStorage.getItem(DRAFT_STORAGE_KEY) || '{}');
-  } catch {
-    return {};
+function getSeasonFromDateStr(dateStr) {
+  if (!dateStr || typeof dateStr !== 'string') return '';
+  const parts = dateStr.split('-');
+  if (parts.length < 2) return '';
+  const year = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10);
+  if (isNaN(year) || isNaN(month)) return '';
+  const startYear = month >= 7 ? year : year - 1;
+  const endShort = String((startYear + 1) % 100).padStart(2, '0');
+  return `${startYear}/${endShort}`;
+}
+
+function normalizeMatchTeamType(match) {
+  if (!match) return 'M';
+  if (match.team_type === 'W' || match.team_type === 'women') return 'W';
+  if (match.team_type === 'M' || match.team_type === 'men') return 'M';
+  const idStr = String(match.id || '').toLowerCase();
+  const home = String(match.home_team || '').toLowerCase();
+  const away = String(match.away_team || '').toLowerCase();
+  const comp = String(match.competition || '').toLowerCase();
+  if (
+    idStr.startsWith('w') ||
+    home.includes('women') ||
+    away.includes('women') ||
+    comp.includes('women') ||
+    comp.includes('wsl')
+  ) {
+    return 'W';
   }
+  return 'M';
 }
 
-function saveLocalDraft(match) {
-  const drafts = getLocalDrafts();
-  drafts[String(match.id)] = match;
-  localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(drafts));
+function normalizeMatchCompSlug(comp) {
+  const c = String(comp || '').toLowerCase();
+  if (!c) return 'other';
+  if (c.includes('premier-league') || c.includes('premier league')) return 'premier-league';
+  if (c.includes('wsl') || c.includes("women's super league")) return 'wsl';
+  if (c.includes('uwcl') || (c.includes('champions league') && c.includes('women'))) return 'uwcl';
+  if (c.includes('champions league') || c === 'ucl' || c === 'cl') return 'champions-league';
+  if (c.includes('fa cup') || c.includes('fa-cup')) return 'fa-cup';
+  if (c.includes('carabao') || c.includes('efl') || c.includes('league cup') || c.includes('league-cup')) return 'league-cup';
+  if (c.includes('friendly')) return 'friendly';
+  if (c.includes('club-world-cup') || c.includes('club world cup')) return 'club-world-cup';
+  return c.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-function buildQueryParams(filterObj) {
-  const params = new URLSearchParams();
-  Object.entries(filterObj).forEach(([k, v]) => {
-    if (v !== undefined && v !== null && String(v).trim() !== '') {
-      params.set(k, String(v).trim());
+function getChelseaMatchOutcome(match) {
+  if (match.status !== 'completed' || match.home_score === null || match.away_score === null) return '';
+  const hs = Number(match.home_score);
+  const as = Number(match.away_score);
+  if (isNaN(hs) || isNaN(as)) return '';
+  const homeChelsea = String(match.home_team || '').toLowerCase().includes('chelsea');
+  const awayChelsea = String(match.away_team || '').toLowerCase().includes('chelsea');
+  if (!homeChelsea && !awayChelsea) return '';
+  const chelseaScore = homeChelsea ? hs : as;
+  const oppScore = homeChelsea ? as : hs;
+  if (chelseaScore > oppScore) return 'W';
+  if (chelseaScore < oppScore) return 'L';
+  return 'D';
+}
+
+async function ensureBaseCatalogLoaded() {
+  if (state.baseCatalogLoaded) return state.baseMatches;
+
+  const [mainRes, womenRes] = await Promise.allSettled([
+    fetch('data/fixtures.json').then((r) => (r.ok ? r.json() : [])),
+    fetch('data/fixtures-women.json').then((r) => (r.ok ? r.json() : [])),
+  ]);
+
+  const byId = new Map();
+  if (mainRes.status === 'fulfilled' && Array.isArray(mainRes.value)) {
+    mainRes.value.forEach((m) => {
+      if (!m || m.id == null) return;
+      byId.set(String(m.id), { ...m, team_type: normalizeMatchTeamType(m) });
+    });
+  }
+  if (womenRes.status === 'fulfilled' && Array.isArray(womenRes.value)) {
+    womenRes.value.forEach((wm) => {
+      if (!wm || wm.id == null) return;
+      const key = String(wm.id);
+      const existing = byId.get(key) || {};
+      byId.set(key, { ...existing, ...wm, team_type: 'W' });
+    });
+  }
+
+  state.baseMatches = Array.from(byId.values());
+  state.baseCatalogLoaded = true;
+  return state.baseMatches;
+}
+
+function rebuildMergedCatalog() {
+  const merged = window.KlknFirebase
+    ? window.KlknFirebase.mergeMatchesWithCloud(state.baseMatches, state.cloudMatches)
+    : [...state.baseMatches];
+  merged.forEach((m) => {
+    m.team_type = normalizeMatchTeamType(m);
+  });
+  state.allMergedMatches = merged;
+  return merged;
+}
+
+function buildFilteredResult(filterObj) {
+  const allMatches = rebuildMergedCatalog();
+  const {
+    team = 'all',
+    status = 'all',
+    competition = 'all',
+    season = '2026/27',
+    ha = 'all',
+    outcome = 'all',
+    month = 'all',
+    dateFrom = '',
+    dateTo = '',
+    search = '',
+    sort = 'date_desc',
+  } = filterObj || {};
+
+  const seasonsSet = new Set();
+  const competitionsMap = new Map();
+
+  allMatches.forEach((m) => {
+    const s = getSeasonFromDateStr(m.date);
+    if (s) seasonsSet.add(s);
+    const slug = normalizeMatchCompSlug(m.competition_name || m.competition);
+    if (slug && !competitionsMap.has(slug)) {
+      competitionsMap.set(slug, {
+        slug,
+        label: m.competition || slug,
+        logo: m.competition_logo || '',
+      });
     }
   });
-  params.set('limit', '400');
-  return params.toString();
+
+  const filtered = allMatches.filter((m) => {
+    if (team !== 'all' && m.team_type !== team) return false;
+    if (status !== 'all') {
+      if (status === 'live') {
+        if (m.status !== 'live' && m.status !== 'halftime') return false;
+      } else if (m.status !== status) {
+        return false;
+      }
+    }
+    if (season !== 'all') {
+      if (getSeasonFromDateStr(m.date) !== season) return false;
+    }
+    if (competition !== 'all') {
+      const slug = normalizeMatchCompSlug(m.competition_name || m.competition);
+      if (slug !== competition && m.competition !== competition) return false;
+    }
+    if (ha !== 'all') {
+      const isHome = String(m.home_team || '').toLowerCase().includes('chelsea');
+      const mHa = m.ha || (isHome ? 'H' : 'A');
+      if (mHa !== ha) return false;
+    }
+    if (outcome !== 'all') {
+      if (getChelseaMatchOutcome(m) !== outcome) return false;
+    }
+    if (month !== 'all' && m.date) {
+      if (m.date.slice(5, 7) !== month) return false;
+    }
+    if (dateFrom && m.date && m.date < dateFrom) return false;
+    if (dateTo && m.date && m.date > dateTo) return false;
+    if (search && String(search).trim()) {
+      const q = String(search).trim().toLowerCase();
+      const goalPlayers = (m.goals || []).map((g) => g.player).join(' ');
+      const haystack = [
+        m.id,
+        m.home_team,
+        m.away_team,
+        m.competition,
+        m.venue,
+        m.round,
+        m.referee,
+        goalPlayers,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    return true;
+  });
+
+  if (sort === 'date_asc') {
+    filtered.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+  } else {
+    filtered.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  }
+
+  return {
+    matches: filtered.slice(0, 400),
+    summary: {
+      total: filtered.length,
+      upcoming: filtered.filter((m) => m.status === 'upcoming').length,
+      completed: filtered.filter((m) => m.status === 'completed').length,
+      live: filtered.filter((m) => m.status === 'live' || m.status === 'halftime').length,
+      men: filtered.filter((m) => m.team_type === 'M').length,
+      women: filtered.filter((m) => m.team_type === 'W').length,
+    },
+    meta: {
+      seasons: Array.from(seasonsSet).sort((a, b) => b.localeCompare(a)),
+      competitions: Array.from(competitionsMap.values()),
+    },
+  };
+}
+
+function generateNextMatchId(teamType) {
+  const prefix = teamType === 'W' ? 'w' : 'm';
+  let maxNum = 0;
+  const merged = state.allMergedMatches.length > 0 ? state.allMergedMatches : state.baseMatches;
+  merged.forEach((m) => {
+    const idStr = String(m.id || '');
+    if (idStr.startsWith(prefix)) {
+      const n = parseInt(idStr.slice(1), 10);
+      if (!isNaN(n) && n > maxNum) maxNum = n;
+    }
+  });
+  return `${prefix}${maxNum + 1}`;
 }
 
 async function fetchFilteredMatches(filterObj) {
-  const res = await fetch(`/api/matches?${buildQueryParams(filterObj)}`);
-  if (!res.ok) throw new Error('Failed to load matches');
-  return res.json();
+  await ensureBaseCatalogLoaded();
+  if (window.KlknFirebase && state.cloudMatches.length === 0) {
+    try {
+      state.cloudMatches = await window.KlknFirebase.getCloudMatches();
+    } catch (err) {
+      console.warn('[MatchManager] Cloud matches initial fetch fallback:', err);
+    }
+  }
+  return buildFilteredResult(filterObj);
 }
 
-async function loadWorkspaceMatches() {
-  el.matchListContainer.innerHTML = `
-    <div class="mm-state-box">
-      <div class="mm-spinner"></div>
-      <span>${escapeHtml(t('loading'))}</span>
-    </div>
-  `;
-  el.listCountLabel.textContent = t('loading');
+function applyWorkspaceData(data) {
+  state.matches = Array.isArray(data.matches) ? data.matches : [];
+  if (data.meta) {
+    state.seasons = data.meta.seasons || state.seasons;
+    state.competitions = data.meta.competitions || state.competitions;
+    populateModalFilterOptions();
+  }
+  updateSummaryStats(data.summary);
+  renderActiveFilterSummary();
+  renderMatchList();
+}
+
+async function loadWorkspaceMatches(showSpinner = true) {
+  if (showSpinner) {
+    el.matchListContainer.innerHTML = `
+      <div class="mm-state-box">
+        <div class="mm-spinner"></div>
+        <span>${escapeHtml(t('loading'))}</span>
+      </div>
+    `;
+    el.listCountLabel.textContent = t('loading');
+  }
 
   try {
     const data = await fetchFilteredMatches(state.filters);
-    let matches = Array.isArray(data.matches) ? data.matches : [];
-
-    // Merge any local browser drafts if server was read-only
-    const drafts = getLocalDrafts();
-    Object.values(drafts).forEach((draft) => {
-      const idx = matches.findIndex((m) => String(m.id) === String(draft.id));
-      if (idx >= 0) matches[idx] = draft;
-    });
-
-    state.matches = matches;
-    if (data.meta) {
-      state.seasons = data.meta.seasons || state.seasons;
-      state.competitions = data.meta.competitions || state.competitions;
-      populateModalFilterOptions();
-    }
-
-    updateSummaryStats(data.summary);
-    renderActiveFilterSummary();
-    renderMatchList();
+    applyWorkspaceData(data);
   } catch (err) {
     console.error(err);
     el.matchListContainer.innerHTML = `
@@ -2186,7 +2506,7 @@ function updateSummaryStats(summary) {
   el.statSplit.textContent = `${s.men}M / ${s.women}W`;
   el.statSeasonNote.textContent =
     state.filters.season === 'all' ? t('allSeasons') : `${state.filters.season}`;
-  el.statStorageNote.textContent = state.readOnlyMode ? t('dbReadOnly') : t('dbConnected');
+  el.statStorageNote.textContent = state.isAdmin ? t('dbConnected') : t('dbReadOnly');
 }
 
 function renderActiveFilterSummary() {
@@ -2428,6 +2748,11 @@ function syncQuickToolbarFromFilters() {
 /* ==================== FORM SUBMISSION & ACTIONS ==================== */
 async function handleFormSubmit(e) {
   e.preventDefault();
+  if (!window.KlknFirebase || !state.isAdmin) {
+    showToast(t('authRequiredToast'), 'error');
+    return;
+  }
+
   const payload = buildPayloadFromForm();
 
   if (!payload.date || !payload.competition || !payload.home_team || !payload.away_team) {
@@ -2441,54 +2766,31 @@ async function handleFormSubmit(e) {
     return;
   }
 
+  if (!payload.id) {
+    payload.id = state.editingId || generateNextMatchId(payload.team_type);
+  }
+
   const originalBtnHtml = el.saveMatchBtn.innerHTML;
   el.saveMatchBtn.disabled = true;
   el.saveMatchBtn.textContent = t('saving');
 
   try {
-    const isEdit = Boolean(state.editingId);
-    const url = isEdit ? `/api/matches/${encodeURIComponent(state.editingId)}` : '/api/matches';
-    const method = isEdit ? 'PUT' : 'POST';
-
-    const res = await fetch(url, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const data = await res.json();
-
-    if (data.readOnly) {
-      state.readOnlyMode = true;
-      if (data.match) {
-        saveLocalDraft(data.match);
-        state.editingId = String(data.match.id);
-        el.fieldId.value = String(data.match.id);
-        state.hadLineupsOnLoad = Boolean(data.match.lineups);
-        state.lineupClearedExplicitly = false;
-      }
-      showToast(t('savedDraft'), 'success');
-      await loadWorkspaceMatches();
-      updateFormHeaderUI();
-      return;
-    }
-
-    if (!res.ok || !data.ok) {
-      throw new Error(data.error || 'Failed to save match');
-    }
-
+    const savedMatch = await window.KlknFirebase.saveCloudMatch(payload);
     showToast(t('savedDisk'), 'success');
-    if (data.match) {
-      state.editingId = String(data.match.id);
-      el.fieldId.value = String(data.match.id);
+
+    if (savedMatch) {
+      state.editingId = String(savedMatch.id);
+      el.fieldId.value = String(savedMatch.id);
       el.fieldId.readOnly = true;
-      state.hadLineupsOnLoad = Boolean(data.match.lineups);
+      state.hadLineupsOnLoad = Boolean(savedMatch.lineups);
       state.lineupClearedExplicitly = false;
     }
-    await loadWorkspaceMatches();
+    state.cloudMatches = await window.KlknFirebase.getCloudMatches({ forceRefresh: true });
+    applyWorkspaceData(buildFilteredResult(state.filters));
     updateFormHeaderUI();
   } catch (err) {
     console.error(err);
-    showToast(err.message, 'error');
+    showToast(err.message || 'Failed to save match', 'error');
   } finally {
     el.saveMatchBtn.disabled = false;
     el.saveMatchBtn.innerHTML = originalBtnHtml;
@@ -2497,23 +2799,28 @@ async function handleFormSubmit(e) {
 
 async function handleDeleteMatch() {
   if (!state.editingId) return;
+  if (!window.KlknFirebase || !state.isAdmin) {
+    showToast(t('authRequiredToast'), 'error');
+    return;
+  }
+
   const targetId = state.editingId;
+  const targetMatch =
+    state.matches.find((m) => String(m.id) === String(targetId)) ||
+    state.allMergedMatches.find((m) => String(m.id) === String(targetId)) ||
+    { id: targetId };
+
   el.confirmDeleteBtn.disabled = true;
   el.confirmDeleteBtn.textContent = t('deleting');
 
   try {
-    const res = await fetch(`/api/matches/${encodeURIComponent(targetId)}`, {
-      method: 'DELETE',
-    });
-    const data = await res.json();
-    if (!res.ok || (!data.ok && !data.readOnly)) {
-      throw new Error(data.error || 'Failed to delete match');
-    }
+    await window.KlknFirebase.deleteCloudMatch(targetMatch);
     showToast(t('deletedOk'), 'success');
     resetForm('upcoming');
-    await loadWorkspaceMatches();
+    state.cloudMatches = await window.KlknFirebase.getCloudMatches({ forceRefresh: true });
+    applyWorkspaceData(buildFilteredResult(state.filters));
   } catch (err) {
-    showToast(err.message, 'error');
+    showToast(err.message || 'Failed to delete match', 'error');
   } finally {
     el.confirmDeleteBtn.disabled = false;
     el.confirmDeleteBtn.textContent = state.lang === 'th' ? 'ยืนยันลบ' : 'Confirm Delete';
@@ -2547,6 +2854,13 @@ async function loadReferenceData() {
 }
 
 function wireEvents() {
+  if (el.adminAuthBtn) {
+    el.adminAuthBtn.addEventListener('click', handleAdminAuthAction);
+  }
+  if (el.bannerSignInBtn) {
+    el.bannerSignInBtn.addEventListener('click', handleAdminAuthAction);
+  }
+
   el.langToggleBtn.addEventListener('click', () => {
     state.lang = state.lang === 'th' ? 'en' : 'th';
     localStorage.setItem('lang', state.lang);
@@ -3114,8 +3428,33 @@ async function init() {
   wireEvents();
   resetForm('upcoming');
   applyLanguage();
+
+  if (window.KlknFirebase) {
+    window.KlknFirebase.onAuthChange(async (user) => {
+      state.authUser = user || null;
+      state.isAdmin = user ? await window.KlknFirebase.verifyAdminAccess(user) : false;
+      state.authReady = true;
+      updateAuthUI();
+    });
+  } else {
+    state.authReady = true;
+    updateAuthUI();
+  }
+
   await loadReferenceData();
   await loadWorkspaceMatches();
+
+  if (window.KlknFirebase) {
+    window.KlknFirebase.subscribeCloudMatches(
+      (cloudList) => {
+        state.cloudMatches = cloudList;
+        applyWorkspaceData(buildFilteredResult(state.filters));
+      },
+      (err) => {
+        console.warn('[MatchManager] Real-time Firestore listener error:', err);
+      }
+    );
+  }
 }
 
 init();

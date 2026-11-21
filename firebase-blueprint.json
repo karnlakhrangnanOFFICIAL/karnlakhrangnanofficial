@@ -1,0 +1,252 @@
+{
+  "entities": {
+    "MatchOverride": {
+      "title": "Match Override",
+      "description": "Managed Chelsea Men and Women fixture, score, goals, broadcast channels, and tactical line-up record stored in central Firestore.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique match identifier matching static fixture ID or newly generated ID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "date": {
+          "type": "string",
+          "description": "Match date in YYYY-MM-DD format.",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "minLength": 10,
+          "maxLength": 10
+        },
+        "time": {
+          "type": "string",
+          "description": "Kick-off time in Thailand timezone (HH:MM or TBC).",
+          "maxLength": 20
+        },
+        "time_th": {
+          "type": "string",
+          "description": "Kick-off time in Thailand timezone (HH:MM or TBC).",
+          "maxLength": 20
+        },
+        "time_uk": {
+          "type": "string",
+          "description": "Kick-off time in UK timezone (HH:MM or TBC).",
+          "maxLength": 20
+        },
+        "competition": {
+          "type": "string",
+          "description": "Competition slug or name.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "competition_name": {
+          "type": "string",
+          "description": "Display name of the competition.",
+          "maxLength": 120
+        },
+        "competition_logo": {
+          "type": "string",
+          "description": "Relative or URL path to competition logo.",
+          "maxLength": 300
+        },
+        "round": {
+          "type": "string",
+          "description": "Competition stage, round, or matchday label.",
+          "maxLength": 120
+        },
+        "home_team": {
+          "type": "string",
+          "description": "Home team display name.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "home_logo": {
+          "type": "string",
+          "description": "Home team crest path.",
+          "maxLength": 300
+        },
+        "away_team": {
+          "type": "string",
+          "description": "Away team display name.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "away_logo": {
+          "type": "string",
+          "description": "Away team crest path.",
+          "maxLength": 300
+        },
+        "venue": {
+          "type": "string",
+          "description": "Match stadium / venue name.",
+          "maxLength": 180
+        },
+        "ha": {
+          "type": "string",
+          "description": "Chelsea Home (H) or Away (A) indicator.",
+          "enum": ["H", "A", ""],
+          "maxLength": 4
+        },
+        "status": {
+          "type": "string",
+          "description": "Current match status.",
+          "enum": ["upcoming", "live", "halftime", "completed"],
+          "maxLength": 20
+        },
+        "team_type": {
+          "type": "string",
+          "description": "Squad identifier: M (Men) or W (Women).",
+          "enum": ["M", "W"],
+          "maxLength": 4
+        },
+        "home_score": {
+          "type": "integer",
+          "description": "Home team score (or null when upcoming)."
+        },
+        "away_score": {
+          "type": "integer",
+          "description": "Away team score (or null when upcoming)."
+        },
+        "goals": {
+          "type": "array",
+          "description": "Bounded list of goal events (max 50)."
+        },
+        "events": {
+          "type": "array",
+          "description": "Bounded list of match timeline events (max 150)."
+        },
+        "channels": {
+          "type": "array",
+          "description": "Bounded list of broadcast channels (max 20)."
+        },
+        "referee": {
+          "type": "string",
+          "description": "Match referee name.",
+          "maxLength": 120
+        },
+        "attendance": {
+          "type": "integer",
+          "description": "Match attendance count."
+        },
+        "formation": {
+          "type": "string",
+          "description": "Primary formation string.",
+          "maxLength": 30
+        },
+        "captain": {
+          "type": "string",
+          "description": "Team captain name.",
+          "maxLength": 120
+        },
+        "poss": {
+          "type": "number",
+          "description": "Chelsea possession percentage (0-100)."
+        },
+        "xg": {
+          "type": "number",
+          "description": "Expected goals (xG)."
+        },
+        "xga": {
+          "type": "number",
+          "description": "Expected goals against (xGA)."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional editorial match notes.",
+          "maxLength": 2000
+        },
+        "lineups": {
+          "type": "object",
+          "description": "Home and away tactical line-up structures."
+        },
+        "stats": {
+          "type": "array",
+          "description": "Optional match summary stats rows (max 40)."
+        },
+        "officials": {
+          "type": "object",
+          "description": "Optional match officials map."
+        },
+        "_deleted": {
+          "type": "boolean",
+          "description": "Soft-delete flag to hide deleted base fixtures globally."
+        },
+        "updatedByUid": {
+          "type": "string",
+          "description": "UID of the verified admin who last wrote this document.",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the override document was first created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of the latest modification."
+        }
+      },
+      "required": [
+        "id",
+        "date",
+        "competition",
+        "home_team",
+        "away_team",
+        "status",
+        "team_type",
+        "updatedByUid",
+        "updatedAt"
+      ]
+    },
+    "AdminUser": {
+      "title": "Admin User",
+      "description": "Authorized admin account entry stored in Firestore for role-based access control.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified admin email address.",
+          "minLength": 3,
+          "maxLength": 200
+        },
+        "role": {
+          "type": "string",
+          "description": "Admin role literal.",
+          "enum": ["admin"],
+          "maxLength": 20
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the admin record was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the admin record was updated."
+        }
+      },
+      "required": ["uid", "email", "role", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/matches/{matchId}": {
+      "schema": { "$ref": "#/entities/MatchOverride" },
+      "description": "Central public-read, admin-write collection of managed fixtures and match results."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Private RBAC registry of authorized admin UIDs (isolated PII)."
+    }
+  }
+}

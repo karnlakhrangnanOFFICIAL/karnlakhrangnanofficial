@@ -1617,3 +1617,105 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==================== ADMIN AUTH & CLOUD SYNC BANNER ==================== */
+.mm-auth-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--mm-border);
+  background: var(--mm-surface-subtle);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--mm-muted);
+  max-width: 240px;
+}
+
+.mm-auth-email {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mm-auth-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9ca3af;
+  flex-shrink: 0;
+}
+
+.mm-auth-chip.is-admin .mm-auth-dot {
+  background: var(--mm-success);
+}
+
+.mm-auth-chip.is-admin {
+  border-color: rgba(22, 163, 74, 0.35);
+  color: var(--mm-ink);
+}
+
+.mm-auth-chip.is-denied .mm-auth-dot {
+  background: var(--mm-danger);
+}
+
+.mm-auth-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--mm-border-strong);
+  background: var(--mm-surface);
+}
+
+.mm-auth-banner.is-locked {
+  border-color: rgba(217, 119, 6, 0.4);
+  background: rgba(217, 119, 6, 0.08);
+}
+
+.mm-auth-banner.is-denied {
+  border-color: rgba(220, 38, 38, 0.45);
+  background: var(--mm-danger-soft);
+}
+
+.mm-auth-banner.is-admin {
+  border-color: rgba(22, 163, 74, 0.35);
+  background: rgba(22, 163, 74, 0.08);
+}
+
+.mm-auth-banner-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.mm-auth-banner-copy strong {
+  font-size: 0.88rem;
+  color: var(--mm-ink);
+}
+
+.mm-auth-banner-copy p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--mm-muted);
+}
+
+.mm-badge-cloud {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: var(--mm-accent-soft);
+  color: var(--mm-accent);
+}
+

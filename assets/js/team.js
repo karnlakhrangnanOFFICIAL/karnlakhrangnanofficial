@@ -854,7 +854,11 @@ async function safeFetchJson(url) {
 }
 
 async function loadMenFixtureCardData() {
-  return (await safeFetchJson("data/fixtures-men-summary.json")) || safeFetchJson("data/fixtures.json");
+  const base = (await safeFetchJson("data/fixtures-men-summary.json")) || (await safeFetchJson("data/fixtures.json"));
+  if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeMenFixtures === "function") {
+    return await window.KlknFirebase.fetchAndMergeMenFixtures(base);
+  }
+  return base;
 }
 
 // ---------- HELPER FOR COMPETITION FILTERING ----------
@@ -1417,6 +1421,9 @@ async function loadWomenFixtures() {
     if (!all || !Array.isArray(all) || all.length === 0) {
       all = await safeFetchJson("data/fixtures.json");
     }
+    if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeWomenFixtures === "function") {
+      all = await window.KlknFirebase.fetchAndMergeWomenFixtures(all || []);
+    }
     if (!all || !Array.isArray(all)) {
       container.innerHTML =
         '<div class="empty-state"><span class="empty-icon">📅</span><p>No upcoming fixtures</p></div>';
@@ -1454,6 +1461,9 @@ async function loadWomenResults() {
     let all = await safeFetchJson("data/fixtures-women.json");
     if (!all || !Array.isArray(all) || all.length === 0) {
       all = await safeFetchJson("data/fixtures.json");
+    }
+    if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeWomenFixtures === "function") {
+      all = await window.KlknFirebase.fetchAndMergeWomenFixtures(all || []);
     }
     if (!all || !Array.isArray(all)) {
       container.innerHTML =

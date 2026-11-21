@@ -6,6 +6,7 @@
     <title>Pre-Match Graphic Generator</title>
     <link rel="icon" href="assets/images/karnlakhrangnan-logo.png" type="image/png" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/vendor/firebase-client.js"></script>
     <style>
       body {
         background: #0a0a0f;
@@ -231,7 +232,10 @@
         try {
           // Fetch matches
           const res = await fetch("data/fixtures.json");
-          const data = await res.json();
+          let data = await res.json();
+          if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeAllFixtures === "function") {
+            data = await window.KlknFirebase.fetchAndMergeAllFixtures(data);
+          }
 
           allMatches = data
             .filter(

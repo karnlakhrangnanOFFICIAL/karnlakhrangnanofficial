@@ -228,7 +228,10 @@
     try {
       const localRes = await fetch('data/fixtures.json');
       if (localRes.ok) {
-        const fixtures = await localRes.json();
+        let fixtures = await localRes.json();
+        if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeMenFixtures === 'function') {
+          fixtures = await window.KlknFirebase.fetchAndMergeMenFixtures(fixtures);
+        }
         const converted = convertLocalFixturesToMatches(fixtures);
         if (converted.length > 0) return converted;
       }
@@ -585,6 +588,9 @@
             });
           }
         }
+        if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeAllFixtures === 'function') {
+          mergedLocal = await window.KlknFirebase.fetchAndMergeAllFixtures(mergedLocal);
+        }
         if (mergedLocal.length > 0) {
           HubState.localFixtures = mergedLocal;
           localConverted = convertLocalFixturesToMatches(HubState.localFixtures, true);
@@ -595,6 +601,22 @@
 
       const matches = await getChelseaMenMatches();
       let allMatches = matches && matches.length ? [...matches] : [];
+
+      // Override or append any cloud-managed matches from Firestore so admin edits take priority over API
+      if (localConverted && localConverted.length > 0) {
+        const cloudConverted = localConverted.filter((lm) => {
+          const raw = HubState.localFixtures.find((f) => String(f.id) === String(lm.localId || lm.id));
+          return Boolean(raw && raw._cloudManaged);
+        });
+        cloudConverted.forEach((cm) => {
+          const idx = allMatches.findIndex((m) => String(m.id) === String(cm.id) || (cm.localId && String(m.localId) === String(cm.localId)));
+          if (idx >= 0) {
+            allMatches[idx] = { ...allMatches[idx], ...cm };
+          } else {
+            allMatches.push(cm);
+          }
+        });
+      }
 
       // รวมโปรแกรมและผลการแข่งขันของทีมหญิงเข้าไปด้วย (ไม่ให้มี ID ซ้ำ)
       if (localConverted && localConverted.length > 0) {

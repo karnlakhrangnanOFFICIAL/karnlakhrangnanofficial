@@ -16,6 +16,7 @@
         document.documentElement.classList.add("theme-" + t);
       })();
     </script>
+    <script src="assets/js/vendor/firebase-client.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 
@@ -1186,6 +1187,9 @@
             ]);
             if (womenRes && womenRes.ok) {
               womenMatches = await womenRes.json();
+            }
+            if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeWomenFixtures === "function") {
+              womenMatches = await window.KlknFirebase.fetchAndMergeWomenFixtures(womenMatches || []);
             }
             if (playersRes && playersRes.ok) {
               const players = await playersRes.json();

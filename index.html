@@ -18,6 +18,7 @@
       document.documentElement.classList.add('theme-' + t);
     })();
   </script>
+  <script src="assets/js/vendor/firebase-client.js"></script>
 </head>
 <body>
 
@@ -1074,6 +1075,18 @@
             else localFixtures.push(wm);
           });
         }
+        let cloudDeletedIds = new Set();
+        if (window.KlknFirebase && typeof window.KlknFirebase.getCloudMatches === 'function') {
+          try {
+            const cloudAll = await window.KlknFirebase.getCloudMatches();
+            cloudAll.forEach(cm => {
+              if (cm && cm._deleted && cm.id != null) cloudDeletedIds.add(String(cm.id).toLowerCase());
+            });
+            localFixtures = window.KlknFirebase.mergeMatchesWithCloud(localFixtures, cloudAll);
+          } catch (cloudErr) {
+            console.warn('Firestore cloud fixtures fallback:', cloudErr);
+          }
+        }
         if (apiData.status === 'fulfilled' && Array.isArray(apiData.value)) {
           apiMatches = apiData.value;
         }
@@ -1141,11 +1154,20 @@
               ? window.computeLiveMatchMinute(am.status, am.utcDate, am.minute, am.score?.halfTime, am.injuryTime)
               : (status === 'live' && (am.status === 'PAUSED' || am.status === 'HALFTIME') ? 'HT' : '');
 
+            if (localMatch && cloudDeletedIds.has(String(localMatch.id).toLowerCase())) {
+              return;
+            }
+            if (cloudDeletedIds.has(`api_${am.id}`.toLowerCase()) || cloudDeletedIds.has(String(am.id).toLowerCase())) {
+              return;
+            }
+
+            const isCloudManaged = Boolean(localMatch && localMatch._cloudManaged);
             if (localMatch) matchedLocalIds.add(localMatch.id);
 
+            const effectiveStatus = isCloudManaged && localMatch.status ? localMatch.status : status;
             const isChelseaHome = am.homeTeam?.id === 61 || homeName.toLowerCase().includes('chelsea');
-            const hasConfirmedTime = am.status === 'TIMED' || am.status === 'FINISHED' || status === 'live';
-            const useApiTime = !localMatch?.time || localMatch.time === 'TBC';
+            const hasConfirmedTime = am.status === 'TIMED' || am.status === 'FINISHED' || effectiveStatus === 'live';
+            const useApiTime = !isCloudManaged && (!localMatch?.time || localMatch.time === 'TBC');
 
             allMatches.push({
               id: localMatch ? localMatch.id : `api_${am.id}`,
@@ -1153,10 +1175,10 @@
               date: (useApiTime && hasConfirmedTime) ? dateStr : (localMatch?.date || dateStr),
               time: (useApiTime && hasConfirmedTime) ? timeStr : (localMatch?.time || timeStr),
               time_th: (useApiTime && hasConfirmedTime) ? timeStr : (localMatch?.time_th || timeStr),
-              time_uk: am.utcDate ? am.utcDate.substring(11, 16) : (localMatch?.time_uk || '19:00'),
+              time_uk: isCloudManaged && localMatch?.time_uk ? localMatch.time_uk : (am.utcDate ? am.utcDate.substring(11, 16) : (localMatch?.time_uk || '19:00')),
               utcDate: am.utcDate,
-              time_live: status === 'upcoming' ? '' : (liveClock || localMatch?.time_live || localMatch?.clock || ''),
-              clock: status === 'upcoming' ? '' : (liveClock || localMatch?.clock || localMatch?.time_live || ''),
+              time_live: effectiveStatus === 'upcoming' ? '' : (liveClock || localMatch?.time_live || localMatch?.clock || ''),
+              clock: effectiveStatus === 'upcoming' ? '' : (liveClock || localMatch?.clock || localMatch?.time_live || ''),
               competition: localMatch?.competition || (am.competition?.code === 'PL' ? 'premier-league' : 'other'),
               competition_name: localMatch?.competition_name || am.competition?.name || 'Premier League',
               competition_short: localMatch?.competition_short || null,
@@ -1169,15 +1191,16 @@
               away_logo: resolveTeamLogo(localMatch?.away_team || awayName, localMatch?.away_logo || am.awayTeam?.crest),
               venue: localMatch?.venue || (isChelseaHome ? 'Stamford Bridge' : `${awayName} Stadium`),
               channels: localMatch?.channels || [],
-              status: status,
-              home_score: status === 'upcoming' ? null : (am.score?.fullTime?.home ?? am.score?.current?.home ?? localMatch?.home_score ?? null),
-              away_score: status === 'upcoming' ? null : (am.score?.fullTime?.away ?? am.score?.current?.away ?? localMatch?.away_score ?? null),
-              home_half_score: status === 'upcoming' ? null : (am.score?.halfTime?.home ?? localMatch?.home_half_score ?? null),
-              away_half_score: status === 'upcoming' ? null : (am.score?.halfTime?.away ?? localMatch?.away_half_score ?? null),
-              goals: status === 'upcoming' ? [] : (localMatch?.goals || []),
-              events: status === 'upcoming' ? [] : (localMatch?.events || []),
-              team_type: 'M',
-              source: 'api'
+              status: effectiveStatus,
+              home_score: effectiveStatus === 'upcoming' ? null : (isCloudManaged && localMatch?.home_score != null ? localMatch.home_score : (am.score?.fullTime?.home ?? am.score?.current?.home ?? localMatch?.home_score ?? null)),
+              away_score: effectiveStatus === 'upcoming' ? null : (isCloudManaged && localMatch?.away_score != null ? localMatch.away_score : (am.score?.fullTime?.away ?? am.score?.current?.away ?? localMatch?.away_score ?? null)),
+              home_half_score: effectiveStatus === 'upcoming' ? null : (am.score?.halfTime?.home ?? localMatch?.home_half_score ?? null),
+              away_half_score: effectiveStatus === 'upcoming' ? null : (am.score?.halfTime?.away ?? localMatch?.away_half_score ?? null),
+              goals: effectiveStatus === 'upcoming' ? [] : (localMatch?.goals || []),
+              events: effectiveStatus === 'upcoming' ? [] : (localMatch?.events || []),
+              team_type: localMatch?.team_type || 'M',
+              _cloudManaged: isCloudManaged,
+              source: isCloudManaged ? 'firestore' : 'api'
             });
           });
 

@@ -15,6 +15,7 @@
         document.documentElement.classList.add("theme-" + t);
       })();
     </script>
+    <script src="assets/js/vendor/firebase-client.js"></script>
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
@@ -2955,6 +2956,10 @@
             } catch (e) {}
           }
 
+          if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeAllFixtures === "function") {
+            allMatches = await window.KlknFirebase.fetchAndMergeAllFixtures(allMatches);
+          }
+
           // Helper to find match by ID or alias (m01, m1, m2, etc.)
           function findMatchByIdOrAlias(fixturesList, targetId) {
             if (!targetId || !Array.isArray(fixturesList)) return null;
@@ -3026,8 +3031,8 @@
                     }
                   }
 
-                  // Apply latest Football-Data live info if matched
-                  if (match) {
+                  // Apply latest Football-Data live info if matched (unless overridden by central Firestore admin edits)
+                  if (match && !match._cloudManaged) {
                     const matchedFd = findFootballDataMatch(footballDataMatches, match, matchId);
                     if (matchedFd) {
                       applyFootballDataLive(match, matchedFd);
