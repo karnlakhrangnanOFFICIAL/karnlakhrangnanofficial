@@ -204,8 +204,8 @@ function sanitizeMatchForFirestore(payload, uid, options = {}) {
     ? stripUndefinedDeep(payload.goals).slice(0, 50)
     : [];
 
-  const events =
-    Array.isArray(payload.events) && payload.events.length > 0
+  const events = Array.isArray(payload.events)
+    ? payload.events.length > 0
       ? stripUndefinedDeep(payload.events).slice(0, 150)
       : goals.map((g) => ({
           type: 'goal',
@@ -214,7 +214,15 @@ function sanitizeMatchForFirestore(payload, uid, options = {}) {
           team: g.team === 'away' ? 'away' : 'home',
           ...(g.penalty ? { detail: 'Penalty' } : {}),
           ...(g.own_goal ? { detail: 'Own Goal' } : {}),
-        }));
+        }))
+    : goals.map((g) => ({
+        type: 'goal',
+        player: g.player || '',
+        minute: g.minute ?? '',
+        team: g.team === 'away' ? 'away' : 'home',
+        ...(g.penalty ? { detail: 'Penalty' } : {}),
+        ...(g.own_goal ? { detail: 'Own Goal' } : {}),
+      }));
 
   const channels = Array.isArray(payload.channels)
     ? stripUndefinedDeep(payload.channels).slice(0, 20)
@@ -250,6 +258,9 @@ function sanitizeMatchForFirestore(payload, uid, options = {}) {
   } else if (existingCreatedAt) {
     docObj.createdAt = existingCreatedAt;
   }
+
+  const clockRaw = payload.clock !== undefined && payload.clock !== null ? String(payload.clock).trim().slice(0, 20) : undefined;
+  if (clockRaw !== undefined) docObj.clock = clockRaw;
 
   const timeUk = clampString(payload.time_uk, 20);
   if (timeUk) docObj.time_uk = timeUk;
@@ -287,7 +298,7 @@ function sanitizeMatchForFirestore(payload, uid, options = {}) {
     docObj.lineups = null;
   }
 
-  if (Array.isArray(payload.stats) && payload.stats.length > 0) {
+  if (Array.isArray(payload.stats)) {
     docObj.stats = stripUndefinedDeep(payload.stats).slice(0, 40);
   }
 

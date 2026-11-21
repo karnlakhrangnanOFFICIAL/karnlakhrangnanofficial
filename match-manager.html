@@ -125,10 +125,11 @@
       <section class="mm-toolbar" aria-label="Quick Filter Toolbar">
         <div class="mm-toolbar-left">
           <div class="mm-segmented" role="tablist" aria-label="Match Status Quick Filter">
-            <button type="button" class="mm-seg-btn active" data-quick-status="all" data-lang-th="ทั้งหมด" data-lang-en="All">ทั้งหมด</button>
-            <button type="button" class="mm-seg-btn" data-quick-status="upcoming" data-lang-th="โปรแกรมการแข่งขัน" data-lang-en="Fixtures">โปรแกรมการแข่งขัน</button>
-            <button type="button" class="mm-seg-btn" data-quick-status="completed" data-lang-th="ผลการแข่งขัน" data-lang-en="Results">ผลการแข่งขัน</button>
+            <button type="button" class="mm-seg-btn active" data-quick-status="active" data-lang-th="กำลังแข่ง &amp; ใกล้แข่ง" data-lang-en="Live &amp; Upcoming">กำลังแข่ง &amp; ใกล้แข่ง</button>
             <button type="button" class="mm-seg-btn" data-quick-status="live" data-lang-th="กำลังแข่ง" data-lang-en="Live">กำลังแข่ง</button>
+            <button type="button" class="mm-seg-btn" data-quick-status="upcoming" data-lang-th="โปรแกรมการแข่งขัน" data-lang-en="Fixtures">โปรแกรมการแข่งขัน</button>
+            <button type="button" class="mm-seg-btn" data-quick-status="completed" data-lang-th="จบเกมแล้ว" data-lang-en="Completed">จบเกมแล้ว</button>
+            <button type="button" class="mm-seg-btn" data-quick-status="all" data-lang-th="ทั้งหมด" data-lang-en="All">ทั้งหมด</button>
           </div>
 
           <div class="mm-segmented" role="tablist" aria-label="Team Quick Filter">
@@ -253,8 +254,9 @@
                   <label data-lang-th="สถานะแมตช์" data-lang-en="Match Status">สถานะแมตช์</label>
                   <div class="mm-segmented" id="statusSegControl">
                     <button type="button" class="mm-seg-btn active" data-form-status="upcoming" data-lang-th="โปรแกรมแข่ง" data-lang-en="Upcoming">โปรแกรมแข่ง</button>
-                    <button type="button" class="mm-seg-btn" data-form-status="completed" data-lang-th="ผลการแข่งขัน" data-lang-en="Completed">ผลการแข่งขัน</button>
                     <button type="button" class="mm-seg-btn" data-form-status="live" data-lang-th="กำลังแข่ง" data-lang-en="Live">กำลังแข่ง</button>
+                    <button type="button" class="mm-seg-btn" data-form-status="halftime" data-lang-th="พักครึ่ง" data-lang-en="HT">พักครึ่ง</button>
+                    <button type="button" class="mm-seg-btn" data-form-status="completed" data-lang-th="จบเกมแล้ว" data-lang-en="Completed">จบเกมแล้ว</button>
                   </div>
                   <input type="hidden" id="fieldStatus" value="upcoming" />
                 </div>
@@ -458,7 +460,52 @@
                 </div>
               </div>
 
+              <div class="mm-live-clock-bar" id="liveClockBar">
+                <div class="mm-field" style="flex: 0 0 180px">
+                  <label for="fieldClock" data-lang-th="นาทีการแข่งขันสด (Live Clock)" data-lang-en="Live Match Clock">นาทีการแข่งขันสด (Live Clock)</label>
+                  <input type="text" class="mm-input mono" id="fieldClock" maxlength="20" placeholder="เช่น 34', HT, 67'" />
+                </div>
+                <div class="mm-clock-presets" aria-label="Quick Match Clock">
+                  <button type="button" class="mm-btn mm-btn-compact" data-clock-preset="1'">1'</button>
+                  <button type="button" class="mm-btn mm-btn-compact" data-clock-preset="HT">HT</button>
+                  <button type="button" class="mm-btn mm-btn-compact" data-clock-preset="46'">46'</button>
+                  <button type="button" class="mm-btn mm-btn-compact" data-clock-preset="75'">75'</button>
+                  <button type="button" class="mm-btn mm-btn-compact" data-clock-preset="90+">90+'</button>
+                  <button type="button" class="mm-btn mm-btn-compact" data-clock-preset="FT">FT</button>
+                </div>
+              </div>
+
               <div class="mm-goals-list" id="goalsListContainer"></div>
+            </div>
+
+            <!-- 4B. KEY MATCH EVENTS (LIVE TIMELINE) -->
+            <div class="mm-form-section" id="eventsSection">
+              <div class="mm-section-label">
+                <span data-lang-th="⏱️ Timeline — เหตุการณ์สำคัญระหว่างแข่ง (Key Match Events)" data-lang-en="⏱️ Timeline — Key Match Events">
+                  ⏱️ Timeline — เหตุการณ์สำคัญระหว่างแข่ง (Key Match Events)
+                </span>
+                <div class="mm-actions-group">
+                  <button type="button" class="mm-btn mm-btn-compact" id="syncGoalsToEventsBtn" data-lang-th="ดึงประตูเข้า Timeline" data-lang-en="Sync Goals">
+                    ดึงประตูเข้า Timeline
+                  </button>
+                  <button type="button" class="mm-btn mm-btn-compact" id="addEventBtn" data-lang-th="+ เพิ่มเหตุการณ์" data-lang-en="+ Add Event">
+                    + เพิ่มเหตุการณ์
+                  </button>
+                </div>
+              </div>
+
+              <div class="mm-event-presets" aria-label="Quick Key Match Events">
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="kick_off">📣 Kick-Off</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="goal">⚽ Goal</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="yellow_card">🟨 Yellow</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="red_card">🟥 Red</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="substitution">🔄 Sub</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="var">📺 VAR</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="period_ht">⏸️ HT</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="period_ft">🏁 FT</button>
+              </div>
+
+              <div class="mm-events-list" id="eventsListContainer"></div>
             </div>
 
             <!-- 5. BROADCAST CHANNELS -->
@@ -583,11 +630,37 @@
               </div>
             </div>
 
-            <!-- 7. EXTRA STATS & OFFICIALS (COLLAPSIBLE) -->
+            <!-- 7. MATCH STATISTICS (📊 STATS TAB) -->
+            <div class="mm-form-section" id="statsSection">
+              <div class="mm-section-label">
+                <span data-lang-th="7. สถิติการแข่งขัน (📊 Stats)" data-lang-en="7. Match Statistics (📊 Stats)">
+                  7. สถิติการแข่งขัน (📊 Stats)
+                </span>
+                <div class="mm-actions-group">
+                  <button type="button" class="mm-btn mm-btn-compact" id="statsAutoSyncBtn" data-lang-th="ดึงสกอร์ &amp; ใบเหลือง/แดง อัตโนมัติ" data-lang-en="Sync Score &amp; Cards">
+                    ดึงสกอร์ &amp; ใบเหลือง/แดง อัตโนมัติ
+                  </button>
+                  <button type="button" class="mm-btn mm-btn-compact" id="statsClearBtn" data-lang-th="ล้างสถิติ" data-lang-en="Clear Stats">
+                    ล้างสถิติ
+                  </button>
+                </div>
+              </div>
+
+              <div class="mm-stats-editor-card">
+                <div class="mm-stats-table-head">
+                  <span class="mm-stats-side-label home" id="statsHomeHeader">Home</span>
+                  <span class="mm-stats-metric-label" data-lang-th="รายการสถิติ" data-lang-en="Statistic">รายการสถิติ</span>
+                  <span class="mm-stats-side-label away" id="statsAwayHeader">Away</span>
+                </div>
+                <div class="mm-stats-rows" id="statsGridContainer"></div>
+              </div>
+            </div>
+
+            <!-- 8. OFFICIALS, EXTRA SUMMARY & NOTES (COLLAPSIBLE) -->
             <div class="mm-form-section">
               <details class="mm-details">
-                <summary data-lang-th="7. ข้อมูลสถิติและผู้ตัดสินเพิ่มเติม (ไม่บังคับ)" data-lang-en="7. Additional Match Stats &amp; Officials (Optional)">
-                  7. ข้อมูลสถิติและผู้ตัดสินเพิ่มเติม (ไม่บังคับ)
+                <summary data-lang-th="8. ข้อมูลผู้ตัดสิน ค่าสรุปเพิ่มเติม และบันทึก (ไม่บังคับ)" data-lang-en="8. Officials, Extra Summary &amp; Notes (Optional)">
+                  8. ข้อมูลผู้ตัดสิน ค่าสรุปเพิ่มเติม และบันทึก (ไม่บังคับ)
                 </summary>
                 <div class="mm-grid-3" style="margin-bottom: 12px">
                   <div class="mm-field">
@@ -609,7 +682,7 @@
                     <input type="text" class="mm-input" id="fieldCaptain" list="playersDatalist" placeholder="เช่น Reece James" />
                   </div>
                   <div class="mm-field">
-                    <label for="fieldPoss" data-lang-th="ครองบอล % (Possession)" data-lang-en="Possession %">ครองบอล % (Possession)</label>
+                    <label for="fieldPoss" data-lang-th="ครองบอล Chelsea % (สรุปหน้าทีม)" data-lang-en="Chelsea Possession % (Summary)">ครองบอล Chelsea % (สรุปหน้าทีม)</label>
                     <input type="number" min="0" max="100" step="0.1" class="mm-input tabular" id="fieldPoss" placeholder="61.5" />
                   </div>
                   <div class="mm-field">
@@ -690,10 +763,11 @@
               <div class="mm-field">
                 <label for="modalStatusSelect" data-lang-th="ประเภท / สถานะแมตช์" data-lang-en="Match Status">ประเภท / สถานะแมตช์</label>
                 <select class="mm-select" id="modalStatusSelect">
-                  <option value="all" data-lang-th="ทั้งหมด (โปรแกรม + ผล)" data-lang-en="All (Fixtures + Results)">ทั้งหมด (โปรแกรม + ผล)</option>
-                  <option value="upcoming" data-lang-th="โปรแกรมการแข่งขัน (Upcoming)" data-lang-en="Upcoming Fixtures">โปรแกรมการแข่งขัน (Upcoming)</option>
-                  <option value="completed" data-lang-th="ผลการแข่งขัน (Completed)" data-lang-en="Completed Results">ผลการแข่งขัน (Completed)</option>
+                  <option value="active" data-lang-th="กำลังแข่ง &amp; ใกล้แข่ง (ซ่อนจบเกมแล้ว)" data-lang-en="Live &amp; Upcoming (Hide Completed)">กำลังแข่ง &amp; ใกล้แข่ง (ซ่อนจบเกมแล้ว)</option>
                   <option value="live" data-lang-th="กำลังแข่งขัน (Live)" data-lang-en="Live Matches">กำลังแข่งขัน (Live)</option>
+                  <option value="upcoming" data-lang-th="โปรแกรมการแข่งขัน (Upcoming)" data-lang-en="Upcoming Fixtures">โปรแกรมการแข่งขัน (Upcoming)</option>
+                  <option value="completed" data-lang-th="ผลการแข่งขัน (จบเกมแล้ว)" data-lang-en="Completed Results">ผลการแข่งขัน (จบเกมแล้ว)</option>
+                  <option value="all" data-lang-th="ทั้งหมด (รวมจบเกมแล้ว)" data-lang-en="All (Include Completed)">ทั้งหมด (รวมจบเกมแล้ว)</option>
                 </select>
               </div>
 
@@ -776,8 +850,9 @@
               <div class="mm-field">
                 <label for="modalSortSelect" data-lang-th="เรียงลำดับ" data-lang-en="Sort Order">เรียงลำดับ</label>
                 <select class="mm-select" id="modalSortSelect">
-                  <option value="date_desc">วันที่ใหม่ → เก่า</option>
-                  <option value="date_asc">วันที่เก่า → ใหม่</option>
+                  <option value="priority" data-lang-th="กำลังแข่ง → ใกล้วันแข่ง" data-lang-en="Live First → Nearest Upcoming">กำลังแข่ง → ใกล้วันแข่ง</option>
+                  <option value="date_desc" data-lang-th="วันที่ใหม่ → เก่า" data-lang-en="Newest First">วันที่ใหม่ → เก่า</option>
+                  <option value="date_asc" data-lang-th="วันที่เก่า → ใหม่" data-lang-en="Oldest First">วันที่เก่า → ใหม่</option>
                 </select>
               </div>
             </div>

@@ -90,6 +90,7 @@ service cloud.firestore {
           'venue',
           'ha',
           'status',
+          'clock',
           'team_type',
           'home_score',
           'away_score',
@@ -144,6 +145,7 @@ service cloud.firestore {
         isOptionalString(data, 'away_logo', 300) &&
         isOptionalString(data, 'venue', 180) &&
         (!('ha' in data) || data.ha in ['H', 'A', '']) &&
+        isOptionalString(data, 'clock', 20) &&
         isOptionalInt(data, 'home_score', 0, 99) &&
         isOptionalInt(data, 'away_score', 0, 99) &&
         isOptionalBoundedList(data, 'goals', 50) &&
@@ -188,6 +190,7 @@ service cloud.firestore {
           'venue',
           'ha',
           'status',
+          'clock',
           'team_type',
           'home_score',
           'away_score',

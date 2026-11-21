@@ -94,6 +94,11 @@
           "enum": ["upcoming", "live", "halftime", "completed"],
           "maxLength": 20
         },
+        "clock": {
+          "type": "string",
+          "description": "Optional live match minute or clock text (e.g., 34', HT, 45+2', FT).",
+          "maxLength": 20
+        },
         "team_type": {
           "type": "string",
           "description": "Squad identifier: M (Men) or W (Women).",

@@ -2837,6 +2837,36 @@
 
       // ---------- Load Match Data ----------
       let currentMatch = null;
+      let baseMatchSnapshotById = new Map();
+      let cloudSyncUnsubscribe = null;
+      let lastCloudMatchSignature = "";
+
+      function getMatchSyncSignature(m) {
+        if (!m) return "";
+        return JSON.stringify({
+          status: m.status || "",
+          clock: m.clock || m.time_live || "",
+          home_score: m.home_score ?? null,
+          away_score: m.away_score ?? null,
+          date: m.date || "",
+          time_th: m.time_th || m.time || "",
+          time_uk: m.time_uk || "",
+          venue: m.venue || "",
+          referee: m.referee || "",
+          attendance: m.attendance ?? null,
+          formation: m.formation || "",
+          captain: m.captain || "",
+          poss: m.poss ?? null,
+          xg: m.xg ?? null,
+          notes: m.notes || "",
+          goals: m.goals || [],
+          events: m.events || [],
+          stats: m.stats || null,
+          lineups: m.lineups || null,
+          channels: m.channels || [],
+          _cloudManaged: Boolean(m._cloudManaged),
+        });
+      }
 
       async function loadMatchDetail() {
         const container = document.getElementById("matchContent");
@@ -2956,6 +2986,13 @@
             } catch (e) {}
           }
 
+          baseMatchSnapshotById = new Map();
+          allMatches.forEach((m) => {
+            if (m && m.id != null) {
+              baseMatchSnapshotById.set(String(m.id).toLowerCase().trim(), { ...m });
+            }
+          });
+
           if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeAllFixtures === "function") {
             allMatches = await window.KlknFirebase.fetchAndMergeAllFixtures(allMatches);
           }
@@ -3048,7 +3085,7 @@
           // Fallback to match with commentary/lineups (e.g. m9 or first match) if none found or no ID
           if (!match && allMatches.length > 0) {
             match = allMatches.find((m) => m.id === "m9") || allMatches[0];
-            if (match && !isWomenMatch && footballDataMatches.length > 0) {
+            if (match && !isWomenMatch && !match._cloudManaged && footballDataMatches.length > 0) {
               const matchedFd = findFootballDataMatch(footballDataMatches, match, match.id);
               if (matchedFd) applyFootballDataLive(match, matchedFd);
             }
@@ -3496,8 +3533,8 @@
         try {
           let updated = false;
 
-          // 1. Check Premier League live proxy
-          if (currentMatch.pl_match_id) {
+          // 1. Check Premier League live proxy (unless cloud-managed by admin)
+          if (currentMatch.pl_match_id && !currentMatch._cloudManaged) {
             const plId = currentMatch.pl_match_id;
             const res = await fetch(`/api/pl-match?matchId=${plId}&_t=${Date.now()}`);
             if (res.ok) {
@@ -3509,8 +3546,8 @@
             }
           }
 
-          // 2. Check EFL live proxy
-          if (currentMatch.id === "m46" || currentMatch.efl_id) {
+          // 2. Check EFL live proxy (unless cloud-managed by admin)
+          if ((currentMatch.id === "m46" || currentMatch.efl_id) && !currentMatch._cloudManaged) {
             const fixtureId = currentMatch.efl_id || "g2685176";
             const res = await fetch(`/api/efl-match?fixtureId=${fixtureId}&_t=${Date.now()}`);
             if (res.ok) {
@@ -3522,9 +3559,9 @@
             }
           }
 
-          // 3. Check Football-Data endpoint for Men's team matches
+          // 3. Check Football-Data endpoint for Men's team matches (unless cloud-managed by admin)
           const isMen = currentMatch.team_type !== "women" && currentMatch.team_type !== "W" && !String(currentMatch.id).toLowerCase().startsWith("w");
-          if (isMen) {
+          if (isMen && !currentMatch._cloudManaged) {
             try {
               const fdRes = await fetch(`/api/football-data/teams/61/matches?_t=${Date.now()}`);
               if (fdRes.ok) {
@@ -3565,16 +3602,87 @@
         }
       };
 
+      function findCloudOverrideForMatch(cloudList, targetMatch) {
+        if (!Array.isArray(cloudList) || !targetMatch || !targetMatch.id) return null;
+        const tid = String(targetMatch.id).toLowerCase().trim();
+        let found = cloudList.find(
+          (c) =>
+            String(c.id).toLowerCase().trim() === tid ||
+            (c.alias_id && String(c.alias_id).toLowerCase().trim() === tid)
+        );
+        if (found) return found;
+        if (tid.startsWith("m") || tid.startsWith("w")) {
+          const prefix = tid[0];
+          const numPart = parseInt(tid.slice(1), 10);
+          if (!isNaN(numPart)) {
+            found = cloudList.find((c) => {
+              const cid = String(c.id || "").toLowerCase().trim();
+              return cid.startsWith(prefix) && parseInt(cid.slice(1), 10) === numPart;
+            });
+            if (found) return found;
+          }
+        }
+        return null;
+      }
+
+      function attachCloudMatchListener(match) {
+        if (!match || !window.KlknFirebase || typeof window.KlknFirebase.subscribeCloudMatches !== "function") {
+          return;
+        }
+        if (cloudSyncUnsubscribe) {
+          cloudSyncUnsubscribe();
+          cloudSyncUnsubscribe = null;
+        }
+        lastCloudMatchSignature = getMatchSyncSignature(match);
+
+        cloudSyncUnsubscribe = window.KlknFirebase.subscribeCloudMatches(
+          (cloudList) => {
+            if (!currentMatch) return;
+            const targetKey = String(currentMatch.id || "").toLowerCase().trim();
+            const baseObj = baseMatchSnapshotById.get(targetKey) || {};
+            const cloudOverride = findCloudOverrideForMatch(cloudList, currentMatch);
+            if (!cloudOverride && !currentMatch._cloudManaged) return;
+
+            const updatedMatch = cloudOverride
+              ? { ...baseObj, ...cloudOverride, _cloudManaged: true }
+              : { ...baseObj, _cloudManaged: false };
+            const nextSig = getMatchSyncSignature(updatedMatch);
+            if (nextSig === lastCloudMatchSignature) return;
+
+            lastCloudMatchSignature = nextSig;
+            currentMatch = updatedMatch;
+
+            const container = document.getElementById("matchContent");
+            if (container) {
+              const activeBtn = document.querySelector(".tab-btn.active");
+              const activeTarget = activeBtn ? activeBtn.getAttribute("data-target") : null;
+              renderMatchDetail(currentMatch, container);
+              if (activeTarget) {
+                const newBtn = document.querySelector(`.tab-btn[data-target="${activeTarget}"]`);
+                if (newBtn) newBtn.click();
+              }
+            }
+          },
+          (err) => {
+            console.warn("[MatchDetail] Firestore live listener error:", err);
+          }
+        );
+      }
+
       function startRealTimeSync(match) {
         if (livePollInterval) {
           clearInterval(livePollInterval);
           livePollInterval = null;
         }
+
+        // Always listen for central Firestore admin updates (Score, Live Status/Clock, Key Events, Stats, Lineups)
+        attachCloudMatchListener(match);
+
         const isMen = match && match.team_type !== "women" && match.team_type !== "W" && !String(match.id).toLowerCase().startsWith("w");
         const isEfl = match && (match.id === "m46" || match.efl_id);
         const isPl = match && match.pl_match_id;
 
-        // Auto-poll if match is live or scheduled today
+        // Auto-poll external APIs only if match is live or scheduled today
         const isToday = match && match.date === new Date().toISOString().split("T")[0];
         const isLive = match && (
           match.status === "live" ||
@@ -3591,6 +3699,10 @@
 
         livePollInterval = setInterval(async () => {
           try {
+            const activeMatch = currentMatch || match;
+            if (!activeMatch) return;
+            if (activeMatch._cloudManaged) return;
+
             let scoreChanged = false;
             let shouldRefresh = false;
 
@@ -3599,10 +3711,10 @@
               if (res.ok) {
                 const json = await res.json();
                 if (json.success) {
-                  const oldScore = `${match.home_score}-${match.away_score}`;
+                  const oldScore = `${activeMatch.home_score}-${activeMatch.away_score}`;
                   const newScore = `${json.score?.home}-${json.score?.away}`;
                   if (oldScore !== newScore) scoreChanged = true;
-                  applyPlLiveData(match, json);
+                  applyPlLiveData(activeMatch, json);
                   shouldRefresh = true;
                 }
               }
@@ -3612,28 +3724,28 @@
                 const json = await res.json();
                 if (json.success && json.data) {
                   const live = json.data;
-                  const oldScore = `${match.home_score}-${match.away_score}`;
+                  const oldScore = `${activeMatch.home_score}-${activeMatch.away_score}`;
                   const newScore = `${live.home_score}-${live.away_score}`;
                   if (oldScore !== newScore) scoreChanged = true;
-                  applyEflLiveData(match, live);
+                  applyEflLiveData(activeMatch, live);
                   shouldRefresh = true;
                 }
               }
             }
 
-            // Sync from Football-Data for Men matches
-            if (isMen) {
+            // Sync from Football-Data for Men matches (only when not admin-managed in Firestore)
+            if (isMen && !activeMatch._cloudManaged) {
               try {
                 const fdRes = await fetch(`/api/football-data/teams/61/matches?_t=${Date.now()}`);
                 if (fdRes.ok) {
                   const fdJson = await fdRes.json();
                   if (fdJson && Array.isArray(fdJson.matches)) {
                     window.footballDataMatches = fdJson.matches;
-                    const matchedFd = findFootballDataMatch(fdJson.matches, match, match.id);
+                    const matchedFd = findFootballDataMatch(fdJson.matches, activeMatch, activeMatch.id);
                     if (matchedFd) {
-                      const oldScore = `${match.home_score}-${match.away_score}`;
-                      const changed = applyFootballDataLive(match, matchedFd);
-                      const newScore = `${match.home_score}-${match.away_score}`;
+                      const oldScore = `${activeMatch.home_score}-${activeMatch.away_score}`;
+                      const changed = applyFootballDataLive(activeMatch, matchedFd);
+                      const newScore = `${activeMatch.home_score}-${activeMatch.away_score}`;
                       if (oldScore !== newScore) scoreChanged = true;
                       if (changed) shouldRefresh = true;
                     }
@@ -4130,6 +4242,8 @@
                 return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">⏸️</span>';
               case "added_time":
                 return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 15px; line-height: 1;">⏱️</span>';
+              case "penalty_missed":
+                return '<span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; font-size: 20px; line-height: 1;">❌</span>';
               case "kick_off":
               case "kickoff":
               case "period":
@@ -4151,6 +4265,7 @@
             if (type === "corner") return isTh ? "เตะมุม" : "Corner";
             if (type === "offside") return isTh ? "ล้ำหน้า" : "Offside";
             if (type === "penalty_awarded") return isTh ? "ลูกจุดโทษ" : "Penalty";
+            if (type === "penalty_missed") return isTh ? "พลาดจุดโทษ" : "Penalty Missed";
             if (type === "shootout_goal") return isTh ? "ยิงจุดโทษเข้า" : "Penalty Scored";
             if (type === "shootout_miss") return isTh ? "ยิงจุดโทษพลาด" : "Penalty Missed";
             if (type === "shootout_save") return isTh ? "เซฟลูกจุดโทษ" : "Penalty Saved";
@@ -4691,7 +4806,7 @@
         let statsTabHtml = "";
         let statsData = match.stats;
 
-        if (!statsData && (match.status === "completed" || match.status === "live")) {
+        if (!statsData && !match._cloudManaged && (match.status === "completed" || match.status === "live")) {
           // Derive realistic match statistics
           const homeScoreVal = typeof match.home_score === "number" ? match.home_score : 0;
           const awayScoreVal = typeof match.away_score === "number" ? match.away_score : 0;

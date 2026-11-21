@@ -818,10 +818,12 @@
       (function () {
         "use strict";
 
+        let baseWomenMatches = [];
         let womenMatches = [];
         let playerLookup = {};
         let currentMatch = null;
         let activeTabId = "tab-timeline";
+        let cloudSyncUnsub = null;
 
         function esc(val) {
           return String(val ?? "").replace(/[&<>"']/g, function (c) {
@@ -911,13 +913,28 @@
         function buildTimelineHTML(match, isTh) {
           const rawEvents = Array.isArray(match.events) ? match.events : [];
           const keyTypes = new Set([
-            "goal", "own_goal", "penalty", "yellow_card", "second_yellow", "red_card",
-            "substitution", "kick_off", "half_time", "full_time", "var"
+            "goal", "own_goal", "penalty", "penalty_missed", "yellow_card", "second_yellow", "red_card",
+            "substitution", "kick_off", "kickoff", "half_time", "full_time", "var", "injury", "added_time", "period"
           ]);
           const keyEvents = rawEvents.filter(function (ev) {
             return keyTypes.has(String(ev.type || "").toLowerCase());
           });
-          const eventsToShow = keyEvents.length > 0 ? keyEvents : rawEvents.slice(0, 40);
+          const parseMinSort = function (ev) {
+            if (String(ev.display_minute || "").toUpperCase() === "FT") return 999;
+            if (String(ev.display_minute || "").toUpperCase() === "HT") return 45.99;
+            const raw = ev.display_minute || ev.minute;
+            if (typeof raw === "number") return raw;
+            if (typeof raw === "string" && raw.trim() !== "") {
+              const parts = raw.split("+");
+              return (parseFloat(parts[0]) || 0) + (parts[1] ? (parseFloat(parts[1]) || 0) / 100 : 0);
+            }
+            return -1;
+          };
+          const eventsToShow = (keyEvents.length > 0 ? keyEvents : rawEvents.slice(0, 40))
+            .slice()
+            .sort(function (a, b) {
+              return parseMinSort(a) - parseMinSort(b);
+            });
 
           if (eventsToShow.length === 0) {
             return (
@@ -932,11 +949,12 @@
           return '<div class="timeline-list">' + eventsToShow.map(function (ev) {
             const type = String(ev.type || "").toLowerCase();
             const isHome = ev.team === "home";
-            const teamName = ev.team === "home" ? match.home_team : ev.team === "away" ? match.away_team : "";
-            const teamLogo = ev.team === "home" ? match.home_logo : ev.team === "away" ? match.away_logo : "";
+            const isAway = ev.team === "away";
+            const teamName = isHome ? match.home_team : isAway ? match.away_team : "";
+            const teamLogo = isHome ? match.home_logo : isAway ? match.away_logo : "";
             const minStr = ev.display_minute
               ? esc(ev.display_minute)
-              : (ev.minute !== undefined && ev.minute !== null ? esc(ev.minute) + "'" : "-");
+              : (ev.minute !== undefined && ev.minute !== null && ev.minute !== "" ? esc(String(ev.minute).replace(/'$/, "")) + "'" : "-");
 
             let rowCls = "";
             if (type.includes("goal") || type === "penalty") rowCls = "is-goal";
@@ -948,17 +966,21 @@
               const pIn = ev.player_in || ev.player || "";
               const pOut = ev.player_out || ev.replaced || "";
               playerText = (pIn ? "↑ " + pIn : "") + (pOut ? (pIn ? "  /  " : "") + "↓ " + pOut : "");
+            } else if (!playerText && ev.detail) {
+              playerText = ev.detail;
             }
 
             const teamCell = teamName
               ? '<span class="event-team"><img src="' + esc(teamLogo || "assets/images/placeholder-team.svg") + '" alt="" onerror="this.src=\'assets/images/placeholder-team.svg\'" /><span>' + esc(teamName) + '</span></span>'
               : '<span class="event-team">—</span>';
 
+            const primaryDisplay = playerText || (isHome ? match.home_team : isAway ? match.away_team : (ev.detail || ev.type || "—"));
+
             return (
               '<div class="event-row ' + rowCls + '">' +
                 '<span class="event-min">' + minStr + '</span>' +
                 teamCell +
-                '<span class="event-player">' + esc(playerText || (isHome ? match.home_team : match.away_team || "-")) + '</span>' +
+                '<span class="event-player">' + esc(primaryDisplay) + '</span>' +
                 '<span class="event-type">' + esc(ev.detail || ev.type || "") + '</span>' +
               '</div>'
             );
@@ -977,12 +999,25 @@
             );
           }
 
+          const parseNum = function (v) {
+            if (typeof v === "number") return Number.isFinite(v) ? v : 0;
+            const m = String(v ?? "").trim().match(/^([0-9]+(?:\.[0-9]+)?)/);
+            return m ? parseFloat(m[1]) : 0;
+          };
+
           const rows = stats.map(function (st) {
-            const hVal = Number(st.home) || 0;
-            const aVal = Number(st.away) || 0;
+            const hVal = parseNum(st.home);
+            const aVal = parseNum(st.away);
             const total = hVal + aVal;
-            const hPct = total > 0 ? Math.round((hVal / total) * 100) : 50;
-            const aPct = total > 0 ? 100 - hPct : 50;
+            let hPct = 50;
+            let aPct = 50;
+            if (st.isPercentage && total > 0 && Math.abs(total - 100) < 1) {
+              hPct = hVal;
+              aPct = aVal;
+            } else if (total > 0) {
+              hPct = Math.round((hVal / total) * 100);
+              aPct = 100 - hPct;
+            }
             const suffix = st.isPercentage ? "%" : "";
             const label = isTh ? (st.label || st.name || st.label_en || "") : (st.label_en || st.name || st.label || "");
 
@@ -1094,12 +1129,16 @@
           const homeNameHtml = window.renderTeamNameHTML ? window.renderTeamNameHTML(match.home_team) : esc(match.home_team);
           const awayNameHtml = window.renderTeamNameHTML ? window.renderTeamNameHTML(match.away_team) : esc(match.away_team);
 
-          const hasScore = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined;
-          const scoreStr = hasScore ? (match.home_score + " - " + match.away_score) : (match.time_th || match.time || "VS");
+          const isLiveLike = match.status === "live" || match.status === "halftime";
+          const hasScore = (match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined) || isLiveLike;
+          const scoreStr = hasScore ? ((match.home_score ?? 0) + " - " + (match.away_score ?? 0)) : (match.time_th || match.time || "VS");
+          const clockSuffix = match.clock ? (" · " + match.clock) : "";
           const statusStr = match.status === "completed"
             ? (isTh ? "จบการแข่งขัน" : "FULL TIME")
+            : match.status === "halftime"
+            ? (isTh ? "พักครึ่ง · HT" : "HALF TIME")
             : match.status === "live"
-            ? "LIVE"
+            ? ("LIVE" + clockSuffix)
             : (isTh ? "โปรแกรมแข่งขัน" : "UPCOMING");
 
           const lineupsTabHtml = window.TacticalLineup
@@ -1188,6 +1227,9 @@
             if (womenRes && womenRes.ok) {
               womenMatches = await womenRes.json();
             }
+            baseWomenMatches = Array.isArray(womenMatches)
+              ? womenMatches.map(function (m) { return Object.assign({}, m); })
+              : [];
             if (window.KlknFirebase && typeof window.KlknFirebase.fetchAndMergeWomenFixtures === "function") {
               womenMatches = await window.KlknFirebase.fetchAndMergeWomenFixtures(womenMatches || []);
             }
@@ -1213,15 +1255,22 @@
             if (reqTab === "lineups") activeTabId = "tab-lineups";
 
             const selectEl = document.getElementById("womenMatchSelect");
-            if (selectEl) {
-              const ordered = womenMatches.slice().sort(function (a, b) {
+            const populateSelect = function (list) {
+              if (!selectEl) return;
+              const ordered = list.slice().sort(function (a, b) {
                 return String(b.date || "").localeCompare(String(a.date || ""));
               });
               selectEl.innerHTML = ordered.map(function (m) {
                 const score = m.home_score != null ? m.home_score + "-" + m.away_score : m.time || "vs";
                 return '<option value="' + esc(m.id) + '">' + esc(m.date) + " · " + esc(m.home_team) + " " + esc(score) + " " + esc(m.away_team) + "</option>";
               }).join("");
+              if (currentMatch) {
+                selectEl.value = currentMatch.id;
+              }
+            };
 
+            if (selectEl) {
+              populateSelect(womenMatches);
               selectEl.addEventListener("change", function () {
                 const chosen = womenMatches.find(function (m) { return String(m.id) === String(selectEl.value); });
                 if (chosen) {
@@ -1251,6 +1300,31 @@
             }
             if (target) {
               renderMatch(target);
+            }
+
+            if (window.KlknFirebase && typeof window.KlknFirebase.subscribeCloudMatches === "function") {
+              if (cloudSyncUnsub) cloudSyncUnsub();
+              cloudSyncUnsub = window.KlknFirebase.subscribeCloudMatches(
+                function (cloudList) {
+                  const womenCloud = (cloudList || []).filter(function (c) {
+                    const idStr = String(c.id || "").toLowerCase();
+                    return c.team_type === "W" || c.team_type === "women" || idStr.startsWith("w");
+                  });
+                  womenMatches = window.KlknFirebase.mergeMatchesWithCloud(baseWomenMatches, womenCloud);
+                  populateSelect(womenMatches);
+                  if (currentMatch) {
+                    const updated = womenMatches.find(function (m) {
+                      return String(m.id).toLowerCase() === String(currentMatch.id).toLowerCase();
+                    });
+                    if (updated) {
+                      renderMatch(updated);
+                    }
+                  }
+                },
+                function (err) {
+                  console.warn("[WomenMatchDetail] Firestore live listener error:", err);
+                }
+              );
             }
           } catch (err) {
             console.error("Error loading women match detail:", err);

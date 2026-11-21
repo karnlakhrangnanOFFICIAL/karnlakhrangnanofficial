@@ -87,10 +87,24 @@ const I18N = {
     statusUpcoming: 'โปรแกรมแข่ง',
     statusCompleted: 'จบเกมแล้ว',
     statusLive: 'กำลังแข่ง',
+    statusHalftime: 'พักครึ่ง',
     enterResult: 'กรอกผลแข่ง',
     editBtn: 'แก้ไข',
     selectInModal: 'เลือกแก้ไข',
     itemsCount: (n) => `${n} รายการ`,
+    hiddenCompletedNote: (n) => `ซ่อนแมตช์ที่จบเกมแล้ว ${n} รายการ เพื่อความคล่องตัวของแอดมิน`,
+    showCompletedAction: 'ดูแมตช์ที่จบแล้ว',
+    noEvents: 'ยังไม่มีเหตุการณ์สำคัญ (Timeline) — กดปุ่มลัดด้านบนหรือ "+ เพิ่มเหตุการณ์"',
+    eventMinPlaceholder: "นาที / HT / FT",
+    eventPlayerPlaceholder: 'ชื่อนักเตะ',
+    eventSubInPlaceholder: 'ผู้เล่นลงสนาม (In)',
+    eventSubOutPlaceholder: 'ผู้เล่นออก (Out)',
+    eventAssistPlaceholder: 'แอสซิสต์ / รายละเอียด',
+    eventDetailPlaceholder: 'รายละเอียดเหตุการณ์',
+    neutralSide: 'กลาง / ทั้งสนาม',
+    eventsSyncedFromGoals: (n) => `นำรายชื่อผู้ทำประตู ${n} ประตูเข้า Timeline แล้ว`,
+    statsCleared: 'ล้างค่าสถิติแล้ว',
+    statsAutoSynced: 'อัปเดตประตูและใบเหลือง/แดงเข้าตารางสถิติแล้ว',
     dbConnected: 'เชื่อมต่อ Firestore ออนไลน์ (Real-time)',
     dbReadOnly: 'โหมดดูข้อมูล (รอแอดมินเข้าสู่ระบบ)',
     authChecking: 'กำลังตรวจสอบสิทธิ์...',
@@ -161,10 +175,24 @@ const I18N = {
     statusUpcoming: 'Upcoming',
     statusCompleted: 'Completed',
     statusLive: 'Live',
+    statusHalftime: 'Half Time',
     enterResult: 'Enter Result',
     editBtn: 'Edit',
     selectInModal: 'Select',
     itemsCount: (n) => `${n} matches`,
+    hiddenCompletedNote: (n) => `${n} completed matches hidden to keep active workflow focused`,
+    showCompletedAction: 'Show Completed',
+    noEvents: 'No Key Match Events recorded yet — use quick presets above or "+ Add Event".',
+    eventMinPlaceholder: "Min / HT / FT",
+    eventPlayerPlaceholder: 'Player name',
+    eventSubInPlaceholder: 'Player In',
+    eventSubOutPlaceholder: 'Player Out',
+    eventAssistPlaceholder: 'Assist / Note',
+    eventDetailPlaceholder: 'Event detail',
+    neutralSide: 'Neutral / Pitch',
+    eventsSyncedFromGoals: (n) => `Synced ${n} goal(s) into Timeline.`,
+    statsCleared: 'Match stats cleared.',
+    statsAutoSynced: 'Updated Goals & Cards in Match Stats.',
     dbConnected: 'Firestore Connected (Real-time)',
     dbReadOnly: 'Read-only (Admin Sign-In required)',
     authChecking: 'Checking auth...',
@@ -218,6 +246,22 @@ const I18N = {
   },
 };
 
+const MATCH_STATS_SCHEMA = [
+  { key: 'possession', category: 'ภาพรวม', categoryEn: 'Overview', label: 'สัดส่วนการครองบอล (%)', labelEn: 'Possession (%)', isPercentage: true, step: '0.1', aliases: ['possession', 'ครองบอล', 'สัดส่วนการครองบอล'] },
+  { key: 'pass_accuracy', category: 'การครองบอล', categoryEn: 'Possession & Passing', label: 'ความแม่นยำในการผ่านบอล (%)', labelEn: 'Pass Accuracy (%)', isPercentage: true, step: '0.1', aliases: ['pass accuracy', 'ความแม่นยำในการผ่านบอล', 'ความแม่นยำในการส่งบอล'] },
+  { key: 'pass_attempts', category: 'การครองบอล', categoryEn: 'Possession & Passing', label: 'จำนวนครั้งการผ่านบอล', labelEn: 'Pass Attempts', isPercentage: false, step: '1', aliases: ['pass attempts', 'total passes', 'passes', 'จำนวนครั้งการผ่านบอล', 'จ่ายบอลทั้งหมด'] },
+  { key: 'goals_scored', category: 'เกมรุก', categoryEn: 'Attack', label: 'ประตูที่ทำได้', labelEn: 'Goals Scored', isPercentage: false, step: '1', aliases: ['goals scored', 'goals', 'ประตูที่ทำได้'] },
+  { key: 'shots_on_goal', category: 'เกมรุก', categoryEn: 'Attack', label: 'ยิงเข้ากรอบ', labelEn: 'Shots on goal', isPercentage: false, step: '1', aliases: ['shots on goal', 'shots on target', 'ยิงเข้ากรอบ', 'ยิงตรงกรอบ'] },
+  { key: 'big_chances', category: 'เกมรุก', categoryEn: 'Attack', label: 'โอกาสสำคัญ', labelEn: 'Big chances', isPercentage: false, step: '1', aliases: ['big chances', 'โอกาสสำคัญ'] },
+  { key: 'blocked_shots', category: 'เกมรุก', categoryEn: 'Attack', label: 'ลูกยิงติดบล็อก', labelEn: 'Blocked shots', isPercentage: false, step: '1', aliases: ['blocked shots', 'ลูกยิงติดบล็อก'] },
+  { key: 'corners', category: 'เกมรุก', categoryEn: 'Attack', label: 'ลูกเตะมุม', labelEn: 'Corners', isPercentage: false, step: '1', aliases: ['corners', 'corner kicks', 'ลูกเตะมุม', 'เตะมุม'] },
+  { key: 'offsides', category: 'เกมรุก', categoryEn: 'Attack', label: 'ล้ำหน้า', labelEn: 'Offsides', isPercentage: false, step: '1', aliases: ['offsides', 'offside', 'ล้ำหน้า'] },
+  { key: 'duels_won', category: 'สภาพร่างกาย', categoryEn: 'Physical & Duels', label: 'ชนะการดวล', labelEn: 'Duels Won', isPercentage: false, step: '1', aliases: ['duels won', 'ชนะการดวล'] },
+  { key: 'fouls', category: 'วินัย', categoryEn: 'Discipline', label: 'ฟาวล์', labelEn: 'Fouls', isPercentage: false, step: '1', aliases: ['fouls', 'ทำฟาวล์', 'ฟาวล์'] },
+  { key: 'yellow_cards', category: 'วินัย', categoryEn: 'Discipline', label: 'ใบเหลือง', labelEn: 'Yellow cards', isPercentage: false, step: '1', aliases: ['yellow cards', 'ใบเหลือง'] },
+  { key: 'red_cards', category: 'วินัย', categoryEn: 'Discipline', label: 'ใบแดง', labelEn: 'Red cards', isPercentage: false, step: '1', aliases: ['red cards', 'ใบแดง'] },
+];
+
 const DRAFT_STORAGE_KEY = 'klkn_match_manager_drafts_v1';
 
 const state = {
@@ -233,6 +277,12 @@ const state = {
   editingId: null,
   selectedChannels: new Set(['MONOMAX SPORTS TV']),
   goals: [],
+  events: [],
+  statsMap: {},
+  extraStats: [],
+  hadStatsOnLoad: false,
+  statsClearedExplicitly: false,
+  hiddenCompletedCount: 0,
   activeLineupSide: 'home',
   lineupPreviewVisible: true,
   hadLineupsOnLoad: false,
@@ -242,7 +292,7 @@ const state = {
     away: { manager: '', formation: '4-2-3-1', starting: [], substitutes: [] },
   },
   filters: {
-    status: 'all',
+    status: 'active',
     team: 'all',
     season: '2026/27',
     competition: 'all',
@@ -252,7 +302,7 @@ const state = {
     dateFrom: '',
     dateTo: '',
     search: '',
-    sort: 'date_desc',
+    sort: 'priority',
   },
   modalFilters: null,
   readOnlyMode: true,
@@ -345,8 +395,20 @@ const el = {
   scoreboardAwayName: document.getElementById('scoreboardAwayName'),
   fieldHomeScore: document.getElementById('fieldHomeScore'),
   fieldAwayScore: document.getElementById('fieldAwayScore'),
+  liveClockBar: document.getElementById('liveClockBar'),
+  fieldClock: document.getElementById('fieldClock'),
   addGoalBtn: document.getElementById('addGoalBtn'),
   goalsListContainer: document.getElementById('goalsListContainer'),
+  eventsSection: document.getElementById('eventsSection'),
+  syncGoalsToEventsBtn: document.getElementById('syncGoalsToEventsBtn'),
+  addEventBtn: document.getElementById('addEventBtn'),
+  eventsListContainer: document.getElementById('eventsListContainer'),
+  statsSection: document.getElementById('statsSection'),
+  statsAutoSyncBtn: document.getElementById('statsAutoSyncBtn'),
+  statsClearBtn: document.getElementById('statsClearBtn'),
+  statsHomeHeader: document.getElementById('statsHomeHeader'),
+  statsAwayHeader: document.getElementById('statsAwayHeader'),
+  statsGridContainer: document.getElementById('statsGridContainer'),
 
   channelsGrid: document.getElementById('channelsGrid'),
 
@@ -581,6 +643,8 @@ function applyLanguage() {
   populateTimeDropdownOptions();
   updateTimeSyncHints();
   renderGoalsEditor();
+  renderEventsEditor();
+  renderStatsEditor();
   renderLineupEditor();
   renderMatchList();
   if (el.filterMenuModal.classList.contains('open')) {
@@ -1008,6 +1072,8 @@ function updateTeamPreviews() {
 
   el.scoreboardHomeName.textContent = homeName;
   el.scoreboardAwayName.textContent = awayName;
+  if (el.statsHomeHeader) el.statsHomeHeader.textContent = homeName;
+  if (el.statsAwayHeader) el.statsAwayHeader.textContent = awayName;
 
   if (el.lineupTabHomeLogo) {
     el.lineupTabHomeLogo.src = homeLogo;
@@ -1123,14 +1189,502 @@ function renderGoalsEditor() {
   });
 }
 
+/* ==================== KEY MATCH EVENTS (⏱️ TIMELINE) EDITOR ==================== */
+const KEY_EVENT_TYPE_OPTIONS = [
+  { value: 'kick_off', th: '📣 เริ่มแข่ง (Kick-Off)', en: '📣 Kick-Off', neutral: true },
+  { value: 'goal', th: '⚽ ทำประตู (Goal)', en: '⚽ Goal', neutral: false },
+  { value: 'penalty', th: '🎯 จุดโทษ (Penalty)', en: '🎯 Penalty Goal', neutral: false },
+  { value: 'own_goal', th: '🥅 เข้าประตูตัวเอง (OG)', en: '🥅 Own Goal', neutral: false },
+  { value: 'penalty_missed', th: '❌ พลาดจุดโทษ (Pen Miss)', en: '❌ Penalty Missed', neutral: false },
+  { value: 'yellow_card', th: '🟨 ใบเหลือง (Yellow)', en: '🟨 Yellow Card', neutral: false },
+  { value: 'second_yellow', th: '🟨🟥 เหลืองสอง (2nd Yellow)', en: '🟨🟥 2nd Yellow', neutral: false },
+  { value: 'red_card', th: '🟥 ใบแดง (Red Card)', en: '🟥 Red Card', neutral: false },
+  { value: 'substitution', th: '🔄 เปลี่ยนตัว (Sub)', en: '🔄 Substitution', neutral: false },
+  { value: 'var', th: '📺 VAR Decision', en: '📺 VAR Decision', neutral: false },
+  { value: 'injury', th: '🩹 บาดเจ็บ (Injury)', en: '🩹 Injury', neutral: false },
+  { value: 'added_time', th: '⏱️ ทดเวลาบาดเจ็บ', en: '⏱️ Added Time', neutral: true },
+  { value: 'period', th: '🏁 พักครึ่ง / จบเกม (HT/FT)', en: '🏁 Half / Full Time', neutral: true },
+];
+
+function isNeutralEventType(evType) {
+  return evType === 'kick_off' || evType === 'added_time' || evType === 'period' || evType === 'full_time';
+}
+
+function normalizeEventForState(ev) {
+  if (!ev || typeof ev !== 'object') {
+    return { minute: '', display_minute: '', type: 'goal', team: 'home', player: '', secondary: '', detail: '', _extra: {} };
+  }
+  let eType = String(ev.type || 'goal').trim().toLowerCase();
+  if (eType === 'card') {
+    eType = ev.card === 'red' || ev.detail === 'red' ? 'red_card' : 'yellow_card';
+  } else if (eType === 'full_time' || eType === 'half_time') {
+    eType = 'period';
+  } else if (eType === 'kickoff') {
+    eType = 'kick_off';
+  } else if (eType === 'goal' && (ev.detail === 'Penalty' || ev.penalty)) {
+    eType = 'penalty';
+  } else if (eType === 'goal' && (ev.detail === 'Own Goal' || ev.own_goal)) {
+    eType = 'own_goal';
+  }
+  const hasKnown = KEY_EVENT_TYPE_OPTIONS.some((o) => o.value === eType);
+  if (!hasKnown) eType = 'goal';
+
+  const minuteStr = ev.display_minute
+    ? String(ev.display_minute).trim()
+    : ev.minute !== undefined && ev.minute !== null && ev.minute !== ''
+    ? String(ev.minute).trim()
+    : '';
+
+  const teamVal = ev.team === 'home' ? 'home' : ev.team === 'away' ? 'away' : isNeutralEventType(eType) ? 'neutral' : 'home';
+  const playerVal = eType === 'substitution' ? (ev.player_in || ev.player || '') : (ev.player || '');
+  const secondaryVal = eType === 'substitution'
+    ? (ev.player_out || ev.replaced || '')
+    : (ev.assist || ev.detail || '');
+
+  const { type, team, minute, display_minute, player, player_in, player_out, replaced, assist, detail, ...rest } = ev;
+  return {
+    minute: minuteStr,
+    type: eType,
+    team: teamVal,
+    player: String(playerVal || ''),
+    secondary: String(secondaryVal || ''),
+    detail: String(detail || ''),
+    _extra: rest,
+  };
+}
+
+function createQuickEventObject(presetKey) {
+  const clockRaw = String(el.fieldClock?.value || '').trim().replace(/'$/, '');
+  if (presetKey === 'kick_off') {
+    return { minute: '0', type: 'kick_off', team: 'neutral', player: '', secondary: state.lang === 'th' ? 'เริ่มต้นการแข่งขัน' : 'First Half Begins', detail: '', _extra: {} };
+  }
+  if (presetKey === 'period_ht') {
+    return { minute: 'HT', type: 'period', team: 'neutral', player: '', secondary: state.lang === 'th' ? 'พักครึ่งเวลา (Half Time)' : 'Half Time', detail: '', _extra: {} };
+  }
+  if (presetKey === 'period_ft') {
+    return { minute: 'FT', type: 'period', team: 'neutral', player: '', secondary: state.lang === 'th' ? 'จบการแข่งขัน (Full Time)' : 'Full Time', detail: '', _extra: {} };
+  }
+  return {
+    minute: clockRaw && clockRaw !== 'HT' && clockRaw !== 'FT' ? clockRaw : '',
+    type: presetKey || 'goal',
+    team: 'home',
+    player: '',
+    secondary: '',
+    detail: '',
+    _extra: {},
+  };
+}
+
+function addQuickEvent(presetKey) {
+  state.events.push(createQuickEventObject(presetKey));
+  renderEventsEditor();
+}
+
+function syncGoalsIntoEvents() {
+  const activeGoals = state.goals.filter((g) => g.player && g.player.trim());
+  let added = 0;
+  activeGoals.forEach((g) => {
+    const gMin = String(g.minute ?? '').trim().replace(/'$/, '');
+    const gPlayer = g.player.trim();
+    const gType = g.own_goal ? 'own_goal' : g.penalty ? 'penalty' : 'goal';
+    const exists = state.events.some((ev) => {
+      const evMin = String(ev.minute || '').trim().replace(/'$/, '');
+      const sameType = ev.type === gType || (ev.type === 'goal' && (gType === 'penalty' || gType === 'own_goal'));
+      return sameType && ev.team === (g.team === 'away' ? 'away' : 'home') && evMin === gMin && String(ev.player || '').trim().toLowerCase() === gPlayer.toLowerCase();
+    });
+    if (!exists) {
+      state.events.push({
+        minute: gMin,
+        type: gType,
+        team: g.team === 'away' ? 'away' : 'home',
+        player: gPlayer,
+        secondary: g.penalty ? 'Penalty' : g.own_goal ? 'Own Goal' : '',
+        detail: g.penalty ? 'Penalty' : g.own_goal ? 'Own Goal' : '',
+        _extra: {},
+      });
+      added++;
+    }
+  });
+  renderEventsEditor();
+  showToast(t('eventsSyncedFromGoals')(added), 'success');
+}
+
+function serializeEventsForOutput() {
+  return state.events
+    .filter((ev) => ev && (ev.player?.trim() || ev.secondary?.trim() || ev.minute?.trim() || isNeutralEventType(ev.type)))
+    .map((ev) => {
+      const rawMin = String(ev.minute || '').trim();
+      const upperMin = rawMin.toUpperCase();
+      const isDisplayTag = upperMin === 'HT' || upperMin === 'FT' || upperMin === 'PEN' || rawMin.includes('+');
+      const numericMin = !isDisplayTag && /^\d+$/.test(rawMin) ? parseInt(rawMin, 10) : null;
+
+      let outType = ev.type || 'goal';
+      let extraDetail = String(ev.secondary || '').trim();
+      const out = {
+        ...(ev._extra && typeof ev._extra === 'object' ? ev._extra : {}),
+        type: outType === 'penalty' ? 'goal' : outType,
+      };
+
+      if (numericMin !== null) {
+        out.minute = numericMin;
+        delete out.display_minute;
+      } else if (rawMin) {
+        out.display_minute = upperMin === 'HT' || upperMin === 'FT' || upperMin === 'PEN' ? upperMin : rawMin;
+        if (upperMin === 'HT') out.minute = 45;
+        else if (upperMin === 'FT') out.minute = 90;
+        else if (rawMin.includes('+')) {
+          const baseNum = parseInt(rawMin.split('+')[0], 10);
+          out.minute = !isNaN(baseNum) ? baseNum : rawMin;
+        } else {
+          out.minute = rawMin;
+        }
+      } else {
+        out.minute = '';
+      }
+
+      if (ev.team === 'home' || ev.team === 'away') {
+        out.team = ev.team;
+      } else {
+        delete out.team;
+      }
+
+      if (outType === 'substitution') {
+        out.player_in = String(ev.player || '').trim();
+        out.player = out.player_in;
+        out.player_out = extraDetail;
+        if (!out.detail) delete out.detail;
+      } else if (outType === 'penalty') {
+        out.player = String(ev.player || '').trim();
+        out.detail = 'Penalty';
+        if (extraDetail && !/^penalty$/i.test(extraDetail)) {
+          out.assist = extraDetail;
+        }
+      } else if (outType === 'own_goal') {
+        out.player = String(ev.player || '').trim();
+        out.detail = extraDetail || 'Own Goal';
+      } else if (outType === 'goal') {
+        out.player = String(ev.player || '').trim();
+        if (extraDetail) {
+          out.assist = extraDetail;
+          out.detail = `Assist: ${extraDetail}`;
+        }
+      } else {
+        if (ev.player && ev.player.trim()) out.player = ev.player.trim();
+        if (extraDetail) out.detail = extraDetail;
+      }
+      return out;
+    });
+}
+
+function renderEventsEditor() {
+  if (!el.eventsListContainer) return;
+  if (state.events.length === 0) {
+    el.eventsListContainer.innerHTML = `<div class="mm-panel-meta" style="padding: 8px 0">${escapeHtml(t('noEvents'))}</div>`;
+    return;
+  }
+
+  el.eventsListContainer.innerHTML = state.events.map((ev, idx) => {
+    const isSub = ev.type === 'substitution';
+    const isGoalLike = ev.type === 'goal' || ev.type === 'penalty';
+    const isNeutral = isNeutralEventType(ev.type);
+    const secondaryPlaceholder = isSub
+      ? t('eventSubOutPlaceholder')
+      : isGoalLike
+      ? t('eventAssistPlaceholder')
+      : t('eventDetailPlaceholder');
+    const primaryPlaceholder = isSub
+      ? t('eventSubInPlaceholder')
+      : t('eventPlayerPlaceholder');
+
+    return `
+      <div class="mm-event-row" data-event-idx="${idx}">
+        <input type="text" class="mm-input mono event-min-input" value="${escapeHtml(ev.minute ?? '')}" placeholder="${escapeHtml(t('eventMinPlaceholder'))}" />
+        <select class="mm-select event-type-select" aria-label="Event Type">
+          ${KEY_EVENT_TYPE_OPTIONS.map((opt) => `<option value="${opt.value}" ${ev.type === opt.value ? 'selected' : ''}>${escapeHtml(state.lang === 'th' ? opt.th : opt.en)}</option>`).join('')}
+        </select>
+        <select class="mm-select event-team-select" aria-label="Event Team">
+          <option value="home" ${ev.team === 'home' ? 'selected' : ''}>${escapeHtml(t('homeSide'))}</option>
+          <option value="away" ${ev.team === 'away' ? 'selected' : ''}>${escapeHtml(t('awaySide'))}</option>
+          <option value="neutral" ${ev.team === 'neutral' || isNeutral ? 'selected' : ''}>${escapeHtml(t('neutralSide'))}</option>
+        </select>
+        <input type="text" class="mm-input event-player-input" list="playersDatalist" value="${escapeHtml(ev.player || '')}" placeholder="${escapeHtml(primaryPlaceholder)}" ${isNeutral ? 'disabled' : ''} />
+        <input type="text" class="mm-input event-secondary-input" ${isSub || isGoalLike ? 'list="playersDatalist"' : ''} value="${escapeHtml(ev.secondary || '')}" placeholder="${escapeHtml(secondaryPlaceholder)}" />
+        <button type="button" class="mm-btn mm-btn-danger mm-btn-compact event-remove-btn" aria-label="Remove event" style="padding: 6px; min-width: 34px">✕</button>
+      </div>
+    `;
+  }).join('');
+
+  el.eventsListContainer.querySelectorAll('.mm-event-row').forEach((row) => {
+    const idx = Number(row.getAttribute('data-event-idx'));
+    row.querySelector('.event-min-input').addEventListener('input', (e) => {
+      state.events[idx].minute = e.target.value;
+    });
+    row.querySelector('.event-type-select').addEventListener('change', (e) => {
+      const nextType = e.target.value;
+      state.events[idx].type = nextType;
+      if (isNeutralEventType(nextType)) {
+        state.events[idx].team = 'neutral';
+      } else if (state.events[idx].team === 'neutral') {
+        state.events[idx].team = 'home';
+      }
+      renderEventsEditor();
+    });
+    row.querySelector('.event-team-select').addEventListener('change', (e) => {
+      state.events[idx].team = e.target.value;
+    });
+    row.querySelector('.event-player-input').addEventListener('input', (e) => {
+      state.events[idx].player = e.target.value;
+    });
+    row.querySelector('.event-secondary-input').addEventListener('input', (e) => {
+      state.events[idx].secondary = e.target.value;
+    });
+    row.querySelector('.event-remove-btn').addEventListener('click', () => {
+      state.events.splice(idx, 1);
+      renderEventsEditor();
+    });
+  });
+}
+
+/* ==================== 13-STAT MATCH STATISTICS (📊 STATS) EDITOR ==================== */
+function createEmptyStatsMap() {
+  const map = {};
+  MATCH_STATS_SCHEMA.forEach((item) => {
+    map[item.key] = { home: '', away: '' };
+  });
+  return map;
+}
+
+function normalizeStatLookupText(s) {
+  return String(s || '')
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/%/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function matchStatSchemaItem(rawStat) {
+  if (!rawStat || typeof rawStat !== 'object') return null;
+  const combined = `${rawStat.name || ''} ${rawStat.label || ''} ${rawStat.label_en || ''}`.toLowerCase();
+  const norm = normalizeStatLookupText(combined);
+  if (!norm && !combined.trim()) return null;
+
+  for (const item of MATCH_STATS_SCHEMA) {
+    if (item.aliases.some((alias) => combined.includes(alias.toLowerCase()) || norm === alias.toLowerCase())) {
+      return item;
+    }
+  }
+  return null;
+}
+
+function cleanStatInputVal(v) {
+  if (v === null || v === undefined || v === '') return '';
+  if (typeof v === 'number') return String(v);
+  const str = String(v).trim();
+  const pctMatch = str.match(/^([0-9]+(?:\.[0-9]+)?)\s*%?$/);
+  if (pctMatch) return pctMatch[1];
+  const leadingNum = str.match(/^([0-9]+(?:\.[0-9]+)?)/);
+  return leadingNum ? leadingNum[1] : str;
+}
+
+function hydrateStatsFromMatch(match) {
+  const map = createEmptyStatsMap();
+  const extras = [];
+  const rawStats = Array.isArray(match?.stats) ? match.stats : [];
+  state.hadStatsOnLoad = rawStats.length > 0;
+  state.statsClearedExplicitly = false;
+
+  rawStats.forEach((st) => {
+    const schemaItem = matchStatSchemaItem(st);
+    if (schemaItem && !map[schemaItem.key].home && !map[schemaItem.key].away) {
+      map[schemaItem.key] = {
+        home: cleanStatInputVal(st.home),
+        away: cleanStatInputVal(st.away),
+      };
+    } else if (st && typeof st === 'object') {
+      extras.push(st);
+    }
+  });
+
+  if (!map.possession.home && !map.possession.away && match?.poss !== null && match?.poss !== undefined && match?.poss !== '') {
+    const pNum = Number(match.poss);
+    if (Number.isFinite(pNum) && pNum >= 0 && pNum <= 100) {
+      const isHomeChelsea = String(match.home_team || '').toLowerCase().includes('chelsea');
+      const isAwayChelsea = String(match.away_team || '').toLowerCase().includes('chelsea');
+      if (isHomeChelsea) {
+        map.possession.home = String(pNum);
+        map.possession.away = String(Math.round((100 - pNum) * 10) / 10);
+      } else if (isAwayChelsea) {
+        map.possession.away = String(pNum);
+        map.possession.home = String(Math.round((100 - pNum) * 10) / 10);
+      }
+    }
+  }
+
+  state.statsMap = map;
+  state.extraStats = extras;
+}
+
+function buildStatsArrayForSave() {
+  const out = [];
+  MATCH_STATS_SCHEMA.forEach((item) => {
+    const pair = state.statsMap[item.key] || { home: '', away: '' };
+    const rawH = String(pair.home ?? '').trim();
+    const rawA = String(pair.away ?? '').trim();
+    if (rawH === '' && rawA === '') return;
+
+    const hNum = rawH !== '' && !isNaN(Number(rawH)) ? Number(rawH) : 0;
+    const aNum = rawA !== '' && !isNaN(Number(rawA)) ? Number(rawA) : 0;
+    out.push({
+      category: item.category,
+      name: item.label,
+      label: item.label,
+      label_en: item.labelEn,
+      home: hNum,
+      away: aNum,
+      isPercentage: Boolean(item.isPercentage),
+    });
+  });
+
+  if (Array.isArray(state.extraStats) && state.extraStats.length > 0) {
+    state.extraStats.forEach((ex) => out.push(ex));
+  }
+  return out;
+}
+
+function autoSyncStatsFromForm() {
+  if (!state.statsMap || !state.statsMap.goals_scored) {
+    state.statsMap = createEmptyStatsMap();
+  }
+  if (el.fieldHomeScore.value !== '') {
+    state.statsMap.goals_scored.home = String(el.fieldHomeScore.value);
+  }
+  if (el.fieldAwayScore.value !== '') {
+    state.statsMap.goals_scored.away = String(el.fieldAwayScore.value);
+  }
+
+  let hYellow = 0;
+  let aYellow = 0;
+  let hRed = 0;
+  let aRed = 0;
+  state.events.forEach((ev) => {
+    if (ev.type === 'yellow_card') {
+      if (ev.team === 'home') hYellow++;
+      else if (ev.team === 'away') aYellow++;
+    } else if (ev.type === 'second_yellow' || ev.type === 'red_card') {
+      if (ev.team === 'home') hRed++;
+      else if (ev.team === 'away') aRed++;
+    }
+  });
+  state.statsMap.yellow_cards = { home: String(hYellow), away: String(aYellow) };
+  state.statsMap.red_cards = { home: String(hRed), away: String(aRed) };
+
+  const possVal = Number(el.fieldPoss?.value);
+  if (el.fieldPoss?.value !== '' && Number.isFinite(possVal) && possVal >= 0 && possVal <= 100) {
+    const isHomeC = String(el.fieldHomeTeam?.value || '').toLowerCase().includes('chelsea');
+    const isAwayC = String(el.fieldAwayTeam?.value || '').toLowerCase().includes('chelsea');
+    const otherVal = String(Math.round((100 - possVal) * 10) / 10);
+    if (isHomeC) {
+      state.statsMap.possession = { home: String(possVal), away: otherVal };
+    } else if (isAwayC) {
+      state.statsMap.possession = { home: otherVal, away: String(possVal) };
+    }
+  }
+
+  state.statsClearedExplicitly = false;
+  renderStatsEditor();
+  showToast(t('statsAutoSynced'), 'success');
+}
+
+function renderStatsEditor() {
+  if (!el.statsGridContainer) return;
+  if (!state.statsMap || !state.statsMap.possession) {
+    state.statsMap = createEmptyStatsMap();
+  }
+
+  let lastCat = '';
+  const htmlParts = [];
+  MATCH_STATS_SCHEMA.forEach((item) => {
+    const catLabel = state.lang === 'th' ? `${item.category} (${item.categoryEn})` : item.categoryEn;
+    if (item.category !== lastCat) {
+      lastCat = item.category;
+      htmlParts.push(`<div class="mm-stat-cat-divider">${escapeHtml(catLabel)}</div>`);
+    }
+    const pair = state.statsMap[item.key] || { home: '', away: '' };
+    const primaryTitle = state.lang === 'th' ? item.label : item.labelEn;
+    const secondaryTitle = state.lang === 'th' ? item.labelEn : item.label;
+    htmlParts.push(`
+      <div class="mm-stat-input-row" data-stat-key="${escapeHtml(item.key)}">
+        <input type="number" min="0" ${item.isPercentage ? 'max="100"' : ''} step="${item.step}" class="mm-input tabular stat-home-input" value="${escapeHtml(pair.home ?? '')}" placeholder="0${item.isPercentage ? '%' : ''}" aria-label="${escapeHtml(primaryTitle)} Home" />
+        <div class="mm-stat-row-title">
+          <strong>${escapeHtml(primaryTitle)}</strong>
+          <span>${escapeHtml(secondaryTitle)}</span>
+        </div>
+        <input type="number" min="0" ${item.isPercentage ? 'max="100"' : ''} step="${item.step}" class="mm-input tabular stat-away-input" value="${escapeHtml(pair.away ?? '')}" placeholder="0${item.isPercentage ? '%' : ''}" aria-label="${escapeHtml(primaryTitle)} Away" />
+      </div>
+    `);
+  });
+
+  el.statsGridContainer.innerHTML = htmlParts.join('');
+
+  el.statsGridContainer.querySelectorAll('.mm-stat-input-row').forEach((rowEl) => {
+    const statKey = rowEl.getAttribute('data-stat-key');
+    const homeInput = rowEl.querySelector('.stat-home-input');
+    const awayInput = rowEl.querySelector('.stat-away-input');
+
+    const syncPossFieldFromStat = () => {
+      if (statKey !== 'possession') return;
+      const isHomeC = String(el.fieldHomeTeam?.value || '').toLowerCase().includes('chelsea');
+      const isAwayC = String(el.fieldAwayTeam?.value || '').toLowerCase().includes('chelsea');
+      if (isHomeC && el.fieldPoss && homeInput.value !== '') {
+        el.fieldPoss.value = homeInput.value;
+      } else if (isAwayC && el.fieldPoss && awayInput.value !== '') {
+        el.fieldPoss.value = awayInput.value;
+      }
+    };
+
+    homeInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      state.statsMap[statKey].home = val;
+      state.statsClearedExplicitly = false;
+      if (statKey === 'possession' && val !== '' && !isNaN(Number(val))) {
+        const num = Math.min(Math.max(Number(val), 0), 100);
+        const comp = String(Math.round((100 - num) * 10) / 10);
+        state.statsMap.possession.away = comp;
+        awayInput.value = comp;
+      }
+      syncPossFieldFromStat();
+    });
+
+    awayInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      state.statsMap[statKey].away = val;
+      state.statsClearedExplicitly = false;
+      if (statKey === 'possession' && val !== '' && !isNaN(Number(val))) {
+        const num = Math.min(Math.max(Number(val), 0), 100);
+        const comp = String(Math.round((100 - num) * 10) / 10);
+        state.statsMap.possession.home = comp;
+        homeInput.value = comp;
+      }
+      syncPossFieldFromStat();
+    });
+  });
+}
+
 function setFormStatus(status) {
-  const safeStatus = ['upcoming', 'completed', 'live'].includes(status) ? status : 'upcoming';
+  const safeStatus = ['upcoming', 'completed', 'live', 'halftime'].includes(status) ? status : 'upcoming';
   el.fieldStatus.value = safeStatus;
   document.querySelectorAll('#statusSegControl .mm-seg-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.getAttribute('data-form-status') === safeStatus);
   });
-  const isScoreActive = safeStatus === 'completed' || safeStatus === 'live';
-  el.scoreSection.style.opacity = isScoreActive ? '1' : '0.78';
+  const isScoreActive = safeStatus === 'completed' || safeStatus === 'live' || safeStatus === 'halftime';
+  el.scoreSection.style.opacity = isScoreActive ? '1' : '0.85';
+  if (el.liveClockBar) {
+    el.liveClockBar.style.display = safeStatus === 'live' || safeStatus === 'halftime' ? 'flex' : 'none';
+  }
+  if (safeStatus === 'halftime' && el.fieldClock && !el.fieldClock.value.trim()) {
+    el.fieldClock.value = 'HT';
+  }
 }
 
 function setFormTeamType(teamType) {
@@ -2293,7 +2847,13 @@ function resetForm(defaultStatus = 'upcoming') {
 
   el.fieldHomeScore.value = '';
   el.fieldAwayScore.value = '';
+  if (el.fieldClock) el.fieldClock.value = '';
   state.goals = [];
+  state.events = [];
+  state.statsMap = createEmptyStatsMap();
+  state.extraStats = [];
+  state.hadStatsOnLoad = false;
+  state.statsClearedExplicitly = false;
   state.selectedChannels = new Set([isW ? 'CFC+ Live' : 'MONOMAX SPORTS TV']);
 
   state.activeLineupSide = 'home';
@@ -2315,7 +2875,9 @@ function resetForm(defaultStatus = 'upcoming') {
   updateTeamPreviews();
   renderChannelsGrid();
   renderGoalsEditor();
+  renderEventsEditor();
   renderLineupEditor();
+  renderStatsEditor();
   updateFormHeaderUI();
   renderMatchList();
 }
@@ -2326,8 +2888,11 @@ function loadMatchIntoForm(match, forceStatus = null) {
   el.fieldId.value = String(match.id);
   el.fieldId.readOnly = true;
 
-  const targetStatus = forceStatus || (match.status === 'halftime' ? 'live' : match.status || 'upcoming');
+  const targetStatus = forceStatus || (match.status || 'upcoming');
   setFormStatus(targetStatus);
+  if (el.fieldClock) {
+    el.fieldClock.value = match.clock || match.time_live || (targetStatus === 'halftime' ? 'HT' : '');
+  }
   setFormTeamType(match.team_type === 'W' ? 'W' : 'M');
 
   const compVal = match.competition || match.competition_name || 'premier-league';
@@ -2382,6 +2947,10 @@ function loadMatchIntoForm(match, forceStatus = null) {
       }))
     : [];
 
+  state.events = Array.isArray(match.events)
+    ? match.events.map(normalizeEventForState)
+    : [];
+
   state.selectedChannels = new Set(
     Array.isArray(match.channels)
       ? match.channels.map((c) => (typeof c === 'string' ? c : c.name)).filter(Boolean)
@@ -2395,6 +2964,8 @@ function loadMatchIntoForm(match, forceStatus = null) {
   el.fieldPoss.value = match.poss ?? '';
   el.fieldXg.value = match.xg ?? '';
   el.fieldNotes.value = match.notes || '';
+
+  hydrateStatsFromMatch(match);
 
   const hasSavedLineups = Boolean(match.lineups && (match.lineups.home || match.lineups.away));
   state.hadLineupsOnLoad = hasSavedLineups;
@@ -2415,7 +2986,9 @@ function loadMatchIntoForm(match, forceStatus = null) {
   updateTeamPreviews();
   renderChannelsGrid();
   renderGoalsEditor();
+  renderEventsEditor();
   renderLineupEditor();
+  renderStatsEditor();
   updateFormHeaderUI();
   renderMatchList();
 
@@ -2436,7 +3009,14 @@ function buildPayloadFromForm() {
   });
 
   const status = el.fieldStatus.value;
-  const hasScores = status === 'completed' || status === 'live';
+  const hasScores = status === 'completed' || status === 'live' || status === 'halftime';
+  const rawClock = el.fieldClock ? el.fieldClock.value.trim().slice(0, 20) : '';
+  const clockVal =
+    status === 'upcoming'
+      ? ''
+      : status === 'halftime'
+      ? (rawClock || 'HT')
+      : rawClock;
 
   const thTimeVal = getEffectiveTimeValue('th');
   const ukTimeVal = getEffectiveTimeValue('uk');
@@ -2447,6 +3027,14 @@ function buildPayloadFromForm() {
     : state.lineupClearedExplicitly && state.hadLineupsOnLoad
     ? { lineups: null }
     : {};
+
+  const statsArray = buildStatsArrayForSave();
+  const statsField =
+    statsArray.length > 0
+      ? { stats: statsArray }
+      : state.hadStatsOnLoad && state.statsClearedExplicitly
+      ? { stats: [] }
+      : {};
 
   const normalizedDate = normalizeIsoDate(el.fieldDate.value);
   const payload = {
@@ -2465,6 +3053,7 @@ function buildPayloadFromForm() {
     away_logo: el.fieldAwayLogo.value.trim() || 'assets/images/placeholder-team.svg',
     venue: el.fieldVenue.value.trim(),
     status,
+    clock: clockVal,
     team_type: el.fieldTeamType.value === 'W' ? 'W' : 'M',
     home_score: hasScores && el.fieldHomeScore.value !== '' ? Number(el.fieldHomeScore.value) : null,
     away_score: hasScores && el.fieldAwayScore.value !== '' ? Number(el.fieldAwayScore.value) : null,
@@ -2477,6 +3066,7 @@ function buildPayloadFromForm() {
         ...(g.penalty ? { penalty: true, detail: 'Penalty' } : {}),
         ...(g.own_goal ? { own_goal: true, detail: 'Own Goal' } : {}),
       })),
+    events: serializeEventsForOutput(),
     channels,
     ...(el.fieldReferee.value.trim() ? { referee: el.fieldReferee.value.trim() } : {}),
     ...(el.fieldAttendance.value !== '' ? { attendance: Number(el.fieldAttendance.value) } : {}),
@@ -2485,6 +3075,7 @@ function buildPayloadFromForm() {
     ...(el.fieldPoss.value !== '' ? { poss: Number(el.fieldPoss.value) } : {}),
     ...(el.fieldXg.value !== '' ? { xg: Number(el.fieldXg.value) } : {}),
     ...(el.fieldNotes.value.trim() ? { notes: el.fieldNotes.value.trim() } : {}),
+    ...statsField,
     ...lineupsField,
   };
 
@@ -2592,11 +3183,46 @@ function rebuildMergedCatalog() {
   return merged;
 }
 
+function getPriorityTier(m, todayStr) {
+  if (m.status === 'live' || m.status === 'halftime') return 0;
+  if (m.status === 'completed') return 3;
+  const d = String(m.date || '');
+  if (d && d < todayStr) return 2;
+  return 1;
+}
+
+function getComparableTime(m) {
+  const raw = String(m.time_th || m.time || '');
+  return /^\d{2}:\d{2}/.test(raw) ? raw.slice(0, 5) : '99:99';
+}
+
+function compareMatchesByPriority(a, b, todayStr) {
+  const tierA = getPriorityTier(a, todayStr);
+  const tierB = getPriorityTier(b, todayStr);
+  if (tierA !== tierB) return tierA - tierB;
+
+  const dateA = String(a.date || '9999-99-99');
+  const dateB = String(b.date || '9999-99-99');
+  const timeA = getComparableTime(a);
+  const timeB = getComparableTime(b);
+
+  if (tierA === 0 || tierA === 1) {
+    // Live / Upcoming closest to kick-off first
+    if (dateA !== dateB) return dateA.localeCompare(dateB);
+    if (timeA !== timeB) return timeA.localeCompare(timeB);
+  } else {
+    // Past upcoming / Completed most recent first
+    if (dateA !== dateB) return dateB.localeCompare(dateA);
+    if (timeA !== timeB) return timeB.localeCompare(timeA);
+  }
+  return String(a.id || '').localeCompare(String(b.id || ''));
+}
+
 function buildFilteredResult(filterObj) {
   const allMatches = rebuildMergedCatalog();
   const {
     team = 'all',
-    status = 'all',
+    status = 'active',
     competition = 'all',
     season = '2026/27',
     ha = 'all',
@@ -2605,7 +3231,7 @@ function buildFilteredResult(filterObj) {
     dateFrom = '',
     dateTo = '',
     search = '',
-    sort = 'date_desc',
+    sort = 'priority',
   } = filterObj || {};
 
   const seasonsSet = new Set();
@@ -2624,15 +3250,8 @@ function buildFilteredResult(filterObj) {
     }
   });
 
-  const filtered = allMatches.filter((m) => {
+  const baseMatched = allMatches.filter((m) => {
     if (team !== 'all' && m.team_type !== team) return false;
-    if (status !== 'all') {
-      if (status === 'live') {
-        if (m.status !== 'live' && m.status !== 'halftime') return false;
-      } else if (m.status !== status) {
-        return false;
-      }
-    }
     if (season !== 'all') {
       if (getSeasonFromDateStr(m.date) !== season) return false;
     }
@@ -2674,7 +3293,21 @@ function buildFilteredResult(filterObj) {
     return true;
   });
 
-  if (sort === 'date_asc') {
+  const hiddenCompleted = status === 'active'
+    ? baseMatched.filter((m) => m.status === 'completed').length
+    : 0;
+
+  const filtered = baseMatched.filter((m) => {
+    if (status === 'all') return true;
+    if (status === 'active') return m.status !== 'completed';
+    if (status === 'live') return m.status === 'live' || m.status === 'halftime';
+    return m.status === status;
+  });
+
+  if (sort === 'priority') {
+    const todayStr = formatInTimeZone(new Date(), 'Asia/Bangkok').date;
+    filtered.sort((a, b) => compareMatchesByPriority(a, b, todayStr));
+  } else if (sort === 'date_asc') {
     filtered.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
   } else {
     filtered.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
@@ -2687,6 +3320,7 @@ function buildFilteredResult(filterObj) {
       upcoming: filtered.filter((m) => m.status === 'upcoming').length,
       completed: filtered.filter((m) => m.status === 'completed').length,
       live: filtered.filter((m) => m.status === 'live' || m.status === 'halftime').length,
+      hiddenCompleted,
       men: filtered.filter((m) => m.team_type === 'M').length,
       women: filtered.filter((m) => m.team_type === 'W').length,
     },
@@ -2725,6 +3359,7 @@ async function fetchFilteredMatches(filterObj) {
 
 function applyWorkspaceData(data) {
   state.matches = Array.isArray(data.matches) ? data.matches : [];
+  state.hiddenCompletedCount = data.summary?.hiddenCompleted ?? 0;
   if (data.meta) {
     state.seasons = data.meta.seasons || state.seasons;
     state.competitions = data.meta.competitions || state.competitions;
@@ -2781,7 +3416,11 @@ function renderActiveFilterSummary() {
   parts.push(state.filters.season === 'all' ? t('allSeasons') : state.filters.season);
   if (state.filters.team === 'M') parts.push(state.lang === 'th' ? 'ทีมชาย' : "Men's");
   if (state.filters.team === 'W') parts.push(state.lang === 'th' ? 'ทีมหญิง' : "Women's");
-  if (state.filters.status !== 'all') parts.push(state.filters.status);
+  if (state.filters.status === 'active') {
+    parts.push(state.lang === 'th' ? 'กำลังแข่ง & ใกล้แข่ง' : 'Live & Upcoming');
+  } else if (state.filters.status !== 'all') {
+    parts.push(state.filters.status);
+  }
   if (state.filters.competition !== 'all') parts.push(state.filters.competition);
   if (state.filters.month !== 'all') parts.push(`M${state.filters.month}`);
   if (state.filters.ha !== 'all') parts.push(state.filters.ha === 'H' ? 'Home' : 'Away');
@@ -2792,13 +3431,17 @@ function renderActiveFilterSummary() {
 }
 
 function renderMatchRowHtml(m, mode = 'list') {
-  const statusClass = m.status === 'completed' ? 'completed' : m.status === 'live' || m.status === 'halftime' ? 'live' : 'upcoming';
-  const statusLabel =
+  const statusClass = m.status === 'completed' ? 'completed' : m.status === 'halftime' ? 'halftime' : m.status === 'live' ? 'live' : 'upcoming';
+  const baseStatusLabel =
     statusClass === 'completed'
       ? t('statusCompleted')
+      : statusClass === 'halftime'
+      ? t('statusHalftime')
       : statusClass === 'live'
       ? t('statusLive')
       : t('statusUpcoming');
+  const clockSuffix = (m.status === 'live' || m.status === 'halftime') && m.clock ? ` · ${m.clock}` : '';
+  const statusLabel = `${baseStatusLabel}${clockSuffix}`;
 
   const isSelected = state.editingId && String(m.id) === String(state.editingId);
   const homeChelsea = String(m.home_team || '').toLowerCase().includes('chelsea');
@@ -2812,6 +3455,8 @@ function renderMatchRowHtml(m, mode = 'list') {
   const actionLabel =
     mode === 'modal'
       ? t('selectInModal')
+      : m.status === 'live' || m.status === 'halftime'
+      ? (state.lang === 'th' ? 'อัปเดตสด' : 'Live Update')
       : m.status === 'upcoming'
       ? t('enterResult')
       : t('editBtn');
@@ -2827,7 +3472,7 @@ function renderMatchRowHtml(m, mode = 'list') {
           <span aria-hidden="true">·</span>
           <span class="mono">${escapeHtml(m.team_type || 'M')}#${escapeHtml(m.id)}</span>
         </div>
-        <span class="mm-status-text ${statusClass}">${escapeHtml(statusLabel)}</span>
+        <span class="mm-status-text ${statusClass === 'halftime' ? 'live halftime' : statusClass}">${escapeHtml(statusLabel)}</span>
       </div>
 
       <div class="mm-row-teams">
@@ -2853,19 +3498,52 @@ function renderMatchRowHtml(m, mode = 'list') {
 function renderMatchList() {
   el.listCountLabel.textContent = t('itemsCount')(state.matches.length);
   if (state.matches.length === 0) {
+    const showCompletedOption = state.filters.status === 'active' && state.hiddenCompletedCount > 0;
     el.matchListContainer.innerHTML = `
       <div class="mm-state-box">
         <strong>${escapeHtml(t('emptyList'))}</strong>
-        <span>${escapeHtml(t('emptySub'))}</span>
-        <button type="button" class="mm-btn mm-btn-primary mm-btn-compact" id="emptyNewBtn">${escapeHtml(t('createNow'))}</button>
+        <span>${escapeHtml(showCompletedOption ? t('hiddenCompletedNote')(state.hiddenCompletedCount) : t('emptySub'))}</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+          ${showCompletedOption ? `<button type="button" class="mm-btn mm-btn-ghost mm-btn-compact" id="showCompletedMatchesBtn">${escapeHtml(t('showCompletedAction'))}</button>` : ''}
+          <button type="button" class="mm-btn mm-btn-primary mm-btn-compact" id="emptyNewBtn">${escapeHtml(t('createNow'))}</button>
+        </div>
       </div>
     `;
     const emptyBtn = document.getElementById('emptyNewBtn');
     if (emptyBtn) emptyBtn.addEventListener('click', () => resetForm('upcoming'));
+    const showCompBtn = document.getElementById('showCompletedMatchesBtn');
+    if (showCompBtn) {
+      showCompBtn.addEventListener('click', () => {
+        state.filters.status = 'completed';
+        syncQuickToolbarFromFilters();
+        loadWorkspaceMatches();
+      });
+    }
     return;
   }
 
-  el.matchListContainer.innerHTML = state.matches.map((m) => renderMatchRowHtml(m, 'list')).join('');
+  const hiddenNoteHtml =
+    state.filters.status === 'active' && state.hiddenCompletedCount > 0
+      ? `
+        <div class="mm-list-hidden-note">
+          <span>${escapeHtml(t('hiddenCompletedNote')(state.hiddenCompletedCount))}</span>
+          <button type="button" class="mm-btn mm-btn-ghost mm-btn-compact" id="showCompletedMatchesBtn">${escapeHtml(t('showCompletedAction'))}</button>
+        </div>
+      `
+      : '';
+
+  el.matchListContainer.innerHTML =
+    state.matches.map((m) => renderMatchRowHtml(m, 'list')).join('') + hiddenNoteHtml;
+
+  const showCompBtn = document.getElementById('showCompletedMatchesBtn');
+  if (showCompBtn) {
+    showCompBtn.addEventListener('click', () => {
+      state.filters.status = 'completed';
+      syncQuickToolbarFromFilters();
+      loadWorkspaceMatches();
+    });
+  }
+
   el.matchListContainer.querySelectorAll('.mm-match-row').forEach((row) => {
     const id = row.getAttribute('data-match-id');
     const match = state.matches.find((m) => String(m.id) === String(id));
@@ -2912,7 +3590,7 @@ function populateModalFilterOptions() {
 
 function syncModalInputsFromState(f) {
   el.modalSearchInput.value = f.search || '';
-  el.modalStatusSelect.value = f.status || 'all';
+  el.modalStatusSelect.value = f.status || 'active';
   el.modalTeamSelect.value = f.team || 'all';
   el.modalSeasonSelect.value = f.season || '2026/27';
   el.modalCompSelect.value = f.competition || 'all';
@@ -2921,7 +3599,7 @@ function syncModalInputsFromState(f) {
   el.modalOutcomeSelect.value = f.outcome || 'all';
   el.modalDateFrom.value = f.dateFrom || '';
   el.modalDateTo.value = f.dateTo || '';
-  el.modalSortSelect.value = f.sort || 'date_desc';
+  el.modalSortSelect.value = f.sort || 'priority';
 }
 
 function readFiltersFromModal() {
@@ -3051,6 +3729,8 @@ async function handleFormSubmit(e) {
       el.fieldId.readOnly = true;
       state.hadLineupsOnLoad = Boolean(savedMatch.lineups);
       state.lineupClearedExplicitly = false;
+      state.hadStatsOnLoad = Array.isArray(savedMatch.stats) && savedMatch.stats.length > 0;
+      state.statsClearedExplicitly = false;
     }
     state.cloudMatches = await window.KlknFirebase.getCloudMatches({ forceRefresh: true });
     applyWorkspaceData(buildFilteredResult(state.filters));
@@ -3151,6 +3831,20 @@ function wireEvents() {
   document.querySelectorAll('#statusSegControl .mm-seg-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       setFormStatus(btn.getAttribute('data-form-status'));
+    });
+  });
+
+  document.querySelectorAll('[data-clock-preset]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const preset = btn.getAttribute('data-clock-preset') || '';
+      if (el.fieldClock) el.fieldClock.value = preset;
+      if (preset === 'HT') {
+        setFormStatus('halftime');
+      } else if (preset === 'FT') {
+        setFormStatus('completed');
+      } else if (preset) {
+        setFormStatus('live');
+      }
     });
   });
 
@@ -3339,6 +4033,22 @@ function wireEvents() {
       team: g.team === 'home' ? 'away' : 'home',
     }));
 
+    state.events = state.events.map((ev) => ({
+      ...ev,
+      team: ev.team === 'home' ? 'away' : ev.team === 'away' ? 'home' : ev.team,
+    }));
+
+    if (state.statsMap) {
+      Object.keys(state.statsMap).forEach((k) => {
+        const pair = state.statsMap[k];
+        if (pair) {
+          const tmpH = pair.home;
+          pair.home = pair.away;
+          pair.away = tmpH;
+        }
+      });
+    }
+
     const tmpLineupHome = state.lineups.home;
     state.lineups.home = state.lineups.away;
     state.lineups.away = tmpLineupHome;
@@ -3350,7 +4060,9 @@ function wireEvents() {
     }
     updateTeamPreviews();
     renderGoalsEditor();
+    renderEventsEditor();
     renderLineupEditor();
+    renderStatsEditor();
   });
 
   el.fieldHomeTeam.addEventListener('input', () => {
@@ -3385,6 +4097,37 @@ function wireEvents() {
     });
     renderGoalsEditor();
   });
+
+  if (el.addEventBtn) {
+    el.addEventBtn.addEventListener('click', () => {
+      addQuickEvent('goal');
+    });
+  }
+
+  document.querySelectorAll('[data-event-preset]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const preset = btn.getAttribute('data-event-preset');
+      if (preset) addQuickEvent(preset);
+    });
+  });
+
+  if (el.syncGoalsToEventsBtn) {
+    el.syncGoalsToEventsBtn.addEventListener('click', syncGoalsIntoEvents);
+  }
+
+  if (el.statsAutoSyncBtn) {
+    el.statsAutoSyncBtn.addEventListener('click', autoSyncStatsFromForm);
+  }
+
+  if (el.statsClearBtn) {
+    el.statsClearBtn.addEventListener('click', () => {
+      state.statsMap = createEmptyStatsMap();
+      state.extraStats = [];
+      state.statsClearedExplicitly = true;
+      renderStatsEditor();
+      showToast(t('statsCleared'), 'success');
+    });
+  }
 
   // Pre-Match Line-up Events
   if (el.lineupSideTabs) {
@@ -3617,7 +4360,7 @@ function wireEvents() {
 
   el.modalResetFiltersBtn.addEventListener('click', () => {
     const defaults = {
-      status: 'all',
+      status: 'active',
       team: 'all',
       season: '2026/27',
       competition: 'all',
@@ -3627,7 +4370,7 @@ function wireEvents() {
       dateFrom: '',
       dateTo: '',
       search: '',
-      sort: 'date_desc',
+      sort: 'priority',
     };
     syncModalInputsFromState(defaults);
     renderModalPreviewList();
@@ -3693,6 +4436,7 @@ async function init() {
   renderCompetitionPickerMenu();
   populateTimeDropdownOptions();
   wireEvents();
+  syncQuickToolbarFromFilters();
   resetForm('upcoming');
   applyLanguage();
 
