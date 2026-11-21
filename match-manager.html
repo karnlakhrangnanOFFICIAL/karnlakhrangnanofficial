@@ -485,6 +485,12 @@
                   ⏱️ Timeline — เหตุการณ์สำคัญระหว่างแข่ง (Key Match Events)
                 </span>
                 <div class="mm-actions-group">
+                  <button type="button" class="mm-btn mm-btn-compact" id="sortEventsBtn" data-lang-th="↕️ เรียงตามเวลา" data-lang-en="↕️ Sort Time">
+                    ↕️ เรียงตามเวลา
+                  </button>
+                  <button type="button" class="mm-btn mm-btn-compact" id="toggleSubBuilderBtn" data-lang-th="🔄 เปลี่ยนตัวผู้เล่น" data-lang-en="🔄 Substitution">
+                    🔄 เปลี่ยนตัวผู้เล่น
+                  </button>
                   <button type="button" class="mm-btn mm-btn-compact" id="syncGoalsToEventsBtn" data-lang-th="ดึงประตูเข้า Timeline" data-lang-en="Sync Goals">
                     ดึงประตูเข้า Timeline
                   </button>
@@ -500,9 +506,72 @@
                 <button type="button" class="mm-btn mm-btn-compact" data-event-preset="yellow_card">🟨 Yellow</button>
                 <button type="button" class="mm-btn mm-btn-compact" data-event-preset="red_card">🟥 Red</button>
                 <button type="button" class="mm-btn mm-btn-compact" data-event-preset="substitution">🔄 Sub</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="added_time_45">⏱️ ทดเวลา 45+</button>
+                <button type="button" class="mm-btn mm-btn-compact" data-event-preset="added_time_90">⏱️ ทดเวลา 90+</button>
                 <button type="button" class="mm-btn mm-btn-compact" data-event-preset="var">📺 VAR</button>
                 <button type="button" class="mm-btn mm-btn-compact" data-event-preset="period_ht">⏸️ HT</button>
                 <button type="button" class="mm-btn mm-btn-compact" data-event-preset="period_ft">🏁 FT</button>
+              </div>
+
+              <div class="mm-event-workflow-hint" data-lang-th="วิธีใช้งานด่วน: เลือกทีม → กรอกหมายเลขเสื้อ # → ระบบระบุชื่อ-นามสกุลให้อัตโนมัติ (ดึงจาก Line-up ก่อนแข่งและฐานข้อมูลทีม) พร้อมเรียงลำดับตามเวลาอัตโนมัติ" data-lang-en="Fast Workflow: Select Team → Enter Shirt # → Auto-fills Full Name (from Line-up & Squad DB), sorted chronologically.">
+                วิธีใช้งานด่วน: เลือกทีม → กรอกหมายเลขเสื้อ # → ระบบระบุชื่อ-นามสกุลให้อัตโนมัติ (ดึงจาก Line-up ก่อนแข่งและฐานข้อมูลทีม) พร้อมเรียงลำดับตามเวลาอัตโนมัติ
+              </div>
+
+              <!-- DEDICATED SUBSTITUTION BUILDER (TEAM > NUMBER > FULL NAME) -->
+              <div class="mm-sub-builder" id="subQuickBuilder" hidden>
+                <div class="mm-sub-builder-head">
+                  <strong data-lang-th="🔄 เพิ่มการเปลี่ยนตัวผู้เล่น (ทีม → หมายเลขเสื้อ → ชื่อ-นามสกุล)" data-lang-en="🔄 Add Substitution (Team → Shirt # → Full Name)">
+                    🔄 เพิ่มการเปลี่ยนตัวผู้เล่น (ทีม → หมายเลขเสื้อ → ชื่อ-นามสกุล)
+                  </strong>
+                  <button type="button" class="mm-btn mm-btn-ghost mm-btn-compact" id="subQuickCloseBtn" data-lang-th="ปิด" data-lang-en="Close">ปิด</button>
+                </div>
+
+                <div class="mm-sub-builder-top">
+                  <div class="mm-sub-team-switch" role="group" aria-label="Substitution Team">
+                    <button type="button" class="mm-sub-team-btn active" id="subQuickHomeBtn" data-sub-team="home">
+                      <img src="assets/images/placeholder-team.svg" alt="" id="subQuickHomeLogo" />
+                      <span id="subQuickHomeName">Home</span>
+                    </button>
+                    <button type="button" class="mm-sub-team-btn" id="subQuickAwayBtn" data-sub-team="away">
+                      <img src="assets/images/placeholder-team.svg" alt="" id="subQuickAwayLogo" />
+                      <span id="subQuickAwayName">Away</span>
+                    </button>
+                  </div>
+
+                  <div class="mm-sub-time-wrap">
+                    <label for="subQuickMinute" data-lang-th="นาทีที่เปลี่ยน" data-lang-en="Minute">นาทีที่เปลี่ยน</label>
+                    <input type="text" class="mm-input mono" id="subQuickMinute" placeholder="เช่น 67 หรือ 90+2" />
+                  </div>
+
+                  <label class="mm-sub-injury-check">
+                    <input type="checkbox" id="subQuickInjury" />
+                    <span data-lang-th="🩹 เปลี่ยนเพราะบาดเจ็บ" data-lang-en="🩹 Injury Sub">🩹 เปลี่ยนเพราะบาดเจ็บ</span>
+                  </label>
+                </div>
+
+                <div class="mm-sub-pair-grid">
+                  <div class="mm-sub-card is-out">
+                    <div class="mm-sub-card-label" data-lang-th="↓ ผู้เล่นออก (OUT)" data-lang-en="↓ Player OUT">↓ ผู้เล่นออก (OUT)</div>
+                    <div class="mm-sub-player-inputs">
+                      <input type="text" inputmode="numeric" class="mm-input mono" id="subQuickOutNum" placeholder="#" title="กรอกหมายเลขเสื้อ # เพื่อดึงชื่อ-นามสกุลอัตโนมัติ" />
+                      <input type="text" class="mm-input" id="subQuickOutName" placeholder="ชื่อ-นามสกุล (ผู้เล่นออก)" />
+                    </div>
+                  </div>
+                  <div class="mm-sub-card is-in">
+                    <div class="mm-sub-card-label" data-lang-th="↑ ผู้เล่นลงสนาม (IN)" data-lang-en="↑ Player IN">↑ ผู้เล่นลงสนาม (IN)</div>
+                    <div class="mm-sub-player-inputs">
+                      <input type="text" inputmode="numeric" class="mm-input mono" id="subQuickInNum" placeholder="#" title="กรอกหมายเลขเสื้อ # เพื่อดึงชื่อ-นามสกุลอัตโนมัติ" />
+                      <input type="text" class="mm-input" id="subQuickInName" placeholder="ชื่อ-นามสกุล (ผู้เล่นเข้า)" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mm-sub-builder-foot">
+                  <span class="mm-panel-meta" id="subQuickHint"></span>
+                  <button type="button" class="mm-btn mm-btn-primary mm-btn-compact" id="subQuickAddBtn" data-lang-th="+ เพิ่มเปลี่ยนตัวเข้า Timeline" data-lang-en="+ Add Substitution to Timeline">
+                    + เพิ่มเปลี่ยนตัวเข้า Timeline
+                  </button>
+                </div>
               </div>
 
               <div class="mm-events-list" id="eventsListContainer"></div>
@@ -730,6 +799,10 @@
     <datalist id="playersDatalist"></datalist>
     <datalist id="lineupPlayersDatalist"></datalist>
     <datalist id="lineupNumbersDatalist"></datalist>
+    <datalist id="eventHomePlayersDatalist"></datalist>
+    <datalist id="eventHomeNumbersDatalist"></datalist>
+    <datalist id="eventAwayPlayersDatalist"></datalist>
+    <datalist id="eventAwayNumbersDatalist"></datalist>
 
     <!-- ==================== FILTER & SELECTION MENU WINDOW (MODAL) ==================== -->
     <div

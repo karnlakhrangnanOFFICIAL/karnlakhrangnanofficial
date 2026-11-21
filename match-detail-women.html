@@ -920,13 +920,21 @@
             return keyTypes.has(String(ev.type || "").toLowerCase());
           });
           const parseMinSort = function (ev) {
-            if (String(ev.display_minute || "").toUpperCase() === "FT") return 999;
-            if (String(ev.display_minute || "").toUpperCase() === "HT") return 45.99;
-            const raw = ev.display_minute || ev.minute;
-            if (typeof raw === "number") return raw;
-            if (typeof raw === "string" && raw.trim() !== "") {
-              const parts = raw.split("+");
-              return (parseFloat(parts[0]) || 0) + (parts[1] ? (parseFloat(parts[1]) || 0) / 100 : 0);
+            const type = String(ev.type || "").toLowerCase();
+            if (type === "kick_off" || type === "kickoff") return -1;
+            const rawStr = String(ev.display_minute ?? ev.minute ?? "").trim().replace(/'$/, "");
+            const upper = rawStr.toUpperCase();
+            if (upper === "FT" || type === "full_time") return 999;
+            if (upper === "HT") return 45.99;
+            if (rawStr !== "") {
+              if (rawStr.indexOf("+") >= 0) {
+                const parts = rawStr.split("+");
+                const base = parseFloat(parts[0]) || 0;
+                const add = parseFloat(parts[1]) || 0;
+                return base + (add > 0 ? Math.min(add, 90) / 100 : 0.001);
+              }
+              const n = parseFloat(rawStr);
+              if (!isNaN(n)) return type === "added_time" ? n + 0.001 : n;
             }
             return -1;
           };
@@ -962,10 +970,15 @@
             else if (type === "substitution") rowCls = "is-sub";
 
             let playerText = ev.player || "";
+            let typeDetailText = ev.detail || ev.type || "";
             if (type === "substitution") {
               const pIn = ev.player_in || ev.player || "";
               const pOut = ev.player_out || ev.replaced || "";
               playerText = (pIn ? "↑ " + pIn : "") + (pOut ? (pIn ? "  /  " : "") + "↓ " + pOut : "");
+              typeDetailText = ev.injury ? (isTh ? "เปลี่ยนตัว (บาดเจ็บ)" : "Substitution (Injury)") : (isTh ? "เปลี่ยนตัว" : "Substitution");
+            } else if (type === "added_time") {
+              playerText = isTh ? "ทดเวลาบาดเจ็บ" : "Added Time";
+              typeDetailText = ev.detail || (ev.added_minutes ? "+" + ev.added_minutes + (isTh ? " นาที" : " min") : "");
             } else if (!playerText && ev.detail) {
               playerText = ev.detail;
             }
@@ -981,7 +994,7 @@
                 '<span class="event-min">' + minStr + '</span>' +
                 teamCell +
                 '<span class="event-player">' + esc(primaryDisplay) + '</span>' +
-                '<span class="event-type">' + esc(ev.detail || ev.type || "") + '</span>' +
+                '<span class="event-type">' + esc(typeDetailText) + '</span>' +
               '</div>'
             );
           }).join("") + '</div>';

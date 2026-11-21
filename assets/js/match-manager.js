@@ -95,14 +95,27 @@ const I18N = {
     hiddenCompletedNote: (n) => `ซ่อนแมตช์ที่จบเกมแล้ว ${n} รายการ เพื่อความคล่องตัวของแอดมิน`,
     showCompletedAction: 'ดูแมตช์ที่จบแล้ว',
     noEvents: 'ยังไม่มีเหตุการณ์สำคัญ (Timeline) — กดปุ่มลัดด้านบนหรือ "+ เพิ่มเหตุการณ์"',
-    eventMinPlaceholder: "นาที / HT / FT",
-    eventPlayerPlaceholder: 'ชื่อนักเตะ',
-    eventSubInPlaceholder: 'ผู้เล่นลงสนาม (In)',
-    eventSubOutPlaceholder: 'ผู้เล่นออก (Out)',
-    eventAssistPlaceholder: 'แอสซิสต์ / รายละเอียด',
+    eventMinPlaceholder: 'นาที / HT / FT',
+    eventNumPlaceholder: '#',
+    eventOutNumPlaceholder: '#ออก',
+    eventInNumPlaceholder: '#เข้า',
+    eventAssistNumPlaceholder: '#A',
+    eventPlayerPlaceholder: 'ชื่อ-นามสกุล',
+    eventSubInPlaceholder: 'ชื่อ-นามสกุล (ลงสนาม)',
+    eventSubOutPlaceholder: 'ชื่อ-นามสกุล (ออก)',
+    eventAssistPlaceholder: 'แอสซิสต์ (ชื่อ-นามสกุล)',
     eventDetailPlaceholder: 'รายละเอียดเหตุการณ์',
+    eventAddedMinsPlaceholder: '+นาที',
+    eventInjuryBtn: '🩹 บาดเจ็บ',
     neutralSide: 'กลาง / ทั้งสนาม',
     eventsSyncedFromGoals: (n) => `นำรายชื่อผู้ทำประตู ${n} ประตูเข้า Timeline แล้ว`,
+    eventSortedToast: 'เรียงลำดับเหตุการณ์ตามเวลาแล้ว',
+    subAddedToast: (pIn, pOut, min) => `เพิ่มเปลี่ยนตัว: ↑ ${pIn || '-'} แทน ↓ ${pOut || '-'}${min ? ` (${min}')` : ''}`,
+    subValidationError: 'กรุณาระบุชื่อหรือหมายเลขเสื้อผู้เล่นเข้า-ออกอย่างน้อย 1 คน',
+    subOutQuickPlaceholder: 'ชื่อ-นามสกุล (ผู้เล่นออก)',
+    subInQuickPlaceholder: 'ชื่อ-นามสกุล (ผู้เล่นเข้า)',
+    subQuickHintText: 'กรอกหมายเลขเสื้อ # เพื่อดึงชื่อ-นามสกุลจาก Line-up / ฐานข้อมูลทีมทันที',
+    addedTimeTitle: (mins) => (mins ? `ทดเวลาบาดเจ็บ +${mins} นาที` : 'ทดเวลาบาดเจ็บ'),
     statsCleared: 'ล้างค่าสถิติแล้ว',
     statsAutoSynced: 'อัปเดตประตูและใบเหลือง/แดงเข้าตารางสถิติแล้ว',
     dbConnected: 'เชื่อมต่อ Firestore ออนไลน์ (Real-time)',
@@ -183,14 +196,27 @@ const I18N = {
     hiddenCompletedNote: (n) => `${n} completed matches hidden to keep active workflow focused`,
     showCompletedAction: 'Show Completed',
     noEvents: 'No Key Match Events recorded yet — use quick presets above or "+ Add Event".',
-    eventMinPlaceholder: "Min / HT / FT",
-    eventPlayerPlaceholder: 'Player name',
-    eventSubInPlaceholder: 'Player In',
-    eventSubOutPlaceholder: 'Player Out',
-    eventAssistPlaceholder: 'Assist / Note',
+    eventMinPlaceholder: 'Min / HT / FT',
+    eventNumPlaceholder: '#',
+    eventOutNumPlaceholder: '#Out',
+    eventInNumPlaceholder: '#In',
+    eventAssistNumPlaceholder: '#A',
+    eventPlayerPlaceholder: 'Full name',
+    eventSubInPlaceholder: 'Full name (IN)',
+    eventSubOutPlaceholder: 'Full name (OUT)',
+    eventAssistPlaceholder: 'Assist (Full name)',
     eventDetailPlaceholder: 'Event detail',
+    eventAddedMinsPlaceholder: '+Min',
+    eventInjuryBtn: '🩹 Injury',
     neutralSide: 'Neutral / Pitch',
     eventsSyncedFromGoals: (n) => `Synced ${n} goal(s) into Timeline.`,
+    eventSortedToast: 'Timeline events sorted chronologically.',
+    subAddedToast: (pIn, pOut, min) => `Added sub: ↑ ${pIn || '-'} for ↓ ${pOut || '-'}${min ? ` (${min}')` : ''}`,
+    subValidationError: 'Please enter at least one player name or shirt # for the substitution.',
+    subOutQuickPlaceholder: 'Full name (Player OUT)',
+    subInQuickPlaceholder: 'Full name (Player IN)',
+    subQuickHintText: 'Enter shirt # to auto-resolve full name from Line-up / Squad DB.',
+    addedTimeTitle: (mins) => (mins ? `Added Time: +${mins} min` : 'Added Time'),
     statsCleared: 'Match stats cleared.',
     statsAutoSynced: 'Updated Goals & Cards in Match Stats.',
     dbConnected: 'Firestore Connected (Real-time)',
@@ -283,6 +309,7 @@ const state = {
   hadStatsOnLoad: false,
   statsClearedExplicitly: false,
   hiddenCompletedCount: 0,
+  subQuickTeam: 'home',
   activeLineupSide: 'home',
   lineupPreviewVisible: true,
   hadLineupsOnLoad: false,
@@ -400,9 +427,27 @@ const el = {
   addGoalBtn: document.getElementById('addGoalBtn'),
   goalsListContainer: document.getElementById('goalsListContainer'),
   eventsSection: document.getElementById('eventsSection'),
+  sortEventsBtn: document.getElementById('sortEventsBtn'),
+  toggleSubBuilderBtn: document.getElementById('toggleSubBuilderBtn'),
   syncGoalsToEventsBtn: document.getElementById('syncGoalsToEventsBtn'),
   addEventBtn: document.getElementById('addEventBtn'),
   eventsListContainer: document.getElementById('eventsListContainer'),
+  subQuickBuilder: document.getElementById('subQuickBuilder'),
+  subQuickCloseBtn: document.getElementById('subQuickCloseBtn'),
+  subQuickHomeBtn: document.getElementById('subQuickHomeBtn'),
+  subQuickHomeLogo: document.getElementById('subQuickHomeLogo'),
+  subQuickHomeName: document.getElementById('subQuickHomeName'),
+  subQuickAwayBtn: document.getElementById('subQuickAwayBtn'),
+  subQuickAwayLogo: document.getElementById('subQuickAwayLogo'),
+  subQuickAwayName: document.getElementById('subQuickAwayName'),
+  subQuickMinute: document.getElementById('subQuickMinute'),
+  subQuickInjury: document.getElementById('subQuickInjury'),
+  subQuickOutNum: document.getElementById('subQuickOutNum'),
+  subQuickOutName: document.getElementById('subQuickOutName'),
+  subQuickInNum: document.getElementById('subQuickInNum'),
+  subQuickInName: document.getElementById('subQuickInName'),
+  subQuickHint: document.getElementById('subQuickHint'),
+  subQuickAddBtn: document.getElementById('subQuickAddBtn'),
   statsSection: document.getElementById('statsSection'),
   statsAutoSyncBtn: document.getElementById('statsAutoSyncBtn'),
   statsClearBtn: document.getElementById('statsClearBtn'),
@@ -452,6 +497,10 @@ const el = {
   playersDatalist: document.getElementById('playersDatalist'),
   lineupPlayersDatalist: document.getElementById('lineupPlayersDatalist'),
   lineupNumbersDatalist: document.getElementById('lineupNumbersDatalist'),
+  eventHomePlayersDatalist: document.getElementById('eventHomePlayersDatalist'),
+  eventHomeNumbersDatalist: document.getElementById('eventHomeNumbersDatalist'),
+  eventAwayPlayersDatalist: document.getElementById('eventAwayPlayersDatalist'),
+  eventAwayNumbersDatalist: document.getElementById('eventAwayNumbersDatalist'),
 
   filterMenuModal: document.getElementById('filterMenuModal'),
   closeFilterMenuBtn: document.getElementById('closeFilterMenuBtn'),
@@ -642,6 +691,7 @@ function applyLanguage() {
   syncCompetitionPickerUI();
   populateTimeDropdownOptions();
   updateTimeSyncHints();
+  syncSubQuickBuilderUI();
   renderGoalsEditor();
   renderEventsEditor();
   renderStatsEditor();
@@ -1087,6 +1137,8 @@ function updateTeamPreviews() {
   if (el.lineupTabAwayName) el.lineupTabAwayName.textContent = awayName;
 
   updateLineupSideUI();
+  populateEventTeamDatalists();
+  syncSubQuickBuilderUI();
   renderLineupLivePreview();
 }
 
@@ -1112,6 +1164,7 @@ function populatePlayersDatalist() {
     .filter((p) => p && p.name && String(p.position || '').toLowerCase() !== 'head coach')
     .map((p) => `<option value="${escapeHtml(p.name)}">#${escapeHtml(p.number ?? '')} · ${escapeHtml(p.position || '')}</option>`);
   el.playersDatalist.innerHTML = options.join('');
+  populateEventTeamDatalists();
 }
 
 function renderChannelsGrid() {
@@ -1210,9 +1263,229 @@ function isNeutralEventType(evType) {
   return evType === 'kick_off' || evType === 'added_time' || evType === 'period' || evType === 'full_time';
 }
 
+function getEventTeamRosterPool(side, preferRole = null) {
+  if (side !== 'home' && side !== 'away') return [];
+  const sideData = state.lineups?.[side] || { starting: [], substitutes: [] };
+  const combined = [];
+  const seen = new Set();
+
+  const pushEntry = (num, name, pos, role) => {
+    const cleanName = String(name || '').replace(/\s*\(C\)/gi, '').replace(/\s*\(GK\)/gi, '').trim();
+    const cleanNum = num !== null && num !== undefined ? String(num).trim() : '';
+    if (!cleanName && !cleanNum) return;
+    const key = `${normalizePlayerNameForMatch(cleanName)}|${cleanNum}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    combined.push({
+      number: cleanNum,
+      name: cleanName,
+      position: String(pos || '').trim(),
+      role: role || '',
+    });
+  };
+
+  if (preferRole === 'sub') {
+    (sideData.substitutes || []).forEach((p) => pushEntry(p?.number, p?.name, p?.position, 'sub'));
+    (sideData.starting || []).forEach((p) => pushEntry(p?.number, p?.name, p?.position, 'starter'));
+  } else {
+    (sideData.starting || []).forEach((p) => pushEntry(p?.number, p?.name, p?.position, 'starter'));
+    (sideData.substitutes || []).forEach((p) => pushEntry(p?.number, p?.name, p?.position, 'sub'));
+  }
+
+  const dbPool = typeof getSquadPoolForSide === 'function' ? getSquadPoolForSide(side) : [];
+  dbPool.forEach((p) => pushEntry(p?.number, p?.name, p?.position, ''));
+  return combined;
+}
+
+function resolveEventPlayerByNumber(side, rawNum, preferRole = null) {
+  if (side !== 'home' && side !== 'away') return null;
+  const numStr = String(rawNum ?? '').trim();
+  if (!numStr) return null;
+  const parsedTarget = /^\d+$/.test(numStr) ? parseInt(numStr, 10) : null;
+  const pool = getEventTeamRosterPool(side, preferRole);
+  if (pool.length === 0) return null;
+
+  const matches = pool.filter((p) => {
+    const pStr = String(p.number ?? '').trim();
+    if (!pStr) return false;
+    if (pStr === numStr) return true;
+    if (parsedTarget !== null && /^\d+$/.test(pStr) && parseInt(pStr, 10) === parsedTarget) return true;
+    return false;
+  });
+
+  if (matches.length === 0) return null;
+  if (preferRole) {
+    const roleHit = matches.find((m) => m.role === preferRole && m.name);
+    if (roleHit) return roleHit;
+  }
+  const lineupHit = matches.find((m) => (m.role === 'starter' || m.role === 'sub') && m.name);
+  if (lineupHit) return lineupHit;
+  return matches.find((m) => m.name) || matches[0];
+}
+
+function resolveEventNumberByName(side, rawName, preferRole = null) {
+  if (side !== 'home' && side !== 'away') return '';
+  const clean = String(rawName || '').replace(/\s*\(C\)/gi, '').replace(/\s*\(GK\)/gi, '').trim();
+  const norm = typeof normalizePlayerNameForMatch === 'function' ? normalizePlayerNameForMatch(clean) : clean.toLowerCase();
+  if (!norm) return '';
+  const pool = getEventTeamRosterPool(side, preferRole);
+  const exact = pool.find((p) => {
+    const pNorm = typeof normalizePlayerNameForMatch === 'function' ? normalizePlayerNameForMatch(p.name) : String(p.name || '').toLowerCase();
+    return pNorm === norm && p.number !== '';
+  });
+  if (exact) return String(exact.number);
+  const partial = pool.find((p) => {
+    const pNorm = typeof normalizePlayerNameForMatch === 'function' ? normalizePlayerNameForMatch(p.name) : String(p.name || '').toLowerCase();
+    return p.number !== '' && pNorm.includes(norm) && norm.length >= 4;
+  });
+  return partial ? String(partial.number) : '';
+}
+
+function getEventDatalistIdsForSide(side) {
+  if (side === 'home') {
+    return { players: 'eventHomePlayersDatalist', numbers: 'eventHomeNumbersDatalist' };
+  }
+  if (side === 'away') {
+    return { players: 'eventAwayPlayersDatalist', numbers: 'eventAwayNumbersDatalist' };
+  }
+  return { players: '', numbers: '' };
+}
+
+function populateEventTeamDatalists() {
+  const fillSide = (side, playersEl, numbersEl) => {
+    const pool = getEventTeamRosterPool(side);
+    if (playersEl) {
+      playersEl.innerHTML = pool
+        .filter((p) => p.name)
+        .map((p) => {
+          const roleTag = p.role === 'starter' ? 'XI' : p.role === 'sub' ? 'SUB' : (p.position || '');
+          return `<option value="${escapeHtml(p.name)}">${p.number ? `#${escapeHtml(p.number)} · ` : ''}${escapeHtml(roleTag)}</option>`;
+        })
+        .join('');
+    }
+    if (numbersEl) {
+      const seenNum = new Set();
+      numbersEl.innerHTML = pool
+        .filter((p) => p.number !== '' && p.name)
+        .filter((p) => {
+          const k = `${p.number}|${p.name.toLowerCase()}`;
+          if (seenNum.has(k)) return false;
+          seenNum.add(k);
+          return true;
+        })
+        .map((p) => {
+          const roleTag = p.role === 'starter' ? 'XI' : p.role === 'sub' ? 'SUB' : '';
+          return `<option value="${escapeHtml(p.number)}">${escapeHtml(p.name)}${roleTag ? ` (${roleTag})` : ''}</option>`;
+        })
+        .join('');
+    }
+  };
+
+  fillSide('home', el.eventHomePlayersDatalist, el.eventHomeNumbersDatalist);
+  fillSide('away', el.eventAwayPlayersDatalist, el.eventAwayNumbersDatalist);
+}
+
+function getEventSortWeight(ev) {
+  if (!ev || typeof ev !== 'object') return 9999;
+  const raw = String(ev.minute ?? ev.display_minute ?? '').trim().replace(/'$/, '');
+  const upper = raw.toUpperCase();
+  const eType = String(ev.type || '').toLowerCase();
+
+  if (!raw) {
+    if (eType === 'kick_off') return -1;
+    if (eType === 'full_time') return 999;
+    return 9999;
+  }
+  if (eType === 'kick_off' || upper === 'KO') return -1;
+  if (upper === 'HT') return 45.99;
+  if (upper === 'FT' || eType === 'full_time') return 999;
+  if (upper === 'ET HT' || upper === 'AET HT') return 105.99;
+  if (upper === 'AET') return 120.99;
+  if (upper === 'PEN' || /^P\d+$/i.test(upper)) {
+    const pNum = parseInt(upper.replace(/[^0-9]/g, ''), 10);
+    return 1000 + (isNaN(pNum) ? 0 : pNum / 100);
+  }
+
+  if (raw.includes('+')) {
+    const parts = raw.split('+');
+    const base = parseInt(parts[0], 10);
+    const add = parseInt(parts[1], 10);
+    if (!isNaN(base)) {
+      if (eType === 'added_time' && (isNaN(add) || parts[1].trim() === '')) {
+        return base + 0.001;
+      }
+      return base + (isNaN(add) ? 0.001 : Math.min(add, 90) / 100);
+    }
+  }
+
+  const num = parseFloat(raw);
+  if (!isNaN(num)) {
+    if (eType === 'added_time') return num + 0.001;
+    return num;
+  }
+  return 9998;
+}
+
+function sortEventsArrayChronologically(list) {
+  if (!Array.isArray(list)) return [];
+  return list
+    .map((ev, index) => ({ ev, index, weight: getEventSortWeight(ev) }))
+    .sort((a, b) => {
+      if (a.weight !== b.weight) return a.weight - b.weight;
+      return a.index - b.index;
+    })
+    .map((item) => item.ev);
+}
+
+function sortEventsChronologically(showFeedback = false) {
+  state.events = sortEventsArrayChronologically(state.events);
+  renderEventsEditor();
+  if (showFeedback) {
+    showToast(t('eventSortedToast'), 'success');
+  }
+}
+
+function hydrateEventNumbersFromRoster(ev) {
+  if (!ev || (ev.team !== 'home' && ev.team !== 'away')) return ev;
+  if (ev.type === 'substitution') {
+    if (!ev.player_in_number && ev.player) {
+      const inNum = resolveEventNumberByName(ev.team, ev.player, 'sub');
+      if (inNum) ev.player_in_number = inNum;
+    }
+    if (!ev.player_out_number && ev.secondary) {
+      const outNum = resolveEventNumberByName(ev.team, ev.secondary, 'starter');
+      if (outNum) ev.player_out_number = outNum;
+    }
+  } else if (!isNeutralEventType(ev.type)) {
+    if (!ev.number && ev.player) {
+      const pNum = resolveEventNumberByName(ev.team, ev.player);
+      if (pNum) ev.number = pNum;
+    }
+    if ((ev.type === 'goal' || ev.type === 'penalty') && !ev.assist_number && ev.secondary) {
+      const aNum = resolveEventNumberByName(ev.team, ev.secondary);
+      if (aNum) ev.assist_number = aNum;
+    }
+  }
+  return ev;
+}
+
 function normalizeEventForState(ev) {
   if (!ev || typeof ev !== 'object') {
-    return { minute: '', display_minute: '', type: 'goal', team: 'home', player: '', secondary: '', detail: '', _extra: {} };
+    return {
+      minute: '',
+      type: 'goal',
+      team: 'home',
+      number: '',
+      player: '',
+      secondary: '',
+      assist_number: '',
+      player_in_number: '',
+      player_out_number: '',
+      added_minutes: '',
+      injury: false,
+      detail: '',
+      _extra: {},
+    };
   }
   let eType = String(ev.type || 'goal').trim().toLowerCase();
   if (eType === 'card') {
@@ -1241,43 +1514,291 @@ function normalizeEventForState(ev) {
     ? (ev.player_out || ev.replaced || '')
     : (ev.assist || ev.detail || '');
 
-  const { type, team, minute, display_minute, player, player_in, player_out, replaced, assist, detail, ...rest } = ev;
+  let addedMinsVal = ev.added_minutes !== undefined && ev.added_minutes !== null ? String(ev.added_minutes).trim() : '';
+  if (eType === 'added_time' && !addedMinsVal && secondaryVal) {
+    const mAdd = String(secondaryVal).match(/\+\s*(\d+)/);
+    if (mAdd) addedMinsVal = mAdd[1];
+  }
+
+  const isInjury = Boolean(
+    ev.injury === true ||
+    (eType === 'substitution' && /injury|injured|บาดเจ็บ/i.test(`${ev.player_out || ''} ${ev.detail || ''}`))
+  );
+
+  const {
+    type,
+    team,
+    minute,
+    display_minute,
+    player,
+    player_in,
+    player_out,
+    replaced,
+    assist,
+    detail,
+    number,
+    player_number,
+    assist_number,
+    player_in_number,
+    in_number,
+    player_out_number,
+    out_number,
+    added_minutes,
+    injury,
+    ...rest
+  } = ev;
+
   return {
     minute: minuteStr,
     type: eType,
     team: teamVal,
+    number: number !== undefined && number !== null ? String(number) : (player_number !== undefined && player_number !== null ? String(player_number) : ''),
     player: String(playerVal || ''),
     secondary: String(secondaryVal || ''),
+    assist_number: assist_number !== undefined && assist_number !== null ? String(assist_number) : '',
+    player_in_number: player_in_number !== undefined && player_in_number !== null ? String(player_in_number) : (in_number !== undefined && in_number !== null ? String(in_number) : ''),
+    player_out_number: player_out_number !== undefined && player_out_number !== null ? String(player_out_number) : (out_number !== undefined && out_number !== null ? String(out_number) : ''),
+    added_minutes: addedMinsVal,
+    injury: isInjury,
     detail: String(detail || ''),
     _extra: rest,
   };
 }
 
+function syncSubQuickBuilderUI() {
+  if (!el.subQuickBuilder) return;
+  const homeName = el.fieldHomeTeam?.value.trim() || t('homeSide');
+  const awayName = el.fieldAwayTeam?.value.trim() || t('awaySide');
+  const homeLogo = el.fieldHomeLogo?.value.trim() || 'assets/images/placeholder-team.svg';
+  const awayLogo = el.fieldAwayLogo?.value.trim() || 'assets/images/placeholder-team.svg';
+
+  if (el.subQuickHomeName) el.subQuickHomeName.textContent = homeName;
+  if (el.subQuickAwayName) el.subQuickAwayName.textContent = awayName;
+  if (el.subQuickHomeLogo) {
+    el.subQuickHomeLogo.src = homeLogo;
+    el.subQuickHomeLogo.onerror = () => { el.subQuickHomeLogo.src = 'assets/images/placeholder-team.svg'; };
+  }
+  if (el.subQuickAwayLogo) {
+    el.subQuickAwayLogo.src = awayLogo;
+    el.subQuickAwayLogo.onerror = () => { el.subQuickAwayLogo.src = 'assets/images/placeholder-team.svg'; };
+  }
+
+  const activeSide = state.subQuickTeam === 'away' ? 'away' : 'home';
+  el.subQuickHomeBtn?.classList.toggle('active', activeSide === 'home');
+  el.subQuickAwayBtn?.classList.toggle('active', activeSide === 'away');
+
+  const lists = getEventDatalistIdsForSide(activeSide);
+  if (el.subQuickOutNum) el.subQuickOutNum.setAttribute('list', lists.numbers);
+  if (el.subQuickInNum) el.subQuickInNum.setAttribute('list', lists.numbers);
+  if (el.subQuickOutName) {
+    el.subQuickOutName.setAttribute('list', lists.players);
+    el.subQuickOutName.placeholder = t('subOutQuickPlaceholder');
+  }
+  if (el.subQuickInName) {
+    el.subQuickInName.setAttribute('list', lists.players);
+    el.subQuickInName.placeholder = t('subInQuickPlaceholder');
+  }
+  if (el.subQuickHint) {
+    el.subQuickHint.textContent = t('subQuickHintText');
+  }
+}
+
+function setSubQuickTeam(side) {
+  state.subQuickTeam = side === 'away' ? 'away' : 'home';
+  syncSubQuickBuilderUI();
+  if (el.subQuickOutNum?.value.trim()) {
+    const matchedOut = resolveEventPlayerByNumber(state.subQuickTeam, el.subQuickOutNum.value, 'starter');
+    if (matchedOut && el.subQuickOutName) el.subQuickOutName.value = matchedOut.name;
+  }
+  if (el.subQuickInNum?.value.trim()) {
+    const matchedIn = resolveEventPlayerByNumber(state.subQuickTeam, el.subQuickInNum.value, 'sub');
+    if (matchedIn && el.subQuickInName) el.subQuickInName.value = matchedIn.name;
+  }
+}
+
+function openSubQuickBuilder(forceOpen = null) {
+  if (!el.subQuickBuilder) return;
+  const shouldOpen = forceOpen !== null ? Boolean(forceOpen) : el.subQuickBuilder.hidden;
+  el.subQuickBuilder.hidden = !shouldOpen;
+  if (el.toggleSubBuilderBtn) {
+    el.toggleSubBuilderBtn.classList.toggle('active', shouldOpen);
+  }
+  if (shouldOpen) {
+    const defaultSide = isSideChelsea('away') && !isSideChelsea('home') ? 'away' : 'home';
+    if (!state.subQuickTeam) state.subQuickTeam = defaultSide;
+    syncSubQuickBuilderUI();
+    const clockRaw = String(el.fieldClock?.value || '').trim().replace(/'$/, '');
+    if (el.subQuickMinute && !el.subQuickMinute.value.trim() && clockRaw && clockRaw !== 'HT' && clockRaw !== 'FT') {
+      el.subQuickMinute.value = clockRaw;
+    }
+    el.subQuickOutNum?.focus();
+  }
+}
+
+function handleSubQuickAdd() {
+  const side = state.subQuickTeam === 'away' ? 'away' : 'home';
+  const minVal = String(el.subQuickMinute?.value || '').trim().replace(/'$/, '');
+  let outNum = String(el.subQuickOutNum?.value || '').trim();
+  let outName = String(el.subQuickOutName?.value || '').trim();
+  let inNum = String(el.subQuickInNum?.value || '').trim();
+  let inName = String(el.subQuickInName?.value || '').trim();
+  const isInjury = Boolean(el.subQuickInjury?.checked);
+
+  if (!outName && outNum) {
+    const matchedOut = resolveEventPlayerByNumber(side, outNum, 'starter');
+    if (matchedOut) outName = matchedOut.name;
+  }
+  if (!inName && inNum) {
+    const matchedIn = resolveEventPlayerByNumber(side, inNum, 'sub');
+    if (matchedIn) inName = matchedIn.name;
+  }
+  if (!outNum && outName) outNum = resolveEventNumberByName(side, outName, 'starter');
+  if (!inNum && inName) inNum = resolveEventNumberByName(side, inName, 'sub');
+
+  if (!outName && !inName && !outNum && !inNum) {
+    showToast(t('subValidationError'), 'error');
+    el.subQuickOutNum?.focus();
+    return;
+  }
+
+  state.events.push({
+    minute: minVal,
+    type: 'substitution',
+    team: side,
+    number: inNum,
+    player: inName || (inNum ? `#${inNum}` : ''),
+    secondary: outName || (outNum ? `#${outNum}` : ''),
+    assist_number: '',
+    player_in_number: inNum,
+    player_out_number: outNum,
+    added_minutes: '',
+    injury: isInjury,
+    detail: isInjury ? 'Injury' : '',
+    _extra: {},
+  });
+
+  sortEventsChronologically(false);
+  showToast(t('subAddedToast')(inName || `#${inNum}`, outName || `#${outNum}`, minVal), 'success');
+
+  if (el.subQuickOutNum) el.subQuickOutNum.value = '';
+  if (el.subQuickOutName) el.subQuickOutName.value = '';
+  if (el.subQuickInNum) el.subQuickInNum.value = '';
+  if (el.subQuickInName) el.subQuickInName.value = '';
+  if (el.subQuickInjury) el.subQuickInjury.checked = false;
+  el.subQuickOutNum?.focus();
+}
+
 function createQuickEventObject(presetKey) {
   const clockRaw = String(el.fieldClock?.value || '').trim().replace(/'$/, '');
+  const defaultSide = isSideChelsea('away') && !isSideChelsea('home') ? 'away' : 'home';
+
   if (presetKey === 'kick_off') {
-    return { minute: '0', type: 'kick_off', team: 'neutral', player: '', secondary: state.lang === 'th' ? 'เริ่มต้นการแข่งขัน' : 'First Half Begins', detail: '', _extra: {} };
+    return {
+      minute: '0',
+      type: 'kick_off',
+      team: 'neutral',
+      number: '',
+      player: '',
+      secondary: state.lang === 'th' ? 'เริ่มต้นการแข่งขัน' : 'First Half Begins',
+      assist_number: '',
+      player_in_number: '',
+      player_out_number: '',
+      added_minutes: '',
+      injury: false,
+      detail: '',
+      _extra: {},
+    };
   }
   if (presetKey === 'period_ht') {
-    return { minute: 'HT', type: 'period', team: 'neutral', player: '', secondary: state.lang === 'th' ? 'พักครึ่งเวลา (Half Time)' : 'Half Time', detail: '', _extra: {} };
+    return {
+      minute: 'HT',
+      type: 'period',
+      team: 'neutral',
+      number: '',
+      player: '',
+      secondary: state.lang === 'th' ? 'พักครึ่งเวลา (Half Time)' : 'Half Time',
+      assist_number: '',
+      player_in_number: '',
+      player_out_number: '',
+      added_minutes: '',
+      injury: false,
+      detail: '',
+      _extra: {},
+    };
   }
   if (presetKey === 'period_ft') {
-    return { minute: 'FT', type: 'period', team: 'neutral', player: '', secondary: state.lang === 'th' ? 'จบการแข่งขัน (Full Time)' : 'Full Time', detail: '', _extra: {} };
+    return {
+      minute: 'FT',
+      type: 'period',
+      team: 'neutral',
+      number: '',
+      player: '',
+      secondary: state.lang === 'th' ? 'จบการแข่งขัน (Full Time)' : 'Full Time',
+      assist_number: '',
+      player_in_number: '',
+      player_out_number: '',
+      added_minutes: '',
+      injury: false,
+      detail: '',
+      _extra: {},
+    };
   }
+  if (presetKey === 'added_time_45' || presetKey === 'added_time_90' || presetKey === 'added_time') {
+    const baseMin = presetKey === 'added_time_45' ? '45' : '90';
+    return {
+      minute: baseMin,
+      type: 'added_time',
+      team: 'neutral',
+      number: '',
+      player: '',
+      secondary: t('addedTimeTitle')(''),
+      assist_number: '',
+      player_in_number: '',
+      player_out_number: '',
+      added_minutes: '',
+      injury: false,
+      detail: '',
+      _extra: {},
+    };
+  }
+
   return {
     minute: clockRaw && clockRaw !== 'HT' && clockRaw !== 'FT' ? clockRaw : '',
     type: presetKey || 'goal',
-    team: 'home',
+    team: isNeutralEventType(presetKey) ? 'neutral' : defaultSide,
+    number: '',
     player: '',
     secondary: '',
+    assist_number: '',
+    player_in_number: '',
+    player_out_number: '',
+    added_minutes: '',
+    injury: false,
     detail: '',
     _extra: {},
   };
 }
 
 function addQuickEvent(presetKey) {
-  state.events.push(createQuickEventObject(presetKey));
-  renderEventsEditor();
+  if (presetKey === 'substitution') {
+    openSubQuickBuilder(true);
+    return;
+  }
+  const newEv = createQuickEventObject(presetKey);
+  state.events.push(newEv);
+  sortEventsChronologically(false);
+
+  const insertedIdx = state.events.indexOf(newEv);
+  if (insertedIdx >= 0 && el.eventsListContainer) {
+    const targetRow = el.eventsListContainer.querySelector(`.mm-event-row[data-event-idx="${insertedIdx}"]`);
+    if (targetRow) {
+      if (newEv.type === 'added_time') {
+        targetRow.querySelector('.event-added-mins-input')?.focus();
+      } else if (!isNeutralEventType(newEv.type)) {
+        targetRow.querySelector('.event-num-input')?.focus();
+      }
+    }
+  }
 }
 
 function syncGoalsIntoEvents() {
@@ -1286,39 +1807,51 @@ function syncGoalsIntoEvents() {
   activeGoals.forEach((g) => {
     const gMin = String(g.minute ?? '').trim().replace(/'$/, '');
     const gPlayer = g.player.trim();
+    const gTeam = g.team === 'away' ? 'away' : 'home';
     const gType = g.own_goal ? 'own_goal' : g.penalty ? 'penalty' : 'goal';
     const exists = state.events.some((ev) => {
       const evMin = String(ev.minute || '').trim().replace(/'$/, '');
       const sameType = ev.type === gType || (ev.type === 'goal' && (gType === 'penalty' || gType === 'own_goal'));
-      return sameType && ev.team === (g.team === 'away' ? 'away' : 'home') && evMin === gMin && String(ev.player || '').trim().toLowerCase() === gPlayer.toLowerCase();
+      return sameType && ev.team === gTeam && evMin === gMin && String(ev.player || '').trim().toLowerCase() === gPlayer.toLowerCase();
     });
     if (!exists) {
+      const pNum = resolveEventNumberByName(gTeam, gPlayer);
       state.events.push({
         minute: gMin,
         type: gType,
-        team: g.team === 'away' ? 'away' : 'home',
+        team: gTeam,
+        number: pNum,
         player: gPlayer,
         secondary: g.penalty ? 'Penalty' : g.own_goal ? 'Own Goal' : '',
+        assist_number: '',
+        player_in_number: '',
+        player_out_number: '',
+        added_minutes: '',
+        injury: false,
         detail: g.penalty ? 'Penalty' : g.own_goal ? 'Own Goal' : '',
         _extra: {},
       });
       added++;
     }
   });
-  renderEventsEditor();
+  sortEventsChronologically(false);
   showToast(t('eventsSyncedFromGoals')(added), 'success');
 }
 
 function serializeEventsForOutput() {
-  return state.events
-    .filter((ev) => ev && (ev.player?.trim() || ev.secondary?.trim() || ev.minute?.trim() || isNeutralEventType(ev.type)))
+  const sorted = sortEventsArrayChronologically(state.events);
+  return sorted
+    .filter((ev) => ev && (ev.player?.trim() || ev.secondary?.trim() || ev.minute?.trim() || ev.added_minutes || isNeutralEventType(ev.type)))
     .map((ev) => {
-      const rawMin = String(ev.minute || '').trim();
+      let rawMin = String(ev.minute || '').trim().replace(/'$/, '');
+      let outType = ev.type || 'goal';
+      if (outType === 'added_time' && /^\d+\+$/.test(rawMin)) {
+        rawMin = rawMin.replace(/\+$/, '');
+      }
       const upperMin = rawMin.toUpperCase();
       const isDisplayTag = upperMin === 'HT' || upperMin === 'FT' || upperMin === 'PEN' || rawMin.includes('+');
       const numericMin = !isDisplayTag && /^\d+$/.test(rawMin) ? parseInt(rawMin, 10) : null;
 
-      let outType = ev.type || 'goal';
       let extraDetail = String(ev.secondary || '').trim();
       const out = {
         ...(ev._extra && typeof ev._extra === 'object' ? ev._extra : {}),
@@ -1348,29 +1881,81 @@ function serializeEventsForOutput() {
         delete out.team;
       }
 
+      const toCleanNum = (v) => {
+        const s = String(v ?? '').trim();
+        if (!s) return undefined;
+        return /^\d+$/.test(s) ? parseInt(s, 10) : s;
+      };
+
       if (outType === 'substitution') {
         out.player_in = String(ev.player || '').trim();
         out.player = out.player_in;
         out.player_out = extraDetail;
-        if (!out.detail) delete out.detail;
+        const inNum = toCleanNum(ev.player_in_number || ev.number);
+        const outNum = toCleanNum(ev.player_out_number);
+        if (inNum !== undefined) out.player_in_number = inNum;
+        else delete out.player_in_number;
+        if (outNum !== undefined) out.player_out_number = outNum;
+        else delete out.player_out_number;
+        if (ev.injury) {
+          out.injury = true;
+          out.detail = 'Injury';
+        } else {
+          delete out.injury;
+          if (!out.detail || /^injury$/i.test(out.detail)) delete out.detail;
+        }
+      } else if (outType === 'added_time') {
+        const addedN = toCleanNum(ev.added_minutes);
+        if (addedN !== undefined) out.added_minutes = addedN;
+        else delete out.added_minutes;
+        out.detail = extraDetail || t('addedTimeTitle')(addedN || '');
+        delete out.player;
+        delete out.number;
       } else if (outType === 'penalty') {
         out.player = String(ev.player || '').trim();
+        const pNum = toCleanNum(ev.number);
+        if (pNum !== undefined) out.number = pNum;
+        else delete out.number;
         out.detail = 'Penalty';
         if (extraDetail && !/^penalty$/i.test(extraDetail)) {
           out.assist = extraDetail;
+          const aNum = toCleanNum(ev.assist_number);
+          if (aNum !== undefined) out.assist_number = aNum;
+          else delete out.assist_number;
+        } else {
+          delete out.assist;
+          delete out.assist_number;
         }
       } else if (outType === 'own_goal') {
         out.player = String(ev.player || '').trim();
+        const pNum = toCleanNum(ev.number);
+        if (pNum !== undefined) out.number = pNum;
+        else delete out.number;
         out.detail = extraDetail || 'Own Goal';
       } else if (outType === 'goal') {
         out.player = String(ev.player || '').trim();
+        const pNum = toCleanNum(ev.number);
+        if (pNum !== undefined) out.number = pNum;
+        else delete out.number;
         if (extraDetail) {
           out.assist = extraDetail;
           out.detail = `Assist: ${extraDetail}`;
+          const aNum = toCleanNum(ev.assist_number);
+          if (aNum !== undefined) out.assist_number = aNum;
+          else delete out.assist_number;
+        } else {
+          delete out.assist;
+          delete out.assist_number;
+          if (/^assist:/i.test(out.detail || '')) delete out.detail;
         }
       } else {
         if (ev.player && ev.player.trim()) out.player = ev.player.trim();
+        else delete out.player;
+        const pNum = toCleanNum(ev.number);
+        if (pNum !== undefined && !isNeutralEventType(outType)) out.number = pNum;
+        else delete out.number;
         if (extraDetail) out.detail = extraDetail;
+        else delete out.detail;
       }
       return out;
     });
@@ -1378,37 +1963,89 @@ function serializeEventsForOutput() {
 
 function renderEventsEditor() {
   if (!el.eventsListContainer) return;
+  populateEventTeamDatalists();
+
   if (state.events.length === 0) {
     el.eventsListContainer.innerHTML = `<div class="mm-panel-meta" style="padding: 8px 0">${escapeHtml(t('noEvents'))}</div>`;
     return;
   }
 
+  const homeLabel = el.fieldHomeTeam?.value.trim() || t('homeSide');
+  const awayLabel = el.fieldAwayTeam?.value.trim() || t('awaySide');
+
   el.eventsListContainer.innerHTML = state.events.map((ev, idx) => {
+    hydrateEventNumbersFromRoster(ev);
     const isSub = ev.type === 'substitution';
+    const isAdded = ev.type === 'added_time';
     const isGoalLike = ev.type === 'goal' || ev.type === 'penalty';
     const isNeutral = isNeutralEventType(ev.type);
-    const secondaryPlaceholder = isSub
-      ? t('eventSubOutPlaceholder')
-      : isGoalLike
-      ? t('eventAssistPlaceholder')
-      : t('eventDetailPlaceholder');
-    const primaryPlaceholder = isSub
-      ? t('eventSubInPlaceholder')
-      : t('eventPlayerPlaceholder');
+    const lists = getEventDatalistIdsForSide(ev.team);
+    const playerListAttr = lists.players ? `list="${lists.players}"` : '';
+    const numListAttr = lists.numbers ? `list="${lists.numbers}"` : '';
+
+    let bodyHtml = '';
+    if (isSub) {
+      bodyHtml = `
+        <div class="mm-event-sub-grid">
+          <div class="mm-event-sub-line">
+            <span class="mm-sub-badge is-out">↓ OUT</span>
+            <input type="text" inputmode="numeric" class="mm-input mono mm-event-num-input event-out-num-input" ${numListAttr} value="${escapeHtml(ev.player_out_number ?? '')}" placeholder="${escapeHtml(t('eventOutNumPlaceholder'))}" title="กรอกหมายเลขเสื้อผู้เล่นออก" />
+            <input type="text" class="mm-input event-secondary-input" ${playerListAttr} value="${escapeHtml(ev.secondary || '')}" placeholder="${escapeHtml(t('eventSubOutPlaceholder'))}" />
+            <button type="button" class="mm-injury-toggle-btn event-injury-btn ${ev.injury ? 'active' : ''}" aria-pressed="${ev.injury ? 'true' : 'false'}" title="${escapeHtml(t('eventInjuryBtn'))}">${escapeHtml(t('eventInjuryBtn'))}</button>
+          </div>
+          <div class="mm-event-sub-line">
+            <span class="mm-sub-badge is-in">↑ IN</span>
+            <input type="text" inputmode="numeric" class="mm-input mono mm-event-num-input event-in-num-input" ${numListAttr} value="${escapeHtml(ev.player_in_number ?? ev.number ?? '')}" placeholder="${escapeHtml(t('eventInNumPlaceholder'))}" title="กรอกหมายเลขเสื้อผู้เล่นเข้า" />
+            <input type="text" class="mm-input event-player-input" ${playerListAttr} value="${escapeHtml(ev.player || '')}" placeholder="${escapeHtml(t('eventSubInPlaceholder'))}" />
+            <span></span>
+          </div>
+        </div>
+      `;
+    } else if (isAdded) {
+      const curAdd = String(ev.added_minutes || '').trim();
+      const chips = [1, 2, 3, 4, 5, 6, 7, 8]
+        .map((n) => `<button type="button" class="mm-added-chip-btn ${curAdd === String(n) ? 'active' : ''}" data-added-min="${n}">+${n}</button>`)
+        .join('');
+      bodyHtml = `
+        <div class="mm-event-added-grid">
+          <input type="number" min="1" max="30" class="mm-input mono event-added-mins-input" value="${escapeHtml(curAdd)}" placeholder="${escapeHtml(t('eventAddedMinsPlaceholder'))}" />
+          <div class="mm-added-chips">${chips}</div>
+          <input type="text" class="mm-input event-secondary-input" value="${escapeHtml(ev.secondary || '')}" placeholder="${escapeHtml(t('eventDetailPlaceholder'))}" />
+        </div>
+      `;
+    } else {
+      const secondaryColHtml = isGoalLike
+        ? `
+          <div class="mm-event-player-pair">
+            <input type="text" inputmode="numeric" class="mm-input mono mm-event-num-input event-assist-num-input" ${numListAttr} value="${escapeHtml(ev.assist_number ?? '')}" placeholder="${escapeHtml(t('eventAssistNumPlaceholder'))}" title="กรอกหมายเลขเสื้อผู้แอสซิสต์" />
+            <input type="text" class="mm-input event-secondary-input" ${playerListAttr} value="${escapeHtml(ev.secondary || '')}" placeholder="${escapeHtml(t('eventAssistPlaceholder'))}" />
+          </div>
+        `
+        : `<input type="text" class="mm-input event-secondary-input" value="${escapeHtml(ev.secondary || '')}" placeholder="${escapeHtml(t('eventDetailPlaceholder'))}" />`;
+
+      bodyHtml = `
+        <div class="mm-event-body">
+          <div class="mm-event-player-pair">
+            <input type="text" inputmode="numeric" class="mm-input mono mm-event-num-input event-num-input" ${numListAttr} value="${escapeHtml(ev.number ?? '')}" placeholder="${escapeHtml(t('eventNumPlaceholder'))}" ${isNeutral ? 'disabled' : ''} title="กรอกหมายเลขเสื้อ # เพื่อดึงชื่ออัตโนมัติ" />
+            <input type="text" class="mm-input event-player-input" ${playerListAttr} value="${escapeHtml(ev.player || '')}" placeholder="${escapeHtml(t('eventPlayerPlaceholder'))}" ${isNeutral ? 'disabled' : ''} />
+          </div>
+          ${secondaryColHtml}
+        </div>
+      `;
+    }
 
     return `
       <div class="mm-event-row" data-event-idx="${idx}">
         <input type="text" class="mm-input mono event-min-input" value="${escapeHtml(ev.minute ?? '')}" placeholder="${escapeHtml(t('eventMinPlaceholder'))}" />
+        <select class="mm-select event-team-select" aria-label="Event Team">
+          <option value="home" ${ev.team === 'home' ? 'selected' : ''}>${escapeHtml(homeLabel)}</option>
+          <option value="away" ${ev.team === 'away' ? 'selected' : ''}>${escapeHtml(awayLabel)}</option>
+          <option value="neutral" ${ev.team === 'neutral' || isNeutral ? 'selected' : ''}>${escapeHtml(t('neutralSide'))}</option>
+        </select>
         <select class="mm-select event-type-select" aria-label="Event Type">
           ${KEY_EVENT_TYPE_OPTIONS.map((opt) => `<option value="${opt.value}" ${ev.type === opt.value ? 'selected' : ''}>${escapeHtml(state.lang === 'th' ? opt.th : opt.en)}</option>`).join('')}
         </select>
-        <select class="mm-select event-team-select" aria-label="Event Team">
-          <option value="home" ${ev.team === 'home' ? 'selected' : ''}>${escapeHtml(t('homeSide'))}</option>
-          <option value="away" ${ev.team === 'away' ? 'selected' : ''}>${escapeHtml(t('awaySide'))}</option>
-          <option value="neutral" ${ev.team === 'neutral' || isNeutral ? 'selected' : ''}>${escapeHtml(t('neutralSide'))}</option>
-        </select>
-        <input type="text" class="mm-input event-player-input" list="playersDatalist" value="${escapeHtml(ev.player || '')}" placeholder="${escapeHtml(primaryPlaceholder)}" ${isNeutral ? 'disabled' : ''} />
-        <input type="text" class="mm-input event-secondary-input" ${isSub || isGoalLike ? 'list="playersDatalist"' : ''} value="${escapeHtml(ev.secondary || '')}" placeholder="${escapeHtml(secondaryPlaceholder)}" />
+        ${bodyHtml}
         <button type="button" class="mm-btn mm-btn-danger mm-btn-compact event-remove-btn" aria-label="Remove event" style="padding: 6px; min-width: 34px">✕</button>
       </div>
     `;
@@ -1416,32 +2053,262 @@ function renderEventsEditor() {
 
   el.eventsListContainer.querySelectorAll('.mm-event-row').forEach((row) => {
     const idx = Number(row.getAttribute('data-event-idx'));
-    row.querySelector('.event-min-input').addEventListener('input', (e) => {
-      state.events[idx].minute = e.target.value;
-    });
-    row.querySelector('.event-type-select').addEventListener('change', (e) => {
-      const nextType = e.target.value;
-      state.events[idx].type = nextType;
-      if (isNeutralEventType(nextType)) {
-        state.events[idx].team = 'neutral';
-      } else if (state.events[idx].team === 'neutral') {
-        state.events[idx].team = 'home';
+    const ev = state.events[idx];
+    if (!ev) return;
+
+    const minInput = row.querySelector('.event-min-input');
+    if (minInput) {
+      minInput.addEventListener('input', (e) => {
+        ev.minute = e.target.value;
+      });
+      minInput.addEventListener('blur', () => {
+        sortEventsChronologically(false);
+      });
+      minInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          sortEventsChronologically(false);
+        }
+      });
+    }
+
+    const teamSelect = row.querySelector('.event-team-select');
+    if (teamSelect) {
+      teamSelect.addEventListener('change', (e) => {
+        ev.team = e.target.value;
+        if (ev.team === 'home' || ev.team === 'away') {
+          if (ev.type === 'substitution') {
+            if (ev.player_out_number) {
+              const outHit = resolveEventPlayerByNumber(ev.team, ev.player_out_number, 'starter');
+              if (outHit) ev.secondary = outHit.name;
+            }
+            if (ev.player_in_number || ev.number) {
+              const inHit = resolveEventPlayerByNumber(ev.team, ev.player_in_number || ev.number, 'sub');
+              if (inHit) ev.player = inHit.name;
+            }
+          } else if (ev.number) {
+            const pHit = resolveEventPlayerByNumber(ev.team, ev.number);
+            if (pHit) ev.player = pHit.name;
+            if (ev.assist_number) {
+              const aHit = resolveEventPlayerByNumber(ev.team, ev.assist_number);
+              if (aHit) ev.secondary = aHit.name;
+            }
+          }
+        }
+        renderEventsEditor();
+      });
+    }
+
+    const typeSelect = row.querySelector('.event-type-select');
+    if (typeSelect) {
+      typeSelect.addEventListener('change', (e) => {
+        const nextType = e.target.value;
+        ev.type = nextType;
+        if (isNeutralEventType(nextType)) {
+          ev.team = 'neutral';
+          if (nextType === 'added_time' && !ev.minute) {
+            ev.minute = '90';
+          }
+          if (nextType === 'added_time' && !ev.secondary) {
+            ev.secondary = t('addedTimeTitle')(ev.added_minutes || '');
+          }
+        } else if (ev.team === 'neutral') {
+          ev.team = isSideChelsea('away') && !isSideChelsea('home') ? 'away' : 'home';
+        }
+        sortEventsChronologically(false);
+      });
+    }
+
+    // Standard player # -> Full Name
+    const numInput = row.querySelector('.event-num-input');
+    const playerInput = row.querySelector('.event-player-input');
+    if (numInput) {
+      numInput.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        ev.number = val;
+        if (!val) {
+          if (ev._autoPlayerFromNum && ev.player === ev._autoPlayerFromNum) {
+            ev.player = '';
+            if (playerInput) playerInput.value = '';
+          }
+          ev._autoPlayerFromNum = '';
+          return;
+        }
+        const matched = resolveEventPlayerByNumber(ev.team, val);
+        if (matched && matched.name) {
+          ev.player = matched.name;
+          ev._autoPlayerFromNum = matched.name;
+          if (playerInput) playerInput.value = matched.name;
+        }
+      });
+    }
+
+    if (playerInput && ev.type !== 'substitution') {
+      playerInput.addEventListener('input', (e) => {
+        ev.player = e.target.value;
+        ev._autoPlayerFromNum = '';
+        if (!ev.number && e.target.value.trim()) {
+          const foundNum = resolveEventNumberByName(ev.team, e.target.value);
+          if (foundNum) {
+            ev.number = foundNum;
+            if (numInput) numInput.value = foundNum;
+          }
+        }
+      });
+    }
+
+    // Assist # -> Full Name (Goals & Penalties)
+    const assistNumInput = row.querySelector('.event-assist-num-input');
+    const secondaryInput = row.querySelector('.event-secondary-input');
+    if (assistNumInput) {
+      assistNumInput.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        ev.assist_number = val;
+        if (!val) {
+          if (ev._autoAssistFromNum && ev.secondary === ev._autoAssistFromNum) {
+            ev.secondary = '';
+            if (secondaryInput) secondaryInput.value = '';
+          }
+          ev._autoAssistFromNum = '';
+          return;
+        }
+        const matched = resolveEventPlayerByNumber(ev.team, val);
+        if (matched && matched.name) {
+          ev.secondary = matched.name;
+          ev._autoAssistFromNum = matched.name;
+          if (secondaryInput) secondaryInput.value = matched.name;
+        }
+      });
+    }
+
+    // Substitution OUT / IN # -> Full Name
+    if (ev.type === 'substitution') {
+      const outNumInput = row.querySelector('.event-out-num-input');
+      const inNumInput = row.querySelector('.event-in-num-input');
+      if (outNumInput) {
+        outNumInput.addEventListener('input', (e) => {
+          const val = e.target.value.trim();
+          ev.player_out_number = val;
+          if (!val) {
+            if (ev._autoOutFromNum && ev.secondary === ev._autoOutFromNum) {
+              ev.secondary = '';
+              if (secondaryInput) secondaryInput.value = '';
+            }
+            ev._autoOutFromNum = '';
+            return;
+          }
+          const matched = resolveEventPlayerByNumber(ev.team, val, 'starter');
+          if (matched && matched.name) {
+            ev.secondary = matched.name;
+            ev._autoOutFromNum = matched.name;
+            if (secondaryInput) secondaryInput.value = matched.name;
+          }
+        });
       }
-      renderEventsEditor();
-    });
-    row.querySelector('.event-team-select').addEventListener('change', (e) => {
-      state.events[idx].team = e.target.value;
-    });
-    row.querySelector('.event-player-input').addEventListener('input', (e) => {
-      state.events[idx].player = e.target.value;
-    });
-    row.querySelector('.event-secondary-input').addEventListener('input', (e) => {
-      state.events[idx].secondary = e.target.value;
-    });
-    row.querySelector('.event-remove-btn').addEventListener('click', () => {
-      state.events.splice(idx, 1);
-      renderEventsEditor();
-    });
+      if (inNumInput) {
+        inNumInput.addEventListener('input', (e) => {
+          const val = e.target.value.trim();
+          ev.player_in_number = val;
+          ev.number = val;
+          if (!val) {
+            if (ev._autoInFromNum && ev.player === ev._autoInFromNum) {
+              ev.player = '';
+              if (playerInput) playerInput.value = '';
+            }
+            ev._autoInFromNum = '';
+            return;
+          }
+          const matched = resolveEventPlayerByNumber(ev.team, val, 'sub');
+          if (matched && matched.name) {
+            ev.player = matched.name;
+            ev._autoInFromNum = matched.name;
+            if (playerInput) playerInput.value = matched.name;
+          }
+        });
+      }
+      if (secondaryInput) {
+        secondaryInput.addEventListener('input', (e) => {
+          ev.secondary = e.target.value;
+          ev._autoOutFromNum = '';
+          if (!ev.player_out_number && e.target.value.trim()) {
+            const foundOutNum = resolveEventNumberByName(ev.team, e.target.value, 'starter');
+            if (foundOutNum) {
+              ev.player_out_number = foundOutNum;
+              if (outNumInput) outNumInput.value = foundOutNum;
+            }
+          }
+        });
+      }
+      if (playerInput) {
+        playerInput.addEventListener('input', (e) => {
+          ev.player = e.target.value;
+          ev._autoInFromNum = '';
+          if (!ev.player_in_number && e.target.value.trim()) {
+            const foundInNum = resolveEventNumberByName(ev.team, e.target.value, 'sub');
+            if (foundInNum) {
+              ev.player_in_number = foundInNum;
+              ev.number = foundInNum;
+              if (inNumInput) inNumInput.value = foundInNum;
+            }
+          }
+        });
+      }
+      const injBtn = row.querySelector('.event-injury-btn');
+      if (injBtn) {
+        injBtn.addEventListener('click', () => {
+          ev.injury = !ev.injury;
+          injBtn.classList.toggle('active', ev.injury);
+          injBtn.setAttribute('aria-pressed', ev.injury ? 'true' : 'false');
+        });
+      }
+    } else if (secondaryInput) {
+      secondaryInput.addEventListener('input', (e) => {
+        ev.secondary = e.target.value;
+        ev._autoAssistFromNum = '';
+        if (assistNumInput && !ev.assist_number && e.target.value.trim()) {
+          const foundANum = resolveEventNumberByName(ev.team, e.target.value);
+          if (foundANum) {
+            ev.assist_number = foundANum;
+            assistNumInput.value = foundANum;
+          }
+        }
+      });
+    }
+
+    // Added Time controls (+N input & quick chips)
+    if (ev.type === 'added_time') {
+      const addMinsInput = row.querySelector('.event-added-mins-input');
+      const applyAddedMins = (minsStr, updateChipsUI = true) => {
+        ev.added_minutes = minsStr;
+        const formatted = t('addedTimeTitle')(minsStr);
+        ev.secondary = formatted;
+        if (secondaryInput) secondaryInput.value = formatted;
+        if (addMinsInput && addMinsInput.value !== minsStr) addMinsInput.value = minsStr;
+        if (updateChipsUI) {
+          row.querySelectorAll('.mm-added-chip-btn').forEach((chip) => {
+            chip.classList.toggle('active', chip.getAttribute('data-added-min') === String(minsStr));
+          });
+        }
+      };
+      if (addMinsInput) {
+        addMinsInput.addEventListener('input', (e) => {
+          applyAddedMins(String(e.target.value || '').trim());
+        });
+      }
+      row.querySelectorAll('.mm-added-chip-btn').forEach((chip) => {
+        chip.addEventListener('click', () => {
+          applyAddedMins(chip.getAttribute('data-added-min') || '');
+        });
+      });
+    }
+
+    const delBtn = row.querySelector('.event-remove-btn');
+    if (delBtn) {
+      delBtn.addEventListener('click', () => {
+        state.events.splice(idx, 1);
+        renderEventsEditor();
+      });
+    }
   });
 }
 
@@ -2258,6 +3125,7 @@ function updateLineupSideUI() {
   syncRowDatalist(el.lineupSubsContainer, '.lineup-sub-name-input', 'lineupPlayersDatalist');
   syncRowDatalist(el.lineupStartingContainer, '.lineup-num-input', 'lineupNumbersDatalist');
   syncRowDatalist(el.lineupSubsContainer, '.lineup-sub-num-input', 'lineupNumbersDatalist');
+  populateEventTeamDatalists();
 }
 
 function renderPositionSelectHTML(currentPos, extraClass = '') {
@@ -2872,6 +3740,16 @@ function resetForm(defaultStatus = 'upcoming') {
   el.fieldXg.value = '';
   el.fieldNotes.value = '';
 
+  state.subQuickTeam = 'home';
+  if (el.subQuickBuilder) el.subQuickBuilder.hidden = true;
+  if (el.toggleSubBuilderBtn) el.toggleSubBuilderBtn.classList.remove('active');
+  if (el.subQuickMinute) el.subQuickMinute.value = '';
+  if (el.subQuickOutNum) el.subQuickOutNum.value = '';
+  if (el.subQuickOutName) el.subQuickOutName.value = '';
+  if (el.subQuickInNum) el.subQuickInNum.value = '';
+  if (el.subQuickInName) el.subQuickInName.value = '';
+  if (el.subQuickInjury) el.subQuickInjury.checked = false;
+
   updateTeamPreviews();
   renderChannelsGrid();
   renderGoalsEditor();
@@ -2948,7 +3826,7 @@ function loadMatchIntoForm(match, forceStatus = null) {
     : [];
 
   state.events = Array.isArray(match.events)
-    ? match.events.map(normalizeEventForState)
+    ? sortEventsArrayChronologically(match.events.map(normalizeEventForState))
     : [];
 
   state.selectedChannels = new Set(
@@ -2978,10 +3856,14 @@ function loadMatchIntoForm(match, forceStatus = null) {
   });
   const isHomeChelsea = String(match.home_team || '').toLowerCase().includes('chelsea');
   state.activeLineupSide = isHomeChelsea ? 'home' : 'away';
+  state.subQuickTeam = isHomeChelsea ? 'home' : 'away';
   state.lineups = {
     home: hydrateSide(match.lineups?.home, match.formation || '4-2-3-1'),
     away: hydrateSide(match.lineups?.away, '4-2-3-1'),
   };
+
+  if (el.subQuickBuilder) el.subQuickBuilder.hidden = true;
+  if (el.toggleSubBuilderBtn) el.toggleSubBuilderBtn.classList.remove('active');
 
   updateTeamPreviews();
   renderChannelsGrid();
@@ -3798,6 +4680,7 @@ async function loadReferenceData() {
   }
   populatePlayersDatalist();
   renderLineupEditor();
+  renderEventsEditor();
 }
 
 function wireEvents() {
@@ -4102,6 +4985,109 @@ function wireEvents() {
     el.addEventBtn.addEventListener('click', () => {
       addQuickEvent('goal');
     });
+  }
+
+  if (el.sortEventsBtn) {
+    el.sortEventsBtn.addEventListener('click', () => {
+      sortEventsChronologically(true);
+    });
+  }
+
+  if (el.toggleSubBuilderBtn) {
+    el.toggleSubBuilderBtn.addEventListener('click', () => {
+      openSubQuickBuilder();
+    });
+  }
+
+  if (el.subQuickCloseBtn) {
+    el.subQuickCloseBtn.addEventListener('click', () => {
+      openSubQuickBuilder(false);
+    });
+  }
+
+  if (el.subQuickHomeBtn) {
+    el.subQuickHomeBtn.addEventListener('click', () => setSubQuickTeam('home'));
+  }
+  if (el.subQuickAwayBtn) {
+    el.subQuickAwayBtn.addEventListener('click', () => setSubQuickTeam('away'));
+  }
+
+  if (el.subQuickOutNum) {
+    el.subQuickOutNum.addEventListener('input', () => {
+      const val = el.subQuickOutNum.value.trim();
+      if (!val) {
+        if (el.subQuickOutName && el.subQuickOutName.dataset.autoName === el.subQuickOutName.value) {
+          el.subQuickOutName.value = '';
+        }
+        if (el.subQuickOutName) el.subQuickOutName.dataset.autoName = '';
+        return;
+      }
+      const matched = resolveEventPlayerByNumber(state.subQuickTeam, val, 'starter');
+      if (matched && matched.name && el.subQuickOutName) {
+        el.subQuickOutName.value = matched.name;
+        el.subQuickOutName.dataset.autoName = matched.name;
+      }
+    });
+    el.subQuickOutNum.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        el.subQuickInNum?.focus();
+      }
+    });
+  }
+
+  if (el.subQuickInNum) {
+    el.subQuickInNum.addEventListener('input', () => {
+      const val = el.subQuickInNum.value.trim();
+      if (!val) {
+        if (el.subQuickInName && el.subQuickInName.dataset.autoName === el.subQuickInName.value) {
+          el.subQuickInName.value = '';
+        }
+        if (el.subQuickInName) el.subQuickInName.dataset.autoName = '';
+        return;
+      }
+      const matched = resolveEventPlayerByNumber(state.subQuickTeam, val, 'sub');
+      if (matched && matched.name && el.subQuickInName) {
+        el.subQuickInName.value = matched.name;
+        el.subQuickInName.dataset.autoName = matched.name;
+      }
+    });
+    el.subQuickInNum.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSubQuickAdd();
+      }
+    });
+  }
+
+  if (el.subQuickOutName) {
+    el.subQuickOutName.addEventListener('input', () => {
+      el.subQuickOutName.dataset.autoName = '';
+      if (!el.subQuickOutNum?.value.trim() && el.subQuickOutName.value.trim()) {
+        const foundNum = resolveEventNumberByName(state.subQuickTeam, el.subQuickOutName.value, 'starter');
+        if (foundNum && el.subQuickOutNum) el.subQuickOutNum.value = foundNum;
+      }
+    });
+  }
+
+  if (el.subQuickInName) {
+    el.subQuickInName.addEventListener('input', () => {
+      el.subQuickInName.dataset.autoName = '';
+      if (!el.subQuickInNum?.value.trim() && el.subQuickInName.value.trim()) {
+        const foundNum = resolveEventNumberByName(state.subQuickTeam, el.subQuickInName.value, 'sub');
+        if (foundNum && el.subQuickInNum) el.subQuickInNum.value = foundNum;
+      }
+    });
+    el.subQuickInName.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSubQuickAdd();
+      }
+    });
+  }
+
+  if (el.subQuickAddBtn) {
+    el.subQuickAddBtn.addEventListener('click', handleSubQuickAdd);
   }
 
   document.querySelectorAll('[data-event-preset]').forEach((btn) => {

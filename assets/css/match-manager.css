@@ -1853,6 +1853,177 @@ a {
   font-size: 0.76rem;
 }
 
+.mm-event-workflow-hint {
+  font-size: 0.75rem;
+  color: var(--mm-muted);
+  margin: -2px 0 8px;
+  line-height: 1.4;
+}
+
+/* ==================== QUICK SUBSTITUTION BUILDER ==================== */
+.mm-sub-builder {
+  border-radius: 10px;
+  border: 1px solid var(--mm-accent);
+  background: var(--mm-surface-subtle);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mm-sub-builder[hidden] {
+  display: none;
+}
+
+.mm-sub-builder-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mm-sub-builder-head strong {
+  font-size: 0.84rem;
+  color: var(--mm-ink);
+}
+
+.mm-sub-builder-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mm-sub-team-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mm-sub-team-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--mm-border);
+  background: var(--mm-surface);
+  color: var(--mm-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.mm-sub-team-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.mm-sub-team-btn.active {
+  border-color: var(--mm-accent);
+  background: color-mix(in srgb, var(--mm-accent) 12%, var(--mm-surface));
+  color: var(--mm-accent);
+}
+
+.mm-sub-time-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mm-sub-time-wrap label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--mm-muted);
+  white-space: nowrap;
+}
+
+.mm-sub-time-wrap .mm-input {
+  width: 112px;
+  min-height: 36px;
+  padding: 5px 8px;
+  font-size: 0.82rem;
+  background: var(--mm-surface);
+}
+
+.mm-sub-injury-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--mm-ink);
+  cursor: pointer;
+  user-select: none;
+}
+
+.mm-sub-pair-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mm-sub-card {
+  border-radius: 8px;
+  border: 1px solid var(--mm-border);
+  background: var(--mm-surface);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mm-sub-card.is-out {
+  border-left: 3px solid #dc2626;
+}
+
+.mm-sub-card.is-in {
+  border-left: 3px solid #16a34a;
+}
+
+.mm-sub-card-label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mm-sub-card.is-out .mm-sub-card-label {
+  color: #dc2626;
+}
+
+.mm-sub-card.is-in .mm-sub-card-label {
+  color: #16a34a;
+}
+
+.mm-sub-player-inputs {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 6px;
+}
+
+.mm-sub-player-inputs .mm-input {
+  min-height: 36px;
+  padding: 5px 8px;
+  font-size: 0.82rem;
+}
+
+.mm-sub-builder-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==================== KEY EVENT ROWS (TEAM > # > NAME) ==================== */
 .mm-events-list {
   display: flex;
   flex-direction: column;
@@ -1861,7 +2032,7 @@ a {
 
 .mm-event-row {
   display: grid;
-  grid-template-columns: 74px 140px 102px minmax(0, 1fr) minmax(0, 1fr) 34px;
+  grid-template-columns: 72px 134px 144px minmax(0, 1fr) 34px;
   gap: 6px;
   align-items: center;
   padding: 8px;
@@ -1876,6 +2047,126 @@ a {
   padding: 6px 8px;
   font-size: 0.8rem;
   background: var(--mm-surface);
+}
+
+.mm-event-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.mm-event-player-pair {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 4px;
+  min-width: 0;
+}
+
+.mm-event-num-input {
+  text-align: center;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+.mm-event-sub-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.mm-event-sub-line {
+  display: grid;
+  grid-template-columns: 54px 56px minmax(0, 1fr) auto;
+  gap: 5px;
+  align-items: center;
+  min-width: 0;
+}
+
+.mm-sub-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+
+.mm-sub-badge.is-out {
+  background: rgba(220, 38, 38, 0.12);
+  color: #dc2626;
+}
+
+.mm-sub-badge.is-in {
+  background: rgba(22, 163, 74, 0.12);
+  color: #16a34a;
+}
+
+.mm-injury-toggle-btn {
+  min-height: 32px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--mm-border);
+  background: var(--mm-surface);
+  color: var(--mm-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mm-injury-toggle-btn.active {
+  border-color: #d97706;
+  background: rgba(217, 119, 6, 0.14);
+  color: #b45309;
+}
+
+.mm-event-added-grid {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.mm-event-added-grid .event-added-mins-input {
+  width: 68px;
+  text-align: center;
+}
+
+.mm-added-chips {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.mm-added-chip-btn {
+  min-height: 28px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--mm-border);
+  background: var(--mm-surface);
+  color: var(--mm-ink);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mm-added-chip-btn.active,
+.mm-added-chip-btn:hover {
+  border-color: var(--mm-accent);
+  color: var(--mm-accent);
+}
+
+.mm-event-added-grid .event-secondary-input {
+  flex: 1 1 150px;
+  min-width: 120px;
 }
 
 .mm-stats-editor-card {
@@ -1984,8 +2275,15 @@ a {
 }
 
 @media (max-width: 820px) {
+  .mm-sub-pair-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .mm-event-row {
-    grid-template-columns: 74px minmax(0, 1fr) 92px;
+    grid-template-columns: 68px minmax(0, 1fr) minmax(0, 1fr) 34px;
+  }
+  .mm-event-body {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr);
   }
   .mm-stat-input-row,
   .mm-stats-table-head {

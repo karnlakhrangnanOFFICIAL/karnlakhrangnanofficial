@@ -4185,15 +4185,25 @@
         let timelineTabHtml = "";
         if (match.events && match.events.length > 0) {
           const sortedEvents = [...match.events].sort((a, b) => {
-            const parseMin = (m) => {
-              if (typeof m === "number") return m;
-              if (typeof m === "string") {
-                const parts = m.split("+");
-                return parseInt(parts[0]) + (parts[1] ? parseInt(parts[1]) / 100 : 0);
+            const parseMin = (ev) => {
+              if (!ev || typeof ev !== "object") return 0;
+              const raw = String(ev.display_minute ?? ev.minute ?? "").trim().replace(/'$/, "");
+              const upper = raw.toUpperCase();
+              const eType = String(ev.type || "").toLowerCase();
+              if (eType === "kick_off" || eType === "kickoff" || upper === "KO") return -1;
+              if (upper === "HT") return 45.99;
+              if (upper === "FT" || eType === "full_time") return 999;
+              if (raw.includes("+")) {
+                const parts = raw.split("+");
+                const base = parseInt(parts[0], 10) || 0;
+                const add = parseInt(parts[1], 10) || 0;
+                return base + Math.min(add, 90) / 100;
               }
+              const n = parseFloat(raw);
+              if (!isNaN(n)) return eType === "added_time" ? n + 0.001 : n;
               return 0;
             };
-            return parseMin(a.minute) - parseMin(b.minute);
+            return parseMin(a) - parseMin(b);
           });
 
           const getEventIcon = (type) => {
@@ -4657,11 +4667,25 @@
             }
           };
 
-          const parseEventMinVal = (m) => {
-            if (typeof m === "number") return m;
-            if (typeof m === "string" && m.trim() !== "") {
-              const parts = m.split("+");
-              return (parseInt(parts[0], 10) || 0) + (parts[1] ? (parseInt(parts[1], 10) || 0) / 100 : 0);
+          const parseEventMinVal = (ev) => {
+            if (!ev || typeof ev !== "object") return 0;
+            const raw = String(ev.display_minute ?? ev.minute ?? "").trim().replace(/'$/, "");
+            const upper = raw.toUpperCase();
+            const eType = String(ev.type || "").toLowerCase();
+            if (eType === "kick_off" || eType === "kickoff" || upper === "KO") return -1;
+            if (upper === "HT") return 45.99;
+            if (upper === "FT" || eType === "full_time") return 999;
+            if (upper === "ET HT" || upper === "AET HT") return 105.99;
+            if (upper === "AET") return 120.99;
+            if (raw.includes("+")) {
+              const parts = raw.split("+");
+              const base = parseInt(parts[0], 10) || 0;
+              const add = parseInt(parts[1], 10) || 0;
+              return base + (add > 0 ? Math.min(add, 90) / 100 : 0.001);
+            }
+            const num = parseFloat(raw);
+            if (!isNaN(num)) {
+              return eType === "added_time" ? num + 0.001 : num;
             }
             return 0;
           };
@@ -4671,7 +4695,7 @@
           );
           const timedEvents = match.events
             .filter((e) => (e.minute !== null && e.minute !== undefined && e.minute !== "") || e.display_minute)
-            .sort((a, b) => parseEventMinVal(a.minute) - parseEventMinVal(b.minute));
+            .sort((a, b) => parseEventMinVal(a) - parseEventMinVal(b));
 
           const allTimedAreSubs =
             untimedEvents.length > 0 &&
@@ -4702,8 +4726,8 @@
           } else {
             const regularTimed = timedEvents.filter((e) => e.period !== "shootout");
             const shootoutTimed = timedEvents.filter((e) => e.period === "shootout");
-            const firstHalfTimed = regularTimed.filter((e) => parseEventMinVal(e.minute) <= 45.99);
-            const secondHalfTimed = regularTimed.filter((e) => parseEventMinVal(e.minute) > 45.99);
+            const firstHalfTimed = regularTimed.filter((e) => parseEventMinVal(e) <= 45.99);
+            const secondHalfTimed = regularTimed.filter((e) => parseEventMinVal(e) > 45.99);
 
             if (firstHalfTimed.length > 0) {
               timelineSectionsHtml += `
